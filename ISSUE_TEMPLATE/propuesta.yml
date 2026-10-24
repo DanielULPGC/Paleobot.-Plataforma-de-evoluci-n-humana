@@ -1,0 +1,28 @@
+name: Propuesta de mejora
+description: Justificar una ampliación, retirada o cambio.
+title: "[Propuesta] "
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Necesidad docente o técnica
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Cambio propuesto, motivo y alternativas
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidencia y criterio observable de aceptación
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Qué podría romperse y cómo revertirlo
+    validations:
+      required: true

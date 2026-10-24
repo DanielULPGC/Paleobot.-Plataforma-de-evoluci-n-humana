@@ -1,0 +1,39 @@
+name: Defecto observado
+description: Registrar un fallo con evidencia e impacto.
+title: "[Defecto] "
+body:
+  - type: textarea
+    id: version
+    attributes:
+      label: Versión y entorno
+      description: Archivo, hash, navegador y tipo de actividad si se conocen.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Pasos y resultado
+      description: Qué se hizo, qué ocurrió y qué se esperaba.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidencia y alcance
+      description: Diferenciar lo observado de una causa propuesta. Omitir credenciales y datos del alumnado.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impacto y dependencias
+      description: Qué funciones o decisiones científicas quedan afectadas.
+  - type: textarea
+    id: fix
+    attributes:
+      label: Solución propuesta y motivo
+  - type: textarea
+    id: return
+    attributes:
+      label: Prueba de cierre y retorno
+      description: Cómo comprobarlo y qué restaurar si aparece una regresión.
