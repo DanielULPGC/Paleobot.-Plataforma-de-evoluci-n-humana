@@ -1,0 +1,12 @@
+{
+  "consulted": "2026-10-24",
+  "checkout": {
+    "version": "v7.0.1",
+    "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "url": "https://github.com/actions/checkout/commit/3d3c42e5aac5ba805825da76410c181273ba90b1"
+  },
+  "documentation": [
+    "https://docs.github.com/en/actions/reference/security/secure-use",
+    "https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository"
+  ]
+}

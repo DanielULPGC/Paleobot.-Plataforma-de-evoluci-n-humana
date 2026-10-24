@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-24",
+  "purpose": "Identidad de entrada PB-GH-01; no comprobación de Moodle",
+  "sha256": {
+    "index.html": "812c6de5c1cdb10354959409a8f7ed330fa63f5ed2600364d6a92fc49e0bf4da",
+    "baselines/entrada-ligera-v9.html": "86e9a4b6185f734560b7f5ed6e121431cfef051ca1759558ef9c43b4b81014e5",
+    "src/entrada_ligera/catalog.json": "5eb460063f873b3be5ef3aa9874ff5cc0ab17612ba706506d1c8f8c22411a0a2",
+    "experimental/atlas-r98/PaleoBot_Atlas_Original_Directo_R98_PILOTO.html": "905de165886f476b01ebd4fdea276c0481801dba5c49feb74666575faa53f58c",
+    "experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt": "bbc959aaef7488b38942e7f05cfd1244351f8bce54261951ea17dd7cf60f894b"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "preparation": "PB-GH-01",
+  "date": "2026-10-24",
+  "release_gate": "NO_GO",
+  "main_entry": "v11",
+  "last_recovered_user_confirmation": "v9",
+  "application_code_changed": false,
+  "pb01": "OPEN_REPRODUCED_IN_ISOLATION",
+  "moodle": "NOT_RUN",
+  "real_browser": "NOT_RUN",
+  "screen_reader": "NOT_RUN",
+  "remote_repository": null,
+  "remote_push": false,
+  "github_actions_run": "NOT_RUN",
+  "pages_deployed": false
+}

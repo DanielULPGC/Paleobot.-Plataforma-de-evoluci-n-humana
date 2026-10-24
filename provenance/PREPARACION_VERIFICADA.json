@@ -1,0 +1,42 @@
+{
+  "preparation": "PB-GH-01",
+  "date": "2026-10-24",
+  "repository_verification": {
+    "passed": 41,
+    "failed": 0,
+    "javascript_units_checked": 159
+  },
+  "negative_and_preservation_tests": {
+    "passed": 8,
+    "failed": 0,
+    "command": "python3 -m unittest discover -s tests -p test_*.py"
+  },
+  "builds": [
+    {
+      "target": "light",
+      "sha256": "812c6de5c1cdb10354959409a8f7ed330fa63f5ed2600364d6a92fc49e0bf4da",
+      "bytes": 217992,
+      "matches_preserved": true
+    },
+    {
+      "target": "atlas",
+      "sha256": "905de165886f476b01ebd4fdea276c0481801dba5c49feb74666575faa53f58c",
+      "bytes": 3395289,
+      "matches_preserved": true
+    }
+  ],
+  "pb01": {
+    "reproduced_in_isolation": true,
+    "affected_ids": [
+      "boisei",
+      "proconsul",
+      "soloensis"
+    ],
+    "corrected": false
+  },
+  "github_actions_executed": false,
+  "real_browser_executed": false,
+  "moodle_executed": false,
+  "screen_reader_executed": false,
+  "release_gate": "NO_GO"
+}

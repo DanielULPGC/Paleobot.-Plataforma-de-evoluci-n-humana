@@ -1,0 +1,3372 @@
+{
+  "schema": "paleobot-a3-c2-catalog-v1",
+  "status": "EXPERIMENTAL_NOT_DEPLOYMENT_APPROVED",
+  "records": [
+    {
+      "id": "proconsul",
+      "clado": "basal",
+      "nombre": "Proconsul",
+      "anos": "23-14 Ma",
+      "ubicacion": "Kenia",
+      "holo": "Koru / Rusinga",
+      "datacion": "K-Ar",
+      "cc": 180,
+      "dieta": "Frugívora",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/25/Proconsul_heseloni_Tubingen.jpg",
+      "mapa": "kenia",
+      "descripcion": "Proconsul es un hominoideo temprano del Mioceno africano, conocido en Rusinga, Mfangano y Koru. Carecía de cola y combinaba un tronco flexible con locomoción cuadrúpeda sobre ramas. Su anatomía lo sitúa como una forma transicional entre catarrinos más primitivos y los hominoideos posteriores.",
+      "experto": {
+        "descripcion_tecnica": "Sin cola externa. Tórax estrecho. Miembros anteriores y posteriores de proporciones pronógradas.",
+        "debate": "Su posición exacta dentro de Hominoidea sigue discutiéndose: puede representar un hominoideo basal muy próximo al tronco común o un grado stem algo anterior.",
+        "anatomia_craneal": "Rostro relativamente corto y neurocráneo pequeño.",
+        "anatomia_postcraneal": "Arborealismo cuadrúpedo, sin suspensión especializada.",
+        "paleoecologia": "Bosques tropicales del Mioceno inferior de África Oriental.",
+        "cultura": "No documentada.",
+        "referencias": [
+          {
+            "a": "Walker & Teaford",
+            "y": 1989,
+            "t": "The Hunt for Proconsul",
+            "j": "Scientific American",
+            "d": ""
+          },
+          {
+            "a": "Ward et al.",
+            "y": 1999,
+            "t": "Maboko Island and the evolution of Proconsulidae",
+            "j": "J Hum Evol",
+            "d": ""
+          }
+        ]
+      },
+      "val_time": 23
+    },
+    {
+      "id": "morotopithecus",
+      "clado": "basal",
+      "nombre": "Morotopithecus bishopi",
+      "anos": "~20 Ma",
+      "ubicacion": "Uganda",
+      "holo": "UMP 62-11",
+      "datacion": "K-Ar",
+      "cc": null,
+      "dieta": "Frugívora / folívora",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/25/Morotopithecus_bishopi_Tubingen.JPG",
+      "mapa": "africa",
+      "descripcion": "Morotopithecus bishopi procede de Moroto II (Uganda) y es uno de los hominoideos más antiguos con indicios de ortogradía. Su columna lumbar, la escápula y el húmero sugieren una postura vertical más frecuente que la observada en Proconsul.",
+      "experto": {
+        "descripcion_tecnica": "Vértebras lumbares con lordosis relativa. Escápula dorsalizada. Húmero robusto con rasgos de trepa vertical.",
+        "debate": "La interpretación ortógrada es aceptada por muchos autores, aunque otros advierten que el material es fragmentario y quizá no implique una postura vertical tan derivada.",
+        "anatomia_craneal": "Material craneal escaso; dentición de hominoideo temprano.",
+        "anatomia_postcraneal": "Columna, escápula y miembro superior compatibles con ortogradía incipiente.",
+        "paleoecologia": "Bosque húmedo del Mioceno inferior del África oriental.",
+        "cultura": "No documentada.",
+        "referencias": [
+          {
+            "a": "Gebo et al.",
+            "y": 1997,
+            "t": "A hominoid genus from the early Miocene of Uganda",
+            "j": "Science",
+            "d": "10.1126/science.276.5311.401"
+          },
+          {
+            "a": "MacLatchy et al.",
+            "y": 2000,
+            "t": "Postcranial functional morphology of Morotopithecus bishopi, with implications for the evolution of modern ape locomotion",
+            "j": "J Hum Evol",
+            "d": "10.1006/jhev.2000.0407"
+          }
+        ]
+      },
+      "val_time": 20
+    },
+    {
+      "id": "dryopithecus",
+      "clado": "basal",
+      "nombre": "Dryopithecus",
+      "anos": "12-9 Ma",
+      "ubicacion": "África y Europa",
+      "holo": "Saint-Gaudens",
+      "datacion": "Bio",
+      "cc": null,
+      "dieta": "Frugívora",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Dryopithecus_Fontani_jaw.jpg",
+      "mapa": "europa",
+      "descripcion": "Dryopithecus agrupa varios grandes simios fósiles del Mioceno medio-tardío europeo, con posibles vínculos africanos. Presenta adaptaciones a locomoción arbórea avanzada y rasgos faciales que recuerdan a grandes simios actuales.",
+      "experto": {
+        "descripcion_tecnica": "Esmalte relativamente fino. Cara ancha. Miembro anterior apto para locomoción arbórea avanzada.",
+        "debate": "Su posición filogenética es muy debatida: según los autores, Dryopithecus puede estar cerca de orangutanes, de grandes simios africanos o representar una radiación europea paralela.",
+        "anatomia_craneal": "Rostro ancho, órbitas grandes y dentición frugívora especializada.",
+        "anatomia_postcraneal": "Rasgos de suspensión y trepa en parte del material atribuido.",
+        "paleoecologia": "Bosques cálidos del Mioceno tardío europeo.",
+        "cultura": "No documentada.",
+        "referencias": [
+          {
+            "a": "Begun",
+            "y": 2001,
+            "t": "European hominoids",
+            "j": "J Hum Evol",
+            "d": ""
+          },
+          {
+            "a": "Moyà-Solà et al.",
+            "y": 2004,
+            "t": "Pierolapithecus catalaunicus, a new Middle Miocene great ape from Spain",
+            "j": "Science",
+            "d": "10.1126/science.1103094"
+          }
+        ]
+      },
+      "val_time": 12
+    },
+    {
+      "id": "pierolapithecus",
+      "clado": "basal",
+      "nombre": "Pierolapithecus catalaunicus",
+      "anos": "~12.5 Ma",
+      "ubicacion": "España",
+      "holo": "IPS 21350",
+      "datacion": "Bio / magnetoestratigrafía",
+      "cc": null,
+      "dieta": "Frugívora",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Pierolapithecus_catalaunicus_%28Kopie%29.jpg",
+      "mapa": "europa",
+      "descripcion": "Pierolapithecus catalaunicus procede de Els Hostalets de Pierola, en Cataluña, y conserva una combinación excepcional de cráneo, dientes, costillas, vértebras y elementos de la mano. Su importancia reside en que muestra un plan corporal ortógrado temprano: tronco más vertical, tórax ancho y adaptaciones de trepa que ayudan a discutir cuándo aparece la arquitectura básica de los grandes simios.",
+      "experto": {
+        "descripcion_tecnica": "Holotipo IPS 21350. Tórax ancho, región lumbar corta, clavícula relativamente larga y mano apta para trepa poderosa. Dentición de esmalte grueso moderado.",
+        "debate": "No es un ancestro directo seguro de humanos, pero sí un taxón clave para separar rasgos del tronco de Hominidae de especializaciones posteriores de orangutanes, gorilas, chimpancés y homininos.",
+        "anatomia_craneal": "Cara parcialmente conservada, dentición hominoidea y rasgos faciales útiles para comparar con Dryopithecus y Anoiapithecus.",
+        "anatomia_postcraneal": "Costillas y vértebras sugieren ortogradía; mano robusta compatible con trepa vertical y agarre potente.",
+        "paleoecologia": "Bosques subtropicales del Mioceno medio de la cuenca del Vallès-Penedès.",
+        "cultura": "No documentada.",
+        "referencias": [
+          {
+            "a": "Moyà-Solà et al.",
+            "y": 2004,
+            "t": "Pierolapithecus catalaunicus, a new Middle Miocene great ape from Spain",
+            "j": "Science",
+            "d": "10.1126/science.1103094"
+          },
+          {
+            "a": "Alba",
+            "y": 2012,
+            "t": "Fossil apes from the Vallès-Penedès Basin",
+            "j": "Evolutionary Anthropology",
+            "d": "10.1002/evan.21312"
+          }
+        ]
+      },
+      "val_time": 12.5
+    },
+    {
+      "id": "anoiapithecus",
+      "clado": "basal",
+      "nombre": "Anoiapithecus brevirostris",
+      "anos": "11.9 Ma",
+      "ubicacion": "España",
+      "holo": "IPS 43000",
+      "datacion": "Bio / magnetoestratigrafía",
+      "cc": null,
+      "dieta": "Frugívora",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Anoiapithecus_brevirostris.png",
+      "mapa": "europa",
+      "descripcion": "Anoiapithecus brevirostris, conocido informalmente como 'Lluc', es un hominoideo del Mioceno medio de Cataluña. Destaca por un rostro sorprendentemente ortognático y por una combinación de rasgos primitivos y derivados que lo convierten en una pieza didáctica excelente para explicar por qué la filogenia no es una escalera lineal.",
+      "experto": {
+        "descripcion_tecnica": "Holotipo IPS 43000. Cara corta y relativamente plana, reducción del prognatismo, patrón facial singular y dentición compatible con hominoideos del Mioceno medio.",
+        "debate": "Se ha propuesto como próximo al origen de Hominidae o como parte de una radiación europea con rasgos homoplásicos. Su posición depende mucho de cómo se ponderen los caracteres faciales frente a los postcraneales.",
+        "anatomia_craneal": "Rostro ortognático con reducción marcada del prognatismo facial; mandíbula y maxilar parciales.",
+        "anatomia_postcraneal": "Registro postcraneal limitado para inferir locomoción con precisión.",
+        "paleoecologia": "Ambientes forestales cálidos del Vallès-Penedès durante el Mioceno medio.",
+        "cultura": "No documentada.",
+        "referencias": [
+          {
+            "a": "Moyà-Solà et al.",
+            "y": 2009,
+            "t": "A unique Middle Miocene European hominoid and the origins of the great ape and human clade",
+            "j": "PNAS",
+            "d": "10.1073/pnas.0811730106"
+          }
+        ]
+      },
+      "val_time": 11.9
+    },
+    {
+      "id": "nakalipithecus",
+      "clado": "basal",
+      "nombre": "Nakalipithecus nakayamai",
+      "anos": "9.9-9.8 Ma",
+      "ubicacion": "Kenia",
+      "holo": "KNM-NA46400",
+      "datacion": "K-Ar / bioestratigrafía",
+      "cc": null,
+      "dieta": "Frugívora / folívora",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Nakalipithecus_mandible.jpg",
+      "mapa": "kenia",
+      "descripcion": "Nakalipithecus nakayamai procede de Nakali, Kenia, y ayuda a rellenar el vacío africano del Mioceno tardío entre los hominoideos tempranos y los primeros candidatos homininos. Su mandíbula y dientes muestran un gran simio africano poco especializado, importante para discutir si el último ancestro común de gorilas, chimpancés y humanos tuvo una historia africana continua o euroafricana.",
+      "experto": {
+        "descripcion_tecnica": "Mandíbula y dentición de gran simio, con caracteres menos especializados que Ouranopithecus y cúspides menos infladas. Material principalmente craneodental.",
+        "debate": "Puede estar cerca del tronco de los grandes simios africanos, pero el material es limitado y no permite asignarlo de forma segura a la línea humana, gorilina o panina.",
+        "anatomia_craneal": "Conocida sobre todo por mandíbula y dientes; cráneo y neurocráneo no documentados.",
+        "anatomia_postcraneal": "No recuperada.",
+        "paleoecologia": "África oriental durante el Mioceno tardío temprano, con una fauna de catarrinos más diversa de lo que se pensaba.",
+        "cultura": "No documentada.",
+        "referencias": [
+          {
+            "a": "Kunimatsu et al.",
+            "y": 2007,
+            "t": "A new Late Miocene great ape from Kenya and its implications for the origins of African great apes and humans",
+            "j": "PNAS",
+            "d": "10.1073/pnas.0706190104"
+          }
+        ]
+      },
+      "val_time": 9.9
+    },
+    {
+      "id": "chororapithecus",
+      "clado": "basal",
+      "nombre": "Chororapithecus abyssinicus",
+      "anos": "~8 Ma",
+      "ubicacion": "Etiopía",
+      "holo": "CH0-BT 4",
+      "datacion": "Ar-Ar / magnetoestratigrafía",
+      "cc": null,
+      "dieta": "Folívora / abrasiva",
+      "herramientas": "Ninguna",
+      "imagen": "https://www.um.u-tokyo.ac.jp/japanese/UMUTopenlab/en/assets/img/library/B44_02.jpg",
+      "mapa": "etiopia",
+      "estado": "debatida",
+      "descripcion": "Chororapithecus abyssinicus es un gran simio del Mioceno tardío de la Formación Chorora, Etiopía. Su dentición se ha interpretado como posible señal temprana de afinidad gorilina, por lo que es útil para enseñar que el origen humano debe situarse dentro de una radiación africana de grandes simios, no como una línea aislada.",
+      "experto": {
+        "descripcion_tecnica": "Molares grandes con crestas de cizalla y esmalte relativamente grueso; patrón dental comparado con gorilas actuales. Material craneal y postcraneal muy limitado.",
+        "debate": "La hipótesis gorilina es influyente pero no cerrada. La edad original de 10-10.5 Ma fue revisada hacia ~8 Ma, lo que cambia su peso en los relojes de divergencia de gorilas y homininos.",
+        "anatomia_craneal": "Conocida casi exclusivamente por dientes; no hay cráneo completo.",
+        "anatomia_postcraneal": "No recuperada.",
+        "paleoecologia": "Depósitos del margen sur de Afar con señales de ambientes boscosos y recursos vegetales fibrosos o abrasivos.",
+        "cultura": "No documentada.",
+        "referencias": [
+          {
+            "a": "Suwa et al.",
+            "y": 2007,
+            "t": "A new species of great ape from the late Miocene epoch in Ethiopia",
+            "j": "Nature",
+            "d": "10.1038/nature06113"
+          },
+          {
+            "a": "Katoh et al.",
+            "y": 2016,
+            "t": "New geological and palaeontological age constraint for the gorilla-human lineage split",
+            "j": "Nature",
+            "d": "10.1038/nature16510"
+          }
+        ]
+      },
+      "val_time": 8
+    },
+    {
+      "id": "graecopithecus",
+      "clado": "basal",
+      "nombre": "Graecopithecus freybergi",
+      "anos": "7.2 Ma",
+      "ubicacion": "Europa del Este",
+      "holo": "Mandíbula de Pyrgos",
+      "datacion": "Bio",
+      "cc": null,
+      "dieta": "C3/C4",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Graecopithecus_%28from_PLoS_ONE%29.jpg",
+      "mapa": "europa",
+      "estado": "debatida",
+      "descripcion": "Graecopithecus freybergi se conoce por una mandíbula de Grecia y un premolar de Bulgaria datados en torno a 7.2 Ma. La raíz fusionada de los premolares y ciertos rasgos dentales fueron propuestos como indicios de afinidad hominina.",
+      "experto": {
+        "descripcion_tecnica": "Premolares inferiores con raíces parcial o totalmente fusionadas. Mandíbula robusta. Material extremadamente fragmentario.",
+        "debate": "Es uno de los taxones más polémicos del Mioceno final: algunos autores lo consideran un hominino potencial anterior a Sahelanthropus; otros sostienen que los rasgos dentales no bastan para separarlo de otros simios miocenos.",
+        "anatomia_craneal": "Desconocida fuera del fragmento mandibular.",
+        "anatomia_postcraneal": "No recuperada.",
+        "paleoecologia": "Ambientes más abiertos y estacionales del Mediterráneo oriental al final del Mioceno.",
+        "cultura": "No documentada.",
+        "referencias": [
+          {
+            "a": "Böhme et al.",
+            "y": 2017,
+            "t": "Potential hominin affinities of Graecopithecus from the Late Miocene of Europe",
+            "j": "PLoS ONE",
+            "d": "10.1371/journal.pone.0177127"
+          },
+          {
+            "a": "Fuss et al.",
+            "y": 2017,
+            "t": "Messinian age and savannah environment of the possible hominin Graecopithecus from Europe",
+            "j": "PLoS ONE",
+            "d": "10.1371/journal.pone.0177347"
+          }
+        ]
+      },
+      "val_time": 7.2
+    },
+    {
+      "id": "sahel",
+      "clado": "basal",
+      "nombre": "Sahelanthropus tchadensis",
+      "anos": "7.0 Ma",
+      "ubicacion": "Chad",
+      "holo": "TM 266-01-060-1",
+      "datacion": "Biocronología",
+      "cc": 365,
+      "dieta": "C3",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sahelanthropus_tchadensis_-_TM_266-01-060-1.jpg/800px-Sahelanthropus_tchadensis_-_TM_266-01-060-1.jpg",
+      "mapa": "chad",
+      "descripcion": "Conocido popularmente como 'Toumaï' (Esperanza de Vida), es uno de los candidatos más antiguos a ser el primer hominino. Su hallazgo en el Chad, lejos del Valle del Rift, revolucionó la comprensión de la distribución de nuestros ancestros. Aunque su cerebro es pequeño, similar al de un chimpancé, su rostro es sorprendentemente plano y la base de su cráneo ha sido interpretada por algunos investigadores como compatible con un bipedismo incipiente, aunque la evidencia sigue siendo debatida.",
+      "experto": {
+        "descripcion_tecnica": "Holotipo TM 266-01-060-1. Caja craneal simiesca.",
+        "debate": "¿Hominino basal o ancestro de gorilas?",
+        "anatomia_craneal": "Torus supraorbitario masivo y continuo.",
+        "anatomia_postcraneal": "Fémur sugiere bipedismo.",
+        "paleoecologia": "Bosque galería y sabana.",
+        "cultura": "Ausente.",
+        "referencias": [
+          {
+            "a": "Brunet et al.",
+            "y": 2002,
+            "t": "A new hominid from the Upper Miocene of Chad, Central Africa",
+            "j": "Nature",
+            "d": "10.1038/nature00879"
+          },
+          {
+            "a": "Daver et al.",
+            "y": 2022,
+            "t": "Postcranial evidence of late Miocene hominin bipedalism in Chad",
+            "j": "Nature",
+            "d": "10.1038/s41586-022-04901-z"
+          },
+          {
+            "a": "Wolpoff",
+            "y": 2002,
+            "t": "Sahelanthropus or Sahelpithecus?",
+            "j": "Nature",
+            "d": "10.1038/419581a"
+          },
+          {
+            "a": "Vignaud",
+            "y": 2002,
+            "t": "Geology",
+            "j": "Nature",
+            "d": "10.1038/nature00880"
+          }
+        ]
+      },
+      "val_time": 7
+    },
+    {
+      "id": "orrorin",
+      "clado": "basal",
+      "nombre": "Orrorin tugenensis",
+      "anos": "6.0 Ma",
+      "ubicacion": "Kenia",
+      "holo": "BAR 1000'00",
+      "datacion": "K-Ar",
+      "cc": null,
+      "dieta": "C3",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Orrorin_tugenensis.jpg/800px-Orrorin_tugenensis.jpg",
+      "mapa": "kenia",
+      "descripcion": "Apodado el 'Hombre del Milenio', Orrorin es crucial por sus fémures. Estos huesos de la pierna tienen una forma y distribución de hueso que ha sido interpretada como compatible con el bipedismo habitual hace 6 millones de años, aunque la interpretación sigue siendo discutida en la literatura especializada (Richmond &amp; Jungers, 2008). Sin embargo, sus brazos y dedos curvos sugieren que todavía pasaba tiempo en los árboles.",
+      "experto": {
+        "descripcion_tecnica": "Tres fémures (BAR 1002'00, 1003'00, 1004'00) con cuello largo y estrecho, ángulo cefalodiafisario elevado y distribución de la cortical inferior más gruesa que la superior, rasgos que en homininos posteriores se asocian a carga bípeda habitual. Dientes con esmalte relativamente grueso y caninos con corona alta pero reducida respecto a grandes simios. Húmero y falanges curvadas sugieren uso frecuente de los árboles.",
+        "debate": "La morfología del cuello femoral es compatible con el bipedismo habitual según Pickford & Senut (2001) y Galik et al. (2004). Richmond & Jungers (2008, Science, DOI 10.1126/science.1158207) cuestionaron que el ángulo femoral distingue con claridad a Orrorin de cuadrúpedos con postura vertical. La relación filogenética con Sahelanthropus y Ardipithecus no está resuelta; algunos autores lo sitúan en la línea que lleva a los australopitecos, no necesariamente al género Homo.",
+        "anatomia_craneal": "Material craneal no recuperado.",
+        "anatomia_postcraneal": "Fémur con cuello largo y distribución cortical bípeda. Húmero y falanges con rasgos de arborealismo. Parte de diente del pie con morfología compatible con postura vertical.",
+        "paleoecologia": "Formación Lukeino (Kenia), ambientes de bosque mixto con componente abierto. Fauna asociada incluye monos colobinos, bovinos y suidos.",
+        "cultura": "Ninguna documentada.",
+        "referencias": [
+          {
+            "a": "Senut et al.",
+            "y": 2001,
+            "t": "First hominid from the Miocene (Lukeino Formation, Kenya)",
+            "j": "CRAS",
+            "d": "10.1016/S1251-8050(01)01529-4"
+          },
+          {
+            "a": "Richmond & Jungers",
+            "y": 2008,
+            "t": "Orrorin tugenensis femoral morphology and the evolution of hominin bipedalism",
+            "j": "Science",
+            "d": "10.1126/science.1158207"
+          }
+        ]
+      },
+      "val_time": 6
+    },
+    {
+      "id": "kadabba",
+      "clado": "basal",
+      "nombre": "Ardipithecus kadabba",
+      "anos": "5.8 Ma",
+      "ubicacion": "Etiopía",
+      "holo": "ALA-VP-2/10",
+      "datacion": "Ar-Ar",
+      "cc": null,
+      "dieta": "C3",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Ardipithecus_kadabba_fossils.jpg",
+      "imagen_nota": "Fósiles atribuidos a A. kadabba; imagen documental, sin reconstrucción de partes blandas. Autoría y licencia en la ficha de la fuente.",
+      "mapa": "etiopia",
+      "descripcion": "Ardipithecus kadabba es la subespecie más primitiva del género Ardipithecus, conocida por fragmentos dentales y poscraneales del Valle del Awash (Etiopía) datados entre 5.8 y 5.5 Ma. Su nombre significa 'ancestro de la familia base' en afar, y cronológicamente se sitúa muy próxima a la divergencia del linaje humano respecto al de los chimpancés (~6–7 Ma según relojes moleculares). Los caninos superiores conservan morfología relativamente primitiva con asimetría mesio-distal, aunque menos sectoriales que los de los grandes simios actuales, a diferencia de los más reducidos de su cronospecie descendiente A. ramidus. Una falange del dedo del pie con superficie dorsal compatible con la propulsión bípeda sugiere locomoción terrestre incipiente, mientras que el resto del esqueleto postcraneal apunta a una vida predominantemente arbórea. Algunos investigadores la consideran simplemente la variante más antigua de A. ramidus, en una relación de cronoespeciación gradual.",
+      "experto": {
+        "descripcion_tecnica": "Caninos con corona alta y raíz larga. Crestas mesial y distal del canino marcadas. Falange del pie con morfología de transición. Esmalte dental más delgado que en Australopithecus.",
+        "debate": "Haile-Selassie la describe como cronospecie ancestral de A. ramidus; otros consideran el registro insuficiente para establecer una relación anagénica directa y la incluyen en A. ramidus como variabilidad temporal.",
+        "anatomia_craneal": "Desconocida — no se han hallado restos craneales.",
+        "anatomia_postcraneal": "Falange del pie con morfología sugestiva de bipedismo. Restos de brazo compatibles con arborealismo.",
+        "paleoecologia": "Bosque húmedo en el borde occidental de la gran fosa etíope, similar al entorno de A. ramidus.",
+        "cultura": "Ninguna documentada.",
+        "referencias": [
+          {
+            "a": "Haile-Selassie",
+            "y": 2001,
+            "t": "Late Miocene hominids from the Middle Awash, Ethiopia",
+            "j": "Nature",
+            "d": "10.1038/35084063"
+          },
+          {
+            "a": "Haile-Selassie et al.",
+            "y": 2004,
+            "t": "Late Miocene teeth from Middle Awash, Ethiopia, and early hominid dental evolution",
+            "j": "Science",
+            "d": "10.1126/science.1092978"
+          }
+        ]
+      },
+      "val_time": 5.8
+    },
+    {
+      "id": "ramidus",
+      "clado": "basal",
+      "nombre": "Ardipithecus ramidus",
+      "anos": "4.4 Ma",
+      "ubicacion": "Etiopía",
+      "holo": "ARA-VP-6/500",
+      "datacion": "Ar-Ar",
+      "cc": 300,
+      "dieta": "C3",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Ardipithecus_ramidus_skull.jpg/800px-Ardipithecus_ramidus_skull.jpg",
+      "mapa": "etiopia",
+      "descripcion": "Ardipithecus ramidus está representado fundamentalmente por el esqueleto parcial 'Ardi' (ARA-VP-6/500, ~45% preservado), cuyo análisis tardó 15 años y fue publicado en 2009 en un número especial de Science. Con 4.4 Ma es el homínino más completo conocido anterior a los australopitecos. Su anatomía es revolucionaria: una pelvis con morfología que permite el bipedismo en tierra firme coexiste con un hallux prensil (abducido) para el agarre de ramas, igual que los primates arborícolas actuales. Esta combinación sugiere que los humanos podrían no haber evolucionado a partir de un ancestro knuckle-walker, aunque el debate sobre la locomoción del ancestro común humano-chimpancé sigue abierto (White et al. 2009; Kivell &amp; Schmitt 2009). El cráneo (~300 cc) es de tamaño similar al de un chimpancé, pero la base craniana es más corta, los caninos son más reducidos sin carilla de afilado, y los análisis isotópicos del entorno confirman que vivió en bosque denso, no en sabana.",
+      "experto": {
+        "descripcion_tecnica": "Base craneal acortada. Caninos reducidos sin honing facet. Hallux abduible (prensil). Pelvis ancha con espinas ilíacas anteriores proyectadas. Manos con falanges curvadas. Cc ~300 cc.",
+        "debate": "¿Caminaba Ardi bípedo en el suelo o principalmente en los árboles? White et al. defienden el bipedismo terrestre habitual; Lovejoy enfatiza el componente arbóreo. El modelo derivado —que los humanos no evolucionaron desde un ancestro knuckle-walker— sigue generando debate.",
+        "anatomia_craneal": "Cc ~300 cc. Base craniana corta. Prognatismo moderado. Sin cresta sagital.",
+        "anatomia_postcraneal": "Pelvis bípeda. Hallux abduible. Falanges curvadas. Columna con lordosis lumbar incipiente.",
+        "paleoecologia": "Bosque tropical húmedo con cobertura del dosel >70%, según análisis isotópico de la fauna asociada del Middle Awash.",
+        "cultura": "Ninguna documentada.",
+        "referencias": [
+          {
+            "a": "White et al.",
+            "y": 2009,
+            "t": "Ardipithecus ramidus and the Paleobiology of Early Hominids",
+            "j": "Science",
+            "d": "10.1126/science.1175802"
+          },
+          {
+            "a": "Lovejoy et al.",
+            "y": 2009,
+            "t": "The Pelvis and Femur of Ardipithecus ramidus: The Emergence of Upright Walking",
+            "j": "Science",
+            "d": "10.1126/science.1175831"
+          },
+          {
+            "a": "Kivell & Schmitt",
+            "y": 2009,
+            "t": "Independent evolution of knuckle-walking in African apes shows that humans did not evolve from a knuckle-walking ancestor",
+            "j": "PNAS",
+            "d": "10.1073/pnas.0901987106"
+          }
+        ]
+      },
+      "val_time": 4.4
+    },
+    {
+      "id": "anamensis",
+      "clado": "australo",
+      "nombre": "Au. anamensis",
+      "anos": "4.2 Ma",
+      "ubicacion": "Kenia",
+      "holo": "KNM-KP 29281",
+      "datacion": "Ar-Ar",
+      "cc": 370,
+      "dieta": "C3/C4",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Australopithecus_anamensis_skull_cast.jpg/800px-Australopithecus_anamensis_skull_cast.jpg",
+      "mapa": "kenia",
+      "descripcion": "Australopithecus anamensis (del término turkana 'anam', lago) es el australopiteco más antiguo conocido y el probable ancestro directo de Au. afarensis. Los fósiles proceden del lago Turkana y de las formaciones de Kanapoi y Allia Bay (Kenia), así como de Maka y Kanapoi (Etiopía), con edades de 4.2–3.8 Ma. La tibia proximal KNM-KP 29281 muestra una plataforma articular con cortical robusta característica del bipedismo obligado, constituyendo uno de los primeros indicadores inequívocos de esa locomoción. En 2019, Haile-Selassie describió el cráneo casi completo MRD-VP-1/1 de Miro Dora (Etiopía, 3.8 Ma), que muestra una cara muy prognata característica de australopiteco conviviendo con una morfología orbitaria distinta de Au. afarensis. Este hallazgo contradice la relación anagénica lineal propuesta por Leakey y White, sugiriendo que anamensis y afarensis coexistieron simultáneamente durante al menos 100.000 años.",
+      "experto": {
+        "descripcion_tecnica": "Tibia proximal con epífisis plana y cortical inferior gruesa (signo de carga bípeda). Caninos grandes y esmalte dental grueso. Mandíbula robusta con sínfisis inclinada. Cc estimada 365–370 cc.",
+        "debate": "La relación anagénica anamensis→afarensis, propuesta inicialmente, fue contradicha por el cráneo MRD de 3.8 Ma (2019), que muestra coexistencia temporal. La transición entre ambas especies es ahora un activo campo de investigación.",
+        "anatomia_craneal": "Cara muy prognata. Caninos grandes. Sin cresta sagital marcada.",
+        "anatomia_postcraneal": "Tibia con morfología de bípedo. Cúbito largo con curvatura para arborealismo.",
+        "paleoecologia": "Zonas riparias de bosque galería a orillas del paleolago Turkana y ríos etíopes.",
+        "cultura": "Ninguna documentada.",
+        "referencias": [
+          {
+            "a": "Leakey et al.",
+            "y": 1995,
+            "t": "New four-million-year-old hominid species from Kanapoi and Allia Bay, Kenya",
+            "j": "Nature",
+            "d": "10.1038/376565a0"
+          },
+          {
+            "a": "Haile-Selassie et al.",
+            "y": 2019,
+            "t": "A 3.8-million-year-old hominin cranium from Woranso-Mille, Ethiopia",
+            "j": "Nature",
+            "d": "10.1038/s41586-019-1513-8"
+          }
+        ]
+      },
+      "val_time": 4.2
+    },
+    {
+      "id": "afarensis",
+      "clado": "australo",
+      "nombre": "Au. afarensis",
+      "anos": "3.9–2.9 Ma",
+      "ubicacion": "África Oriental (Etiopía, Tanzania, Kenia)",
+      "holo": "LH 4",
+      "datacion": "K-Ar",
+      "cc": 450,
+      "dieta": "Mixta",
+      "herramientas": "Posibles",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Australopithecus_afarensis_reconstruction.jpg/800px-Australopithecus_afarensis_reconstruction.jpg",
+      "mapa": "etiopia",
+      "descripcion": "Australopithecus afarensis es el australopiteco más conocido y mejor representado del registro fósil, con más de 400 especímenes de Hadar, Laetoli, Maka y otros yacimientos. El esqueleto parcial 'Lucy' (AL 288-1, ~40% completo, 3.2 Ma) y las huellas fosilizadas de Laetoli (3.66 Ma, 27 metros de recorrido bípedo en ceniza volcánica) demuestran un bipedismo obligado y habitual. Sin embargo, sus brazos proporcionalmente largos, hombros orientados craneolateralmente y falanges curvadas indican que también trepaba árboles, posiblemente para dormir y refugiarse de depredadores. El marcado dimorfismo sexual —los machos podían superar en un 50% el peso corporal de las hembras— sugiere una estructura social poligínica con alta competencia entre machos. El esqueleto infantil 'Selam' (Dikika, 3.3 Ma) revela que el crecimiento cerebral era más lento que en los simios actuales, sugiriendo infancias prolongadas. Con un rango temporal de casi un millón de años (3.9–2.9 Ma), es la especie australopitecina más longeva y geográficamente distribuida.",
+      "experto": {
+        "descripcion_tecnica": "Pelvis ancha con morfología mixta bípeda-arbórea. Cc 380–550 cc. Crestas nucales marcadas. Alto dimorfismo sexual. Dientes postcaninos medianos. Brazos largos con falanges curvadas.",
+        "debate": "La cuestión del arborealismo facultativo (iniciada por Stern y Susman, 1983) continúa activa. El grado en que afarensis pasaba tiempo en los árboles y sus implicaciones para el origen del bipedismo siguen sin resolverse definitivamente.",
+        "anatomia_craneal": "Cc 380–550 cc. Frente baja. Crestas nucales marcadas. Cara prognata con esmalte dental de grosor medio.",
+        "anatomia_postcraneal": "Rodilla valga. Pie con arco longitudinal incipiente. Brazos proporcionalmente largos.",
+        "paleoecologia": "Mosaico de sabana arbolada, bosque galería ribereño y praderas abiertas del Plioceno del África Oriental.",
+        "cultura": "No hay industria lítica directamente atribuida. Posible uso oportunista de objetos naturales no modificados.",
+        "referencias": [
+          {
+            "a": "Johanson & Taieb",
+            "y": 1976,
+            "t": "Plio-Pleistocene hominid discoveries in Hadar, Ethiopia",
+            "j": "Nature",
+            "d": "10.1038/260293a0"
+          },
+          {
+            "a": "Alemseged et al.",
+            "y": 2006,
+            "t": "A juvenile early hominin skeleton from Dikika, Ethiopia",
+            "j": "Nature",
+            "d": "10.1038/nature05047"
+          },
+          {
+            "a": "Ward et al.",
+            "y": 2011,
+            "t": "Complete fourth metatarsal and arches in the foot of Australopithecus afarensis",
+            "j": "Science",
+            "d": "10.1126/science.1201463"
+          }
+        ]
+      },
+      "val_time": 3.9
+    },
+    {
+      "id": "deyiremeda",
+      "clado": "australo",
+      "nombre": "Au. deyiremeda",
+      "anos": "3.5–3.3 Ma",
+      "ubicacion": "Etiopía (Woranso-Mille)",
+      "holo": "BRT-VP-3/1",
+      "datacion": "Ar-Ar",
+      "cc": null,
+      "dieta": "C3/C4",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Australopithecus_deyiremeda.jpg/800px-Australopithecus_deyiremeda.jpg",
+      "mapa": "etiopia",
+      "descripcion": "Australopithecus deyiremeda ('pariente cercano' en afar) fue descubierta en 2015 por Haile-Selassie et al. en Woranso-Mille (Etiopía) y publicada en Nature. Su importancia radica en que coexistió temporal y geográficamente con Au. afarensis entre 3.3 y 3.5 Ma, lo que implica que el árbol evolutivo del Plioceno medio era mucho más ramificado de lo supuesto: al menos tres linajes de homíninos —deyiremeda, afarensis y Kenyanthropus platyops— habitaban el mismo corredor del Rift de forma simultánea. La mandíbula holotipo y los fragmentos maxilares muestran dientes anteriores significativamente más pequeños que en afarensis, una sínfisis mandibular más robusta y premolares con morfología diferencial. Su validez específica ha sido cuestionada por quienes atribuyen las diferencias al dimorfismo sexual de afarensis, aunque la datación precisa y la morfología dental la sostienen como taxón independiente.",
+      "experto": {
+        "descripcion_tecnica": "Mandíbula con sínfisis vertical robusta. Dientes anteriores reducidos. Premolares con protocónido alto. Terceros molares de tamaño reducido. Esmalte grueso en postcaninos.",
+        "debate": "La validez específica es debatida: algunos la consideran variante dimórfica de Au. afarensis; la morfología mandibular diferencial y la datación precisa apoyan la especie independiente.",
+        "anatomia_craneal": "Desconocida — solo disponibles fragmentos maxilomandibulares.",
+        "anatomia_postcraneal": "No recuperada.",
+        "paleoecologia": "Mosaico de sabana y bosque ribereño en el área de Woranso-Mille, corredor del Rift etíope.",
+        "cultura": "Ninguna documentada.",
+        "referencias": [
+          {
+            "a": "Haile-Selassie et al.",
+            "y": 2015,
+            "t": "New species from Ethiopia further expands Middle Pliocene hominin diversity",
+            "j": "Nature",
+            "d": "10.1038/nature14448"
+          },
+          {
+            "a": "Spoor",
+            "y": 2015,
+            "t": "The middle Pliocene gets crowded",
+            "j": "Nature",
+            "d": "10.1038/521432a"
+          }
+        ]
+      },
+      "val_time": 3.4
+    },
+    {
+      "id": "bahrelghazali",
+      "clado": "australo",
+      "nombre": "Au. bahrelghazali",
+      "anos": "3.5 Ma",
+      "ubicacion": "Chad",
+      "holo": "KT 12/H1",
+      "datacion": "Bio",
+      "cc": null,
+      "dieta": "C4",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Australopithecus_bahrelghazali_mandible.jpg/800px-Australopithecus_bahrelghazali_mandible.jpg",
+      "mapa": "chad",
+      "descripcion": "Australopithecus bahrelghazali fue descubierta en 1995 por Michel Brunet en Koro Toro (Chad) y publicada en Nature ese mismo año. Su hallazgo a más de 2.500 km al oeste del Valle del Rift fue una revelación geográfica de primera magnitud: los australopitecos no se limitaban al corredor oriental africano. La mandíbula holotipo (KT 12/H1) muestra una sínfisis mandibular relativamente vertical, distinta de la inclinada de Au. afarensis, lo que motivó el reconocimiento como especie separada, aunque muchos investigadores la consideran una variante occidental de afarensis con muestra insuficiente. Particularmente relevante es el análisis isotópico de carbono en el esmalte dental: muestra una elevada proporción de plantas C4 —gramíneas de sabana— inusual para los australopitecos orientales coetáneos, lo que sugiere adaptaciones dietéticas y ecológicas propias de los ambientes más áridos del Chad pliocénico.",
+      "experto": {
+        "descripcion_tecnica": "Mandíbula parcial con tres premolares in situ. Sínfisis mandibular más vertical que en afarensis. Cuerpo mandibular robusto. Dieta isotópica C4 inusual en australopitecos pliocénicos.",
+        "debate": "La validez específica es cuestionada por la pequeñez de la muestra. El isótopo C4 y la morfología mandibular diferencial apoyan la distinción, pero son insuficientes para muchos especialistas sin más material.",
+        "anatomia_craneal": "No recuperada.",
+        "anatomia_postcraneal": "No recuperada.",
+        "paleoecologia": "Sabana abierta con alto componente de gramíneas C4, entorno más árido que el de afarensis en el África Oriental.",
+        "cultura": "Ninguna documentada.",
+        "referencias": [
+          {
+            "a": "Brunet et al.",
+            "y": 1995,
+            "t": "The first australopithecine 2,500 kilometres west of the Rift Valley (Chad)",
+            "j": "Nature",
+            "d": "10.1038/378273a0"
+          },
+          {
+            "a": "Lee-Thorp et al.",
+            "y": 2012,
+            "t": "Isotopic evidence for an early shift to C4 resources by Pliocene hominins in Chad",
+            "j": "PNAS",
+            "d": "10.1073/pnas.1204209109"
+          }
+        ]
+      },
+      "val_time": 3.5
+    },
+    {
+      "id": "kenyanthropus",
+      "clado": "australo",
+      "nombre": "Kenyanthropus platyops",
+      "anos": "3.5 Ma",
+      "ubicacion": "Kenia",
+      "holo": "KNM-WT 40000",
+      "datacion": "Ar-Ar",
+      "cc": 450,
+      "dieta": "C3",
+      "herramientas": "Lomekwi",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Kenyanthropus_platyops%2C_skull_%28model%29.JPG/800px-Kenyanthropus_platyops%2C_skull_%28model%29.JPG",
+      "mapa": "kenia",
+      "descripcion": "Kenyanthropus platyops ('el de cara plana de Kenia') fue descubierto en 2001 por Justus Erus en el lago Turkana occidental y descrito por Meave Leakey et al. Su cara notablemente plana (ortognata) y sus pequeños caninos a 3.5 Ma —rasgos más asociados al género Homo que a los australopitecos— desafiaron los modelos lineales de evolución y sugirieron una diversidad hominina pliocénica mucho mayor de la supuesta. En 2015, Harmand et al. describieron la industria lítica de Lomekwi (3.3 Ma), la más antigua conocida, procedente de los mismos sedimentos en los que se halló Kenyanthropus, abriendo la posibilidad de fabricación de herramientas fuera del género Homo. Sin embargo, la severa distorsión tafonómica del cráneo lleva a algunos investigadores a argumentar que la morfología plana es un artefacto post-deposicional y que el espécimen debería incluirse en Au. afarensis.",
+      "experto": {
+        "descripcion_tecnica": "Cara ortognata con subnasal plano. Cigomáticos proyectados anteriormente. Caninos pequeños. Conducto auditivo externo reducido. Cc estimada ~450 cc. Severa distorsión tafonómica.",
+        "debate": "White (2003) argumentó que la distorsión tafonómica invalida los caracteres diagnósticos y que el espécimen debería clasificarse en Au. afarensis o considerarse indeterminable. La asociación con Lomekwi es geoespacial, no directa.",
+        "anatomia_craneal": "Cara ortognata. Cc estimada ~450 cc. Distorsión tafonómica intensa.",
+        "anatomia_postcraneal": "No recuperada.",
+        "paleoecologia": "Orillas del lago Turkana occidental, zona de mosaico de sabana y bosque.",
+        "cultura": "Posible asociación con la industria Lomekwi (3.3 Ma), la más antigua conocida (Lomekwense).",
+        "referencias": [
+          {
+            "a": "Leakey et al.",
+            "y": 2001,
+            "t": "New hominin genus from eastern Africa shows diverse middle Pliocene lineages",
+            "j": "Nature",
+            "d": "10.1038/35068500"
+          },
+          {
+            "a": "Harmand et al.",
+            "y": 2015,
+            "t": "3.3-million-year-old stone tools from Lomekwi 3, West Turkana, Kenya",
+            "j": "Nature",
+            "d": "10.1038/nature14464"
+          }
+        ]
+      },
+      "val_time": 3.5
+    },
+    {
+      "id": "africanus",
+      "clado": "australo",
+      "nombre": "Au. africanus",
+      "anos": "2.5 Ma",
+      "ubicacion": "Sudáfrica",
+      "holo": "Taung",
+      "datacion": "U-Pb",
+      "cc": 460,
+      "dieta": "Omnívora",
+      "herramientas": "Hueso",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Australopithecus_africanus_STS_5_b.jpg/800px-Australopithecus_africanus_STS_5_b.jpg",
+      "mapa": "sudafrica",
+      "descripcion": "Australopithecus africanus fue el primer australopiteco descrito científicamente, cuando Raymond Dart publicó en 1925 el 'Niño de Taung' —un cráneo infantil con endocáster natural— desafiando la visión eurocéntrica de la evolución y postulando África como cuna del linaje humano, afirmación que tardó décadas en ser aceptada. Morfológicamente más grácil que los robustos, con una caja craneal más redondeada y sin cresta sagital pronunciada, su capacidad craneal (420–500 cc) supera ligeramente a la de afarensis. Los estudios de microdesgaste dental y los análisis isotópicos apuntan a una dieta omnívora con componente animal significativo, incluyendo posiblemente médula ósea extraída de huesos. Dart propuso una 'cultura osteodontokerátic' (huesos, dientes y cuernos como herramientas), hipótesis posteriormente refutada por Brain (1981), quien demostró que las marcas en los huesos eran resultado de la acción de carnívoros —principalmente leopardos— y rapaces grandes.",
+      "experto": {
+        "descripcion_tecnica": "Cráneo globular sin cresta sagital. Cc 420–500 cc. Cara menos prognata que afarensis. Caninos pequeños. Sin cresta sagital. Cuerpo más grácil que en Au. garhi y Paranthropus.",
+        "debate": "La posición filogenética de africanus está debatida: ¿es ancestro de Homo, de Paranthropus o de ambos? Clarke et al. defienden la ancestría directa con H. habilis; otros prefieren afarensis como último ancestro común de ambos géneros.",
+        "anatomia_craneal": "Cráneo globular. Sin cresta sagital. Frente algo más vertical. Cc 420–500 cc.",
+        "anatomia_postcraneal": "Bípedo. Brazos relativamente largos, aunque menos que en afarensis.",
+        "paleoecologia": "Bosque y sabana del Transvaal sudafricano. Los fósiles de Sterkfontein y Makapansgat se depositaron en cuevas tras ser introducidos por depredadores.",
+        "cultura": "No se confirma producción lítica. La hipótesis osteodontokerátic de Dart fue refutada por Brain (1981).",
+        "referencias": [
+          {
+            "a": "Dart",
+            "y": 1925,
+            "t": "Australopithecus africanus: The Man-Ape of South Africa",
+            "j": "Nature",
+            "d": "10.1038/115195a0"
+          },
+          {
+            "a": "Brain",
+            "y": 1981,
+            "t": "The Hunters or the Hunted? An Introduction to African Cave Taphonomy",
+            "j": "Univ. Chicago Press",
+            "d": ""
+          }
+        ]
+      },
+      "val_time": 2.5
+    },
+    {
+      "id": "prometheus",
+      "clado": "australo",
+      "nombre": "Au. prometheus",
+      "anos": "~3.67 Ma",
+      "ubicacion": "Sudáfrica (Sterkfontein)",
+      "holo": "StW 573 'Little Foot'",
+      "datacion": "U-Pb",
+      "cc": 408,
+      "dieta": "C3",
+      "herramientas": "Ninguna",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/StW_573_Little_Foot.jpg/800px-StW_573_Little_Foot.jpg",
+      "mapa": "sudafrica",
+      "descripcion": "Australopithecus prometheus es una especie altamente controvertida cuya validez taxonómica divide a la comunidad paleoantropológica. El esqueleto StW 573 'Little Foot', uno de los más completos del Plioceno africano (excavado en Sterkfontein entre 1994-1998), fue redatado en 2022 mediante U-Pb en ~3.67 Ma —mucho más antiguo de lo estimado previamente— por Granger et al., situándolo como contemporáneo de Au. afarensis. Berger et al. (2020) propusieron que los especímenes de Sterkfontein Member 4 representan una especie distinta de Au. africanus, reviviendo el nombre prometheus propuesto por Dart en 1948. El pie de 'Little Foot' muestra un hallux más aducido que en afarensis, lo que implica un bipedismo más comprometido, mientras que las manos conservan dedos largos y curvados sugestivos de uso arbóreo. Los críticos argumentan que las diferencias morfológicas reflejan variación intraespecífica de africanus o son consecuencia de distorsión diagenética.",
+      "experto": {
+        "descripcion_tecnica": "Esqueleto StW 573 casi completo (~90%). Cc ~408 cc. Hallux más aducido que en afarensis. Mano con pulgar largo y dedos curvados. Morfología craneal y dental diferencial respecto a africanus.",
+        "debate": "Disputa entre dos bandos: Clarke (africanus avanzado) vs. Berger (especie propia). La datación U-Pb de 3.67 Ma fue cuestionada metodológicamente por Sutton et al. (2023). La controversia sobre la validez de prometheus permanece abierta.",
+        "anatomia_craneal": "Cc ~408 cc. Cara prognata. Morfología premolar diagnóstica según sus proponentes.",
+        "anatomia_postcraneal": "Esqueleto casi completo. Bipedismo con hallux más aducido. Brazos proporcionalmente largos.",
+        "paleoecologia": "Cueva de Sterkfontein, entorno boscoso húmedo del Transvaal sudafricano.",
+        "cultura": "Ninguna documentada.",
+        "referencias": [
+          {
+            "a": "Clarke",
+            "y": 2019,
+            "t": "Excavation, reconstruction and taphonomy of the StW 573 Australopithecus prometheus skeleton from Sterkfontein Caves, South Africa",
+            "j": "J Hum Evol",
+            "d": "10.1016/j.jhevol.2018.11.010"
+          },
+          {
+            "a": "Granger et al.",
+            "y": 2022,
+            "t": "Cosmogenic nuclide dating of Australopithecus at Sterkfontein, South Africa",
+            "j": "PNAS",
+            "d": "10.1073/pnas.2123516119"
+          },
+          {
+            "a": "Berger et al.",
+            "y": 2020,
+            "t": "The new Australopithecus prometheus from Sterkfontein",
+            "j": "Am J Phys Anthropol",
+            "d": "10.1002/ajpa.24122"
+          }
+        ]
+      },
+      "val_time": 3.67
+    },
+    {
+      "id": "garhi",
+      "clado": "australo",
+      "nombre": "Au. garhi",
+      "anos": "2.5 Ma",
+      "ubicacion": "Etiopía",
+      "holo": "BOU-VP-12/130",
+      "datacion": "Ar-Ar",
+      "cc": 450,
+      "dieta": "Carne",
+      "herramientas": "Olduvayense",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Australopithecus_garhi-_white_background.jpg/800px-Australopithecus_garhi-_white_background.jpg",
+      "mapa": "etiopia",
+      "descripcion": "Australopithecus garhi ('sorpresa' en afar) fue descubierto en 1999 en Bouri (cuenca del Middle Awash, Etiopía) y publicado por Asfaw et al. en Science. Destaca por una combinación paradójica: caninos relativamente grandes y megadontia postcanina extrema —molares y premolares hipertrofiados más propios de Paranthropus— conviviendo con una frente y caja craneal más derivadas que en afarensis. En los mismos niveles estratigráficos (2.5 Ma) se hallaron huesos de ungulados con marcas de corte y percusión indicativas de procesamiento de carcasas con útiles líticos, siendo posiblemente la evidencia más antigua de explotación sistemática de fauna por un homínino no perteneciente al género Homo. No obstante, los útiles y los huesos procesados no aparecieron físicamente junto a los restos de garhi, por lo que la atribución directa es inferida y debatida.",
+      "experto": {
+        "descripcion_tecnica": "Megadontia postcanina extrema. Cc ~450 cc. Fémur largo y grácil para un australopiteco. Caninos grandes combinados con incisivos pequeños (combinación inusual). Frente más vertical que en afarensis.",
+        "debate": "¿Es Au. garhi el ancestro directo de Homo habilis? La megadontia postcanina es un rasgo incompatible con la reducción dental del género Homo, aunque el fémur largo sugiere un postcráneo más derivado.",
+        "anatomia_craneal": "Frente más elevada que en afarensis. Sin cresta sagital marcada. Cara prognata.",
+        "anatomia_postcraneal": "Fémur con longitud mayor a la esperada para un australopiteco. Húmero con longitud similar.",
+        "paleoecologia": "Sabana abierta con acceso a carcasas de fauna de talla media-grande junto al lago Yardi (Middle Awash).",
+        "cultura": "Huesos asociados con marcas de corte y percusión; probable uso de útiles olduvayenses, aunque la atribución directa no está confirmada.",
+        "referencias": [
+          {
+            "a": "Asfaw et al.",
+            "y": 1999,
+            "t": "Australopithecus garhi: A New Species of Early Hominid from Ethiopia",
+            "j": "Science",
+            "d": "10.1126/science.284.5414.629"
+          },
+          {
+            "a": "de Heinzelin et al.",
+            "y": 1999,
+            "t": "Environment and Behavior of 2.5-Million-Year-Old Bouri Hominids",
+            "j": "Science",
+            "d": "10.1126/science.284.5414.625"
+          }
+        ]
+      },
+      "val_time": 2.5
+    },
+    {
+      "id": "sediba",
+      "clado": "australo",
+      "nombre": "Au. sediba",
+      "anos": "1.98 Ma",
+      "ubicacion": "Sudáfrica",
+      "holo": "MH1",
+      "datacion": "U-Pb",
+      "cc": 420,
+      "dieta": "C3",
+      "herramientas": "Mano",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Australopithecus_sediba_juvenile_male_skull_-_Smithsonian_Museum_of_Natural_History_-_2012-05-17.jpg/800px-Australopithecus_sediba_juvenile_male_skull_-_Smithsonian_Museum_of_Natural_History_-_2012-05-17.jpg",
+      "mapa": "sudafrica",
+      "descripcion": "Australopithecus sediba, descubierta por Lee Berger et al. en 2010 en Malapa (Cradle of Humankind, Sudáfrica), fue uno de los hallazgos paleoantropológicos más significativos del siglo XXI. Los especímenes MH1 (adolescente masculino) y MH2 (femenino adulto), datados en 1.977 Ma mediante U-Pb, presentan un mosaico anatómico extraordinario: cerebro pequeño (420 cc) pero con morfología frontal más próxima a Homo, mano con pulgar largo y capacidad de agarre de precisión, tobillo y pie con mezcla de rasgos de australopiteco y Homo, y pelvis con canal del parto más amplio. El análisis del contenido del tracto digestivo reveló consumo de corteza, hojas y fruta —dieta forestal inusual para su cronología tardía—. Berger propone sediba como ancestro del género Homo, mientras que otros señalan su cronología tardía —casi contemporánea de H. habilis ya existente a 2.3 Ma— como argumento de peso en contra de esa posición filogenética.",
+      "experto": {
+        "descripcion_tecnica": "Cc ~420 cc con morfología frontal derivada. Mano con pulgar largo para precisión. Tobillo con morfología mixta. Canal del parto más amplio. Pelvis con morfología cercana a Homo.",
+        "debate": "La propuesta de sediba como ancestro de Homo genera debate por cronología tardía (no puede ser ancestro de H. habilis, contemporáneo a 2.3 Ma). ¿Convergencia evolutiva paralela o pariente tardío del linaje humano?",
+        "anatomia_craneal": "Cc ~420 cc. Morfología frontal y orbitaria más derivada. Cara menos prognata.",
+        "anatomia_postcraneal": "Mano con pulgar largo. Marcha con hiperpronación del tobillo. Pelvis con canal del parto más amplio.",
+        "paleoecologia": "Bosque húmedo del karst de Malapa. Los especímenes probablemente cayeron accidentalmente al pozo de la cueva.",
+        "cultura": "Capacidad de fabricación sugerida por anatomía de la mano, pero no documentada directamente.",
+        "referencias": [
+          {
+            "a": "Berger et al.",
+            "y": 2010,
+            "t": "Australopithecus sediba: A New Species of Homo-Like Australopith from South Africa",
+            "j": "Science",
+            "d": "10.1126/science.1184944"
+          },
+          {
+            "a": "Carlson et al.",
+            "y": 2011,
+            "t": "The endocast of MH1, Australopithecus sediba",
+            "j": "Science",
+            "d": "10.1126/science.1203922"
+          }
+        ]
+      },
+      "val_time": 1.98
+    },
+    {
+      "id": "aethiopicus",
+      "clado": "paran",
+      "nombre": "P. aethiopicus",
+      "anos": "2.5 Ma",
+      "ubicacion": "Kenia",
+      "holo": "Omo 18",
+      "datacion": "K-Ar",
+      "cc": 410,
+      "dieta": "Dura",
+      "herramientas": "No",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Paraustralopithecus_aethiopicus.JPG/640px-Paraustralopithecus_aethiopicus.JPG",
+      "mapa": "africa",
+      "descripcion": "Paranthropus aethiopicus es el Paranthropus más antiguo conocido y el que presenta la combinación más primitiva de rasgos robustos. Su espécimen más famoso, el 'Cráneo Negro' (KNM-WT 17000, 2.5 Ma, lago Turkana), muestra el conjunto de adaptaciones masticatorias del clado Paranthropus en su expresión más primitiva: cresta sagital muy marcada, cara profundamente prognata y aparato masticador hipertrofiado. La capacidad craneal de solo 410 cc —la menor dentro del género Paranthropus— convive con una arquitectura craneal marcadamente robusta, lo que subraya la independencia evolutiva entre tamaño cerebral y robusticidad masticatoria. Su posición filogenética es debatida: puede ser el taxón ancestral de P. boisei si Paranthropus es monofilético, o bien puede haber divergido de un australopiteco primitivo de forma independiente si el clado es polifilético.",
+      "experto": {
+        "descripcion_tecnica": "KNM-WT 17000 ('Cráneo Negro'): Cc 410 cc. Prognatismo facial extremo. Cresta sagital compuesta (sagital + nucal). Cara ancha y larga. Incisivos y caninos pequeños relativos a los masivos molares.",
+        "debate": "¿Es aethiopicus la especie ancestral de P. boisei? Si Paranthropus es monofilético, sí. Si es polifilético (robustos orientales y australes con origen independiente), podría no serlo. El debate no está resuelto.",
+        "anatomia_craneal": "Cc 410 cc. Cresta sagital marcada. Prognatismo facial extremo. Sin conducto auditivo externo prominente.",
+        "anatomia_postcraneal": "Desconocida. Restos poscraneales escasos y no diagnósticos.",
+        "paleoecologia": "Ribera del lago Turkana y cuenca del río Omo. Vegetación de ribera con gramíneas C4.",
+        "cultura": "Ninguna directamente asociada.",
+        "referencias": [
+          {
+            "a": "Walker et al.",
+            "y": 1986,
+            "t": "2.5-Myr Australopithecus boisei from west of Lake Turkana, Kenya",
+            "j": "Nature",
+            "d": "10.1038/322517a0"
+          },
+          {
+            "a": "Suwa et al.",
+            "y": 1997,
+            "t": "The first skull of Australopithecus boisei",
+            "j": "Nature",
+            "d": "10.1038/39037"
+          }
+        ]
+      },
+      "val_time": 2.5
+    },
+    {
+      "id": "boisei",
+      "clado": "paran",
+      "nombre": "P. boisei",
+      "anos": "2.3–1.2 Ma",
+      "ubicacion": "África Oriental (Tanzania, Kenia, Etiopía)",
+      "holo": "OH 5",
+      "datacion": "K-Ar",
+      "cc": 530,
+      "dieta": "C4",
+      "herramientas": "No",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Paranthropus_boisei_side.jpg/800px-Paranthropus_boisei_side.jpg",
+      "mapa": "africa",
+      "descripcion": "Paranthropus boisei, el 'Cascanueces' (Nutcracker Man), fue descubierto por Mary Leakey en Olduvai en 1959 y fue el primer Paranthropus hallado en África Oriental. Presenta la megadontia más extrema del registro fósil hominino: sus molares y premolares tienen superficies de contacto hasta tres veces mayores que los de H. sapiens, con esmalte grueso y una musculatura temporal de enorme potencia insertada en la cresta sagital. Paradójicamente, el análisis isotópico de carbono en el esmalte dental revela que consumía principalmente plantas C4 —gramíneas, juncos y sedges— cuya dureza mecánica es mucho menor que las semillas o tubérculos duros que su morfología sugería. Esta contradicción entre el morfotipo 'especialista en dureza' y la dieta isotópica real es conocida como la 'paradoja del Nutcracker': Ungar et al. (2008) proponen que la morfología robusta era una adaptación de respaldo para periodos de escasez alimentaria, no el indicador de la dieta habitual. Con más de un millón de años de persistencia, fue el homínino más longevo del Pleistoceno Inferior africano.",
+      "experto": {
+        "descripcion_tecnica": "Molares y premolares hipertrofiados (megadontia extrema). Esmalte grueso. Cresta sagital compuesta. Cc 475–545 cc. Cigomáticos muy proyectados anteriormente. Cara ancha y baja.",
+        "debate": "'Paradoja del Nutcracker': la morfología sugiere especialización en alimentos duros, pero la isotópica de carbono indica dieta C4 de gramíneas. Ungar et al. (2008) proponen la morfología robusta como adaptación de 'reserva' para periodos de escasez.",
+        "anatomia_craneal": "Cc 475–545 cc. Megadontia postcanina extrema. Cresta sagital marcada. Cara ancha y baja.",
+        "anatomia_postcraneal": "Cuerpo robusto. Escápula con morfología diferente a la de australopitecos.",
+        "paleoecologia": "Ambientes lacustres y palustres con alta abundancia de plantas C4 (juncos, papiros, gramíneas) en el Pleistoceno Inferior del África Oriental.",
+        "cultura": "Coexistió con la industria Olduvayense, pero no se le atribuye directamente su fabricación.",
+        "referencias": [
+          {
+            "a": "Leakey",
+            "y": 1959,
+            "t": "A new fossil skull from Olduvai",
+            "j": "Nature",
+            "d": "10.1038/184491a0"
+          },
+          {
+            "a": "Ungar et al.",
+            "y": 2008,
+            "t": "Dental microwear and diet of the Plio-Pleistocene hominin Paranthropus boisei",
+            "j": "PLoS One",
+            "d": "10.1371/journal.pone.0002044"
+          }
+        ]
+      },
+      "val_time": 2.3
+    },
+    {
+      "id": "robustus",
+      "clado": "paran",
+      "nombre": "P. robustus",
+      "anos": "1.8 Ma",
+      "ubicacion": "Sudáfrica",
+      "holo": "TM 1517",
+      "datacion": "Bio",
+      "cc": 530,
+      "dieta": "Dura",
+      "herramientas": "Hueso",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Paranthropus_robustus_skull.jpg/800px-Paranthropus_robustus_skull.jpg",
+      "mapa": "sudafrica",
+      "descripcion": "Paranthropus robustus fue descubierto por Robert Broom en 1938 en Kromdraai (Sudáfrica) y es el Paranthropus del sur de África. Aunque morfológicamente similar a P. boisei —con cresta sagital, cigomáticos prominentes y megadontia postcanina—, la robusticidad es moderada y los molares no alcanzan el tamaño extremo del 'Cascanueces'. Los estudios de microdesgaste dental sugieren una dieta mixta de ítems duros y blandos, a diferencia de la dieta C4 dominante de boisei. En los yacimientos de Swartkrans, Brain (1988) y otros investigadores propusieron que P. robustus fabricaba y usaba huesos de animales como herramientas para excavar termiteros, basándose en el desgaste característico de las puntas de los huesos. Esta interpretación fue inicialmente controvertida pero cuenta con creciente apoyo experimental. Coexistió con H. ergaster en Swartkrans, lo que plantea preguntas sobre la posible interacción y competencia entre ambas especies.",
+      "experto": {
+        "descripcion_tecnica": "Cresta sagital. Cc ~530 cc. Megadontia postcanina moderada. Premolares molariformes. Cara ancha con cigomáticos pronunciados, aunque menos que en boisei.",
+        "debate": "El uso de herramientas de hueso por P. robustus (propuesto por Brain, 1988) fue cuestionado y posteriormente apoyado por estudios experimentales de desgaste. La coexistencia con Homo ergaster en Swartkrans sigue siendo un tema de investigación activa.",
+        "anatomia_craneal": "Cresta sagital. Cc ~530 cc. Cigomáticos prominentes. Cara ancha.",
+        "anatomia_postcraneal": "Cuerpo robusto. Mano con pulgar corto y dedos largos para agarre de potencia.",
+        "paleoecologia": "Sabana y bosque abierto del Transvaal. Yacimientos cavernosos del karst sudafricano.",
+        "cultura": "Posible uso de huesos como herramientas de excavación (Bone Tool Assemblage de Swartkrans). Debatido pero con base experimental.",
+        "referencias": [
+          {
+            "a": "Broom",
+            "y": 1938,
+            "t": "The Pleistocene Anthropoid Apes of South Africa",
+            "j": "Nature",
+            "d": "10.1038/142377a0"
+          },
+          {
+            "a": "Brain",
+            "y": 1988,
+            "t": "New information from the Swartkrans cave of relevance to 'robust' australopithecines",
+            "j": "Evolutionary History of the Robust Australopithecines",
+            "d": ""
+          }
+        ]
+      },
+      "val_time": 1.8
+    },
+    {
+      "id": "habilis",
+      "clado": "homo",
+      "nombre": "Homo habilis",
+      "anos": "2.3–1.4 Ma",
+      "ubicacion": "Tanzania",
+      "holo": "OH 7",
+      "datacion": "K-Ar",
+      "cc": 610,
+      "dieta": "Omnívora",
+      "herramientas": "Olduvayense",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Homo_habilis-2.JPG/800px-Homo_habilis-2.JPG",
+      "mapa": "africa_oriental",
+      "descripcion": "Homo habilis ('hombre habilidoso') fue el primer representante del género Homo identificado en África Oriental, descrito por Leakey, Tobias y Napier en 1964 a partir de especímenes de Olduvai. Supuso el primer salto claro en capacidad craneal respecto a los australopitecos (550–680 cc), una reducción de los dientes postcaninos y una morfología manual compatible con la fabricación de la industria olduvayense. Sin embargo, la especie agrupa especímenes muy variables morfológicamente —con diferencias de hasta 30% en capacidad craneal— lo que llevó a Wood y Collard (1999) a proponer que comprende en realidad dos o más taxones, o que habilis debería excluirse del género Homo y reclasificarse como Australopithecus habilis. Su postcráneo es paradójicamente primitivo, con brazos largos y falanges curvadas similares a los australopitecos, lo que contrasta con el avance cerebral y tecnológico que se le atribuye.",
+      "experto": {
+        "descripcion_tecnica": "Cc 550–680 cc. Reducción dental postcanina. Hueso parietal expandido. Morfología postcraneal primitiva con brazos largos y falanges curvadas.",
+        "debate": "El estatus taxonómico de H. habilis es uno de los más debatidos: Wood & Collard (1999) proponen su exclusión de Homo. La variabilidad morfológica del taxón sugiere que puede agrupar más de una especie.",
+        "anatomia_craneal": "Cc 550–680 cc. Caja craneal más redondeada. Cara menos prognata que en australopitecos.",
+        "anatomia_postcraneal": "Primitivo: brazos largos, dedos curvados, proporciones similares a australopitecos.",
+        "paleoecologia": "Sabana con acceso a carcasas de fauna. Orillas del paleolago Turkana y garganta de Olduvai.",
+        "cultura": "Industria Olduvayense (Modo 1): choppers, lascas, raederas simples.",
+        "referencias": [
+          {
+            "a": "Leakey et al.",
+            "y": 1964,
+            "t": "A New Species of the Genus Homo from Olduvai Gorge",
+            "j": "Nature",
+            "d": "10.1038/202007a0"
+          },
+          {
+            "a": "Wood & Collard",
+            "y": 1999,
+            "t": "The human genus",
+            "j": "Science",
+            "d": "10.1126/science.284.5411.65"
+          },
+          {
+            "a": "Spoor et al.",
+            "y": 2007,
+            "t": "Implications of new early Homo fossils from Ileret, east of Lake Turkana, Kenya",
+            "j": "Nature",
+            "d": "10.1038/nature05986"
+          }
+        ]
+      },
+      "val_time": 2.3
+    },
+    {
+      "id": "rudolfensis",
+      "clado": "homo",
+      "nombre": "Homo rudolfensis",
+      "anos": "2.4 Ma",
+      "ubicacion": "Kenia",
+      "holo": "KNM-ER 1470",
+      "datacion": "Ar-Ar",
+      "cc": 775,
+      "dieta": "Omnívora",
+      "herramientas": "Olduvayense",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Homo_rudolfensis.jpg/800px-Homo_rudolfensis.jpg",
+      "mapa": "kenia",
+      "descripcion": "Homo rudolfensis fue erigido sobre el famoso cráneo KNM-ER 1470, hallado en Koobi Fora (lago Turkana, Kenia) por Bernard Ngeneo en 1972. Con una capacidad craneal de ~775 cc —la mayor de los Homo tempranos— presenta una cara plana y ancha (ortognata) que no encaja con la morfología de H. habilis, lo que llevó a Alexeev (1986) a proponer la especie rudolfensis. En 2012, Meave Leakey y colaboradores publicaron tres nuevos cráneos de Koobi Fora que confirman la existencia de al menos dos linajes distintos de Homo coexistiendo a 2.0 Ma, apoyando la validez de la especie. No obstante, la escasez de material postcraneal directamente asociado impide caracterizar su locomoción y morfología corporal. Algunos investigadores han sugerido que KNM-ER 1470 podría ser un macho de una especie sexualmente muy dimórfica, o incluso que debería asignarse a un género distinto de Homo.",
+      "experto": {
+        "descripcion_tecnica": "Cc ~775 cc (mayor de los Homo tempranos). Cara plana y ancha. Fosa nasal amplia. Mandíbula robusta. Sin toro supraorbitario marcado.",
+        "debate": "¿Macho de H. habilis o especie distinta? Los nuevos cráneos de 2012 apoyan la especie separada. La clasificación en Homo vs. otro género (Kenyanthropus) ha sido propuesta por algunos investigadores.",
+        "anatomia_craneal": "Cc 775 cc. Cara ortognata. Bóveda alta. Mandíbula robusta.",
+        "anatomia_postcraneal": "Insuficientemente conocida; escaso material postcraneal directamente asociado.",
+        "paleoecologia": "Orillas del lago Turkana. Mosaico de sabana y zona riparia del Pleistoceno Inferior.",
+        "cultura": "Posiblemente asociado a Olduvayense, aunque la atribución directa no está confirmada.",
+        "referencias": [
+          {
+            "a": "Leakey",
+            "y": 1973,
+            "t": "Evidence for an advanced Plio-Pleistocene hominid from East Rudolf, Kenya",
+            "j": "Nature",
+            "d": "10.1038/242447a0"
+          },
+          {
+            "a": "Leakey et al.",
+            "y": 2012,
+            "t": "New fossils from Koobi Fora in northern Kenya confirm taxonomic diversity in early Homo",
+            "j": "Nature",
+            "d": "10.1038/nature11322"
+          }
+        ]
+      },
+      "val_time": 2.4
+    },
+    {
+      "id": "ergaster",
+      "clado": "homo",
+      "nombre": "Homo ergaster",
+      "anos": "1.8 Ma",
+      "ubicacion": "Kenia",
+      "holo": "KNM-ER 992",
+      "datacion": "Ar-Ar",
+      "cc": 850,
+      "dieta": "Caza",
+      "herramientas": "Achelense",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Homo_ergaster_skull_-_Naturmuseum_Senckenberg_-_DSC02098.JPG/800px-Homo_ergaster_skull_-_Naturmuseum_Senckenberg_-_DSC02098.JPG",
+      "mapa": "africa",
+      "descripcion": "Homo ergaster ('hombre trabajador') es el Homo africano del Pleistoceno Inferior, caracterizado por una anatomía postcraneal prácticamente moderna que supone la primera aparición en el registro de un cuerpo indistinguible del humano actual en proporciones de extremidades y estatura. El 'Niño del Turkana' (KNM-WT 15000, ~1.5 Ma), un esqueleto juvenil masculino casi completo, revela una estatura adulta estimada de ~1.8 m, piernas largas adaptadas a la marcha y carrera de resistencia, y una caja torácica cilíndrica. Su cerebro (~850 cc) supera claramente al de habilis y se asocia a la industria achelense —bifaces simétricos— que implica planificación a largo plazo y habilidad motora fina. Probablemente fue el primer homínino con glándulas sudoríparas bien desarrolladas para termorregulación en sabana abierta y sin pelo corporal abundante. Algunos investigadores lo consideran simplemente H. erectus ergaster, una subespecie africana del mismo taxón.",
+      "experto": {
+        "descripcion_tecnica": "Cc 750–900 cc. Cuerpo moderno en proporciones. Torus supraorbitario marcado. Caja torácica cilíndrica. Nariz proyectada externamente (primera evidencia). Niño del Turkana: ~1.8 m adulto estimado.",
+        "debate": "La distinción entre ergaster y erectus es debatida: Tattersall y Wood abogan por mantener ergaster como especie separada ('ergaster africano' vs. 'erectus asiático'); otros los unifican bajo H. erectus.",
+        "anatomia_craneal": "Cc 750–900 cc. Torus supraorbitario marcado. Bóveda más alta que en erectus asiático.",
+        "anatomia_postcraneal": "Piernas largas, cuerpo cilíndrico, estatura moderna. Niño del Turkana (KNM-WT 15000) es el esqueleto más completo de la especie.",
+        "paleoecologia": "Sabana abierta y ribera de ríos en África ecuatorial. Primer homínino con fisiología adaptada al calor extremo.",
+        "cultura": "Industria Achelense (Modo 2): bifaces simétricos, hendedores, picos. Mayor planificación y simetría que el Olduvayense.",
+        "referencias": [
+          {
+            "a": "Brown et al.",
+            "y": 1985,
+            "t": "Early Homo erectus skeleton from west Lake Turkana, Kenya",
+            "j": "Nature",
+            "d": "10.1038/316788a0"
+          },
+          {
+            "a": "Antón",
+            "y": 2003,
+            "t": "Natural history of Homo erectus",
+            "j": "Am J Phys Anthropol",
+            "d": "10.1002/ajpa.10399"
+          }
+        ]
+      },
+      "val_time": 1.8
+    },
+    {
+      "id": "georgicus",
+      "clado": "homo",
+      "nombre": "Homo georgicus",
+      "anos": "1.8 Ma",
+      "ubicacion": "Georgia",
+      "holo": "D2600",
+      "datacion": "Ar-Ar",
+      "cc": 600,
+      "dieta": "Omnívora",
+      "herramientas": "Olduvayense",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Homo_georgicus-MGL_95212-P5030043-white.jpg/800px-Homo_georgicus-MGL_95212-P5030043-white.jpg",
+      "mapa": "georgia",
+      "descripcion": "Homo georgicus de Dmanisi (Georgia) es el homínino más antiguo conocido fuera de África, datado en ~1.85 Ma. Lo más sorprendente de los cinco cráneos hallados es su variabilidad morfológica interna: el espectro de variación craneal y facial es tan amplio como el que se observa históricamente entre 'especies' distintas del Pleistoceno Inferior, lo que llevó a Lordkipanidze et al. (2013) a proponer que muchos de los taxones africanos coetáneos son en realidad variantes intraespecíficas de una única especie globalmente variable. Uno de los individuos (D3444) sobrevivió durante años sin dientes funcionales, lo que implica que recibía apoyo del grupo —evidencia de comportamiento social cooperativo en etapas muy tempranas del género Homo. La fauna de Dmanisi incluye carnívoros de grandes dimensiones (tigres de dientes de sable), lo que hace de la supervivencia de estos homíninos fuera de África un logro adaptativo notable.",
+      "experto": {
+        "descripcion_tecnica": "Cinco cráneos con Cc 546–730 cc (extraordinaria variabilidad intragrupo). Cuerpo pequeño (~150 cm). Cara alargada con prognatismo notable en algunos individuos. Cráneo D3444 edéntulo: evidencia de cuidado social.",
+        "debate": "¿Es la diversidad morfológica de Dmanisi evidencia de una única especie globalmente variable (reduciendo las múltiples 'especies' africanas a una sola)? Esta interpretación de Lordkipanidze et al. (2013) fue recibida con escepticismo por muchos especialistas.",
+        "anatomia_craneal": "Cc 546–730 cc. Alta variabilidad. Cara alargada. Sin cresta sagital.",
+        "anatomia_postcraneal": "Cuerpo pequeño (~150 cm). Piernas modernas. Brazos intermedios entre australopitecos y H. sapiens.",
+        "paleoecologia": "Estepa subtropical del Cáucaso con carnívoros de grandes dimensiones. Latitudes altas para un Homo temprano.",
+        "cultura": "Industria Olduvayense simple (Modo 1), sin bifaces achelenses.",
+        "referencias": [
+          {
+            "a": "Lordkipanidze et al.",
+            "y": 2013,
+            "t": "A Complete Skull from Dmanisi, Georgia, and the Evolutionary Biology of Early Homo",
+            "j": "Science",
+            "d": "10.1126/science.1238484"
+          },
+          {
+            "a": "Ferring et al.",
+            "y": 2011,
+            "t": "Earliest human occupations at Dmanisi (Georgian Caucasus) dated to 1.85-1.78 Ma",
+            "j": "PNAS",
+            "d": "10.1073/pnas.1106638108"
+          }
+        ]
+      },
+      "val_time": 1.8
+    },
+    {
+      "id": "erectus",
+      "clado": "homo",
+      "nombre": "Homo erectus",
+      "anos": "1.5 Ma",
+      "ubicacion": "Asia",
+      "holo": "Trinil",
+      "datacion": "U-Series",
+      "cc": 1000,
+      "dieta": "Caza",
+      "herramientas": "Achelense",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Homo_erectus_new.JPG/800px-Homo_erectus_new.JPG",
+      "mapa": "asia",
+      "descripcion": "Homo erectus es la especie hominina más longeva del registro fósil (al menos 1.8 millones de años de persistencia), con especímenes desde Java hasta China y desde 1.9 Ma hasta quizás 108 ka (Ngandong, Java). Fue descubierta por Eugène Dubois en 1891 en Trinil (Java) y originalmente denominada Pithecanthropus erectus. Morfológicamente es platicéfalo (bóveda baja y alargada), con una quilla sagital de hueso, un torus supraorbitario masivo, un torus occipital prominente y un estrechamiento postorbitario marcado. El uso del fuego es probable desde ~1 Ma en Zhoukoudian (China) y quizás antes en Wonderwerk Cave (Sudáfrica). La persistencia de H. erectus en Java hasta épocas muy recientes plantea la posibilidad de solapamiento temporal con H. sapiens y posiblemente con H. floresiensis. Con su capacidad craneal entre 750–1250 cc, muestra una tendencia de expansión cerebral a lo largo del tiempo.",
+      "experto": {
+        "descripcion_tecnica": "Platicefalia. Quilla sagital de hueso. Torus supraorbitario continuo y masivo. Estrechamiento postorbitario. Torus occipital. Cc 750–1250 cc (rango amplio geotemporal).",
+        "debate": "¿H. erectus es una especie 'paraguas' que incluye ergaster, georgicus, antecessor y otras, o son todas distintas? Los 'splitters' las separan; los 'lumpers' las unifican bajo erectus. La especie de Ngandong, con 108 ka, plantea solapamiento con H. sapiens.",
+        "anatomia_craneal": "Platicéfalo. Torus supraorbitario masivo. Quilla sagital de hueso. Estrechamiento postorbitario marcado.",
+        "anatomia_postcraneal": "Cuerpo moderno en proporciones, ligeramente más robusto que H. sapiens.",
+        "paleoecologia": "Variado: sabana tropical (África), selva y estepa tropical-subtropical (Asia). Primer homínino con distribución fuera de África tropical.",
+        "cultura": "Modo 2 (Achelense) en África y Occidente. Modo 1 (Olduvayense) en gran parte de Asia (Línea de Movius). Uso del fuego probable desde ~1 Ma.",
+        "referencias": [
+          {
+            "a": "Dubois",
+            "y": 1894,
+            "t": "Pithecanthropus erectus, een menschachtige overgansvorm op Java",
+            "j": "Batavia",
+            "d": ""
+          },
+          {
+            "a": "Swisher et al.",
+            "y": 1996,
+            "t": "Latest Homo erectus of Java: Potential Contemporaneity with Homo sapiens in Southeast Asia",
+            "j": "Science",
+            "d": "10.1126/science.274.5294.1870"
+          }
+        ]
+      },
+      "val_time": 1.5
+    },
+    {
+      "id": "antecessor",
+      "clado": "homo",
+      "nombre": "Homo antecessor",
+      "anos": "850 ka",
+      "ubicacion": "España",
+      "holo": "ATD6",
+      "datacion": "ESR",
+      "cc": 1000,
+      "dieta": "Canibal",
+      "herramientas": "Modo 1",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Homo_antecessor_reconstruccion.jpg/800px-Homo_antecessor_reconstruccion.jpg",
+      "mapa": "europa",
+      "descripcion": "Homo antecessor fue descrito en 1997 por Bermúdez de Castro et al. a partir de los fósiles de Gran Dolina (Sierra de Atapuerca, Burgos), datados en ~900 ka, siendo la primera especie descrita de Atapuerca, uno de los yacimientos paleoantropológicos más importantes del mundo. Su interés reside en una combinación paradójica: morfología facial inferior (región malar y nasal) muy similar a la del H. sapiens moderno, conviviendo con morfología supraorbitaria y occipital primitiva. Bermúdez de Castro lo propone como el 'pionero' —significado de antecessor en latín— que colonizó Europa occidental y posiblemente el último ancestro común de neandertales y humanos modernos. El registro incluye 96 especímenes de al menos 11 individuos con marcas de canibalismo extenso, las más antiguas documentadas en el género Homo. Un análisis proteómico publicado en 2020 (Welker et al.) sugiere que antecessor es un linaje hermano del ancestro común de neandertales y sapiens, no su ancestro directo.",
+      "experto": {
+        "descripcion_tecnica": "Morfología facial inferior moderna (región infraorbitaria y malar). Toro supraorbitario marcado. Fosa canina (rasgo moderno). Cc ~1000 cc. Morfología dental con cúspides primitivas. Marcas de canibalismo.",
+        "debate": "El análisis proteómico de 2020 (Welker et al., Nature) de los fósiles de Atapuerca TD6 sugiere que antecessor es un linaje hermano del ancestro neandertal-sapiens, no su ancestro directo, complicando el árbol filogenético europeo del Pleistoceno Medio.",
+        "anatomia_craneal": "Cc ~1000 cc. Fosa canina. Morfología supraorbitaria primitiva. Región infraorbitaria moderna.",
+        "anatomia_postcraneal": "Grácil para su cronología. Proporciones modernas. Sin datos de robusticidad postcraneal exhaustivos.",
+        "paleoecologia": "Bosque templado-cálido de la meseta ibérica durante un interglaciar del Pleistoceno Inferior.",
+        "cultura": "Modo 1 arcaico en Atapuerca TD6. Canibalismo extenso documentado (96 especímenes con marcas).",
+        "referencias": [
+          {
+            "a": "Bermúdez de Castro et al.",
+            "y": 1997,
+            "t": "A Hominid from the Lower Pleistocene of Atapuerca, Spain: Possible Ancestor to Neandertals and Modern Humans",
+            "j": "Science",
+            "d": "10.1126/science.276.5317.1392"
+          },
+          {
+            "a": "Welker et al.",
+            "y": 2020,
+            "t": "The dental proteome of Homo antecessor",
+            "j": "Nature",
+            "d": "10.1038/s41586-020-2153-8"
+          }
+        ]
+      },
+      "val_time": 0.85
+    },
+    {
+      "id": "cepranensis",
+      "clado": "homo",
+      "nombre": "Homo cepranensis",
+      "anos": "~900–450 ka",
+      "ubicacion": "Italia (Lacio)",
+      "holo": "CE 0001 (calvaria parcial)",
+      "datacion": "K-Ar / biocronología",
+      "cc": 1000,
+      "dieta": "Omnívora",
+      "herramientas": "Modo 2 (posible)",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/CepranoCapD.jpg/640px-CepranoCapD.jpg",
+      "mapa": "italia",
+      "descripcion": "Homo cepranensis fue descrito a partir de una calvaria parcial hallada accidentalmente en 1994 durante obras de ensanchamiento de una carretera cerca de Ceprano (Lacio, Italia). La calvaria CE 0001 presenta una morfología que combina rasgos primitivos —torus occipital marcado, bóveda baja y aplanada, notable estrechamiento postorbitario— con algunos caracteres derivados que lo diferencian de H. erectus sensu stricto. Ha sido clasificada alternativamente como H. heidelbergensis primitivo, H. antecessor europeo, H. erectus europeo o como especie válida propia. Clarke (2000) y Mallegni et al. (2003) propusieron el nombre H. cepranensis como especie independiente. El mayor obstáculo para su interpretación es la incertidumbre cronológica: la datación original sugería ~800–900 ka, pero análisis posteriores de biocronología faunística la rebajan a ~450 ka, lo que cambia radicalmente su contexto filogenético.",
+      "experto": {
+        "descripcion_tecnica": "Calvaria parcial con bóveda baja y aplanada (platicéfala). Torus occipital marcado. Estrechamiento postorbitario notable. Cc estimada ~1000 cc. Morfología de la sutura escamosa distintiva.",
+        "debate": "El principal problema es la incertidumbre cronológica: si la calvaria data de ~900 ka, es compatible con antecessor o un H. erectus europeo primitivo; si data de ~450 ka, encaja con heidelbergensis. Sin resolución temporal, la posición filogenética no puede determinarse con certeza.",
+        "anatomia_craneal": "Bóveda baja. Torus occipital. Cc ~1000 cc. Perfil alargado y platicéfalo.",
+        "anatomia_postcraneal": "No recuperada.",
+        "paleoecologia": "Italia central del Pleistoceno Inferior o Medio según la datación aceptada. Llanura del Lacio.",
+        "cultura": "No atribuida directamente.",
+        "referencias": [
+          {
+            "a": "Ascenzi et al.",
+            "y": 2000,
+            "t": "A re-appraisal of Ceprano calvaria affinities with Homo erectus, after the new reconstruction",
+            "j": "J Hum Evol",
+            "d": "10.1006/jhev.2000.0425"
+          },
+          {
+            "a": "Mallegni et al.",
+            "y": 2003,
+            "t": "Homo cepranensis sp. nov. and the evolution of African-European Middle Pleistocene hominids",
+            "j": "C R Palevol",
+            "d": "10.1016/S1631-0683(03)00015-0"
+          }
+        ]
+      },
+      "val_time": 0.7
+    },
+    {
+      "id": "heidelbergensis",
+      "clado": "homo",
+      "nombre": "H. heidelbergensis",
+      "anos": "700–200 ka",
+      "ubicacion": "Europa",
+      "holo": "Mauer",
+      "datacion": "Bio",
+      "cc": 1250,
+      "dieta": "Caza",
+      "herramientas": "Lanzas",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Homo_heidelbergensis-Cranium_-5.jpg/800px-Homo_heidelbergensis-Cranium_-5.jpg",
+      "mapa": "europa",
+      "descripcion": "Homo heidelbergensis fue descrito por Schoetensack en 1908 a partir de la mandíbula de Mauer (Alemania, ~600 ka). Históricamente utilizado como 'cajón de sastre' para los homíninos del Pleistoceno Medio europeo y africano que no encajaban ni en H. erectus ni en H. neanderthalensis o H. sapiens, en 2021 Roksandic et al. propusieron la creación de H. bodoensis para los especímenes africanos, reservando heidelbergensis para los europeos. Los fósiles de la Sima de los Huesos (Atapuerca, ~430 ka) —28 individuos casi completos, los homíninos fósiles más numerosos en un único yacimiento del mundo— han sido asignados a esta especie y su ADN antiguo los vincula genéticamente con los neandertales, razón por la que a menudo se les denomina 'proto-neandertales'. Las lanzas de madera de Schöningen (Alemania, ~300 ka) demuestran una caza activa sofisticada con planificación y trabajo en equipo.",
+      "experto": {
+        "descripcion_tecnica": "Cc 1100–1350 cc. Toro supraorbitario marcado pero con surco supratorico. Cara amplia. Mandíbula robusta. Occipital redondeado. Estatura superior a H. sapiens moderno en muchos individuos.",
+        "debate": "En revisión nomenclatural activa desde 2021 (propuesta H. bodoensis para los especímenes africanos). Los fósiles de la Sima de los Huesos, con ADN de neandertal, son considerados por muchos proto-neandertales más que heidelbergensis sensu stricto.",
+        "anatomia_craneal": "Cc 1100–1350 cc. Torus supraorbitario pronunciado. Cara amplia y alta.",
+        "anatomia_postcraneal": "Muy robusto. Estatura >1.8 m en algunos individuos. Esqueleto masivo, más que H. sapiens moderno.",
+        "paleoecologia": "Europa templada durante períodos interglaciares y glaciares del Pleistoceno Medio. Caza de megafauna.",
+        "cultura": "Achelense avanzado. Lanzas de madera de Schöningen (~300 ka, las más antiguas conocidas). Probable uso del fuego habitual.",
+        "referencias": [
+          {
+            "a": "Schoetensack",
+            "y": 1908,
+            "t": "Der Unterkiefer des Homo heidelbergensis aus den Sanden von Mauer bei Heidelberg",
+            "j": "Engelmann, Leipzig",
+            "d": ""
+          },
+          {
+            "a": "Meyer et al.",
+            "y": 2016,
+            "t": "Nuclear DNA sequences from the Middle Pleistocene Sima de los Huesos hominins",
+            "j": "Nature",
+            "d": "10.1038/nature17405"
+          }
+        ]
+      },
+      "val_time": 0.5
+    },
+    {
+      "id": "bodoensis",
+      "clado": "homo",
+      "nombre": "Homo bodoensis",
+      "anos": "700–200 ka",
+      "ubicacion": "Etiopía / Zambia / Marruecos",
+      "holo": "Bodo A (BOU-VP-2/66)",
+      "datacion": "U-Series",
+      "cc": 1300,
+      "dieta": "Omnívora",
+      "herramientas": "Achelense / MSA temprano",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Bodo_skull.jpg/800px-Bodo_skull.jpg",
+      "mapa": "africa",
+      "descripcion": "Homo bodoensis fue propuesto en 2021 por Roksandic et al. para clarificar la confusa situación taxonómica del Pleistoceno Medio africano, históricamente conocida como el 'embrollo del medio' (Middle Pleistocene Muddle). La especie agruparía el cráneo de Bodo (Etiopía, ~600 ka), el cráneo de Kabwe/Rhodesian Man (Zambia) y otros especímenes africanos previamente asignados a H. heidelbergensis o H. rhodesiensis. El cráneo de Bodo presenta numerosas marcas de corte, habitualmente interpretadas como descarnado post mortem, pero su significado conductual no debe presentarse como ritual demostrado. La propuesta pretende reservar H. heidelbergensis exclusivamente para los especímenes europeos, mejorando la precisión nomenclatural. Filogenéticamente, H. bodoensis se ha propuesto como candidato próximo al origen de H. sapiens en África, pero la agrupación sigue debatida por la heterogeneidad de la muestra.",
+      "experto": {
+        "descripcion_tecnica": "Cráneo de Bodo: Cc ~1250 cc. Torus supraorbitario masivo. Cara muy ancha. Numerosas marcas de corte compatibles con descarnado post mortem; su interpretación conductual sigue abierta. Cc estimada 1200–1350 cc para el conjunto de especímenes asignados.",
+        "debate": "La propuesta de 2021 ha sido bien recibida por algunos (claridad nomenclatural) y criticada por otros (muestra heterogénea, separación arbitraria de heidelbergensis europeo). Debe enseñarse como propuesta taxonómica útil pero no como consenso cerrado.",
+        "anatomia_craneal": "Cc 1200–1350 cc. Torus supraorbitario masivo. Cara amplia. Frente en pendiente.",
+        "anatomia_postcraneal": "Robusto. Similar a H. heidelbergensis europeo.",
+        "paleoecologia": "África tropical y subtropical del Pleistoceno Medio. Entornos de sabana abierta y ribera.",
+        "cultura": "Achelense tardío y comienzos del MSA. El cráneo de Bodo muestra marcas de corte; la función social o ritual de ese procesamiento no está demostrada.",
+        "referencias": [
+          {
+            "a": "Roksandic et al.",
+            "y": 2021,
+            "t": "Resolving the 'muddle in the middle': The case for Homo bodoensis sp. nov.",
+            "j": "Evol Anthropol",
+            "d": "10.1002/evan.21929"
+          },
+          {
+            "a": "White & Toth",
+            "y": 1991,
+            "t": "The Question of Ritual Cannibalism at Grotta Guattari [and Comments and Replies]",
+            "j": "Curr Anthropol",
+            "d": "10.1086/203931"
+          }
+        ]
+      },
+      "val_time": 0.6
+    },
+    {
+      "id": "rhodesiensis",
+      "clado": "homo",
+      "nombre": "H. rhodesiensis",
+      "anos": "400 ka",
+      "ubicacion": "Zambia",
+      "holo": "Kabwe",
+      "datacion": "U-Series",
+      "cc": 1280,
+      "dieta": "Omnívora",
+      "herramientas": "MSA",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Homo_rhodesiensis_skull_-_Smithsonian_Museum_of_Natural_History_-_2012-05-17.jpg/800px-Homo_rhodesiensis_skull_-_Smithsonian_Museum_of_Natural_History_-_2012-05-17.jpg",
+      "mapa": "africa",
+      "descripcion": "Homo rhodesiensis, descrito por Woodward en 1921 a partir del cráneo de Broken Hill/Kabwe (Zambia), es un homínino del Pleistoceno Medio africano con una morfología robusta. La datación directa publicada por Grün et al. (2020) ofrece una estimación de 299 ± 25 ka (media ± 2σ) para Kabwe 1, más reciente que varias estimaciones anteriores. Esta edad corresponde al cráneo y no determina por sí sola la duración de la especie ni su relación ancestral con Homo sapiens. Presenta un toro supraorbitario de gran tamaño, bóveda baja, occipital angulado y una capacidad craneal aproximada de 1280 cc. Sus lesiones dentales compatibles con caries requieren una interpretación paleodietética específica; no se mantiene aquí la afirmación no contrastada de que sean las más antiguas del linaje humano. La relación de H. rhodesiensis con H. heidelbergensis y la propuesta H. bodoensis de 2021 continúan debatidas.",
+      "experto": {
+        "descripcion_tecnica": "Cc ~1280 cc. Toro supraorbitario masivo, uno de los mayores del registro. Bóveda baja. Cara muy ancha y alta. Lesiones dentales compatibles con caries, sin atribuirles aquí un récord cronológico no contrastado. Datación directa de Kabwe 1: 299 ± 25 ka (media ± 2σ; Grün et al., 2020). La fecha del espécimen no establece un rango taxonómico.",
+        "debate": "¿Es H. rhodesiensis sinónimo de H. heidelbergensis, de H. bodoensis, o una especie autónoma? La propuesta de bodoensis (2021) lo absorbe; parte de la comunidad mantiene rhodesiensis como especie válida del Pleistoceno Medio tardío africano.",
+        "anatomia_craneal": "Cc 1280 cc. Toro supraorbitario enorme. Bóveda baja. Cara ancha.",
+        "anatomia_postcraneal": "Robusto. Material postcraneal de Broken Hill incluye huesos largos de gran tamaño.",
+        "paleoecologia": "Sabana del sur de África. Entorno con abundante megafauna pleistocena.",
+        "cultura": "En el Pleistoceno Medio africano se documentan industrias de la Edad de Piedra Media y, en diversos contextos, uso de pigmentos. No se atribuyen directamente al cráneo Kabwe 1 sin una asociación arqueológica demostrada.",
+        "referencias": [
+          {
+            "a": "Woodward",
+            "y": 1921,
+            "t": "A new cave man from Rhodesia, South Africa",
+            "j": "Nature",
+            "d": "10.1038/108371a0"
+          },
+          {
+            "a": "Grün et al.",
+            "y": 2020,
+            "t": "Dating the skull from Broken Hill, Zambia, and its position in human evolution",
+            "j": "Nature",
+            "d": "10.1038/s41586-020-2165-4"
+          }
+        ]
+      },
+      "val_time": 0.4
+    },
+    {
+      "id": "helmei",
+      "clado": "homo",
+      "nombre": "Homo helmei",
+      "anos": "260 ka",
+      "ubicacion": "Sudáfrica",
+      "holo": "Florisbad",
+      "datacion": "ESR",
+      "cc": 1300,
+      "dieta": "Omnívora",
+      "herramientas": "MSA",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Florisbad_Skull.jpg/800px-Florisbad_Skull.jpg",
+      "mapa": "sudafrica",
+      "descripcion": "Homo helmei está representado principalmente por el cráneo parcial de Florisbad (Sudáfrica), descubierto por Dreyer en 1932 en un manantial fosilizado. La datación por ESR del esmalte dental ofrece una edad de ~259 ka, situándolo en el Pleistoceno Medio tardío. Morfológicamente es un homínino de transición: frente más elevada que en H. heidelbergensis pero con una bóveda craneal que todavía no alcanza la globalidad de H. sapiens, prognatismo moderado y supercilios robustos aunque menos masivos que los de Kabwe. Algunos investigadores lo consideran un proto-H. sapiens o lo incluyen directamente en H. sapiens arcaico; otros lo clasifican como H. rhodesiensis tardío o como representante independiente de un linaje africano intermedio. La industria lítica de Fauresmith asociada al yacimiento es un MSA temprano caracterizado por bifaces más delgados que los achelenses, precursor de las industrias simbólicas del LSA.",
+      "experto": {
+        "descripcion_tecnica": "Cráneo parcial (calota y fragmentos faciales). Cc ~1300 cc. Frente más elevada que en heidelbergensis. Bóveda más globular. Prognatismo moderado. Supercilios robustos pero no tan masivos como en Kabwe.",
+        "debate": "¿Es H. helmei una especie válida o una variante arcaica de H. sapiens? Muchos autores lo incluyen en H. sapiens arcaico o en un continuum evolutivo con rhodesiensis que desemboca en sapiens moderno.",
+        "anatomia_craneal": "Cc ~1300 cc. Frente más elevada. Toro menos masivo que en rhodesiensis.",
+        "anatomia_postcraneal": "No recuperada en el yacimiento de Florisbad.",
+        "paleoecologia": "Manantial de Florisbad rodeado de sabana arbustiva del interior sudafricano, con fauna faunística asociada de megafauna pleistocena.",
+        "cultura": "Industria de Fauresmith (MSA temprano): bifaces más delgados que el Achelense, lascas Levallois incipientes.",
+        "referencias": [
+          {
+            "a": "Dreyer",
+            "y": 1935,
+            "t": "A human skull from Florisbad, Orange Free State",
+            "j": "Proc Acad Sci Amsterdam",
+            "d": ""
+          },
+          {
+            "a": "Grün & Stringer",
+            "y": 1991,
+            "t": "Electron spin resonance dating and the evolution of modern humans",
+            "j": "Archaeometry",
+            "d": "10.1111/j.1475-4754.1991.tb00696.x"
+          }
+        ]
+      },
+      "val_time": 0.26
+    },
+    {
+      "id": "daliensis",
+      "clado": "homo",
+      "nombre": "Homo daliensis",
+      "anos": "~260 ka",
+      "ubicacion": "China",
+      "holo": "Dali 1",
+      "datacion": "U-Series / ESR",
+      "cc": 1120,
+      "dieta": "Omnívora",
+      "herramientas": "Modo 3 regional",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Dali_Man_Skull%2C_Replica.jpg",
+      "mapa": "china",
+      "estado": "debatida",
+      "descripcion": "Homo daliensis se usa para referirse al cráneo de Dali, hallado en Shaanxi (China) y fechado de forma aproximada en el Pleistoceno medio tardío. Es un registro clave para el debate sobre la diversidad asiática: combina una bóveda baja y robusta con cara relativamente grácil, y se ha comparado con Homo heidelbergensis, Homo sapiens arcaico, Homo longi y posibles poblaciones denisovanas.",
+      "experto": {
+        "descripcion_tecnica": "Cráneo Dali 1 con capacidad aproximada de 1120 cc, bóveda baja, torus supraorbitario robusto pero no neandertal, cara amplia con rasgos menos prognatos que Homo erectus clásico.",
+        "debate": "La validez de Homo daliensis como especie separada es controvertida. En parte de la literatura se trata como Homo sapiens arcaico, Homo heidelbergensis asiático o miembro de un conjunto chino del Pleistoceno medio que podría solaparse con Homo longi o denisovanos.",
+        "anatomia_craneal": "Bóveda baja y alargada, frontal inclinado, cara relativamente plana y combinación de rasgos arcaicos y derivados.",
+        "anatomia_postcraneal": "No recuperada.",
+        "paleoecologia": "China septentrional durante el Pleistoceno medio tardío, con contextos fluviales y climáticos variables.",
+        "cultura": "Industria lítica regional del Paleolítico medio asiático; asociación directa limitada.",
+        "referencias": [
+          {
+            "a": "Wu & Athreya",
+            "y": 2013,
+            "t": "A description of the geological context, discrete traits, and linear morphometrics of the Middle Pleistocene hominin from Dali, Shaanxi Province, China",
+            "j": "Am J Phys Anthropol",
+            "d": "10.1002/ajpa.22188"
+          },
+          {
+            "a": "Athreya & Wu",
+            "y": 2017,
+            "t": "A multivariate assessment of the Dali hominin cranium from China: Morphological affinities and implications for Pleistocene evolution in East Asia",
+            "j": "Am J Phys Anthropol",
+            "d": "10.1002/ajpa.23305"
+          },
+          {
+            "a": "Ji et al.",
+            "y": 2021,
+            "t": "Late Middle Pleistocene Harbin cranium represents a new Homo species",
+            "j": "Innovation",
+            "d": "10.1016/j.xinn.2021.100132"
+          }
+        ]
+      },
+      "val_time": 0.26
+    },
+    {
+      "id": "juluensis",
+      "clado": "homo",
+      "nombre": "Homo juluensis",
+      "anos": "220-100 ka",
+      "ubicacion": "China",
+      "holo": "Xujiayao / Xuchang",
+      "datacion": "OSL / U-Series",
+      "cc": 1600,
+      "dieta": "Caza / recolección",
+      "herramientas": "Paleolítico medio regional",
+      "imagen": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Xujiayao_hominin.jpg?width=800",
+      "mapa": "china",
+      "estado": "revision",
+      "descripcion": "Homo juluensis o 'Juluren' es una propuesta reciente para agrupar fósiles de China oriental y septentrional, especialmente Xujiayao y Xuchang, con cráneos grandes, dentición compleja y un mosaico de rasgos arcaicos, neandertaloides y modernos. La ficha se incluye como hipótesis taxonómica en revisión, no como especie universalmente aceptada.",
+      "experto": {
+        "descripcion_tecnica": "Conjunto fragmentario de cráneo, mandíbula y dientes. Se ha destacado una combinación de gran capacidad endocraneal, bóveda baja y ancha, rasgos nasales comparados con neandertales y dentición grande o compleja.",
+        "debate": "La hipótesis Juluren intenta ordenar la diversidad asiática del Pleistoceno medio-final, pero compite con interpretaciones como Denisovanos morfológicos, Homo longi, Homo daliensis o Homo arcaico regional. Debe enseñarse como propuesta activa, no como consenso cerrado.",
+        "anatomia_craneal": "Bóveda grande, baja y ancha; algunos rasgos craneales recuerdan a neandertales, aunque sin encajar plenamente en ese linaje.",
+        "anatomia_postcraneal": "Muy limitada o no diagnóstica para el conjunto propuesto.",
+        "paleoecologia": "Norte y este de China durante el Pleistoceno medio tardío y superior inicial, con ocupaciones de ambientes templados fríos y fauna de grandes herbívoros.",
+        "cultura": "Industria lítica regional y explotación de fauna; la asociación cultural directa varía según yacimiento.",
+        "referencias": [
+          {
+            "a": "Wu & Bae",
+            "y": 2025,
+            "t": "Xujiayao Homo: A New Form of Large Brained Hominin in Eastern Asia",
+            "j": "PaleoAnthropology",
+            "d": "10.48738/2025.iss2.1011"
+          },
+          {
+            "a": "Wu et al.",
+            "y": 2023,
+            "t": "Morphological and morphometric analyses of a late Middle Pleistocene hominin mandible from Hualongdong, China",
+            "j": "J Hum Evol",
+            "d": "10.1016/j.jhevol.2023.103411"
+          }
+        ]
+      },
+      "val_time": 0.18
+    },
+    {
+      "id": "soloensis",
+      "clado": "homo",
+      "nombre": "H. erectus soloensis",
+      "anos": "117-108 ka",
+      "ubicacion": "Ngandong, Java",
+      "holo": "Ngandong 1-14",
+      "datacion": "U-Series / ESR / Ar-Ar",
+      "cc": 1150,
+      "dieta": "Omnívora",
+      "herramientas": "Modo 1 regional",
+      "imagen": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ngandong_14._Homo_erectus.jpg?width=800",
+      "mapa": "indonesia",
+      "estado": "debatida",
+      "descripcion": "Ngandong representa la forma tardía de Homo erectus en Java, a menudo citada como H. erectus soloensis o 'Homo soloensis'. La datación revisada sitúa el lecho fósil entre 117 y 108 ka, convirtiéndolo en la última presencia robustamente fechada de H. erectus. Se añade como ficha propia para que el alumnado pueda comparar la persistencia asiática tardía sin confundirla con una especie separada aceptada por todos.",
+      "experto": {
+        "descripcion_tecnica": "Serie de calvarias y tibias de Ngandong, morfológicamente avanzadas dentro de H. erectus javanés: bóveda baja, huesos craneales gruesos y capacidad craneal relativamente alta respecto a formas tempranas.",
+        "debate": "El nombre soloensis se ha usado como subespecie o especie, pero muchas síntesis lo tratan dentro de H. erectus. La clave didáctica es separar el yacimiento y su cronología tardía del debate nomenclatural.",
+        "anatomia_craneal": "Calvarias robustas, bóveda baja y larga, torus supraorbitario marcado y mayor encefalización que H. erectus temprano.",
+        "anatomia_postcraneal": "Tibias asociadas al conjunto; locomoción bípeda obligada y robustez compatible con Homo erectus.",
+        "paleoecologia": "Terrazas del río Solo en Java central, con acumulación de restos durante eventos fluviales y fauna tropical pleistocena.",
+        "cultura": "Herramientas líticas simples regionales; asociación cultural directa limitada y discutida.",
+        "referencias": [
+          {
+            "a": "Rizal et al.",
+            "y": 2020,
+            "t": "Last appearance of Homo erectus at Ngandong, Java, 117,000-108,000 years ago",
+            "j": "Nature",
+            "d": "10.1038/s41586-019-1863-2"
+          },
+          {
+            "a": "Oppenoorth",
+            "y": 1932,
+            "t": "Een nieuwe fossiele mensch van Java",
+            "j": "Tijdschrift van het Koninklijk Nederlandsch Aardrijkskundig Genootschap",
+            "d": ""
+          }
+        ]
+      },
+      "val_time": 0.112
+    },
+    {
+      "id": "penghu",
+      "clado": "homo",
+      "nombre": "Homo sp. (Penghu 1)",
+      "anos": "190-10 ka",
+      "ubicacion": "Canal de Penghu, Taiwán",
+      "holo": "NMNS006655",
+      "datacion": "F/Na / U-Series",
+      "cc": null,
+      "dieta": "Omnívora",
+      "herramientas": "No asociadas",
+      "imagen": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Fossil_of_Mandible_of_Penghu_1.JPG?width=800",
+      "mapa": "asia",
+      "estado": "revision",
+      "descripcion": "Penghu 1 es una mandíbula humana arcaica recuperada del canal submarino de Penghu, frente a Taiwán. Combina un cuerpo mandibular muy robusto, dientes grandes y rasgos que no encajan limpiamente en las comparaciones clásicas con H. erectus, neandertales y sapiens. El análisis paleoproteómico publicado en 2025 identificó al individuo como un varón denisovano, aportando un referente morfológico importante para este linaje. La denominación Homo tsaichangensis y otras propuestas requieren una revisión nomenclatural independiente; la identificación poblacional no determina automáticamente el nombre formal de la especie. Su cronología conserva dos ventanas alternativas, 130–190 ka o 10–70 ka, que no representan una ocupación continua.",
+      "experto": {
+        "descripcion_tecnica": "Hemimandíbula derecha casi completa, sin mentón, con cuerpo mandibular bajo y grueso, dentición posterior grande y rasgos derivados que justifican Homo pero no una asignación específica segura. La identificación paleoproteómica de 2025 recuperó 4.241 residuos aminoacídicos y dos variantes específicas denisovanas (Tsutaya et al., 2025).",
+        "debate": "El análisis paleoproteómico de Penghu 1 identificó la mandíbula como perteneciente a un varón denisovano (Tsutaya et al., 2025). Se recuperaron 4.241 residuos aminoacídicos y dos variantes específicas denisovanas. La atribución al linaje queda respaldada, pero la cronología conserva dos ventanas alternativas, 130–190 ka o 10–70 ka, y la identificación no resuelve automáticamente la nomenclatura específica formal.",
+        "anatomia_craneal": "No hay cráneo asociado; la inferencia se basa en mandíbula y dentición.",
+        "anatomia_postcraneal": "No recuperada.",
+        "paleoecologia": "Plataforma continental expuesta durante episodios de bajo nivel del mar en el Pleistoceno, con conexión ecológica al margen continental asiático.",
+        "cultura": "No hay industria lítica asociada al espécimen dragado.",
+        "referencias": [
+          {
+            "a": "Chang et al.",
+            "y": 2015,
+            "t": "The first archaic Homo from Taiwan",
+            "j": "Nature Communications",
+            "d": "10.1038/ncomms7037"
+          },
+          {
+            "a": "Tsutaya et al.",
+            "y": 2025,
+            "t": "A male Denisovan mandible from Pleistocene Taiwan",
+            "j": "Science 388, 176–180",
+            "d": "10.1126/science.ads3888"
+          }
+        ]
+      },
+      "val_time": 0.13
+    },
+    {
+      "id": "gautengensis",
+      "clado": "homo",
+      "nombre": "Homo gautengensis",
+      "anos": "2.0-0.82 Ma",
+      "ubicacion": "Sudáfrica",
+      "holo": "Stw 53",
+      "datacion": "Bio / U-Pb",
+      "cc": null,
+      "dieta": "Vegetal / omnívora",
+      "herramientas": "Modo 1 probable",
+      "imagen": "https://commons.wikimedia.org/wiki/Special:Redirect/file/6a00d8341bf67c53ef01348157067b970c-320wi.jpg?width=800",
+      "mapa": "sudafrica",
+      "estado": "debatida",
+      "descripcion": "Homo gautengensis fue propuesto por Darren Curnoe para reunir restos sudafricanos de Sterkfontein, Swartkrans y Drimolen que habían sido asignados de forma variable a H. habilis, H. ergaster, Australopithecus o Paranthropus. Se añade porque completa el debate sobre la diversidad temprana de Homo en el sur de África, aunque su aceptación sigue siendo limitada.",
+      "experto": {
+        "descripcion_tecnica": "Holotipo Stw 53 y paratipos craneales, mandibulares y dentales. El diagnóstico se apoya en combinación de dientes relativamente grandes, mandíbulas robustas y morfología craneodental de Homo temprano del Plio-Pleistoceno sudafricano.",
+        "debate": "Muchos autores mantienen los especímenes dentro de Homo habilis sensu lato, Homo ergaster o incluso fuera de Homo. Es útil para enseñar el problema de clasificar fósiles fragmentarios, pero no debe presentarse como taxón consolidado.",
+        "anatomia_craneal": "Registro craneal fragmentario; Stw 53 y SK 847 se han usado en discusiones sobre Homo temprano sudafricano.",
+        "anatomia_postcraneal": "Material postcraneal escaso o difícil de atribuir con seguridad.",
+        "paleoecologia": "Cuevas kársticas del Cradle of Humankind y entornos mixtos de sabana arbolada durante el Plio-Pleistoceno.",
+        "cultura": "Posible asociación con herramientas olduvayenses y restos quemados en algunos contextos sudafricanos, pero la atribución taxonómica directa es incierta.",
+        "referencias": [
+          {
+            "a": "Curnoe",
+            "y": 2010,
+            "t": "A review of early Homo in southern Africa focusing on cranial, mandibular and dental remains, with the description of a new species (Homo gautengensis sp. nov.)",
+            "j": "HOMO",
+            "d": "10.1016/j.jchb.2010.04.002"
+          },
+          {
+            "a": "Antón",
+            "y": 2012,
+            "t": "Early Homo: Who, When, and Where",
+            "j": "Current Anthropology",
+            "d": "10.1086/667695"
+          }
+        ]
+      },
+      "val_time": 1.8
+    },
+    {
+      "id": "naledi",
+      "clado": "homo",
+      "nombre": "Homo naledi",
+      "anos": "335–236 ka",
+      "ubicacion": "Sudáfrica",
+      "holo": "DH1",
+      "datacion": "OSL",
+      "cc": 465,
+      "dieta": "Omnívora",
+      "herramientas": "Posible",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Homo_naledi_LE1_skull.jpg/800px-Homo_naledi_LE1_skull.jpg",
+      "mapa": "sudafrica",
+      "descripcion": "Homo naledi, descubierta en 2015 por Lee Berger et al. en la Cámara de Dinaledi (Rising Star Cave, Sudáfrica), fue uno de los hallazgos más mediáticos de la última década: más de 1.550 fragmentos óseos de al menos 15 individuos en una cámara de acceso extremadamente difícil. Lo más perturbador de naledi es su cronología: con 335–236 ka —cuando en África ya existía H. sapiens— presenta un cerebro diminuto de ~465 cc (comparable al de Au. africanus), extremidades superiores curvadas para el trepado, y pies y piernas plenamente modernos y bípedos. Este mosaico de rasgos primitivos y derivados coexistió con humanos modernos. Berger et al. han defendido la hipótesis de depósito deliberado de cadáveres y posibles motivos geométricos, pero la interpretación sigue en debate y debe contrastarse con críticas tafonómicas, sedimentológicas y de replicación independiente.",
+      "experto": {
+        "descripcion_tecnica": "Cc ~465 cc (pequeño como Au. africanus). Manos curvadas para arborealismo. Pies modernos bípedos. Pelvis amplia. Alta densidad de especímenes en cueva de acceso muy difícil (~12 m de paso estrecho).",
+        "debate": "Debate sobre el depósito de la cueva: ¿entierro intencional? Berger et al. (2025) proponen evidencias de enterramiento deliberado y motivos geométricos en el sistema Rising Star. Otros autores han pedido cautela, análisis sedimentológicos independientes y separación clara entre depósito de cuerpos, enterramiento, grabados e intencionalidad simbólica.",
+        "anatomia_craneal": "Cc ~465 cc. Cráneo pequeño con morfología de Homo. Toro supraorbitario moderado.",
+        "anatomia_postcraneal": "Mosaico: manos con rasgos primitivos (dedos curvados), pies y piernas modernos (bípedos eficientes).",
+        "paleoecologia": "Cueva profunda del Cradle of Humankind. El acceso restringido reduce algunas explicaciones simples, pero no elimina la necesidad de evaluar procesos naturales y postdeposicionales.",
+        "cultura": "Posibles prácticas mortuorias y posibles marcas o grabados en la cueva; debate activo, sin consenso cerrado sobre intencionalidad simbólica.",
+        "referencias": [
+          {
+            "a": "Berger et al.",
+            "y": 2015,
+            "t": "Homo naledi, a new species of the genus Homo from the Dinaledi Chamber, South Africa",
+            "j": "eLife",
+            "d": "10.7554/eLife.09560"
+          },
+          {
+            "a": "Dirks et al.",
+            "y": 2017,
+            "t": "The age of Homo naledi and associated sediments in the Rising Star Cave, South Africa",
+            "j": "eLife",
+            "d": "10.7554/eLife.24231"
+          },
+          {
+            "a": "Berger et al.",
+            "y": 2025,
+            "t": "Evidence for deliberate burial of the dead by Homo naledi",
+            "j": "eLife",
+            "d": "10.7554/eLife.89106.3"
+          }
+        ]
+      },
+      "val_time": 0.3
+    },
+    {
+      "id": "jebel_irhoud",
+      "clado": "homo",
+      "nombre": "H. sapiens (Jebel Irhoud)",
+      "anos": "315 ka",
+      "ubicacion": "Marruecos",
+      "holo": "Irhoud 1",
+      "datacion": "TL/ESR",
+      "cc": 1450,
+      "dieta": "Omnívora",
+      "herramientas": "MSA",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Jebel_Irhoud-1_NMNH.jpg",
+      "mapa": "africa",
+      "descripcion": "La serie fósil de Jebel Irhoud, re-datada en 2017 a unos 315 ka, desplazó el origen de Homo sapiens hacia el noroeste de África y reforzó un modelo panafricano. Los cráneos combinan una cara moderna con una bóveda todavía alargada, mostrando que la morfología sapiens surgió por etapas.",
+      "experto": {
+        "descripcion_tecnica": "Cara retraída y moderna. Arcos superciliares reducidos respecto a formas arcaicas africanas. Bóveda endocraneal aún elongada.",
+        "debate": "Se acepta ampliamente como H. sapiens temprano, aunque se discute hasta qué punto representa una fase muy basal de nuestra especie o un miembro cercano dentro de un mosaico panafricano.",
+        "anatomia_craneal": "Frente más vertical, cara pequeña y neurocráneo aún no completamente globular.",
+        "anatomia_postcraneal": "Material postcraneal escaso, compatible con proporciones humanas modernas.",
+        "paleoecologia": "Paisaje abierto del Magreb pleistoceno con explotación cinegética y tecnología MSA.",
+        "cultura": "Industria Middle Stone Age con técnica Levallois.",
+        "referencias": [
+          {
+            "a": "Hublin et al.",
+            "y": 2017,
+            "t": "New fossils from Jebel Irhoud, Morocco and the pan-African origin of Homo sapiens",
+            "j": "Nature",
+            "d": "10.1038/nature22336"
+          },
+          {
+            "a": "Richter et al.",
+            "y": 2017,
+            "t": "The age of the hominin fossils from Jebel Irhoud, Morocco, and the origins of the Middle Stone Age",
+            "j": "Nature",
+            "d": "10.1038/nature22335"
+          }
+        ]
+      },
+      "val_time": 0.315
+    },
+    {
+      "id": "omo_i",
+      "clado": "homo",
+      "nombre": "H. sapiens (Omo I)",
+      "anos": "195 ka",
+      "ubicacion": "Etiopía",
+      "holo": "Omo I",
+      "datacion": "40Ar/39Ar",
+      "cc": 1400,
+      "dieta": "Omnívora",
+      "herramientas": "MSA",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/0/01/Omo_Kibish_-_MCN_4152_%28cropped%29.jpg",
+      "mapa": "etiopia",
+      "descripcion": "Omo I, del suroeste de Etiopía, es uno de los fósiles más antiguos inequívocamente modernos de Homo sapiens. Conserva una bóveda alta, mentón claro y una anatomía facial mucho más moderna que la de formas africanas pleistocenas previas. La correlación geoquímica del tefra KHS, situado por encima del miembro que contiene los fósiles, con una erupción del volcán Shala proporciona una edad mínima inferida de 233 ± 22 ka (Vidal et al., 2022). No es una datación directa del esqueleto ni la fecha exacta de aparición de Homo sapiens.",
+      "experto": {
+        "descripcion_tecnica": "Bóveda alta y globular. Mentón presente. Esqueleto poscraneal fragmentario pero anatómicamente moderno.",
+        "debate": "La revisión cronológica de Vidal et al. (2022) sitúa la edad mínima inferida de Omo I en 233 ± 22 ka. Sigue siendo necesario distinguir la edad del tefra, la posición estratigráfica del fósil y el origen evolutivo de Homo sapiens.",
+        "anatomia_craneal": "Cráneo moderno con mentón y reducción clara del torus supraorbitario.",
+        "anatomia_postcraneal": "Restos fragmentarios compatibles con bipedismo plenamente moderno.",
+        "paleoecologia": "Ambiente fluvial y lacustre del Omo etíope durante el Pleistoceno medio final.",
+        "cultura": "Asociado a MSA regional africano.",
+        "referencias": [
+          {
+            "a": "McDougall et al.",
+            "y": 2005,
+            "t": "Stratigraphic placement and age of modern humans from Kibish, Ethiopia",
+            "j": "Nature",
+            "d": "10.1038/nature03258"
+          },
+          {
+            "a": "Vidal et al.",
+            "y": 2022,
+            "t": "Age of the oldest known Homo sapiens from eastern Africa",
+            "j": "Nature",
+            "d": "10.1038/s41586-021-04275-8"
+          }
+        ]
+      },
+      "val_time": 0.195
+    },
+    {
+      "id": "idaltu",
+      "clado": "homo",
+      "nombre": "H. s. idaltu",
+      "anos": "160 ka",
+      "ubicacion": "Etiopía",
+      "holo": "Herto",
+      "datacion": "Ar-Ar",
+      "cc": 1450,
+      "dieta": "Omnívora",
+      "herramientas": "MSA",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Homo_sapiens_idaltu.jpg/800px-Homo_sapiens_idaltu.jpg",
+      "mapa": "etiopia",
+      "descripcion": "Homo sapiens idaltu ('idaltu' significa anciano en lengua afar) es la subespecie fósil más antigua de H. sapiens, descrita por White et al. en 2003 a partir de tres cráneos adultos de Herto (Middle Awash, Etiopía, ~160 ka). Los cráneos combinan una morfología marcadamente moderna —globular, sin toro supraorbitario continuo, mentón bien definido— con rasgos arcaicos residuales como una mayor robusticidad occipital y una cara más grande que la media de H. sapiens recientes. El cráneo adulto BOU-VP-16/1 muestra marcas de descarnado y pulido post-mórtem en el occipital, interpretadas como manipulación ritual del cadáver, constituyendo una de las evidencias más antiguas de comportamiento simbólico funerario en nuestra especie. Con 160 ka, los fósiles de Herto son consistentes con los modelos genéticos que sitúan el origen de H. sapiens entre 200–150 ka en África subsahariana.",
+      "experto": {
+        "descripcion_tecnica": "Cc ~1450 cc. Cráneo globular. Sin toro supraorbitario continuo. Cara grande con prognatismo residual. Mentón. Marcas de descarnado y pulido post-mórtem en el occipital de BOU-VP-16/1.",
+        "debate": "¿Es idaltu una subespecie válida de H. sapiens o debería incluirse en la variabilidad de H. sapiens sensu lato sin distinción subespecífica? La mayoría acepta su estatus como subespecie arcaica. Las marcas de manipulación del cráneo son una de las evidencias de comportamiento simbólico más antiguas.",
+        "anatomia_craneal": "Cc ~1450 cc. Globular. Cara grande con prognatismo residual. Mentón presente.",
+        "anatomia_postcraneal": "Robusto, más que H. sapiens reciente. Proporciones esencialmente modernas.",
+        "paleoecologia": "Ribera de lago/río en el Middle Awash etíope. Fauna abundante con hipopótamos, cocodrilos y bovinos.",
+        "cultura": "MSA con procesamiento de gran fauna. Manipulación intencional de cráneos post-mórtem (posible ritual).",
+        "referencias": [
+          {
+            "a": "White et al.",
+            "y": 2003,
+            "t": "Pleistocene Homo sapiens from Middle Awash, Ethiopia",
+            "j": "Nature",
+            "d": "10.1038/nature01669"
+          },
+          {
+            "a": "Clark et al.",
+            "y": 2003,
+            "t": "Stratigraphic, chronological and behavioural contexts of Pleistocene Homo sapiens from Middle Awash, Ethiopia",
+            "j": "Nature",
+            "d": "10.1038/nature01670"
+          }
+        ]
+      },
+      "val_time": 0.16
+    },
+    {
+      "id": "neander",
+      "clado": "homo",
+      "nombre": "H. neanderthalensis",
+      "anos": "400–40 ka",
+      "ubicacion": "Europa",
+      "holo": "Neanderthal",
+      "datacion": "14C",
+      "cc": 1500,
+      "dieta": "Carnívora",
+      "herramientas": "Musteriense",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Neanderthaler_fund.jpg/800px-Neanderthaler_fund.jpg",
+      "mapa": "eurasia",
+      "descripcion": "Homo neanderthalensis fue la primera especie fósil de homínino reconocida científicamente (1856, antes de 'El Origen de las Especies'). Los neandertales representan el linaje hermano más próximo de H. sapiens, divergiendo hace ~700 ka según los relojes moleculares, y coexistieron con humanos modernos durante al menos 5.000 años en Europa (~45–40 ka). Su cerebro (~1520 cc) era en promedio mayor que el de H. sapiens actual, aunque con morfología diferente: más alargado y menos globular. El análisis del ADN antiguo confirmó que los humanos modernos no africanos llevan entre 1–4% de ADN neandertal, resultado de hibridación en el Próximo Oriente o en Europa hace ~50–65 ka. Hay evidencia de inhumaciones en yacimientos neandertales (Shanidar, Iraq; Kebara; Spy), aunque el carácter deliberado y la motivación simbólica siguen siendo debatidos (Rendu et al. 2014). Cuidaban a individuos con discapacidades severas, producían ornamentos (plumas, conchas perforadas) y pigmentos (ocre, manganeso) en fechas anteriores a la llegada de H. sapiens a Europa, evidenciando una cognición simbólica propia e independiente.",
+      "experto": {
+        "descripcion_tecnica": "Cc ~1520 cc. Moño occipital ('chignon'). Cresta supramastoide. Cara media proyectada anteriormente. Nariz grande para humedificar aire frío. Tórax en barril. Cuerpo robusto adaptado al frío glacial. Extremidades distales cortas (Regla de Allen).",
+        "debate": "¿Extinción por competencia con H. sapiens, absorción génica progresiva, o catástrofe climática? La presencia de 1–4% de ADN neandertal en sapiens modernos no africanos evidencia hibridación. El debate sobre la capacidad simbólica independiente de los neandertales (ornamentos, arte rupestre) sigue activo. Nota: la propuesta de Ji et al. (2021) sugiere que H. longi podría ser filogenéticamente más próximo a H. sapiens que los neandertales, lo que revisaría el estatus de ‘linaje hermano más próximo’.",
+        "anatomia_craneal": "Cc media ~1520 cc. Forma alargada y baja. Toros supraorbitarios separados por surcos. Moño occipital.",
+        "anatomia_postcraneal": "Extremidades distales cortas (adaptación al frío). Cuerpo extremadamente robusto. Esternón corto.",
+        "paleoecologia": "Europa glacial e interglaciar. Caza activa de megafauna: mamuts, rinocerontes lanudos, bisontes, renos.",
+        "cultura": "Musteriense / Charentiense (Modo 3). Ornamentos con plumas y conchas. Uso de pigmentos. Enterramientos documentados. Posible flauta (Divje Babe, debatida). Industria Châtelperronense en la transición.",
+        "referencias": [
+          {
+            "a": "King",
+            "y": 1864,
+            "t": "The Reputed Fossil Man of the Neanderthal",
+            "j": "Q J Sci",
+            "d": ""
+          },
+          {
+            "a": "Green et al.",
+            "y": 2010,
+            "t": "A Draft Sequence of the Neandertal Genome",
+            "j": "Science",
+            "d": "10.1126/science.1188021"
+          },
+          {
+            "a": "Higham et al.",
+            "y": 2014,
+            "t": "The timing and spatiotemporal patterning of Neanderthal disappearance",
+            "j": "Nature",
+            "d": "10.1038/nature13621"
+          },
+          {
+            "a": "Rendu et al.",
+            "y": 2014,
+            "t": "Evidence supporting an intentional Neandertal burial at La Chapelle-aux-Saints",
+            "j": "PNAS",
+            "d": "10.1073/pnas.1316780111"
+          },
+          {
+            "a": "Kivell & Schmitt",
+            "y": 2009,
+            "t": "Independent evolution of knuckle-walking in African apes shows that humans did not evolve from a knuckle-walking ancestor",
+            "j": "PNAS",
+            "d": "10.1073/pnas.0901987106"
+          }
+        ]
+      },
+      "val_time": 0.04
+    },
+    {
+      "id": "denisova",
+      "clado": "homo",
+      "nombre": "Denisovanos (linaje)",
+      "anos": "200–50 ka (estimado)",
+      "ubicacion": "Siberia",
+      "holo": "Denisova 3 (falange)",
+      "datacion": "Reloj",
+      "cc": null,
+      "dieta": "Omnívora",
+      "herramientas": "Atribución de objetos en revisión",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Denisova_Phalanx_distalis.jpg/800px-Denisova_Phalanx_distalis.jpg",
+      "mapa": "eurasia",
+      "descripcion": "Los denisovanos son un linaje humano arcaico identificado inicialmente mediante ADN antiguo. En 2010, los análisis de Denisova 3 y otros restos de la cueva de Denisova permitieron reconocer una población genéticamente diferenciada y estrechamente relacionada con los neandertales. El registro incluye dientes, falanges, fragmentos craneales y la mandíbula de Xiahe (Tíbet), y se ha ampliado con identificaciones biomoleculares de Penghu 1 y del cráneo de Harbin publicadas en 2025. Estos hallazgos amplían el conocimiento de su morfología y distribución asiática. La introgresión denisovana contribuyó a la ascendencia de poblaciones humanas actuales, especialmente en Oceanía y partes de Asia; sus proporciones varían entre poblaciones y estudios. Una variante de EPAS1 de origen denisovano contribuye a la adaptación tibetana a la gran altitud. La disponibilidad de nombres zoológicos, la delimitación de especies y las posibles sinonimias con nombres como Homo longi o H. juluensis son cuestiones distintas que requieren evaluación específica. No se presenta Homo denisova como un binomio formalmente establecido. En la cueva de Bianfu (Yunnan), un estudio proteómico publicado en 2026 identificó dos dientes, dos fragmentos parietales y un fragmento proximal de radio como denisovanos. Los niveles de procedencia de los restos se sitúan aproximadamente entre 167 y 134 ka; son edades de contexto, no el intervalo de existencia del linaje.",
+      "experto": {
+        "descripcion_tecnica": "Restos dentales y mandibulares robustos, falanges y otros fósiles; desde 2025, el cráneo de Harbin proporciona un referente craneal biomolecularmente vinculado a una población denisovana. Se dispone de genomas antiguos y de evidencia proteómica diagnóstica. El linaje es genéticamente distinto de neandertales y sapiens, aunque estrechamente emparentado con ellos. Las estimaciones de divergencia deben distinguirse de la cronología de los fósiles y del intervalo de existencia del linaje. En Bianfu, dos dientes, dos parietales y un fragmento proximal de radio fueron identificados mediante proteínas antiguas; no se recuperó ADN antiguo de los tres fragmentos óseos analizados.",
+        "debate": "Las identificaciones biomoleculares de Penghu 1 y Harbin fortalecen su vinculación al linaje denisovano. Continúan el debate sobre la delimitación y la nomenclatura de Homo longi, Homo juluensis y otros fósiles asiáticos, así como las relaciones filogenéticas propuestas en distintos análisis. El ICZN no prohíbe en general describir especies mediante caracteres moleculares; la disponibilidad de un nombre depende de los requisitos aplicables del Código y no resuelve por sí sola la delimitación biológica ni la sinonimia taxonómica. Las reconstrucciones morfológicas basadas en metilación deben distinguirse de la anatomía observada.",
+        "anatomia_craneal": "La morfología del cráneo de Harbin, biomolecularmente vinculado a una población denisovana en 2025, ofrece un referente craneal casi completo. Presenta una bóveda grande y robusta y una cara ancha. La variación morfológica del linaje sigue insuficientemente conocida y las reconstrucciones basadas en metilación no equivalen a observaciones fósiles directas. Bianfu aporta también dos fragmentos parietales identificados por proteómica.",
+        "anatomia_postcraneal": "Falange del meñique y costilla de Xiahe 2; Bianfu aporta un fragmento proximal de radio identificado por proteómica. El postcráneo del linaje sigue siendo muy incompleto.",
+        "paleoecologia": "El registro denisovano incluye Siberia altaica, el altiplano tibetano y, mediante identificaciones de 2025, Penghu y Harbin en Asia oriental. Xiahe documenta presencia en un ambiente de gran altitud. La distribución histórica total y sus límites cronológicos no deben inferirse de una sola localidad. Bianfu (Yunnan, suroeste de China) amplía las localidades biomolecularmente identificadas; sus niveles con estos fósiles tienen edades estratigráficas aproximadas de 167–134 ka, sin fijar el intervalo total del linaje.",
+        "cultura": "En la cueva de Denisova se han recuperado objetos ornamentales y otros materiales arqueológicos, incluidos un brazalete de piedra verde y colgantes. Su atribución a individuos denisovanos concretos requiere control estratigráfico y cronológico; no se considera demostrada una superioridad tecnológica general respecto al Musteriense ni se atribuyen automáticamente todos los objetos a este linaje. La cueva de Bianfu conserva industria lítica y fauna en una secuencia arqueológica más extensa que los niveles con fósiles identificados; no se atribuye automáticamente cada objeto al individuo ni se convierte toda la secuencia en la duración del linaje. Ruan et al. (2026) proponen como atribución más parsimoniosa a denisovanos la secuencia cultural de aproximadamente 190–70 ka, con evidencias de caza especializada, talla lítica expedita y uso de huesos. Es una interpretación arqueológica del conjunto, no la identificación molecular de cada ocupante.",
+        "referencias": [
+          {
+            "a": "Krause et al.",
+            "y": 2010,
+            "t": "The complete mitochondrial DNA genome of an unknown hominin from southern Siberia",
+            "j": "Nature",
+            "d": "10.1038/nature08976"
+          },
+          {
+            "a": "Reich et al.",
+            "y": 2010,
+            "t": "Genetic history of an archaic hominin group from Denisova Cave in Siberia",
+            "j": "Nature",
+            "d": "10.1038/nature09710"
+          },
+          {
+            "a": "Chen et al.",
+            "y": 2019,
+            "t": "A late Middle Pleistocene Denisovan mandible from the Tibetan Plateau",
+            "j": "Nature",
+            "d": "10.1038/s41586-019-1139-x"
+          },
+          {
+            "a": "Tsutaya et al.",
+            "y": 2025,
+            "t": "A male Denisovan mandible from Pleistocene Taiwan",
+            "j": "Science 388, 176–180",
+            "d": "10.1126/science.ads3888"
+          },
+          {
+            "a": "Fu et al.",
+            "y": 2025,
+            "t": "The proteome of the late Middle Pleistocene Harbin individual",
+            "j": "Science 389, 704–707",
+            "d": "10.1126/science.adu9677"
+          },
+          {
+            "a": "Fu et al.",
+            "y": 2025,
+            "t": "Denisovan mitochondrial DNA from dental calculus of the >146,000-year-old Harbin cranium",
+            "j": "Cell 188, 3919–3926.e9",
+            "d": "10.1016/j.cell.2025.05.040"
+          },
+          {
+            "a": "Feng et al.",
+            "y": 2025,
+            "t": "The phylogenetic position of the Yunxian cranium elucidates the origin of Homo longi and the Denisovans",
+            "j": "Science 389, 1320–1324",
+            "d": "10.1126/science.ado9202"
+          },
+          {
+            "a": "Rao et al.",
+            "y": 2026,
+            "t": "Ancient proteins identify various Denisovan remains from Southwest China",
+            "j": "Nature",
+            "d": "10.1038/s41586-026-10976-9"
+          },
+          {
+            "a": "Ruan et al.",
+            "y": 2026,
+            "t": "Denisovans from southwestern China and their subsistence strategies",
+            "j": "Nature",
+            "d": "10.1038/s41586-026-10997-4"
+          }
+        ]
+      },
+      "val_time": 0.1
+    },
+    {
+      "id": "flores",
+      "clado": "homo",
+      "nombre": "Homo floresiensis",
+      "anos": "50 ka",
+      "ubicacion": "Indonesia",
+      "holo": "LB1",
+      "datacion": "U-Series",
+      "cc": 417,
+      "dieta": "Caza",
+      "herramientas": "Líticas",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Homo_floresiensis_skull_-_Naturmuseum_Senckenberg_-_DSC02091.JPG/800px-Homo_floresiensis_skull_-_Naturmuseum_Senckenberg_-_DSC02091.JPG",
+      "mapa": "indonesia",
+      "descripcion": "Homo floresiensis, el 'Hobbit', fue descubierto en 2004 por Morwood et al. en la cueva Liang Bua (isla de Flores, Indonesia) y su publicación provocó una de las mayores controversias de la paleoantropología del siglo XXI. Con solo ~1 m de altura y un cerebro de 417 cc —tamaño comparable al de Au. africanus— fabricaba y usaba herramientas líticas para cazar Stegodon (elefante enano) y otros animales de la fauna endémica insular. La hipótesis más aceptada es el enanismo insular a partir de H. erectus llegado a la isla: en entornos insulares con recursos limitados y sin grandes depredadores, la reducción corporal es una ventaja evolutiva bien documentada en otros mamíferos. La hipótesis alternativa de que LB1 era un H. sapiens con microcefalia patológica fue descartada por el análisis de LB6 (un segundo individuo de tamaño igualmente reducido). La morfología de la muñeca y del pie sugieren a algunos investigadores un ancestro más primitivo que H. erectus, posiblemente una especie que salió de África antes del propio erectus.",
+      "experto": {
+        "descripcion_tecnica": "LB1: Cc 417 cc. Estatura ~1 m. Pie muy largo relativo a la pierna (ratio inusual). Muñeca con morfología plesiomorfa (no-sapiens, no-erectus). Sin mentón. Dientes pequeños.",
+        "debate": "Enanismo insular vs. microcefalia patológica: el análisis de LB6 (segundo individuo de tamaño similar) zanjo en favor del enanismo insular. ¿Descendiente de H. erectus o de un Homo más primitivo? La morfología de la muñeca y el escafoides sugieren un linaje pre-erectus.",
+        "anatomia_craneal": "Cc 417 cc. Cara ortognata. Sin toro supraorbitario marcado. Morfología cerebral compleja para su tamaño.",
+        "anatomia_postcraneal": "Extremidades cortas. Pie largo (ratio pie/pierna inusual). Muñeca con morfología plesiomorfa.",
+        "paleoecologia": "Isla de Flores: fauna endémica (Stegodon, varano de Komodo, aves gigantes). Enanismo insular documentado en múltiples linajes.",
+        "cultura": "Industria lítica compleja: lascas, puntas retocadas. Posible uso del fuego (debatido para Liang Bua).",
+        "referencias": [
+          {
+            "a": "Brown et al.",
+            "y": 2004,
+            "t": "A new small-bodied hominin from the Late Pleistocene of Flores, Indonesia",
+            "j": "Nature",
+            "d": "10.1038/nature02999"
+          },
+          {
+            "a": "Argue et al.",
+            "y": 2017,
+            "t": "The affinities of Homo floresiensis based on phylogenetic analyses of cranial, dental, and postcranial characters",
+            "j": "J Hum Evol",
+            "d": "10.1016/j.jhevol.2017.02.006"
+          }
+        ]
+      },
+      "val_time": 0.05
+    },
+    {
+      "id": "luzon",
+      "clado": "homo",
+      "nombre": "Homo luzonensis",
+      "anos": "67 ka",
+      "ubicacion": "Filipinas",
+      "holo": "Callao",
+      "datacion": "U-Series",
+      "cc": null,
+      "dieta": "Omnívora",
+      "herramientas": "Piedra",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Callao_Man_metatarsal.jpg/800px-Callao_Man_metatarsal.jpg",
+      "mapa": "filipinas",
+      "descripcion": "Homo luzonensis fue descubierta en 2019 por Detroit et al. a partir de 13 fragmentos óseos (dientes y falanges) de al menos tres individuos de la cueva Callao (isla de Luzón, Filipinas), datados en ~67 ka. La especie plantea preguntas similares a H. floresiensis: ¿cómo llegó un homínino a una isla que nunca estuvo conectada por tierra firme al continente asiático? Ello implica cruce marítimo —accidental o intencional— hace más de 67.000 años. Las falanges manuales y pedales son notablemente curvadas, rasgo primitivo asociado al arborealismo, pero los premolares muestran una morfología multiradicular única no vista en ningún otro Homo conocido. Esta combinación de primitivo y derivado la sitúa junto a floresiensis como ejemplo de la inesperada diversidad hominina insular del Pleistoceno tardío en el sudeste asiático, sugiriendo múltiples colonizaciones insulares independientes por linajes distintos.",
+      "experto": {
+        "descripcion_tecnica": "Falanges curvadas (primitivas). Premolares multiradiculares (únicos en el género Homo). Metatarso con morfología derivada. Material muy fragmentario: solo dientes y falanges de tres individuos.",
+        "debate": "¿Convergencia evolutiva con floresiensis (enanismo insular independiente) o descenso de un Homo más primitivo que llegó a Asia antes que H. erectus? La morfología primitiva de las falanges y los premolares multiradiculares apuntan a un linaje de origen muy antiguo.",
+        "anatomia_craneal": "Desconocida. Sin restos craneales recuperados hasta la fecha.",
+        "anatomia_postcraneal": "Falanges curvadas sugestivas de arborealismo. Metatarso con morfología derivada.",
+        "paleoecologia": "Isla de Luzón: ecosistema insular tropical. Acceso imposible sin cruce marítimo (nunca hubo puente terrestre).",
+        "cultura": "Herramientas líticas simples asociadas al depósito de la cueva Callao.",
+        "referencias": [
+          {
+            "a": "Detroit et al.",
+            "y": 2019,
+            "t": "A new species of Homo from the Late Pleistocene of the Philippines",
+            "j": "Nature",
+            "d": "10.1038/s41586-019-1067-9"
+          },
+          {
+            "a": "Ingicco et al.",
+            "y": 2018,
+            "t": "Earliest known hominin activity in the Philippines by 709 thousand years ago",
+            "j": "Nature",
+            "d": "10.1038/s41586-018-0072-8"
+          }
+        ]
+      },
+      "val_time": 0.06
+    },
+    {
+      "id": "longi",
+      "clado": "homo",
+      "nombre": "Homo longi",
+      "anos": "146 ka",
+      "ubicacion": "China",
+      "holo": "Harbin",
+      "datacion": "U-Series",
+      "cc": 1420,
+      "dieta": "Omnívora",
+      "herramientas": "MSA",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Homo_longi_holotype.jpg/800px-Homo_longi_holotype.jpg",
+      "mapa": "china",
+      "descripcion": "Homo longi ('hombre Dragón') fue descrito en 2021 por Ji et al. a partir del cráneo de Harbin, en el noreste de China. El cráneo fue hallado en 1933 durante la construcción de un puente sobre el río Songhua y permaneció oculto durante décadas antes de ser entregado a los investigadores. Presenta una capacidad craneal aproximada de 1420 cc, un arco superciliar muy robusto, una cara ancha y una combinación de rasgos arcaicos y derivados. Su edad publicada es de al menos 146 ka, no una fecha puntual exacta. Los estudios proteómicos y mitocondriales de 2025 vinculan sólidamente al individuo con una población denisovana: se recuperaron 95 proteínas endógenas, tres variantes aminoacídicas derivadas denisovanas y ADN mitocondrial denisovano del cálculo dental. Las hipótesis filogenéticas originales de 2021 y las propuestas posteriores deben distinguirse de esta identificación biomolecular. La delimitación de Homo longi y sus posibles sinonimias con otros nombres asiáticos continúan sometidas a revisión.",
+      "experto": {
+        "descripcion_tecnica": "Cc ~1420 cc. Cráneo masivo. Arco superciliar enorme. Cara extremadamente ancha. Órbitas grandes cuadrangulares. Sin moño occipital. Frente más elevada que en heidelbergensis.",
+        "debate": "Los análisis publicados en 2025 vinculan biomolecularmente el cráneo de Harbin con una población denisovana: se recuperaron 95 proteínas endógenas con tres variantes derivadas denisovanas y ADN mitocondrial denisovano del cálculo dental. La atribución del individuo está sólidamente respaldada. La delimitación del clado y la posible sinonimia entre Homo longi, Homo juluensis y otros nombres asiáticos continúan sometidas a revisión, incluyendo análisis filogenéticos publicados en 2025 y 2026.",
+        "anatomia_craneal": "Cc ~1420 cc. Masivo. Arco superciliar enorme. Cara muy ancha. Sin moño occipital.",
+        "anatomia_postcraneal": "No recuperada hasta la fecha.",
+        "paleoecologia": "Noreste de China (Manchuria), en el Pleistoceno Medio tardío. La edad publicada del cráneo es de al menos 146 ka. Las reconstrucciones ambientales regionales deben distinguirse del contexto original del espécimen, recuperado ex situ.",
+        "cultura": "Ninguna atribuida directamente al espécimen.",
+        "referencias": [
+          {
+            "a": "Ji et al.",
+            "y": 2021,
+            "t": "Late Middle Pleistocene Harbin cranium represents a new Homo species",
+            "j": "Innovation",
+            "d": "10.1016/j.xinn.2021.100132"
+          },
+          {
+            "a": "Ni et al.",
+            "y": 2021,
+            "t": "Massive cranium from Harbin in northeastern China establishes a new Middle Pleistocene human lineage",
+            "j": "Innovation",
+            "d": "10.1016/j.xinn.2021.100130"
+          },
+          {
+            "a": "Fu et al.",
+            "y": 2025,
+            "t": "The proteome of the late Middle Pleistocene Harbin individual",
+            "j": "Science 389, 704–707",
+            "d": "10.1126/science.adu9677"
+          },
+          {
+            "a": "Fu et al.",
+            "y": 2025,
+            "t": "Denisovan mitochondrial DNA from dental calculus of the >146,000-year-old Harbin cranium",
+            "j": "Cell 188, 3919–3926.e9",
+            "d": "10.1016/j.cell.2025.05.040"
+          },
+          {
+            "a": "Feng et al.",
+            "y": 2025,
+            "t": "The phylogenetic position of the Yunxian cranium elucidates the origin of Homo longi and the Denisovans",
+            "j": "Science 389, 1320–1324",
+            "d": "10.1126/science.ado9202"
+          }
+        ]
+      },
+      "val_time": 0.14
+    },
+    {
+      "id": "sapiens",
+      "clado": "homo",
+      "nombre": "Homo sapiens",
+      "anos": "300 ka",
+      "ubicacion": "Global",
+      "holo": "N/A",
+      "datacion": "Múltiples",
+      "cc": 1400,
+      "dieta": "Omnívora",
+      "herramientas": "Todas las industrias (MSA→actual)",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Reconstruction_of_early_Homo_Sapiens.jpg/800px-Reconstruction_of_early_Homo_Sapiens.jpg",
+      "mapa": "global",
+      "descripcion": "Homo sapiens es la única especie viva del género Homo y la única superviviente de una diversidad hominina que incluía al menos otras cuatro especies simultáneas hace 100.000 años (neandertales, denisovanos, floresiensis, luzonensis). Los fósiles más antiguos atribuidos a H. sapiens proceden de Jebel Irhoud (Marruecos, ~315 ka, Hublin et al. 2017), lo que sitúa el origen de la especie en un proceso panafricano multipoblacional, no en un único 'Jardín del Edén' geográfico. Las características diagnósticas incluyen un cráneo globular con bóveda alta, mentón óseo (sínfisis mandibular protuberante, único en el género Homo), reducción de los arcos superciliares y cara verticalizada. La expansión fuera de África es múltiple: existe una propuesta controvertida de salidas tempranas a 210 ka (Apidima, Grecia; Harvati et al. 2019, DOI 10.1038/s41586-019-1396-2), aunque esta identificación no es universalmente aceptada, y flujos posteriores más exitosos a ~70–50 ka que colonizaron Eurasia, Australia, América y finalmente todas las islas habitables del planeta. El pensamiento simbólico acumulativo y la tecnología culturalmente transmitida son las claves de esta expansión sin precedentes en la historia de los primates.",
+      "experto": {
+        "descripcion_tecnica": "Cc media ~1350–1400 cc (alta variabilidad: 1100–1800 cc). Cráneo globular. Mentón óseo (protuberancia mentalis). Cara pequeña y verticalizada. Frente vertical. Sin toro supraorbitario continuo.",
+        "debate": "El modelo 'Out of Africa' único ha sido reemplazado por un origen multipoblacional panafricano con redes de intercambio génico entre poblaciones africanas dispersas. La mezcla con arcaicos (1–4% neandertal, 4–6% denisovano en melanesios) añade complejidad al modelo. Ji et al. (2021) proponen que H. longi (cráneo de Harbin) podría ser el linaje hermano más próximo a sapiens, desplazando a los neandertales de ese lugar; hipótesis activa pendiente de validación.",
+        "anatomia_craneal": "Cráneo globular. Cc media ~1350–1400 cc. Frente vertical. Mentón. Sin toro supraorbitario continuo.",
+        "anatomia_postcraneal": "Más grácil que cualquier otro Homo. Bípedos obligados con arco plantar eficiente. Proporciones de extremidades adaptadas a distintos climas.",
+        "paleoecologia": "Global: desde el Ártico hasta los desiertos tropicales. Domesticación de plantas y animales desde ~12 ka. Transformación de todos los ecosistemas del planeta.",
+        "cultura": "Todos los estadios tecnoculturales conocidos en el registro (categorías descriptivas, no estadios de progreso obligatorio): MSA → LSA → Neolítico → Edad del Bronce → Industrial → Digital. Blombos Cave (~100 ka) documenta ocre grabado, cuentas de concha y tecnología simbólica; Apollo 11 Cave (~25 ka) aporta el arte mueble más antiguo conocido de África.",
+        "referencias": [
+          {
+            "a": "Hublin et al.",
+            "y": 2017,
+            "t": "New fossils from Jebel Irhoud, Morocco and the pan-African origin of Homo sapiens",
+            "j": "Nature",
+            "d": "10.1038/nature22336"
+          },
+          {
+            "a": "Stringer",
+            "y": 2016,
+            "t": "The origin and evolution of Homo sapiens",
+            "j": "Phil Trans R Soc B",
+            "d": "10.1098/rstb.2015.0237"
+          },
+          {
+            "a": "Pagani et al.",
+            "y": 2016,
+            "t": "Genomic analyses inform on migration events during the peopling of Eurasia",
+            "j": "Nature",
+            "d": "10.1038/nature19792"
+          },
+          {
+            "a": "Henshilwood et al.",
+            "y": 2002,
+            "t": "Emergence of modern human behaviour: Middle Stone Age engravings from South Africa",
+            "j": "Science",
+            "d": "10.1126/science.1067575"
+          },
+          {
+            "a": "Wendt",
+            "y": 1976,
+            "t": "'Art mobilier' from the Apollo 11 Cave, South West Africa",
+            "j": "South African Archaeological Bulletin",
+            "d": ""
+          },
+          {
+            "a": "Harvati et al.",
+            "y": 2019,
+            "t": "Apidima Cave fossils provide earliest evidence of Homo sapiens in Eurasia",
+            "j": "Nature",
+            "d": "10.1038/s41586-019-1396-2"
+          }
+        ]
+      },
+      "val_time": 0
+    }
+  ],
+  "chronology": {
+    "schema": "paleobot-a3-chronology-registry-v1",
+    "status": "STAGED_NOT_DEPLOYABLE",
+    "provenance": {
+      "base_r92_sha256": "b5223e16a72ec3135c3770166b6a6717ecd2628f7cf31eca19248f8b579a22c8",
+      "base_core_sha256": "ec8fa7f83e8ef7565336822108a048c94a191d1f8cb3a828064b3953d4523ffd",
+      "a2_package_sha256": "994610ad0d8d6084020eb809fd1af274f0551d9e1eb5af6a0d363a873f9bab7f",
+      "a2_chronology_sha256": "a4492a1ff20d97539e9ec9d1841b2f2e8041d15205e81ceee33960d28f86cea5",
+      "a2_patch_sha256": "7c575845854e75467a1be17823a5a7b9da0fcbb6d290afb5085f974ebaa00296",
+      "candidate_core_sha256": "cfbcf1ca45ecf7f0bbf4c9bd6fbcfc9e852a99684e5e67bd2eb357e8b1645d3b",
+      "r05_t1_parent": "A3-C6.2",
+      "r05_t1_reviewed_count": 10,
+      "r05_t1_status": "FORMAL_BATTERY_PASS__DETERMINISTIC_PACKAGE_PENDING_NO_GO",
+      "r05_t2_parent": "A3-C6.3.1/R05-T1",
+      "r05_t2_reviewed_count": 10,
+      "r05_t2_status": "CHRONOLOGY_CONTRACTS_PASS__NO_FALSE_OCCUPANCY_OR_COEXISTENCE_PASS__CORE_50_SCIENTIFIC_INTEGRITY_PASS__INHERITED_REGRESSIONS_ADJUDICATED_PASS__R05_T2_FORMAL_BATTERY_PASS__DETERMINISTIC_ZIP_PENDING_NO_GO",
+      "r05_t3_parent": "A3-C6.3.2/R05-T2",
+      "r05_t3_reviewed_count": 10,
+      "r05_t3_status": "CHRONOLOGY_CONTRACTS_PASS__NO_FALSE_OCCUPANCY_OR_COEXISTENCE_PASS__CORE_50_SCIENTIFIC_INTEGRITY_PASS__INHERITED_REGRESSIONS_ADJUDICATED_PASS__R05_T3_FORMAL_BATTERY_PASS__DETERMINISTIC_ZIP_PENDING_NO_GO",
+      "r05_t4_parent": "A3-C6.3.3/R05-T3",
+      "r05_t4_reviewed_count": 10,
+      "r05_t4_status": "CHRONOLOGY_CONTRACTS_PASS__NO_FALSE_OCCUPANCY_OR_COEXISTENCE_PASS__CORE_50_SCIENTIFIC_INTEGRITY_PASS__INHERITED_REGRESSIONS_ADJUDICATED_PASS__R05_T4_FORMAL_BATTERY_PASS__DETERMINISTIC_ZIP_PENDING_NO_GO",
+      "r05_t5_parent": "A3-C6.3.4/R05-T4",
+      "r05_t5_reviewed_count": 5,
+      "r05_t5_status": "CHRONOLOGY_CONTRACTS_PASS__NO_FALSE_OCCUPANCY_OR_COEXISTENCE_PASS__CORE_50_SCIENTIFIC_INTEGRITY_PASS__INHERITED_REGRESSIONS_ADJUDICATED_PASS__R05_T5_FORMAL_BATTERY_PASS__DETERMINISTIC_ZIP_PENDING_NO_GO"
+    },
+    "coverage": {
+      "reviewed_ids": [
+        "rhodesiensis",
+        "omo_i",
+        "penghu",
+        "denisova",
+        "longi",
+        "proconsul",
+        "morotopithecus",
+        "dryopithecus",
+        "pierolapithecus",
+        "anoiapithecus",
+        "nakalipithecus",
+        "chororapithecus",
+        "graecopithecus",
+        "sahel",
+        "orrorin",
+        "kadabba",
+        "ramidus",
+        "anamensis",
+        "afarensis",
+        "deyiremeda",
+        "bahrelghazali",
+        "kenyanthropus",
+        "africanus",
+        "prometheus",
+        "garhi",
+        "sediba",
+        "aethiopicus",
+        "boisei",
+        "robustus",
+        "habilis",
+        "rudolfensis",
+        "ergaster",
+        "georgicus",
+        "erectus",
+        "antecessor",
+        "cepranensis",
+        "heidelbergensis",
+        "bodoensis",
+        "helmei",
+        "daliensis",
+        "juluensis",
+        "soloensis",
+        "gautengensis",
+        "naledi",
+        "jebel_irhoud",
+        "idaltu",
+        "neander",
+        "flores",
+        "luzon",
+        "sapiens"
+      ],
+      "legacy_unreviewed_ids": [],
+      "canonical_count": 50,
+      "r05_t1_ids": [
+        "proconsul",
+        "morotopithecus",
+        "dryopithecus",
+        "pierolapithecus",
+        "anoiapithecus",
+        "nakalipithecus",
+        "chororapithecus",
+        "graecopithecus",
+        "sahel",
+        "orrorin"
+      ],
+      "r05_t2_ids": [
+        "kadabba",
+        "ramidus",
+        "anamensis",
+        "afarensis",
+        "deyiremeda",
+        "bahrelghazali",
+        "kenyanthropus",
+        "africanus",
+        "prometheus",
+        "garhi"
+      ],
+      "r05_t3_ids": [
+        "sediba",
+        "aethiopicus",
+        "boisei",
+        "robustus",
+        "habilis",
+        "rudolfensis",
+        "ergaster",
+        "georgicus",
+        "erectus",
+        "antecessor"
+      ],
+      "r05_t4_ids": [
+        "cepranensis",
+        "heidelbergensis",
+        "bodoensis",
+        "helmei",
+        "daliensis",
+        "juluensis",
+        "soloensis",
+        "gautengensis",
+        "naledi",
+        "jebel_irhoud"
+      ],
+      "r05_t5_ids": [
+        "idaltu",
+        "neander",
+        "flores",
+        "luzon",
+        "sapiens"
+      ]
+    },
+    "records": {
+      "rhodesiensis": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "Kabwe 1: 299 ± 25 ka (media ± 2σ)",
+        "estimate_ka": 299,
+        "uncertainty": {
+          "value_ka": 25,
+          "definition": "mean ± 2σ"
+        },
+        "dating_relation": "direct",
+        "method": "Datación directa del cráneo, análisis U-series/ESR; estimación combinada publicada",
+        "source_ids": [
+          "grun2020"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "rhodesiensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.4,
+        "legacy_projectable": false,
+        "semantic_scope": "specimen_age",
+        "status": "PROPOSED_NOT_RUNTIME"
+      },
+      "omo_i": {
+        "kind": "minimum_age",
+        "entity_type": "specimen",
+        "display": "Omo I: edad mínima inferida de 233 ± 22 ka",
+        "estimate_ka": 233,
+        "uncertainty": {
+          "value_ka": 22,
+          "definition": "reported ±; confidence level not independently resolved"
+        },
+        "dating_relation": "indirect",
+        "method": "Correlación geoquímica del tefra KHS suprayacente con la erupción de Shala; 40Ar/39Ar en depósitos volcánicos",
+        "source_ids": [
+          "vidal2022"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "omo_i",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.195,
+        "legacy_projectable": false,
+        "semantic_scope": "specimen_age",
+        "status": "PROPOSED_NOT_RUNTIME"
+      },
+      "penghu": {
+        "kind": "alternative_intervals",
+        "entity_type": "specimen",
+        "display": "Penghu 1: 130–190 ka o 10–70 ka (ventanas alternativas)",
+        "intervals_ka": [
+          [
+            10,
+            70
+          ],
+          [
+            130,
+            190
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Geoquímica, bioestratigrafía y cambios del nivel del mar; datación directa por uranio no satisfactoria",
+        "source_ids": [
+          "tsutaya2025"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "penghu",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.13,
+        "legacy_projectable": false,
+        "semantic_scope": "specimen_age",
+        "status": "PROPOSED_NOT_RUNTIME"
+      },
+      "denisova": {
+        "kind": "unknown",
+        "entity_type": "lineage",
+        "display": "Cronología del linaje pendiente de revisión independiente",
+        "dating_relation": "mixed",
+        "method": "Evidencia genómica, fósil y contextual heterogénea; no se infiere un rango a partir de un solo espécimen",
+        "source_ids": [
+          "tsutaya2025",
+          "fu_proteome2025",
+          "fu_mtdna2025"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "denisova",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.1,
+        "legacy_projectable": false,
+        "semantic_scope": "lineage_chronology",
+        "status": "PROPOSED_NOT_RUNTIME"
+      },
+      "longi": {
+        "kind": "minimum_age",
+        "entity_type": "specimen",
+        "display": "Harbin: al menos 146 ka",
+        "estimate_ka": 146,
+        "dating_relation": "indirect",
+        "method": "Edad mínima contextual publicada para el cráneo; no equivale a una fecha puntual ni a duración de especie",
+        "source_ids": [
+          "fu_proteome2025",
+          "fu_mtdna2025"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "longi",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.14,
+        "legacy_projectable": false,
+        "semantic_scope": "specimen_age",
+        "status": "PROPOSED_NOT_RUNTIME"
+      },
+      "proconsul": {
+        "kind": "unknown",
+        "entity_type": "taxon",
+        "display": "Proconsul sensu stricto: la cronología agregada heredada no se traslada como intervalo único tras la revisión taxonómica de Kisingiri/Ekembo",
+        "dating_relation": "mixed",
+        "method": "Revisión taxonómica y geocronológica de conjuntos de Tinderet/Koru frente a Kisingiri; no se infiere una duración taxonómica continua",
+        "source_ids": [
+          "mcnulty2015"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "proconsul",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 23,
+        "legacy_projectable": false,
+        "semantic_scope": "taxon_chronology_unresolved",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "morotopithecus": {
+        "kind": "unknown",
+        "entity_type": "taxon",
+        "display": "Moroto II: >20,6 Ma según 40Ar/39Ar; persiste una propuesta bioestratigráfica ~17,5 Ma; no reconciliado como intervalo único",
+        "dating_relation": "mixed",
+        "method": "Cronología de Moroto II con resultados radiométricos y correlaciones faunísticas discordantes; se conserva la discrepancia en vez de fabricar un rango",
+        "source_ids": [
+          "gebo1997",
+          "maclatchy2019"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "morotopithecus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 20,
+        "legacy_projectable": false,
+        "semantic_scope": "locality_age_disputed",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "dryopithecus": {
+        "kind": "closed_interval",
+        "entity_type": "taxon",
+        "display": "Dryopithecus fontani, localidad tipo Saint-Gaudens: ca. 12,5–11,1 Ma (correlación MN7+8; precisión mayor no justificada)",
+        "intervals_ka": [
+          [
+            11100,
+            12500
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Bioestratigrafía de la localidad tipo Saint-Gaudens; intervalo de correlación MN7+8",
+        "source_ids": [
+          "casanovasvilar2011"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "dryopithecus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 12,
+        "legacy_projectable": false,
+        "semantic_scope": "type_locality_age_window",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "pierolapithecus": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "IPS 21350 (Barranc de Can Vila 1): edad estimada ~11,9 Ma",
+        "estimate_ka": 11900,
+        "dating_relation": "indirect",
+        "method": "Magnetoestratigrafía y bioestratigrafía de la serie local de Abocador de Can Mata/Barranc de Can Vila 1",
+        "source_ids": [
+          "casanovasvilar2011",
+          "alba2012"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "pierolapithecus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 12.5,
+        "legacy_projectable": false,
+        "semantic_scope": "specimen_context_age",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "anoiapithecus": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "IPS 43000 (ACM/C3-Aj): ~11,9 Ma, subchron C5r.3r",
+        "estimate_ka": 11900,
+        "dating_relation": "indirect",
+        "method": "Magnetoestratigrafía de la serie ACM y bioestratigrafía local",
+        "source_ids": [
+          "moyasola2009",
+          "casanovasvilar2011"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "anoiapithecus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 11.9,
+        "legacy_projectable": false,
+        "semantic_scope": "specimen_context_age",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "nakalipithecus": {
+        "kind": "closed_interval",
+        "entity_type": "taxon",
+        "display": "Nakalipithecus nakayamai, Upper Member de la Formación Nakali: 9,9–9,8 Ma",
+        "intervals_ka": [
+          [
+            9800,
+            9900
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Edad geológica publicada del horizonte fosilífero de Nakali; intervalo de ocurrencia local, no duración taxonómica",
+        "source_ids": [
+          "kunimatsu2007"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "nakalipithecus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 9.9,
+        "legacy_projectable": false,
+        "semantic_scope": "local_fossil_occurrence_window",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "chororapithecus": {
+        "kind": "point_estimate",
+        "entity_type": "taxon",
+        "display": "Chororapithecus abyssinicus: fósiles del horizonte revisado en torno a ~8,0 Ma",
+        "estimate_ka": 8000,
+        "dating_relation": "indirect",
+        "method": "Geología de campo, geoquímica, magnetoestratigrafía y geocronología radioisotópica de la Formación Chorora",
+        "source_ids": [
+          "katoh2016"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "chororapithecus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 8,
+        "legacy_projectable": false,
+        "semantic_scope": "local_fossil_context_point_estimate",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "graecopithecus": {
+        "kind": "unknown",
+        "entity_type": "taxon",
+        "display": "Graecopithecus: ocurrencias publicadas en Pyrgos (~7,175 Ma) y Azmaka (~7,24 Ma); no se convierten en una duración continua",
+        "dating_relation": "indirect",
+        "method": "Dos ocurrencias de distinta localidad con edades publicadas; el contrato v1 no las fusiona en un intervalo continuo ni las trata como alternativas del mismo espécimen",
+        "source_ids": [
+          "fuss2017",
+          "bohme2017"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "graecopithecus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 7.2,
+        "legacy_projectable": false,
+        "semantic_scope": "multiple_occurrences_not_collapsed",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "sahel": {
+        "kind": "closed_interval",
+        "entity_type": "taxon",
+        "display": "Sahelanthropus tchadensis, Toros-Menalla: 7,2–6,8 Ma para los sedimentos que contienen los fósiles",
+        "intervals_ka": [
+          [
+            6800,
+            7200
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Datación cosmogénica 10Be/9Be de la unidad sedimentaria fosilífera, contrastada con biochronología",
+        "source_ids": [
+          "lebatard2008",
+          "vignaud2002"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "sahel",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 7,
+        "legacy_projectable": false,
+        "semantic_scope": "fossil_bearing_context_window",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "orrorin": {
+        "kind": "point_estimate",
+        "entity_type": "taxon",
+        "display": "Orrorin tugenensis, Formación Lukeino: edad aproximada ~6,0 Ma para los restos homininos publicados",
+        "estimate_ka": 6000,
+        "dating_relation": "indirect",
+        "method": "Determinaciones radioisotópicas de lavas y cristales asociados a la Formación Lukeino; se conserva como estimación aproximada, no como duración",
+        "source_ids": [
+          "pickfordsenut2001"
+        ],
+        "schema": "paleobot-chronology-v1",
+        "id": "orrorin",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 6,
+        "legacy_projectable": false,
+        "semantic_scope": "fossil_context_point_estimate",
+        "status": "R05_T1_REVIEWED_NO_GO"
+      },
+      "kadabba": {
+        "kind": "closed_interval",
+        "entity_type": "taxon",
+        "display": "Ardipithecus kadabba: registro fósil publicado del Middle Awash ca. 5,8–5,2 Ma; no representa duración taxonómica continua",
+        "intervals_ka": [
+          [
+            5200,
+            5800
+          ]
+        ],
+        "dating_relation": "mixed",
+        "method": "Contexto geocronológico y bioestratigráfico de las colecciones del Middle Awash asignadas a Ardipithecus kadabba; se conserva la envolvente de ocurrencias publicadas, no una ocupación continua",
+        "source_ids": [
+          "haile_selassie2001"
+        ],
+        "semantic_scope": "published_fossil_occurrence_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "kadabba",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 5.8,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "ramidus": {
+        "kind": "point_estimate",
+        "entity_type": "population",
+        "display": "Ardipithecus ramidus, conjunto de Aramis: ~4,4 Ma para los sedimentos fosilíferos",
+        "estimate_ka": 4400,
+        "dating_relation": "indirect",
+        "method": "Contexto estratigráfico del miembro inferior de Aramis, constreñido por niveles de toba correlacionados y datados mediante 40Ar/39Ar",
+        "source_ids": [
+          "woldegabriel2009",
+          "white2009"
+        ],
+        "semantic_scope": "aramis_fossil_assemblage_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "ramidus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 4.4,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "anamensis": {
+        "kind": "closed_interval",
+        "entity_type": "taxon",
+        "display": "Australopithecus anamensis: ocurrencias fósiles asignadas ca. 4,2–3,8 Ma; envolvente del registro publicado, no duración ni presencia continua",
+        "intervals_ka": [
+          [
+            3800,
+            4200
+          ]
+        ],
+        "dating_relation": "mixed",
+        "method": "Síntesis de ocurrencias asignadas en Kanapoi/Allia Bay y del cráneo MRD de Woranso-Mille con control geocronológico; no se infiere continuidad entre localidades",
+        "source_ids": [
+          "leakey1995",
+          "haile_selassie2019"
+        ],
+        "semantic_scope": "published_assigned_fossil_record_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "anamensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 4.2,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "afarensis": {
+        "kind": "closed_interval",
+        "entity_type": "taxon",
+        "display": "Australopithecus afarensis: ocurrencias bien constreñidas ca. 3,77–2,95 Ma; envolvente del registro fósil seleccionado, no duración taxonómica continua",
+        "intervals_ka": [
+          [
+            2950,
+            3770
+          ]
+        ],
+        "dating_relation": "mixed",
+        "method": "Límite antiguo apoyado por los depósitos fosilíferos de Laetoli datados por K–Ar y límite reciente por la última aparición actualmente documentada; la envolvente no prueba ocupación continua",
+        "source_ids": [
+          "leakey1976_laetoli",
+          "ledigeraru2025"
+        ],
+        "semantic_scope": "published_fossil_record_envelope",
+        "schema": "paleobot-chronology-v1",
+        "id": "afarensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 3.9,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "deyiremeda": {
+        "kind": "closed_interval",
+        "entity_type": "taxon",
+        "display": "Australopithecus deyiremeda, Woranso-Mille: depósitos fosilíferos ca. 3,5–3,3 Ma",
+        "intervals_ka": [
+          [
+            3300,
+            3500
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Edad de los depósitos de Woranso-Mille que contienen el material diagnóstico; intervalo contextual, no duración taxonómica",
+        "source_ids": [
+          "haile_selassie2015"
+        ],
+        "semantic_scope": "fossil_bearing_deposit_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "deyiremeda",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 3.4,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "bahrelghazali": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "KT12/H1 (Abel), contexto del holotipo: 3,58 ± 0,27 Ma (incertidumbre publicada)",
+        "estimate_ka": 3580,
+        "uncertainty": {
+          "value_ka": 270,
+          "definition": "± publicado; nivel de confianza no reinterpretado"
+        },
+        "dating_relation": "indirect",
+        "method": "Datación cosmogénica authigenic 10Be/9Be de una pelita situada dentro del nivel sedimentario que contiene el holotipo KT12/H1",
+        "source_ids": [
+          "lebatard2008",
+          "brunet1995"
+        ],
+        "semantic_scope": "holotype_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "bahrelghazali",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 3.5,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "kenyanthropus": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "KNM-WT 40000, holotipo de Kenyanthropus platyops: edad contextual ~3,5 Ma",
+        "estimate_ka": 3500,
+        "dating_relation": "indirect",
+        "method": "Posición estratigráfica del holotipo en la secuencia de Lomekwi y correlación con niveles volcánicos regionales; no se agregan otros ejemplares en una duración taxonómica",
+        "source_ids": [
+          "leakey2001"
+        ],
+        "semantic_scope": "holotype_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "kenyanthropus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 3.5,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "africanus": {
+        "kind": "unknown",
+        "entity_type": "taxon",
+        "display": "Australopithecus africanus: cronología multi-yacimiento no reducible a un único intervalo aceptado; Sterkfontein conserva discrepancias metodológicas relevantes",
+        "dating_relation": "mixed",
+        "method": "Revisión de cronologías de depósitos sudafricanos y contraste entre datación cosmogénica, bioestratigrafía y arquitectura estratigráfica; no se colapsan sitios ni métodos en una duración única",
+        "source_ids": [
+          "granger2022",
+          "frost2022"
+        ],
+        "semantic_scope": "multi_site_taxon_chronology_unresolved",
+        "schema": "paleobot-chronology-v1",
+        "id": "africanus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 2.5,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "prometheus": {
+        "kind": "unknown",
+        "entity_type": "specimen",
+        "display": "StW 573 (“Little Foot”): edad y atribución taxonómica no colapsadas; existe una datación cosmogénica de 3,67 ± 0,16 Ma y cronologías alternativas en la literatura",
+        "dating_relation": "mixed",
+        "method": "Contraste entre datación cosmogénica de enterramiento del depósito de StW 573 y propuestas cronológicas alternativas; la etiqueta Australopithecus prometheus no convierte el resultado en duración de taxón",
+        "source_ids": [
+          "granger2015",
+          "frost2022"
+        ],
+        "semantic_scope": "specimen_chronology_disputed",
+        "schema": "paleobot-chronology-v1",
+        "id": "prometheus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 3.67,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "garhi": {
+        "kind": "point_estimate",
+        "entity_type": "population",
+        "display": "Australopithecus garhi, conjunto de los Hata beds (Bouri): ~2,5 Ma",
+        "estimate_ka": 2500,
+        "dating_relation": "indirect",
+        "method": "Edad estratigráfica y geocronológica del Hata Member de la Formación Bouri que contiene los restos asignados; estimación contextual, no duración taxonómica",
+        "source_ids": [
+          "asfaw1999",
+          "deheinzelin1999"
+        ],
+        "semantic_scope": "hata_fossil_occurrence_point_estimate",
+        "schema": "paleobot-chronology-v1",
+        "id": "garhi",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 2.5,
+        "legacy_projectable": false,
+        "status": "R05_T2_REVIEWED_NO_GO"
+      },
+      "sediba": {
+        "kind": "point_estimate",
+        "entity_type": "population",
+        "display": "Australopithecus sediba, conjunto de Malapa: 1,977 ± 0,002 Ma",
+        "estimate_ka": 1977,
+        "uncertainty": {
+          "value_ka": 2,
+          "definition": "±0,002 Ma publicado para la edad combinada del depósito fosilífero"
+        },
+        "dating_relation": "indirect",
+        "method": "U-Pb de flowstone, paleomagnetismo y control estratigráfico del nivel que contiene los fósiles de Malapa; fecha del evento deposicional, no duración taxonómica",
+        "source_ids": [
+          "pickering2011"
+        ],
+        "semantic_scope": "malapa_fossil_assemblage_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "sediba",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 1.98,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "aethiopicus": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "Paranthropus aethiopicus, maxila de Upper Ndolanya Beds (Laetoli): ~2,66 Ma",
+        "estimate_ka": 2660,
+        "dating_relation": "indirect",
+        "method": "Contexto geocronológico 40Ar/39Ar de Upper Ndolanya Beds y atribución publicada del espécimen; edad del horizonte/localidad, no duración del taxón",
+        "source_ids": [
+          "deino2011",
+          "harrison2011"
+        ],
+        "semantic_scope": "laetoli_specimen_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "aethiopicus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 2.5,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "boisei": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "OH 5, holotipo de Paranthropus boisei, FLK Bed I (Olduvai): ~1,84 Ma",
+        "estimate_ka": 1840,
+        "dating_relation": "indirect",
+        "method": "Posición estratigráfica de OH 5 en FLK Bed I y marco geocronológico de la península FLK; fecha contextual del holotipo, no rango de P. boisei",
+        "source_ids": [
+          "blumenschine2012",
+          "leakey1959"
+        ],
+        "semantic_scope": "holotype_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "boisei",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 2.3,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "robustus": {
+        "kind": "closed_interval",
+        "entity_type": "taxon",
+        "display": "Paranthropus robustus en Swartkrans: ocurrencias en depósitos datados ~2,19–0,96 Ma; envolvente local, no presencia continua",
+        "intervals_ka": [
+          [
+            960,
+            2190
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Datación cosmogénica de Member 1 y Member 3 de Swartkrans, que contienen fósiles asignados a P. robustus; envolvente del registro local sin inferir ocupación continua",
+        "source_ids": [
+          "gibbon2014",
+          "kuman2021"
+        ],
+        "semantic_scope": "swartkrans_fossil_record_envelope",
+        "schema": "paleobot-chronology-v1",
+        "id": "robustus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 1.8,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "habilis": {
+        "kind": "unknown",
+        "entity_type": "taxon",
+        "display": "Homo habilis: cronología taxonómica no colapsada; los extremos propuestos dependen de atribuciones discutidas (p. ej., A.L. 666-1 y KNM-ER 42703)",
+        "dating_relation": "mixed",
+        "method": "Revisión del hipodigma y de las edades de early Homo; se conserva la incertidumbre de atribución en vez de fabricar un rango único 2,3–1,4 Ma",
+        "source_ids": [
+          "spoor2015",
+          "wood2016"
+        ],
+        "semantic_scope": "taxon_chronology_unresolved",
+        "schema": "paleobot-chronology-v1",
+        "id": "habilis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 2.3,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "rudolfensis": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "KNM-ER 1470, holotipo de Homo rudolfensis: 2,058 ± 0,034 Ma",
+        "estimate_ka": 2058,
+        "uncertainty": {
+          "value_ka": 34,
+          "definition": "±0,034 Ma, estimación del modelo estratigráfico publicada"
+        },
+        "dating_relation": "indirect",
+        "method": "Modelo de edad de alta resolución de Upper Burgi Member con 40Ar/39Ar y magnetoestratigrafía; fecha contextual del holotipo, no duración de H. rudolfensis",
+        "source_ids": [
+          "joordens2013"
+        ],
+        "semantic_scope": "holotype_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "rudolfensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 2.4,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "ergaster": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "KNM-WT 15000 (Nariokotome), habitualmente atribuido a Homo ergaster/erectus: ~1,47 Ma",
+        "estimate_ka": 1470,
+        "dating_relation": "indirect",
+        "method": "Edad estratigráfica revisada del esqueleto KNM-WT 15000; el contrato se refiere al espécimen y no resuelve la delimitación ergaster/erectus",
+        "source_ids": [
+          "ruff_burgess2015",
+          "mcdougall2012"
+        ],
+        "semantic_scope": "nariokotome_specimen_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "ergaster",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 1.8,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "georgicus": {
+        "kind": "unknown",
+        "entity_type": "taxon",
+        "display": "“Homo georgicus”: el paleodeme de Dmanisi está firmemente situado ~1,8 Ma, pero la validez y el alcance del nombre específico no se convierten aquí en un rango taxonómico",
+        "dating_relation": "mixed",
+        "method": "Geocronología y magnetoestratigrafía de Dmanisi combinadas con una taxonomía discutida (H. georgicus frente a early H. erectus); se evita asignar al nombre una duración propia",
+        "source_ids": [
+          "gabunia2000",
+          "ferring2011",
+          "rightmire_lordkipanidze2010"
+        ],
+        "semantic_scope": "taxon_name_chronology_unresolved",
+        "schema": "paleobot-chronology-v1",
+        "id": "georgicus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 1.8,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "erectus": {
+        "kind": "closed_interval",
+        "entity_type": "specimen",
+        "display": "DNH 134 (Drimolen), cráneo con claras afinidades a Homo erectus: ~2,04–1,95 Ma",
+        "intervals_ka": [
+          [
+            1950,
+            2040
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Marco cronológico combinado de Drimolen Main Quarry; intervalo contextual del cráneo DNH 134, no duración global de Homo erectus",
+        "source_ids": [
+          "herries2020"
+        ],
+        "semantic_scope": "dnh134_specimen_context_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "erectus",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 1.5,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "antecessor": {
+        "kind": "closed_interval",
+        "entity_type": "specimen",
+        "display": "ATD6-92, Homo antecessor (Gran Dolina TD6): 772–949 ka tras ESR directo y restricción magnetoestratigráfica",
+        "intervals_ka": [
+          [
+            772,
+            949
+          ]
+        ],
+        "dating_relation": "mixed",
+        "method": "ESR directo sobre el diente ATD6-92, combinado con magnetoestratigrafía de TD6 para restringir la cronología; intervalo del espécimen, no duración taxonómica",
+        "source_ids": [
+          "duval2018"
+        ],
+        "semantic_scope": "directly_dated_tooth_age_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "antecessor",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.85,
+        "legacy_projectable": false,
+        "status": "R05_T3_REVIEWED_NO_GO"
+      },
+      "cepranensis": {
+        "kind": "closed_interval",
+        "entity_type": "specimen",
+        "display": "Ceprano (CE 0001), calvaria asociada a depósitos de MIS 11: ~430–385 ka",
+        "intervals_ka": [
+          [
+            385,
+            430
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Marco multidisciplinar geo-estratigráfico, sedimentológico, palinológico y tafonómico de los sedimentos de Campogrande; intervalo contextual del espécimen, no duración de Homo cepranensis",
+        "source_ids": [
+          "manzi2010"
+        ],
+        "semantic_scope": "ceprano_calvarium_context_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "cepranensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.7,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "heidelbergensis": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "Mandíbula de Mauer, holotipo de Homo heidelbergensis: 609 ± 40 ka",
+        "estimate_ka": 609,
+        "uncertainty": {
+          "value_ka": 40,
+          "definition": "±40 ka, media ponderada publicada para el horizonte de hallazgo"
+        },
+        "dating_relation": "indirect",
+        "method": "ESR/U-series en dientes de mamíferos e infrared radiofluorescence en granos de arena del horizonte de Mauer; edad del nivel tipo, no duración del taxón",
+        "source_ids": [
+          "wagner2010"
+        ],
+        "semantic_scope": "holotype_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "heidelbergensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.5,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "bodoensis": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "Bodo 1, holotipo propuesto de Homo bodoensis: ~640 ± 30 ka",
+        "estimate_ka": 640,
+        "uncertainty": {
+          "value_ka": 30,
+          "definition": "±0,03 Ma publicado para el marco 40Ar/39Ar del Upper Bodo Sand Unit"
+        },
+        "dating_relation": "indirect",
+        "method": "40Ar/39Ar, tefrocronología y bioestratigrafía del Upper Bodo Sand Unit; se fecha el contexto del cráneo Bodo 1 sin convertir la propuesta Homo bodoensis en una duración taxonómica",
+        "source_ids": [
+          "clark1994",
+          "roksandic2022"
+        ],
+        "semantic_scope": "bodo1_holotype_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "bodoensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.6,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "helmei": {
+        "kind": "unknown",
+        "entity_type": "specimen",
+        "display": "Calvaria de Florisbad (holotipo de Homo helmei): cronología no resuelta; 259 ± 35 ka procede de un molar cuya asociación con la calvaria es discutida",
+        "dating_relation": "mixed",
+        "method": "Revisión de los registros de excavación y de la atribución del molar datado por ESR; no se transfiere su edad a la calvaria mientras la asociación individual/estratigráfica siga sin demostrarse",
+        "source_ids": [
+          "berger_hawks2023"
+        ],
+        "semantic_scope": "florisbad_cranium_chronology_unresolved",
+        "schema": "paleobot-chronology-v1",
+        "id": "helmei",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.26,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "daliensis": {
+        "kind": "point_estimate",
+        "entity_type": "specimen",
+        "display": "Cráneo de Dali (Dali 1): edad contextual inferida ~270 ka",
+        "estimate_ka": 270,
+        "dating_relation": "indirect",
+        "method": "Correlación cronoestratigráfica del loess–paleosuelo y la terraza aluvial del lugar de hallazgo; edad inferida del espécimen, no duración de “Homo daliensis”",
+        "source_ids": [
+          "xiao2002",
+          "wu_athreya2013"
+        ],
+        "semantic_scope": "dali_cranium_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "daliensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.26,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "juluensis": {
+        "kind": "closed_interval",
+        "entity_type": "population",
+        "display": "Homininos de Xujiayao, nivel cultural superior: límites bayesianos centrales ~199–138 ka (199 ± 8 / 138 ± 10 ka)",
+        "intervals_ka": [
+          [
+            138,
+            199
+          ]
+        ],
+        "dating_relation": "mixed",
+        "method": "U-series directo en fósiles homininos, ESR/U-series en fauna asociada y modelo bayesiano; el intervalo operativo usa los valores centrales de los límites publicados y conserva sus incertidumbres en el texto, sin representar duración global de Homo juluensis",
+        "source_ids": [
+          "shao2026",
+          "wu_bae2025"
+        ],
+        "semantic_scope": "xujiayao_hominin_upper_layer_context_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "juluensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.18,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "soloensis": {
+        "kind": "closed_interval",
+        "entity_type": "population",
+        "display": "Homo erectus de Ngandong (“soloensis”), bone bed: 117–108 ka",
+        "intervals_ka": [
+          [
+            108,
+            117
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Modelo bayesiano de 52 estimaciones radiométricas y datación U-series/US-ESR de fauna y terrazas asociadas; ventana del bone bed de Ngandong, no duración de una subespecie",
+        "source_ids": [
+          "rizal2020"
+        ],
+        "semantic_scope": "ngandong_hominin_bonebed_context_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "soloensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.112,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "gautengensis": {
+        "kind": "closed_interval",
+        "entity_type": "specimen",
+        "display": "StW 53, holotipo propuesto de Homo gautengensis: infill fosilífero ~1,78–1,49 Ma",
+        "intervals_ka": [
+          [
+            1490,
+            1780
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "Paleomagnetismo y marco geocronológico del StW 53 infill (Member 5A) de Sterkfontein; se fecha el contexto del holotipo propuesto sin validar la duración ni la aceptación de Homo gautengensis",
+        "source_ids": [
+          "curnoe2010",
+          "herries2011"
+        ],
+        "semantic_scope": "stw53_holotype_context_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "gautengensis",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 1.8,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "naledi": {
+        "kind": "closed_interval",
+        "entity_type": "population",
+        "display": "Homo naledi, depósito fosilífero de Dinaledi Chamber: 335–236 ka",
+        "intervals_ka": [
+          [
+            236,
+            335
+          ]
+        ],
+        "dating_relation": "mixed",
+        "method": "OSL de sedimentos, U-Th/paleomagnetismo de flowstones y US-ESR directo en dientes de H. naledi; intervalo deposicional del conjunto Dinaledi",
+        "source_ids": [
+          "dirks2017"
+        ],
+        "semantic_scope": "dinaledi_fossil_depositional_window",
+        "schema": "paleobot-chronology-v1",
+        "id": "naledi",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.3,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "jebel_irhoud": {
+        "kind": "point_estimate",
+        "entity_type": "population",
+        "display": "Jebel Irhoud, conjunto de Homo sapiens y MSA asociado: 315 ± 34 ka",
+        "estimate_ka": 315,
+        "uncertainty": {
+          "value_ka": 34,
+          "definition": "±34 ka, media ponderada TL publicada para artefactos calentados asociados"
+        },
+        "dating_relation": "mixed",
+        "method": "Termoluminiscencia de sílex calentado directamente asociado al conjunto y apoyo por US-ESR recalculado en Irhoud 3; edad del conjunto/localidad, no duración taxonómica",
+        "source_ids": [
+          "richter2017"
+        ],
+        "semantic_scope": "jebel_irhoud_fossil_assemblage_context_age",
+        "schema": "paleobot-chronology-v1",
+        "id": "jebel_irhoud",
+        "units": "ka_BP",
+        "legacy_visual_anchor_Ma": 0.315,
+        "legacy_projectable": false,
+        "status": "R05_T4_REVIEWED_NO_GO"
+      },
+      "idaltu": {
+        "schema": "paleobot-chronology-v1",
+        "units": "ka_BP",
+        "legacy_projectable": false,
+        "status": "R05_T5_REVIEWED_NO_GO",
+        "id": "idaltu",
+        "kind": "closed_interval",
+        "entity_type": "population",
+        "display": "Herto (H. sapiens idaltu), Upper Herto Member: ventana publicada 160–154 ka; el límite joven de 154 ± 7 ka fue posteriormente cuestionado",
+        "intervals_ka": [
+          [
+            154,
+            160
+          ]
+        ],
+        "dating_relation": "indirect",
+        "method": "40Ar/39Ar y marco estratigráfico del Upper Herto Member: Clark et al. publicaron 160–154 ka; Faupl et al. cuestionaron el límite joven de 154 ± 7 ka. Ventana de soporte publicada y discutida, no duración de H. sapiens idaltu ni ocupación continua",
+        "source_ids": [
+          "white2003",
+          "clark2003",
+          "faupl2003"
+        ],
+        "semantic_scope": "herto_hominin_fossil_context_window",
+        "legacy_visual_anchor_Ma": 0.16
+      },
+      "neander": {
+        "schema": "paleobot-chronology-v1",
+        "units": "ka_BP",
+        "legacy_projectable": false,
+        "status": "R05_T5_REVIEWED_NO_GO",
+        "id": "neander",
+        "kind": "unknown",
+        "entity_type": "taxon",
+        "display": "Homo neanderthalensis: no se fija una duración taxonómica única; Sima de los Huesos (~430 ka) documenta raíces/rasgos neandertales y las últimas apariciones son regionales (~41–39 ka en modelos europeos)",
+        "dating_relation": "mixed",
+        "method": "Morfología y cronología del linaje neandertal combinadas con modelos radiocarbónicos de desaparición regional; no se construye un intervalo taxonómico único 400–40 ka",
+        "source_ids": [
+          "arsuaga2014",
+          "higham2014"
+        ],
+        "semantic_scope": "neanderthal_taxon_chronology_unresolved",
+        "legacy_visual_anchor_Ma": 0.04
+      },
+      "flores": {
+        "schema": "paleobot-chronology-v1",
+        "units": "ka_BP",
+        "legacy_projectable": false,
+        "status": "R05_T5_REVIEWED_NO_GO",
+        "id": "flores",
+        "kind": "closed_interval",
+        "entity_type": "population",
+        "display": "Homo floresiensis, restos esqueléticos de Liang Bua: ~100–60 ka",
+        "intervals_ka": [
+          [
+            60,
+            100
+          ]
+        ],
+        "dating_relation": "mixed",
+        "method": "Estratigrafía revisada y combinación de radiocarbono, luminiscencia, U-series y ESR en Liang Bua; restos esqueléticos ~100–60 ka; artefactos ~190–50 ka se mantienen separados; no duración del taxón",
+        "source_ids": [
+          "sutikna2016"
+        ],
+        "semantic_scope": "liang_bua_hominin_skeletal_context_window",
+        "legacy_visual_anchor_Ma": 0.05
+      },
+      "luzon": {
+        "schema": "paleobot-chronology-v1",
+        "units": "ka_BP",
+        "legacy_projectable": false,
+        "status": "R05_T5_REVIEWED_NO_GO",
+        "id": "luzon",
+        "kind": "minimum_age",
+        "entity_type": "specimen",
+        "display": "CCH1, paratipo de Homo luzonensis: edad mínima U-series 66,7 ± 1 ka; CCH6-a (individuo holotipo) ≥50 ka",
+        "estimate_ka": 66.7,
+        "uncertainty": {
+          "value_ka": 1,
+          "definition": "Edad mínima U-series directa publicada para CCH1: 66,7 ± 1 ka"
+        },
+        "dating_relation": "direct",
+        "method": "U-series directa en CCH1 y CCH6-a; se codifica la edad mínima de CCH1 y se conserva ≥50 ka para CCH6-a en el texto, sin fabricar un intervalo cerrado ni duración de Homo luzonensis",
+        "source_ids": [
+          "detroit2019"
+        ],
+        "semantic_scope": "cch1_direct_minimum_age",
+        "legacy_visual_anchor_Ma": 0.06
+      },
+      "sapiens": {
+        "schema": "paleobot-chronology-v1",
+        "units": "ka_BP",
+        "legacy_projectable": false,
+        "status": "R05_T5_REVIEWED_NO_GO",
+        "id": "sapiens",
+        "kind": "unknown",
+        "entity_type": "taxon",
+        "display": "Homo sapiens: la emergencia taxonómica no se reduce a un intervalo cerrado; Jebel Irhoud (315 ± 34 ka) documenta una fase temprana del clado y Omo I tiene una edad mínima ≥233 ± 22 ka",
+        "dating_relation": "mixed",
+        "method": "Múltiples contextos fósiles y criterios morfológicos; Jebel Irhoud y Omo I permanecen como evidencias contextuales específicas y no se proyectan como ocupación continua ni duración 315 ka–presente",
+        "source_ids": [
+          "hublin2017",
+          "richter2017",
+          "vidal2022"
+        ],
+        "semantic_scope": "homo_sapiens_taxon_emergence_unresolved",
+        "legacy_visual_anchor_Ma": 0
+      }
+    },
+    "release_gate": {
+      "a3": "NO_GO",
+      "r93": "AWAITING_TARGET_EXECUTION",
+      "browser": "NOT_VERIFIED",
+      "moodle": "NOT_VERIFIED"
+    }
+  },
+  "a2_core_sha256": "070c4edc5dd930d1d6cd8f476f11099e37fb768415d0c64e8d683664c0ad6999"
+}

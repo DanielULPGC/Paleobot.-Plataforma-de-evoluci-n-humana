@@ -1,0 +1,696 @@
+{
+  "date": "2026-10-24",
+  "source": "PB-AUD-01",
+  "items": [
+    {
+      "path": "docs/auditoria/LEEME.md",
+      "original_sha256": "49236f5f1e00db43a2d67bc3e14b148d1e79488e87a7b6778c3882c4a4300aed",
+      "imported_sha256": "49236f5f1e00db43a2d67bc3e14b148d1e79488e87a7b6778c3882c4a4300aed",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/PaleoBot_Informe_consolidado.md",
+      "original_sha256": "c0a1ecfcf577e1a8687402c1446e5f41f6130152ce1507b5067be92b94ff01fa",
+      "imported_sha256": "c0a1ecfcf577e1a8687402c1446e5f41f6130152ce1507b5067be92b94ff01fa",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/colisiones_medios.json",
+      "original_sha256": "fe44ecdd9d1a68e528595fe7c7aa8215cdbb419199175654c55b831afedf469f",
+      "imported_sha256": "fe44ecdd9d1a68e528595fe7c7aa8215cdbb419199175654c55b831afedf469f",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/comparacion_archivos_fase7_r98.json",
+      "original_sha256": "d8154f21533a0659fb29ef0d4d92c86a4761bccc251af937016bf9ccf26f7fe6",
+      "imported_sha256": "d8154f21533a0659fb29ef0d4d92c86a4761bccc251af937016bf9ccf26f7fe6",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/cotejo_catalogos.json",
+      "original_sha256": "b6923a057a856432856ba5aa33660f2006c609cd19cf789c532fac1152600410",
+      "imported_sha256": "b6923a057a856432856ba5aa33660f2006c609cd19cf789c532fac1152600410",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/cotejo_db_y_catalogo.json",
+      "original_sha256": "2b7f923c467adfbfa4330d79dfe627f1146438f03c0ddf787efa6cc8d20ef3ef",
+      "imported_sha256": "2b7f923c467adfbfa4330d79dfe627f1146438f03c0ddf787efa6cc8d20ef3ef",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/diferencias_catalogo_fase7_r98.json",
+      "original_sha256": "441740b794e758bcfc1a4b1e9c15ca9ecb7cdbab983e0445b3a96fde22f02c90",
+      "imported_sha256": "441740b794e758bcfc1a4b1e9c15ca9ecb7cdbab983e0445b3a96fde22f02c90",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/estructura_html_actual.json",
+      "original_sha256": "95028ec3c20ccbce95e493ca316ad38c5e8c20ce1e7fa4dca09a9546b246c03e",
+      "imported_sha256": "95028ec3c20ccbce95e493ca316ad38c5e8c20ce1e7fa4dca09a9546b246c03e",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/evidencias_codigo/066-paleobot-v81-map-and-species-media-repair.js",
+      "original_sha256": "72f59642fdbf4b1eca60ea71a7f55896fccea849da5f569a8013e5647624dc42",
+      "imported_sha256": "72f59642fdbf4b1eca60ea71a7f55896fccea849da5f569a8013e5647624dc42",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/evidencias_codigo/image_audit.json",
+      "original_sha256": "88b8221759091768e650c2990540ed59532a85368abb5de702293c02ba4ce6fc",
+      "imported_sha256": "88b8221759091768e650c2990540ed59532a85368abb5de702293c02ba4ce6fc",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/evidencias_codigo/registros_prueba.json",
+      "original_sha256": "d3794aea565ee979e575aa62bf91cc45abe30aa58fb33e2214f23f9082f467da",
+      "imported_sha256": "d3794aea565ee979e575aa62bf91cc45abe30aa58fb33e2214f23f9082f467da",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/0_C6_4_2_current_intake_status.json",
+      "original_sha256": "14fb383f80ae3fd907828f526db674ad982381ce4821bda6901373d08a08d880",
+      "imported_sha256": "14fb383f80ae3fd907828f526db674ad982381ce4821bda6901373d08a08d880",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/0_README.md",
+      "original_sha256": "ff04bf5e71e59a56892b7870a5602726b427c8ac68b34137424a7902146e501d",
+      "imported_sha256": "ff04bf5e71e59a56892b7870a5602726b427c8ac68b34137424a7902146e501d",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/1_README.md",
+      "original_sha256": "45afe94426105903bdd73adab7b7e59517b7cd24adc656195af298f7db15a459",
+      "imported_sha256": "45afe94426105903bdd73adab7b7e59517b7cd24adc656195af298f7db15a459",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_1.md",
+      "original_sha256": "56ae42229600837de0b8b44536b7125c6fdb3f5825c334b3d5a24cb5c36888c0",
+      "imported_sha256": "56ae42229600837de0b8b44536b7125c6fdb3f5825c334b3d5a24cb5c36888c0",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_2.md",
+      "original_sha256": "f0d1f337dd593011da7864e964e93d65274c28c1a5a663a16554f2fd741d2dcf",
+      "imported_sha256": "f0d1f337dd593011da7864e964e93d65274c28c1a5a663a16554f2fd741d2dcf",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_1.md",
+      "original_sha256": "11793c6fcc30d1081eb0d4f2d3db4ad3fee6b33d6898da6e2295027aedafcc83",
+      "imported_sha256": "11793c6fcc30d1081eb0d4f2d3db4ad3fee6b33d6898da6e2295027aedafcc83",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_2.md",
+      "original_sha256": "2203cd9af3b5b9dd57d284c554f1f662e78513b8540a83e491c3855ba205c0c3",
+      "imported_sha256": "2203cd9af3b5b9dd57d284c554f1f662e78513b8540a83e491c3855ba205c0c3",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_3.md",
+      "original_sha256": "b551e289399c68eb763cc4b24ef0363f39393c9478ecc03930294e2c7f099d4e",
+      "imported_sha256": "b551e289399c68eb763cc4b24ef0363f39393c9478ecc03930294e2c7f099d4e",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_4.md",
+      "original_sha256": "b27439ab0d53ce04eaee463d0f33100326e3ade4e489291d2fa1bd5a07901264",
+      "imported_sha256": "b27439ab0d53ce04eaee463d0f33100326e3ade4e489291d2fa1bd5a07901264",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_5.md",
+      "original_sha256": "39662b93d5a51da75bbb74ed3fd67f9c013f0eacb246cb40c397c560c1c0ebcc",
+      "imported_sha256": "39662b93d5a51da75bbb74ed3fd67f9c013f0eacb246cb40c397c560c1c0ebcc",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/2_README.md",
+      "original_sha256": "a7b903b26b749e51b6624787a1712759481fc2bbfb15187b193684066558c05f",
+      "imported_sha256": "a7b903b26b749e51b6624787a1712759481fc2bbfb15187b193684066558c05f",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_c6/2_RELEASE_STATUS.json",
+      "original_sha256": "097e78467f26a07d53efa3baffc702b43025e02ba5ee3c617daa235e50f47a99",
+      "imported_sha256": "097e78467f26a07d53efa3baffc702b43025e02ba5ee3c617daa235e50f47a99",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_externas.json",
+      "original_sha256": "0ab495d778c98842b32f329c4ae8b0ecdff0085b3bfd14f38123222ef6ef5af6",
+      "imported_sha256": "0ab495d778c98842b32f329c4ae8b0ecdff0085b3bfd14f38123222ef6ef5af6",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/AUDITORIA_PALEOBOT_R98_v11.md",
+      "original_sha256": "1b7fdac54e4b684903d331192d6e4f270d5ab38e1c35e3937c71aa0d8d142d15",
+      "imported_sha256": "1b7fdac54e4b684903d331192d6e4f270d5ab38e1c35e3937c71aa0d8d142d15",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/Comparativa_Atlas_PaleoBot_v1_R92_2026-09-07.md",
+      "original_sha256": "2982f51092a60a258e67a64268f7fa2e7a77996d32eec863b3f044dc12a40402",
+      "imported_sha256": "2982f51092a60a258e67a64268f7fa2e7a77996d32eec863b3f044dc12a40402",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/Comparativa_Atlas_PaleoBot_v1_R92_evidencias.json",
+      "original_sha256": "63261c1bd12bafe47205e73ab7062f60f3eca73f1bc1599aeed1702fe77ab79a",
+      "imported_sha256": "63261c1bd12bafe47205e73ab7062f60f3eca73f1bc1599aeed1702fe77ab79a",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/INFORME_A1_RECONCILIACION_CIENTIFICA.md",
+      "original_sha256": "306352d9d629214e1e7448c466280bd5779a1475e32fba9ad28207c8f92325ac",
+      "imported_sha256": "306352d9d629214e1e7448c466280bd5779a1475e32fba9ad28207c8f92325ac",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/INFORME_A2_MODELO_CRONOLOGICO_Y_PARCHE.md",
+      "original_sha256": "55985cc4cd4a338194b19220b45817667dc7112d297bd114c47ec3522e565daf",
+      "imported_sha256": "55985cc4cd4a338194b19220b45817667dc7112d297bd114c47ec3522e565daf",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PALEOBOT_ATLAS_DIRECTO_R98_PILOTO_LEEME.md",
+      "original_sha256": "249678b0ab9def9543edc571d5f3b7e8a335198c24dd07750cdd10ae1fb191b7",
+      "imported_sha256": "249678b0ab9def9543edc571d5f3b7e8a335198c24dd07750cdd10ae1fb191b7",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C4_1_verificacion.json",
+      "original_sha256": "46923ac123c3d799df951bdca7346700e3a8fc0ef091b2b8c67f96ef8c577cf7",
+      "imported_sha256": "46923ac123c3d799df951bdca7346700e3a8fc0ef091b2b8c67f96ef8c577cf7",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C4_2_verificacion.json",
+      "original_sha256": "64e7a3c9d4bdde8624e17d7ed4daeb5565115044e807429c07fcfff7e8da038c",
+      "imported_sha256": "64e7a3c9d4bdde8624e17d7ed4daeb5565115044e807429c07fcfff7e8da038c",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C4_3_verificacion.json",
+      "original_sha256": "a99f72b885be2be3c28b1bf2c30b71b831338f5ff753fe1052bf9081f301fa50",
+      "imported_sha256": "a99f72b885be2be3c28b1bf2c30b71b831338f5ff753fe1052bf9081f301fa50",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C5_1_verificacion.json",
+      "original_sha256": "131180931523771f46e391986291d0d0fb1afc8dc116af3efc380099435b5997",
+      "imported_sha256": "131180931523771f46e391986291d0d0fb1afc8dc116af3efc380099435b5997",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C5_2_verificacion.json",
+      "original_sha256": "1979bf96de630b2ce0ea836706b3b7cb0372f448162d432597735e1b79c5fe32",
+      "imported_sha256": "1979bf96de630b2ce0ea836706b3b7cb0372f448162d432597735e1b79c5fe32",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C5_3_verificacion.json",
+      "original_sha256": "7d58ff6693945d521da72065a50b019afb911946c967c2c8bd4d750877450fd7",
+      "imported_sha256": "7d58ff6693945d521da72065a50b019afb911946c967c2c8bd4d750877450fd7",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_1_negative_tests.json",
+      "original_sha256": "5359ead3c6e0a763813f2287a6b0250f819c33f626c27be918bbdb6657750f9c",
+      "imported_sha256": "5359ead3c6e0a763813f2287a6b0250f819c33f626c27be918bbdb6657750f9c",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_1_verificacion.json",
+      "original_sha256": "e2f0767c44fef8a5715df9e93d160f779b42c7b36586dbd1bd5472aa28f8ebe8",
+      "imported_sha256": "e2f0767c44fef8a5715df9e93d160f779b42c7b36586dbd1bd5472aa28f8ebe8",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_2_verificacion.json",
+      "original_sha256": "8c9868dbe5e2fd12fa6b857cb97cc79716638d8fccd3d10592aab804b54ecd41",
+      "imported_sha256": "8c9868dbe5e2fd12fa6b857cb97cc79716638d8fccd3d10592aab804b54ecd41",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_1_cierre.json",
+      "original_sha256": "d4ea9ed05c2c73ebe4ada11250d35398b0ab5801531c62e5f2eb1597bc87cf8a",
+      "imported_sha256": "d4ea9ed05c2c73ebe4ada11250d35398b0ab5801531c62e5f2eb1597bc87cf8a",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_1_verificacion_independiente.json",
+      "original_sha256": "5a27be47f18205f34ee5db4ec9b76614ee936ac3db57ca15446feadf1fd5e45c",
+      "imported_sha256": "5a27be47f18205f34ee5db4ec9b76614ee936ac3db57ca15446feadf1fd5e45c",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_2_cierre.json",
+      "original_sha256": "537e2e6fdb400920af7c0d3161977db1295f5a2cfbba7dd42b5c3964e446466f",
+      "imported_sha256": "537e2e6fdb400920af7c0d3161977db1295f5a2cfbba7dd42b5c3964e446466f",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_2_verificacion_independiente.json",
+      "original_sha256": "72ec48f5cd23e9374546a5e7559b89cdc14781b26463fc1de55bebfadabf1bb0",
+      "imported_sha256": "72ec48f5cd23e9374546a5e7559b89cdc14781b26463fc1de55bebfadabf1bb0",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_3_cierre.json",
+      "original_sha256": "441de63883fb5e7a5b4d531ea4ed57d696f7b06e5f1e453f32c8f676ae476fa6",
+      "imported_sha256": "441de63883fb5e7a5b4d531ea4ed57d696f7b06e5f1e453f32c8f676ae476fa6",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_3_verificacion_independiente.json",
+      "original_sha256": "bee0ca46b004d6ba71a73103f7441090725bfbd2213e6965a414003f6808642d",
+      "imported_sha256": "bee0ca46b004d6ba71a73103f7441090725bfbd2213e6965a414003f6808642d",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_4_cierre.json",
+      "original_sha256": "9aac575691bf16e8099ac6633de717a1b1c122af30c2d916ec625cd312a80227",
+      "imported_sha256": "9aac575691bf16e8099ac6633de717a1b1c122af30c2d916ec625cd312a80227",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_4_verificacion_independiente.json",
+      "original_sha256": "37671d0ff65822d2c2b5ec8cfb71a248fbbd465b772b6bf0686a99a62796aefd",
+      "imported_sha256": "37671d0ff65822d2c2b5ec8cfb71a248fbbd465b772b6bf0686a99a62796aefd",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_4_verificacion_interna.json",
+      "original_sha256": "d92bb92814958a88e7393035d3a3e8b4a601cbb7e4128b51ce935ded74c2c569",
+      "imported_sha256": "d92bb92814958a88e7393035d3a3e8b4a601cbb7e4128b51ce935ded74c2c569",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_5_browser_gate_BLOCKED_BY_ENVIRONMENT.json",
+      "original_sha256": "dfef7fafa00b1c75e152898a197993bda1bf388491f695af07eeababf7311f22",
+      "imported_sha256": "dfef7fafa00b1c75e152898a197993bda1bf388491f695af07eeababf7311f22",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_5_cierre.json",
+      "original_sha256": "67a4063beccd6966c520f4d7235f9fbcbc484e0d5656966d25a2f02fdc73ad19",
+      "imported_sha256": "67a4063beccd6966c520f4d7235f9fbcbc484e0d5656966d25a2f02fdc73ad19",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_5_verificacion_independiente.json",
+      "original_sha256": "fd13907b7512fd10f3d961efb266e64e87795efed1d8383cc02082903f22b121",
+      "imported_sha256": "fd13907b7512fd10f3d961efb266e64e87795efed1d8383cc02082903f22b121",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_5_verificacion_interna.json",
+      "original_sha256": "aa6d2604f4cfd35a2bd7135366b3f54e49304b82c3cef6590b65d0ddc8391cd9",
+      "imported_sha256": "aa6d2604f4cfd35a2bd7135366b3f54e49304b82c3cef6590b65d0ddc8391cd9",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_4_1_browser_transfer_cierre.json",
+      "original_sha256": "8a15a8a091cb584d1867abeb2f619e1b8d9837ec46260c5942b2f9553ecad2ec",
+      "imported_sha256": "8a15a8a091cb584d1867abeb2f619e1b8d9837ec46260c5942b2f9553ecad2ec",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_4_1_browser_transfer_verification.json",
+      "original_sha256": "33ad953bc253f49405d130a04a36b6e8dcac407a9393981523b1f83d9d5a170b",
+      "imported_sha256": "33ad953bc253f49405d130a04a36b6e8dcac407a9393981523b1f83d9d5a170b",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_4_2_cierre.json",
+      "original_sha256": "8856b7349942bcc0aba6ca19620d74dbaca8b9f4f9c0d7e4b8d6bbd49d6fc347",
+      "imported_sha256": "8856b7349942bcc0aba6ca19620d74dbaca8b9f4f9c0d7e4b8d6bbd49d6fc347",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_4_2_verificacion_independiente.json",
+      "original_sha256": "9cf9b8873214448acce16b1d5b97905216c4fe6df547d142122604aa952c3320",
+      "imported_sha256": "9cf9b8873214448acce16b1d5b97905216c4fe6df547d142122604aa952c3320",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_Moodle_LAUNCHER_verification.json",
+      "original_sha256": "a22cf6be15adb5c5432bd59d06ca944bbb835ad30640c7784eecfbd279c1519c",
+      "imported_sha256": "a22cf6be15adb5c5432bd59d06ca944bbb835ad30640c7784eecfbd279c1519c",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_Moodle_Student_Lite_verification.json",
+      "original_sha256": "4b4f140e78c88827cb2a435f9d8807b2c1bdec315b54cf5b459aa639e45eeab9",
+      "imported_sha256": "4b4f140e78c88827cb2a435f9d8807b2c1bdec315b54cf5b459aa639e45eeab9",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_A3_Moodle_candidate_verification.json",
+      "original_sha256": "3d1ff0c841b2d3b029220ce7bc19684d0c199188ff07aca01f54c45b91d639a2",
+      "imported_sha256": "3d1ff0c841b2d3b029220ce7bc19684d0c199188ff07aca01f54c45b91d639a2",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase1_auditoria_y_correccion.md",
+      "original_sha256": "d301f7bfb2f658f1c95982aaa628e44948c770f11a9fff62e854fb240917fa13",
+      "imported_sha256": "d301f7bfb2f658f1c95982aaa628e44948c770f11a9fff62e854fb240917fa13",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase1_verificacion.json",
+      "original_sha256": "68b256595e1c548f9a01bd509d4a23704823be526f6e4c041512586b3d3f673c",
+      "imported_sha256": "68b256595e1c548f9a01bd509d4a23704823be526f6e4c041512586b3d3f673c",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase2_auditoria_medios.md",
+      "original_sha256": "df5e84f6302d773d278628b7c7a1c82ba3b5ea19ae902b5355d60164acacf3b3",
+      "imported_sha256": "df5e84f6302d773d278628b7c7a1c82ba3b5ea19ae902b5355d60164acacf3b3",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase3_auditoria_integrada.md",
+      "original_sha256": "a69eafa990d8e3eda9b33298b763d19d0cf6e9514e413d842ece9e8a94fa6047",
+      "imported_sha256": "a69eafa990d8e3eda9b33298b763d19d0cf6e9514e413d842ece9e8a94fa6047",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase3_verificacion.json",
+      "original_sha256": "5c3610040a916a053446f89c14a70a097b435536a035e5b87c741effb1781fd3",
+      "imported_sha256": "5c3610040a916a053446f89c14a70a097b435536a035e5b87c741effb1781fd3",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase4_auditoria_caracteristicas.md",
+      "original_sha256": "a42c3129a885d0ea7c1a5030a4b0069356021359ddaf74d26caca58ecdb8e65a",
+      "imported_sha256": "a42c3129a885d0ea7c1a5030a4b0069356021359ddaf74d26caca58ecdb8e65a",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase5_ingesta_v69.md",
+      "original_sha256": "a3489870ac760898484cba91eb4431e49e43d3ff86308a912bb6696660dcf2a8",
+      "imported_sha256": "a3489870ac760898484cba91eb4431e49e43d3ff86308a912bb6696660dcf2a8",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase5_ingesta_v69_verificacion.json",
+      "original_sha256": "6420146cecd8d96093ea1b139532a97bbe61904b1894a83a5f29be67460322ce",
+      "imported_sha256": "6420146cecd8d96093ea1b139532a97bbe61904b1894a83a5f29be67460322ce",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase6_auditoria_y_correccion.md",
+      "original_sha256": "e07994b5fa2b71bb657c1933abb43e79d4d593e288163b8f8a30576f6816e5fe",
+      "imported_sha256": "e07994b5fa2b71bb657c1933abb43e79d4d593e288163b8f8a30576f6816e5fe",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase6_verificacion.json",
+      "original_sha256": "2c553dfce33501219462042ab693065ace843994e050d94b12343da8180ea9f4",
+      "imported_sha256": "2c553dfce33501219462042ab693065ace843994e050d94b12343da8180ea9f4",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase7_funcionamiento_y_limites.md",
+      "original_sha256": "e5c3b8dee2fdae5fb0dcf40abc4b9e75e77760d95f3ed6131d4575a96b576712",
+      "imported_sha256": "e5c3b8dee2fdae5fb0dcf40abc4b9e75e77760d95f3ed6131d4575a96b576712",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase7_verificacion.json",
+      "original_sha256": "534461e9dc1332f185c7cd0cd3ff512484804459ec48568d8432273a57476fbc",
+      "imported_sha256": "534461e9dc1332f185c7cd0cd3ff512484804459ec48568d8432273a57476fbc",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase7b_puerta_navegador_NO_GO.md",
+      "original_sha256": "c08547943038bee351c685e11b0602ef72977450467c3351f6ebceb11d18de32",
+      "imported_sha256": "c08547943038bee351c685e11b0602ef72977450467c3351f6ebceb11d18de32",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase7b_resultado_entorno_NO_GO.json",
+      "original_sha256": "f759568fe5696138019e02b0deff73141cb0d3152c6ede38761ca2536e55411d",
+      "imported_sha256": "f759568fe5696138019e02b0deff73141cb0d3152c6ede38761ca2536e55411d",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Fase7b_verificacion_kit_NO_GO.json",
+      "original_sha256": "2e90ed0b5509df5b5fa86b4ee1780a7f8edd2abeca4b9fd28c79ac4e6a51c5eb",
+      "imported_sha256": "2e90ed0b5509df5b5fa86b4ee1780a7f8edd2abeca4b9fd28c79ac4e6a51c5eb",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Balanced_SCORM12_v4_verification.json",
+      "original_sha256": "87de49779c3ea4baf53d6a8de09522cd5fd96e839869767b339c4e7d4d45a791",
+      "imported_sha256": "87de49779c3ea4baf53d6a8de09522cd5fd96e839869767b339c4e7d4d45a791",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Balanced_SCORM12_v5_bibliography_verification.json",
+      "original_sha256": "adac040ac458537ead1d25c1feb2ef98551e7c06f16b9a2ecf89f7c2f0d31a31",
+      "imported_sha256": "adac040ac458537ead1d25c1feb2ef98551e7c06f16b9a2ecf89f7c2f0d31a31",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Balanced_SCORM12_v6_glossary_verification.json",
+      "original_sha256": "9010bbb0c66a7b7dcd6994828cc8144c4b2167473006bbd78bed4f94c986ced3",
+      "imported_sha256": "9010bbb0c66a7b7dcd6994828cc8144c4b2167473006bbd78bed4f94c986ced3",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Balanced_SCORM12_v7_routes_verification.json",
+      "original_sha256": "b81093823c942dfcb5efcbffa12322e1e455aa3b8772e3cd898b5033b74a0174",
+      "imported_sha256": "b81093823c942dfcb5efcbffa12322e1e455aa3b8772e3cd898b5033b74a0174",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Lite_SCORM12_v3_verification.json",
+      "original_sha256": "48edfe2fd18772a72491515e6f21ad9d3730b791c3c8c6d04b354b7b2087efd2",
+      "imported_sha256": "48edfe2fd18772a72491515e6f21ad9d3730b791c3c8c6d04b354b7b2087efd2",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_SCORM12_candidate_verification.json",
+      "original_sha256": "00764b67e794fd4dee30c7dbdc65e0c45d34f13cce4591c54b46dc476495b30b",
+      "imported_sha256": "00764b67e794fd4dee30c7dbdc65e0c45d34f13cce4591c54b46dc476495b30b",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P6_Cierre.json",
+      "original_sha256": "04c1222a2add999d98e6ccd39a6aac8e819a0b2fc5711d2ccc60a5e39e4d3c85",
+      "imported_sha256": "04c1222a2add999d98e6ccd39a6aac8e819a0b2fc5711d2ccc60a5e39e4d3c85",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P6_Independent_Verification.json",
+      "original_sha256": "a17d154416c948e9fcd256184e65e2b230d77ecd93012044421fe9e2a5c48668",
+      "imported_sha256": "a17d154416c948e9fcd256184e65e2b230d77ecd93012044421fe9e2a5c48668",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P7_Cierre.json",
+      "original_sha256": "213e8ad285c2767b5085e178415f88845d6fe4e0788a26e35521c5f21f75c690",
+      "imported_sha256": "213e8ad285c2767b5085e178415f88845d6fe4e0788a26e35521c5f21f75c690",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P7_Independent_Verification.json",
+      "original_sha256": "85da152c43c888482b726b3c8f65a12d4ea12f35a5c95fcddce0d6beb5b45055",
+      "imported_sha256": "85da152c43c888482b726b3c8f65a12d4ea12f35a5c95fcddce0d6beb5b45055",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P8_Cierre.json",
+      "original_sha256": "6c78699057b8a77a91781f98b91fd566133deb5f1cbcffcbe901cd3b1597fcd7",
+      "imported_sha256": "6c78699057b8a77a91781f98b91fd566133deb5f1cbcffcbe901cd3b1597fcd7",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P8_Independent_Verification.json",
+      "original_sha256": "da5e3729abc20b765fc650ba6fd02ce0823ea5978c5c7fd1a4d8b0cfdaf7d56b",
+      "imported_sha256": "da5e3729abc20b765fc650ba6fd02ce0823ea5978c5c7fd1a4d8b0cfdaf7d56b",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_1_Cierre.json",
+      "original_sha256": "e68a6bde96df6e27476f40ec7e1fc9edca2bfe31543c00b73622bc949d802cc1",
+      "imported_sha256": "e68a6bde96df6e27476f40ec7e1fc9edca2bfe31543c00b73622bc949d802cc1",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_1_Independent_Verification.json",
+      "original_sha256": "22fc57f7a35371c37818e8009edcdc2c6d09700d06c02c52ff1975aa98f4ba25",
+      "imported_sha256": "22fc57f7a35371c37818e8009edcdc2c6d09700d06c02c52ff1975aa98f4ba25",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_Cierre.json",
+      "original_sha256": "a4df8c661e2155c6dc19aa5007357181727ffa4815fbe23daca092ebbd0f80b6",
+      "imported_sha256": "a4df8c661e2155c6dc19aa5007357181727ffa4815fbe23daca092ebbd0f80b6",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_Independent_Verification.json",
+      "original_sha256": "23a7f04d605c6a895b5982ddd6213e1f7a1d37c1b19d842ee77c3939542f5abb",
+      "imported_sha256": "23a7f04d605c6a895b5982ddd6213e1f7a1d37c1b19d842ee77c3939542f5abb",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_M1_4_Cierre.json",
+      "original_sha256": "c7a8e8d049703fedd1400889df4db4b884b005731ace4c6c9c09f4edbdba6245",
+      "imported_sha256": "c7a8e8d049703fedd1400889df4db4b884b005731ace4c6c9c09f4edbdba6245",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_M1_5_Cierre.json",
+      "original_sha256": "230114704fdbec067c12ce6e06f99faed11c481f7fbc56abdb9a007ccf1558ce",
+      "imported_sha256": "230114704fdbec067c12ce6e06f99faed11c481f7fbc56abdb9a007ccf1558ce",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_M1_6_Cierre.json",
+      "original_sha256": "360798058cb7b454eb4143a2ca09c68d2fa4f00a97b18da64f51eb0cc878e06b",
+      "imported_sha256": "360798058cb7b454eb4143a2ca09c68d2fa4f00a97b18da64f51eb0cc878e06b",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/RECOVERY_CONSOLIDATION_R48.md",
+      "original_sha256": "ee45f36971d06d0b0e24e7d04467078c5df9b495d6f8a49e0bff0b6bd1a1a845",
+      "imported_sha256": "ee45f36971d06d0b0e24e7d04467078c5df9b495d6f8a49e0bff0b6bd1a1a845",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/RECOVERY_MOODLE_CSP_PERMISSION_MINIMIZATION_R89.md",
+      "original_sha256": "a7aa886757bba4e7deff1e51d3b78f220e4c736494d0318b4538542b1f4f40aa",
+      "imported_sha256": "a7aa886757bba4e7deff1e51d3b78f220e4c736494d0318b4538542b1f4f40aa",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/RECOVERY_MOODLE_PATH_SW_R57.md",
+      "original_sha256": "f9071e39cafe08f3689a7a7fedbcb93312f2b5fe13ba5258746f15a2cf8ed984",
+      "imported_sha256": "f9071e39cafe08f3689a7a7fedbcb93312f2b5fe13ba5258746f15a2cf8ed984",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/RECOVERY_MOODLE_STORAGE_RELEASE_SCOPE_R64.md",
+      "original_sha256": "ed2c2c8e8d890e51ff902e770093a539c42be57b08d012160223d7017742ae4a",
+      "imported_sha256": "ed2c2c8e8d890e51ff902e770093a539c42be57b08d012160223d7017742ae4a",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/RECOVERY_MOODLE_TARGET_EXECUTION_INTAKE_ADJUDICATION_R93.md",
+      "original_sha256": "ff6d4fd90a67571ba719300c14e12560233e73281457d2e6f8532b3d7035a6cb",
+      "imported_sha256": "ff6d4fd90a67571ba719300c14e12560233e73281457d2e6f8532b3d7035a6cb",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/RECOVERY_REGRESSION_R12.md",
+      "original_sha256": "5f4980c0fe39a105f806673e37ba76e879d5276cebf95f5a302d0c9a00ab9146",
+      "imported_sha256": "5f4980c0fe39a105f806673e37ba76e879d5276cebf95f5a302d0c9a00ab9146",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/RECOVERY_SHOWDETAIL_OWNERSHIP_R49.md",
+      "original_sha256": "4a8c30dd9e458bccace3606f94810690d1972b95897f846d2244df2a8f3b4c35",
+      "imported_sha256": "4a8c30dd9e458bccace3606f94810690d1972b95897f846d2244df2a8f3b4c35",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/RECOVERY_V37_R15.md",
+      "original_sha256": "3417de78b89bddd4dc896f29fb5950c66797edf77aab9eaaf92d1b9561622eaf",
+      "imported_sha256": "3417de78b89bddd4dc896f29fb5950c66797edf77aab9eaaf92d1b9561622eaf",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/fuentes_historicas/RECOVERY_V45_COVER_R38.md",
+      "original_sha256": "546ede90889374e780c50995758de5fb8de35ec6c2d82dac66d634e92bef9be6",
+      "imported_sha256": "546ede90889374e780c50995758de5fb8de35ec6c2d82dac66d634e92bef9be6",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/genealogia_paquetes.json",
+      "original_sha256": "07faf0866681bb6235d295d880d9ab2bcb4a7bd1e641ffe0e3ff7d8871767df7",
+      "imported_sha256": "07faf0866681bb6235d295d880d9ab2bcb4a7bd1e641ffe0e3ff7d8871767df7",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/integridad_archivos_zip.json",
+      "original_sha256": "c81b8ebf962beae748430a8bd76be4a95c4a34c4ceadd6714f38967c00e2799e",
+      "imported_sha256": "c81b8ebf962beae748430a8bd76be4a95c4a34c4ceadd6714f38967c00e2799e",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/inventario_artefactos.csv",
+      "original_sha256": "a33fc3fed0ee8ea3226fd71f54638a60edf3babd5c709c6f99a2f355f4b65f03",
+      "imported_sha256": "fd006cfbe1fb212ae86011a0db8dd53b5ec5db5f3cfd2c6f8922b69781832e2c",
+      "transformation": "omit_private_platform_id_and_link"
+    },
+    {
+      "path": "docs/auditoria/inventario_artefactos.json",
+      "original_sha256": "f4d488736f5d0d366034021dfa76cd4945540bac7bacfc7dbbc3b323d5c83cf4",
+      "imported_sha256": "35767dd70a76592c6fb4ef66274fabab68ef4b085ee7b51c26aa4d9c8429ef30",
+      "transformation": "omit_private_platform_id_and_link"
+    },
+    {
+      "path": "docs/auditoria/registro_decisiones.csv",
+      "original_sha256": "1272fe1afc1c9149f260874e055deefea5d716f9513ac7af3fc6806cca89f4e5",
+      "imported_sha256": "1272fe1afc1c9149f260874e055deefea5d716f9513ac7af3fc6806cca89f4e5",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/registro_decisiones.json",
+      "original_sha256": "d7f8f46fe1bf6ac7472b08bb856be1035d10226e766d04be7e4085185209baf6",
+      "imported_sha256": "d7f8f46fe1bf6ac7472b08bb856be1035d10226e766d04be7e4085185209baf6",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/reproduccion_colision_medios.json",
+      "original_sha256": "3b840ab47a7df09e1ca2460588b05877a81a46038a12dc606e2f89209611b912",
+      "imported_sha256": "3b840ab47a7df09e1ca2460588b05877a81a46038a12dc606e2f89209611b912",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/reproducir_colision_medios.cjs",
+      "original_sha256": "1ad4e7290f216392d62c47e69d78a160d4ee6f9a2ffb318f4c75bdd9edf5f35a",
+      "imported_sha256": "1ad4e7290f216392d62c47e69d78a160d4ee6f9a2ffb318f4c75bdd9edf5f35a",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/resultado_reproduccion_actual.json",
+      "original_sha256": "3b840ab47a7df09e1ca2460588b05877a81a46038a12dc606e2f89209611b912",
+      "imported_sha256": "3b840ab47a7df09e1ca2460588b05877a81a46038a12dc606e2f89209611b912",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/resumen_expediente.json",
+      "original_sha256": "5c7b2a32ecc71277a9134e5d87222e213b5530947f6ac4e4489c0543542b9651",
+      "imported_sha256": "5c7b2a32ecc71277a9134e5d87222e213b5530947f6ac4e4489c0543542b9651",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/sintaxis_js_actual.json",
+      "original_sha256": "46b10b1f140ffa228c07e863e42005b1975390f88862b6ed530732e35033c276",
+      "imported_sha256": "46b10b1f140ffa228c07e863e42005b1975390f88862b6ed530732e35033c276",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/verificacion_entrega.json",
+      "original_sha256": "e51de5dcf170bdad12402e4bcd2a9a96b4ae26f2ea79c9dd32f98dd4ca798e77",
+      "imported_sha256": "e51de5dcf170bdad12402e4bcd2a9a96b4ae26f2ea79c9dd32f98dd4ca798e77",
+      "transformation": "byte_identical"
+    },
+    {
+      "path": "docs/auditoria/verificacion_sesion.json",
+      "original_sha256": "61bf9d6da36935ae977fae88610c0654fd678fdf0168012fba387f4abf66af89",
+      "imported_sha256": "61bf9d6da36935ae977fae88610c0654fd678fdf0168012fba387f4abf66af89",
+      "transformation": "byte_identical"
+    }
+  ]
+}
