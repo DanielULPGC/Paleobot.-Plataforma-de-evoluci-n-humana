@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--
+  Medidor de rendimiento de la portada del Atlas de paleoantropología.
+  Carga una página del Atlas (por defecto, portada-sylva.html) en un marco del
+  mismo origen, descarta un periodo de calentamiento y registra el intervalo
+  entre fotogramas durante la medición. Informa la DISTRIBUCIÓN (mediana,
+  percentiles 95 y 99, máximo, proporción de fotogramas lentos), no la media,
+  porque la media oculta los tirones que arruinan la experiencia en el aula.
+
+  Privacidad: ningún dato sale del equipo. El informe solo se guarda si la
+  persona pulsa «Descargar resultados». Incluye el nombre de la tarjeta
+  gráfica que declara el navegador, necesario para interpretar la medición.
+
+  Umbrales: son un criterio de diseño propuesto para este prototipo, no una
+  norma. Se declaran en pantalla y en el informe.
+
+  Parámetros opcionales de URL: ?pagina=index.html&duracion=30&calentamiento=5
+  Licencia CC BY-NC 4.0 · ULPGC.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medidor de rendimiento · Atlas de paleoantropología</title>
+<style>
+  :root{ --fondo:#0d2028; --tinta:#f3efe7; --suave:#c8d2ce; --acento:#d8a93a; --ok:#9fd3a8; --medio:#e8c26a; --mal:#f0a39a; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; height:100%; }
+  body{ background:var(--fondo); color:var(--tinta); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  .salto{ position:absolute; left:12px; top:-60px; padding:8px 14px; background:var(--tinta); color:var(--fondo); border-radius:6px; }
+  .salto:focus{ top:12px; }
+  main{ max-width:880px; margin:0 auto; padding:32px 20px 56px; }
+  h1{ font-size:1.7rem; margin:0 0 6px; font-weight:600; }
+  h2{ font-size:1.15rem; margin:28px 0 8px; }
+  p{ margin:8px 0; }
+  .sub{ color:var(--suave); }
+  fieldset{ border:1px solid rgba(243,239,231,.25); border-radius:10px; padding:14px 16px; margin:18px 0; }
+  legend{ padding:0 6px; color:var(--suave); }
+  label{ display:inline-block; margin:6px 14px 6px 0; }
+  select,input{ font:inherit; padding:6px 8px; border-radius:6px; border:1px solid rgba(243,239,231,.4); background:#10262f; color:var(--tinta); }
+  input{ width:5.5em; }
+  button{ font:inherit; min-height:44px; padding:0 18px; border-radius:999px; border:1px solid var(--acento); background:var(--acento); color:#1a1a12; font-weight:600; cursor:pointer; margin:6px 10px 6px 0; }
+  button.sec{ background:transparent; color:var(--tinta); border-color:rgba(243,239,231,.5); font-weight:500; }
+  button:disabled{ opacity:.5; cursor:default; }
+  :focus-visible{ outline:3px solid var(--acento); outline-offset:3px; }
+  table{ border-collapse:collapse; width:100%; margin:10px 0; }
+  th,td{ text-align:left; padding:7px 10px; border-bottom:1px solid rgba(243,239,231,.15); }
+  th{ color:var(--suave); font-weight:500; }
+  .veredicto{ padding:14px 16px; border-radius:10px; border:2px solid; margin:14px 0; font-weight:600; }
+  .apto{ border-color:var(--ok); } .reservas{ border-color:var(--medio); } .noapto{ border-color:var(--mal); }
+  .veredicto span{ display:block; font-weight:400; color:var(--suave); margin-top:4px; }
+  #escenario{ position:fixed; inset:0; z-index:5; display:none; background:#000; }
+  #escenario iframe{ width:100%; height:100%; border:0; display:block; }
+  #aviso{ position:fixed; z-index:6; left:50%; top:14px; transform:translateX(-50%); display:none;
+          background:rgba(13,32,40,.94); color:var(--tinta); padding:10px 18px; border-radius:999px; border:1px solid var(--acento); font-size:15px; }
+  code{ background:rgba(243,239,231,.1); padding:1px 5px; border-radius:4px; }
+  footer{ margin-top:40px; color:var(--suave); font-size:14px; }
+  footer a{ color:var(--tinta); }
+  @media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
+</style>
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido principal</a>
+<main id="contenido" tabindex="-1">
+  <h1>Medidor de rendimiento de la portada</h1>
+  <p class="sub">Atlas de paleoantropología · comprobación en los equipos del aula</p>
+
+  <p>La portada con escena tridimensional exige una tarjeta gráfica razonable. Esta herramienta la ejecuta a pantalla completa en este equipo y mide cuánto tarda cada fotograma. No se envía ningún dato: el informe solo se guarda si lo descarga.</p>
+
+  <h2>Antes de empezar</h2>
+  <p>Conecte el proyector si se va a usar en clase y ponga el navegador a pantalla completa (tecla F11). Cierre las demás pestañas y programas. No mueva el ratón durante la medición y no cambie de pestaña: el navegador ralentiza las pestañas ocultas y la medición no sería válida.</p>
+
+  <fieldset>
+    <legend>Configuración</legend>
+    <label>Página que medir
+      <select id="pagina">
+        <option value="portada-sylva.html">Portada con escena 3D (portada-sylva.html)</option>
+        <option value="index.html">Portada actual (index.html)</option>
+      </select>
+    </label>
+    <label>Calentamiento (s) <input id="calentamiento" type="number" min="0" max="30" value="5"></label>
+    <label>Medición (s) <input id="duracion" type="number" min="5" max="120" value="30"></label>
+  </fieldset>
+
+  <button id="iniciar" type="button">Iniciar medición</button>
+  <p id="estado" role="status" aria-live="polite" class="sub"></p>
+
+  <section id="resultados" hidden aria-labelledby="t-res">
+    <h2 id="t-res">Resultados</h2>
+    <div id="veredicto" class="veredicto"></div>
+    <table>
+      <caption class="sub" style="text-align:left">Tiempo entre fotogramas durante la medición</caption>
+      <tbody id="tabla"></tbody>
+    </table>
+    <button id="descargar" type="button" class="sec">Descargar resultados (JSON)</button>
+    <button id="copiar" type="button" class="sec">Copiar resumen</button>
+  </section>
+
+  <h2>Criterio de decisión</h2>
+  <p>Se usa el percentil 95 del tiempo entre fotogramas (P95): el 95 % de los fotogramas tarda eso o menos. Es un criterio de diseño propuesto para este prototipo, no una norma.</p>
+  <table>
+    <tbody>
+      <tr><th scope="row">Apto</th><td>P95 de 33,3 ms o menos (al menos 30 fotogramas por segundo casi siempre) y menos del 1 % de fotogramas por encima de 100 ms.</td></tr>
+      <tr><th scope="row">Apto con reservas</th><td>P95 de hasta 50 ms (al menos 20 fotogramas por segundo). Movimiento algo irregular; usable, pero conviene la pausa.</td></tr>
+      <tr><th scope="row">No apto</th><td>P95 superior a 50 ms, o muestra insuficiente. En ese equipo debe usarse la portada actual.</td></tr>
+    </tbody>
+  </table>
+  <p class="sub">Repita la medición tres veces en cada equipo y con el proyector conectado; decida con el peor resultado.</p>
+
+  <footer>Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria · <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license" target="_blank">CC BY-NC 4.0</a></footer>
+</main>
+
+<div id="escenario" aria-hidden="true"><iframe id="marco" title="Página en medición"></iframe></div>
+<div id="aviso" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var q = new URLSearchParams(location.search);
+  if (q.get('pagina')) $('pagina').value = q.get('pagina');
+  if (q.get('duracion')) $('duracion').value = q.get('duracion');
+  if (q.get('calentamiento')) $('calentamiento').value = q.get('calentamiento');
+
+  var informe = null;
+  var fmt = function (n, d) { return Number(n).toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d }); };
+  function percentil(ordenados, p) {
+    if (!ordenados.length) return NaN;
+    var i = Math.min(ordenados.length - 1, Math.ceil(p / 100 * ordenados.length) - 1);
+    return ordenados[Math.max(0, i)];
+  }
+  function gpu() {
+    try {
+      var c = document.createElement('canvas');
+      var gl = c.getContext('webgl2') || c.getContext('webgl');
+      if (!gl) return { webgl: false, webgl2: false, tarjeta: 'sin WebGL' };
+      var e = gl.getExtension('WEBGL_debug_renderer_info');
+      return { webgl: true, webgl2: !!document.createElement('canvas').getContext('webgl2'),
+               tarjeta: e ? gl.getParameter(e.UNMASKED_RENDERER_WEBGL) : 'no declarada por el navegador' };
+    } catch (err) { return { webgl: false, webgl2: false, tarjeta: 'error: ' + err.message }; }
+  }
+  function aviso(txt) { $('aviso').textContent = txt; $('aviso').style.display = txt ? 'block' : 'none'; }
+
+  function medir() {
+    var pagina = $('pagina').value;
+    var cal = Math.max(0, Number($('calentamiento').value) || 0) * 1000;
+    var dur = Math.max(5, Number($('duracion').value) || 30) * 1000;
+    $('iniciar').disabled = true; $('resultados').hidden = true;
+    $('estado').textContent = 'Cargando ' + pagina + '…';
+    $('escenario').style.display = 'block';
+    var marco = $('marco');
+    var ocultaciones = 0;
+    var alOcultar = function () { if (document.hidden) ocultaciones++; };
+    document.addEventListener('visibilitychange', alOcultar);
+
+    marco.onload = function () {
+      var w;
+      try { w = marco.contentWindow; w.document; }
+      catch (err) { terminar(null, 'No se puede medir: la página debe estar en la misma carpeta que el medidor.'); return; }
+      var inicio = performance.now(), marcas = [], activo = true;
+      aviso('Calentamiento: no mueva el ratón');
+      setTimeout(function () {
+        aviso('Midiendo durante ' + Math.round(dur / 1000) + ' s: no mueva el ratón');
+        function f(t) { if (!activo) return; marcas.push(t); w.requestAnimationFrame(f); }
+        w.requestAnimationFrame(f);
+        setTimeout(function () { activo = false; terminar(marcas, null); }, dur);
+      }, cal);
+
+      function terminar(m, error) {
+        document.removeEventListener('visibilitychange', alOcultar);
+        aviso(''); $('escenario').style.display = 'none'; marco.src = 'about:blank';
+        $('iniciar').disabled = false;
+        if (error) { $('estado').textContent = error; return; }
+        var iv = [];
+        for (var i = 1; i < m.length; i++) iv.push(m[i] - m[i - 1]);
+        var ord = iv.slice().sort(function (a, b) { return a - b; });
+        var lentos = function (lim) { return iv.length ? iv.filter(function (x) { return x > lim; }).length / iv.length * 100 : NaN; };
+        var r = {
+          herramienta: 'medir-rendimiento.html · Atlas de paleoantropología',
+          fecha: new Date().toISOString(), pagina: pagina,
+          calentamiento_s: cal / 1000, medicion_s: dur / 1000,
+          fotogramas: m.length, intervalos: iv.length,
+          mediana_ms: percentil(ord, 50), p95_ms: percentil(ord, 95), p99_ms: percentil(ord, 99),
+          maximo_ms: ord.length ? ord[ord.length - 1] : NaN,
+          fps_mediana: ord.length ? 1000 / percentil(ord, 50) : 0,
+          pct_mas_33ms: lentos(33.34), pct_mas_50ms: lentos(50), pct_mas_100ms: lentos(100),
+          pestana_ocultada: ocultaciones > 0,
+          equipo: Object.assign(gpu(), {
+            pantalla: screen.width + '×' + screen.height, ventana: innerWidth + '×' + innerHeight,
+            densidad: devicePixelRatio, nucleos: navigator.hardwareConcurrency || null,
+            navegador: navigator.userAgent }),
+          criterio: 'Apto: P95 ≤ 33,3 ms y < 1 % > 100 ms. Reservas: P95 ≤ 50 ms. No apto: P95 > 50 ms o menos de 60 intervalos. Criterio de diseño propuesto, no normativo.'
+        };
+        if (r.pestana_ocultada) r.veredicto = 'no válida';
+        else if (iv.length < 60 || !(r.p95_ms <= 50)) r.veredicto = 'no apto';
+        else if (r.p95_ms <= 33.34 && r.pct_mas_100ms < 1) r.veredicto = 'apto';
+        else r.veredicto = 'apto con reservas';
+        informe = r; pintar(r);
+      }
+    };
+    marco.src = pagina + (pagina.indexOf('?') < 0 ? '?' : '&') + 'medicion=' + Date.now();
+  }
+
+  function pintar(r) {
+    var v = $('veredicto'), clases = { 'apto': 'apto', 'apto con reservas': 'reservas', 'no apto': 'noapto', 'no válida': 'noapto' };
+    var expl = {
+      'apto': 'La escena se mueve con fluidez en este equipo.',
+      'apto con reservas': 'Usable, con movimiento algo irregular. Conviene recordar el botón de pausa.',
+      'no apto': r.intervalos < 60 ? 'Muestra insuficiente: el equipo apenas produce fotogramas. Use la portada actual.' : 'Movimiento entrecortado. En este equipo, use la portada actual.',
+      'no válida': 'La pestaña se ocultó durante la medición. Repítala sin cambiar de pestaña.'
+    };
+    v.className = 'veredicto ' + clases[r.veredicto];
+    v.innerHTML = 'Veredicto: ' + r.veredicto + '<span>' + expl[r.veredicto] + '</span>';
+    var filas = [
+      ['Fotogramas registrados', fmt(r.fotogramas, 0)],
+      ['Mediana', isFinite(r.mediana_ms) ? fmt(r.mediana_ms, 1) + ' ms (' + fmt(r.fps_mediana, 0) + ' fotogramas por segundo)' : 'sin datos'],
+      ['Percentil 95', isFinite(r.p95_ms) ? fmt(r.p95_ms, 1) + ' ms' : 'sin datos'],
+      ['Percentil 99', isFinite(r.p99_ms) ? fmt(r.p99_ms, 1) + ' ms' : 'sin datos'],
+      ['Máximo', isFinite(r.maximo_ms) ? fmt(r.maximo_ms, 1) + ' ms' : 'sin datos'],
+      ['Fotogramas por encima de 50 ms', isFinite(r.pct_mas_50ms) ? fmt(r.pct_mas_50ms, 1) + ' %' : 'sin datos'],
+      ['Tarjeta gráfica declarada', r.equipo.tarjeta],
+      ['Ventana y densidad', r.equipo.ventana + ' · ' + r.equipo.densidad + '×']
+    ];
+    $('tabla').innerHTML = '';
+    filas.forEach(function (f) {
+      var tr = document.createElement('tr'), th = document.createElement('th'), td = document.createElement('td');
+      th.scope = 'row'; th.textContent = f[0]; td.textContent = f[1]; tr.appendChild(th); tr.appendChild(td); $('tabla').appendChild(tr);
+    });
+    $('resultados').hidden = false;
+    $('estado').textContent = 'Medición terminada: ' + r.veredicto + '.';
+    $('t-res').focus && $('resultados').scrollIntoView({ block: 'start' });
+  }
+
+  $('iniciar').addEventListener('click', medir);
+  $('descargar').addEventListener('click', function () {
+    if (!informe) return;
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(informe, null, 2)], { type: 'application/json' }));
+    a.download = 'rendimiento-' + informe.pagina.replace(/\W+/g, '-') + '-' + informe.fecha.slice(0, 19).replace(/[:T]/g, '-') + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+  });
+  $('copiar').addEventListener('click', function () {
+    if (!informe) return;
+    var t = informe.pagina + ' · ' + informe.veredicto + ' · P95 ' + fmt(informe.p95_ms, 1) + ' ms · mediana ' +
+            fmt(informe.mediana_ms, 1) + ' ms · ' + informe.equipo.tarjeta + ' · ' + informe.fecha;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(
+      function () { $('estado').textContent = 'Resumen copiado.'; },
+      function () { $('estado').textContent = t; });
+  });
+  if (q.get('auto') === '1') medir();
+})();
+</script>
+</body>
+</html>

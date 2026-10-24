@@ -1,5 +1,19 @@
 # Registro de cambios
 
+## Portada 3D Sylva del atlas · 24-10-2026
+
+- Se incorpora `atlas/recorrido/portada-sylva.html` (escena Sylva de ThreeUI 1.2.0 adaptada
+  al atlas: textos en español, cifras calculadas desde `datos.js`, botón de pausa,
+  contrastes corregidos). Es aditiva: no sustituye ninguna página del atlas.
+- Activos (`inner-green-assets/`) y licencias (`licencias/`) tomados del paquete npm
+  `@designcodeio/threeui@1.2.0`; sus SHA-256 coinciden con el `SHA256SUMS` entregado.
+- Se añade `atlas/recorrido/medir-rendimiento.html` y, en `docs/portada-sylva/`, el
+  protocolo de medición, el registro CSV (vacío) y la lista de cambios recibida.
+- La raíz del sitio redirige ahora a esa portada. Ruta de retorno: `atlas/` y `ligera/`.
+- Pendiente: medir rendimiento en los equipos del aula (protocolo), zoom de texto
+  (WCAG 1.4.4), Moodle y navegadores distintos de Chromium. Los ficheros nuevos no
+  figuran en `imsmanifest.xml`; hay que añadirlos si se empaqueta para Moodle.
+
 ## La raíz abre el atlas interactivo · 24-10-2026
 
 - `index.html` pasa a ser un portal que redirige a `atlas/` (landing interactivo v1.0).

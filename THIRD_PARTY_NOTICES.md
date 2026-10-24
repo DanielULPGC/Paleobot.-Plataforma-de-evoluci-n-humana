@@ -11,3 +11,5 @@
 Se preservan los avisos incorporados en las fuentes. No se descarga código ni
 activos de terceros durante los verificadores locales de este repositorio.
 El flujo de GitHub descarga la acción oficial de checkout para obtener su código.
+
+- Portada Sylva (`atlas/recorrido/portada-sylva.html`, `inner-green-assets/`): @designcodeio/threeui 1.2.0, MIT © 2026 Meng To; Lexend, SIL OFL 1.1; Three.js, MIT. Avisos en `atlas/recorrido/licencias/`.
