@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.png -text
+*.jpg -text
+*.docx -text
+# Mantener bytes de fuentes importadas y bloques CSP con hash
+/index.html -text
+/src/entrada_ligera/** -text
+/experimental/** -text
+/baselines/** -text
+/docs/auditoria/** -text

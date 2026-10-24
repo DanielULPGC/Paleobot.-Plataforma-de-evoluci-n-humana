@@ -1,0 +1,18 @@
+# Resultados reproducibles y datos de ejecución local
+/dist/
+/local-results/
+__pycache__/
+*.py[cod]
+*.log
+.DS_Store
+Thumbs.db
+# Credenciales y configuración de equipos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+# Paquetes se generan fuera del árbol de fuentes
+*.bundle
+*.zip

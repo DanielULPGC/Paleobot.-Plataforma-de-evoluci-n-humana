@@ -1,0 +1,2429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PaleoBot — Atlas Paleoantropológico Interactivo             ║
+  ║  Versión: 69.98.0 (R98 · paquete Moodle). Historial v66 abajo ║
+  ║  Fecha:   2026-05                                            ║
+  ║  Mejoras v66:                                                ║
+  ║    M1   Dispatcher canónico de clicks (capture:true, FIFO)  ║
+  ║    M2   Exportación SVG árbol filogenético (phylo+constructor║
+  ║    M3   Generador SA desde sesión + panel Bloom + Moodle-txt ║
+  ║    M4   Fauna asociada 43 yacimientos (taxa, bioma, riqueza) ║
+  ║    M5   Viewer craneal multi-norma: lateral/frontal/superior ║
+  ║         · SVG norma superior paramétrico (índice cefálico,  ║
+  ║           bun occipital, arcos cigomáticos, cresta sagital) ║
+  ║         · Selector accesible [aria-pressed] entre 3 vistas  ║
+  ║  Base:    paleobot_v32.html                                  ║
+  ║  Mejoras v33:                                                ║
+  ║    V33-1  introgresion añadida a COMPLEXITY_MODES.           ║
+  ║           universitario.views (era invisible en ese modo)    ║
+  ║    V33-2  VIEW_HERO_META, VIEW_CONTEXT_NEXT y                ║
+  ║           VIEW_EXIT_PRODUCTS registrados para las 3 vistas   ║
+  ║    V33-3  FIX: escala visual barra porcentaje introgresión   ║
+  ║           (pctMid*10 → mapeo 0-20% → 0-100% visual)         ║
+  ║    V33-4  Tafonomía: silueta anatómica SVG real (path        ║
+  ║           anatómicos: costillas, vértebras, extremidades)    ║
+  ║           + radio dinámico por supervivencia                 ║
+  ║    V33-5  Tafonomía: tabla de regiones ordenadas por         ║
+  ║           supervivencia con barras de progreso accesibles    ║
+  ║    V33-6  Estratigrafía: indicador visual [DEBATIDO]         ║
+  ║           (borde naranja punteado + ? en SVG + leyenda)      ║
+  ║    V33-7  Estratigrafía: panel Comparar yacimientos          ║
+  ║           (tabla: capas, rango temporal, taxones, métodos)   ║
+  ║    V33-8  Introgresión: arrowhead markers direccionales       ║
+  ║           en ribbons Bézier + eje temporal Ka superior       ║
+  ║    V33-9  Introgresión: badge visual PROVISIONAL (círculo    ║
+  ║           punteado naranja + ? en nodo arcaico)              ║
+  ║    V33-10 CSS: scroll-margin-top, .tapho-region-table,       ║
+  ║           .strat-compare-table, .strat-debated-legend        ║
+  ║  Fuentes de datos: DB[].experto.referencias (DOI en línea)  ║
+  ╚══════════════════════════════════════════════════════════════╝
+<!--
+  ║  Correcciones heredadas de v27 (v27.1.0):                    ║
+  ║    S-1  <div role=main> → <main> nativo                     ║
+  ║    A-7  <canvas> con role=img + aria-label                   ║
+  ║    A-8  confirm() → diálogo accesible inline                 ║
+  ║    A-9  Glosario nav con role=navigation + aria-label        ║
+  ║    M-11 Font-family tokens en cabeceras de módulo            ║
+  ║    M-12 <meta theme-color> + <link rel=icon>                ║
+  ║    M-13 <title> y <meta description> actualizados           ║
+  ║  Mejoras nuevas v28:                                         ║
+  ║    CMP-1  Picker de buscador con dropdown filtrable          ║
+  ║           (reemplaza los 2 <select> legacy)                  ║
+  ║    CMP-2  Chips eliminables con animación por clado          ║
+  ║    CMP-3  Presets curriculares (6 escenarios pedagógicos)     ║
+  ║    CMP-4  Radar morfofuncional Canvas2D — 6 ejes:            ║
+  ║           encefalización, bipedismo, tecnología lítica,      ║
+  ║           robustez masticatoria, arborealismo, simbolismo    ║
+  ║    CMP-5  Tabla de rasgos N-columnar dinámica                ║
+  ║    CMP-6  Grid visual morfológico N×5 caracteres             ║
+  ║    CMP-7  Cladística generalizada: universales + autapos     ║
+  ║    CMP-8  Textos paralelos de anatomía y debate N columnas   ║
+  ║    CMP-9  getMorphRadarScore() — scoring morfofuncional       ║
+  ║           basado en CHARACTER_CATALOG + CHARACTER_OVERRIDES  ║
+  ║    CMP-10 Compatibilidad backward con renderComparison()     ║
+  ║  Fuentes de datos: DB[].experto.referencias (DOI en línea)  ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- CSP R89: perfil mínimo para despliegue Moodle.
+       script-src queda en 'self'; style-src-attr permanece en 'none'.
+       connect-src usa 'self' como perfil seguro por defecto: si PALEOBOT_CLAUDE_ENDPOINT
+       apunta a un proxy externo autorizado, su ORIGEN EXACTO debe añadirse en despliegue.
+       form-action, worker-src, media-src y manifest-src se cierran a 'none'.
+       frame-ancestors no se declara aquí: debe configurarse como cabecera HTTP del recurso
+       PaleoBot para autorizar exclusivamente al origen Moodle que lo incruste. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-elem 'self' https://fonts.googleapis.com; style-src-attr 'none'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://upload.wikimedia.org https://commons.wikimedia.org https://*.tile.openstreetmap.org https://*.tile.opentopomap.org https://server.arcgisonline.com https://www.um.u-tokyo.ac.jp; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; worker-src 'none'; media-src 'none'; manifest-src 'none';">
+<title>PaleoBot v69 · R98 — Atlas Paleoantropológico Interactivo Consolidado (DEA · ULPGC)</title>
+<meta name="description" content="PaleoBot v69 · R98 — Atlas Paleoantropológico Interactivo consolidado. 50 taxones (homininos y hominoideos del Mioceno). 29 vistas temáticas: cronología, filogenia, mapa, genómica, tafonomía, estratigrafía, introgresión, debates socráticos y síntesis de sesión. ULPGC 2026.">
+<!-- Fuentes tipográficas con preconnect optimizado y font-display:swap (incluido en URL) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- FIX M-12: meta theme-color para dispositivos móviles y PWA -->
+<meta name="theme-color" content="#1c2b3a">
+<meta name="paleobot-storage-scope" content="auto">
+<!-- R98: manifiesto de imágenes locales (vacío por defecto) y sonda de carga; síncronos, antes de cualquier <img>. -->
+<script src="assets/img/manifest.js"></script>
+<script src="assets/js/00-core/000-paleobot-r98-local-images.js"></script>
+<script defer src="assets/js/00-core/074-paleobot-storage-scope.js"></script>
+<!-- FIX M-12: favicon genérico (SVG inline vía data URI, sin dependencias externas) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231c2b3a'/><text y='24' x='4' font-size='20' font-family='serif'>🦴</text></svg>" type="image/svg+xml">
+<!-- Leaflet 1.9.4 — vendorizado localmente en R66A; hashes en RECOVERY_LEAFLET_VENDOR_RECEIPT_R66A.json -->
+<link rel="stylesheet" href="assets/vendor/leaflet/1.9.4/leaflet.css">
+<script src="assets/vendor/leaflet/1.9.4/leaflet.js"></script>
+
+<link rel="stylesheet" href="assets/css/00-core/001-style.css">
+<link rel="stylesheet" href="assets/css/00-core/057-paleobot-r94-boot-fallback.css">
+<link rel="stylesheet" href="assets/css/60-science/055-paleobot-a3-critical-consumers.css">
+<link rel="stylesheet" href="assets/css/60-science/054-paleobot-a3-launcher.css">
+</head>
+<body>
+<!-- R95: aviso oculto por defecto (atributo hidden) para no mostrar falsas alarmas durante cargas lentas; la hoja 057 lo revela a los 20 s si el atlas no ha arrancado. -->
+<div id="pb-boot-fallback" role="alert" hidden>
+  <p><strong>PaleoBot no ha podido cargar sus ficheros.</strong></p>
+  <p>Si ves este aviso en Moodle, comprueba: 1) que el ZIP está descomprimido en el recurso y el archivo principal es <code>index.html</code>, en la raíz; 2) que la opción de administración «Usar argumentos con barras» (<code>slasharguments</code>) está activada; 3) que el navegador permite JavaScript. Recarga la página tras corregirlo.</p>
+</div>
+
+<!-- Skip-link de accesibilidad (FIX C-3b — WCAG 2.1 §2.4.1 Bypass Blocks) -->
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<section class="main-cover paleobot-cover-v45" aria-label="Portada principal independiente de PaleoBot">
+  <picture class="main-cover-media paleobot-cover-media-v45" aria-hidden="true">
+    <img
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG?width=1920"
+      alt=""
+      loading="eager"
+      decoding="async"
+      referrerpolicy="no-referrer"
+      data-image-error="fallback-src"
+      data-image-fallback-src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG/1280px-Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG"
+    >
+  </picture>
+  <nav class="cover-nav-v45" aria-label="Navegación de portada">
+    <button type="button" data-view="timeline">Atlas</button>
+    <button type="button" data-view="map">Yacimientos</button>
+    <button type="button" data-view="genomica">Biomoléculas</button>
+    <a class="a3-science-link" href="science/chronology.html">Cronología crítica · A3</a>
+    <button type="button" data-action="abrirBiblio">Bibliografía</button>
+    <button type="button" data-action="activateClassMode">Modo clase</button>
+  </nav>
+  <div class="cover-noise-v45" aria-hidden="true"></div>
+  <div class="main-cover-inner cover-inner-v45">
+    <div class="cover-hero-grid-v45">
+      <div class="main-cover-content cover-copy-v45">
+        <span class="main-cover-kicker cover-kicker-v45">Atlas paleoantropológico interactivo</span>
+        <h1>PaleoBot<span>Research Atlas</span></h1>
+        <p class="main-cover-lead">Explora especies humanas, yacimientos, dispersión, cronología, paleogenómica, paleoproteómica, debates científicos y recursos docentes verificados.</p>
+        <p class="cover-thesis-v45"><em>No todo hallazgo es consenso; no toda semejanza implica parentesco directo.</em></p>
+        <div class="main-cover-actions cover-actions-v45" aria-label="Entradas principales al atlas">
+          <button type="button" class="main-cover-action primary" data-view="timeline">Entrar al atlas</button>
+          <button type="button" class="main-cover-action" data-view="aula">Preparar una clase</button>
+          <button type="button" class="main-cover-action" data-view="map">Explorar yacimientos</button>
+          <button type="button" class="main-cover-action" data-action="abrirBiblio">Bibliografía 2026</button>
+        </div>
+      </div>
+      <aside class="cover-lab-card-v45" aria-label="Resumen científico de la portada">
+        <span>Registro fósil humano</span>
+        <strong>De la pieza al argumento</strong>
+        <p>Fichas, mapas, rangos temporales, métodos de datación, incertidumbre y bibliografía con DOI en una sola entrada docente.</p>
+      </aside>
+    </div>
+    <div class="main-cover-proof cover-proof-v45" aria-label="Indicadores de alcance del atlas">
+      <span><strong>50</strong> taxones con imagen y ficha</span>
+      <span><strong>25</strong> vistas de trabajo enlazadas</span>
+      <span><strong>DOI</strong> bibliografía trazable</span>
+      <span><strong>2026</strong> actualización científica</span>
+    </div>
+    <div class="cover-modules-v45" aria-label="Módulos principales de trabajo">
+      <button type="button" data-view="timeline"><b>01</b><strong>Cronología</strong><span>Aparición, solapamiento e incertidumbre.</span></button>
+      <button type="button" data-view="map"><b>02</b><strong>Mapas</strong><span>Yacimientos, regiones y dispersión.</span></button>
+      <button type="button" data-view="phylo"><b>03</b><strong>Filogenia</strong><span>Hipótesis, consenso y comparación.</span></button>
+      <button type="button" data-view="genomica"><b>04</b><strong>Paleogenómica</strong><span>ADN, proteínas y límites de conservación.</span></button>
+      <button type="button" data-view="aula"><b>05</b><strong>Modo docente</strong><span>Rutas, preguntas y productos evaluables.</span></button>
+      <button type="button" data-view="recursos"><b>06</b><strong>Recursos</strong><span>Enlaces, plantillas y banco de aula.</span></button>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="header">
+    <div class="header-brand">
+      <span class="landing-eyebrow">Atlas paleoantropológico interactivo</span>
+      <h1>PaleoBot <span class="badge-research">Research</span><span class="badge-research">Atlas v69 modular</span></h1>
+      <p>Explora el registro fósil humano como una red de evidencias: especies, yacimientos, cronología, clima, debates, ADN antiguo y bibliografía verificable.</p>
+      <div class="landing-search">
+        <label for="landingSearchInput">Buscar en el atlas</label>
+        <input id="landingSearchInput" type="search" placeholder="Prueba con afarensis, Dmanisi, Neandertal, Olduvai..." autocomplete="off" aria-label="Buscar en el atlas paleoantropológico">
+      </div>
+      <div class="landing-actions" aria-label="Accesos rápidos recomendados">
+        <button type="button" class="landing-action primary" data-view="timeline">Explorar cronología</button>
+        <button type="button" class="landing-action science" data-view="aula">Ruta docente</button>
+        <button type="button" class="landing-action" data-view="map">Investigar yacimientos</button>
+        <button type="button" class="landing-action" data-view="recursos">Banco de recursos</button>
+      </div>
+      <div class="landing-evidence-strip" aria-label="Actualizaciones científicas destacadas">
+        <button type="button" class="landing-evidence-chip" data-action="abrirBiblio" aria-label="Abrir bibliografía reciente 2023-2026">
+          <b>Actualización 2023-2026</b>
+          <span>Bibliografía reciente separada de los clásicos para distinguir dato nuevo, síntesis y debate.</span>
+          <em>Abrir bibliografía</em>
+        </button>
+        <button type="button" class="landing-evidence-chip" data-view="map" aria-label="Abrir mapa de yacimientos actualizados">
+          <b>Nuevos yacimientos</b>
+          <span>Ledi-Geraru, Sima del Elefante TE7 y Blombos Cave entran como puntos de lectura actualizados.</span>
+          <em>Ver en mapa</em>
+        </button>
+        <button type="button" class="landing-evidence-chip" data-view="recursos" aria-label="Abrir banco de recursos externos">
+          <b>Recursos externos</b>
+          <span>Modelos 3D, instituciones y enlaces docentes con filtros, favicons reales y copia rápida.</span>
+          <em>Abrir recursos</em>
+        </button>
+      </div>
+    </div>
+    <figure class="home-visual-card" aria-label="Imagen editorial de referencia para la portada de PaleoBot">
+      <img
+        class="home-visual-img"
+        src="https://commons.wikimedia.org/wiki/Special:FilePath/Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG?width=1920"
+        alt="Molde craneal real de Australopithecus afarensis expuesto en el Naturmuseum Senckenberg"
+        loading="eager"
+        decoding="async"
+        referrerpolicy="no-referrer"
+        data-image-error="fallback-src"
+        data-image-fallback-src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG/960px-Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG"
+      >
+      <div class="home-visual-fact" aria-label="Lectura científica de la imagen de portada">
+        <span>Portada real</span>
+        <strong>Australopithecus afarensis</strong>
+        <p>La portada parte de un molde craneal fotografiado, no de una ilustración: una señal visual directa para entrar desde evidencia material.</p>
+      </div>
+      <figcaption class="home-visual-caption">
+        <strong>Del fósil a la hipótesis</strong>
+        <span>Fotografía real de un molde craneal de <em>Australopithecus afarensis</em>. Fuente: Wikimedia Commons, Daderot, CC0.</span>
+      </figcaption>
+    </figure>
+  <div class="header-stats">
+      <div class="stat-item"><strong id="headerStatVisible">50</strong><span>Registros</span></div>
+      <div class="stat-item"><strong id="headerStatMedia">50/50</strong><span>Imágenes</span></div>
+      <div class="stat-item"><strong>23 Ma</strong><span>Rango temporal</span></div>
+      <div class="stat-item"><strong>DOI</strong><span>Auditados</span></div>
+    </div>
+  </div>
+
+  <section class="atlas-workbench" aria-label="Tablero visual principal de PaleoBot">
+    <div class="atlas-workbench-brief">
+      <span class="atlas-workbench-kicker">Tablero visual</span>
+      <h2>Elige una tarea. Cada tarjeta abre una herramienta real.</h2>
+      <p>La portada queda pensada como mesa de trabajo: primero decides qué quieres hacer, después el atlas te lleva a una vista operativa con filtros, fuentes y producto didáctico.</p>
+      <div class="atlas-workbench-meta" aria-label="Resumen de estructura simplificada">
+        <span><strong>25</strong> vistas enlazadas</span>
+        <span><strong>OK</strong> botones auditados</span>
+        <span><strong>0</strong> accesos decorativos</span>
+      </div>
+    </div>
+    <div class="atlas-workbench-grid">
+      <button type="button" class="atlas-workbench-card" data-view="timeline">
+        <b>Ordenar</b>
+        <strong>Cronología</strong>
+        <span>Empieza por tiempo, coexistencias y secuencia antes de interpretar.</span>
+        <em>Abrir vista</em>
+      </button>
+      <button type="button" class="atlas-workbench-card" data-view="map">
+        <b>Localizar</b>
+        <strong>Mapa y yacimientos</strong>
+        <span>Sitúa especies y sitios sin convertir puntos aislados en territorios completos.</span>
+        <em>Abrir vista</em>
+      </button>
+      <button type="button" class="atlas-workbench-card" data-view="aula">
+        <b>Enseñar</b>
+        <strong>Modo clase</strong>
+        <span>Materiales, actividades, verificación global y productos evaluables.</span>
+        <em>Abrir centro</em>
+      </button>
+      <button type="button" class="atlas-workbench-card" data-view="africa">
+        <b>Regiones</b>
+        <strong>Continentes</strong>
+        <span>África, Asia, Europa y América como problemas distintos de evidencia.</span>
+        <em>Empezar por África</em>
+      </button>
+      <button type="button" class="atlas-workbench-card" data-view="genomica">
+        <b>Biomoléculas</b>
+        <strong>ADN y proteínas</strong>
+        <span>Distingue genómica, paleoproteómica, inferencia y límites de conservación.</span>
+        <em>Abrir análisis</em>
+      </button>
+      <button type="button" class="atlas-workbench-card" data-view="recursos">
+        <b>Preparar</b>
+        <strong>Recursos</strong>
+        <span>Fuentes, modelos 3D, plantillas, enlaces y bibliografía verificada.</span>
+        <em>Abrir banco</em>
+      </button>
+    </div>
+  </section>
+
+  <section class="design-entry-panel" aria-label="Entrada principal por perfil">
+    <div class="design-entry-copy">
+      <span>Rediseño de acceso</span>
+      <h2>Elige primero cómo vas a trabajar.</h2>
+      <p>El atlas ya no empieza como un índice largo: cada perfil abre una ruta corta, con objetivo claro y sin obligar a recorrer todas las herramientas.</p>
+      <div class="design-entry-actions">
+        <button type="button" class="design-mode-btn" data-action="activateClassMode">Activar modo clase</button>
+        <button type="button" class="design-mode-btn secondary" data-view="timeline">Explorar libremente</button>
+      </div>
+    </div>
+    <div class="design-profile-grid">
+      <article class="design-profile-card">
+        <b>01</b>
+        <strong>Estudiante</strong>
+        <p>Ordena, localiza y entrega una ficha breve con evidencia y cautela.</p>
+        <div>
+          <button type="button" data-view="timeline">Cronología</button>
+          <button type="button" data-view="map">Mapa</button>
+          <button type="button" data-view="recursos">Plantilla</button>
+        </div>
+      </article>
+      <article class="design-profile-card">
+        <b>02</b>
+        <strong>Docente</strong>
+        <p>Entra directamente en materiales, secuencias, evaluación y modo simplificado.</p>
+        <div>
+          <button type="button" data-action="activateClassMode">Modo clase</button>
+          <button type="button" data-view="aula">Centro docente</button>
+          <button type="button" data-view="itinerarios">Itinerarios</button>
+        </div>
+      </article>
+      <article class="design-profile-card">
+        <b>03</b>
+        <strong>Investigación</strong>
+        <p>Formula problemas con yacimientos, datación, debates y bibliografía reciente.</p>
+        <div>
+          <button type="button" data-view="yacimientos">Yacimientos</button>
+          <button type="button" data-view="debates">Debates</button>
+          <button type="button" data-action="abrirBiblio">Bibliografía</button>
+        </div>
+      </article>
+      <article class="design-profile-card">
+        <b>04</b>
+        <strong>Divulgación</strong>
+        <p>Construye una explicación visual por continentes, imágenes reales y glosario.</p>
+        <div>
+          <button type="button" data-view="africa">África</button>
+          <button type="button" data-view="europe">Europa</button>
+          <button type="button" data-action="openGlossary">Glosario</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="visual-use-guide" aria-label="Guía visual de uso de PaleoBot">
+    <div class="visual-use-grid">
+      <div class="visual-use-intro">
+        <span class="visual-use-kicker">Guía visual moderna</span>
+        <h2>Empieza por una pregunta, no por un menú.</h2>
+        <p>PaleoBot funciona mejor si se usa como un laboratorio de evidencias: primero sitúa tiempo y espacio, después abre fichas, compara hipótesis y termina con un producto verificable.</p>
+        <div class="visual-use-actions" aria-label="Acciones iniciales recomendadas">
+          <button type="button" class="visual-use-action primary" data-view="timeline">Iniciar recorrido</button>
+          <button type="button" class="visual-use-action" data-view="aula">Preparar clase</button>
+          <button type="button" class="visual-use-action" data-action="abrirBiblio">Ver bibliografía</button>
+        </div>
+      </div>
+      <div class="visual-use-main">
+        <div class="visual-use-block">
+          <div class="visual-use-block-head">
+            <h3>Ruta de trabajo en cuatro pasos</h3>
+            <span class="visual-use-note">Secuencia recomendada</span>
+          </div>
+          <div class="visual-use-route-grid">
+            <button type="button" class="visual-use-route" data-view="timeline"><b>01</b><strong>Ordena</strong><span>Cronología, coexistencias y escala temporal antes de interpretar.</span></button>
+            <button type="button" class="visual-use-route" data-view="map"><b>02</b><strong>Localiza</strong><span>Regiones, yacimientos y dispersión sin convertir puntos en territorios completos.</span></button>
+            <button type="button" class="visual-use-route" data-view="yacimientos"><b>03</b><strong>Comprueba</strong><span>Estratigrafía, datación, fósiles y grado de asociación.</span></button>
+            <button type="button" class="visual-use-route" data-view="debates"><b>04</b><strong>Argumenta</strong><span>Consenso, hipótesis alternativa y cautela científica explícita.</span></button>
+          </div>
+        </div>
+        <div class="visual-use-block">
+          <div class="visual-use-block-head">
+            <h3>Cuatro preguntas para no perderse</h3>
+            <span class="visual-use-note">Lectura científica</span>
+          </div>
+          <div class="visual-use-question-grid">
+            <button type="button" class="visual-use-question" data-view="timeline"><small>Tiempo</small><strong>¿Cuándo?</strong><span>Aparición, desaparición y solapamiento.</span></button>
+            <button type="button" class="visual-use-question" data-view="map"><small>Espacio</small><strong>¿Dónde?</strong><span>Yacimiento, región, ruta y vacío del registro.</span></button>
+            <button type="button" class="visual-use-question" data-view="datacion"><small>Método</small><strong>¿Cómo se sabe?</strong><span>Técnica, material fechado y margen de error.</span></button>
+            <button type="button" class="visual-use-question" data-view="genomica"><small>Biomoléculas</small><strong>¿Qué aporta el ADN?</strong><span>Genómica, proteómica, introgresión y límites.</span></button>
+          </div>
+        </div>
+        <div class="visual-use-block">
+          <div class="visual-use-block-head">
+            <h3>Perfiles de uso</h3>
+            <span class="visual-use-note">Atajos funcionales</span>
+          </div>
+          <div class="visual-use-profile-grid">
+            <article class="visual-use-profile">
+              <strong>Estudiante</strong>
+              <p>Construye una explicación breve con tiempo, lugar, evidencia y cautela.</p>
+              <div class="visual-use-mini-actions">
+                <button type="button" data-view="timeline">Cronología</button>
+                <button type="button" data-view="recursos">Plantillas</button>
+              </div>
+            </article>
+            <article class="visual-use-profile">
+              <strong>Docente</strong>
+              <p>Convierte el atlas en una actividad universitaria con producto evaluable.</p>
+              <div class="visual-use-mini-actions">
+                <button type="button" data-view="aula">Centro docente</button>
+                <button type="button" data-view="itinerarios">Itinerarios</button>
+              </div>
+            </article>
+            <article class="visual-use-profile">
+              <strong>Investigación</strong>
+              <p>Formula problemas abiertos con bibliografía reciente y evidencias contrastables.</p>
+              <div class="visual-use-mini-actions">
+                <button type="button" data-view="revisiones">Revisiones</button>
+                <button type="button" data-view="debates">Debates</button>
+              </div>
+            </article>
+            <article class="visual-use-profile">
+              <strong>Divulgación</strong>
+              <p>Explica sin simplificar: imagen real, mapa, glosario y ruta visual.</p>
+              <div class="visual-use-mini-actions">
+                <button type="button" data-view="africa">África</button>
+                <button type="button" data-action="openGlossary">Glosario</button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="visual-use-block">
+          <div class="visual-use-block-head">
+            <h3>Mejora científica incorporada</h3>
+            <span class="visual-use-note">Lectura 2026</span>
+          </div>
+          <div class="visual-science-strip">
+            <div class="visual-science-item"><strong>Agenda de investigación</strong><span>Cada ficha mostrará qué fósiles faltan, qué cronología debe afinarse y qué trabajo de campo sería decisivo.</span></div>
+            <div class="visual-science-item"><strong>No todo vacío es ausencia</strong><span>Se separan lagunas de preservación, muestreo, biomoléculas y excavación para evitar conclusiones excesivas.</span></div>
+            <div class="visual-science-item"><strong>Más verificabilidad</strong><span>La ruta conecta yacimientos, datación, paleogenómica, paleoproteómica y bibliografía comentada.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick-start-panel landing-routes" aria-label="Guía rápida de uso">
+    <div class="quick-start-copy">
+      <span class="quick-start-kicker">Guía rápida</span>
+      <strong>Después del primer paso, afina la pregunta.</strong>
+      <span>Estas rutas secundarias evitan el menú infinito: ordena, localiza, contextualiza, compara evidencias genéticas o convierte el atlas en una actividad de aula.</span>
+    </div>
+    <div class="quick-start-steps" aria-label="Pasos recomendados">
+      <button type="button" class="quick-route-card" data-view="timeline"><b>01</b><strong>Orden temporal</strong><span>Qué aparece primero y qué convive.</span></button>
+      <button type="button" class="quick-route-card" data-view="africa"><b>02</b><strong>Foco africano</strong><span>Regiones, fuentes y registro principal.</span></button>
+      <button type="button" class="quick-route-card" data-view="asia"><b>03</b><strong>Dispersión asiática</strong><span>Corredores, mezcla arcaica e islas.</span></button>
+      <button type="button" class="quick-route-card" data-view="europe"><b>04</b><strong>Europa crítica</strong><span>Atapuerca, neandertales y cautelas.</span></button>
+      <button type="button" class="quick-route-card" data-view="contexto"><b>05</b><strong>Ambiente</strong><span>Clima, tectónica y presiones evolutivas.</span></button>
+      <button type="button" class="quick-route-card" data-view="genomica"><b>06</b><strong>Paleogenómica</strong><span>ADN antiguo, introgresión y cautelas.</span></button>
+      <button type="button" class="quick-route-card" data-view="aula"><b>07</b><strong>Centro docente</strong><span>Banco de datos, materiales e investigación.</span></button>
+      <button type="button" class="quick-route-card" data-view="recursos"><b>08</b><strong>Recursos</strong><span>Fuentes, plantillas y actividades listas.</span></button>
+      <button type="button" class="quick-route-card" data-view="itinerarios"><b>09</b><strong>Itinerarios</strong><span>Secuencias guiadas y productos evaluables.</span></button>
+    </div>
+  </section>
+
+  <section class="learning-compass" aria-label="Compás didáctico de lectura">
+    <div class="learning-compass-intro">
+      <span class="learning-compass-kicker">Lectura visual guiada</span>
+      <h2>Lee la evolución humana como un sistema, no como una lista.</h2>
+      <p>Este compás organiza la navegación en cuatro preguntas científicas. Cada tarjeta abre una vista clave y ayuda a distinguir cronología, territorio, evidencia material e incertidumbre interpretativa.</p>
+    </div>
+    <div class="learning-compass-grid">
+      <button type="button" class="learning-compass-card time" data-view="timeline">
+        <span class="learning-compass-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
+        </span>
+        <span><b>Tiempo</b><strong>¿Cuándo?</strong><span>Ordena apariciones, coexistencias y cambios ambientales.</span></span>
+      </button>
+      <button type="button" class="learning-compass-card space" data-view="map">
+        <span class="learning-compass-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        </span>
+        <span><b>Espacio</b><strong>¿Dónde?</strong><span>Relaciona yacimientos, regiones y rutas de dispersión.</span></span>
+      </button>
+      <button type="button" class="learning-compass-card evidence" data-view="yacimientos">
+        <span class="learning-compass-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6 20l3-13h6l3 13"/><path d="M9 7l3-4 3 4"/><path d="M8 13h8"/></svg>
+        </span>
+        <span><b>Evidencia</b><strong>¿Con qué datos?</strong><span>Parte de fósiles, estratigrafía, datación y fuentes.</span></span>
+      </button>
+      <button type="button" class="learning-compass-card uncertainty" data-view="debates">
+        <span class="learning-compass-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M9 9h6M9 13h4"/></svg>
+        </span>
+        <span><b>Incertidumbre</b><strong>¿Qué se debate?</strong><span>Distingue consenso, hipótesis fuerte y controversia.</span></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="persona-guide-panel" aria-label="Guía por perfil de usuario">
+    <div class="persona-guide-copy">
+      <span>Por dónde empezar</span>
+      <h2>Elige una ruta según tu objetivo, no según el menú.</h2>
+      <p>PaleoBot combina atlas, laboratorio, biblioteca y cuaderno de aula. Esta guía reduce la entrada inicial: cada perfil abre solo las vistas más útiles para empezar con una pregunta clara.</p>
+    </div>
+    <div class="persona-card-grid">
+      <article class="persona-card">
+        <strong>Estudiante</strong>
+        <p>Primero ordena el tiempo, después ubica especies y cierra con una ficha breve usando datos verificables.</p>
+        <div class="persona-card-actions">
+          <button type="button" data-view="timeline">Cronología</button>
+          <button type="button" data-view="map">Mapa</button>
+          <button type="button" data-view="aula">Plantillas</button>
+        </div>
+      </article>
+      <article class="persona-card">
+        <strong>Docente</strong>
+        <p>Entra por materiales, secuencia, rúbrica y banco de actividades para convertir el atlas en tarea evaluable.</p>
+        <div class="persona-card-actions">
+          <button type="button" data-view="aula">Centro docente</button>
+          <button type="button" data-view="recursos">Recursos</button>
+          <button type="button" data-view="itinerarios">Itinerarios</button>
+          <button type="button" data-view="africa">África</button>
+        </div>
+      </article>
+      <article class="persona-card">
+        <strong>Investigación</strong>
+        <p>Parte de yacimientos, debates, datación y bibliografía para formular problemas acotados con incertidumbre explícita.</p>
+        <div class="persona-card-actions">
+          <button type="button" data-view="yacimientos">Yacimientos</button>
+          <button type="button" data-view="debates">Debates</button>
+          <button type="button" data-view="datacion">Datación</button>
+        </div>
+      </article>
+      <article class="persona-card">
+        <strong>Público general</strong>
+        <p>Usa una ruta visual: África, Asia, Europa, paleogenómica y contexto ambiental. El objetivo es comprender sin simplificar en exceso.</p>
+        <div class="persona-card-actions">
+          <button type="button" data-view="africa">África</button>
+          <button type="button" data-view="asia">Asia</button>
+          <button type="button" data-view="europe">Europa</button>
+          <button type="button" data-view="genomica">Paleogenómica</button>
+          <button type="button" data-view="contexto">Contexto</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="paleogenomics-entry-panel" aria-label="Acceso destacado a paleogenómica">
+    <div>
+      <span class="paleogenomics-entry-kicker">ADN antiguo y genómica comparada</span>
+      <h2>Paleogenómica: qué aporta el ADN antiguo al árbol humano.</h2>
+      <p>Un apartado específico para distinguir evidencia genética directa, inferencia poblacional y límites de preservación. Está pensado para trabajar neandertales, denisovanos, sapiens arcaicos y fósiles sin ADN recuperado sin confundir hipótesis con prueba directa.</p>
+      <div class="paleogenomics-entry-actions">
+        <button type="button" class="paleogenomics-entry-btn" data-view="genomica">Abrir paleogenómica</button>
+        <button type="button" class="paleogenomics-entry-btn secondary" data-view="genomica">Leer cautelas de interpretación</button>
+      </div>
+    </div>
+    <div class="paleogenomics-entry-side" aria-label="Claves de lectura paleogenómica">
+      <div class="paleogenomics-entry-stat"><strong>Evidencia directa</strong><span>ADN nuclear, mitocondrial o proteómica asociada a restos concretos.</span></div>
+      <div class="paleogenomics-entry-stat"><strong>Introgresión</strong><span>Mezcla entre linajes humanos y persistencia de variantes funcionales.</span></div>
+      <div class="paleogenomics-entry-stat"><strong>Cautela</strong><span>Sin ADN no significa sin valor científico: cambia el tipo de pregunta posible.</span></div>
+    </div>
+  </section>
+
+      <section class="complexity-guide" aria-live="polite" aria-label="Modo de complejidad didáctica">
+    <div>
+      <strong id="complexityGuideTitle">Modo experto</strong>
+      <p id="complexityGuideCopy">Todas las vistas y herramientas avanzadas están disponibles. Usa este modo para seminarios, TFG/TFM, discusión bibliográfica y análisis comparado.</p>
+    </div>
+    <span class="complexity-guide-badge" id="complexityGuideBadge">Doctorado</span>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- PANTALLA DE BIENVENIDA DEA (v58) — Diploma Estudios Africanos -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="dea-welcome" id="deaWelcome" role="region" aria-label="Bienvenida al recurso PaleoBot para el Diploma de Estudios Africanos">
+    <div class="dea-welcome-header">
+      <div>
+        <h2 class="dea-welcome-title">PaleoBot en el Diploma de Estudios Africanos</h2>
+        <p class="dea-welcome-sub">Atlas paleoantropológico · ULPGC · Formación permanente</p>
+      </div>
+      <span class="dea-welcome-badge">DEA · v58</span>
+    </div>
+    <div class="dea-objectives" role="list" aria-label="Objetivos de aprendizaje">
+      <div class="dea-objective" role="listitem">
+        <span class="dea-obj-num">01</span>
+        <p class="dea-obj-text">Reconocerás los principales taxones homininos y su distribución en el continente africano a lo largo del tiempo geológico.</p>
+      </div>
+      <div class="dea-objective" role="listitem">
+        <span class="dea-obj-num">02</span>
+        <p class="dea-obj-text">Distinguirás entre dato fósil directo, inferencia razonada e hipótesis científica debatida.</p>
+      </div>
+      <div class="dea-objective" role="listitem">
+        <span class="dea-obj-num">03</span>
+        <p class="dea-obj-text">Relacionarás el registro paleoantropológico con el paleoambiente africano: clima, geografía y tectónica.</p>
+      </div>
+      <div class="dea-objective" role="listitem">
+        <span class="dea-obj-num">04</span>
+        <p class="dea-obj-text">Formularás preguntas científicas a partir de evidencias incompletas y comprenderás por qué la evolución humana no es una escalera lineal.</p>
+      </div>
+    </div>
+    <div class="dea-actions">
+      <button type="button" class="dea-start-btn" data-itinerary-select="0" data-view="itinerarios" aria-label="Empezar por el Itinerario I — Del bosque a la sabana">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M5 7v7a4 4 0 0 0 4 4h6"/><path d="M14 15l5 4-5 4"/></svg>
+        Empezar aquí (Itinerario I — DEA)
+      </button>
+      <button type="button" class="dea-rubric-btn" id="deaRubricToggle" data-dea-rubric-toggle aria-expanded="false" aria-controls="deaRubricPanel">
+        Ver criterios de evaluación
+      </button>
+      <button type="button" class="dea-dismiss" id="deaDismiss" data-dea-dismiss aria-label="Ocultar pantalla de bienvenida">
+        Ocultar esta pantalla
+      </button>
+    </div>
+    <!-- Panel de rúbrica colapsable -->
+    <div class="dea-rubric-panel" id="deaRubricPanel" role="region" aria-label="Rúbrica de competencia">
+      <p class="dea-rubric-title">¿Cómo sabré si he aprendido? — Rúbrica de competencia</p>
+      <table class="dea-rubric-table" aria-label="Rúbrica de competencia docente">
+        <thead>
+          <tr>
+            <th scope="col">Criterio</th>
+            <th scope="col">Nivel básico</th>
+            <th scope="col">Nivel avanzado</th>
+            <th scope="col">Nivel experto</th>
+          </tr>
+        </thead>
+        <tbody id="deaRubricBody">
+          <!-- Renderizado por JS desde TEACHING_COMPETENCY_RUBRIC -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="toolbar" role="navigation" aria-label="Navegación del atlas">
+    <div class="toolbar-row toolbar-row-primary">
+      <button class="atlas-back-btn" type="button" data-back-action aria-label="Volver atr&aacute;s" title="Volver atr&aacute;s" disabled>
+        <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></span>
+        Volver atr&aacute;s
+      </button>
+      <div class="nav-objective-strip" aria-label="Navegación por objetivos">
+        <button type="button" class="nav-objective" data-nav-family="explorar" aria-pressed="false"><strong>Explorar</strong><span>Tiempo, mapa y continentes.</span></button>
+        <button type="button" class="nav-objective" data-nav-family="interpretar" aria-pressed="false"><strong>Comparar</strong><span>Árboles, clima y relaciones.</span></button>
+        <button type="button" class="nav-objective" data-nav-family="investigar" aria-pressed="false"><strong>Investigar</strong><span>Debates, datación y bibliografía.</span></button>
+        <button type="button" class="nav-objective" data-nav-family="aprender" aria-pressed="false"><strong>Enseñar</strong><span>Recursos, itinerarios y evaluación.</span></button>
+      </div>
+      <div class="nav-family-strip" role="group" aria-label="Familias principales del atlas">
+        <button class="nav-family-btn active" type="button" data-nav-family="explorar" aria-pressed="true">Explorar</button>
+        <button class="nav-family-btn" type="button" data-nav-family="interpretar" aria-pressed="false">Interpretar</button>
+        <button class="nav-family-btn" type="button" data-nav-family="investigar" aria-pressed="false">Investigar</button>
+        <button class="nav-family-btn" type="button" data-nav-family="aprender" aria-pressed="false">Aprender</button>
+      </div>
+      <div class="view-switch">
+        <!-- GRUPO 1: TAXONOMÍA & FILOGENIA -->
+        <span class="nav-group-label">Taxonomía</span>
+        <button type="button" class="view-btn active" data-view="timeline" aria-pressed="true"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="18" y2="18"/></svg></span> Cronología</button>
+        <button type="button" class="view-btn" data-view="tree"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 9v6"/><path d="M9 6h4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H6"/></svg></span> Cladograma</button>
+        <button type="button" class="view-btn" data-view="phylo"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="3" width="5" height="4" rx="1"/><rect x="17" y="3" width="5" height="4" rx="1"/><rect x="9" y="17" width="6" height="4" rx="1"/><path d="M4.5 7v4h15V7"/><path d="M12 11v6"/></svg></span> Filogenia</button>
+        <button type="button" class="view-btn" data-view="revisiones"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-7"/><circle cx="7" cy="15" r="1.5"/><circle cx="11" cy="11" r="1.5"/><circle cx="14" cy="14" r="1.5"/><circle cx="19" cy="7" r="1.5"/></svg></span> Revisiones</button>
+        <!-- SEPARADOR -->
+        <span class="nav-sep" aria-hidden="true"></span>
+        <!-- GRUPO 2: ESPACIO & DISTRIBUCIÓN -->
+        <span class="nav-group-label">Espacio</span>
+        <button type="button" class="view-btn" data-view="map"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span> Mapa</button>
+        <button type="button" class="view-btn" data-view="continentes"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></span> Continentes</button>
+        <button type="button" class="view-btn" data-view="africa"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2l4 4-1 4 3 3-2 4-5 5-4-2-1-5-4-3 2-5 4-1 4-4z"/><path d="M10 7l2 4-2 3 2 4"/></svg></span> África</button>
+        <button type="button" class="view-btn" data-view="asia"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c3-3 8-3 12-1 3 1 5 4 4 7-1 4-5 6-9 5-4-1-7-4-7-8z"/><path d="M8 10c2-1 4-1 6 0"/><path d="M12 4c1 3 1 7-1 12"/><path d="M16 13l3 3"/></svg></span> Asia</button>
+        <button type="button" class="view-btn" data-view="europe"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7c3-4 9-5 13-2 3 2 4 6 2 10-2 4-7 6-12 4-4-2-6-7-3-12z"/><path d="M8 8l5 2-2 4 4 3"/><path d="M15 5c-1 3-1 6 1 9"/><path d="M6 15l4-1"/></svg></span> Europa</button>
+        <button type="button" class="view-btn" data-view="america"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3c-2 1-3 3-3 5 0 2 2 3 2 5s-2 3-1 5c1 2 4 3 6 2"/><path d="M15 4c3 1 5 4 4 7-1 2-3 3-3 5 0 1 1 3 3 4"/><path d="M12 7c1 2 1 5-1 7"/></svg></span> América</button>
+        <button type="button" class="view-btn" data-view="yacimientos"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span> Yacimientos</button>
+        <button type="button" class="view-btn" data-view="biogeo"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 7h12l3-3-3-3H3v6z"/><path d="M21 17H9l-3 3 3 3h12v-6z"/><line x1="12" y1="2" x2="12" y2="22"/></svg></span> Biogeografía</button>
+        <button type="button" class="view-btn" data-view="contexto"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span> Contexto</button>
+        <button type="button" class="view-btn" data-view="clima"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/><line x1="12" y1="22" x2="12" y2="12"/><path d="M5 9.5v5"/><path d="M19 9.5v5"/></svg></span> Clima PAGES2k</button>
+        <!-- SEPARADOR -->
+        <span class="nav-sep" aria-hidden="true"></span>
+        <!-- GRUPO 3: ANÁLISIS CIENTÍFICO -->
+        <span class="nav-group-label">Análisis</span>
+        <button type="button" class="view-btn" data-view="genomica"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4c4 0 4 16 8 16s4-16 8-16"/><path d="M4 20c4 0 4-16 8-16s4 16 8 16"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="16" x2="17" y2="16"/></svg></span> Paleogenómica</button>
+        <button type="button" class="view-btn" data-view="primatologia"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14c-2 0-4-2-4-5 0-3 2-5 5-5 2 0 3 1 4 3 1-2 2-3 4-3 3 0 5 2 5 5 0 3-2 5-4 5"/><path d="M8 14c0 4 2 6 4 6s4-2 4-6"/><path d="M9 9h.01M15 9h.01"/></svg></span> Primatología</button>
+        <button type="button" class="view-btn" data-view="coexistencias"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16M15 4v16"/><circle cx="6" cy="14" r="1.5"/><circle cx="12" cy="14" r="1.5"/><circle cx="18" cy="14" r="1.5"/></svg></span> Coexistencias</button>
+        <button type="button" class="view-btn" data-view="datacion"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M5 4l-2 2M19 4l2 2"/></svg></span> Datación</button>
+        <button type="button" class="view-btn" data-view="debates"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> Debate</button>
+        <button type="button" class="view-btn" data-view="socratico"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span> Socrático</button>
+        <button type="button" class="view-btn" data-view="estratigrafia"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/><path d="M7 6v12M17 6v12"/></svg></span> Estratigrafía</button>
+        <button type="button" class="view-btn" data-view="tafonomia"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></span> Tafonomía</button>
+        <button type="button" class="view-btn" data-view="introgresion"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M16 3h5v5M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg></span> Introgresión</button>
+        <!-- SEPARADOR -->
+        <span class="nav-sep" aria-hidden="true"></span>
+        <!-- GRUPO 4: RECURSOS DIDÁCTICOS -->
+        <span class="nav-group-label">Didáctico</span>
+        <button type="button" class="view-btn" data-view="aula"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h10a4 4 0 0 1 4 4v10H8a4 4 0 0 1-4-4V5z"/><path d="M8 9h6M8 13h8"/><path d="M18 9h2v10"/></svg></span> Centro docente</button>
+        <button type="button" class="view-btn" data-view="recursos"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/><path d="M8 7h8M8 11h6"/></svg></span> Recursos</button>
+        <button type="button" class="view-btn" data-view="holotipos"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5L5 19"/></svg></span> Holotipos</button>
+        <button type="button" class="view-btn" data-view="itinerarios"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M5 7v7a4 4 0 0 0 4 4h6"/><path d="M14 15l5 4-5 4"/></svg></span> Itinerarios</button>
+        <button type="button" class="view-btn" data-view="dispersal"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="5" cy="17" r="2"/><circle cx="12" cy="11" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 16l3.5-3.5M14 10l3.5-2.8"/><path d="M4 21c5-1 10-4 16-13"/></svg></span> Simulador</button>
+        <button type="button" class="view-btn" data-view="constructor"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 8.2l2.2 6.5M15.5 8.2l-2.2 6.5"/></svg></span> Constructor</button>
+      </div>
+      <div class="search-box">
+        <span class="ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+        <input type="text" id="searchInput" data-search-input placeholder="Buscar especie, holotipo, yacimiento… (pulsa /)" aria-label="Buscar en el atlas">
+        <kbd class="search-kbd" title="Pulsa / para buscar" aria-hidden="true">/</kbd>
+      </div>
+      <button type="button" class="class-mode-btn" data-action="activateClassMode" aria-label="Activar modo clase">Modo clase</button>
+      <button type="button" class="filter-reset-btn" data-action="resetGlobalFilters" title="Restablecer búsqueda, clado y rango temporal">Limpiar filtros</button>
+      <div class="controls">
+        <select id="nivelEducativo" aria-label="Nivel de complejidad del atlas" data-level-select>
+          <option value="doctorado">Nivel Doctorado</option>
+          <option value="universitario" selected>Nivel Universitario</option>
+          <option value="basico">Nivel Básico</option>
+        </select>
+      <p class="level-hint pb-r69-static-01">Si es tu primera vez, empieza en <strong>Nivel Básico</strong>.</p>
+      </div>
+    </div>
+    <div class="toolbar-row toolbar-row-orientation">
+      <div class="view-orientation" id="viewOrientation" aria-live="polite">
+        <div class="view-orientation-tier" id="viewOrientationTier">Vista troncal</div>
+        <div class="view-orientation-body">
+          <div class="view-orientation-title-row">
+            <h2 id="viewOrientationTitle">Cronolog&iacute;a</h2>
+            <span class="view-orientation-family" id="viewOrientationFamily">Explorar</span>
+          </div>
+          <p class="view-orientation-copy" id="viewOrientationCopy">Ordena los taxones en el tiempo para reconocer apariciones, solapamientos y desapariciones antes de entrar en debates m&aacute;s especializados.</p>
+        </div>
+        <div class="view-orientation-meta">
+          <span class="view-orientation-chip" id="viewOrientationAudience">Adecuada para p&uacute;blico general y docencia</span>
+          <span class="view-orientation-chip view-orientation-chip-muted" id="viewOrientationGoal">Pregunta principal: qu&eacute; aparece primero y qu&eacute; convive</span>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar-row toolbar-row-filters">
+      <span class="filter-label"><span class="ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></span> Clado:</span>
+      <div class="filter-bar">
+        <button type="button" class="filter-chip active" data-f="all" data-clade-filter="all" aria-pressed="true">Todos</button>
+        <button type="button" class="filter-chip" data-f="basal" data-clade-filter="basal">⬤ Basales / Mioceno</button>
+        <button type="button" class="filter-chip" data-f="australo" data-clade-filter="australo">⬤ Australopithecus</button>
+        <button type="button" class="filter-chip" data-f="paran" data-clade-filter="paran">⬤ Paranthropus</button>
+        <button type="button" class="filter-chip" data-f="homo" data-clade-filter="homo">⬤ Homo</button>
+      </div>
+      <span id="countLabel"></span>
+    </div>
+    <div class="time-filter-panel" aria-label="Filtro temporal global">
+      <div>
+        <div class="time-filter-title">
+          <span class="ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+          Filtro temporal global
+        </div>
+        <div class="time-slider-wrap">
+          <div class="time-slider-track"><div class="time-slider-fill" id="timeSliderFill"></div></div>
+          <input class="time-range-input" id="timeRangeOld" type="range" min="0" max="23" step="0.01" value="23"
+                 aria-label="Límite más antiguo del filtro temporal (en millones de años)"
+                 aria-valuemin="0" aria-valuemax="23"
+                 aria-valuenow="23" aria-valuetext="23 Ma"
+                 data-time-bound="old">
+          <input class="time-range-input" id="timeRangeYoung" type="range" min="0" max="23" step="0.01" value="0"
+                 aria-label="Límite más reciente del filtro temporal (en millones de años)"
+                 aria-valuemin="0" aria-valuemax="23"
+                 aria-valuenow="0" aria-valuetext="0 Ma"
+                 data-time-bound="young">
+        </div>
+      </div>
+      <div class="time-filter-actions">
+        <div class="time-filter-readout" id="timeFilterReadout">0–23 Ma</div>
+        <label class="a3-filter-option"><input type="checkbox" id="a3IncludeIndeterminate" checked> Incluir cronologías indeterminadas</label>
+        <p id="a3TimeEvidenceNotice" class="a3-evidence-notice" role="status" aria-live="polite">Filtro científico experimental: la ausencia de datos no demuestra ausencia histórica.</p>
+        <button type="button" class="time-chip-btn" data-time-preset="2,2">Hace 2 Ma · Pleistoceno</button>
+        <button type="button" class="time-chip-btn" data-time-preset="0.3,0.3">Hace 300.000 años</button>
+        <button type="button" class="time-chip-btn" data-time-preset="23,0">Todo</button>
+      </div>
+    </div>
+    <div id="activeFilterSummary" class="active-filter-summary is-complete" aria-live="polite">
+      <strong>Filtros</strong>
+      <span>Catálogo completo visible.</span>
+    </div>
+  </div>
+
+  <!-- Destino del skip-link (FIX C-3b) — FIX S-1: elemento <main> nativo en lugar de div+role=main -->
+  <main id="main-content" aria-label="Contenido principal del atlas">
+  <h1 class="sr-only">PaleoBot — Atlas Paleoantropológico Interactivo</h1>
+  <div id="view-timeline" class="view-section active">
+    <!-- Tarjeta de tarea de aula v58 -->
+    <details class="classroom-task-card pb-r69-static-02">
+      <summary class="pb-r69-static-03" aria-label="Tarea de aula opcional para la cronología">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Tarea de aula (opcional) — Antes de explorar las fichas
+      </summary>
+      <div class="pb-r69-static-04">
+        <div class="pb-r69-static-05"><p class="pb-r69-static-06">Elige un momento temporal</p><p class="pb-r69-static-07">Usa el filtro de tiempo para situarte en un período concreto (p.ej. hace 2 Ma). ¿Qué taxones esperas encontrar y en qué regiones?</p></div>
+        <div class="pb-r69-static-08"><p class="pb-r69-static-09">Compara 3 taxones</p><p class="pb-r69-static-10">Elige 3 especies, compara un rasgo y formula una pregunta que las fichas no respondan por sí solas.</p></div>
+        <div class="pb-r69-static-11"><p class="pb-r69-static-12">Producto esperado</p><p class="pb-r69-static-13">Un párrafo con: un dato observable, una inferencia razonada y una duda metodológica.</p></div>
+      </div>
+    </details>
+    <aside class="evidence-legend-panel" role="note" aria-label="Clave de lectura de la evidencia fósil">
+      <div class="evidence-legend-copy">
+        <strong>Lee cada taxón con cautela metodológica</strong>
+        La cronología no solo ordena especies: indica también cuánta evidencia sostiene cada interpretación.
+      </div>
+      <div class="evidence-legend-items" aria-label="Niveles de evidencia">
+        <span class="evidence-badge evidence-high">Evidencia Alta</span>
+        <span class="evidence-badge evidence-medium">Evidencia Media</span>
+        <span class="evidence-badge evidence-low">Evidencia Baja</span>
+        <span class="evidence-badge evidence-debated">Evidencia Debate</span>
+        <span class="evidence-badge evidence-review">Evidencia Revisión</span>
+      </div>
+      <div class="evidence-legend-note">La etiqueta resume completitud fósil, estabilidad taxonómica y grado de consenso; no sustituye la lectura crítica de la ficha.</div>
+    </aside>
+    <div class="timeline-wrapper" id="timelineList"></div>
+    <div id="timelineEmptyState" class="filter-empty-state" role="status" aria-live="polite">
+      <div>
+        <strong>No hay taxones visibles con esta combinación</strong>
+        <p>La búsqueda, el clado o el rango temporal han dejado la cronología sin registros. Puedes ampliar el intervalo temporal o limpiar todos los filtros.</p>
+      </div>
+      <button type="button" class="filter-reset-btn" data-action="resetGlobalFilters">Limpiar filtros</button>
+    </div>
+  </div>
+
+  <div id="view-tree" class="view-section">
+    <aside class="evidence-legend-panel" aria-label="Clave de lectura de la evidencia fósil en el árbol">
+      <div class="evidence-legend-copy">
+        <strong>Árbol por clados con nivel de evidencia</strong>
+        Compara grupos sin confundir abundancia de fósiles con certeza absoluta: algunos nodos siguen siendo hipótesis abiertas.
+      </div>
+      <div class="evidence-legend-items" aria-label="Niveles de evidencia">
+        <span class="evidence-badge evidence-high">Evidencia Alta</span>
+        <span class="evidence-badge evidence-medium">Evidencia Media</span>
+        <span class="evidence-badge evidence-low">Evidencia Baja</span>
+        <span class="evidence-badge evidence-debated">Evidencia Debate</span>
+        <span class="evidence-badge evidence-review">Evidencia Revisión</span>
+      </div>
+      <div class="evidence-legend-note">Úsalo como guía de lectura antes de abrir las fichas detalladas o el cladograma ramificado.</div>
+    </aside>
+    <div class="tree-grid">
+        <div class="clade-column basal"><div class="clade-header">Mioceno / Basales</div><div id="tree-basal"></div></div>
+        <div class="clade-column australo"><div class="clade-header">Australopithecus</div><div id="tree-australo"></div></div>
+        <div class="clade-column paran"><div class="clade-header">Paranthropus</div><div id="tree-paran"></div></div>
+        <div class="clade-column homo"><div class="clade-header">Homo</div><div id="tree-homo"></div></div>
+    </div>
+    <div id="treeEmptyState" class="filter-empty-state" role="status" aria-live="polite">
+      <div>
+        <strong>El árbol simple no tiene nodos visibles</strong>
+        <p>Los filtros actuales ocultan todos los taxones de este diagrama. Restablece la búsqueda para volver a ver los clados completos.</p>
+      </div>
+      <button type="button" class="filter-reset-btn" data-action="resetGlobalFilters">Limpiar filtros</button>
+    </div>
+  </div>
+
+  <div id="view-phylo" class="view-section">
+    <div class="phylo-outer">
+      <div class="phylo-header">
+        <div>
+          <h2>Cladograma filogenético ramificado</h2>
+          <p>Hipótesis didáctica con nodos ancestrales, ramas bifurcadas y eje temporal proporcional. Cada nodo resume la sinapomorfía o cambio evolutivo que define la divergencia.</p>
+        </div>
+        <div class="phylo-legend">
+          <div class="phylo-legend-item"><span class="legend-swatch basal"></span>Basales</div>
+          <div class="phylo-legend-item"><span class="legend-swatch australo"></span>Australopithecus</div>
+          <div class="phylo-legend-item"><span class="legend-swatch paran"></span>Paranthropus</div>
+          <div class="phylo-legend-item"><span class="legend-swatch homo"></span>Homo</div>
+          <div class="phylo-legend-item"><span class="legend-swatch node"></span>Nodo clicable</div>
+          <div class="phylo-legend-item"><span class="legend-swatch alt"></span>Hipótesis alternativa</div>
+        </div>
+      </div>
+      <div class="phylo-summary-grid">
+        <article class="phylo-summary-card">
+          <strong>Eje temporal</strong>
+          <p>Lee de izquierda a derecha desde 23 Ma hasta el presente. La posición horizontal de ramas y nodos es proporcional al tiempo.</p>
+        </article>
+        <article class="phylo-summary-card">
+          <strong>Nodos</strong>
+          <p>Haz clic en un nodo ancestral para ver la sinapomorfía o rasgo derivado que justifica la separación del clado.</p>
+        </article>
+        <article class="phylo-summary-card">
+          <strong>Filtros</strong>
+          <p>El deslizador temporal atenúa los taxones fuera de rango y conserva la estructura para no perder la hipótesis completa.</p>
+        </article>
+      </div>
+      <div class="phylo-scroll">
+        <div id="cladeNodeInfo" class="clado-node-info">
+          <div>
+            <code>Sinapomorfía</code>
+            <h3>Selecciona un nodo</h3>
+          </div>
+          <p>Los nodos internos representan ancestros hipotéticos. Al pulsarlos verás el carácter derivado que se usa aquí para explicar la divergencia.</p>
+        </div>
+        <div id="phyloSvgContainer"></div>
+      </div>
+      <div class="phylo-footer">
+        <span>Haz clic en una hoja terminal para abrir la ficha taxonómica.</span>
+        <span>Cladograma sintético: orienta el razonamiento, no sustituye una matriz filogenética publicada.</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-contexto" class="view-section">
+    <div class="context-outer">
+      <div class="context-header">
+        <div>
+          <h2>Línea de tiempo comparada Homo / contexto geológico</h2>
+          <p>Superposición de rangos taxonómicos con eventos climáticos, vegetacionales y tectónicos para leer la evolución como respuesta adaptativa a cambios ambientales de larga duración.</p>
+        </div>
+        <div class="context-legend">
+            <span class="context-legend-item"><span class="context-legend-swatch vegetation"></span> Vegetación / C4</span>
+            <span class="context-legend-item"><span class="context-legend-swatch climate"></span> Clima</span>
+            <span class="context-legend-item"><span class="context-legend-swatch tectonic"></span> Tectónica</span>
+            <span class="context-legend-item"><span class="context-legend-swatch homo"></span> Taxones Homo</span>
+        </div>
+      </div>
+
+      <div class="context-meta-grid">
+        <div class="context-summary-grid">
+          <article class="context-summary-card">
+            <strong>Mioceno final</strong>
+            <p>La tectónica del Rift y la expansión progresiva de ambientes más abiertos coinciden con los primeros homininos y con una locomoción todavía mixta entre árbol y suelo.</p>
+          </article>
+          <article class="context-summary-card">
+            <strong>Plioceno</strong>
+            <p>La expansión de plantas C4 y la estacionalidad creciente favorecen mosaicos ecológicos donde se diversifican australopitecos y robustos con estrategias tróficas distintas.</p>
+          </article>
+          <article class="context-summary-card">
+            <strong>Pleistoceno</strong>
+            <p>La intensificación glaciar, la variabilidad climática y la reorganización de hábitats acompañan la encefalización, la dispersión del género Homo y la plasticidad cultural.</p>
+          </article>
+        </div>
+        <aside class="context-guide-card">
+          <strong>Cómo leer esta vista</strong>
+          <p>La banda superior reúne procesos ambientales de larga duración. Debajo aparecen los taxones filtrados para que se vea qué cambios ambientales coincidieron con cada tramo evolutivo.</p>
+          <p><span id="contextVisibleCount">0</span> taxones visibles en el filtro actual · <span id="contextRangeHint">sin rango</span></p>
+        </aside>
+      </div>
+
+      <div class="context-scroll">
+        <svg id="contextSvg" class="context-svg" role="img" aria-label="Cronología comparada entre homininos y contexto geológico-climático"></svg>
+      </div>
+
+      <div class="context-footer">
+        <span>Haz clic en una barra para abrir la ficha taxonómica.</span>
+        <span>Las bandas superiores representan procesos de larga duración, no eventos puntuales.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       VISTA: CLIMA PAGES2K / NOAA / LR04
+       Línea de tiempo climática comparada con rangos de homininos.
+       Datos: LR04 δ¹⁸O (Lisiecki & Raymo 2005), EPICA Dome C
+              (Jouzel et al. 2007), PAGES 2k (2013, 2019),
+              Marine Isotope Stages (Lisiecki & Raymo 2005).
+       ═══════════════════════════════════════════════════════════════════ -->
+  <div id="view-clima" class="view-section">
+    <div class="clima-outer">
+
+      <!-- ── Cabecera ─────────────────────────────────────────────── -->
+      <header class="clima-header">
+        <div>
+          <h2>🌡 Línea de tiempo climática comparada — PAGES2k / NOAA / LR04</h2>
+          <p>Superposición de proxies paleoclimáticos actualizados (2019–2023): δ¹⁸O del stack CENOGRID
+             (Westerhold et al. 2020 <em>Science</em>), temperatura PAGES 2k (Consortium 2019 <em>Nature Geoscience</em>),
+             eventos D-O (Menviel et al. 2020 <em>Nature Reviews Earth & Environment</em>) y estadios isotópicos ICS 2023,
+             con los rangos cronológicos de los homininos. Permite leer la evolución humana como
+             respuesta adaptativa a cambios climáticos documentados instrumentalmente y por proxies.</p>
+        </div>
+        <div class="clima-source-pills">
+          <a class="clima-source-pill doi" href="https://doi.org/10.1126/science.aba6853" target="_blank" rel="noopener">
+            📄 CENOGRID δ¹⁸O · Westerhold et al. 2020
+          </a>
+          <a class="clima-source-pill doi" href="https://doi.org/10.1038/s41561-019-0400-0" target="_blank" rel="noopener">
+            📄 PAGES 2k · Consortium 2019
+          </a>
+          <a class="clima-source-pill doi" href="https://doi.org/10.1038/s43017-020-00106-y" target="_blank" rel="noopener">
+            📄 Eventos D-O · Menviel et al. 2020
+          </a>
+          <a class="clima-source-pill doi" href="https://doi.org/10.1126/sciadv.abc8975" target="_blank" rel="noopener">
+            📄 Homininos-Clima · Potts et al. 2020
+          </a>
+          <a class="clima-source-pill doi" href="https://doi.org/10.18814/epiiugs/2023/023025" target="_blank" rel="noopener">
+            📄 ICS Chart · Cohen et al. 2023
+          </a>
+          <a class="clima-source-pill" href="https://www.ncei.noaa.gov/products/paleoclimatology" target="_blank" rel="noopener">
+            🌐 NOAA NCEI Paleoclimatology
+          </a>
+        </div>
+      </header>
+
+      <!-- ── KPIs ─────────────────────────────────────────────────── -->
+      <div class="clima-kpi-strip" id="climaKpiStrip" aria-live="polite" aria-atomic="false">
+        <div class="clima-kpi">
+          <strong>CENOGRID δ¹⁸O · 2020</strong>
+          <span class="kpi-val">66 Ma de registro</span>
+          <p>Stack CENOGRID (Westerhold et al. 2020 <em>Science</em>). Proxy astronómicamente datado de volumen de hielo y temperatura profunda oceánica.</p>
+        </div>
+        <div class="clima-kpi">
+          <strong>Stack ÉPICA / NOAA 2022</strong>
+          <span class="kpi-val">800 Ka hacia atrás</span>
+          <p>Núcleo de hielo antártico (NOAA NCEI 2022) — temperatura relativa y CO₂ atmosférico. Base: Extier et al. 2018.</p>
+        </div>
+        <div class="clima-kpi">
+          <strong>PAGES 2k 2019 — Era Común</strong>
+          <span class="kpi-val">7 regiones · 692 proxies</span>
+          <p>Consortium (2019) <em>Nature Geoscience</em>. Reconstrucción multidecadal CE 1–2000. Referencia: CE 1961–1990. Neukom et al. 2019 <em>Nature</em>.</p>
+        </div>
+        <div class="clima-kpi">
+          <strong>Estadios Isotópicos (MIS)</strong>
+          <span class="kpi-val" id="climaMisCount">103 MIS visibles</span>
+          <p>Impares = interglaciares cálidos · Pares = glaciares fríos. Resolución variable por escala.</p>
+        </div>
+      </div>
+
+      <!-- ── Controles de escala y capas ─────────────────────────── -->
+      <div class="clima-scale-bar" role="group" aria-label="Controles de escala temporal y capas">
+        <span class="clima-scale-label">⏱ Escala:</span>
+        <button type="button" class="clima-scale-btn active" data-clima-scale="full"
+                aria-pressed="true">23 Ma — completo</button>
+        <button type="button" class="clima-scale-btn" data-clima-scale="plio"
+                aria-pressed="false">5 Ma — Plio/Pleistoceno</button>
+        <button type="button" class="clima-scale-btn" data-clima-scale="pleisto"
+                aria-pressed="false">2,6 Ma — Pleistoceno</button>
+        <button type="button" class="clima-scale-btn" data-clima-scale="late"
+                aria-pressed="false">800 Ka — Pl. tardío</button>
+        <button type="button" class="clima-scale-btn" data-clima-scale="holocene"
+                aria-pressed="false">12 Ka — Holoceno</button>
+        <div class="clima-toggle-group" role="group" aria-label="Capas visibles">
+          <button type="button" class="clima-toggle on" data-layer="d18o"   data-clima-layer="d18o" aria-pressed="true">🔵 δ¹⁸O LR04</button>
+          <button type="button" class="clima-toggle on" data-layer="temp"   data-clima-layer="temp" aria-pressed="true">🔴 Temp ÉPICA</button>
+          <button type="button" class="clima-toggle on" data-layer="mis"    data-clima-layer="mis" aria-pressed="true">🟣 MIS</button>
+          <button type="button" class="clima-toggle on" data-layer="events" data-clima-layer="events" aria-pressed="true">🟠 Eventos</button>
+          <button type="button" class="clima-toggle on" data-layer="taxa"   data-clima-layer="taxa" aria-pressed="true">🟢 Homininos</button>
+        </div>
+      </div>
+
+      <!-- ── Visualización SVG ─────────────────────────────────────── -->
+      <div class="clima-scroll" id="climaScroll">
+        <svg id="climaSvg" class="clima-svg"
+             role="img"
+             aria-label="Gráfico de cambios climáticos comparado con distribución temporal de homininos">
+          <title>Línea de tiempo climática PAGES2k / LR04 con homininos</title>
+        </svg>
+      </div>
+
+      <!-- ── Leyenda ───────────────────────────────────────────────── -->
+      <div class="clima-legend" aria-label="Leyenda del gráfico climático">
+        <span class="clima-legend-item">
+          <span class="clima-legend-swatch d18o"></span>
+          δ¹⁸O bentónico LR04 (↑ = más frío / más hielo)
+        </span>
+        <span class="clima-legend-item">
+          <span class="clima-legend-swatch temperature"></span>
+          Î”T ÉPICA Dome C (relativa a media reciente)
+        </span>
+        <span class="clima-legend-item">
+          <span class="clima-legend-swatch mis"></span>
+          MIS glaciar (par) — frío
+        </span>
+        <span class="clima-legend-item">
+          <span class="clima-legend-swatch events"></span>
+          MIS interglaciar (impar) — cálido
+        </span>
+        <span class="clima-legend-item">
+          <span class="clima-legend-dot homo"></span>
+          Taxón Homo
+        </span>
+        <span class="clima-legend-item">
+          <span class="clima-legend-dot australo"></span>
+          Australopithecus
+        </span>
+        <span class="clima-legend-item">
+          <span class="clima-legend-dot paran"></span>
+          Paranthropus
+        </span>
+        <span class="clima-legend-item">
+          <span class="clima-legend-dot basal"></span>
+          Basales
+        </span>
+      </div>
+
+      <!-- ── Pie de fuentes ────────────────────────────────────────── -->
+      <footer class="clima-footer">
+        <span>
+          <strong>δ¹⁸O / Volumen de hielo:</strong> Westerhold et al. (2020). An astronomically dated record of Earth's climate and its predictability over the last 66 million years.
+          <em>Science</em>, 369(6509), 1383–1387. <a href="https://doi.org/10.1126/science.aba6853" target="_blank" rel="noopener">DOI: 10.1126/science.aba6853</a>
+        </span>
+        <span>
+          <strong>PAGES 2k (Era Común):</strong> PAGES 2k Consortium (2019). Consistent multidecadal variability in global temperature reconstructions over the Common Era.
+          <em>Nature Geoscience</em>, 12, 643–649. <a href="https://doi.org/10.1038/s41561-019-0400-0" target="_blank" rel="noopener">DOI: 10.1038/s41561-019-0400-0</a>
+        </span>
+        <span>
+          <strong>Eventos D-O:</strong> Menviel et al. (2020). An ice-climate oscillatory framework for Dansgaard-Oeschger cycles.
+          <em>Nature Reviews Earth & Environment</em>, 1, 677–693. <a href="https://doi.org/10.1038/s43017-020-00106-y" target="_blank" rel="noopener">DOI: 10.1038/s43017-020-00106-y</a>
+        </span>
+        <span>
+          <strong>Clima y homininos:</strong> Potts et al. (2020). Increased ecological resource variability during a critical transition in hominin evolution.
+          <em>Science Advances</em>, 6(43). <a href="https://doi.org/10.1126/sciadv.abc8975" target="_blank" rel="noopener">DOI: 10.1126/sciadv.abc8975</a>
+        </span>
+        <span>
+          <strong>MIS / Cronoestratigrafía:</strong> Cohen et al. (2023). ICS International Chronostratigraphic Chart v2023/09.
+          <em>Episodes</em>, 46(2). <a href="https://doi.org/10.18814/epiiugs/2023/023025" target="_blank" rel="noopener">DOI: 10.18814/epiiugs/2023/023025</a>
+        </span>
+        <span>⚠ Datos embebidos representativos · Investigación: <a href="https://www.ncei.noaa.gov/products/paleoclimatology" target="_blank" rel="noopener">NOAA NCEI Paleoclimatology</a></span>
+      </footer>
+
+    </div>
+  </div><!-- /view-clima -->
+
+  <div id="view-continentes" class="view-section">
+    <div class="continents-outer">
+      <div class="continents-header">
+        <div>
+          <h2>Proceso de hominización por continentes</h2>
+          <p>La secuencia se separa en carriles continentales para distinguir con claridad el núcleo africano del proceso, las ocupaciones europeas y las diversificaciones asiáticas. Un mismo taxón puede repetirse en más de un carril si su registro o su dispersión es transcontinental.</p>
+        </div>
+      </div>
+
+      <div class="continents-meta">
+        <span class="continents-meta-pill"><span class="ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></span> <span id="continentVisibleCount">0</span> taxones visibles</span>
+        <span class="continents-meta-pill"><span class="ico ico-emoji" aria-hidden="true">⏳</span> <span id="continentRangeHint">sin rango</span></span>
+        <span class="continents-meta-pill"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></span> Duplicación controlada en taxones intercontinentales</span>
+      </div>
+
+      <div class="continents-summary-grid">
+        <article class="continents-summary-card">
+          <strong>África</strong>
+          <p>Es el foco originario del bipedismo, de los australopitecos, de <em>Paranthropus</em>, de los primeros <em>Homo</em> y de las formas más antiguas de <em>H. sapiens</em>.</p>
+        </article>
+        <article class="continents-summary-card">
+          <strong>Europa</strong>
+          <p>Concentra ocupaciones del Pleistoceno y linajes de <em>Homo</em> asociados a adaptaciones frías, incluida la trayectoria que desemboca en neandertales.</p>
+        </article>
+        <article class="continents-summary-card">
+          <strong>Asia</strong>
+          <p>Visualiza la expansión oriental de <em>Homo</em>, la persistencia de linajes arcaicos y las radiaciones insulares del sudeste asiático.</p>
+        </article>
+        <article class="continents-summary-card">
+          <strong>América</strong>
+          <p>No añade nuevos taxones fósiles al atlas: explica el poblamiento reciente por <em>Homo sapiens</em>, las evidencias pre-Clovis y las rutas de entrada.</p>
+        </article>
+      </div>
+
+      <div class="continent-board" id="continentBoard"></div>
+    </div>
+  </div>
+
+  <div id="view-africa" class="view-section">
+    <div class="africa-outer">
+      <div class="africa-hero">
+        <div class="africa-intro">
+          <span class="africa-kicker">Laboratorio continental</span>
+          <h3>África: archivo principal de la hominización</h3>
+          <p>Vista específica para estudiar África como sistema: regiones fosilíferas, corredores ambientales, métodos de datación y fuentes primarias. El mapa no es decorativo: organiza la evidencia por focos de investigación y conecta cada región con los taxones visibles del atlas.</p>
+        </div>
+        <div class="africa-kpis">
+          <div class="africa-kpi"><strong id="africaKpiTaxa">0</strong><span>taxones africanos visibles</span></div>
+          <div class="africa-kpi"><strong id="africaKpiRegions">7</strong><span>regiones clave</span></div>
+          <div class="africa-kpi"><strong>23 Ma</strong><span>rango del archivo</span></div>
+          <div class="africa-kpi"><strong id="africaKpiSources">0</strong><span>fuentes con DOI</span></div>
+        </div>
+      </div>
+      <div class="africa-reading-strip" aria-label="Ruta de lectura del módulo africano">
+        <article class="africa-reading-step" data-step="01">
+          <strong>Localiza la región</strong>
+          <p>Empieza por el foco geográfico: Rift, Chad, Magreb, Sudáfrica o corredores de dispersión.</p>
+        </article>
+        <article class="africa-reading-step" data-step="02">
+          <strong>Contrasta el yacimiento</strong>
+          <p>Lee el sitio como unidad de evidencia: estratigrafía, asociación faunística y conservación.</p>
+        </article>
+        <article class="africa-reading-step" data-step="03">
+          <strong>Evalúa la datación</strong>
+          <p>Comprueba si la edad procede de Ar-Ar, U-Pb, ESR, OSL, biocronología o correlación.</p>
+        </article>
+        <article class="africa-reading-step" data-step="04">
+          <strong>Formula cautelas</strong>
+          <p>Distingue consenso, debate y revisión antes de transformar el dato en hipótesis evolutiva.</p>
+        </article>
+      </div>
+      <div id="africaDashboard"></div>
+    </div>
+  </div>
+
+  <div id="view-america" class="view-section">
+    <div class="america-outer">
+      <div class="america-header">
+        <div class="america-intro">
+          <span class="america-kicker">Poblamiento reciente</span>
+          <h2>América: cuándo llegó <em>Homo sapiens</em> y qué evidencia lo sostiene</h2>
+          <p>América se incorpora como módulo de dispersión humana, no como continente con especies propias de homininos fósiles. La vista enseña a leer huellas, campamentos, industria lítica y cronologías en disputa sin convertir cada indicio en certeza.</p>
+        </div>
+        <div class="america-kpis">
+          <div class="america-kpi"><strong id="americaKpiSites">0</strong><span>casos de estudio</span></div>
+          <div class="america-kpi"><strong>1</strong><span>especie: Homo sapiens</span></div>
+          <div class="america-kpi"><strong>3</strong><span>rutas debatidas</span></div>
+          <div class="america-kpi"><strong id="americaKpiSources">0</strong><span>fuentes con DOI</span></div>
+        </div>
+      </div>
+      <div class="america-reading-strip" aria-label="Ruta de lectura del módulo americano">
+        <article class="america-reading-step" data-step="01">
+          <strong>No busques nuevos taxones</strong>
+          <p>La pregunta americana es de dispersión sapiens, no de evolución de especies locales.</p>
+        </article>
+        <article class="america-reading-step" data-step="02">
+          <strong>Separa evidencia</strong>
+          <p>Huellas, restos líticos, huesos modificados y ADN no tienen el mismo peso interpretativo.</p>
+        </article>
+        <article class="america-reading-step" data-step="03">
+          <strong>Ordena la cronología</strong>
+          <p>Compara pre-Clovis, Clovis y ocupaciones sudamericanas sin memorizar una fecha única.</p>
+        </article>
+        <article class="america-reading-step" data-step="04">
+          <strong>Evalúa consenso</strong>
+          <p>Aprende a distinguir aceptación amplia, debate activo y revisión metodológica.</p>
+        </article>
+      </div>
+      <div id="americaDashboard"></div>
+    </div>
+  </div>
+
+  <div id="view-asia" class="view-section">
+    <div class="america-outer asia-outer">
+      <div class="america-header">
+        <div class="america-intro">
+          <span class="america-kicker">Dispersión asiática</span>
+          <h2>Asia: corredores, persistencias arcaicas y diversidad insular</h2>
+          <p>Asia no es solo una extensión de la salida de África. La vista separa oleadas tempranas de <em>Homo</em>, ocupaciones orientales, mezcla denisovana, mosaicos chinos del Pleistoceno medio y radiaciones insulares del sudeste asiático. El objetivo es evitar flechas simples y enseñar a leer barreras, refugios, ADN, paleoproteómica y ausencia de datos.</p>
+        </div>
+        <div class="america-kpis">
+          <div class="america-kpi"><strong id="asiaKpiTaxa">0</strong><span>taxones asiáticos visibles</span></div>
+          <div class="america-kpi"><strong id="asiaKpiCases">0</strong><span>casos de estudio</span></div>
+          <div class="america-kpi"><strong>4</strong><span>problemas de dispersión</span></div>
+          <div class="america-kpi"><strong id="asiaKpiSources">0</strong><span>fuentes recientes</span></div>
+        </div>
+      </div>
+      <div class="america-reading-strip" aria-label="Ruta de lectura del módulo asiático">
+        <article class="america-reading-step" data-step="01">
+          <strong>Salida temprana</strong>
+          <p>Comienza por Cáucaso, Java y China: presencia de <em>Homo</em> fuera de África antes de sapiens.</p>
+        </article>
+        <article class="america-reading-step" data-step="02">
+          <strong>Persistencia regional</strong>
+          <p>Asia conserva linajes arcaicos y mosaicos morfológicos que no encajan en una escalera simple.</p>
+        </article>
+        <article class="america-reading-step" data-step="03">
+          <strong>Mezcla y biomoléculas</strong>
+          <p>Denisovanos, Harbin, Xiahe y genomas actuales obligan a separar ADN directo, proteína e inferencia.</p>
+        </article>
+        <article class="america-reading-step" data-step="04">
+          <strong>Islas y barreras</strong>
+          <p>Flores y Luzón muestran que el mar, el aislamiento y el enanismo insular cambian las preguntas.</p>
+        </article>
+      </div>
+      <div id="asiaDashboard"></div>
+    </div>
+  </div>
+
+  <div id="view-europe" class="view-section">
+    <div class="america-outer europe-outer">
+      <div class="america-header">
+        <div class="america-intro">
+          <span class="america-kicker">Poblamientos europeos</span>
+          <h2>Europa: Atapuerca, neandertales y contacto con <em>Homo sapiens</em></h2>
+          <p>Europa se trabaja como un mosaico de poblamientos, no como una cuna alternativa. La vista conecta hominoideos miocenos, Dmanisi como puerta caucásica, Atapuerca, el Pleistoceno medio europeo, neandertales y genomas sapiens tempranos. Cada caso obliga a separar dato, hipótesis y cautela.</p>
+        </div>
+        <div class="america-kpis">
+          <div class="america-kpi"><strong id="europeKpiTaxa">0</strong><span>taxones europeos visibles</span></div>
+          <div class="america-kpi"><strong id="europeKpiCases">0</strong><span>casos de estudio</span></div>
+          <div class="america-kpi"><strong>5</strong><span>problemas didácticos</span></div>
+          <div class="america-kpi"><strong id="europeKpiSources">0</strong><span>fuentes comentadas</span></div>
+        </div>
+      </div>
+      <div class="america-reading-strip" aria-label="Ruta de lectura del módulo europeo">
+        <article class="america-reading-step" data-step="01">
+          <strong>No empieces por el presente</strong>
+          <p>Europa incluye hominoideos miocenos, pero eso no demuestra un origen europeo de los homininos.</p>
+        </article>
+        <article class="america-reading-step" data-step="02">
+          <strong>Lee Atapuerca por capas</strong>
+          <p>Sima del Elefante, Gran Dolina y Sima de los Huesos responden preguntas distintas.</p>
+        </article>
+        <article class="america-reading-step" data-step="03">
+          <strong>Distingue especie y población</strong>
+          <p>Neandertales, heidelbergensis y antecessor no deben mezclarse en una escalera simple.</p>
+        </article>
+        <article class="america-reading-step" data-step="04">
+          <strong>Usa genética con precisión</strong>
+          <p>La mezcla sapiens-neandertal es poblacional, no una explicación directa de rasgos aislados.</p>
+        </article>
+      </div>
+      <div id="europeDashboard"></div>
+    </div>
+  </div>
+
+  <div id="view-map" class="view-section">
+    <div class="map-outer">
+      <div class="map-controls">
+        <div class="map-controls-left">
+          <h2>Atlas geográfico de yacimientos</h2>
+          <p>Vista global arriba y lentes regionales debajo. Haz clic en un marcador o en la lista lateral para fijar la selección y ver la ubicación sin solapamientos.</p>
+        </div>
+        <div class="map-controls-right">
+          <div id="mapLayerSwitch" aria-label="Capa cartográfica">
+            <button type="button" class="map-layer-btn active" data-layer="topo" data-map-layer="topo" title="Mapa topográfico" aria-pressed="true">Topo</button>
+            <button type="button" class="map-layer-btn" data-layer="satellite" data-map-layer="satellite" title="Imagen de satélite">Satélite</button>
+            <button type="button" class="map-layer-btn" data-layer="terrain" data-map-layer="terrain" title="Relieve sombreado">Relieve</button>
+            <button type="button" class="map-layer-btn" data-layer="physical" data-map-layer="physical" title="Mapa físico">Físico</button>
+          </div>
+          <button type="button" class="map-toggle map-paleo-toggle" id="paleoEnvToggle" data-map-toggle="paleo" aria-pressed="false" title="Capa paleoambiental sincronizada con el intervalo temporal">🌾 Paleoambiente</button>
+          <button type="button" class="map-toggle active" id="migrToggle" data-map-toggle="migrations" aria-pressed="true">
+            <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M5 7v7a4 4 0 0 0 4 4h6"/><path d="M14 15l5 4-5 4"/></svg></span> Dispersión
+          </button>
+          <div class="map-zoom-controls">
+            <button type="button" class="map-zoom-btn" data-map-zoom="out" title="Alejar" aria-label="Alejar mapa"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+            <div class="map-zoom-readout" id="mapZoomReadout">100%</div>
+            <button type="button" class="map-zoom-btn" data-map-zoom="reset" title="Resetear vista" aria-label="Restablecer vista del mapa"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg></span></button>
+            <button type="button" class="map-zoom-btn" data-map-zoom="in" title="Acercar" aria-label="Acercar mapa"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="map-reading-strip">
+        <article class="map-reading-step">
+          <strong>Zoom</strong>
+          <p>Zoom in/out hacia el cursor. En móvil, usa pellizco con dos dedos.</p>
+        </article>
+        <article class="map-reading-step">
+          <strong>Desplazamiento</strong>
+          <p>Mantén pulsado y arrastra para desplazar el mapa en cualquier dirección.</p>
+        </article>
+        <article class="map-reading-step">
+          <strong>Foco regional</strong>
+          <p>Haz clic en un marco de región o en los botones de abajo para enfocar y ampliar esa zona automáticamente.</p>
+        </article>
+        <article class="map-reading-step">
+          <strong>Vista global</strong>
+          <p>El botón ⊕ de los controles devuelve la vista global al instante.</p>
+        </article>
+      </div>
+      <div class="map-region-guide" id="mapRegionGuide"></div>
+      <div id="mapLearningLab" class="map-learning-lab"></div>
+      <div class="map-shell">
+        <div class="map-stage">
+          <div class="map-container" id="mapContainer">
+            <svg class="map-svg-main" id="mapSvg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+              <image class="map-raster-bg" id="mapRasterBg"
+                href="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/export?f=image&format=png32&bbox=-180%2C-85%2C180%2C85&bboxSR=4326&imageSR=4326&size=2048%2C1024&transparent=false"
+                x="0" y="0" width="1000" height="500" preserveAspectRatio="none"></image>
+            </svg>
+            <div class="map-hover-label" id="mapHoverLabel"></div>
+            <div class="map-focus-label" id="mapFocusLabel">Arrastra para desplazar · Rueda para zoom · Clic en marcador para seleccionar</div>
+          </div>
+          <div class="map-legend" id="mapLegend"></div>
+          <div class="map-info-bar">
+            <span><span class="ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="7"/><line x1="12" y1="6" x2="12" y2="10"/></svg></span> Rueda → zoom hacia cursor</span>
+            <span><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v2M10 10.5V6a2 2 0 0 0-4 0v8l-1-1a2 2 0 0 0-3 3l4 4a8 8 0 0 0 16 0V11a2 2 0 0 0-4 0z"/></svg></span> Arrastrar → desplazar</span>
+            <span>⚬ Tamaño ∝ capacidad craneal</span>
+            <span id="mapCount"></span>
+            <span class="map-shortcuts"><kbd class="shortcut-kbd">←→</kbd> fichas · <kbd class="shortcut-kbd">/</kbd> buscar · <kbd class="shortcut-kbd">Esc</kbd> cerrar</span>
+          </div>
+          <div class="map-evidence-key" aria-label="Clave visual del mapa">
+            <span><i class="map-key-mark" aria-hidden="true"></i> Marcador seleccionado: abre ficha, ubicación y coordenadas.</span>
+            <span><i class="map-key-mark region" aria-hidden="true"></i> Recuadro o lente: región ampliada para evitar solapamientos.</span>
+            <span><i class="map-key-mark lens" aria-hidden="true"></i> Fondo físico: relieve y contexto territorial, no reconstrucción exacta.</span>
+            <span><i class="map-key-mark layer" aria-hidden="true"></i> Paleoambiente: capa interpretativa sincronizada con el filtro temporal.</span>
+          </div>
+        </div>
+        <aside class="map-sidepanel">
+          <div class="map-selection-card" id="mapSelectionCard">
+            <div class="map-selection-empty">Selecciona un marcador para ver la ubicación exacta, las coordenadas y un acceso rápido a la ficha completa.</div>
+          </div>
+          <div class="map-list-block">
+            <div class="map-list-header">
+              <strong>Yacimientos visibles</strong>
+              <span id="mapVisibleListCount">0</span>
+            </div>
+            <div class="map-site-list" id="mapSiteList"></div>
+          </div>
+        </aside>
+      </div>
+      <div class="map-lens-wrap">
+        <div class="map-lens-header">
+          <div>
+            <h3>Lentes regionales sincronizadas</h3>
+            <p>El mapa global sirve como orientación general. Estas lentes amplían las regiones donde realmente se concentra el registro fósil para que los yacimientos no se solapen visualmente.</p>
+          </div>
+        </div>
+        <div class="map-lens-grid" id="mapLensGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-yacimientos" class="view-section">
+    <div class="site-outer">
+      <div class="site-header">
+        <div>
+          <h2>Fichas de yacimiento</h2>
+          <p>Vista invertida del catálogo: cada yacimiento resume taxones recuperados, secuencia estratigráfica, métodos de datación y valor metodológico para reconstruir la evolución humana.</p>
+        </div>
+      </div>
+      <div id="siteGrid" class="site-grid"></div>
+    </div>
+  </div>
+
+  <div id="view-debates" class="view-section">
+    <div class="debate-outer">
+      <div class="debate-header">
+        <div>
+          <h2>Modo debate activo</h2>
+          <p>Controversias abiertas agrupadas con tesis enfrentadas, argumentos nucleares y bibliografía reciente para seminarios de argumentación científica. La actualización es manual mediante el bloque de datos del script.</p>
+        </div>
+      </div>
+      <div id="debateGrid" class="debate-grid"></div>
+    </div>
+  </div>
+
+  <!-- MEJORA 4 v30: vista socrática con grid propio -->
+  <div id="view-socratico" class="view-section">
+    <div class="debate-outer">
+      <div class="debate-header">
+        <div>
+          <h2>Debate socrático guiado</h2>
+          <p>Elige una tesis y recorre los tres actos: preparación → argumentación cronometrada → refutación. Al terminar, genera un ticket de salida exportable con tu argumento y autoevaluación.</p>
+        </div>
+      </div>
+      <div id="socraticDebateGrid" class="debate-grid"></div>
+    </div>
+  </div>
+  <div id="socraticOverlay" class="socratic-overlay" role="dialog" aria-modal="true" aria-labelledby="socraticModalTitle">
+    <div class="socratic-modal" role="document">
+      <div class="socratic-modal-header">
+        <h3 id="socraticModalTitle">Debate socrático</h3>
+        <button type="button" class="socratic-close" id="socraticCloseBtn" data-soc-close aria-label="Cerrar debate socrático">✕</button>
+      </div>
+      <div class="socratic-body" id="socraticModalBody">
+        <!-- renderizado dinámicamente por renderSocraticDebateModal() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MEJORA 3 v30: Estratigrafía interactiva -->
+  <div id="view-estratigrafia" class="view-section">
+    <div class="strat-outer">
+      <div class="strat-header">
+        <h2>Laboratorio de estratigrafía</h2>
+        <p>Perfil estratigráfico interactivo de tres yacimientos clave. Selecciona una capa para ver litología, datación, fauna asociada y taxones humanos. Activa el Modo inferencia para practicar ordenación temporal antes de revelar edades.</p>
+      </div>
+      <div id="stratContent"><!-- renderizado por renderStratigraphyLab() --></div>
+    </div>
+  </div>
+
+  <!-- MEJORA 1 v30: Módulo de tafonomía -->
+  <div id="view-tafonomia" class="view-section">
+    <div class="tapho-outer">
+      <div class="tapho-header">
+        <h2>Simulador de sesgo tafonómico</h2>
+        <p>Manipula variables de preservación y observa qué partes del esqueleto sobrevivirían al registro fósil. Basado en datos empíricos de supervivencia esquelética documentados en la literatura.</p>
+      </div>
+      <div id="taphoContent"><!-- renderizado por renderTaphonomyView() --></div>
+    </div>
+  </div>
+
+  <!-- MEJORA 2 v30: Introgresión arcaica -->
+  <div id="view-introgresion" class="view-section">
+    <div class="introg-outer">
+      <div class="introg-header">
+        <h2>Mapa de introgresión arcaica</h2>
+        <p>Red de flujo génico entre linajes humanos con evidencia paleogenómica documentada. Pulsa cada evento para ver porcentaje de herencia, período temporal y rasgos adaptativos asociados.</p>
+      </div>
+      <div id="introgContent"><!-- renderizado por renderIntrogressionView() --></div>
+    </div>
+  </div>
+
+  <div id="view-genomica" class="view-section">
+    <div class="genomics-outer">
+      <div class="genomics-header">
+        <div>
+          <h2>Paleogenómica: ADN antiguo y genómica comparada</h2>
+          <p>Panel específico para linajes con información genómica disponible o inferida: introgresión, árbol de distancias genéticas, genes funcionales clave y límites de preservación. Distingue evidencia directa, inferencia y cautela interpretativa.</p>
+        </div>
+      </div>
+      <div id="genomicsContent"></div>
+    </div>
+  </div>
+
+  <div id="view-holotipos" class="view-section">
+    <div class="holotype-outer">
+      <div class="holotype-header">
+        <div>
+          <h2>Galería de holotipos y especímenes guía</h2>
+          <p>Vista fotográfica del material tipo o ejemplar de referencia, con escala gráfica, número de catálogo cuando está cargado y acceso directo a búsqueda de imágenes en Wikimedia Commons.</p>
+        </div>
+      </div>
+      <div id="holotypeGallery" class="holotype-grid"></div>
+    </div>
+  </div>
+
+  <div id="view-coexistencias" class="view-section">
+    <div class="coexist-outer">
+      <div class="coexist-header">
+        <div>
+          <h2>Vista de compatibilidad cronológica de evidencias</h2>
+          <p>Matriz por intervalos de 100 ka que distingue soporte cronológico compatible, falta de solapamiento documentado e indeterminación. No identifica especies presentes ni demuestra coexistencia biológica, y tampoco convierte la ausencia de solapamiento entre ventanas documentadas en ausencia histórica.</p>
+        </div>
+      </div>
+      <div id="coexistenceContent"></div>
+    </div>
+  </div>
+
+  <div id="view-revisiones" class="view-section">
+    <div class="revision-outer">
+      <div class="revision-header">
+        <div>
+          <h2>Historial de revisiones taxonómicas</h2>
+          <p>Línea de tiempo de cambios de nombre, reclasificaciones y debates nomenclaturales. Combina hitos históricos clásicos con controversias recientes para estudiar cómo cambia la ciencia.</p>
+        </div>
+      </div>
+      <div id="revisionContent" class="revision-grid"></div>
+    </div>
+  </div>
+
+  <div id="view-dispersal" class="view-section">
+    <div class="sim-outer">
+      <div class="sim-header">
+        <div>
+          <h2>Simulador de dispersión Out of Africa</h2>
+          <p>Mapa animado y pausado por el usuario: activa oleadas migratorias, cambia la velocidad y observa qué linajes aparecen por región en el momento seleccionado, con paleoambiente de fondo.</p>
+        </div>
+      </div>
+      <div id="dispersalContent"></div>
+    </div>
+  </div>
+
+  <div id="view-constructor" class="view-section">
+    <div class="builder-outer">
+      <div class="builder-header">
+        <div>
+          <h2>Constructor de árboles filogenéticos</h2>
+          <p>Arrastra especies al lienzo, conéctalas como hipótesis y compara tu árbol con tres modelos de referencia. El objetivo es aprender a justificar relaciones, no memorizar una figura fija.</p>
+        </div>
+      </div>
+      <div id="treeBuilderContent"></div>
+    </div>
+  </div>
+
+  <div id="view-datacion" class="view-section">
+    <div class="dating-outer">
+      <div class="dating-header">
+        <div>
+          <h2>Laboratorio de datación virtual</h2>
+          <p>Selecciona un yacimiento, examina datos brutos simulados y elige un método. El sistema devuelve resultado, margen de error y explicación si el método no es adecuado para esa edad o material.</p>
+        </div>
+      </div>
+      <div id="datingLabContent"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  VISTA: ITINERARIOS FILOGENÉTICOS GUIADOS                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="view-primatologia" class="view-section">
+    <div id="primateContent" class="primate-outer">
+      <!-- Renderizado por renderPrimatologyView() -->
+    </div>
+  </div>
+
+  <div id="view-aula" class="view-section">
+    <div id="teachingCenterContent" class="teaching-outer">
+      <!-- Renderizado por renderTeachingCenter() -->
+    </div>
+  </div>
+
+  <div id="view-recursos" class="view-section">
+    <div id="resourceBankContent" class="resources-outer">
+      <!-- Renderizado por renderResourceBank() -->
+    </div>
+  </div>
+
+  <div id="view-itinerarios" class="view-section">
+    <div class="itin-outer">
+      <div class="itin-head">
+        <h2>Itinerarios filogenéticos guiados</h2>
+        <p>Rutas temáticas predefinidas con narración evolutiva entre fichas · Haz clic en «Ficha completa» para explorar</p>
+      </div>
+      <div class="itin-selector">
+        <button type="button" class="itin-btn" id="itin-btn-0" data-itinerary-select="0">
+          <span class="itin-label">Itinerario I — 10 paradas</span>
+          <strong>Del bosque a la sabana</strong>
+        </button>
+        <button type="button" class="itin-btn" id="itin-btn-1" data-itinerary-select="1">
+          <span class="itin-label">Itinerario II — 8 paradas</span>
+          <strong>La explosión del género Homo</strong>
+        </button>
+        <button type="button" class="itin-btn" id="itin-btn-2" data-itinerary-select="2">
+          <span class="itin-label">Itinerario III — 3 paradas</span>
+          <strong>Los robustos: un experimento evolutivo</strong>
+        </button>
+      </div>
+      <div id="itinBody">
+        <div class="itin-placeholder">
+          <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M5 7v7a4 4 0 0 0 4 4h6"/><path d="M14 15l5 4-5 4"/></svg></span>
+          <p class="itin-placeholder-title">Selecciona un itinerario para comenzar</p>
+          <p class="itin-placeholder-copy">Cada ruta te guía por una secuencia de especies con narración evolutiva</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  VISTA: CRONOLOGÍA BIOGEOGRÁFICA                           -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div id="view-biogeo" class="view-section">
+    <div class="biogeo-outer" id="biogeoContainer">
+      <!-- Renderizado por renderBiogeo() -->
+    </div>
+  </div>
+
+<div id="phyloTooltip">
+  <div class="pt-name" id="pt-name"></div>
+  <div id="pt-badge-wrap"></div>
+  <div class="pt-row"><span class="pt-lbl">Cronología</span><span class="pt-val" id="pt-anos"></span></div>
+  <div class="pt-row"><span class="pt-lbl">Ubicación</span><span class="pt-val" id="pt-loc"></span></div>
+  <div class="pt-row"><span class="pt-lbl">Holotipo</span><span class="pt-val" id="pt-holo"></span></div>
+  <div class="pt-cc-bar-wrap" id="pt-cc-wrap">
+    <div class="pt-row"><span class="pt-lbl">Cap. craneal</span><span class="pt-val" id="pt-cc"></span></div>
+    <div class="pt-cc-track"><div class="pt-cc-fill" id="pt-cc-fill"></div></div>
+  </div>
+  <div class="pt-hint">Clic para abrir ficha completa →</div>
+</div>
+
+</main><!-- /main-content -->
+</div><!-- /container -->
+
+<button class="scroll-top-btn" type="button" data-action="scrollToTop" aria-label="Volver arriba" title="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/>
+    <path d="M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div id="detailView" class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detailViewTitle"></div>
+<div id="academicPrintSheet" class="academic-print-sheet" aria-hidden="true"></div>
+
+<div class="fab-group" role="navigation" aria-label="Herramientas rápidas del atlas">
+      <div class="fab-wrapper"><button type="button" class="fab presentation" data-action="openPresentation" aria-label="Abrir modo presentación"><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/><path d="M12 18v2"/><path d="M10 9l5 3-5 3V9z"/></svg></span></button><span class="fab-label" aria-hidden="true">Presentación</span></div>
+      <div class="fab-wrapper"><button type="button" class="fab exam" data-action="startExam" aria-label="Abrir examen"><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h4"/><path d="M8 8h2"/></svg></span></button><span class="fab-label" aria-hidden="true">Examen</span></div>
+      <div class="fab-wrapper"><button type="button" class="fab glossary" data-action="openGlossary" aria-label="Abrir glosario"><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M8 7h8M8 11h7M8 15h5"/></svg></span></button><span class="fab-label" aria-hidden="true">Glosario</span></div>
+  <div class="fab-wrapper"><button type="button" class="fab" data-action="openMatrix" aria-label="Abrir matriz de caracteres"><span class="ico" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg></span></button><span class="fab-label" aria-hidden="true">Matriz</span></div>
+  <div class="fab-wrapper"><button type="button" class="fab" data-modal-toggle="compareModal" aria-label="Abrir comparador"><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M6 7l-3 6h6z"/><path d="M18 7l-3 6h6z"/></svg></span></button><span class="fab-label" aria-hidden="true">Comparar</span></div>
+  <div class="fab-wrapper"><button type="button" class="fab" data-action="abrirEstadisticas" aria-label="Abrir gráfico de encefalización"><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 16l4-5 3 3 5-8"/><circle cx="10" cy="11" r="1.5"/><circle cx="13" cy="14" r="1.5"/><circle cx="18" cy="6" r="1.5"/></svg></span></button><span class="fab-label" aria-hidden="true">Encefalización</span></div>
+  <div class="fab-wrapper"><button type="button" class="fab" data-action="abrirBiblio" aria-label="Abrir bibliografía"><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M8 8h7M8 12h6M8 16h4"/></svg></span></button><span class="fab-label" aria-hidden="true">Bibliografía</span></div>
+      <div class="fab-wrapper"><button type="button" class="fab export" data-action="exportToCSV" title="Exportar CSV de especies visibles" aria-label="Exportar CSV de especies visibles"><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11"/><path d="M8 10l4 4 4-4"/><path d="M5 19h14"/></svg></span></button><span class="fab-label" aria-hidden="true">Exportar CSV</span></div>
+      <div class="fab-wrapper"><button type="button" class="fab print" data-action="printFicha" aria-label="Imprimir ficha"><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8V4h10v4"/><rect x="5" y="12" width="14" height="8" rx="1"/><path d="M6 8h12a3 3 0 0 1 3 3v5h-2"/><path d="M7 16h10"/></svg></span></button><span class="fab-label" aria-hidden="true">Imprimir ficha</span></div>
+  <div class="fab-wrapper"><button type="button" class="fab student-guide" data-action="openStudentGuide" aria-label="Guía del alumnado"><span class="ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.7 2 6 4.7 6 8c0 2.4 1.4 4.5 3.4 5.5L8 22l4-2 4 2-1.4-8.5C16.6 12.5 18 10.4 18 8c0-3.3-2.7-6-6-6z"/><path d="M12 6v4"/><circle cx="12" cy="14" r="1"/></svg></span></button><span class="fab-label" aria-hidden="true">Guía alumno/a</span></div>
+</div>
+
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada" data-lightbox-close><button type="button" class="lightbox-close-btn pb-r69-static-14" data-lightbox-close="true" aria-label="Cerrar imagen ampliada">✕</button><img id="lbImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Vista ampliada"></div>
+
+  <div id="matrixModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="matrixModal-title"><div class="modal-content"><button type="button" class="close-modal" data-modal-toggle="matrixModal" aria-label="Cerrar matriz de caracteres">✕</button><h2 id="matrixModal-title">Matriz de Caracteres</h2><div id="matrixActionBar"></div><div class="matrix-scroll"><table class="matrix-table" id="matrixTableContent" aria-label="Matriz de caracteres anatómicos comparados"></table></div></div></div>
+<div id="compareModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="compareModal-title">
+  <div class="modal-content">
+    <button type="button" class="close-modal" data-modal-toggle="compareModal" aria-label="Cerrar comparador">✕</button>
+    <h2 id="compareModal-title">Comparador Anatómico Multi-especie</h2>
+    <aside class="cmp-method-guide" aria-label="Guía de lectura del comparador anatómico">
+      <div class="cmp-method-copy">
+        <strong>Compara rasgos, no solo especies</strong>
+        <p>Selecciona entre dos y seis taxones. El resultado combina cronología, capacidad craneal, rasgos morfológicos y lectura cladística para distinguir caracteres compartidos, exclusivos y debatidos.</p>
+      </div>
+      <div class="cmp-method-legend" aria-label="Leyenda de estados morfológicos">
+        <span class="cmp-state present">Presente</span>
+        <span class="cmp-state partial">Parcial</span>
+        <span class="cmp-state absent">Ausente</span>
+        <span class="cmp-state unknown">No documentado</span>
+      </div>
+      <div class="cmp-method-note">Lectura recomendada: primero el radar general, después la matriz visual y, finalmente, el bloque cladístico para interpretar qué rasgos tienen valor filogenético.</div>
+    </aside>
+
+    <!-- ── Selector de especies (buscador + chips) ────────────────────── -->
+    <div class="cmp-picker-zone">
+      <div class="cmp-picker-header">
+        <span class="cmp-picker-title">Añadir especie</span>
+        <span class="cmp-picker-count" id="cmpCountLabel" aria-live="polite">0 / 6 seleccionadas</span>
+      </div>
+      <div class="cmp-picker-search" id="cmpPickerWrap">
+        <span class="cmp-picker-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <input type="text" id="cmpPickerInput" class="cmp-picker-input"
+               placeholder="Buscar taxón por nombre…"
+               autocomplete="off" spellcheck="false"
+               role="combobox" aria-autocomplete="list"
+               aria-expanded="false" aria-controls="cmpPickerDropdown"
+               aria-label="Buscar y añadir especie al comparador">
+        <div id="cmpPickerDropdown" class="cmp-picker-dropdown" role="listbox" aria-label="Lista de taxones disponibles"></div>
+      </div>
+    </div>
+
+    <!-- ── Chips de selección activa ─────────────────────────────────── -->
+    <div id="cmpChipsRow" class="cmp-chips-row" aria-label="Especies seleccionadas" aria-live="polite">
+      <span class="cmp-chip-ph">Añade al menos dos taxones para comparar…</span>
+    </div>
+
+    <!-- ── Presets curriculares ──────────────────────────────────────── -->
+    <div class="cmp-presets" role="group" aria-label="Selecciones predefinidas didácticas">
+      <span class="cmp-preset-label">Presets:</span>
+      <button type="button" class="cmp-preset-btn" data-cmp-preset="bipedismo"    title="Homininos que ilustran la evolución del bipedismo">Evolución del bipedismo</button>
+      <button type="button" class="cmp-preset-btn" data-cmp-preset="paranthropus" title="Los tres taxones del género Paranthropus">Clado Paranthropus</button>
+      <button type="button" class="cmp-preset-btn" data-cmp-preset="homo_temprano" title="Los primeros representantes del género Homo">Homo temprano</button>
+      <button type="button" class="cmp-preset-btn" data-cmp-preset="arcantropo"   title="Homo arcaicos de distribución global">Homo arcaico global</button>
+      <button type="button" class="cmp-preset-btn" data-cmp-preset="islas"        title="Casos documentados de enanismo insular">Enanismo insular</button>
+      <button type="button" class="cmp-preset-btn" data-cmp-preset="mioceno"      title="Hominoideos del Mioceno africano y europeo">Hominoideos miocenos</button>
+    </div>
+
+    <!-- ── Zona de resultado ─────────────────────────────────────────── -->
+    <div id="compareResult">
+      <div class="cmp-status-msg">
+        <strong>⚖ Comparador multi-especie</strong>
+        Selecciona entre 2 y 6 taxones para generar la comparación morfológica, radar de rasgos, cronología y análisis cladístico.
+      </div>
+    </div>
+  </div>
+</div>
+<div id="statsModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="statsModal-title">
+    <div class="modal-content modal-wide">
+    <button type="button" class="close-modal" data-modal-toggle="statsModal" aria-label="Cerrar gráfico de encefalización">✕</button>
+    <h2>Evolución de la Capacidad Craneal</h2>
+    <div class="chart-controls">
+      <span class="chart-control-label">Zoom temporal:</span>
+      <button type="button" class="chart-ctrl-btn active" id="zoom-all" data-chart-zoom="all" aria-pressed="true">Todo (23 Ma)</button>
+      <button type="button" class="chart-ctrl-btn" id="zoom-mio" data-chart-zoom="mio">Mioceno (23–5 Ma)</button>
+      <button type="button" class="chart-ctrl-btn" id="zoom-plio" data-chart-zoom="plio">Plioceno (5–1.5 Ma)</button>
+      <button type="button" class="chart-ctrl-btn" id="zoom-pleis" data-chart-zoom="pleis">Pleistoceno (2–0 Ma)</button>
+      <div class="chart-ctrl-sep"></div>
+      <button type="button" class="chart-ctrl-btn green" id="btn-select-mode" data-chart-action="toggleSelectMode"><span class="ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/></svg></span> Modo selección</button>
+      <button type="button" class="chart-ctrl-btn green" data-chart-action="exportChartPNG"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> PNG</button>
+          <button type="button" class="chart-ctrl-btn chart-reset-btn" data-chart-action="resetChartSelection" id="btn-reset-sel">↺ Restablecer</button>
+    </div>
+    <div class="chart-enhanced-wrap">
+      <!-- FIX A-7: role=img + aria-label para WCAG 1.1.1; fallback textual para lectores de pantalla -->
+      <canvas id="encefChart" height="400"
+              role="img"
+              aria-label="Gráfico de dispersión: evolución de la capacidad craneal (cc) a lo largo del tiempo en millones de años. Cada punto representa un taxón hominino. Usa el teclado para explorar los botones de zoom y modo selección.">
+        <p>Este gráfico requiere un navegador con soporte para Canvas HTML5. Muestra la evolución de la capacidad craneal en homininos desde el Mioceno hasta el presente.</p>
+      </canvas>
+    </div>
+    <div class="chart-info-bar">
+      <span><span class="ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg></span> Clic en un punto para abrir la ficha</span>
+          <span id="chart-sel-info" class="chart-selection-info"><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span> <span id="chart-sel-count">0</span> especies seleccionadas — regresión recalculada</span>
+          <span class="chart-hover-info" id="chart-hover-info"></span>
+    </div>
+    <div class="chart-legend-enhanced" id="chartLegendEnhanced"></div>
+  </div>
+</div>
+<div id="biblioModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="biblioModal-title">
+  <div class="modal-content bib-modal-content">
+    <button type="button" class="close-modal" data-modal-toggle="biblioModal" aria-label="Cerrar bibliografía">✕</button>
+    <h2>Bibliografía Paleoantropológica <span class="bib-title-year">hasta 2026</span></h2>
+    <div id="bibStats" class="bib-stats"></div>
+    <div class="bib-audit-note"><strong>Auditor&iacute;a bibliogr&aacute;fica 2026.</strong> Se priorizan fuentes primarias revisadas por pares, DOI normalizados y referencias recientes. Las interpretaciones controvertidas se se&ntilde;alan como cautela para evitar presentar debates abiertos como consenso.</div>
+    <div class="bib-toolbar">
+      <button type="button" class="bib-filter-btn active" data-bfilter="all" data-bib-filter="all" aria-pressed="true">Todas</button>
+      <button type="button" class="bib-filter-btn" data-bfilter="newdata" data-bib-filter="newdata">Datos nuevos 2024-2026</button>
+      <button type="button" class="bib-filter-btn" data-bfilter="africaRecent" data-bib-filter="africaRecent">Africa 2023-2026</button>
+      <button type="button" class="bib-filter-btn" data-bfilter="recent" data-bib-filter="recent">2023-2026</button>
+      <button type="button" class="bib-filter-btn" data-bfilter="doi" data-bib-filter="doi">🔗 Con DOI</button>
+<input type="text" class="bib-search" id="bibSearch" data-bib-search placeholder="Buscar autor, título, especie…" aria-label="Buscar en la bibliografía por autor, título o especie">
+    </div>
+    <div id="biblioContent"></div>
+  </div>
+</div>
+  <div id="examModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="examModal-title"><div class="modal-content exam-modal-content"><button type="button" class="close-modal" data-modal-toggle="examModal" aria-label="Cerrar autoevaluación">✕</button><h2 id="examModal-title">Autoevaluación de repaso</h2><div id="examIntro"><div id="quizProgressPanel"></div><div class="pb-r69-static-15"><button class="pb-r69-static-16" type="button" data-action="exportQuizProgress">⬇ Exportar mi progreso (.txt)</button></div><p class="exam-intro-copy">Pregunta aleatoria o quiz dinámico sobre las especies visibles en el filtro activo. <strong>Las respuestas son solo para ti — no se guardan ni se envían. Este ejercicio no afecta a ninguna calificación.</strong></p><button type="button" class="exam-btn" data-quiz-next="classic">Comenzar clásico</button><button type="button" class="exam-btn accent" data-quiz-next="generative">Preguntas con IA <small class="pb-r69-static-17">(requiere conexión)</small></button></div><div id="examQ" class="exam-question"></div></div></div>
+
+  <div id="glossaryModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="glossaryModal-title"><div class="modal-content modal-xl"><button type="button" class="close-modal" data-modal-toggle="glossaryModal" aria-label="Cerrar glosario">✕</button><h2 id="glossaryModal-title">Glosario Paleoantropológico</h2><div id="glossaryContent"></div></div></div>
+  <div id="researchGapModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="researchGapModal-title"><div class="modal-content modal-xl"><button type="button" class="close-modal" data-modal-toggle="researchGapModal" aria-label="Cerrar lagunas de investigación">✕</button><h2 id="researchGapModal-title">¿Qué no sabemos aún?</h2><div id="researchGapContent"></div></div></div>
+
+<script id="paleobot-v63-error-capture"  src="assets/js/00-core/001-paleobot-v63-error-capture.js" defer></script>
+<script id="paleobot-public-api-shadow" src="assets/js/00-core/072-paleobot-public-api-shadow.js" defer></script>
+<script defer src="assets/js/60-science/075-paleobot-a2-chronology.js"></script>
+<script defer src="assets/js/60-science/076-paleobot-a3-scientific-adapter.js"></script>
+<script defer src="assets/js/60-science/078-paleobot-a3-catalog.js"></script>
+<script defer src="assets/js/60-science/079-paleobot-a3-temporal-policy.js"></script>
+<script  src="assets/js/00-core/002-script.js" defer></script>
+<script defer src="assets/js/00-core/073-paleobot-storage-adapter.js"></script>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- MODO PRESENTACIÓN / EXPOSICIÓN — OVERLAY HTML              -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="presOverlay" class="pres-overlay" role="dialog" aria-modal="true" aria-label="Modo presentación de PaleoBot">
+  <button class="pres-floating-back" type="button" data-pres-back aria-label="Volver atr&aacute;s desde el modo presentaci&oacute;n">
+    <span class="ico" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></span>
+    Volver atr&aacute;s
+  </button>
+
+  <!-- TOP BAR -->
+  <div class="pres-topbar">
+    <div class="pres-brand">
+      <span>PaleoBot</span>
+      <small>MODO PRESENTACIÓN</small>
+    </div>
+    <div class="pres-dots" id="presDots"></div>
+    <div class="pres-top-controls">
+      <button type="button" class="pres-ctrl-btn" id="presAutoBtn" data-pres-auto aria-label="Activar o pausar el avance automático" aria-pressed="false">
+        <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span> Auto
+      </button>
+      <button type="button" class="pres-ctrl-btn" id="presFilterBtn" data-pres-filter aria-label="Mostrar solo especies con capacidad craneal documentada" aria-pressed="false">
+        <span class="ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></span> Solo CC
+      </button>
+      <button type="button" class="pres-close-btn" data-pres-close aria-label="Cerrar modo presentación">✕</button>
+    </div>
+  </div>
+
+  <!-- MAIN SLIDE -->
+  <div class="pres-main">
+
+    <!-- LEFT: IMAGE -->
+    <div class="pres-img-panel" id="presImgPanel">
+      <div class="pres-bg-blur" id="presBgBlur" aria-hidden="true">
+        <img id="presBgBlurImg" class="pres-bg-blur-img" alt="" aria-hidden="true" hidden>
+      </div>
+      <div class="pres-clado-strip" id="presCladoStrip"></div>
+      <div class="pres-img-main">
+        <img id="presImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt=""
+             data-image-error="placeholder">
+      </div>
+      <div class="pres-index-badge" id="presIndexBadge"></div>
+      <div class="pres-media-caption" id="presMediaCaption"></div>
+      <div class="pres-timer-bar pb-r69-static-18" id="presTimerBar"></div>
+    </div>
+
+    <!-- RIGHT: INFO -->
+    <div class="pres-info-panel" id="presInfoPanel">
+
+      <div class="pres-clado-tag" id="presCladoTag"></div>
+      <div class="pres-name" id="presName"></div>
+      <div class="pres-subname" id="presSubname"></div>
+      <div class="pres-status-row" id="presStatusRow"></div>
+      <div class="pres-stats" id="presStats"></div>
+      <p class="pres-desc" id="presDesc"></p>
+      <div class="pres-teaching-card" id="presTeachingCard"></div>
+
+      <div class="pres-data-row">
+        <!-- Mini mapa -->
+        <div class="pres-mini-panel">
+          <h4><span class="ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>&nbsp;Yacimiento</h4>
+          <div class="pres-map-mini is-clickable" data-pres-map-expand role="button" tabindex="0" aria-label="Ampliar mapa del yacimiento">
+            <svg class="pres-map-dot-overlay" id="presMapSvg"
+                 viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg"></svg>
+          </div>
+          <div class="pres-map-context-note" id="presLocLabel"></div>
+          <div class="pres-map-legend" aria-label="Leyenda docente del mapa de presentación">
+            <span><i class="pres-map-symbol" aria-hidden="true"></i> punto focal</span>
+            <span><i class="pres-map-symbol frame" aria-hidden="true"></i> región ampliada</span>
+            <span><i class="pres-map-symbol peer" aria-hidden="true"></i> yacimientos próximos</span>
+            <span><i class="pres-map-symbol scale" aria-hidden="true"></i> escala aproximada</span>
+          </div>
+          <button type="button" class="pres-map-expand-btn" data-pres-map-expand>
+            <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></span>
+            Ampliar mapa
+          </button>
+        </div>
+        <!-- Mini gráfico CC -->
+        <div class="pres-mini-panel">
+          <h4><span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 18c-2.4-1.3-4-3.8-4-6.8C4 6.7 7.6 3 12.1 3S20 6.4 20 10.7c0 3.5-1.8 6.3-4.6 7.7"/><path d="M8 18v2h8v-2"/><path d="M9 9.5h.01M15 9.5h.01"/></svg></span>&nbsp;Encefalización comparada</h4>
+          <canvas id="presCCChart" height="110" role="img" aria-label="Gráfico de encefalización comparada en modo presentación"><p>Gráfico de evolución de la capacidad craneal en homininos. Requiere Canvas HTML5.</p></canvas>
+          <div class="pb-r69-static-19"
+               id="presCCLabel"></div>
+        </div>
+      </div>
+
+    </div><!-- /pres-info-panel -->
+  </div><!-- /pres-main -->
+
+  <!-- BOTTOM NAV BAR -->
+  <div class="pres-nav-bar">
+    <button type="button" class="pres-arrow-btn" id="presPrevBtn" data-pres-nav="-1" title="Anterior ←" aria-label="Diapositiva anterior">
+      <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg></span>
+    </button>
+    <div class="pb-r69-static-20">
+      <div class="pres-nav-info" id="presNavInfo"></div>
+      <button type="button" class="pres-detail-link" data-pres-detail>
+        <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>&nbsp;Ficha completa
+      </button>
+    </div>
+    <button type="button" class="pres-arrow-btn" id="presNextBtn" data-pres-nav="1" title="Siguiente →" aria-label="Diapositiva siguiente">
+      <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+    </button>
+  </div>
+
+  <div id="presMapModal" class="pres-map-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="presMapModalTitle">
+    <button class="pres-map-floating-back" type="button" data-pres-map-close aria-label="Volver atr&aacute;s desde el mapa ampliado">
+      <span class="ico" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></span>
+      Volver atr&aacute;s
+    </button>
+    <div class="pres-map-modal-card">
+      <div class="pres-map-modal-head">
+        <div class="pres-map-modal-head-main">
+          <button class="pres-map-modal-back" type="button" data-pres-map-close aria-label="Volver al modo presentaci&oacute;n">
+            <span class="ico" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></span>
+            Volver
+          </button>
+          <div>
+            <h3 class="pres-map-modal-title" id="presMapModalTitle">Mapa ampliado</h3>
+            <div class="pres-map-modal-sub" id="presMapModalSub"></div>
+          </div>
+        </div>
+        <button type="button" class="pres-map-modal-close" data-pres-map-close aria-label="Cerrar mapa ampliado">✕</button>
+      </div>
+      <div class="pres-map-modal-body" id="presMapModalBody"></div>
+      <div class="pres-map-modal-foot" id="presMapModalFoot"></div>
+    </div>
+  </div>
+
+</div><!-- /presOverlay -->
+
+
+<script  src="assets/js/00-core/003-script.js" defer></script>
+
+<script  src="assets/js/00-core/004-script.js" defer></script>
+
+<!-- FIX v22-C: Tooltip flotante para términos del glosario -->
+<div id="climaTooltip" aria-hidden="true"><div class="ct-title" id="ctTitle"></div><span class="ct-val" id="ctVal"></span><span class="ct-sub" id="ctSub"></span></div>
+<div id="glossFloatTip" role="tooltip" aria-live="polite" aria-label="Definición del término"><strong id="glossFloatTipTitle"></strong><span id="glossFloatTipBody"></span></div>
+
+<script  src="assets/js/00-core/005-script.js" defer></script>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     MÓDULO JS: CLIMA PALEOCLIMÁTICO — PaleoBot
+     ───────────────────────────────────────────────────────────────────────
+     FUENTES CIENTÍFICAS ACTUALIZADAS (2020-2025):
+
+     δ¹⁸O / VOLUMEN DE HIELO GLOBAL:
+       · Westerhold et al. (2020). An astronomically dated record of Earth's
+         climate and its predictability over the last 66 million years.
+         Science 369(6509):1383-1387. DOI: 10.1126/science.aba6853
+         [Cenozoic stack CENOGRID — resolución orbital, 0-66 Ma]
+
+       · Lear et al. (2016). Deep Atlantic Ocean carbon storage and the rise
+         of 100,000-year glacial cycles.
+         Nature Geoscience 9:630-634. DOI: 10.1038/ngeo2757
+         [Stack Î´¹³C bentónico — MPT 0.9-1.2 Ma]
+
+     TEMPERATURA GLOBAL — ERA COMÚN:
+       · PAGES 2k Consortium (2019). Consistent multidecadal variability in
+         global temperature reconstructions and simulations over the Common Era.
+         Nature Geoscience 12:643-649. DOI: 10.1038/s41561-019-0400-0
+         [692 proxies · 7 regiones · CE 1-2000]
+
+       · Neukom et al. (2019). No evidence for globally coherent warm and cold
+         periods over the preindustrial Common Era.
+         Nature 571:550-554. DOI: 10.1038/s41586-019-1401-2
+         [Análisis PAGESHydro2k]
+
+     TEMPERATURA CUATERNARIA (HIELO ANTÁRTICO):
+       · Extier et al. (2018, actualizado 2022 en NOAA NCEI).
+         EPICA Dome C 800 Ka composite temperature record.
+         NOAA World Data Service for Paleoclimatology.
+         https://www.ncei.noaa.gov/access/paleo-search/study/17839
+
+     ESTADIOS ISOTÓPICOS MARINOS:
+       · Railsback et al. (2015, referencia estándar en uso 2020-2025).
+         An optimized scheme of lettered marine isotope substages for the
+         last 1.0 million years, and the climatostratigraphic nature of
+         isotope stages and substages. Quaternary Science Reviews 111:94-106.
+         DOI: 10.1016/j.quascirev.2015.01.012
+
+       · Cohen et al. (2023). The ICS International Chronostratigraphic Chart,
+         v2023/09. Episodes 46(2):1-4. DOI: 10.18814/epiiugs/2023/023025
+
+     EVENTOS HEINRICH Y D-O:
+       · Menviel et al. (2020). An ice-climate oscillatory framework for
+         Dansgaard-Oeschger cycles. Nature Reviews Earth & Environment 1:677-693.
+         DOI: 10.1038/s43017-020-00106-y
+
+       · Rasmussen et al. (2014, base estándar NGRIP actualizada 2022).
+         A stratigraphic framework for abrupt climatic changes during the
+         Last Glacial period based on three synchronized Greenland ice-core
+         records. Quaternary Science Reviews 106:14-28.
+         DOI: 10.1016/j.quascirev.2014.09.007
+
+     CONTEXTO HOMÍNINO-CLIMÁTICO:
+       · Potts et al. (2020). Increased ecological resource variability during
+         a critical transition in hominin evolution. Science Advances 6(43).
+         DOI: 10.1126/sciadv.abc8975
+
+       · Trauth et al. (2021). Classifying past climate change in the
+         Turkana Basin, East Africa, and its relation to early hominin evolution.
+         Quaternary Science Reviews 270:107170.
+         DOI: 10.1016/j.quascirev.2021.107170
+
+     NOTA: Los arrays numéricos embebidos son puntos representativos
+     de los stacks publicados. Para análisis de investigación, usa
+     los datasets completos en NOAA NCEI Paleoclimatology:
+     https://www.ncei.noaa.gov/products/paleoclimatology
+════════════════════════════════════════════════════════════════════════ -->
+<script  src="assets/js/00-core/006-script.js" defer></script>
+
+<link id="paleobot-v34-style" rel="stylesheet" href="assets/css/00-core/002-paleobot-v34-style.css">
+
+<script id="paleobot-v34-layer"  src="assets/js/10-legacy-ui/007-paleobot-v34-layer.js" defer></script>
+<link id="paleobot-v34-m11m20-style" rel="stylesheet" href="assets/css/00-core/005-paleobot-v34-m11m20-style.css">
+
+<script id="paleobot-v34-m11m20-layer"  src="assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js" defer></script>
+<link id="paleobot-v35-separated-design-style" rel="stylesheet" href="assets/css/00-core/007-paleobot-v35-separated-design-style.css">
+<script id="paleobot-v35-separated-design-layer"  src="assets/js/10-legacy-ui/009-paleobot-v35-separated-design-layer.js" defer></script>
+<link id="paleobot-v36-workspace-redesign-style" rel="stylesheet" href="assets/css/00-core/008-paleobot-v36-workspace-redesign-style.css">
+<script id="paleobot-v36-workspace-redesign-layer"  src="assets/js/10-legacy-ui/010-paleobot-v36-workspace-redesign-layer.js" defer></script>
+<script id="paleobot-v37-control-bus"  src="assets/js/10-legacy-ui/011-paleobot-v37-control-bus.js" defer></script>
+<script id="paleobot-v38-bibliography-controls"  src="assets/js/10-legacy-ui/012-paleobot-v38-bibliography-controls.js" defer></script>
+<script id="paleobot-v39-doi-links"  src="assets/js/10-legacy-ui/013-paleobot-v39-doi-links.js" defer></script>
+<script id="paleobot-v40-species-open-bus"  src="assets/js/10-legacy-ui/014-paleobot-v40-species-open-bus.js" defer></script>
+<link id="paleobot-v41-layout-repair" rel="stylesheet" href="assets/css/80-features/009-paleobot-v41-layout-repair.css">
+<script id="paleobot-v41-layout-guard"  src="assets/js/90-guards/015-paleobot-v41-layout-guard.js" defer></script>
+<link id="paleobot-v42-detail-view-repair" rel="stylesheet" href="assets/css/80-features/010-paleobot-v42-detail-view-repair.css">
+<script id="paleobot-v42-detail-view-guard"  src="assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js" defer></script>
+<link id="paleobot-v43-detail-tabs-repair" rel="stylesheet" href="assets/css/80-features/011-paleobot-v43-detail-tabs-repair.css">
+<script id="paleobot-v43-detail-tabs-guard"  src="assets/js/90-guards/017-paleobot-v43-detail-tabs-guard.js" defer></script>
+<link id="paleobot-v44-presentation-controls-repair" rel="stylesheet" href="assets/css/80-features/012-paleobot-v44-presentation-controls-repair.css">
+<link id="paleobot-v45-cover-redesign" rel="stylesheet" href="assets/css/20-navigation/013-paleobot-v45-cover-redesign.css">
+<script id="paleobot-v46-button-audit-bus"  src="assets/js/90-guards/020-paleobot-v46-button-audit-bus.js" defer></script>
+<link id="paleobot-v47-special-button-repair-style" rel="stylesheet" href="assets/css/00-core/014-paleobot-v47-special-button-repair-style.css">
+<script id="paleobot-v48-map-controls-repair"  src="assets/js/40-media/022-paleobot-v48-map-controls-repair.js" defer></script>
+<link id="paleobot-v49-map-navigation-shield-style" rel="stylesheet" href="assets/css/00-core/016-paleobot-v49-map-navigation-shield-style.css">
+<script id="paleobot-v49-map-navigation-shield"  src="assets/js/20-navigation/023-paleobot-v49-map-navigation-shield.js" defer></script>
+<!-- ═══════════════════════════════════════════════════════════════
+     PALEOBOT v50 · CAPA UX/UI REUNIFICADA
+     Base funcional: v34. Dirección visual y estructura: ai_studio v50.
+     ═══════════════════════════════════════════════════════════════ -->
+<link id="paleobot-v50-unified-ux-style" rel="stylesheet" href="assets/css/00-core/017-paleobot-v50-unified-ux-style.css">
+<script id="paleobot-v50-unified-ux-layer"  src="assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js" defer></script>
+<link id="paleobot-v50-media-guard-style" rel="stylesheet" href="assets/css/00-core/018-paleobot-v50-media-guard-style.css">
+<script id="paleobot-v50-media-guard"  src="assets/js/40-media/025-paleobot-v50-media-guard.js" defer></script>
+<script id="paleobot-v51-navigation-audit-guard"  src="assets/js/20-navigation/026-paleobot-v51-navigation-audit-guard.js" defer></script>
+<link id="paleobot-v53-floating-menu-restore" rel="stylesheet" href="assets/css/80-features/019-paleobot-v53-floating-menu-restore.css">
+<script id="paleobot-v52-no-home-bounce-guard"  src="assets/js/90-guards/027-paleobot-v52-no-home-bounce-guard.js" defer></script>
+<script id="paleobot-v55-functional-router"  src="assets/js/20-navigation/028-paleobot-v55-functional-router.js" defer></script>
+<link id="paleobot-v56-readable-ui" rel="stylesheet" href="assets/css/10-legacy-ui/020-paleobot-v56-readable-ui.css">
+<link id="paleobot-v57-block-cover-redesign" rel="stylesheet" href="assets/css/20-navigation/021-paleobot-v57-block-cover-redesign.css">
+<script id="paleobot-v58-biblio-filter-contrast"  src="assets/js/30-search/029-paleobot-v58-biblio-filter-contrast.js" defer></script>
+
+<script id="paleobot-v59-block-panel-sync"  src="assets/js/10-legacy-ui/031-paleobot-v59-block-panel-sync.js" defer></script>
+<script id="paleobot-v61-image-fallbacks"  src="assets/js/40-media/033-paleobot-v61-image-fallbacks.js" defer></script>
+<link id="paleobot-v62-readability-and-layout-fix" rel="stylesheet" href="assets/css/80-features/022-paleobot-v62-readability-and-layout-fix.css">
+<link id="paleobot-v64-real-image-visuals" rel="stylesheet" href="assets/css/80-features/023-paleobot-v64-real-image-visuals.css">
+<script id="paleobot-v64-real-image-visuals-runtime"  src="assets/js/40-media/035-paleobot-v64-real-image-visuals-runtime.js" defer></script>
+<link id="paleobot-v65-hero-readability-routing-fix" rel="stylesheet" href="assets/css/90-guards/024-paleobot-v65-hero-readability-routing-fix.css">
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  PaleoBot v55 — Parche definitivo de navegación + WCAG 2.2          ║
+     ║                                                                       ║
+     ║  CAMBIO DE ESTRATEGIA:                                                ║
+     ║  Versiones anteriores interceptaban window.addEventListener en <head> ║
+     ║  para reemplazar el router v49. Esto fallaba en navegadores reales    ║
+     ║  porque la sincronización DOM es diferente al entorno de prueba.     ║
+     ║                                                                       ║
+     ║  NUEVA ESTRATEGIA (MutationObserver + pointerdown):                  ║
+     ║  1. MutationObserver vigila cambios de clase en TODAS las            ║
+     ║     view-sections. Si alguna recibe .active sin que sea la vista     ║
+     ║     que el usuario pretendía, la corrige INMEDIATAMENTE.             ║
+     ║  2. pointerdown en window capture registra la vista INTENCIONADA     ║
+     ║     antes de que cualquier router la procese.                        ║
+     ║  3. El MutationObserver corrige la vista si no coincide con          ║
+     ║     la vista intencionada registrada en pointerdown.                 ║
+     ║  Este mecanismo es INDEPENDIENTE de qué router haga qué.            ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+
+<link id="paleobot-v55-css" rel="stylesheet" href="assets/css/80-features/025-paleobot-v55-css.css">
+
+<script id="paleobot-v55-nav"  src="assets/js/20-navigation/037-paleobot-v55-nav.js" defer></script>
+
+<script id="paleobot-v56-final-fix"  src="assets/js/90-guards/038-paleobot-v56-final-fix.js" defer></script>
+<div class="pb-r69-static-21" id="pb-v55-badge" aria-hidden="true">PaleoBot v69 · R98</div>
+
+<script id="paleobot-canonical-nav-v58"  src="assets/js/20-navigation/039-paleobot-canonical-nav-v58.js" defer></script>
+
+
+<!-- ── v59: Modal Guía Didáctica del Alumnado ─────────────────────────── -->
+<div id="studentGuideModal" class="modal-overlay" role="dialog" aria-modal="true"
+     aria-labelledby="sg-modal-title" aria-hidden="true">
+  <div class="modal-content">
+    <!-- Cabecera -->
+    <div class="sg-header">
+      <span class="sg-version-badge">PaleoBot v69 · R98</span>
+      <button type="button" class="close-modal pb-r69-static-22" data-modal-toggle="studentGuideModal"
+        aria-label="Cerrar guía del alumnado"
+       >✕</button>
+      <h2 id="sg-modal-title">🧭 Guía didáctica del alumnado</h2>
+      <p>PaleoBot es un atlas científico interactivo. Esta guía te explica cómo usarlo paso a paso, qué vistas abrir según tu objetivo y qué se espera de ti como investigador/a.</p>
+    </div>
+
+    <!-- Pestañas -->
+    <div class="sg-tabs" role="tablist" aria-label="Secciones de la guía">
+      <button type="button" class="sg-tab-btn" role="tab" aria-selected="true"
+        data-sg-tab="inicio" aria-controls="sg-panel-inicio">
+        <span class="sg-tab-icon">🚀</span>Por dónde empezar
+      </button>
+      <button type="button" class="sg-tab-btn" role="tab" aria-selected="false"
+        data-sg-tab="vistas" aria-controls="sg-panel-vistas">
+        <span class="sg-tab-icon">🗂️</span>Las vistas
+      </button>
+      <button type="button" class="sg-tab-btn" role="tab" aria-selected="false"
+        data-sg-tab="preguntas" aria-controls="sg-panel-preguntas">
+        <span class="sg-tab-icon">🔬</span>Preguntas científicas
+      </button>
+      <button type="button" class="sg-tab-btn" role="tab" aria-selected="false"
+        data-sg-tab="glosario" aria-controls="sg-panel-glosario">
+        <span class="sg-tab-icon">📚</span>Glosario esencial
+      </button>
+      <button type="button" class="sg-tab-btn" role="tab" aria-selected="false"
+        data-sg-tab="rubrica" aria-controls="sg-panel-rubrica">
+        <span class="sg-tab-icon">✅</span>Criterios de evaluación
+      </button>
+    </div>
+
+    <!-- Cuerpo tabbed -->
+    <div class="sg-body">
+
+      <!-- Panel 1: Por dónde empezar -->
+      <div id="sg-panel-inicio" class="sg-panel active" role="tabpanel"
+           aria-labelledby="sg-tab-inicio">
+        <div class="sg-steps" id="sg-steps-container">
+          <!-- Generado por JS -->
+        </div>
+        <div class="sg-tip">
+          <span class="sg-tip-icon">💡</span>
+          <span><strong>Consejo:</strong> No necesitas explorar todo el atlas de una vez.
+          Empieza siempre con una <em>pregunta concreta</em> y busca la evidencia que la responde.
+          Distingue siempre lo que es un <em>dato observado</em> de lo que es una <em>inferencia</em>.</span>
+        </div>
+      </div>
+
+      <!-- Panel 2: Las vistas -->
+      <div id="sg-panel-vistas" class="sg-panel" role="tabpanel"
+           aria-labelledby="sg-tab-vistas">
+        <p class="pb-r69-static-23">
+          Cada vista del atlas tiene un objetivo distinto. Haz clic en cualquier tarjeta para abrirla directamente.
+        </p>
+        <div class="sg-views-grid" id="sg-views-container">
+          <!-- Generado por JS -->
+        </div>
+      </div>
+
+      <!-- Panel 3: Preguntas científicas -->
+      <div id="sg-panel-preguntas" class="sg-panel" role="tabpanel"
+           aria-labelledby="sg-tab-preguntas">
+        <p class="pb-r69-static-24">
+          Estas preguntas te sirven de punto de partida. Cada una te lleva a una vista específica del atlas.
+          Al hacer clic, se abre esa vista directamente.
+        </p>
+        <ul class="sg-questions-list" id="sg-questions-container">
+          <!-- Generado por JS -->
+        </ul>
+        <div class="sg-tip">
+          <span class="sg-tip-icon">⚠️</span>
+          <span><strong>Cautela epistémica:</strong> en paleoantropología, muchas preguntas no tienen
+          respuesta cerrada. El objetivo es construir un <em>argumento con evidencia</em>,
+          no memorizar una respuesta.</span>
+        </div>
+      </div>
+
+      <!-- Panel 4: Glosario esencial -->
+      <div id="sg-panel-glosario" class="sg-panel" role="tabpanel"
+           aria-labelledby="sg-tab-glosario">
+        <p class="pb-r69-static-25">
+          Términos científicos esenciales para trabajar con el atlas. Todos los términos marcados
+          con línea punteada en el texto tienen definición ampliada en el
+          <button class="pb-r69-static-26" type="button" data-action="openGlossary"
+           >glosario completo</button>.
+        </p>
+        <div class="sg-glossary-grid" id="sg-glossary-container">
+          <!-- Generado por JS -->
+        </div>
+      </div>
+
+      <!-- Panel 5: Criterios de evaluación -->
+      <div id="sg-panel-rubrica" class="sg-panel" role="tabpanel"
+           aria-labelledby="sg-tab-rubrica">
+        <p class="pb-r69-static-27">
+          Criterios de evaluación competencial para actividades con PaleoBot.
+          Usa esta rúbrica como guía para revisar tu propio trabajo antes de entregarlo.
+        </p>
+        <div class="pb-r69-static-28">
+          <table class="sg-rubric-table" aria-label="Rúbrica competencial del alumnado">
+            <thead>
+              <tr>
+                <th scope="col">Criterio</th>
+                <th scope="col">Inicial</th>
+                <th scope="col">En desarrollo</th>
+                <th scope="col">Experto/a</th>
+              </tr>
+            </thead>
+            <tbody id="sg-rubric-body">
+              <!-- Generado por JS -->
+            </tbody>
+          </table>
+        </div>
+        <div class="sg-tip">
+          <span class="sg-tip-icon">📌</span>
+          <span>La evidencia más valorada no es la que viene de más lejos, sino la que está
+          mejor <strong>conectada a una pregunta clara</strong> y distingue dato, inferencia y
+          grado de consenso.</span>
+        </div>
+      </div>
+
+    </div><!-- /.sg-body -->
+  </div><!-- /.modal-content -->
+</div>
+<!-- ── /v59: Modal Guía Didáctica del Alumnado ───────────────────────── -->
+
+
+<script  src="assets/js/80-features/040-script.js" defer></script>
+
+
+<script  src="assets/js/80-features/041-script.js" defer></script>
+
+
+<script  src="assets/js/80-features/042-script.js" defer></script>
+
+
+<script  src="assets/js/80-features/043-script.js" defer></script>
+
+
+<script  src="assets/js/80-features/044-script.js" defer></script>
+
+
+<script  src="assets/js/80-features/045-script.js" defer></script>
+
+
+<script id="paleobot-v67-modal-state-reconciler"  src="assets/js/20-navigation/047-paleobot-v67-modal-state-reconciler.js" defer></script>
+
+
+<script id="paleobot-v68-interaction-stabilizer"  src="assets/js/20-navigation/048-paleobot-v68-interaction-stabilizer.js" defer></script>
+
+<link id="paleobot-v69-mobile-control-quiz-repair-style" rel="stylesheet" href="assets/css/00-core/027-paleobot-v69-mobile-control-quiz-repair-style.css">
+
+<script id="paleobot-v69-quiz-start-repair"  src="assets/js/90-guards/049-paleobot-v69-quiz-start-repair.js" defer></script>
+
+
+<link id="paleobot-v71-compare-picker-repair-style" rel="stylesheet" href="assets/css/00-core/028-paleobot-v71-compare-picker-repair-style.css">
+
+<script id="paleobot-v71-compare-picker-repair"  src="assets/js/80-features/051-paleobot-v71-compare-picker-repair.js" defer></script>
+
+<link id="paleobot-v72-compare-clear-repair-style" rel="stylesheet" href="assets/css/00-core/029-paleobot-v72-compare-clear-repair-style.css">
+
+<script id="paleobot-v72-compare-clear-repair"  src="assets/js/80-features/052-paleobot-v72-compare-clear-repair.js" defer></script>
+
+<link id="paleobot-v73-itinerary-rubric-repair-style" rel="stylesheet" href="assets/css/00-core/030-paleobot-v73-itinerary-rubric-repair-style.css">
+
+<script id="paleobot-v73-itinerary-rubric-repair"  src="assets/js/80-features/053-paleobot-v73-itinerary-rubric-repair.js" defer></script>
+
+<link id="paleobot-v74-floating-a11y-repair-style" rel="stylesheet" href="assets/css/00-core/031-paleobot-v74-floating-a11y-repair-style.css">
+
+<script id="paleobot-v74-floating-a11y-repair"  src="assets/js/90-guards/054-paleobot-v74-floating-a11y-repair.js" defer></script>
+
+<script id="paleobot-v75-hidden-pending-guard"  src="assets/js/90-guards/055-paleobot-v75-hidden-pending-guard.js" defer></script>
+
+<link id="paleobot-v76-readability-guard" rel="stylesheet" href="assets/css/80-features/032-paleobot-v76-readability-guard.css">
+
+<link id="paleobot-v77-search-guard-style" rel="stylesheet" href="assets/css/00-core/033-paleobot-v77-search-guard-style.css">
+
+
+<link id="paleobot-v78-africa-question-actions-style" rel="stylesheet" href="assets/css/00-core/034-paleobot-v78-africa-question-actions-style.css">
+
+<script id="paleobot-v78-africa-question-actions"  src="assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js" defer></script>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     PaleoBot v65 — Plan SDD: Contratos pedagógicos + Activación +
+     Síntesis de sesión + Ticket de salida interactivo
+     Fases: 1 (VIEW_DIDACTIC_SPEC) · 2 (DidacticActivationPanel)
+            3 (SessionSynthesisPanel) · 4 (InlineFormativeFeedback)
+     Inserción: no destructiva, aditiva, antes de </body>
+     Fecha: 2026-05 · Autor: Mirada/ULPGC
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<!-- ── Fase 1 SDD: VIEW_DIDACTIC_SPEC — 30 contratos pedagógicos ── -->
+<script  src="assets/js/80-features/058-script.js" defer></script>
+
+<!-- ── Fase 2 SDD: DidacticActivationPanel — pregunta de activación por vista ── -->
+<script  src="assets/js/80-features/059-script.js" defer></script>
+
+<!-- ── Fase 3 SDD: SessionSynthesisPanel — síntesis de sesión + FAB ── -->
+<script  src="assets/js/80-features/060-script.js" defer></script>
+
+<!-- ── Fase 4 SDD: InlineFormativeFeedback — ticket de salida persistente ── -->
+<script  src="assets/js/80-features/061-script.js" defer></script>
+
+
+<link id="pb-v65-mobile-fab-clearance" rel="stylesheet" href="assets/css/10-legacy-ui/035-pb-v65-mobile-fab-clearance.css">
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     PaleoBot v65.1 — Bloque de corrección canónica (AUDIT FIX)
+     Aplica al final del body para garantizar que todas las capas anteriores
+     han terminado de registrarse. No destructivo: solo complementa y fija.
+     Correcciones: F01 versión · F02 runAdaptiveQuiz router · F03 setModal
+                   F04 window.runAction · F06 image onerror extra
+     ══════════════════════════════════════════════════════════════════════════ -->
+<script id="paleobot-v65-audit-fix"  src="assets/js/90-guards/062-paleobot-v65-audit-fix.js" defer></script>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     PaleoBot v66 — M1: Dispatcher Canónico de Clicks
+     ──────────────────────────────────────────────────────────────────────────
+     Problema: 52 document.addEventListener('click') registrados por capas
+     históricas v34→v78. Los selectores data-modal-toggle, data-action,
+     data-view y data-quiz-next se ejecutan en hasta 4 handlers distintos
+     por cada click, lo que causa:
+       · Doble apertura/cierre de modales
+       · Handlers legacy con setModal() incompleto ejecutando antes del canónico
+       · stopImmediatePropagation() en un handler que no alcanza a otros en
+         capture phase registrados DESPUÉS
+
+     Solución: Dispatcher de prioridad único (capture:true) que se registra
+     en DOMContentLoaded — cuando ya existen todos los handlers legacy —
+     usando el trick de que addEventListener registra en orden FIFO, pero
+     dispatchPriorityHandler se autoregistra ANTES de los handlers del mismo
+     turno de microtask. Para los handlers ya registrados en capture phase,
+     usamos {capture:true, signal:abortController} para poder quitar solo el
+     propio dispatcher si es necesario.
+
+     Resultado: 52 listeners siguen presentes; solo 1 ejecuta por tipo de click.
+     Arquitectura: no destructiva — cero cambios en código existente.
+
+     Selectores controlados:
+       · [data-modal-toggle]  → window.setModal (v65.1 canónico)
+       · [data-action]        → window.PaleoBotV68InteractionStabilizer.runAction
+       · [data-detail-action] → window.PaleoBotV68InteractionStabilizer.runDetailAction
+       · [data-view]          → routeView vía v68
+       · [data-quiz-next]     → PaleoBotV69QuizStartRepair.startClassicQuiz / generative
+       · [data-quiz-back]     → retorno al intro del examen
+     ══════════════════════════════════════════════════════════════════════════ -->
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     PaleoBot v66 — M2: Exportación SVG del árbol filogenético
+     ──────────────────────────────────────────────────────────────────────────
+     Añade dos botones de descarga SVG:
+       A. Vista 'phylo' (cladograma): exporta el SVG de #phyloSvgContainer
+          directamente (ya es un <svg> standalone con eje temporal, ramas,
+          hojas y nodos ancestrales). Se añade metadatos de título, autor
+          y fecha antes de serializar.
+       B. Vista 'constructor': sintetiza un SVG standalone a partir de:
+           · Los paths de aristas en #builderLines (ya SVG)
+           · Los nodos div en #builderNodes → convertidos a <rect>+<text>
+          Incluye leyenda de colores por clado, título del árbol construido
+          y nota metodológica.
+
+     Integración no destructiva:
+       · Botón 'exportPhyloSvg'   añadido al .phylo-footer existente
+       · Botón 'exportBuilderSvg' añadido a .builder-controls existente
+       · data-action="exportPhyloSvg" / data-action="exportBuilderSvg"
+         registrados en el router canónico v65.1 + getActionContractMap
+       · Sin dependencias externas — usa XMLSerializer y Blob API
+     ══════════════════════════════════════════════════════════════════════════ -->
+<script id="paleobot-v66-svg-export"  src="assets/js/70-export/063-paleobot-v66-svg-export.js" defer></script>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     PaleoBot v66 — M3: Generador de Situaciones de Aprendizaje desde sesión
+     ──────────────────────────────────────────────────────────────────────────
+     Conecta el generador de SA existente (vista 'aula') con:
+       1. Las vistas visitadas en la sesión (sessionStorage pb_dap_visited,
+          escrito por PaleoBotV65_Phase2).
+       2. El spec didáctico (PB_DidacticSpec) — nivel Bloom, competencias,
+          prerequisitos y producto sugerido.
+       3. SessionSynthesisPanel (Fase 3) — reutiliza _getVisited().
+
+     Qué añade M3:
+       A. Botón "Desde mi sesión" en el generador SA → autoconfigura nivel,
+          competencias y vistas a partir de lo explorado en la sesión actual.
+       B. Panel de vista previa "Perfil de sesión" encima del formulario:
+          muestra cuántas vistas se visitaron, el nivel Bloom máximo y las
+          competencias LOMLOE activadas; con un chip por cada vista.
+       C. Mejora del TXT Moodle: añade sección de secuencia de pasos para
+          el alumno (H5P-ready), lista de módulos visitados y rúbrica en
+          formato tabulado (compatible con importación a Moodle Assignment).
+       D. FIX menor: pie del SA corregido de "v34" a "v66" (ya aplicado
+          arriba vía str_replace).
+
+     Integración no destructiva:
+       · No modifica renderSAGenerator ni buildSADocument.
+       · Inyecta el panel de sesión y el botón "Desde mi sesión" mediante
+          MutationObserver en #teachingCenterContent.
+       · Enriquece _buildSATextExport vía wrap defensivo.
+     ══════════════════════════════════════════════════════════════════════════ -->
+<!-- R93: módulo v66 M3 (situación de aprendizaje LOMLOE desde la sesión) retirado: atlas universitario. -->
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     PaleoBot v66 — M4: Fauna asociada por yacimiento (fichas completas)
+     ──────────────────────────────────────────────────────────────────────────
+     Situación anterior:
+       · SITE_CATALOG: 43 yacimientos con campos resumen/estratigrafia/metodos/species
+       · M17_FAUNA: solo 7 sitios con fauna (olduvai, dmanisi, atapuerca,
+         jebel_irhoud, liang_bua, denisova_cave, rising_star)
+       · renderSiteView(): NO muestra fauna en las fichas
+       · injectFaunaPanel(): panel en vista MAP, no en YACIMIENTOS
+
+     M4 añade:
+       A. FAUNA_DB — datos de fauna asociada para los 43 yacimientos,
+          con indicador de riqueza (nº taxa) y fuente bibliográfica.
+          Datos de publicaciones revisadas por pares (DOI en comentarios).
+       B. Wrap defensivo de renderSiteView() para inyectar la sección de
+          fauna en cada ficha existente, sin reescribir la función base.
+       C. CSS para la sección de fauna: pills de taxa, badge de riqueza,
+          nota de fuente. Integrado en assets/css/60-science/036a-paleobot-v66-fauna.css (R91).
+-->
+<!-- R91-P4: módulos v66 M4/M5 y estilo v80 restaurados desde 036-style.css (extracción errónea).
+     El despachador v79 permanece en cuarentena en assets/js/_quarantine/ (no enlazado). -->
+<link id="pb-m4-fauna-styles" rel="stylesheet" href="assets/css/60-science/036a-paleobot-v66-fauna.css">
+<link id="pb-m5-cranial-styles" rel="stylesheet" href="assets/css/60-science/036b-paleobot-v66-cranial-norma.css">
+<script id="paleobot-v66-fauna" src="assets/js/60-science/036a-paleobot-v66-fauna.js" defer></script>
+<script id="paleobot-v66-cranial-norma" src="assets/js/60-science/036b-paleobot-v66-cranial-norma.js" defer></script>
+<link id="paleobot-v80-map-lens-image-repair-style" rel="stylesheet" href="assets/css/00-core/036c-paleobot-v80-map-lens-image-repair.css">
+<script id="paleobot-v80-map-lens-image-repair"  src="assets/js/40-media/065-paleobot-v80-map-lens-image-repair.js" defer></script>
+
+
+<link id="paleobot-v81-map-and-species-media-repair-style" rel="stylesheet" href="assets/css/00-core/037-paleobot-v81-map-and-species-media-repair-style.css">
+<script id="paleobot-v81-map-and-species-media-repair"  src="assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js" defer></script>
+
+
+<link id="paleobot-v82-fauna-rigor-and-layout-style" rel="stylesheet" href="assets/css/00-core/038-paleobot-v82-fauna-rigor-and-layout-style.css">
+<script id="paleobot-v82-fauna-rigor-and-layout"  src="assets/js/60-science/067-paleobot-v82-fauna-rigor-and-layout.js" defer></script>
+
+
+<link id="paleobot-v83-search-sa-final-repair-style" rel="stylesheet" href="assets/css/00-core/039-paleobot-v83-search-sa-final-repair-style.css">
+<script id="paleobot-v83-search-sa-final-repair"  src="assets/js/30-search/068-paleobot-v83-search-sa-final-repair.js" defer></script>
+<script defer src="assets/js/60-science/080-paleobot-a3-evidence-views.js"></script>
+
+
+<link id="paleobot-v84-deep-audit-cleanup-style" rel="stylesheet" href="assets/css/00-core/040-paleobot-v84-deep-audit-cleanup-style.css">
+
+
+
+<link id="paleobot-v85-speed-guard-style" rel="stylesheet" href="assets/css/00-core/041-paleobot-v85-speed-guard-style.css">
+<link id="paleobot-r67-externalized-runtime-styles" rel="stylesheet" href="assets/css/00-core/042-paleobot-r67-externalized-runtime-styles.css">
+<link id="paleobot-r69-low-risk-style-state" rel="stylesheet" href="assets/css/00-core/043-paleobot-r69-low-risk-style-state.css">
+<link id="paleobot-r70-generated-static-styles" rel="stylesheet" href="assets/css/00-core/044-paleobot-r70-generated-static-styles.css">
+<link id="paleobot-r71-dynamic-style-registry" rel="stylesheet" href="assets/css/00-core/045-paleobot-r71-dynamic-style-registry.css">
+<link id="paleobot-r74-finite-runtime-states" rel="stylesheet" href="assets/css/00-core/046-paleobot-r74-finite-runtime-states.css">
+<link id="paleobot-r75-dynamic-token-states" rel="stylesheet" href="assets/css/00-core/047-paleobot-r75-dynamic-token-states.css">
+<link id="paleobot-r76-media-runtime-contract" rel="stylesheet" href="assets/css/00-core/048-paleobot-r76-media-runtime-contract.css">
+<link id="paleobot-r77-accessibility-state-contract" rel="stylesheet" href="assets/css/00-core/049-paleobot-r77-accessibility-state-contract.css">
+<link id="paleobot-r78-animation-progress-contract" rel="stylesheet" href="assets/css/00-core/050-paleobot-r78-animation-progress-contract.css">
+<link id="paleobot-r79-indirect-style-states" rel="stylesheet" href="assets/css/00-core/051-paleobot-r79-indirect-style-states.css">
+<link id="paleobot-r81-geometry-registry" rel="stylesheet" href="assets/css/00-core/052-paleobot-r81-geometry-registry.css">
+<link id="paleobot-r92-mobile-focus-clearance" rel="stylesheet" href="assets/css/00-core/053-paleobot-r92-mobile-focus-clearance.css">
+
+<script id="paleobot-v86-global-search-final" src="assets/js/30-search/069-paleobot-v86-global-search-final.js" defer></script>
+<script id="paleobot-v69-lazy-loader" src="assets/js/00-core/071-paleobot-v69-lazy-loader.js" defer></script>
+<link id="paleobot-r93-diagnostic-panel-style" rel="stylesheet" href="assets/css/00-core/056-paleobot-r93-diagnostic-panel.css">
+<script id="paleobot-r93-diagnostic-panel" src="assets/js/00-core/081-paleobot-r93-diagnostic-panel.js" defer></script>
+</body>
+</html>
