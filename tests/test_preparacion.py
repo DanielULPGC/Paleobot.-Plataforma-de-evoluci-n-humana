@@ -62,19 +62,19 @@ class PreparationControls(unittest.TestCase):
         self.assertEqual(result['failed'],0)
 
     def test_build_check_detecta_html_divergente(self):
-        f=self.repo/'index.html';f.write_bytes(f.read_bytes()+b'\n<!-- changed -->\n')
+        f=self.repo/'ligera/index.html';f.write_bytes(f.read_bytes()+b'\n<!-- changed -->\n')
         builder=module('paleobot_builder',self.repo/'scripts/construir.py');builder.ROOT=self.repo
         with self.assertRaisesRegex(RuntimeError,'difiere'):
             builder.build('light',check=True)
 
     def test_build_normal_preserva_fuentes_y_escribe_dist(self):
-        tracked=[self.repo/'index.html',*list((self.repo/'src/entrada_ligera').glob('*'))]
+        tracked=[self.repo/'ligera/index.html',*list((self.repo/'src/entrada_ligera').glob('*'))]
         before={str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in tracked if f.is_file()}
         builder=module('paleobot_builder2',self.repo/'scripts/construir.py');builder.ROOT=self.repo
         result=builder.build('light',check=False)
         after={f:hashlib.sha256(Path(f).read_bytes()).hexdigest() for f in before}
         self.assertEqual(before,after)
         self.assertEqual(result['mode'],'write_dist_only')
-        self.assertEqual((self.repo/'dist/entrada-ligera-v11.html').read_bytes(),(self.repo/'index.html').read_bytes())
+        self.assertEqual((self.repo/'dist/entrada-ligera-v11.html').read_bytes(),(self.repo/'ligera/index.html').read_bytes())
 
 if __name__=='__main__':unittest.main()

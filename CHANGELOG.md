@@ -1,5 +1,12 @@
 # Registro de cambios
 
+## La raíz abre el atlas interactivo · 24-10-2026
+
+- `index.html` pasa a ser un portal que redirige a `atlas/` (landing interactivo v1.0).
+- La entrada ligera v11 se traslada sin cambios a `ligera/index.html`; los scripts
+  de verificación y construcción y las pruebas apuntan a la nueva ruta.
+- Las anclas `#sp-…` de v11 pasan a `…/ligera/#sp-…`.
+
 ## Corrección: imágenes de las fichas no aparecían · 24-10-2026
 
 - Defecto: las imágenes de la entrada v11 se cargan al abrir la ficha, pero estaban

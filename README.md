@@ -29,7 +29,9 @@ huellas en `provenance/ATLAS_V1_IMPORT.json`).
 
 ## Abrir PaleoBot
 
-Abra `index.html` con un navegador para consultar las fichas. El contenido básico
+La raíz del sitio (`index.html`) redirige al atlas interactivo v1.0 (`atlas/`). La consulta ligera v11 está en `ligera/index.html`.
+
+Abra `ligera/index.html` con un navegador para consultar las fichas. El contenido básico
 usa HTML nativo. Los filtros y el diagnóstico de imágenes requieren JavaScript.
 Las 47 imágenes documentadas siguen siendo remotas; hay tres fichas con recurso
 visual pendiente. Abrir el archivo local es una consulta, no una prueba Moodle.
@@ -48,7 +50,8 @@ No se necesita instalar paquetes para construir o verificar el repositorio.
 
 | Ruta | Función |
 | --- | --- |
-| `index.html` | Entrada ligera v11, preservada byte a byte. |
+| `index.html` | Portal de entrada: redirige a `atlas/` y enlaza el recorrido y la consulta ligera. |
+| `ligera/index.html` | Entrada ligera v11 (con la corrección de carga de imágenes). |
 | `src/entrada_ligera/` | Generador, catálogo, expediente visual, estilos e interacción originales. |
 | `baselines/entrada-ligera-v9.html` | Referencia recuperada para comparación y retorno. |
 | `experimental/atlas-r98/` | Atlas piloto y fuentes, con limitaciones y defecto PB-01 abiertos. |

@@ -82,15 +82,15 @@ def verify(include_syntax=True):
         try:json.loads(file.read_text(encoding='utf-8'))
         except (ValueError,UnicodeError):imported_json.append(str(file.relative_to(ROOT)))
     check('JSON legibles',not imported_json,', '.join(imported_json[:3]))
-    main=Page();main.feed((ROOT/'index.html').read_text())
+    main=Page();main.feed((ROOT/'ligera/index.html').read_text())
     check('50 fichas HTML en la entrada',sum(i.startswith('sp-') for i in main.ids)==50)
     check('Entrada sin IDs duplicados',not [x for x,n in Counter(main.ids).items() if n>1])
     check('Anclas de entrada con destino',all(a in main.ids for a in main.anchors if a))
-    text=(ROOT/'index.html').read_text()
+    text=(ROOT/'ligera/index.html').read_text()
     check('Aviso v9/v11 conservado','v9 funciona en Moodle según la prueba del usuario' in text and 'diagnóstico de v11 están pendientes' in text)
     atlasroot=ROOT/'experimental/atlas-r98/fuentes/Auditoria_R98'
     missing=[]
-    for html in [ROOT/'index.html',atlasroot/'index.html',atlasroot/'science/chronology.html']:
+    for html in [ROOT/'ligera/index.html',atlasroot/'index.html',atlasroot/'science/chronology.html']:
         parsed=Page();parsed.feed(html.read_text())
         for value in parsed.assets:
             u=urlsplit(value)

@@ -17,7 +17,7 @@ def build(target='all',check=False):
                 shutil.copyfile(ROOT/'src/entrada_ligera'/name,dest/name)
             run=subprocess.run([sys.executable,str(dest/'build.py')],cwd=dest,capture_output=True,text=True,timeout=30)
             if run.returncode:raise RuntimeError('Generador ligero: '+run.stderr[-1500:])
-            results.append(('light',dest/'PaleoBot_Moodle_Entrada_Directa_v11.html',ROOT/'index.html','entrada-ligera-v11.html'))
+            results.append(('light',dest/'PaleoBot_Moodle_Entrada_Directa_v11.html',ROOT/'ligera/index.html','entrada-ligera-v11.html'))
         if target in ('all','atlas'):
             dest=tmp/'atlas/fuentes';shutil.copytree(ROOT/'experimental/atlas-r98/fuentes',dest)
             run=subprocess.run([sys.executable,str(dest/'build_directo_r98.py')],cwd=dest,capture_output=True,text=True,timeout=40)
