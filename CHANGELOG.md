@@ -1,5 +1,15 @@
 # Registro de cambios
 
+## Corrección: imágenes de las fichas no aparecían · 24-10-2026
+
+- Defecto: las imágenes de la entrada v11 se cargan al abrir la ficha, pero estaban
+  ocultas (`hidden`) con `loading=lazy`; Chromium no carga imágenes perezosas ocultas,
+  de modo que quedaban en «cargando» sin mostrarse (reproducido en `#sp-penghu`).
+- Corrección mínima: `interaccion.js` fija `img.loading = 'eager'` antes de asignar
+  `src`; `index.html` se regenera con `scripts/construir.py` (única diferencia: esa línea).
+- Comprobado en Chromium con la red simulada; la carga real desde Wikimedia Commons
+  no se ha podido probar desde el entorno. No cambia el estado NO_GO.
+
 ## Integración del atlas v1.0 · 24-10-2026
 
 - Se añade `atlas/` con el paquete Atlas-PaleoBot-v1.0-Moodle-IMS (169 archivos

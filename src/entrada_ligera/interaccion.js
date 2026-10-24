@@ -80,6 +80,7 @@
       }
       updateStatus();
     }, {once:true});
+    img.loading = 'eager';
     img.src = url;
     img.removeAttribute('data-src');
   }

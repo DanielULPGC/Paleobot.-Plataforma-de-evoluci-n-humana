@@ -172,6 +172,7 @@ Conserva los datos del catálogo A3. Hay 47 fichas con recursos visuales documen
       }
       updateStatus();
     }, {once:true});
+    img.loading = 'eager';
     img.src = url;
     img.removeAttribute('data-src');
   }
