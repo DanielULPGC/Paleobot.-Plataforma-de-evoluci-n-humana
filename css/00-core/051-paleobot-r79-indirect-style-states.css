@@ -1,0 +1,90 @@
+/* PaleoBot R79 — indirect Object.assign(element.style, …) retirement. */
+
+.pb-r79-confirm-overlay:not(#paleobot-r79-never-match) {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(4px);
+  padding: 20px;
+}
+.pb-r79-confirm-box:not(#paleobot-r79-never-match) {
+  background: white;
+  border-radius: 14px;
+  padding: 28px 26px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 16px 48px rgba(28,43,58,0.28);
+  font-family: var(--font-sans, sans-serif);
+}
+.pb-r79-confirm-title:not(#paleobot-r79-never-match) {
+  margin: 0 0 10px;
+  color: var(--primary,#1c2b3a);
+  font-size: 1.05rem;
+}
+.pb-r79-confirm-title--solo:not(#paleobot-r79-never-match) {
+  margin-bottom: 22px;
+}
+.pb-r79-confirm-desc:not(#paleobot-r79-never-match) {
+  margin: 0 0 22px;
+  color: var(--text-sec,#4a5a6e);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.pb-r79-confirm-actions:not(#paleobot-r79-never-match) {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.pb-r79-confirm-btn:not(#paleobot-r79-never-match) {
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.88rem;
+}
+.pb-r79-confirm-btn--cancel:not(#paleobot-r79-never-match) {
+  border: 1.5px solid var(--border,#d8d4cc);
+  background: white;
+  font-weight: 600;
+}
+.pb-r79-confirm-btn--danger:not(#paleobot-r79-never-match) {
+  border: none;
+  background: #dc2626;
+  color: white;
+  font-weight: 700;
+}
+.pb-r79-copy-textarea:not(#paleobot-r79-never-match) {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.pb-r79-export-flash:not(#paleobot-r79-never-match) {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c2b3a;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  font-family: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+}
+.pb-r79-export-phylo-btn:not(#paleobot-r79-never-match) {
+  margin-left: auto;
+  font-size: 12px;
+  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}

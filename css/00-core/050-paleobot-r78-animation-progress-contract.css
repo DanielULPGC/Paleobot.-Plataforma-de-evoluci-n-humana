@@ -1,0 +1,45 @@
+/* PaleoBot R78 — animation/progress state contract. */
+.pb-r78-glossary-transition {
+  transition: background 0.35s !important;
+}
+
+.pb-r78-copy-flash:not(#paleobot-r78-never-match) {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c2b3a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+.pb-r78-copy-flash--out {
+  opacity: 0 !important;
+}
+
+.pres-timer-bar.pb-r78-pres-timer-reset {
+  transition: none !important;
+  width: 0% !important;
+}
+.pres-timer-bar.pb-r78-pres-timer-running {
+  transition: width var(--pb-r78-pres-auto-duration, 8s) linear !important;
+  width: 100% !important;
+}
+
+.pb-dap-progress-fill {
+  animation-duration: var(--pb-r78-dap-auto-close, 14000ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pb-r78-glossary-transition,
+  .pb-r78-copy-flash,
+  .pres-timer-bar.pb-r78-pres-timer-running {
+    transition: none !important;
+  }
+}

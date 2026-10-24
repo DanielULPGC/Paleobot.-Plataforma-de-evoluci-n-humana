@@ -1,0 +1,43 @@
+/* R95 · Aviso de carga fallida.
+   Oculto por defecto (atributo hidden en el HTML) para no alarmar durante cargas lentas
+   en Moodle. Si esta hoja carga pero el atlas no arranca en 20 s (falta la clase
+   pb-booted que añade el último módulo JS), el aviso se hace visible. */
+#pb-boot-fallback[hidden] {
+  display: block;
+  position: fixed;
+  inset: 12px 12px auto 12px;
+  z-index: 2147483000;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: #fff7e6;
+  color: #3b2a00;
+  border: 2px solid #8a5a00;
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  visibility: hidden;
+  animation: pb-boot-reveal 0s linear 20s forwards;
+}
+#pb-boot-fallback code { background: #fdeccc; padding: 0 4px; border-radius: 4px; }
+html.pb-booted #pb-boot-fallback { display: none; }
+@keyframes pb-boot-reveal { to { visibility: visible; } }
+
+/* R95 · Estado de carga explícito. Mientras el atlas no ha arrancado se muestra una capa
+   «Cargando PaleoBot…» que evita clics prematuros (con carga lenta en Moodle, esos clics
+   se procesaban a medias y la vista «saltaba» al inicializarse las capas). Si en 20 s no
+   hay arranque, la capa desaparece y queda el aviso de carga fallida. */
+html:not(.pb-booted) body::after {
+  content: "Cargando PaleoBot…";
+  position: fixed;
+  inset: 0;
+  z-index: 2147482000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 20, 28, 0.94);
+  color: #ffffff;
+  font: 600 18px/1.4 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.02em;
+  animation: pb-boot-hide 0s linear 20s forwards;
+}
+@keyframes pb-boot-hide { to { visibility: hidden; } }

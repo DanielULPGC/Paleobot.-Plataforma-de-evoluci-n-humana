@@ -1,0 +1,25 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v83-search-sa-final-repair-style */
+body.pb-v50-unified .v35-block-portal-kicker,
+body.pb-v50-unified .main-cover-next,
+body.pb-v50-unified .cover-next-v45{
+  display:none!important;
+}
+body.pb-v50-unified #searchInput{
+  position:relative!important;
+  z-index:5!important;
+  pointer-events:auto!important;
+}
+body.pb-v50-unified .sa-gen-wrap,
+body.pb-v50-unified .sa-gen-actions,
+body.pb-v50-unified .sa-gen-actions button{
+  pointer-events:auto!important;
+}
+body.pb-v50-unified #saDocPanel:empty::before{
+  content:"Configure los parámetros y pulse «Generar SA» para producir el documento.";
+  display:block;
+  font-family:var(--font-mono);
+  font-size:.83rem;
+  color:var(--text-hint);
+  padding:20px 0;
+  text-align:center;
+}

@@ -1,0 +1,22 @@
+/* A3-C4.1: no dynamic or inline styles. */
+.a3-filter-option{display:flex;gap:.5rem;align-items:center;font-size:.85rem;line-height:1.5}
+.a3-evidence-notice{font-size:.82rem;line-height:1.5;margin:.35rem 0;color:#334155}
+.a3-evidence-panel{font-size:.95rem;line-height:1.6;padding:1rem;max-width:100%;overflow:auto}
+.a3-evidence-panel h3{font-size:1.2rem;margin:0 0 .6rem}
+.a3-evidence-panel p{margin:.4rem 0 .8rem}
+.a3-evidence-table{border-collapse:collapse;width:100%;font-size:.9rem}
+.a3-evidence-table th,.a3-evidence-table td{border-bottom:1px solid #cbd5e1;text-align:left;vertical-align:top;padding:.5rem}
+.a3-evidence-table th{background:#e2e8f0;color:#172554}
+.a3-evidence-table button{font:inherit;padding:.3rem .5rem;cursor:pointer}
+.a3-evidence-table button:focus-visible{outline:3px solid #1d4ed8;outline-offset:2px}
+.a3-evidence-label{display:inline-block;border:1px solid #64748b;border-radius:.3rem;padding:.1rem .4rem}
+.a3-evidence-note{border-left:4px solid #64748b;padding:.6rem .8rem;background:#f1f5f9}
+.a3-evidence-empty{color:#334155}
+
+/* A3-C4.2 — fixed, external presentation styles. */
+.a3-c42-panel{padding:1rem;margin:.7rem 0;border:1px solid #cbd5e1;border-radius:.5rem;background:#fff}
+.a3-c42-panel h3{margin:.2rem 0 .5rem;color:#172554}
+.a3-c42-table-wrap{max-width:100%;overflow-x:auto}
+.a3-c42-glyph{display:block;min-width:180px;width:100%;max-width:640px;height:auto}
+.a3-c42-unreviewed{color:#475569;font-size:.85rem}
+.a3-c42-panel button:focus-visible{outline:3px solid #1d4ed8;outline-offset:2px}

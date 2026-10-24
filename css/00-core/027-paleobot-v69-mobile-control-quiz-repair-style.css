@@ -1,0 +1,45 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v69-mobile-control-quiz-repair-style */
+@media (max-width: 640px) {
+  body.pb-v50-unified {
+    --fab-group-clearance: 118px;
+  }
+
+  body.pb-v50-unified .fab-group {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 8px !important;
+    width: auto !important;
+    max-width: calc(100vw - 16px) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 6px !important;
+    overflow-x: auto !important;
+    border-radius: 14px !important;
+    background: rgba(7, 10, 10, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    backdrop-filter: blur(8px) !important;
+  }
+
+  body.pb-v50-unified .fab-group .fab-wrapper,
+  body.pb-v50-unified .fab-group .fab {
+    flex: 0 0 auto !important;
+  }
+
+  body.pb-v50-unified .fab-group .fab {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    border-radius: 11px !important;
+  }
+
+  body.pb-v50-unified .fab-group .fab-label {
+    display: none !important;
+  }
+
+  body.pb-v50-unified .toolbar {
+    margin-bottom: 96px !important;
+  }
+}

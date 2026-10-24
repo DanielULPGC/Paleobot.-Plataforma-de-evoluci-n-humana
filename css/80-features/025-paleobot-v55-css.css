@@ -1,0 +1,39 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v55-css */
+/* WCAG 2.2: focus indicators */
+:root {
+  --v55-focus: #0a7059;
+  --v55-focus-ring: 0 0 0 3px #0a7059;
+  --text-hint: #6b7a8d !important;
+  --accent: #0a7059 !important;
+}
+:focus-visible {
+  outline: 3px solid var(--v55-focus) !important;
+  outline-offset: 2px !important;
+}
+.panel-back-btn:focus-visible,.modal-back-btn:focus-visible,
+.pres-floating-back:focus-visible,.scroll-top-btn:focus-visible,.fab-btn:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.9) !important;
+}
+.cmp-picker-input:focus,.bib-search:focus,#searchInput:focus {
+  outline: none !important;
+  border-color: var(--v55-focus) !important;
+  box-shadow: 0 0 0 3px rgba(10,112,89,0.28) !important;
+}
+@media (prefers-contrast: more) {
+  :focus-visible { outline: 4px solid #005a42 !important; }
+}
+/* scroll clearance for sticky toolbar */
+html { scroll-padding-top: 96px; }
+.view-section[id^="view-"] { scroll-margin-top: 96px; }
+/* block-cover label */
+body.pb-v50-unified .v34-block-cover-caption b { display:none !important; }
+/* hero legibility */
+body.pb-v50-unified .view-hero-kicker{font-size:.68rem!important;letter-spacing:.12em!important;color:#0a7059!important;font-weight:700!important;}
+body.pb-v50-unified .view-hero-title-row h3{font-size:clamp(1.4rem,2.4vw,1.9rem)!important;color:white!important;}
+body.pb-v50-unified .view-hero-badge{font-size:.74rem!important;padding:3px 10px!important;border-radius:999px!important;background:rgba(255,255,255,.88)!important;color:#1c2b3a!important;font-weight:600!important;border:none!important;}
+body.pb-v50-unified .view-hero-description{font-size:clamp(.9rem,1.4vw,1.05rem)!important;line-height:1.7!important;color:rgba(255,255,255,.90)!important;}
+body.pb-v50-unified .view-hero-card strong{font-size:.74rem!important;text-transform:uppercase!important;letter-spacing:.06em!important;color:#0a7059!important;font-family:var(--font-mono,monospace)!important;}
+body.pb-v50-unified .view-hero-card p{font-size:.88rem!important;line-height:1.6!important;color:#1c2b3a!important;}
+body.pb-v50-unified .view-hero-pill{background:rgba(255,255,255,.15)!important;border:1px solid rgba(255,255,255,.35)!important;color:rgba(255,255,255,.95)!important;font-size:.78rem!important;}
+@media(max-width:820px){body.pb-v50-unified .v34-block-cover{display:none!important;}}

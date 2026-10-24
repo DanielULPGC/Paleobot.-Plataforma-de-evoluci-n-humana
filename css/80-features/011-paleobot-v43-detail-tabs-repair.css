@@ -1,0 +1,15 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v43-detail-tabs-repair */
+body.v36-workbench-redesign #detailView.detail-panel.active,
+#detailView.detail-panel.active{
+  left:0!important;
+  right:auto!important;
+  width:100vw!important;
+  max-width:100vw!important;
+  margin-left:0!important;
+}
+#detailView.detail-panel.active .tab-pane{
+  display:none!important;
+}
+#detailView.detail-panel.active .tab-pane.active{
+  display:block!important;
+}

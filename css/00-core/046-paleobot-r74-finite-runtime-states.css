@@ -1,0 +1,53 @@
+/* PaleoBot R74 — finite/static runtime style states migrated from element.style. */
+.pb-r74-radius-10 { border-radius:10px !important; }
+
+.pb-r74-image-placeholder:not(#paleobot-r74-never-match) {
+  width:100%; height:160px; background:#eceae4; border-radius:10px;
+  border:1px dashed #c8c4bc; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:10px; color:#a09890;
+  font-size:0.8rem; margin-bottom:20px;
+}
+.pb-r74-thumb-placeholder:not(#paleobot-r74-never-match) {
+  display:flex; align-items:center; justify-content:center;
+  background:#eceae4; flex-shrink:0;
+}
+.pb-r74-map-placeholder:not(#paleobot-r74-never-match) {
+  width:100%; min-height:80px; background:#f0ede8; border-radius:8px;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  color:#a09080; font-size:0.83rem; border:1px dashed #c8c0b4;
+  margin:6px 0 10px;
+}
+
+.pb-r74-encef-height-420 { height:420px !important; }
+.pb-r74-cursor-pointer { cursor:pointer !important; }
+.pb-r74-cursor-crosshair { cursor:crosshair !important; }
+.pb-r74-cursor-default { cursor:default !important; }
+.pb-r74-chevron-collapsed { transform:rotate(-90deg) !important; }
+
+.pb-r74-presentation-empty-warning:not(#paleobot-r74-never-match) {
+  position:absolute; top:8px; left:50%; transform:translateX(-50%);
+  background:#fef3c7; border:1px solid #d97706; border-radius:8px;
+  padding:6px 14px; font-size:0.72rem;
+  font-family:'JetBrains Mono',monospace; color:#92400e;
+  z-index:10; white-space:nowrap;
+}
+.pb-r74-position-relative { position:relative !important; }
+.pb-r74-scroll-lock { overflow:hidden !important; }
+
+.pb-r74-status-persisted { color:var(--accent) !important; }
+.pb-r74-status-session-only { color:#8a5a00 !important; }
+
+.pb-r74-map-modal-minheight { min-height:520px !important; }
+
+.pb-r74-a11y-toolbar-root:not(#paleobot-r74-never-match) {
+  position:fixed; bottom:80px; right:16px; z-index:399; max-width:340px;
+}
+
+.pb-r74-session-restore-banner:not(#paleobot-r74-never-match) {
+  position:fixed; bottom:80px; left:50%; transform:translateX(-50%);
+  background:var(--primary); color:white; border-radius:999px;
+  padding:10px 20px; font-size:0.82rem; font-family:var(--font-sans);
+  box-shadow:0 6px 22px rgba(28,43,58,0.28); z-index:490;
+  display:flex; align-items:center; gap:12px; white-space:nowrap;
+  animation:fadeIn 0.3s ease-out;
+}

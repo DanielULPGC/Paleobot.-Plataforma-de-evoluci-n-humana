@@ -1,0 +1,11 @@
+/* PaleoBot R76 — media runtime contract.
+   Decorative presentation blur is now a real image source, not CSS background-image. */
+.pres-bg-blur-img:not(#paleobot-r76-never-match) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pres-bg-blur-img[hidden] {
+  display: none !important;
+}

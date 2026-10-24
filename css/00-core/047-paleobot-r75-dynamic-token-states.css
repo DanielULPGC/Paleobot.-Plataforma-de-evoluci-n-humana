@@ -1,0 +1,5 @@
+/* PaleoBot R75 — semantic consumers for CSSOM dynamic visual tokens. */
+.pb-iff-level-btn--active:not(#paleobot-r75-never-match) {
+  border-color: var(--iff-level-color, var(--accent, #0e7f65));
+  color: var(--iff-level-color, var(--accent, #0e7f65));
+}

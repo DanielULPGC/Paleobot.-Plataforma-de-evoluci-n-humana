@@ -1,0 +1,19 @@
+/* R91-P4: restaurado de 036-style.css (#paleobot-v80-map-lens-image-repair-style). */
+body.pb-v50-unified .map-lens-stage{
+  background:
+    linear-gradient(135deg, rgba(238,243,237,.92), rgba(216,226,221,.82)),
+    radial-gradient(circle at 18% 22%, rgba(14,127,101,.18), transparent 34%),
+    radial-gradient(circle at 78% 72%, rgba(178,105,0,.16), transparent 36%)!important;
+}
+body.pb-v50-unified .map-lens-topo[data-pb-map-lens-fixed="true"]{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  opacity:.94!important;
+  visibility:visible!important;
+  filter:saturate(.92) contrast(1.04)!important;
+}
+body.pb-v50-unified .map-lens-topo[data-pb-map-lens-fixed="true"].is-map-lens-hidden{
+  opacity:0!important;
+}

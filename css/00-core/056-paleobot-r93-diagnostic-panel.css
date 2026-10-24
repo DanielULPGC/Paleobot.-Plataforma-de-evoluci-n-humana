@@ -1,0 +1,57 @@
+/* PaleoBot · R93 · Panel de diagnóstico simplificado (1.0.0) */
+.pb-r93-diag h4 { margin-bottom: 4px; }
+.pb-r93-diag-summary { margin: 0 0 4px; font-weight: 700; color: #ffffff; }
+.pb-r93-diag-note { margin: 0 0 10px; font-size: 0.8rem; color: #d3dde6; }
+.pb-r93-diag-group {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  margin: 0 0 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.pb-r93-diag-group > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  cursor: pointer;
+  list-style: none;
+  color: #ffffff;
+}
+.pb-r93-diag-group > summary::-webkit-details-marker { display: none; }
+.pb-r93-diag-group > summary:focus-visible { outline: 2px solid #ffd479; outline-offset: 2px; }
+.pb-r93-diag-state { margin-left: auto; font-size: 0.78rem; color: #d3dde6; }
+.pb-r93-diag-list { list-style: none; margin: 0; padding: 0 12px 10px; }
+.pb-r93-diag-check {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 14rem) minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  padding: 6px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.86rem;
+}
+.pb-r93-diag-name { font-weight: 700; color: #ffffff; }
+.pb-r93-diag-value { color: #e6edf3; overflow-wrap: anywhere; }
+.pb-r93-diag-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #0b1a24;
+  background: #b9c7d6;
+  flex-shrink: 0;
+}
+.pb-r93-diag-ok > summary .pb-r93-diag-badge, .pb-r93-diag-check.pb-r93-diag-ok .pb-r93-diag-badge { background: #8fe3c0; }
+.pb-r93-diag-warn > summary .pb-r93-diag-badge, .pb-r93-diag-check.pb-r93-diag-warn .pb-r93-diag-badge { background: #ffd479; }
+.pb-r93-diag-bad > summary .pb-r93-diag-badge, .pb-r93-diag-check.pb-r93-diag-bad .pb-r93-diag-badge { background: #ff9b9b; }
+.pb-r93-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+@media (max-width: 600px) {
+  .pb-r93-diag-check { grid-template-columns: 22px minmax(0, 1fr); }
+  .pb-r93-diag-value { grid-column: 2; }
+}

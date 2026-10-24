@@ -1,0 +1,53 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v49-map-navigation-shield-style */
+@media (min-width:1121px){
+  body.v36-workbench-redesign .v36-workspace-shell{
+    position:relative!important;
+  }
+  body.v36-workbench-redesign .toolbar{
+    position:fixed!important;
+    top:14px!important;
+    left:max(16px, calc((100vw - min(1740px, calc(100vw - 32px))) / 2 + 16px))!important;
+    width:min(380px, calc(100vw - 48px))!important;
+    max-height:calc(100vh - 28px)!important;
+    overflow:auto!important;
+    z-index:900!important;
+    pointer-events:auto!important;
+  }
+  body.v36-workbench-redesign .toolbar *,
+  body.v36-workbench-redesign .view-switch,
+  body.v36-workbench-redesign .view-switch .view-btn{
+    pointer-events:auto!important;
+  }
+  body.v36-workbench-redesign .toolbar-row-primary{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+  }
+  body.v36-workbench-redesign .toolbar-row-primary .atlas-back-btn{order:0!important;}
+  body.v36-workbench-redesign .toolbar-row-primary .contrast-toggle-btn{order:1!important;}
+  body.v36-workbench-redesign .toolbar-row-primary .nav-objective-strip{order:2!important;}
+  body.v36-workbench-redesign .toolbar-row-primary .view-switch{
+    order:3!important;
+    max-height:360px!important;
+    overflow:auto!important;
+  }
+  body.v36-workbench-redesign .toolbar-row-primary .search-box{
+    order:4!important;
+    min-height:44px!important;
+    max-height:54px!important;
+    overflow:visible!important;
+  }
+  body.v36-workbench-redesign .toolbar-row-primary .search-box input{
+    min-height:40px!important;
+  }
+  body.v36-workbench-redesign .toolbar-row-primary .class-mode-btn{order:5!important;}
+  body.v36-workbench-redesign .toolbar-row-primary .filter-reset-btn{order:6!important;}
+  body.v36-workbench-redesign .toolbar-row-primary .controls{order:7!important;}
+  body.v36-workbench-redesign #main-content{
+    position:relative!important;
+    grid-column:2!important;
+    width:100%!important;
+    min-width:0!important;
+    z-index:1!important;
+  }
+}

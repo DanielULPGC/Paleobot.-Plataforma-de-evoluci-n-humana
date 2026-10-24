@@ -1,0 +1,54 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v64-real-image-visuals */
+body.pb-v50-unified .introg-photo-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+body.pb-v50-unified .introg-photo-card{
+  border:1px solid rgba(27,42,56,.18);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+  padding:0;
+  text-align:left;
+  cursor:pointer;
+  box-shadow:0 10px 28px rgba(20,34,48,.08);
+}
+body.pb-v50-unified .introg-photo-card img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  background:#eee8dd;
+}
+body.pb-v50-unified .introg-photo-card span{
+  display:block;
+  padding:10px 11px;
+  color:#1b2a38;
+  font-weight:850;
+  font-size:.82rem;
+  line-height:1.25;
+}
+body.pb-v50-unified .introg-photo-card small{
+  display:block;
+  padding:0 11px 11px;
+  color:#526173;
+  font-size:.73rem;
+  line-height:1.35;
+}
+body.pb-v50-unified .introg-photo-card:hover,
+body.pb-v50-unified .introg-photo-card:focus-visible{
+  border-color:#0e7f65;
+  outline:none;
+  box-shadow:0 12px 32px rgba(14,127,101,.18);
+}
+body.pb-v50-unified .introg-photo-card.active{
+  border-color:#0e7f65;
+  box-shadow:0 0 0 3px rgba(14,127,101,.16), 0 14px 34px rgba(14,127,101,.18);
+}
+@media(max-width:900px){
+  body.pb-v50-unified .introg-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:560px){
+  body.pb-v50-unified .introg-photo-grid{grid-template-columns:1fr;}
+}

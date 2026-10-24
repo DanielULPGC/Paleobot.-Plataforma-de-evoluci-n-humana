@@ -1,0 +1,6 @@
+/* R92: holgura de desplazamiento en móvil. Las dos barras fijas inferiores (FAB y
+   herramientas de accesibilidad) ocupan ~120 px; al recorrer con teclado o lector de
+   pantalla, el elemento enfocado se desplaza por encima de ellas (WCAG 2.2, 2.4.11). */
+@media (max-width: 600px) {
+  html { scroll-padding-bottom: 136px; }
+}

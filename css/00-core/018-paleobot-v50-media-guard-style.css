@@ -1,0 +1,27 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v50-media-guard-style */
+.pb-v50-unified .species-media-frame,
+  .pb-v50-unified .visual-evidence-item,
+  .pb-v50-unified .species-item,
+  .pb-v50-unified .tree-item {
+    --pb-v50-media-bg: #101415;
+  }
+
+  .pb-v50-unified img.pb-v50-media-fallback-img {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: var(--pb-v50-media-bg) !important;
+    object-fit: cover !important;
+  }
+
+  .pb-v50-unified .species-header-image.pb-v50-media-fallback-img,
+  .pb-v50-unified .visual-evidence-img.pb-v50-media-fallback-img,
+  .pb-v50-unified .academic-img.pb-v50-media-fallback-img,
+  .pb-v50-unified .itin-card-img.pb-v50-media-fallback-img {
+    min-height: 220px;
+  }
+
+  .pb-v50-unified .sp-img-thumb.pb-v50-media-fallback-img,
+  .pb-v50-unified .biogeo-record-thumb.pb-v50-media-fallback-img {
+    flex: 0 0 auto;
+  }

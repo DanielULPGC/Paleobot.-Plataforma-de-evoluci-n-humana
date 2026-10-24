@@ -1,0 +1,81 @@
+/* PaleoBot R77 — accessibility state contract.
+   Direct inline filter/font/contrast writes have been retired. */
+
+.pb-r77-bib-filter-active:not(#paleobot-r77-never-match) {
+  background:#172436 !important;
+  border-color:#172436 !important;
+  color:#ffffff !important;
+  text-shadow:none !important;
+}
+
+html.pb-r77-font-80 { font-size: 80% !important; }
+html.pb-r77-font-81 { font-size: 81% !important; }
+html.pb-r77-font-82 { font-size: 82% !important; }
+html.pb-r77-font-83 { font-size: 83% !important; }
+html.pb-r77-font-84 { font-size: 84% !important; }
+html.pb-r77-font-85 { font-size: 85% !important; }
+html.pb-r77-font-86 { font-size: 86% !important; }
+html.pb-r77-font-87 { font-size: 87% !important; }
+html.pb-r77-font-88 { font-size: 88% !important; }
+html.pb-r77-font-89 { font-size: 89% !important; }
+html.pb-r77-font-90 { font-size: 90% !important; }
+html.pb-r77-font-91 { font-size: 91% !important; }
+html.pb-r77-font-92 { font-size: 92% !important; }
+html.pb-r77-font-93 { font-size: 93% !important; }
+html.pb-r77-font-94 { font-size: 94% !important; }
+html.pb-r77-font-95 { font-size: 95% !important; }
+html.pb-r77-font-96 { font-size: 96% !important; }
+html.pb-r77-font-97 { font-size: 97% !important; }
+html.pb-r77-font-98 { font-size: 98% !important; }
+html.pb-r77-font-99 { font-size: 99% !important; }
+html.pb-r77-font-100 { font-size: 100% !important; }
+html.pb-r77-font-101 { font-size: 101% !important; }
+html.pb-r77-font-102 { font-size: 102% !important; }
+html.pb-r77-font-103 { font-size: 103% !important; }
+html.pb-r77-font-104 { font-size: 104% !important; }
+html.pb-r77-font-105 { font-size: 105% !important; }
+html.pb-r77-font-106 { font-size: 106% !important; }
+html.pb-r77-font-107 { font-size: 107% !important; }
+html.pb-r77-font-108 { font-size: 108% !important; }
+html.pb-r77-font-109 { font-size: 109% !important; }
+html.pb-r77-font-110 { font-size: 110% !important; }
+html.pb-r77-font-111 { font-size: 111% !important; }
+html.pb-r77-font-112 { font-size: 112% !important; }
+html.pb-r77-font-113 { font-size: 113% !important; }
+html.pb-r77-font-114 { font-size: 114% !important; }
+html.pb-r77-font-115 { font-size: 115% !important; }
+html.pb-r77-font-116 { font-size: 116% !important; }
+html.pb-r77-font-117 { font-size: 117% !important; }
+html.pb-r77-font-118 { font-size: 118% !important; }
+html.pb-r77-font-119 { font-size: 119% !important; }
+html.pb-r77-font-120 { font-size: 120% !important; }
+html.pb-r77-font-121 { font-size: 121% !important; }
+html.pb-r77-font-122 { font-size: 122% !important; }
+html.pb-r77-font-123 { font-size: 123% !important; }
+html.pb-r77-font-124 { font-size: 124% !important; }
+html.pb-r77-font-125 { font-size: 125% !important; }
+html.pb-r77-font-126 { font-size: 126% !important; }
+html.pb-r77-font-127 { font-size: 127% !important; }
+html.pb-r77-font-128 { font-size: 128% !important; }
+html.pb-r77-font-129 { font-size: 129% !important; }
+html.pb-r77-font-130 { font-size: 130% !important; }
+html.pb-r77-font-131 { font-size: 131% !important; }
+html.pb-r77-font-132 { font-size: 132% !important; }
+html.pb-r77-font-133 { font-size: 133% !important; }
+html.pb-r77-font-134 { font-size: 134% !important; }
+html.pb-r77-font-135 { font-size: 135% !important; }
+html.pb-r77-font-136 { font-size: 136% !important; }
+html.pb-r77-font-137 { font-size: 137% !important; }
+html.pb-r77-font-138 { font-size: 138% !important; }
+html.pb-r77-font-139 { font-size: 139% !important; }
+html.pb-r77-font-140 { font-size: 140% !important; }
+html.pb-r77-font-141 { font-size: 141% !important; }
+html.pb-r77-font-142 { font-size: 142% !important; }
+html.pb-r77-font-143 { font-size: 143% !important; }
+html.pb-r77-font-144 { font-size: 144% !important; }
+html.pb-r77-font-145 { font-size: 145% !important; }
+html.pb-r77-font-146 { font-size: 146% !important; }
+html.pb-r77-font-147 { font-size: 147% !important; }
+html.pb-r77-font-148 { font-size: 148% !important; }
+html.pb-r77-font-149 { font-size: 149% !important; }
+html.pb-r77-font-150 { font-size: 150% !important; }
