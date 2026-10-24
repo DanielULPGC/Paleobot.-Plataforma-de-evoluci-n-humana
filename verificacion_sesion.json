@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-24",
+  "mode": "REVIEW_ONLY",
+  "inventory_unique_library_files": 272,
+  "downloaded_unique_library_files": 115,
+  "local_input_files": 115,
+  "zip_archives_checked": 36,
+  "zip_crc_errors": 0,
+  "syntax_blocks_checked": 78,
+  "syntax_errors": 0,
+  "real_browser_executed": false,
+  "real_moodle_executed": false,
+  "screen_reader_executed": false,
+  "application_files_modified": 0,
+  "python": "3.12.14",
+  "node": "v24.22.1",
+  "scope_note": "Inventario de archivos recuperables y revisión focal de ramas; no exportación completa de todos los chats ni auditoría integral del código o del corpus científico.",
+  "additional_test": "Módulo 066 original: 47 recursos documentados y un control de mapa en DOM simulado; tres sustituciones reproducidas.",
+  "metadata_refresh": "Se incorporaron hashes de v7/v8/v9/v11; no se reejecutaron los ensayos históricos."
+}

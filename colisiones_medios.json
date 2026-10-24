@@ -1,0 +1,23 @@
+{
+  "module_preserved_in_pilot": true,
+  "module_path": "assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js",
+  "module_sha256": "72f59642fdbf4b1eca60ea71a7f55896fccea849da5f569a8013e5647624dc42",
+  "collisions": [
+    {
+      "id": "proconsul",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Proconsul_heseloni_Tubingen.jpg?width=500",
+      "descripcion_expediente": "Fósil de Proconsul en la colección paleontológica de Tubinga"
+    },
+    {
+      "id": "soloensis",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ngandong_14._Homo_erectus.jpg?width=500",
+      "descripcion_expediente": "Ngandong 14, exhibido en el Smithsonian; la fuente no confirma si la pieza expuesta es el fósil original o una copia"
+    },
+    {
+      "id": "boisei",
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Paranthropus_boisei_skull.jpg?width=500",
+      "descripcion_expediente": "Reproducción museística de restos craneales atribuidos a Paranthropus boisei en San Diego, no fósiles originales"
+    }
+  ],
+  "scope": "La regla clasifica estas URL como genéricas. El efecto final del DOM completo y Moodle no se ejecuta aquí."
+}

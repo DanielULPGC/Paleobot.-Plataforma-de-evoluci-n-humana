@@ -1,0 +1,548 @@
+[
+  {
+    "page": "pilot",
+    "block": 1,
+    "source": "estilos-de-impresion",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 2,
+    "source": "assets/img/manifest.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 3,
+    "source": "assets/js/00-core/000-paleobot-r98-local-images.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 4,
+    "source": "assets/vendor/leaflet/1.9.4/leaflet.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 5,
+    "source": "assets/js/00-core/074-paleobot-storage-scope.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 6,
+    "source": "assets/js/00-core/001-paleobot-v63-error-capture.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 7,
+    "source": "assets/js/00-core/072-paleobot-public-api-shadow.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 8,
+    "source": "assets/js/60-science/075-paleobot-a2-chronology.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 9,
+    "source": "assets/js/60-science/076-paleobot-a3-scientific-adapter.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 10,
+    "source": "assets/js/60-science/078-paleobot-a3-catalog.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 11,
+    "source": "assets/js/60-science/079-paleobot-a3-temporal-policy.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 12,
+    "source": "assets/js/00-core/002-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 13,
+    "source": "assets/js/00-core/073-paleobot-storage-adapter.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 14,
+    "source": "assets/js/00-core/003-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 15,
+    "source": "assets/js/00-core/004-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 16,
+    "source": "assets/js/00-core/005-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 17,
+    "source": "assets/js/00-core/006-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 18,
+    "source": "assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 19,
+    "source": "assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 20,
+    "source": "assets/js/10-legacy-ui/009-paleobot-v35-separated-design-layer.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 21,
+    "source": "assets/js/10-legacy-ui/010-paleobot-v36-workspace-redesign-layer.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 22,
+    "source": "assets/js/10-legacy-ui/011-paleobot-v37-control-bus.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 23,
+    "source": "assets/js/10-legacy-ui/012-paleobot-v38-bibliography-controls.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 24,
+    "source": "assets/js/10-legacy-ui/013-paleobot-v39-doi-links.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 25,
+    "source": "assets/js/10-legacy-ui/014-paleobot-v40-species-open-bus.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 26,
+    "source": "assets/js/90-guards/015-paleobot-v41-layout-guard.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 27,
+    "source": "assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 28,
+    "source": "assets/js/90-guards/017-paleobot-v43-detail-tabs-guard.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 29,
+    "source": "assets/js/90-guards/020-paleobot-v46-button-audit-bus.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 30,
+    "source": "assets/js/40-media/022-paleobot-v48-map-controls-repair.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 31,
+    "source": "assets/js/20-navigation/023-paleobot-v49-map-navigation-shield.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 32,
+    "source": "assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 33,
+    "source": "assets/js/40-media/025-paleobot-v50-media-guard.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 34,
+    "source": "assets/js/20-navigation/026-paleobot-v51-navigation-audit-guard.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 35,
+    "source": "assets/js/90-guards/027-paleobot-v52-no-home-bounce-guard.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 36,
+    "source": "assets/js/20-navigation/028-paleobot-v55-functional-router.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 37,
+    "source": "assets/js/30-search/029-paleobot-v58-biblio-filter-contrast.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 38,
+    "source": "assets/js/10-legacy-ui/031-paleobot-v59-block-panel-sync.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 39,
+    "source": "assets/js/40-media/033-paleobot-v61-image-fallbacks.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 40,
+    "source": "assets/js/40-media/035-paleobot-v64-real-image-visuals-runtime.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 41,
+    "source": "assets/js/20-navigation/037-paleobot-v55-nav.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 42,
+    "source": "assets/js/90-guards/038-paleobot-v56-final-fix.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 43,
+    "source": "assets/js/20-navigation/039-paleobot-canonical-nav-v58.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 44,
+    "source": "assets/js/80-features/040-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 45,
+    "source": "assets/js/80-features/041-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 46,
+    "source": "assets/js/80-features/042-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 47,
+    "source": "assets/js/80-features/043-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 48,
+    "source": "assets/js/80-features/044-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 49,
+    "source": "assets/js/80-features/045-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 50,
+    "source": "assets/js/20-navigation/047-paleobot-v67-modal-state-reconciler.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 51,
+    "source": "assets/js/20-navigation/048-paleobot-v68-interaction-stabilizer.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 52,
+    "source": "assets/js/90-guards/049-paleobot-v69-quiz-start-repair.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 53,
+    "source": "assets/js/80-features/051-paleobot-v71-compare-picker-repair.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 54,
+    "source": "assets/js/80-features/052-paleobot-v72-compare-clear-repair.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 55,
+    "source": "assets/js/80-features/053-paleobot-v73-itinerary-rubric-repair.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 56,
+    "source": "assets/js/90-guards/054-paleobot-v74-floating-a11y-repair.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 57,
+    "source": "assets/js/90-guards/055-paleobot-v75-hidden-pending-guard.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 58,
+    "source": "assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 59,
+    "source": "assets/js/80-features/058-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 60,
+    "source": "assets/js/80-features/059-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 61,
+    "source": "assets/js/80-features/060-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 62,
+    "source": "assets/js/80-features/061-script.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 63,
+    "source": "assets/js/90-guards/062-paleobot-v65-audit-fix.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 64,
+    "source": "assets/js/70-export/063-paleobot-v66-svg-export.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 65,
+    "source": "assets/js/60-science/036a-paleobot-v66-fauna.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 66,
+    "source": "assets/js/60-science/036b-paleobot-v66-cranial-norma.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 67,
+    "source": "assets/js/40-media/065-paleobot-v80-map-lens-image-repair.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 68,
+    "source": "assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 69,
+    "source": "assets/js/60-science/067-paleobot-v82-fauna-rigor-and-layout.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 70,
+    "source": "assets/js/30-search/068-paleobot-v83-search-sa-final-repair.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 71,
+    "source": "assets/js/60-science/080-paleobot-a3-evidence-views.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 72,
+    "source": "assets/js/30-search/069-paleobot-v86-global-search-final.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 73,
+    "source": "assets/js/00-core/081-paleobot-r93-diagnostic-panel.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 74,
+    "source": "catalogo-A3",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 75,
+    "source": "cronologia-A3-interactiva",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 76,
+    "source": "assets/js/90-guards/036-paleobot-v65-hero-readability-routing-fix-runtim.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "pilot",
+    "block": 77,
+    "source": "assets/js/90-guards/070-paleobot-v85-speed-guard.js",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "page": "v11",
+    "block": 1,
+    "source": "inline",
+    "exit_code": 0,
+    "stderr": ""
+  }
+]

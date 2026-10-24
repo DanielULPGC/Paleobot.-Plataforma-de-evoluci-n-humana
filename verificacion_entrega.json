@@ -1,0 +1,13 @@
+{
+  "fecha": "2026-10-24",
+  "docx_paginas": 14,
+  "paginas_revisadas_visualmente": 14,
+  "tablas": 13,
+  "asuntos": 36,
+  "artefactos_inventariados": 272,
+  "con_hash_recuperado": 115,
+  "csv_json_concordantes": true,
+  "prueba_portable_ejecutada": true,
+  "inspeccion_de_docx": "Revisión visual completa y comprobaciones estructurales. No certificación de accesibilidad de Paleobot.",
+  "programa_modificado": false
+}

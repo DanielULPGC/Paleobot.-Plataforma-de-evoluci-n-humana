@@ -1,0 +1,197 @@
+{
+  "fase7": {
+    "sha256": "5eb460063f873b3be5ef3aa9874ff5cc0ab17612ba706506d1c8f8c22411a0a2",
+    "records": 50,
+    "unique_ids": 50,
+    "chronology_records": 50,
+    "missing_taxonomic_state": 43,
+    "references": 123
+  },
+  "v11": {
+    "sha256": "5eb460063f873b3be5ef3aa9874ff5cc0ab17612ba706506d1c8f8c22411a0a2",
+    "records": 50,
+    "unique_ids": 50,
+    "chronology_records": 50,
+    "missing_taxonomic_state": 43,
+    "references": 123
+  },
+  "r98": {
+    "sha256": "62f11f05a4c58ab3938ffb7263c80f3098cdf5b9701a02e25678e042ecd7593b",
+    "records": 50,
+    "unique_ids": 50,
+    "chronology_records": 50,
+    "missing_taxonomic_state": 43,
+    "references": 123
+  },
+  "comparison": {
+    "fase7_and_v11_byte_identical": true,
+    "three_chronologies_equal": true,
+    "fase7_to_r98_record_differences": [
+      {
+        "id": "sahel",
+        "campo": "imagen"
+      },
+      {
+        "id": "orrorin",
+        "campo": "imagen"
+      },
+      {
+        "id": "ramidus",
+        "campo": "imagen"
+      },
+      {
+        "id": "anamensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "afarensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "deyiremeda",
+        "campo": "imagen"
+      },
+      {
+        "id": "bahrelghazali",
+        "campo": "imagen"
+      },
+      {
+        "id": "kenyanthropus",
+        "campo": "imagen"
+      },
+      {
+        "id": "africanus",
+        "campo": "imagen"
+      },
+      {
+        "id": "prometheus",
+        "campo": "imagen"
+      },
+      {
+        "id": "garhi",
+        "campo": "imagen"
+      },
+      {
+        "id": "sediba",
+        "campo": "imagen"
+      },
+      {
+        "id": "aethiopicus",
+        "campo": "imagen"
+      },
+      {
+        "id": "boisei",
+        "campo": "imagen"
+      },
+      {
+        "id": "robustus",
+        "campo": "imagen"
+      },
+      {
+        "id": "habilis",
+        "campo": "imagen"
+      },
+      {
+        "id": "rudolfensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "ergaster",
+        "campo": "imagen"
+      },
+      {
+        "id": "georgicus",
+        "campo": "imagen"
+      },
+      {
+        "id": "erectus",
+        "campo": "imagen"
+      },
+      {
+        "id": "antecessor",
+        "campo": "imagen"
+      },
+      {
+        "id": "cepranensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "heidelbergensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "bodoensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "rhodesiensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "helmei",
+        "campo": "imagen"
+      },
+      {
+        "id": "juluensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "soloensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "penghu",
+        "campo": "imagen"
+      },
+      {
+        "id": "gautengensis",
+        "campo": "imagen"
+      },
+      {
+        "id": "naledi",
+        "campo": "imagen"
+      },
+      {
+        "id": "idaltu",
+        "campo": "imagen"
+      },
+      {
+        "id": "neander",
+        "campo": "imagen"
+      },
+      {
+        "id": "denisova",
+        "campo": "imagen"
+      },
+      {
+        "id": "flores",
+        "campo": "imagen"
+      },
+      {
+        "id": "luzon",
+        "campo": "imagen"
+      },
+      {
+        "id": "longi",
+        "campo": "imagen"
+      },
+      {
+        "id": "sapiens",
+        "campo": "imagen"
+      }
+    ],
+    "only_image_urls_changed": true,
+    "image_audit_documented": 47,
+    "image_audit_pending": [
+      "anoiapithecus",
+      "chororapithecus",
+      "gautengensis"
+    ],
+    "image_audit_excluded": [
+      "anamensis_smithsonian_photo",
+      "erectus_wrexham_cast",
+      "bahrelghazali_facial_reconstruction",
+      "gautengensis_small_thumbnail"
+    ]
+  }
+}

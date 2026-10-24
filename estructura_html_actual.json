@@ -1,0 +1,43 @@
+{
+  "pilot": {
+    "scripts": 77,
+    "styles": 56,
+    "duplicate_ids": {},
+    "missing_anchor_targets": [],
+    "external_script_or_link_attributes": [
+      {
+        "tag": "link",
+        "url": "https://fonts.googleapis.com"
+      },
+      {
+        "tag": "link",
+        "url": "https://fonts.gstatic.com"
+      },
+      {
+        "tag": "link",
+        "url": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      },
+      {
+        "tag": "link",
+        "url": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231c2b3a'/><text y='24' x='4' font-size='20' font-family='serif'>🦴</text></svg>"
+      }
+    ],
+    "csp_present": true,
+    "inline_blocks_without_document_hash": [],
+    "species_cards": "GENERATED_AT_RUNTIME_NOT_COUNTED",
+    "image_elements": 5,
+    "image_urls_still_remote": 2
+  },
+  "v11": {
+    "scripts": 1,
+    "styles": 1,
+    "duplicate_ids": {},
+    "missing_anchor_targets": [],
+    "external_script_or_link_attributes": [],
+    "csp_present": false,
+    "inline_blocks_without_document_hash": "NO_DOCUMENT_CSP; HTTP_POLICY_NOT_OBSERVED",
+    "species_cards": 50,
+    "image_elements": 47,
+    "image_urls_still_remote": 47
+  }
+}

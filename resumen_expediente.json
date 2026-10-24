@@ -1,0 +1,16 @@
+{
+  "fecha": "2026-10-24",
+  "asuntos": 36,
+  "por_prioridad": {
+    "P0": 8,
+    "P1": 24,
+    "P2": 4
+  },
+  "artefactos_inventariados": 272,
+  "archivos_recuperados": 115,
+  "fuentes_historicas_copiadas": 78,
+  "programa_modificado": false,
+  "navegador_real_ejecutado": false,
+  "moodle_real_ejecutado": false,
+  "transcripciones_completas_de_todos_los_chats": false
+}

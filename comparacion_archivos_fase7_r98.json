@@ -1,0 +1,272 @@
+[
+  {
+    "path": "assets/css/00-core/036c-paleobot-v80-map-lens-image-repair.css",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/css/00-core/053-paleobot-r92-mobile-focus-clearance.css",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/css/00-core/056-paleobot-r93-diagnostic-panel.css",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/css/00-core/057-paleobot-r94-boot-fallback.css",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/css/60-science/036a-paleobot-v66-fauna.css",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/css/60-science/036b-paleobot-v66-cranial-norma.css",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/img/manifest.js",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/js/00-core/000-paleobot-r98-local-images.js",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/js/00-core/002-script.js",
+    "state": "different",
+    "fase7_bytes": 1265545,
+    "r98_bytes": 1226152
+  },
+  {
+    "path": "assets/js/00-core/071-paleobot-v69-lazy-loader.js",
+    "state": "different",
+    "fase7_bytes": 1447,
+    "r98_bytes": 1474
+  },
+  {
+    "path": "assets/js/00-core/072-paleobot-public-api-shadow.js",
+    "state": "different",
+    "fase7_bytes": 13794,
+    "r98_bytes": 13821
+  },
+  {
+    "path": "assets/js/00-core/081-paleobot-r93-diagnostic-panel.js",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
+    "state": "different",
+    "fase7_bytes": 44974,
+    "r98_bytes": 46291
+  },
+  {
+    "path": "assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js",
+    "state": "different",
+    "fase7_bytes": 36277,
+    "r98_bytes": 40556
+  },
+  {
+    "path": "assets/js/10-legacy-ui/011-paleobot-v37-control-bus.js",
+    "state": "different",
+    "fase7_bytes": 10721,
+    "r98_bytes": 10775
+  },
+  {
+    "path": "assets/js/10-legacy-ui/014-paleobot-v40-species-open-bus.js",
+    "state": "different",
+    "fase7_bytes": 7404,
+    "r98_bytes": 7485
+  },
+  {
+    "path": "assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js",
+    "state": "different",
+    "fase7_bytes": 17888,
+    "r98_bytes": 17888
+  },
+  {
+    "path": "assets/js/10-legacy-ui/031-paleobot-v59-block-panel-sync.js",
+    "state": "different",
+    "fase7_bytes": 5328,
+    "r98_bytes": 5328
+  },
+  {
+    "path": "assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js",
+    "state": "different",
+    "fase7_bytes": 2129,
+    "r98_bytes": 2452
+  },
+  {
+    "path": "assets/js/20-navigation/023-paleobot-v49-map-navigation-shield.js",
+    "state": "different",
+    "fase7_bytes": 2773,
+    "r98_bytes": 2800
+  },
+  {
+    "path": "assets/js/20-navigation/037-paleobot-v55-nav.js",
+    "state": "different",
+    "fase7_bytes": 13775,
+    "r98_bytes": 14260
+  },
+  {
+    "path": "assets/js/20-navigation/039-paleobot-canonical-nav-v58.js",
+    "state": "different",
+    "fase7_bytes": 8025,
+    "r98_bytes": 11064
+  },
+  {
+    "path": "assets/js/20-navigation/048-paleobot-v68-interaction-stabilizer.js",
+    "state": "different",
+    "fase7_bytes": 5103,
+    "r98_bytes": 5130
+  },
+  {
+    "path": "assets/js/30-search/069-paleobot-v86-global-search-final.js",
+    "state": "different",
+    "fase7_bytes": 10957,
+    "r98_bytes": 11043
+  },
+  {
+    "path": "assets/js/40-media/022-paleobot-v48-map-controls-repair.js",
+    "state": "different",
+    "fase7_bytes": 5753,
+    "r98_bytes": 5780
+  },
+  {
+    "path": "assets/js/40-media/025-paleobot-v50-media-guard.js",
+    "state": "different",
+    "fase7_bytes": 6837,
+    "r98_bytes": 7681
+  },
+  {
+    "path": "assets/js/40-media/033-paleobot-v61-image-fallbacks.js",
+    "state": "different",
+    "fase7_bytes": 4085,
+    "r98_bytes": 3871
+  },
+  {
+    "path": "assets/js/40-media/035-paleobot-v64-real-image-visuals-runtime.js",
+    "state": "different",
+    "fase7_bytes": 7536,
+    "r98_bytes": 7536
+  },
+  {
+    "path": "assets/js/40-media/065-paleobot-v80-map-lens-image-repair.js",
+    "state": "different",
+    "fase7_bytes": 8056,
+    "r98_bytes": 8063
+  },
+  {
+    "path": "assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js",
+    "state": "different",
+    "fase7_bytes": 9099,
+    "r98_bytes": 9308
+  },
+  {
+    "path": "assets/js/60-science/036a-paleobot-v66-fauna.js",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/js/60-science/036b-paleobot-v66-cranial-norma.js",
+    "state": "only_r98"
+  },
+  {
+    "path": "assets/js/60-science/067-paleobot-v82-fauna-rigor-and-layout.js",
+    "state": "different",
+    "fase7_bytes": 5355,
+    "r98_bytes": 5508
+  },
+  {
+    "path": "assets/js/60-science/078-paleobot-a3-catalog.js",
+    "state": "different",
+    "fase7_bytes": 196197,
+    "r98_bytes": 196197
+  },
+  {
+    "path": "assets/js/70-export/063-paleobot-v66-svg-export.js",
+    "state": "different",
+    "fase7_bytes": 25615,
+    "r98_bytes": 25950
+  },
+  {
+    "path": "assets/js/80-features/043-script.js",
+    "state": "different",
+    "fase7_bytes": 4403,
+    "r98_bytes": 4430
+  },
+  {
+    "path": "assets/js/80-features/045-script.js",
+    "state": "different",
+    "fase7_bytes": 28563,
+    "r98_bytes": 28686
+  },
+  {
+    "path": "assets/js/80-features/051-paleobot-v71-compare-picker-repair.js",
+    "state": "different",
+    "fase7_bytes": 4235,
+    "r98_bytes": 4262
+  },
+  {
+    "path": "assets/js/80-features/052-paleobot-v72-compare-clear-repair.js",
+    "state": "different",
+    "fase7_bytes": 2893,
+    "r98_bytes": 2920
+  },
+  {
+    "path": "assets/js/80-features/053-paleobot-v73-itinerary-rubric-repair.js",
+    "state": "different",
+    "fase7_bytes": 5081,
+    "r98_bytes": 5162
+  },
+  {
+    "path": "assets/js/80-features/059-script.js",
+    "state": "different",
+    "fase7_bytes": 19814,
+    "r98_bytes": 19314
+  },
+  {
+    "path": "assets/js/80-features/060-script.js",
+    "state": "different",
+    "fase7_bytes": 31478,
+    "r98_bytes": 29943
+  },
+  {
+    "path": "assets/js/80-features/061-script.js",
+    "state": "different",
+    "fase7_bytes": 27115,
+    "r98_bytes": 26966
+  },
+  {
+    "path": "assets/js/90-guards/020-paleobot-v46-button-audit-bus.js",
+    "state": "different",
+    "fase7_bytes": 6482,
+    "r98_bytes": 6536
+  },
+  {
+    "path": "assets/js/90-guards/038-paleobot-v56-final-fix.js",
+    "state": "different",
+    "fase7_bytes": 12544,
+    "r98_bytes": 13819
+  },
+  {
+    "path": "assets/js/90-guards/049-paleobot-v69-quiz-start-repair.js",
+    "state": "different",
+    "fase7_bytes": 3574,
+    "r98_bytes": 3628
+  },
+  {
+    "path": "assets/js/_quarantine/036d-paleobot-v79-consolidated-dispatcher.QUARANTINE.js",
+    "state": "only_r98"
+  },
+  {
+    "path": "index.html",
+    "state": "different",
+    "fase7_bytes": 177099,
+    "r98_bytes": 179250
+  },
+  {
+    "path": "science/catalog.json",
+    "state": "different",
+    "fase7_bytes": 196045,
+    "r98_bytes": 196045
+  }
+]

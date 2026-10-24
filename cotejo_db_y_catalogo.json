@@ -1,0 +1,81 @@
+{
+  "fase7": {
+    "literal_db_records": 50,
+    "catalog_records": 50,
+    "different_fields_excluding_map_representation": [],
+    "chronology_records": 50
+  },
+  "r98": {
+    "literal_db_records": 50,
+    "catalog_records": 50,
+    "different_fields_excluding_map_representation": [],
+    "chronology_records": 50
+  },
+  "c635": {
+    "literal_db_records": 50,
+    "catalog_records": 50,
+    "different_fields_excluding_map_representation": [
+      {
+        "id": "rhodesiensis",
+        "field": "descripcion",
+        "db": "Homo rhodesiensis, descrito por Woodward en 1921 a partir del cráneo de Broken Hill/Kabwe (Zambia), es un homínino del Pleistoceno Medio-Superior africano con una morfología llamativamente primitiva para su cronología re",
+        "catalog": "Homo rhodesiensis, descrito por Woodward en 1921 a partir del cráneo de Broken Hill/Kabwe (Zambia), es un homínino del Pleistoceno Medio africano con una morfología robusta. La datación directa publicada por Grün et al. "
+      },
+      {
+        "id": "rhodesiensis",
+        "field": "experto",
+        "db": "{'descripcion_tecnica': 'Cc ~1280 cc. Toro supraorbitario masivo (uno de los mayores del registro). Bóveda baja. Cara muy ancha y alta. Caries extensas (primera evidencia de caries en Homo). Datación U-Series: 299–124 ka",
+        "catalog": "{'descripcion_tecnica': 'Cc ~1280 cc. Toro supraorbitario masivo, uno de los mayores del registro. Bóveda baja. Cara muy ancha y alta. Lesiones dentales compatibles con caries, sin atribuirles aquí un récord cronológico "
+      },
+      {
+        "id": "penghu",
+        "field": "descripcion",
+        "db": "Penghu 1 es una mandíbula humana arcaica recuperada del canal submarino de Penghu, frente a Taiwán. Aumenta la diversidad del Homo asiático tardío porque combina un cuerpo mandibular muy robusto, dientes grandes y rasgos",
+        "catalog": "Penghu 1 es una mandíbula humana arcaica recuperada del canal submarino de Penghu, frente a Taiwán. Combina un cuerpo mandibular muy robusto, dientes grandes y rasgos que no encajan limpiamente en las comparaciones clási"
+      },
+      {
+        "id": "penghu",
+        "field": "experto",
+        "db": "{'descripcion_tecnica': 'Hemimandíbula derecha casi completa, sin mentón, con cuerpo mandibular bajo y grueso, dentición posterior grande y rasgos derivados que justifican Homo pero no una asignación específica segura.',",
+        "catalog": "{'descripcion_tecnica': 'Hemimandíbula derecha casi completa, sin mentón, con cuerpo mandibular bajo y grueso, dentición posterior grande y rasgos derivados que justifican Homo pero no una asignación específica segura. L"
+      },
+      {
+        "id": "omo_i",
+        "field": "descripcion",
+        "db": "Omo I, del suroeste de Etiopía, es uno de los fósiles más antiguos inequívocamente modernos de Homo sapiens. Conserva una bóveda alta, mentón claro y una anatomía facial mucho más moderna que la de formas africanas pleis",
+        "catalog": "Omo I, del suroeste de Etiopía, es uno de los fósiles más antiguos inequívocamente modernos de Homo sapiens. Conserva una bóveda alta, mentón claro y una anatomía facial mucho más moderna que la de formas africanas pleis"
+      },
+      {
+        "id": "omo_i",
+        "field": "experto",
+        "db": "{'descripcion_tecnica': 'Bóveda alta y globular. Mentón presente. Esqueleto poscraneal fragmentario pero anatómicamente moderno.', 'debate': 'La cronología del complejo Omo Kibish fue revisada al alza en 2022, reforzando",
+        "catalog": "{'descripcion_tecnica': 'Bóveda alta y globular. Mentón presente. Esqueleto poscraneal fragmentario pero anatómicamente moderno.', 'debate': 'La revisión cronológica de Vidal et al. (2022) sitúa la edad mínima inferida d"
+      },
+      {
+        "id": "denisova",
+        "field": "descripcion",
+        "db": "Los denisovanos [denominación informal; sin nombre binomial formalmente válido según el ICZN al carecer de holotipo morfológico] son conocidos casi exclusivamente por su ADN: el material fósil disponible se limita a algu",
+        "catalog": "Los denisovanos son un linaje humano arcaico identificado inicialmente mediante ADN antiguo. En 2010, los análisis de Denisova 3 y otros restos de la cueva de Denisova permitieron reconocer una población genéticamente di"
+      },
+      {
+        "id": "denisova",
+        "field": "experto",
+        "db": "{'descripcion_tecnica': 'Material fósil mínimo. Molares extraordinariamente grandes (Xiahe). ADN genoma completo a alta cobertura. Genéticamente distintos de neandertales y sapiens. Linaje divergente hace ~700 ka desde e",
+        "catalog": "{'descripcion_tecnica': 'Restos dentales y mandibulares robustos, falanges y otros fósiles; desde 2025, el cráneo de Harbin proporciona un referente craneal biomolecularmente vinculado a una población denisovana. Se disp"
+      },
+      {
+        "id": "longi",
+        "field": "descripcion",
+        "db": "Homo longi ('hombre Dragón'), descrito en 2021 por Ji et al. a partir del cráneo de Harbin (noreste de China, ~146 ka), es uno de los hallazgos paleoantropológicos más recientes y potencialmente significativos. El cráneo",
+        "catalog": "Homo longi ('hombre Dragón') fue descrito en 2021 por Ji et al. a partir del cráneo de Harbin, en el noreste de China. El cráneo fue hallado en 1933 durante la construcción de un puente sobre el río Songhua y permaneció "
+      },
+      {
+        "id": "longi",
+        "field": "experto",
+        "db": "{'descripcion_tecnica': 'Cc ~1420 cc. Cráneo masivo. Arco superciliar enorme. Cara extremadamente ancha. Órbitas grandes cuadrangulares. Sin moño occipital. Frente más elevada que en heidelbergensis.', 'debate': '¿Es Hom",
+        "catalog": "{'descripcion_tecnica': 'Cc ~1420 cc. Cráneo masivo. Arco superciliar enorme. Cara extremadamente ancha. Órbitas grandes cuadrangulares. Sin moño occipital. Frente más elevada que en heidelbergensis.', 'debate': 'Los aná"
+      }
+    ],
+    "chronology_records": 50
+  }
+}

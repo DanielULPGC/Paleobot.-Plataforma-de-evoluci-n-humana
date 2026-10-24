@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-24",
+  "test": "Original module 066 with 47 documented image URLs and one map control",
+  "source_sha256": "72f59642fdbf4b1eca60ea71a7f55896fccea849da5f569a8013e5647624dc42",
+  "isolation": {
+    "synthetic_dom": true,
+    "real_browser": false,
+    "moodle": false,
+    "network": false,
+    "full_app": false
+  },
+  "records": 47,
+  "valid_urls_replaced": [
+    {
+      "id": "proconsul",
+      "before": "https://commons.wikimedia.org/wiki/Special:FilePath/Proconsul_heseloni_Tubingen.jpg?width=500",
+      "after_prefix": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.",
+      "alt": "Sin imagen verificada para Proconsul"
+    },
+    {
+      "id": "soloensis",
+      "before": "https://commons.wikimedia.org/wiki/Special:FilePath/Ngandong_14._Homo_erectus.jpg?width=500",
+      "after_prefix": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.",
+      "alt": "Sin imagen verificada para H. erectus soloensis"
+    },
+    {
+      "id": "boisei",
+      "before": "https://commons.wikimedia.org/wiki/Special:FilePath/Paranthropus_boisei_skull.jpg?width=500",
+      "after_prefix": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.",
+      "alt": "Sin imagen verificada para P. boisei"
+    }
+  ],
+  "valid_urls_preserved": 44,
+  "map_exclusion_preserved": true,
+  "verdict": "REPRODUCED_IN_ISOLATION; FINAL_BROWSER_PRESENTATION_NOT_TESTED",
+  "remediation": "La detección debe distinguir origen de reserva y recurso canónico de la propia ficha; no autoriza retirar el reparador completo sin regresión de imágenes, mapas y errores."
+}
