@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: bloque de territorio del Atlas de paleoantropología. Sitúa
+  los táxones en su región principal sobre un esquema geográfico, para evidenciar
+  la centralidad de África en la evolución humana. Diales: VARIANZA_VISUAL 5 /
+  INTENSIDAD_ANIMACION 2 / DENSIDAD_CONTENIDO 6.
+
+  HONESTIDAD EPISTÉMICA. Las posiciones son APROXIMADAS y de ESCALA REGIONAL, no
+  coordenadas de yacimiento. El fondo es un esquema (proyección equirectangular)
+  con retícula de latitud y longitud, SIN costas, para orientar sin fabricar
+  límites geográficos. Cada táxon se sitúa en su región principal; su
+  distribución más amplia se indica en el detalle. Fuente de táxones y regiones:
+  compilación de Wood y Boyle (2016, https://doi.org/10.1002/ajpa.22902) y
+  estudios primarios citados en la línea del tiempo.
+
+  Consume la fuente única (datos.js). Accesibilidad: marcadores navegables por
+  teclado, alternativa textual (tabla), contraste alto, prefers-reduced-motion.
+  Autonomía salvo tipografías. Licencia CC BY-NC 4.0 · ULPGC.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Territorio y dispersión · Atlas de paleoantropología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:12px;
+  --c-basales:#c98a4b;--c-austra:#d8a93a;--c-paran:#7fae9a;--c-homo:#cbb488;
+  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6}
+a{color:var(--acento)}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto:focus{left:0}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.volver:hover{border-color:var(--acento);color:var(--acento)}
+.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver svg{width:18px;height:18px}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:.95rem}
+.barra nav{display:flex;gap:1.1rem}
+.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:.92rem}
+
+.cabecera{max-width:1150px;margin:0 auto;padding:6vh 5vw 1vh}
+.cabecera .k{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:.8rem}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:.6rem}
+.cabecera p{color:var(--tinta-suave);max-width:72ch}
+.aviso{max-width:1150px;margin:1.4rem auto 0;padding:0 5vw}
+.aviso .caja{background:rgba(216,169,58,.07);border:1px solid rgba(216,169,58,.32);border-radius:var(--radio);padding:1rem 1.2rem;font-size:.92rem;color:var(--tinta-suave)}
+
+.lienzo{max-width:1150px;margin:1.6rem auto 0;padding:0 5vw}
+.lienzo svg{width:100%;height:auto;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:var(--radio)}
+.grat{stroke:rgba(243,239,231,.12);stroke-width:1}
+.grat-lbl{font-size:11px;fill:rgba(200,210,206,.55)}
+.cont-lbl{font-size:15px;fill:rgba(243,239,231,.35);font-style:italic;font-weight:600}
+.region{cursor:pointer}
+.region .punto{stroke:#0d2028;stroke-width:2;fill:var(--acento)}
+.region .aro{fill:none;stroke:var(--acento);stroke-width:2;opacity:0}
+.region .rlbl{font-size:12px;fill:var(--tinta);font-weight:600}
+.region:focus{outline:none}
+.region:focus-visible .punto{stroke:#fff;stroke-width:3}
+.region[aria-pressed="true"] .punto{stroke:#fff;stroke-width:3}
+.region[aria-pressed="true"] .aro{opacity:.6}
+
+.detalle{max-width:1150px;margin:2.4rem auto 0;padding:0 5vw}
+.detalle .panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.6rem 1.8rem;min-height:120px}
+.detalle .panel h3{font-family:var(--ft);font-weight:700;font-size:1.4rem;margin-bottom:.2rem}
+.detalle .panel .meta{color:var(--acento);font-weight:600;font-size:.9rem;margin-bottom:.7rem}
+.detalle .panel ul{list-style:none;margin:.4rem 0}
+.detalle .panel li{padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.08);color:var(--tinta-suave)}
+.detalle .panel li em{color:var(--tinta);font-style:italic}
+.detalle .panel .nota{font-size:.85rem;color:rgba(200,210,206,.75);margin-top:.6rem}
+
+.tabla-sec{max-width:1150px;margin:3rem auto 0;padding:0 5vw}
+.tabla-sec h2{font-family:var(--ft);font-weight:700;font-size:1.3rem;margin-bottom:.3rem}
+.tabla-sec p{color:var(--tinta-suave);font-size:.9rem;margin-bottom:1rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid rgba(255,255,255,.1);vertical-align:top}
+th{color:var(--acento);font-weight:600}
+
+.pie{border-top:1px solid rgba(255,255,255,.1);margin-top:4rem;padding:2.4rem 5vw;color:rgba(200,210,206,.65);font-size:.82rem;line-height:1.7}
+.pie a{color:rgba(216,169,58,.85);word-break:break-all}
+
+@media (prefers-reduced-motion: reduce){.region .aro{transition:none}}
+.region.destacado .punto{stroke:#fff;stroke-width:3}
+.detalle .panel li.destacar{background:rgba(216,169,58,.12);border-radius:6px;padding-left:.5rem}
+</style>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+<a class="salto" href="#tabla">Saltar a la tabla de regiones</a>
+
+<div class="barra">
+  <a class="volver" href="atlas.html" id="volver">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver al atlas
+  </a>
+  <span class="marca">Territorio y dispersión</span>
+  <nav aria-label="Otras vistas">
+    <a href="cronologia.html" id="ir-crono">Línea del tiempo</a>
+    <a href="parentesco.html">Parentesco</a>
+  </nav>
+</div>
+
+<header class="cabecera">
+  <p class="k">Bloque 02 · Territorio</p>
+  <h1>Dónde se documenta cada entrada</h1>
+  <p>Situar el corpus en el mapa muestra el peso de África en la evolución de los hominoideos y homininos, junto con radiaciones miocenas europeas y dispersiones humanas posteriores por Eurasia.</p>
+</header>
+
+<div class="aviso">
+  <div class="caja">
+    <strong>Nota sobre las posiciones.</strong> Son aproximadas y de escala regional, no coordenadas de yacimiento. El fondo es un esquema geográfico (proyección equirectangular) con retícula de latitud y longitud, sin costas, para orientar sin fabricar límites. Cada táxon se sitúa en su región principal; su distribución más amplia, cuando la hay, se indica en el detalle.
+  </div>
+</div>
+
+<main id="lienzo" class="lienzo" aria-label="Esquema geográfico de las regiones del corpus paleoantropológico">
+  <svg id="svg" viewBox="0 0 1000 660" role="group" aria-describedby="tabla"></svg>
+</main>
+
+<section class="detalle" aria-live="polite">
+  <div class="panel" id="panel">
+    <h3>Selecciona una región</h3>
+    <p class="meta">Explora el mapa</p>
+    <p>Pulsa cualquier marcador (o navega con el tabulador y pulsa Intro) para ver qué táxones se documentan en esa región.</p>
+  </div>
+</section>
+
+<section class="tabla-sec" id="tabla">
+  <h2>Tabla de regiones</h2>
+  <p>Alternativa textual del mapa: cada región con los táxones que se le asocian.</p>
+  <table>
+    <thead><tr><th scope="col">Región (aproximada)</th><th scope="col">Táxones</th></tr></thead>
+    <tbody id="cuerpo-tabla"></tbody>
+  </table>
+</section>
+
+<footer class="pie">
+  Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria ·
+  Contenido bajo licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>.
+  Fuente de táxones y regiones: Wood y Boyle (2016), <a href="https://doi.org/10.1002/ajpa.22902" target="_blank" rel="noopener">https://doi.org/10.1002/ajpa.22902</a>, y estudios primarios citados en la línea del tiempo.
+</footer>
+
+<script src="datos.js"></script>
+<script>
+(() => {
+  'use strict';
+  const D = window.AtlasPaleo;
+  const panel = document.getElementById('panel');
+  if (!D || !D.regiones) { panel.innerHTML = '<h3>Error de datos</h3><p>No se pudo cargar datos.js.</p>'; return; }
+
+  const SVG = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('svg');
+  const el = (n, a) => { const e = document.createElementNS(SVG, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+
+  // Proyección equirectangular sobre el area de dibujo.
+  const LON0 = -25, LON1 = 130, LAT0 = -40, LAT1 = 62;
+  const W = 1000, H = 660, MX = 46, MY = 28;
+  const xFor = (lon) => MX + (lon - LON0) / (LON1 - LON0) * (W - 2 * MX);
+  const yFor = (lat) => MY + (LAT1 - lat) / (LAT1 - LAT0) * (H - 2 * MY);
+
+  // Retícula de longitud y latitud
+  for (let lon = -20; lon <= 120; lon += 20) {
+    const x = xFor(lon);
+    svg.appendChild(el('line', { class: 'grat', x1: x, y1: MY, x2: x, y2: H - MY }));
+    const tl = el('text', { class: 'grat-lbl', x: x, y: H - MY + 16, 'text-anchor': 'middle' }); tl.textContent = lon + '°'; svg.appendChild(tl);
+  }
+  for (let lat = -30; lat <= 60; lat += 30) {
+    const y = yFor(lat);
+    svg.appendChild(el('line', { class: 'grat', x1: MX, y1: y, x2: W - MX, y2: y }));
+    const tl = el('text', { class: 'grat-lbl', x: MX - 8, y: y + 4, 'text-anchor': 'end' }); tl.textContent = lat + '°'; svg.appendChild(tl);
+  }
+  // Ecuador algo más marcado
+  svg.appendChild(el('line', { x1: MX, y1: yFor(0), x2: W - MX, y2: yFor(0), stroke: 'rgba(243,239,231,.22)', 'stroke-width': 1 }));
+
+  // Etiquetas de continente (orientación, sin límites)
+  [['África', 22, 4], ['Europa', 6, 52], ['Asia', 78, 46], ['Indonesia', 118, 6]].forEach(([txt, lon, lat]) => {
+    const t = el('text', { class: 'cont-lbl', x: xFor(lon), y: yFor(lat), 'text-anchor': 'middle' }); t.textContent = txt; svg.appendChild(t);
+  });
+
+  // Agrupar táxones por región
+  const porRegion = {};
+  D.taxones.forEach(t => { (porRegion[t.region] = porRegion[t.region] || []).push(t); });
+
+  const fmt = (ma) => ma >= 1 ? ma.toFixed(1).replace('.', ',') : (ma * 1000).toFixed(0) + ' ka';
+  const rango = (t) => `${fmt(t.desde)} a ${t.hasta === 0 ? 'presente' : fmt(t.hasta)}`;
+
+  function mostrar(rid, destacarId) {
+    const r = D.regiones[rid], arr = porRegion[rid] || [];
+    const items = arr.map(t => `<li${t.id === destacarId ? ' class="destacar"' : ''}><a href="ficha.html?id=${t.id}"><em>${t.n}</em></a> · ${D.clados[t.c].nombre} · ${rango(t)}${t.geoNota ? `<br><span class="nota">${t.geoNota}</span>` : ''}</li>`).join('');
+    panel.innerHTML = `<h3>${r.nombre}</h3><p class="meta">Latitud ${r.lat}°, longitud ${r.lon}° (aproximado)</p><ul>${items}</ul>`;
+    document.querySelectorAll('.region').forEach(g => g.setAttribute('aria-pressed', String(g.dataset.rid === rid)));
+  }
+
+  // Marcadores de región (tamaño según número de táxones)
+  Object.keys(porRegion).forEach(rid => {
+    const r = D.regiones[rid]; if (!r) return;
+    const x = xFor(r.lon), y = yFor(r.lat), n = porRegion[rid].length, radio = 6 + n * 2;
+    const g = el('g', { class: 'region', tabindex: '0', role: 'button', 'aria-pressed': 'false',
+      'aria-label': `${r.nombre}. ${n} ${n === 1 ? 'táxon' : 'táxones'}.` });
+    g.dataset.rid = rid;
+    g.appendChild(el('circle', { class: 'aro', cx: x, cy: y, r: radio + 6 }));
+    g.appendChild(el('circle', { class: 'punto', cx: x, cy: y, r: radio }));
+    const anc = r.lon > 90 ? 'end' : 'start';
+    const lx = r.lon > 90 ? x - radio - 6 : x + radio + 6;
+    const lbl = el('text', { class: 'rlbl', x: lx, y: y + 4, 'text-anchor': anc }); lbl.textContent = r.nombre; g.appendChild(lbl);
+    g.addEventListener('click', () => mostrar(rid));
+    g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mostrar(rid); } });
+    svg.appendChild(g);
+  });
+
+  // Tabla (alternativa textual)
+  const cuerpo = document.getElementById('cuerpo-tabla');
+  Object.keys(porRegion).forEach(rid => {
+    const r = D.regiones[rid];
+    const lista = porRegion[rid].map(t => t.n).join(', ');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.nombre}</td><td>${lista}</td>`;
+    cuerpo.appendChild(tr);
+  });
+  // Resaltado por identidad: territorio.html?taxon=<id>
+  (function () {
+    const rd = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pid = new URLSearchParams(location.search).get('taxon');
+    if (!pid) return;
+    const t = D.taxones.find(x => x.id === pid);
+    if (!t) return;
+    mostrar(t.region, pid);
+    const g = document.querySelector('.region[data-rid="' + t.region + '"]');
+    if (g) { g.scrollIntoView({ block: 'center', behavior: rd ? 'auto' : 'smooth' }); g.classList.add('destacado'); try { g.focus({ preventScroll: true }); } catch (e) { g.focus(); } }
+  })();
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v81-map-and-species-media-repair-style */
+#presMapModal.pres-map-modal.active,
+.pres-map-modal.active{
+  padding:clamp(8px,1.2vw,18px)!important;
+}
+#presMapModal .pres-map-modal-card,
+.pres-map-modal.active .pres-map-modal-card{
+  width:min(1540px,98vw)!important;
+  height:min(930px,96vh)!important;
+  max-width:98vw!important;
+  max-height:96vh!important;
+  border-radius:18px!important;
+}
+#presMapModal .pres-map-modal-head,
+.pres-map-modal.active .pres-map-modal-head{
+  padding:10px 14px!important;
+}
+#presMapModal .pres-map-modal-body,
+.pres-map-modal.active .pres-map-modal-body{
+  flex:1 1 auto!important;
+  min-height:520px!important;
+  padding:8px!important;
+}
+#presMapModal .pres-map-modal-body svg,
+.pres-map-modal.active .pres-map-modal-body svg{
+  width:100%!important;
+  height:100%!important;
+  min-height:520px!important;
+  border-radius:14px!important;
+}
+#presMapModal .pres-map-modal-foot,
+.pres-map-modal.active .pres-map-modal-foot{
+  flex:0 0 auto!important;
+  padding:8px 14px 10px!important;
+  font-size:.76rem!important;
+}
+#presMapModal .pres-map-modal-guide,
+.pres-map-modal.active .pres-map-modal-guide{
+  margin-top:6px!important;
+  gap:6px!important;
+}
+#presMapModal .pres-map-modal-guide span,
+.pres-map-modal.active .pres-map-modal-guide span{
+  padding:6px 8px!important;
+  font-size:.72rem!important;
+}
+body.pb-v50-unified img[data-pb-v81-species-media="unique"]{
+  object-fit:cover!important;
+  background:#f0ede8!important;
+}
+body.pb-v50-unified .sp-img-thumb[data-pb-v81-species-media="unique"],
+body.pb-v50-unified .biogeo-record-thumb[data-pb-v81-species-media="unique"]{
+  border:1px solid rgba(27,42,56,.16)!important;
+}

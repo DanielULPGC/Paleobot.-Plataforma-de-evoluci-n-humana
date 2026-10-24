@@ -1,0 +1,74 @@
+/* WCAG 2.2 guard: foco visible, objetivos tactiles y estados robustos. */
+:root {
+  --pb-a11y-focus-ring: #f2bf52;
+  --pb-a11y-focus-shadow: rgba(16, 35, 50, .72);
+}
+
+body.pb-v50-unified :is(
+  a[href],
+  button,
+  input,
+  select,
+  textarea,
+  summary,
+  [role="button"],
+  [role="tab"],
+  [role="menuitem"],
+  [tabindex]:not([tabindex="-1"])
+):focus-visible {
+  outline: 3px solid var(--pb-a11y-focus-ring) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px var(--pb-a11y-focus-shadow) !important;
+}
+
+body.pb-v50-unified :is(button, [role="button"], a[href]).pb-a11y-icon-only,
+body.pb-v50-unified .fab-group button,
+body.pb-v50-unified #pb-mobile-tools-toggle,
+body.pb-v50-unified .scroll-top-btn {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+body.pb-v50-unified .modal-overlay[aria-hidden="true"],
+body.pb-v50-unified .pb-v50-modal[aria-hidden="true"],
+body.pb-v50-unified .pres-overlay[aria-hidden="true"],
+body.pb-v50-unified .pres-map-modal[aria-hidden="true"],
+body.pb-v50-unified .lightbox[aria-hidden="true"],
+body.pb-v50-unified .socratic-overlay[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+body.pb-v50-unified [aria-disabled="true"],
+body.pb-v50-unified [disabled] {
+  cursor: not-allowed;
+}
+
+.pb-a11y-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (forced-colors: active) {
+  body.pb-v50-unified :is(
+    a[href],
+    button,
+    input,
+    select,
+    textarea,
+    summary,
+    [role="button"],
+    [role="tab"],
+    [role="menuitem"],
+    [tabindex]:not([tabindex="-1"])
+  ):focus-visible {
+    outline: 3px solid Highlight !important;
+    box-shadow: none !important;
+  }
+}

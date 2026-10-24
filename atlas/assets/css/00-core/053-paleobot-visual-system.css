@@ -1,0 +1,589 @@
+/* Final visual system: consistent hierarchy, compact didactic orientation and Moodle-safe geometry. */
+:root {
+  --pb-canvas: #edf0ee;
+  --pb-paper: #fffefa;
+  --pb-surface: #ffffff;
+  --pb-ink: #172a32;
+  --pb-muted: #52646b;
+  --pb-line: #ccd5d2;
+  --pb-teal: #0b735f;
+  --pb-teal-soft: #e4f2ed;
+  --pb-gold: #b57413;
+  --pb-gold-soft: #fff3d7;
+  --pb-red: #a33131;
+  --pb-blue: #245b86;
+  --pb-night: #102630;
+  --pb-focus: #f2bd45;
+  --pb-radius: 8px;
+  --pb-shadow: 0 8px 24px rgba(18, 42, 50, .09);
+}
+
+body.pb-v50-unified {
+  color: var(--pb-ink);
+  background: var(--pb-canvas) !important;
+  text-rendering: optimizeLegibility;
+}
+
+body.pb-v50-unified .container {
+  width: min(100%, 1600px) !important;
+  margin-inline: auto !important;
+  padding-inline: clamp(12px, 2vw, 28px) !important;
+}
+
+body.pb-v50-unified :where(button, a, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--pb-focus) !important;
+  outline-offset: 3px !important;
+}
+
+/* Landing: the subject remains the first signal while the next section stays visible. */
+.pb-landing-hero {
+  min-height: clamp(540px, calc(100svh - 96px), 700px) !important;
+  max-height: 700px !important;
+  background: var(--pb-night) !important;
+}
+
+.pb-landing-hero::after {
+  background: rgba(8, 27, 33, .64) !important;
+}
+
+.pb-landing-hero-content {
+  padding-block: 54px 48px !important;
+}
+
+.pb-landing-hero h1 {
+  max-width: 820px !important;
+  font-size: 4rem !important;
+  line-height: 1.02 !important;
+}
+
+.pb-landing-lead {
+  max-width: 760px !important;
+}
+
+#pb-hub :where(.pb-pathway, .pb-learning-outcome, .pb-block-index-item, .pb-source-card) {
+  border-radius: var(--pb-radius) !important;
+  box-shadow: none !important;
+}
+
+#pb-hub :where(.pb-pathway, .pb-block-index-item):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pb-shadow) !important;
+}
+
+/* Workspace: one quiet command bar with a compact current-view indicator. */
+body.pb-v50-unified .toolbar {
+  top: 8px !important;
+  padding: 10px !important;
+  border: 1px solid rgba(255, 255, 255, .14) !important;
+  border-radius: var(--pb-radius) !important;
+  background: #11191d !important;
+  box-shadow: 0 8px 22px rgba(9, 20, 25, .16) !important;
+}
+
+body.pb-v50-unified .toolbar::before {
+  content: "Consulta y filtros" !important;
+  margin-bottom: 4px !important;
+  color: #c4d0cc !important;
+  letter-spacing: 0 !important;
+}
+
+body.pb-v50-unified .toolbar-row-primary {
+  gap: 8px !important;
+}
+
+@media (min-width: 1101px) {
+  body.pb-v50-unified .toolbar-row-primary :where(
+    .search-box,
+    .class-mode-btn,
+    .filter-reset-btn,
+    .pb-v50-filter-toggle,
+    .controls
+  ) {
+    grid-row: 1 !important;
+  }
+}
+
+body.pb-v50-unified .toolbar-row-primary :where(input, select, button),
+body.pb-v50-unified .pb-v50-filter-toggle {
+  min-height: 42px !important;
+  border-radius: var(--pb-radius) !important;
+}
+
+body.pb-v50-unified .toolbar-row-orientation {
+  display: block !important;
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.pb-v50-unified .view-orientation {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-height: 42px !important;
+  padding: 7px 10px !important;
+  border: 1px solid rgba(255, 255, 255, .14) !important;
+  border-radius: var(--pb-radius) !important;
+  background: #1a252a !important;
+}
+
+body.pb-v50-unified .view-orientation-tier {
+  padding: 4px 7px !important;
+  border: 1px solid rgba(242, 189, 69, .38) !important;
+  border-radius: 5px !important;
+  color: #f5d98f !important;
+  background: transparent !important;
+  letter-spacing: 0 !important;
+}
+
+body.pb-v50-unified .view-orientation-title-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+body.pb-v50-unified .view-orientation-title-row h2 {
+  margin: 0 !important;
+  color: #fff !important;
+  font-family: var(--font-sans) !important;
+  font-size: .92rem !important;
+  line-height: 1.25 !important;
+}
+
+body.pb-v50-unified .view-orientation-family {
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  color: #d9eee7 !important;
+  background: rgba(11, 115, 95, .34) !important;
+  font-size: .67rem !important;
+}
+
+body.pb-v50-unified :where(.view-orientation-copy, .view-orientation-meta) {
+  display: none !important;
+}
+
+body.pb-v50-unified :where(.toolbar-row-filters, .time-filter-panel, .active-filter-summary) {
+  border-radius: var(--pb-radius) !important;
+  background: #f6f7f5 !important;
+}
+
+/* Each scientific view now follows the same visual grammar. */
+body.pb-v50-unified .view-section.active {
+  overflow: clip !important;
+  border: 1px solid var(--pb-line) !important;
+  border-radius: var(--pb-radius) !important;
+  background: var(--pb-paper) !important;
+  box-shadow: var(--pb-shadow) !important;
+}
+
+body.pb-v50-unified .view-hero {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 20px !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .15) !important;
+  border-radius: 0 !important;
+  background: #12384a !important;
+  box-shadow: none !important;
+}
+
+body.pb-v50-unified .view-hero-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.05fr) minmax(520px, .95fr) !important;
+  gap: 20px !important;
+  align-items: start !important;
+}
+
+body.pb-v50-unified .view-hero-title-row h2 {
+  margin: 0 !important;
+  font-size: 1.75rem !important;
+  line-height: 1.12 !important;
+  letter-spacing: 0 !important;
+}
+
+body.pb-v50-unified .view-hero-description {
+  max-width: 70ch !important;
+  margin-block: 10px 12px !important;
+  line-height: 1.55 !important;
+}
+
+body.pb-v50-unified .view-hero-side {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  align-items: stretch !important;
+}
+
+body.pb-v50-unified .view-hero-side .v34-block-cover {
+  min-height: 124px !important;
+  border-radius: var(--pb-radius) !important;
+}
+
+body.pb-v50-unified .view-hero-card {
+  min-height: 0 !important;
+  padding: 11px 12px !important;
+  border: 1px solid rgba(255, 255, 255, .16) !important;
+  border-radius: var(--pb-radius) !important;
+  background: rgba(255, 255, 255, .96) !important;
+  box-shadow: none !important;
+}
+
+body.pb-v50-unified .view-hero-card :where(p, span) {
+  line-height: 1.45 !important;
+}
+
+body.pb-v50-unified .view-section.active > :not(.view-hero) {
+  max-width: 100%;
+}
+
+body.pb-v50-unified :where(
+  .species-item,
+  .teaching-card,
+  .evidence-legend-panel,
+  .critical-guide-card,
+  .argument-scaffold-card,
+  .misconception-card,
+  .leveled-inquiry-card,
+  .evidence-interpretation-card,
+  .confidence-scale-card,
+  .hypothesis-card,
+  .context-outer,
+  .continents-outer,
+  .continent-panel,
+  .america-outer,
+  .america-panel,
+  .site-outer,
+  .site-card,
+  .debate-outer,
+  .debate-card
+) {
+  border-radius: var(--pb-radius) !important;
+  box-shadow: none !important;
+}
+
+body.pb-v50-unified :where(
+  .species-item,
+  .teaching-card,
+  .glossary-card,
+  .site-card,
+  .debate-card,
+  .continent-panel,
+  .america-site-card,
+  .america-activity-card,
+  .holotype-card,
+  .resource-card
+) {
+  content-visibility: auto;
+  contain-intrinsic-size: 220px;
+}
+
+body.pb-v50-unified :where(.species-item, .teaching-card, .site-card, .debate-card):hover {
+  border-color: #91aaa2 !important;
+}
+
+body.pb-v50-unified .classroom-task-card {
+  margin: 14px !important;
+  border-radius: var(--pb-radius) !important;
+  background: var(--pb-teal-soft) !important;
+}
+
+body.pb-v50-unified .classroom-task-card > summary {
+  min-height: 36px;
+  align-items: center;
+}
+
+/* Dialogs and floating tools stay inside the viewport and never cover one another. */
+body.pb-v50-unified :where(.modal, .modal-overlay) {
+  padding: 16px !important;
+  background: rgba(9, 20, 25, .74) !important;
+}
+
+body.pb-v50-unified .modal-content {
+  width: min(1120px, calc(100vw - 32px)) !important;
+  max-height: calc(100dvh - 32px) !important;
+  border: 1px solid var(--pb-line) !important;
+  border-radius: var(--pb-radius) !important;
+  background: var(--pb-paper) !important;
+  box-shadow: 0 18px 56px rgba(9, 20, 25, .28) !important;
+  overscroll-behavior: contain;
+}
+
+body.pb-v50-unified .modal-content.has-modal-back {
+  padding-top: 72px !important;
+}
+
+body.pb-v50-unified .modal-content.has-modal-back > h2:first-of-type {
+  margin-top: 0 !important;
+  margin-right: 52px !important;
+}
+
+body.pb-v50-unified .modal-back-btn {
+  min-height: 38px !important;
+  border: 1px solid #9eaaa7 !important;
+  border-radius: 6px !important;
+  color: var(--pb-ink) !important;
+  background: #fff !important;
+  transform: none !important;
+}
+
+body.pb-v50-unified .modal-back-btn:hover,
+body.pb-v50-unified .modal-back-btn:focus-visible {
+  border-color: var(--pb-teal) !important;
+  color: #084f43 !important;
+  background: var(--pb-teal-soft) !important;
+  transform: none !important;
+}
+
+body.pb-v50-unified .bib-title-year {
+  display: inline-block;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+body.pb-v50-unified.pb-workspace-entered #pb-mobile-tools-toggle,
+body.pb-v50-unified .scroll-top-btn {
+  border-radius: var(--pb-radius) !important;
+  background: var(--pb-night) !important;
+}
+
+body.pb-v50-unified.pb-workspace-entered.pb-mobile-tools-open .fab-group {
+  padding: 6px !important;
+  border: 1px solid rgba(255, 255, 255, .14) !important;
+  border-radius: var(--pb-radius) !important;
+  background: #151d20 !important;
+  box-shadow: 0 12px 30px rgba(9, 20, 25, .28) !important;
+}
+
+@media (max-width: 1280px) {
+  body.pb-v50-unified .view-hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.pb-v50-unified .view-hero-side {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .pb-landing-hero h1 {
+    font-size: 3rem !important;
+  }
+
+  body.pb-v50-unified .view-hero-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body.pb-v50-unified :where(.modal, .modal-overlay) {
+    padding: 8px !important;
+  }
+
+  body.pb-v50-unified .modal-content {
+    width: calc(100vw - 16px) !important;
+    max-height: calc(100dvh - 16px) !important;
+  }
+
+  body.pb-v50-unified .modal-content.has-modal-back {
+    padding-top: 66px !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .pb-landing-hero {
+    min-height: 540px !important;
+  }
+
+  .pb-landing-hero-content {
+    width: calc(100% - 28px) !important;
+    padding-block: 36px 52px !important;
+  }
+
+  .pb-landing-hero h1 {
+    font-size: 2.45rem !important;
+  }
+
+  .pb-landing-subtitle {
+    font-size: 1.15rem !important;
+  }
+
+  .pb-landing-credit {
+    right: 14px !important;
+    left: 14px !important;
+    max-width: none !important;
+  }
+
+  body.pb-v50-unified .toolbar {
+    padding: 8px !important;
+  }
+
+  body.pb-v50-unified .view-orientation {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+
+  body.pb-v50-unified .view-orientation-tier {
+    width: max-content;
+  }
+
+  body.pb-v50-unified .view-hero {
+    padding: 16px !important;
+  }
+
+  body.pb-v50-unified .view-hero-title-row {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+  }
+
+  body.pb-v50-unified .view-hero-title-row h2 {
+    font-size: 1.45rem !important;
+  }
+
+  body.pb-v50-unified .view-hero-side {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.pb-v50-unified .classroom-task-card {
+    margin: 10px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.pb-v50-unified *,
+  #pb-hub * {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Presentation mode: keep each species legible and isolate its controls. */
+body.pres-active :where(.fab-group, #pb-mobile-tools-toggle, #pb-a11y-toolbar-root, .scroll-top-btn),
+body:has(#presOverlay.active) :where(.fab-group, #pb-mobile-tools-toggle, #pb-a11y-toolbar-root, .scroll-top-btn) {
+  display: none !important;
+}
+
+#presOverlay.active .pres-info-panel {
+  scroll-behavior: auto !important;
+  overscroll-behavior: contain;
+}
+
+#presOverlay.active .pres-data-row {
+  align-items: start !important;
+}
+
+#presOverlay.active .pres-mini-panel {
+  align-self: start !important;
+  min-height: 0 !important;
+  border-radius: 8px !important;
+}
+
+#presOverlay.active .pres-map-mini {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 180px;
+  aspect-ratio: 2 / 1;
+  border-radius: 8px !important;
+}
+
+#presOverlay.active .pres-map-mini :where(
+  .pres-map-question,
+  .pres-map-instruction,
+  .pres-map-lesson-card,
+  .pres-map-lesson-title,
+  .pres-map-lesson-text,
+  .pres-map-step-badge,
+  .pres-map-step-num
+) {
+  display: none !important;
+}
+
+#presOverlay.active :where(.pres-topbar, .pres-nav-bar) {
+  position: relative;
+  z-index: 3;
+}
+
+/* Phylogeny: compact node markers keep branches and taxon labels readable. */
+body.pb-v50-unified .phylo-scroll {
+  max-height: min(74dvh, 820px);
+  overflow: auto;
+  scrollbar-gutter: stable;
+  border-radius: 8px !important;
+}
+
+body.pb-v50-unified #cladeNodeInfo {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 20px rgba(36, 49, 54, .14);
+}
+
+body.pb-v50-unified .phylo-cladogram-svg {
+  min-width: 1180px;
+  border-radius: 8px !important;
+}
+
+body.pb-v50-unified .clado-node .clado-node-code {
+  fill: #fff;
+  stroke: none;
+  font-family: var(--font-mono, monospace);
+  font-size: 8px;
+  font-weight: 900;
+  pointer-events: none;
+}
+
+body.pb-v50-unified .clado-node:is(:hover, :focus, .is-selected) circle {
+  stroke: #172b35;
+  stroke-width: 4px;
+  filter: drop-shadow(0 0 5px rgba(214, 139, 39, .72));
+}
+
+body.pb-v50-unified .clado-axis-label {
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* Glossary: distinguish search results from disciplinary filters. */
+body.pb-v50-unified .pb-glossary-pager button[hidden] {
+  display: none !important;
+}
+
+body.pb-v50-unified .pb-glossary-pager button:not([hidden]):not(:disabled) {
+  color: #fff !important;
+  background: #163947 !important;
+  border-color: #163947 !important;
+}
+
+body.pb-v50-unified .pb-glossary-pager button:disabled {
+  color: #66737a !important;
+  background: #e2e6e5 !important;
+  border-color: #c8cfcc !important;
+  cursor: default;
+}
+
+body.pb-v50-unified #pbV63GlossStatus {
+  white-space: nowrap;
+}
+
+body.pb-v50-unified .v34-gloss-filter button.active {
+  color: #fff !important;
+  background: #163947 !important;
+  border-color: #163947 !important;
+}
+
+@media print {
+  body.pb-v50-unified {
+    background: #fff !important;
+  }
+
+  body.pb-v50-unified :where(.toolbar, .fab-group, #pb-mobile-tools-toggle, #pb-a11y-toolbar-root, .scroll-top-btn) {
+    display: none !important;
+  }
+
+  body.pb-v50-unified .view-section.active {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}

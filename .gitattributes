@@ -8,3 +8,6 @@
 /experimental/** -text
 /baselines/** -text
 /docs/auditoria/** -text
+
+# El paquete IMS importado conserva sus bytes originales (huellas en provenance/ATLAS_V1_IMPORT.json)
+atlas/** -text

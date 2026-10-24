@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: diagrama de parentesco y diversidad del atlas. Representa
+  los táxones homininos agrupados por clado a lo largo del tiempo. Diales:
+  VARIANZA_VISUAL 5 / INTENSIDAD_ANIMACION 2 / DENSIDAD_CONTENIDO 6.
+
+  HONESTIDAD EPISTÉMICA. La filogenia de los homininos está genuinamente
+  debatida y no existe un cladograma de consenso único. Este diagrama NO afirma
+  un árbol definitivo: muestra agrupaciones convencionales por clado y su
+  distribución temporal, marca los nudos y placements contestados, y representa
+  las relaciones entre clados como hipótesis (líneas discontinuas). Es una
+  simplificación pedagógica, no una filogenia resuelta (Wood y Boyle, 2016,
+  https://doi.org/10.1002/ajpa.22902).
+
+  Consume la fuente única de datos (datos.js). Accesibilidad: nodos navegables
+  por teclado, alternativa textual, contraste alto, prefers-reduced-motion.
+  Autonomía salvo tipografías. Licencia CC BY-NC 4.0 · ULPGC.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parentesco y diversidad · Atlas de paleoantropología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:12px;
+  --c-basales:#c98a4b;--c-austra:#d8a93a;--c-paran:#7fae9a;--c-homo:#cbb488;
+  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6}
+a{color:var(--acento)}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto:focus{left:0}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.volver:hover{border-color:var(--acento);color:var(--acento)}
+.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver svg{width:18px;height:18px}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:.95rem}
+.barra nav{display:flex;gap:1.1rem}
+.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:.92rem}
+
+.cabecera{max-width:1150px;margin:0 auto;padding:6vh 5vw 1vh}
+.cabecera .k{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:.8rem}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:.6rem}
+.cabecera p{color:var(--tinta-suave);max-width:72ch}
+.aviso{max-width:1150px;margin:1.4rem auto 0;padding:0 5vw}
+.aviso .caja{background:rgba(216,169,58,.07);border:1px solid rgba(216,169,58,.32);border-radius:var(--radio);padding:1rem 1.2rem;font-size:.92rem;color:var(--tinta-suave)}
+
+.leyenda{max-width:1150px;margin:1.6rem auto 0;padding:0 5vw;display:flex;gap:1.2rem;flex-wrap:wrap}
+.leyenda span{display:inline-flex;align-items:center;gap:.45rem;font-size:.88rem;color:var(--tinta-suave)}
+.leyenda i{width:16px;height:16px;border-radius:4px;display:inline-block}
+.leyenda .disc{width:24px;height:0;border-top:2px dashed var(--tinta-suave);border-radius:0}
+.leyenda .deb{width:16px;height:16px;border:2px dashed var(--acento);border-radius:50%}
+
+.lienzo{max-width:1150px;margin:1.4rem auto 0;padding:0 5vw}
+.lienzo svg{width:100%;height:auto;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:var(--radio)}
+.eje-l{font-size:13px;fill:var(--tinta-suave)}
+.trunk{stroke:rgba(243,239,231,.28);stroke-width:2;fill:none}
+.hip{stroke:rgba(243,239,231,.4);stroke-width:2;stroke-dasharray:7 6;fill:none}
+.nodo{cursor:pointer}
+.nodo .disco{stroke:#0d2028;stroke-width:2}
+.nodo .etq{font-size:13px;fill:var(--tinta);font-style:italic}
+.nodo:focus{outline:none}
+.nodo:focus-visible .disco{stroke:#fff;stroke-width:3}
+.nodo[aria-pressed="true"] .disco{stroke:#fff;stroke-width:3}
+.nodo.deb .disco{stroke-dasharray:4 3}
+
+.detalle{max-width:1150px;margin:2.4rem auto 0;padding:0 5vw}
+.detalle .panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.6rem 1.8rem;min-height:120px}
+.detalle .panel h3{font-family:var(--ft);font-weight:700;font-size:1.4rem;margin-bottom:.2rem}
+.detalle .panel .meta{color:var(--acento);font-weight:600;font-size:.9rem;margin-bottom:.7rem}
+.detalle .panel p{color:var(--tinta-suave);margin-bottom:.6rem}
+.detalle .panel .fuente{font-size:.82rem;color:rgba(200,210,206,.75)}
+.detalle .panel .fuente a{word-break:break-all}
+
+.relaciones{max-width:1150px;margin:3rem auto 0;padding:0 5vw}
+.relaciones h2{font-family:var(--ft);font-weight:700;font-size:1.3rem;margin-bottom:.6rem}
+.relaciones p{color:var(--tinta-suave);margin-bottom:1rem}
+.relaciones ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.relaciones li{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:var(--radio);padding:1rem 1.2rem;font-size:.95rem;color:var(--tinta-suave)}
+.relaciones li strong{color:var(--tinta)}
+
+.pie{border-top:1px solid rgba(255,255,255,.1);margin-top:4rem;padding:2.4rem 5vw;color:rgba(200,210,206,.65);font-size:.82rem;line-height:1.7}
+.pie a{color:rgba(216,169,58,.85);word-break:break-all}
+
+@media (prefers-reduced-motion: reduce){.nodo .disco{transition:none}}
+.nodo.destacado .disco{stroke:#fff;stroke-width:3}
+</style>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+<a class="salto" href="#relaciones">Saltar a la descripción de relaciones</a>
+
+<div class="barra">
+  <a class="volver" href="atlas.html" id="volver">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver al atlas
+  </a>
+  <span class="marca">Parentesco y diversidad</span>
+  <nav aria-label="Otras vistas">
+    <a href="cronologia.html" id="ir-crono">Línea del tiempo</a>
+    <a href="introduccion.html">Introducción</a>
+  </nav>
+</div>
+
+<header class="cabecera">
+  <p class="k">Bloque 01 · Parentesco</p>
+  <h1>Qué afinidades muestra el corpus</h1>
+  <p>Las entradas del corpus se agrupan por afinidad y se distribuyen a lo largo del tiempo. El diagrama hace visible la diversidad y la coexistencia; las relaciones se muestran como hipótesis, no como certezas.</p>
+</header>
+
+<div class="aviso">
+  <div class="caja">
+    <strong>Advertencia epistémica.</strong> La filogenia de los hominoideos y homininos está debatida y no existe un cladograma de consenso único. Este esquema es una simplificación pedagógica: agrupa las entradas por afinidades convencionales, señala con trazo discontinuo relaciones hipotéticas y marca con círculo discontinuo las posiciones especialmente controvertidas. No es proporcional al tiempo: dentro de cada grupo las entradas se ordenan de más antigua a más reciente con espaciado uniforme; para la cronología exacta, consulta la línea del tiempo. No debe leerse como una filogenia resuelta.
+  </div>
+</div>
+
+<div class="leyenda" id="leyenda" aria-hidden="true"></div>
+
+<main id="lienzo" class="lienzo" aria-label="Diagrama de afinidad y diversidad del corpus paleoantropológico">
+  <svg id="svg" viewBox="0 0 1000 760" role="group" aria-describedby="relaciones"></svg>
+</main>
+
+<section class="detalle" aria-live="polite">
+  <div class="panel" id="panel">
+    <h3>Selecciona una entrada</h3>
+    <p class="meta">Explora el diagrama</p>
+    <p>Pulsa cualquier nodo (o navega con el tabulador y pulsa Intro) para ver el clado, el rango temporal y la fuente de cada táxon.</p>
+  </div>
+</section>
+
+<section class="relaciones" id="relaciones">
+  <h2>Relaciones establecidas y cuestiones abiertas</h2>
+  <p>Alternativa textual del diagrama. Distingue lo razonablemente sostenido de lo que permanece en debate.</p>
+  <ul>
+    <li><strong>Coexistencia.</strong> Varias especies vivieron a la vez; la evolución humana es ramificada, no lineal. Es el punto mejor sostenido y el que ordena el atlas.</li>
+    <li><strong>Hominoideos miocenos y formas basales.</strong> Los grandes simios miocenos aportan contexto, pero no deben leerse como antepasados humanos directos. Sahelanthropus, Orrorin y Ardipithecus se sitúan cerca de la divergencia con los chimpancés, aunque su posición exacta sigue discutida.</li>
+    <li><strong>Grado australopiteco.</strong> Australopithecus se considera próximo al origen de los linajes posteriores, aunque cuál de sus especies conduce a Homo no está resuelto.</li>
+    <li><strong>Paranthropus.</strong> Los australopitecos robustos forman un grupo convencional, pero su monofilia, es decir, si descienden de un antepasado común exclusivo, está debatida.</li>
+    <li><strong>Homo.</strong> El género agrupa a nuestra especie y a formas afines; el flujo génico entre neandertales y sapiens no africanos está documentado por ADN antiguo. La validez de algunos táxones y la posición de naledi o floresiensis siguen abiertas.</li>
+  </ul>
+</section>
+
+<footer class="pie">
+  Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria ·
+  Contenido bajo licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>.
+  Fuente de los táxones y rangos: Wood y Boyle (2016), <a href="https://doi.org/10.1002/ajpa.22902" target="_blank" rel="noopener">https://doi.org/10.1002/ajpa.22902</a>, y estudios primarios citados en la línea del tiempo.
+</footer>
+
+<script src="datos.js"></script>
+<script>
+(() => {
+  'use strict';
+  const D = window.AtlasPaleo;
+  const panel = document.getElementById('panel');
+  if (!D) { panel.innerHTML = '<h3>Error de datos</h3><p>No se pudo cargar datos.js.</p>'; return; }
+
+  const SVG = 'http://www.w3.org/2000/svg';
+  const svg = document.getElementById('svg');
+  const el = (n, a) => { const e = document.createElementNS(SVG, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+
+  // Esquema NO proporcional al tiempo: dentro de cada clado los taxones se
+  // reparten con espaciado uniforme (de mas antiguo a mas reciente), lo que
+  // evita solapamientos. La cronologia exacta reside en la linea del tiempo.
+  // Columnas por clado, calculadas dinámicamente para admitir cualquier número
+  // de clados. El esquema NO es proporcional al tiempo (véase la advertencia).
+  const cladeKeys = Object.keys(D.clados);
+  const W = 1220, X0 = 150, X1 = 980;
+  const COLX = {};
+  cladeKeys.forEach((ck, i) => { COLX[ck] = cladeKeys.length > 1 ? X0 + i * (X1 - X0) / (cladeKeys.length - 1) : (X0 + X1) / 2; });
+  const TOP = 84, ROW = 60;
+
+  const fmt = (ma) => ma >= 1 ? ma.toFixed(1).replace('.', ',') : (ma * 1000).toFixed(0) + ' ka';
+  const rango = (t) => `${fmt(t.desde)} a ${t.hasta === 0 ? 'presente' : fmt(t.hasta)}`;
+  const citar = (t) => t.fuentes.map(id => { const f = D.fuentes[id]; if (!f) return ''; return f.doi ? `${f.cita} DOI: <a href="https://doi.org/${f.doi}" target="_blank" rel="noopener">${f.doi}</a>` : f.cita; }).filter(Boolean).join('<br>');
+  function mostrar(t) {
+    const deb = t.debatido ? '<p class="fuente">Posición filogenética especialmente controvertida.</p>' : '';
+    panel.innerHTML = `<h3><em>${t.n}</em></h3><p class="meta">${D.clados[t.c].nombre} \u00b7 ${rango(t)}</p><p>${t.nota}</p>${deb}<p class="fuente">Fuente: ${citar(t)}</p><p><a href="ficha.html?id=${t.id}">Ver ficha completa</a></p>`;
+    document.querySelectorAll('.nodo').forEach(g => g.setAttribute('aria-pressed', String(g.dataset.id === t.id)));
+  }
+
+  const porClado = {};
+  D.taxones.forEach(t => { (porClado[t.c] = porClado[t.c] || []).push(t); });
+  Object.keys(porClado).forEach(ck => porClado[ck].sort((a, b) => b.desde - a.desde));
+
+  const pos = {};
+  Object.keys(porClado).forEach(ck => porClado[ck].forEach((t, i) => { pos[t.id] = { x: COLX[ck], y: TOP + i * ROW }; }));
+  const maxN = Math.max.apply(null, Object.values(porClado).map(a => a.length));
+  const H = TOP + (maxN - 1) * ROW + 96;
+
+  const defs = el('defs', {});
+  const mk = el('marker', { id: 'flecha', markerWidth: '8', markerHeight: '8', refX: '4', refY: '4', orient: 'auto' });
+  mk.appendChild(el('path', { d: 'M0,0 L8,4 L0,8 Z', fill: 'rgba(243,239,231,.4)' }));
+  defs.appendChild(mk); svg.appendChild(defs);
+  svg.appendChild(el('line', { x1: 56, y1: TOP - 18, x2: 56, y2: H - 84, stroke: 'rgba(243,239,231,.28)', 'stroke-width': 2, 'marker-end': 'url(#flecha)' }));
+  const l1 = el('text', { x: 56, y: TOP - 30, 'text-anchor': 'middle', class: 'eje-l' }); l1.textContent = 'antiguo'; svg.appendChild(l1);
+  const l2 = el('text', { x: 56, y: H - 66, 'text-anchor': 'middle', class: 'eje-l' }); l2.textContent = 'reciente'; svg.appendChild(l2);
+
+  Object.keys(porClado).forEach(ck => { const a = porClado[ck]; if (a.length > 1) { const p = pos[a[0].id], q = pos[a[a.length - 1].id]; svg.appendChild(el('path', { class: 'trunk', d: `M${p.x},${p.y} L${q.x},${q.y}` })); } });
+
+  const tail = ck => pos[porClado[ck][porClado[ck].length - 1].id];
+  const head = ck => pos[porClado[ck][0].id];
+  const hip = (a, b) => svg.appendChild(el('path', { class: 'hip', d: `M${a.x},${a.y} C${(a.x + b.x) / 2},${a.y} ${(a.x + b.x) / 2},${b.y} ${b.x},${b.y}` }));
+  hip(tail('basales'), head('austra')); hip(tail('austra'), head('paran')); hip(tail('austra'), head('homo'));
+
+  D.taxones.forEach(t => {
+    const p = pos[t.id];
+    const g = el('g', { class: 'nodo' + (t.debatido ? ' deb' : ''), tabindex: '0', role: 'button', 'aria-pressed': 'false', 'aria-label': `${t.n}. ${D.clados[t.c].nombre}. Rango aproximado ${rango(t)}.` });
+    g.dataset.id = t.id;
+    g.appendChild(el('circle', { class: 'disco', cx: p.x, cy: p.y, r: 8, fill: D.clados[t.c].color }));
+    const lx = p.x + 16;
+    const tx = el('text', { class: 'etq', x: lx, y: p.y - 1, 'text-anchor': 'start' }); tx.textContent = t.n.split(' ')[1] || t.n; g.appendChild(tx);
+    const rg = el('text', { x: lx, y: p.y + 14, 'text-anchor': 'start', 'font-size': '11', fill: 'rgba(200,210,206,.7)' }); rg.textContent = rango(t); g.appendChild(rg);
+    g.addEventListener('click', () => mostrar(t));
+    g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mostrar(t); } });
+    svg.appendChild(g);
+  });
+
+  Object.keys(COLX).forEach(ck => { const tx = el('text', { x: COLX[ck], y: TOP - 40, 'text-anchor': 'middle', class: 'eje-l', 'font-weight': '700' }); tx.setAttribute('fill', D.clados[ck].color); tx.textContent = D.clados[ck].nombre; svg.appendChild(tx); });
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  const ley = document.getElementById('leyenda');
+  Object.values(D.clados).forEach(cl => { const s = document.createElement('span'); s.innerHTML = `<i style="background:${cl.color}"></i>${cl.nombre}`; ley.appendChild(s); });
+  const s1 = document.createElement('span'); s1.innerHTML = `<i class="disc"></i>Relación hipotética entre clados`; ley.appendChild(s1);
+  const s2 = document.createElement('span'); s2.innerHTML = `<i class="deb"></i>Posición especialmente debatida`; ley.appendChild(s2);
+  // Resaltado por identidad: parentesco.html?taxon=<id>
+  (function () {
+    const rd = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pid = new URLSearchParams(location.search).get('taxon');
+    if (!pid) return;
+    const t = D.taxones.find(x => x.id === pid);
+    if (!t) return;
+    mostrar(t);
+    const g = document.querySelector('.nodo[data-id="' + pid + '"]');
+    if (g) { g.scrollIntoView({ block: 'center', behavior: rd ? 'auto' : 'smooth' }); g.classList.add('destacado'); try { g.focus({ preventScroll: true }); } catch (e) { g.focus(); } }
+  })();
+
+})();
+</script>
+</body>
+</html>

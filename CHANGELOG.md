@@ -1,5 +1,15 @@
 # Registro de cambios
 
+## Integración del atlas v1.0 · 24-10-2026
+
+- Se añade `atlas/` con el paquete Atlas-PaleoBot-v1.0-Moodle-IMS (169 archivos
+  idénticos al ZIP recibido; huellas en `provenance/ATLAS_V1_IMPORT.json`).
+- Se añade `docs/atlas-v1/` con guía visual, didáctica y científica, cuatro capturas
+  y los hallazgos de la auditoría de integración.
+- No se modifica el código del paquete, la entrada v11, el Atlas R98 ni la licencia.
+- Sigue NO_GO para promoción docente; Moodle, lector de pantalla y navegadores
+  distintos de Chromium sin ejecutar.
+
 ## PB-GH-01 · 24-10-2026
 
 - Preparación del repositorio con entrada ligera v11 preservada, v9 de referencia

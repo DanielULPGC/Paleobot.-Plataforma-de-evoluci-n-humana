@@ -1,0 +1,70 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v77-search-guard-style */
+body.pb-v50-unified #globalSearchModal.active {
+  position: fixed !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+  z-index: 9800 !important;
+}
+
+body.pb-v50-unified #globalSearchModal .modal-content {
+  width: min(760px, calc(100vw - 48px)) !important;
+  max-width: min(760px, calc(100vw - 48px)) !important;
+  max-height: min(78vh, 680px) !important;
+  background: #fffdf8 !important;
+  color: #102132 !important;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34) !important;
+}
+
+body.pb-v50-unified #gsInput {
+  color: #102132 !important;
+}
+
+body.pb-v50-unified #gs-listbox {
+  max-height: min(48vh, 430px) !important;
+}
+
+body.pb-v50-unified #globalSearchModal .gs-result {
+  min-height: 44px !important;
+  color: #102132 !important;
+  border: 1px solid transparent !important;
+}
+
+body.pb-v50-unified #globalSearchModal .gs-result:hover,
+body.pb-v50-unified #globalSearchModal .gs-result[aria-selected="true"] {
+  background: #eef5f2 !important;
+  border-color: #b9d8cf !important;
+}
+
+body.pb-v50-unified #globalSearchModal .gs-result-title {
+  color: #102132 !important;
+  font-size: 0.96rem !important;
+  line-height: 1.35 !important;
+}
+
+body.pb-v50-unified #globalSearchModal .gs-result-sub {
+  display: block !important;
+  margin-top: 2px !important;
+  color: #52657a !important;
+  font-size: 0.78rem !important;
+  line-height: 1.35 !important;
+}
+
+body.pb-v50-unified #globalSearchModal .gs-type-badge {
+  min-width: 78px !important;
+  text-align: center !important;
+}
+
+@media (max-width: 700px) {
+  body.pb-v50-unified #globalSearchModal.active {
+    align-items: flex-start !important;
+    padding: 70px 10px 18px !important;
+  }
+
+  body.pb-v50-unified #globalSearchModal .modal-content {
+    width: calc(100vw - 20px) !important;
+    max-width: calc(100vw - 20px) !important;
+  }
+}

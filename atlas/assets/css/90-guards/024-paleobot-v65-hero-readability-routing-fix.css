@@ -1,0 +1,58 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v65-hero-readability-routing-fix */
+body.pb-v50-unified .view-hero{
+  width:100%!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+  padding:clamp(18px,2.2vw,30px)!important;
+}
+body.pb-v50-unified .view-hero-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(320px,420px)!important;
+  gap:clamp(18px,2.4vw,32px)!important;
+  max-width:100%!important;
+  align-items:start!important;
+}
+body.pb-v50-unified .view-hero-title-row h3,
+body.pb-v50-unified .view-hero-kicker,
+body.pb-v50-unified .view-hero-description{
+  text-shadow:0 1px 2px rgba(0,0,0,.24)!important;
+}
+body.pb-v50-unified .view-hero-card,
+body.pb-v50-unified .context-guide-card{
+  background:#f8fafc!important;
+  color:#172331!important;
+  border-color:rgba(23,35,49,.18)!important;
+}
+body.pb-v50-unified .view-hero-card *,
+body.pb-v50-unified .context-guide-card *,
+body.pb-v50-unified .view-hero-list span,
+body.pb-v50-unified .view-hero-list b{
+  color:#172331!important;
+  text-shadow:none!important;
+}
+body.pb-v50-unified .view-hero-card p,
+body.pb-v50-unified .view-hero-list span,
+body.pb-v50-unified .context-guide-card p,
+body.pb-v50-unified .context-guide-card li{
+  color:#243449!important;
+  line-height:1.58!important;
+  overflow-wrap:anywhere!important;
+}
+body.pb-v50-unified .view-hero-actions{
+  display:none!important;
+}
+body.pb-v50-unified .view-hero-badge{
+  background:rgba(255,255,255,.9)!important;
+  color:#172331!important;
+  border:1px solid rgba(23,35,49,.16)!important;
+}
+body.pb-v50-unified .view-hero-pill{
+  background:#eef3f7!important;
+  color:#172331!important;
+  border-color:rgba(23,35,49,.16)!important;
+}
+@media(max-width:980px){
+  body.pb-v50-unified .view-hero-grid{
+    grid-template-columns:1fr!important;
+  }
+}

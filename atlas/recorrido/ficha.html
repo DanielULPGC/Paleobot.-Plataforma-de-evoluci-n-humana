@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: ficha del corpus del Atlas de paleoantropología. Consolida
+  para cada táxon sus dimensiones cronológica, filogenética y territorial, más
+  una glosa etimológica (Filología), y remite a las vistas interactivas. Sin
+  parámetro de identidad, muestra el índice del corpus. Diales: VARIANZA_VISUAL
+  4 / INTENSIDAD_ANIMACION 1 / DENSIDAD_CONTENIDO 7.
+
+  Consume la fuente única (datos.js). No introduce datos empíricos nuevos no
+  verificados: presenta el corpus existente en forma consolidada. La etimología
+  es una glosa lingüística documentada en las descripciones originales.
+  Accesibilidad: HTML semántico, foco visible, enlace de salto. Licencia CC
+  BY-NC 4.0 · ULPGC.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fichas del corpus · Atlas de paleoantropología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:12px;
+  --c-basales:#c98a4b;--c-austra:#d8a93a;--c-paran:#7fae9a;--c-homo:#cbb488;
+  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.65}
+a{color:var(--acento)}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto:focus{left:0}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.volver:hover{border-color:var(--acento);color:var(--acento)}
+.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver svg{width:18px;height:18px}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:.95rem}
+.barra nav{display:flex;gap:1.1rem}
+.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:.92rem}
+
+.envoltorio{max-width:920px;margin:0 auto;padding:6vh 5vw 8vh}
+
+/* Ficha */
+.cabecera-f{border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:1.4rem;margin-bottom:1.8rem}
+.badge{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.06em;color:#141008;padding:.2rem .7rem;border-radius:99px;margin-bottom:1rem}
+.cabecera-f h1{font-family:var(--ft);font-weight:700;font-size:clamp(2rem,6vw,3.4rem);line-height:1.02}
+.cabecera-f .binomial{font-family:var(--ft);font-style:italic;color:var(--tinta-suave);font-size:clamp(1rem,2.5vw,1.4rem);margin-top:.2rem}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-bottom:1.8rem}
+.campo{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.1rem 1.3rem}
+.campo h2{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acento);font-weight:700;margin-bottom:.4rem}
+.campo p{color:var(--tinta);font-size:1rem}
+.campo p.sub{color:var(--tinta-suave);font-size:.88rem;margin-top:.3rem}
+.bloque-texto{margin-bottom:1.6rem}
+.bloque-texto h2{font-family:var(--ft);font-weight:700;font-size:1.2rem;margin-bottom:.4rem}
+.bloque-texto p{color:var(--tinta-suave)}
+.fuentes{font-size:.85rem;color:rgba(200,210,206,.8)}
+.fuentes a{word-break:break-all}
+.enlaces-vistas{display:flex;gap:.8rem;flex-wrap:wrap;margin:1.6rem 0}
+.enlaces-vistas a{display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:1px solid rgba(243,239,231,.3);color:var(--tinta);text-decoration:none;font-weight:600;padding:.6rem 1.1rem;border-radius:var(--radio);font-size:.92rem}
+.enlaces-vistas a:hover{border-color:var(--acento);color:var(--acento)}
+.paginacion{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid rgba(255,255,255,.12);padding-top:1.4rem;margin-top:2rem}
+.paginacion a{text-decoration:none;color:var(--tinta);font-weight:600;max-width:45%}
+.paginacion a:hover{color:var(--acento)}
+.paginacion .et{display:block;font-size:.75rem;color:var(--tinta-suave);text-transform:uppercase;letter-spacing:.08em}
+
+/* Índice */
+.indice h1{font-family:var(--ft);font-weight:700;font-size:clamp(1.9rem,5vw,3rem);margin-bottom:.4rem}
+.sinlista{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:.5rem 1.4rem;margin-top:.6rem}
+.sinlista li{color:var(--tinta-suave);font-size:.92rem;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.indice .intro{color:var(--tinta-suave);max-width:60ch;margin-bottom:2.4rem}
+.grupo-idx{margin-bottom:2rem}
+.grupo-idx h2{font-family:var(--ft);font-weight:700;font-size:1.2rem;margin-bottom:.8rem}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.9rem}
+.tarjeta{display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1rem 1.1rem;text-decoration:none;color:inherit;transition:transform .15s,background .2s}
+.tarjeta:hover{transform:translateY(-2px);background:rgba(255,255,255,.07)}
+.tarjeta:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+.tarjeta .nom{font-family:var(--ft);font-style:italic;font-weight:700;font-size:1.02rem}
+.tarjeta .rg{color:var(--tinta-suave);font-size:.85rem;margin-top:.2rem}
+
+.pie{border-top:1px solid rgba(255,255,255,.1);margin-top:3rem;padding:2.4rem 5vw;text-align:center;color:rgba(200,210,206,.65);font-size:.82rem;line-height:1.7}
+.pie a{color:rgba(216,169,58,.85);word-break:break-all}
+</style>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<div class="barra">
+  <a class="volver" href="atlas.html" id="volver">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver al atlas
+  </a>
+  <span class="marca">Fichas del corpus</span>
+  <nav aria-label="Otras vistas">
+    <a href="cronologia.html">Línea del tiempo</a>
+    <a href="ficha.html" id="ir-indice">Índice</a>
+  </nav>
+</div>
+
+<main id="contenido" class="envoltorio" aria-live="polite"></main>
+
+<footer class="pie">
+  Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria ·
+  Contenido bajo licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
+</footer>
+
+<script src="datos.js"></script>
+<script>
+(() => {
+  'use strict';
+  const D = window.AtlasPaleo;
+  const main = document.getElementById('contenido');
+  if (!D) { main.innerHTML = '<p>No se pudo cargar datos.js.</p>'; return; }
+
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+  const fmt = (ma) => ma >= 1 ? ma.toFixed(1).replace('.', ',') : (ma * 1000).toFixed(0) + ' ka';
+  const rango = (t) => `${fmt(t.desde)} a ${t.hasta === 0 ? 'presente' : fmt(t.hasta)}`;
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const citar = (t) => t.fuentes.map(fid => { const f = D.fuentes[fid]; if (!f) return ''; return f.doi ? `${f.cita} DOI: <a href="https://doi.org/${f.doi}" target="_blank" rel="noopener">${f.doi}</a>` : f.cita; }).filter(Boolean).join('<br>');
+
+  const t = id ? D.taxones.find(x => x.id === id) : null;
+
+  if (t) {
+    document.title = `${t.n} · Ficha · Atlas de paleoantropología`;
+    const cl = D.clados[t.c];
+    const reg = D.regiones[t.region];
+    const idx = D.taxones.indexOf(t);
+    const prev = D.taxones[idx - 1], next = D.taxones[idx + 1];
+    const epiteto = t.id === 'denisovanos' ? t.n : (t.n.split(' ').slice(1).join(' ') || t.n);
+
+    main.innerHTML = `
+      <article class="ficha">
+        <div class="cabecera-f">
+          <span class="badge" style="background:${cl.color}">${cl.nombre}</span>
+          <h1>${esc(epiteto)}</h1>
+          <div class="binomial">${esc(t.n)}</div>
+        </div>
+        <div class="campos">
+          <div class="campo"><h2>Cronología</h2><p>${rango(t)}</p><p class="sub">Rango aproximado en millones de años, revisable.</p></div>
+          <div class="campo"><h2>Territorio</h2><p>${reg ? esc(reg.nombre) : 'Región no asignada'}</p>${t.geoNota ? `<p class="sub">${esc(t.geoNota)}</p>` : ''}</div>
+          <div class="campo"><h2>Clado</h2><p>${cl.nombre}</p></div>
+        </div>
+        <div class="bloque-texto"><h2>Descripción</h2><p>${esc(t.nota)}</p></div>
+        ${t.etimologia ? `<div class="bloque-texto"><h2>Etimología del nombre</h2><p>${esc(t.etimologia)}</p></div>` : ''}
+        <div class="enlaces-vistas">
+          <a href="cronologia.html?taxon=${t.id}">Ver en la línea del tiempo</a>
+          <a href="parentesco.html?taxon=${t.id}">Ver en el parentesco</a>
+          <a href="territorio.html?taxon=${t.id}">Ver en el mapa</a>
+        </div>
+        <div class="bloque-texto"><h2>Fuentes</h2><p class="fuentes">${citar(t)}</p></div>
+        <nav class="paginacion" aria-label="Navegación entre fichas">
+          ${prev ? `<a href="ficha.html?id=${prev.id}"><span class="et">Anterior</span><em>${esc(prev.n)}</em></a>` : '<span></span>'}
+          ${next ? `<a href="ficha.html?id=${next.id}" style="text-align:right"><span class="et">Siguiente</span><em>${esc(next.n)}</em></a>` : '<span></span>'}
+        </nav>
+      </article>`;
+  } else {
+    // Índice del corpus, agrupado por clado
+    document.title = 'Fichas del corpus · Atlas de paleoantropología';
+    let html = `<div class="indice"><h1>Fichas del corpus</h1><p class="intro">Selecciona una de las cincuenta y dos entradas para consultar su cronología, territorio, afinidad, descripción, etimología y fuentes.</p>`;
+    Object.keys(D.clados).forEach(ck => {
+      const arr = D.taxones.filter(x => x.c === ck);
+      if (!arr.length) return;
+      html += `<section class="grupo-idx"><h2>${D.clados[ck].nombre}</h2><div class="rejilla">`;
+      arr.forEach(x => { html += `<a class="tarjeta" href="ficha.html?id=${x.id}"><div class="nom">${esc(x.n)}</div><div class="rg">${rango(x)}</div></a>`; });
+      html += `</div></section>`;
+    });
+    html += `</div>`;
+    if (D.sinonimos && D.sinonimos.length) {
+      html += `<section class="grupo-idx"><h2>Nombres históricos y sinónimos</h2><p class="intro" style="margin:.4rem 0 1rem">Denominaciones propuestas a lo largo de la historia de la disciplina, hoy consideradas sinónimos menores o géneros abandonados. Se incluyen por su valor histórico y no se cuentan como entradas adicionales del corpus.</p><ul class="sinlista">`;
+      D.sinonimos.forEach(s => { html += `<li><em>${esc(s.nombre)}</em> (${esc(s.autor)}) &rarr; ${esc(s.equivale)}</li>`; });
+      html += `</ul></section>`;
+    }
+    main.innerHTML = html;
+  }
+})();
+</script>
+</body>
+</html>

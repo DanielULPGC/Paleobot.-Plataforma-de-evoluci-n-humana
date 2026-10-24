@@ -1,0 +1,176 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v74-floating-a11y-repair-style */
+body.pb-v50-unified {
+  --pb-v74-side-rail-width: 54px;
+  --pb-v74-bottom-tools-height: 54px;
+  padding-right: calc(var(--pb-v74-side-rail-width) + 18px) !important;
+  padding-bottom: calc(var(--pb-v74-bottom-tools-height) + 22px) !important;
+}
+
+body.pb-v50-unified .fab-group {
+  top: 50% !important;
+  right: 10px !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: translateY(-50%) !important;
+  width: 48px !important;
+  max-width: 48px !important;
+  max-height: calc(100vh - 96px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 6px !important;
+  border-radius: 16px !important;
+  background: rgba(7, 10, 10, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  backdrop-filter: blur(9px) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24) !important;
+  gap: 7px !important;
+  z-index: 520 !important;
+}
+
+body.pb-v50-unified .fab-group .fab-wrapper,
+body.pb-v50-unified .fab-group .fab {
+  flex: 0 0 auto !important;
+}
+
+body.pb-v50-unified .fab-group .fab {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  border-radius: 11px !important;
+}
+
+body.pb-v50-unified .fab-group .fab-label {
+  display: none !important;
+}
+
+body.pb-v50-unified #pb-a11y-toolbar-root {
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 12px !important;
+  transform: translateX(-50%) !important;
+  z-index: 515 !important;
+  width: max-content !important;
+  max-width: min(760px, calc(100vw - 96px)) !important;
+  padding: 6px !important;
+  border-radius: 15px !important;
+  background: rgba(7, 10, 10, 0.78) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  backdrop-filter: blur(9px) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22) !important;
+}
+
+body.pb-v50-unified #pb-a11y-toolbar-root .pb-a11y-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+  gap: 5px !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+body.pb-v50-unified #pb-a11y-toolbar-root .pb-a11y-btn,
+body.pb-v50-unified #pb-a11y-toolbar-root .pb-font-btn {
+  min-height: 32px !important;
+  border-color: rgba(255, 255, 255, 0.24) !important;
+  box-shadow: none !important;
+}
+
+body.pb-v50-unified #pb-a11y-toolbar-root .pb-a11y-btn {
+  padding: 6px 9px !important;
+  font-size: 0.72rem !important;
+}
+
+body.pb-v50-unified #pb-a11y-toolbar-root .pb-font-display {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+html.pb-v74-font-80 { font-size: 80% !important; }
+html.pb-v74-font-90 { font-size: 90% !important; }
+html.pb-v74-font-100 { font-size: 100% !important; }
+html.pb-v74-font-110 { font-size: 110% !important; }
+html.pb-v74-font-120 { font-size: 120% !important; }
+html.pb-v74-font-130 { font-size: 130% !important; }
+html.pb-v74-font-140 { font-size: 140% !important; }
+html.pb-v74-font-150 { font-size: 150% !important; }
+
+body.pb-v74-color-deuteranopia {
+  filter: none !important;
+}
+
+body.pb-v74-color-protanopia {
+  filter: none !important;
+}
+
+body.pb-v74-color-achromatopsia {
+  filter: none !important;
+}
+
+body.pb-v74-color-deuteranopia > :not(#pb-a11y-toolbar-root):not(.fab-group):not(.scroll-top-btn):not(.modal-overlay):not(#pb-colorblind-filters) {
+  filter: url("#pb-deuteranopia") !important;
+}
+
+body.pb-v74-color-protanopia > :not(#pb-a11y-toolbar-root):not(.fab-group):not(.scroll-top-btn):not(.modal-overlay):not(#pb-colorblind-filters) {
+  filter: url("#pb-protanopia") !important;
+}
+
+body.pb-v74-color-achromatopsia > :not(#pb-a11y-toolbar-root):not(.fab-group):not(.scroll-top-btn):not(.modal-overlay):not(#pb-colorblind-filters) {
+  filter: grayscale(1) contrast(1.12) !important;
+}
+
+html.pb-v74-high-contrast,
+html.pb-v74-high-contrast body {
+  --primary: #07131f !important;
+  --accent: #005f49 !important;
+  --text-main: #07131f !important;
+  --text-sec: #203044 !important;
+  --border: #69778a !important;
+}
+
+html.pb-v74-high-contrast body.pb-v50-unified .view-section.active,
+html.pb-v74-high-contrast body.pb-v50-unified .teaching-card,
+html.pb-v74-high-contrast body.pb-v50-unified .species-item,
+html.pb-v74-high-contrast body.pb-v50-unified .modal-content {
+  border-color: #07131f !important;
+  box-shadow: 0 0 0 2px rgba(7, 19, 31, 0.18) !important;
+}
+
+@media (max-width: 820px) {
+  body.pb-v50-unified {
+    padding-right: 0 !important;
+    padding-bottom: 126px !important;
+  }
+
+  body.pb-v50-unified .fab-group {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 66px !important;
+    top: auto !important;
+    transform: none !important;
+    width: auto !important;
+    max-width: calc(100vw - 16px) !important;
+    max-height: 52px !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+
+  body.pb-v50-unified #pb-a11y-toolbar-root {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 8px !important;
+    transform: none !important;
+    width: auto !important;
+    max-width: none !important;
+    overflow-x: auto !important;
+  }
+}
+
+@media (max-width: 560px) {
+  body.pb-v50-unified #pb-a11y-toolbar-root .pb-a11y-btn {
+    font-size: 0.68rem !important;
+    padding: 6px 7px !important;
+  }
+}

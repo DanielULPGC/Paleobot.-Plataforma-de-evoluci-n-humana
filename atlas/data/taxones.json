@@ -1,0 +1,1173 @@
+{
+  "meta": {
+    "entidad": "taxones",
+    "version": "0.1.1",
+    "estado": "piloto_compatible_no_runtime",
+    "fechaGeneracion": "2026-07-08",
+    "origen": "recorrido/datos.js::AtlasPaleo.taxones",
+    "descripcion": "Primer desacoplamiento progresivo de la entidad taxones. La aplicacion aun no consume este JSON en tiempo de ejecucion.",
+    "advertencia": "Los campos nivelEvidencia y gradoConsenso son normalizaciones iniciales y deben revisarse contra bibliografia primaria antes de usarse como criterio cientifico definitivo. La region procede del mapeo existente en recorrido/datos.js cuando esta disponible."
+  },
+  "taxones": [
+    {
+      "id": "proconsul",
+      "nombre": "Proconsul",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 23,
+        "hasta": 14
+      },
+      "region": "victoria",
+      "regionNombre": "Cuenca del lago Victoria, Kenia",
+      "notaGeografica": "Género documentado en varios yacimientos del África oriental; el punto representa una región orientativa.",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Hominoideo africano del Mioceno temprano y medio incluido como contexto evolutivo. No es un hominino y su posición interna varía entre análisis.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "morotopithecus",
+      "nombre": "Morotopithecus bishopi",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 20.6,
+        "hasta": 20
+      },
+      "region": "uganda",
+      "regionNombre": "Moroto, Uganda",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "gebo1997",
+      "fuentes": [
+        "gebo1997",
+        "maclatchy2000"
+      ],
+      "notasIncertidumbre": "Hominoideo del Mioceno temprano de Uganda. Su anatomía axial ha sido relevante para discutir el origen de la postura ortógrada, pero su posición filogenética sigue debatida.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "dryopithecus",
+      "nombre": "Dryopithecus",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 12,
+        "hasta": 9
+      },
+      "region": "europa",
+      "regionNombre": "Europa",
+      "notaGeografica": "El género reúne material de distintos yacimientos europeos; la coordenada es regional.",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016",
+        "alba2012"
+      ],
+      "notasIncertidumbre": "Género de grandes simios europeos del Mioceno. Se incorpora como contexto de la radiación de hominoideos, no como antepasado humano directo demostrado.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "pierolapithecus",
+      "nombre": "Pierolapithecus catalaunicus",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 12.5,
+        "hasta": 11.9
+      },
+      "region": "cataluna",
+      "regionNombre": "Vallès-Penedès, Cataluña",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "moyaSola2004",
+      "fuentes": [
+        "moyaSola2004",
+        "alba2012"
+      ],
+      "notasIncertidumbre": "Hominoideo del Mioceno medio de Cataluña con un mosaico de rasgos asociados a la locomoción ortógrada. Su relación con los grandes simios actuales es discutida.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "anoiapithecus",
+      "nombre": "Anoiapithecus brevirostris",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 11.9,
+        "hasta": 11.8
+      },
+      "region": "cataluna",
+      "regionNombre": "Vallès-Penedès, Cataluña",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "moyaSola2009",
+      "fuentes": [
+        "moyaSola2009",
+        "alba2012"
+      ],
+      "notasIncertidumbre": "Hominoideo del Vallès-Penedès con rostro muy corto. Su interpretación filogenética y su valor como género diferenciado permanecen en discusión.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "nakalipithecus",
+      "nombre": "Nakalipithecus nakayamai",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 9.9,
+        "hasta": 9.8
+      },
+      "region": "nakali",
+      "regionNombre": "Nakuru y Nakali, Kenia",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "kunimatsu2007",
+      "fuentes": [
+        "kunimatsu2007"
+      ],
+      "notasIncertidumbre": "Gran simio del Mioceno tardío de Kenia. Aporta evidencia africana al debate sobre el origen de los grandes simios africanos y humanos.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "chororapithecus",
+      "nombre": "Chororapithecus abyssinicus",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 8,
+        "hasta": 7.8
+      },
+      "region": "chorora",
+      "regionNombre": "Chorora, Etiopía",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "suwa2007",
+      "fuentes": [
+        "suwa2007",
+        "katoh2016"
+      ],
+      "notasIncertidumbre": "Hominoideo etíope conocido principalmente por dientes. Se ha propuesto una afinidad con el linaje de los gorilas, interpretación todavía controvertida.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "graecopithecus",
+      "nombre": "Graecopithecus freybergi",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 7.24,
+        "hasta": 7.18
+      },
+      "region": "balcanes",
+      "regionNombre": "Grecia y Bulgaria",
+      "notaGeografica": "Material atribuido en Grecia y Bulgaria; su afinidad hominina está fuertemente debatida.",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "bohme2017",
+      "fuentes": [
+        "bohme2017",
+        "fuss2017"
+      ],
+      "notasIncertidumbre": "Hominoideo del Mioceno final de Grecia y Bulgaria. Su propuesta como posible hominino es muy discutida y no constituye un consenso.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "sahelanthropus",
+      "nombre": "Sahelanthropus tchadensis",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 7.2,
+        "hasta": 6.8
+      },
+      "region": "chad",
+      "regionNombre": "Djurab, Chad",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "brunet2002",
+      "fuentes": [
+        "brunet2002"
+      ],
+      "notasIncertidumbre": "Uno de los táxones más antiguos atribuidos a la línea humana. Su condición de hominino es objeto de debate.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "orrorin",
+      "nombre": "Orrorin tugenensis",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 6.1,
+        "hasta": 5.7
+      },
+      "region": "tugen",
+      "regionNombre": "Colinas Tugen, Kenia",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Restos del Mioceno superior de Kenia, con indicios de bipedismo temprano.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "ardipithecus",
+      "nombre": "Ardipithecus ramidus",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 4.5,
+        "hasta": 4.3
+      },
+      "region": "afar",
+      "regionNombre": "Afar, Etiopía",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "alta",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "white2009",
+      "fuentes": [
+        "white2009",
+        "woldegabriel2009"
+      ],
+      "notasIncertidumbre": "Esqueleto parcial (Ardi) del Afar etíope, datado por 40Ar/39Ar en 4,4 Ma. Ilumina la paleobiología previa a Australopithecus.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "anamensis",
+      "nombre": "Australopithecus anamensis",
+      "clado": "austra",
+      "rangoMa": {
+        "desde": 4.2,
+        "hasta": 3.8
+      },
+      "region": "turkana",
+      "regionNombre": "Rift oriental (Turkana y Olduvai)",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Considerado ancestro probable de A. afarensis.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "afarensis",
+      "nombre": "Australopithecus afarensis",
+      "clado": "austra",
+      "rangoMa": {
+        "desde": 3.9,
+        "hasta": 2.9
+      },
+      "region": "afar",
+      "regionNombre": "Afar, Etiopía",
+      "notaGeografica": "Documentado también en Laetoli (Tanzania).",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Especie de Lucy. Bipedismo consolidado con capacidades arbóreas.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "africanus",
+      "nombre": "Australopithecus africanus",
+      "clado": "austra",
+      "rangoMa": {
+        "desde": 3.3,
+        "hasta": 2.1
+      },
+      "region": "sudafrica",
+      "regionNombre": "Cuna de la Humanidad, Sudáfrica",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Primer australopiteco descrito (Taung, Sudáfrica).",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "boisei",
+      "nombre": "Paranthropus boisei",
+      "clado": "paran",
+      "rangoMa": {
+        "desde": 2.3,
+        "hasta": 1.2
+      },
+      "region": "turkana",
+      "regionNombre": "Rift oriental (Turkana y Olduvai)",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Robusto, con gran aparato masticatorio adaptado a dietas duras.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "robustus",
+      "nombre": "Paranthropus robustus",
+      "clado": "paran",
+      "rangoMa": {
+        "desde": 2,
+        "hasta": 1.2
+      },
+      "region": "sudafrica",
+      "regionNombre": "Cuna de la Humanidad, Sudáfrica",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Forma robusta sudafricana, coetánea de los primeros Homo.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "habilis",
+      "nombre": "Homo habilis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 2.4,
+        "hasta": 1.5
+      },
+      "region": "turkana",
+      "regionNombre": "Rift oriental (Turkana y Olduvai)",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Asociado a las primeras industrias líticas olduvayenses.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "erectus",
+      "nombre": "Homo erectus",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 1.9,
+        "hasta": 0.1
+      },
+      "region": "turkana",
+      "regionNombre": "Rift oriental (Turkana y Olduvai)",
+      "notaGeografica": "De origen africano, se dispersó por Eurasia (por ejemplo, Dmanisi, en el Cáucaso, y Java).",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Amplia distribución y larga persistencia; primera salida sostenida de África.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "heidelbergensis",
+      "nombre": "Homo heidelbergensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.7,
+        "hasta": 0.2
+      },
+      "region": "europa",
+      "regionNombre": "Europa",
+      "notaGeografica": "Registrado tanto en Europa como en África, según distintas interpretaciones.",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "medio",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Forma del Pleistoceno medio, vinculada al origen de neandertales y sapiens según distintas hipótesis.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "naledi",
+      "nombre": "Homo naledi",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.335,
+        "hasta": 0.236
+      },
+      "region": "sudafrica",
+      "regionNombre": "Cuna de la Humanidad, Sudáfrica",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "dirks2017",
+      "fuentes": [
+        "dirks2017",
+        "martinonTorres2023"
+      ],
+      "notasIncertidumbre": "Hallado en la cámara de Dinaledi (Sudáfrica); mosaico de rasgos primitivos y derivados. Su datación en 236-335 ka revela que un homínino de morfología primitiva persistió hasta el Pleistoceno tardío. El equipo de Rising Star le ha atribuido enterramientos deliberados y grabados, afirmaciones fuertemente contestadas en la literatura revisada por pares.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "neanderthalensis",
+      "nombre": "Homo neanderthalensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.43,
+        "hasta": 0.04
+      },
+      "region": "europa",
+      "regionNombre": "Europa",
+      "notaGeografica": "Presente también en Asia occidental.",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "green2010",
+      "fuentes": [
+        "green2010"
+      ],
+      "notasIncertidumbre": "Neandertales. El ADN antiguo documenta flujo génico con poblaciones de sapiens no africanas.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "floresiensis",
+      "nombre": "Homo floresiensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.1,
+        "hasta": 0.06
+      },
+      "region": "flores",
+      "regionNombre": "Flores, Indonesia",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "sutikna2016",
+      "fuentes": [
+        "sutikna2016",
+        "veatch2026"
+      ],
+      "notasIncertidumbre": "Forma de talla reducida de la isla de Flores. Su cronología fue revisada a 100-60 ka para los restos esqueléticos. Un estudio tafonómico de 2026 atribuye a los dragones de Komodo el acceso primario a los grandes herbívoros del yacimiento, lo que matiza las conductas avanzadas que antes se le suponían.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "sapiens",
+      "nombre": "Homo sapiens",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.3,
+        "hasta": 0
+      },
+      "region": "africa",
+      "regionNombre": "África (origen de H. sapiens)",
+      "notaGeografica": "Origen africano y posterior distribución mundial.",
+      "debatido": false,
+      "nivelEvidencia": "alta",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "hublin2017",
+      "fuentes": [
+        "hublin2017",
+        "richter2017"
+      ],
+      "notasIncertidumbre": "Nuestra especie. Los fósiles más antiguos conocidos, como los de Jebel Irhoud (Marruecos), se sitúan hacia 0,3 Ma, lo que apunta a un origen panafricano.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "kadabba",
+      "nombre": "Ardipithecus kadabba",
+      "clado": "basales",
+      "rangoMa": {
+        "desde": 5.8,
+        "hasta": 5.2
+      },
+      "region": "afar",
+      "regionNombre": "Afar, Etiopía",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Del Mioceno final del Afar etíope; conocido sobre todo por dientes y fragmentos poscraneales. A veces se considera subespecie de Ar. ramidus.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "platyops",
+      "nombre": "Kenyanthropus platyops",
+      "clado": "kenya",
+      "rangoMa": {
+        "desde": 3.5,
+        "hasta": 3.3
+      },
+      "region": "turkana",
+      "regionNombre": "Rift oriental (Turkana y Olduvai)",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Cráneo de rostro plano del oeste de Turkana. Su validez como género propio está discutida: podría ser una variante de A. afarensis o reflejar distorsión tafonómica.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "bahrelghazali",
+      "nombre": "Australopithecus bahrelghazali",
+      "clado": "austra",
+      "rangoMa": {
+        "desde": 3.6,
+        "hasta": 3
+      },
+      "region": "chad",
+      "regionNombre": "Djurab, Chad",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Hallado en Chad (Abel), lejos del Rift, lo que amplía la distribución de los australopitecos hacia el centro de África. Su validez específica es discutida.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "garhi",
+      "nombre": "Australopithecus garhi",
+      "clado": "austra",
+      "rangoMa": {
+        "desde": 2.6,
+        "hasta": 2.5
+      },
+      "region": "afar",
+      "regionNombre": "Afar, Etiopía",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Del Awash medio (Etiopía); se ha relacionado con las primeras evidencias de uso de herramientas y procesamiento de carcasas.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "sediba",
+      "nombre": "Australopithecus sediba",
+      "clado": "austra",
+      "rangoMa": {
+        "desde": 2,
+        "hasta": 1.95
+      },
+      "region": "sudafrica",
+      "regionNombre": "Cuna de la Humanidad, Sudáfrica",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "De Malapa (Sudáfrica); mosaico de rasgos de Australopithecus y de Homo, con datación en torno a 1,98 Ma.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "aethiopicus",
+      "nombre": "Paranthropus aethiopicus",
+      "clado": "paran",
+      "rangoMa": {
+        "desde": 2.7,
+        "hasta": 2.3
+      },
+      "region": "turkana",
+      "regionNombre": "Rift oriental (Turkana y Olduvai)",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Forma robusta más antigua, representada por el «cráneo negro» (KNM-WT 17000) del oeste de Turkana.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "rudolfensis",
+      "nombre": "Homo rudolfensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 2.4,
+        "hasta": 1.8
+      },
+      "region": "turkana",
+      "regionNombre": "Rift oriental (Turkana y Olduvai)",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "medio",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Homo temprano de rostro ancho (KNM-ER 1470); su distinción respecto de H. habilis es objeto de debate.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "ergaster",
+      "nombre": "Homo ergaster",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 1.9,
+        "hasta": 1.4
+      },
+      "region": "turkana",
+      "regionNombre": "Rift oriental (Turkana y Olduvai)",
+      "notaGeografica": "Representado también por fósiles del Rift oriental, como el niño de Turkana.",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Homo temprano africano de cuerpo moderno; con frecuencia se considera la forma africana de H. erectus.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "antecessor",
+      "nombre": "Homo antecessor",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 1.2,
+        "hasta": 0.8
+      },
+      "region": "europa",
+      "regionNombre": "Europa",
+      "notaGeografica": "Documentado en el yacimiento de la Gran Dolina, sierra de Atapuerca (Burgos).",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Del Pleistoceno inferior de Atapuerca (Gran Dolina, España); primer hominino europeo bien documentado, con evidencias de canibalismo.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "luzonensis",
+      "nombre": "Homo luzonensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.067,
+        "hasta": 0.05
+      },
+      "region": "filipinas",
+      "regionNombre": "Luzón, Filipinas",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "detroit2019",
+      "fuentes": [
+        "detroit2019"
+      ],
+      "notasIncertidumbre": "Descrito en 2019 a partir de restos de la cueva de Callao (Luzón, Filipinas), datados hacia 67 ka. Combina rasgos primitivos y derivados y refuerza el papel del sudeste asiático insular.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "longi",
+      "nombre": "Homo longi",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.309,
+        "hasta": 0.146
+      },
+      "region": "china",
+      "regionNombre": "Harbin y China oriental",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "ji2021",
+      "fuentes": [
+        "ji2021"
+      ],
+      "notasIncertidumbre": "Propuesto en 2021 sobre el cráneo de Harbin (China), datado en al menos 146 ka. Su denominación es discutida y se ha planteado su vínculo con los denisovanos.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "daliensis",
+      "nombre": "Homo daliensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.3,
+        "hasta": 0.25
+      },
+      "region": "shaanxi",
+      "regionNombre": "Dali, Shaanxi, China",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "wuAthreya2013",
+      "fuentes": [
+        "wuAthreya2013",
+        "athreyaWu2017"
+      ],
+      "notasIncertidumbre": "Nombre propuesto para el cráneo de Dali (China). Su combinación de rasgos arcaicos y derivados es informativa, pero Homo daliensis no cuenta con aceptación taxonómica general.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "juluensis",
+      "nombre": "Homo juluensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.22,
+        "hasta": 0.1
+      },
+      "region": "xujiayao",
+      "regionNombre": "Xujiayao, norte de China",
+      "notaGeografica": "Agrupación propuesta para material del este de Asia; no representa una distribución taxonómica consensuada.",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "wuBae2025",
+      "fuentes": [
+        "wuBae2025"
+      ],
+      "notasIncertidumbre": "Hipótesis taxonómica reciente para agrupar fósiles del Pleistoceno medio y tardío de Asia oriental, incluidos los de Xujiayao. Se presenta como propuesta en revisión, no como especie consensuada.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "penghu",
+      "nombre": "Homo sp. (Penghu 1)",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.19,
+        "hasta": 0.01
+      },
+      "region": "taiwan",
+      "regionNombre": "Canal de Penghu, Taiwán",
+      "notaGeografica": "La mandíbula fue recuperada del fondo marino; la coordenada es aproximada.",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "chang2015",
+      "fuentes": [
+        "chang2015",
+        "tsutaya2025"
+      ],
+      "notasIncertidumbre": "Mandíbula fósil recuperada en el canal de Penghu, Taiwán. La paleoproteómica la relaciona con el linaje denisovano; Homo sp. indica que no se asigna aquí a una especie formal.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "deyiremeda",
+      "nombre": "Australopithecus deyiremeda",
+      "clado": "austra",
+      "rangoMa": {
+        "desde": 3.5,
+        "hasta": 3.3
+      },
+      "region": "afar",
+      "regionNombre": "Afar, Etiopía",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Descrito en 2015 a partir de restos mandibulares del Afar; sugiere la coexistencia de varias especies de australopitecos. Su validez es debatida.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "prometheus",
+      "nombre": "Australopithecus prometheus",
+      "clado": "austra",
+      "rangoMa": {
+        "desde": 3.7,
+        "hasta": 3.3
+      },
+      "region": "sudafrica",
+      "regionNombre": "Cuna de la Humanidad, Sudáfrica",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Nombre aplicado al esqueleto de Little Foot (Sterkfontein, Sudáfrica). Su reconocimiento como especie distinta de A. africanus es objeto de fuerte controversia.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "gautengensis",
+      "nombre": "Homo gautengensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 2,
+        "hasta": 0.8
+      },
+      "region": "sudafrica",
+      "regionNombre": "Cuna de la Humanidad, Sudáfrica",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Propuesto en 2010 para restos sudafricanos atribuidos antes a Homo habilis; su validez está discutida.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "georgicus",
+      "nombre": "Homo georgicus",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 1.85,
+        "hasta": 1.77
+      },
+      "region": "caucaso",
+      "regionNombre": "Dmanisi, Cáucaso (Georgia)",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Nombre aplicado a los fósiles de Dmanisi (Georgia), la salida más temprana de África documentada. Con frecuencia se incluye en un Homo erectus de sentido amplio.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "rhodesiensis",
+      "nombre": "Homo rhodesiensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.6,
+        "hasta": 0.3
+      },
+      "region": "africa",
+      "regionNombre": "África (origen de H. sapiens)",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Nombre del cráneo de Kabwe (Zambia). Su uso está en revisión: se ha propuesto abandonarlo, en parte por su asociación colonial, en favor de otras denominaciones.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "bodoensis",
+      "nombre": "Homo bodoensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.77,
+        "hasta": 0.13
+      },
+      "region": "africa",
+      "regionNombre": "África (origen de H. sapiens)",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "roksandic2022",
+      "fuentes": [
+        "roksandic2022"
+      ],
+      "notasIncertidumbre": "Propuesto en 2021 como especie del Pleistoceno medio de distribución panafricana, para sustituir usos problemáticos de H. heidelbergensis y H. rhodesiensis. Su validez es contestada.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "cepranensis",
+      "nombre": "Homo cepranensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.45,
+        "hasta": 0.35
+      },
+      "region": "europa",
+      "regionNombre": "Europa",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Nombre aplicado a un calvario del Pleistoceno medio de Ceprano (Italia); su estatus específico es discutido.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "helmei",
+      "nombre": "Homo helmei",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.26,
+        "hasta": 0.26
+      },
+      "region": "sudafrica",
+      "regionNombre": "Cuna de la Humanidad, Sudáfrica",
+      "notaGeografica": "",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Nombre asociado al cráneo de Florisbad (Sudáfrica), a veces vinculado al origen de H. sapiens. Su validez es debatida.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "idaltu",
+      "nombre": "Homo sapiens idaltu",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.16,
+        "hasta": 0.154
+      },
+      "region": "afar",
+      "regionNombre": "Afar, Etiopía",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "white2003idaltu",
+      "fuentes": [
+        "white2003idaltu"
+      ],
+      "notasIncertidumbre": "Subespecie descrita en 2003 sobre cráneos de Herto (Afar, Etiopía), datados en 160-154 ka; considerada antecesora inmediata de los humanos anatómicamente modernos.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "jebel_irhoud",
+      "nombre": "H. sapiens (Jebel Irhoud)",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.315,
+        "hasta": 0.3
+      },
+      "region": "magreb",
+      "regionNombre": "Jebel Irhoud, Marruecos",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "alta",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "hublin2017",
+      "fuentes": [
+        "hublin2017",
+        "richter2017"
+      ],
+      "notasIncertidumbre": "Serie fósil marroquí fundamental para investigar las fases tempranas de Homo sapiens. Es una entrada paleopoblacional y no una especie distinta.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "omo_i",
+      "nombre": "H. sapiens (Omo I)",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.233,
+        "hasta": 0.2
+      },
+      "region": "omo",
+      "regionNombre": "Kibish, valle del Omo, Etiopía",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "alta",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "mcdougall2005",
+      "fuentes": [
+        "mcdougall2005",
+        "vidal2022"
+      ],
+      "notasIncertidumbre": "Esqueleto parcial de Kibish, Etiopía, con una edad mínima revisada de unos 233 ka. Es un espécimen de Homo sapiens, no un taxón separado.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "denisovanos",
+      "nombre": "Linaje denisovano",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.2,
+        "hasta": 0.05
+      },
+      "region": "altai",
+      "regionNombre": "Denisova y Asia interior",
+      "notaGeografica": "Linaje documentado genéticamente en Siberia y relacionado con fósiles de otras regiones de Asia.",
+      "debatido": true,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "bajo",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "krause2010",
+      "fuentes": [
+        "krause2010",
+        "reich2010",
+        "chen2019"
+      ],
+      "notasIncertidumbre": "Linaje humano arcaico identificado inicialmente por ADN antiguo y ampliado mediante fósiles y paleoproteómica. No se presenta como una especie formal ni bajo el nombre no consensuado Homo denisova.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "erectus_erectus",
+      "nombre": "Homo erectus erectus",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 1,
+        "hasta": 0.5
+      },
+      "region": "java",
+      "regionNombre": "Java, Indonesia",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Subespecie nominal de Java (Trinil, Sangiran), sobre la que Dubois fundó en 1894 el género Pithecanthropus, hoy incluido en Homo erectus.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "erectus_pekinensis",
+      "nombre": "Homo erectus pekinensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.78,
+        "hasta": 0.4
+      },
+      "region": "china",
+      "regionNombre": "Harbin y China oriental",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Subespecie del este de Asia (Zhoukoudian, China), descrita por Black en 1927 como Sinanthropus pekinensis, hoy incluida en Homo erectus.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    },
+    {
+      "id": "erectus_soloensis",
+      "nombre": "Homo erectus soloensis",
+      "clado": "homo",
+      "rangoMa": {
+        "desde": 0.14,
+        "hasta": 0.1
+      },
+      "region": "java",
+      "regionNombre": "Java, Indonesia",
+      "notaGeografica": "",
+      "debatido": false,
+      "nivelEvidencia": "media",
+      "gradoConsenso": "alto",
+      "fechaActualizacion": "2026-07-08",
+      "fuentePrincipal": "woodBoyle2016",
+      "fuentes": [
+        "woodBoyle2016"
+      ],
+      "notasIncertidumbre": "Subespecie tardía de Ngandong (río Solo, Java), descrita por Oppenoorth en 1932; representa una persistencia tardía de Homo erectus en el sudeste asiático.",
+      "estadoMigracion": "piloto_compatible_no_runtime"
+    }
+  ]
+}

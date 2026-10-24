@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: bloque de aula del Atlas de paleoantropología. Ofrece
+  itinerarios de uso para la docencia universitaria y la formación permanente,
+  y una situación de aprendizaje modelo para la formación del profesorado, con
+  su marco normativo verificado. Diales: VARIANZA_VISUAL 4 / INTENSIDAD 1 /
+  DENSIDAD 8.
+
+  RIGOR NORMATIVO. Marco verificado en fuentes oficiales: LOMLOE (Ley Orgánica
+  3/2020), Real Decreto 157/2022 (BOE núm. 52, de 2 de marzo) y Decreto 211/2022
+  de Canarias (BOC núm. 231, de 23 de noviembre). La situación de aprendizaje se
+  presenta como MODELO: las competencias específicas, los saberes básicos y los
+  criterios de evaluación deben concretarse contra el texto vigente (Anexo 2 del
+  Decreto 211/2022) y no se transcriben aquí para no introducir imprecisiones.
+
+  Accesibilidad: HTML semántico, jerarquía de encabezados, foco visible, enlace
+  de salto, URLs oficiales BOE y BOC. Licencia CC BY-NC 4.0 · ULPGC.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula y recursos · Atlas de paleoantropología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:12px;
+  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.65}
+a{color:var(--acento)}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto:focus{left:0}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.volver:hover{border-color:var(--acento);color:var(--acento)}
+.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver svg{width:18px;height:18px}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:.95rem}
+.barra nav{display:flex;gap:1.1rem}
+.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:.92rem}
+
+.envoltorio{max-width:980px;margin:0 auto;padding:6vh 5vw 8vh}
+.cabecera .k{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:.8rem}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:.6rem}
+.cabecera p{color:var(--tinta-suave);max-width:72ch}
+
+h2.sec{font-family:var(--ft);font-weight:700;font-size:1.5rem;margin:2.6rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.12)}
+h3{font-size:1.1rem;font-weight:700;margin:1.2rem 0 .3rem}
+p{color:var(--tinta);margin-bottom:.7rem}
+.caja{background:rgba(216,169,58,.07);border:1px solid rgba(216,169,58,.32);border-radius:var(--radio);padding:1rem 1.2rem;font-size:.92rem;color:var(--tinta-suave);margin:1rem 0}
+.tarjeta{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.4rem 1.6rem;margin-top:1rem}
+.tarjeta h3{margin-top:0;color:var(--tinta)}
+.tarjeta .ruta{color:var(--tinta-suave);font-size:.95rem}
+.tarjeta .ruta a{font-weight:600}
+.meta-linea{color:var(--acento);font-size:.85rem;font-weight:600;margin-top:.5rem}
+ul,ol{margin:.4rem 0 .8rem 1.3rem;color:var(--tinta-suave)}
+li{margin-bottom:.35rem}
+.sda{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);border-radius:var(--radio);padding:1.6rem 1.8rem;margin-top:1rem}
+.sda dl{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;margin:.6rem 0}
+.sda dt{color:var(--acento);font-weight:600}
+.sda dd{color:var(--tinta-suave)}
+.refs{font-size:.9rem;color:rgba(200,210,206,.85)}
+.refs li{margin-bottom:.5rem}
+.refs a{word-break:break-all}
+
+.pie{border-top:1px solid rgba(255,255,255,.1);margin-top:3rem;padding:2.4rem 5vw;text-align:center;color:rgba(200,210,206,.65);font-size:.82rem;line-height:1.7}
+.pie a{color:rgba(216,169,58,.85);word-break:break-all}
+</style>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<div class="barra">
+  <a class="volver" href="atlas.html" id="volver">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver al atlas
+  </a>
+  <span class="marca">Aula y recursos</span>
+  <nav aria-label="Otras vistas">
+    <a href="metodos.html">Métodos</a>
+    <a href="ficha.html">Fichas</a>
+  </nav>
+</div>
+
+<main id="contenido" class="envoltorio">
+  <header class="cabecera">
+    <p class="k">Bloque 05 · Aula</p>
+    <h1>Enseñar con el atlas</h1>
+    <p>Este recurso es de nivel universitario, pensado para la docencia de grado, el máster y la formación permanente del Diploma de Estudios Africanos. Ofrece, además, un modelo de transposición para la formación del profesorado, que muestra cómo la paleoantropología puede fundamentar una situación de aprendizaje en Educación Primaria.</p>
+  </header>
+
+  <section aria-labelledby="s-marco">
+    <h2 class="sec" id="s-marco">Marco normativo</h2>
+    <p>En la formación del profesorado y en la transposición al aula de Primaria, el marco de referencia es la legislación vigente. En el ámbito estatal, la Ley Orgánica 3/2020, de 29 de diciembre (LOMLOE), y el Real Decreto 157/2022, de 1 de marzo, que establece la ordenación y las enseñanzas mínimas de la Educación Primaria e incorpora en su Anexo III las situaciones de aprendizaje. En Canarias, el Decreto 211/2022, de 10 de noviembre, que establece la ordenación y el currículo de la Educación Primaria, y cuyo artículo 2 define el currículo como el conjunto de objetivos, competencias, saberes básicos, criterios de evaluación, situaciones de aprendizaje y métodos pedagógicos.</p>
+    <div class="caja">
+      <strong>Alcance y honestidad normativa.</strong> El atlas es un recurso universitario; su encaje en Primaria se ofrece como modelo para la formación docente, no como programación cerrada. Las competencias específicas, los saberes básicos y los criterios de evaluación deben concretarse contra el texto vigente (Anexo 2 del Decreto 211/2022) y no se transcriben aquí para no introducir imprecisiones.
+    </div>
+  </section>
+
+  <section aria-labelledby="s-itin">
+    <h2 class="sec" id="s-itin">Itinerarios para la docencia universitaria</h2>
+    <p>Tres rutas de uso del atlas, cada una con un objetivo formativo distinto. Todas parten del recurso audiovisual y recorren las vistas en un orden intencionado.</p>
+
+    <div class="tarjeta">
+      <h3>Ruta 1 · Un árbol, no una escalera</h3>
+      <p class="ruta">Objetivo epistemológico: comprender el carácter ramificado y no lineal de la evolución humana. Recorrido: <a href="introduccion.html">introducción</a>, luego <a href="cronologia.html">línea del tiempo</a> para constatar la coexistencia de especies, y <a href="parentesco.html">árbol de parentesco</a> para discutir la incertidumbre filogenética.</p>
+      <p class="meta-linea">Indicado para Grado y Máster en Formación del Profesorado</p>
+    </div>
+
+    <div class="tarjeta">
+      <h3>Ruta 2 · Cómo lo sabemos</h3>
+      <p class="ruta">Objetivo metodológico: entender la lógica inferencial de la disciplina. Recorrido: <a href="metodos.html">métodos</a> (datación, tafonomía y ADN antiguo), luego <a href="cronologia.html">línea del tiempo</a> para ver la datación aplicada, y <a href="ficha.html">fichas</a> para rastrear las fuentes de cada táxon.</p>
+      <p class="meta-linea">Indicado para Grado y Diploma de Estudios Africanos</p>
+    </div>
+
+    <div class="tarjeta">
+      <h3>Ruta 3 · África, escenario del origen</h3>
+      <p class="ruta">Objetivo territorial e intercultural: situar la centralidad africana en la evolución humana. Recorrido: <a href="territorio.html">mapa de territorio</a>, luego <a href="ficha.html">fichas</a> de los táxones africanos, y <a href="introduccion.html">introducción</a> como síntesis.</p>
+      <p class="meta-linea">Indicado para el Diploma de Estudios Africanos</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="s-sda">
+    <h2 class="sec" id="s-sda">Situación de aprendizaje (modelo para la formación del profesorado)</h2>
+    <p>Ejemplo de transposición de los contenidos del atlas a una situación de aprendizaje de Educación Primaria, para su análisis y adaptación en la formación docente. Se presenta con la estructura habitual, pendiente de concreción curricular contra la normativa vigente.</p>
+
+    <div class="sda">
+      <h3>¿Una sola humanidad? Un viaje por nuestros parientes</h3>
+      <dl>
+        <dt>Etapa y área</dt><dd>Educación Primaria, tercer ciclo. Área de Conocimiento del Medio Natural, Social y Cultural.</dd>
+        <dt>Marco</dt><dd>Real Decreto 157/2022 y Decreto 211/2022 de Canarias. Diseño Universal para el Aprendizaje (DUA).</dd>
+        <dt>Reto inicial</dt><dd>¿Fuimos siempre la única especie humana? El alumnado investiga que no y construye una explicación propia.</dd>
+        <dt>Producto final</dt><dd>Un atlas de aula: una línea del tiempo mural con fichas ilustradas de varias especies, elaborada en equipo.</dd>
+      </dl>
+      <h3>Secuencia</h3>
+      <ol>
+        <li>Activación: conversación sobre la idea intuitiva de escalera evolutiva y contraste con la imagen del arbusto.</li>
+        <li>Indagación: por equipos, cada grupo estudia una especie a partir de una versión adaptada de su ficha, atendiendo a cuándo y dónde vivió.</li>
+        <li>Construcción: se sitúan las especies en una línea del tiempo común y se observa la coexistencia.</li>
+        <li>Síntesis y comunicación: cada equipo presenta su especie y se debate qué significa que hubiera varias a la vez.</li>
+      </ol>
+      <h3>Atención a la diversidad (DUA)</h3>
+      <ul>
+        <li>Representación: texto, imagen y audio de la introducción para múltiples vías de acceso.</li>
+        <li>Acción y expresión: producto elegible entre mural, exposición oral o maqueta.</li>
+        <li>Implicación: reparto de roles y conexión con la curiosidad por los orígenes.</li>
+      </ul>
+      <h3>Evaluación</h3>
+      <p>De carácter competencial y formativo, mediante observación, diario de equipo y una rúbrica del producto final. Los criterios de evaluación y los saberes básicos deben tomarse del Anexo 2 del Decreto 211/2022 para el área y el ciclo correspondientes.</p>
+      <div class="caja">
+        <strong>Aviso.</strong> Esta situación de aprendizaje es un modelo orientativo. Su validez curricular exige concretar las competencias específicas, los saberes básicos y los criterios de evaluación conforme al Decreto 211/2022 vigente, así como adaptar el contenido paleoantropológico al nivel del alumnado.
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="s-auto">
+    <h2 class="sec" id="s-auto">Autoevaluación</h2>
+    <p>Preguntas de comprensión para el alumnado universitario, útiles también como modelo de andamiaje.</p>
+    <ul>
+      <li>¿Por qué la metáfora del arbusto describe mejor la evolución humana que la de la escalera?</li>
+      <li>¿Qué aporta la datación radiométrica y cuáles son sus límites?</li>
+      <li>¿Qué distingue una señal biológica de un producto del azar en tafonomía?</li>
+      <li>¿Qué reveló el ADN antiguo sobre la relación entre neandertales y sapiens?</li>
+      <li>¿Por qué África ocupa un lugar central en el registro de la evolución humana temprana?</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="s-refs">
+    <h2 class="sec" id="s-refs">Referencias normativas</h2>
+    <ul class="refs">
+      <li>Ley Orgánica 3/2020, de 29 de diciembre, por la que se modifica la Ley Orgánica 2/2006, de 3 de mayo, de Educación (LOMLOE). <a href="https://www.boe.es/eli/es/lo/2020/12/29/3" target="_blank" rel="noopener">https://www.boe.es/eli/es/lo/2020/12/29/3</a></li>
+      <li>Real Decreto 157/2022, de 1 de marzo, por el que se establecen la ordenación y las enseñanzas mínimas de la Educación Primaria (BOE núm. 52, de 2 de marzo de 2022). <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2022-3296" target="_blank" rel="noopener">https://www.boe.es/buscar/act.php?id=BOE-A-2022-3296</a></li>
+      <li>Decreto 211/2022, de 10 de noviembre, por el que se establece la ordenación y el currículo de la Educación Primaria en la Comunidad Autónoma de Canarias (BOC núm. 231, de 23 de noviembre de 2022). <a href="https://www.gobiernodecanarias.org/boc/2022/231/001.html" target="_blank" rel="noopener">https://www.gobiernodecanarias.org/boc/2022/231/001.html</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="pie">
+  Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria ·
+  Contenido bajo licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
+</footer>
+</body>
+</html>

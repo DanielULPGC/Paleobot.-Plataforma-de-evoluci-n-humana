@@ -1,0 +1,126 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v76-readability-guard */
+body.pb-v50-unified #studentGuideModal .modal-content {
+  color: #102132 !important;
+  background: #fffdf8 !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-header {
+  background: linear-gradient(135deg, #17334b 0%, #2f638e 100%) !important;
+  color: #ffffff !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-header h2,
+body.pb-v50-unified #studentGuideModal .sg-header p {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28) !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-header h2 {
+  font-size: clamp(1.55rem, 2.2vw, 2rem) !important;
+  line-height: 1.12 !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-header p {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  max-width: 760px !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-version-badge {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.46) !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-tabs {
+  background: #fffdf8 !important;
+  border-bottom-color: #b9c3ce !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-tab-btn {
+  color: #1a2d40 !important;
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-tab-btn[aria-selected="true"] {
+  color: #07131f !important;
+  border-bottom-color: #0e7f65 !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-body {
+  background: #fffdf8 !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-step-card,
+body.pb-v50-unified #studentGuideModal .sg-view-card,
+body.pb-v50-unified #studentGuideModal .sg-glossary-entry,
+body.pb-v50-unified #studentGuideModal .sg-question-item {
+  background: #fbfaf6 !important;
+  border-color: #cfd6dd !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-step-card h4,
+body.pb-v50-unified #studentGuideModal .sg-view-title,
+body.pb-v50-unified #studentGuideModal .sg-glossary-term,
+body.pb-v50-unified #studentGuideModal .sg-question-text {
+  color: #07131f !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-step-card p,
+body.pb-v50-unified #studentGuideModal .sg-view-desc,
+body.pb-v50-unified #studentGuideModal .sg-glossary-def,
+body.pb-v50-unified #studentGuideModal .sg-question-hint,
+body.pb-v50-unified #studentGuideModal .sg-rubric-table td {
+  color: #24384f !important;
+  font-size: 0.94rem !important;
+  line-height: 1.62 !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-step-card h4 {
+  font-size: 1.08rem !important;
+  line-height: 1.25 !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-step-btn {
+  background: #102332 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-step-btn:disabled,
+body.pb-v50-unified #studentGuideModal .sg-step-btn[disabled],
+body.pb-v50-unified #studentGuideModal button:disabled {
+  background: #34475a !important;
+  color: #ffffff !important;
+  opacity: 0.86 !important;
+  cursor: default !important;
+}
+
+body.pb-v50-unified #studentGuideModal .sg-tip {
+  background: #eef8f3 !important;
+  border-color: #86c5ad !important;
+  color: #123c31 !important;
+  font-size: 0.95rem !important;
+}
+
+@media (max-width: 700px) {
+  body.pb-v50-unified #studentGuideModal .sg-header {
+    padding: 22px 18px 18px !important;
+  }
+
+  body.pb-v50-unified #studentGuideModal .sg-header h2 {
+    font-size: 1.48rem !important;
+  }
+
+  body.pb-v50-unified #studentGuideModal .sg-body {
+    padding: 18px 14px 20px !important;
+  }
+
+  body.pb-v50-unified #studentGuideModal .sg-tab-btn {
+    font-size: 0.82rem !important;
+    padding: 12px 14px !important;
+  }
+}

@@ -1,0 +1,1509 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html */
+inline.
+       D. Indicador visual de riqueza faunística: barra proporcional al
+          número de taxa respecto al máximo del catálogo.
+
+     Integración: no destructiva. Wrap defensivo + MutationObserver.
+     Fuentes científicas: ver comentarios DOI en FAUNA_DB.
+     ══════════════════════════════════════════════════════════════════════════ -->
+<script id="paleobot-v66-fauna">
+(function PaleoBotV66Fauna() {
+  'use strict';
+
+  const DEBUG = typeof window.__PALEOBOT_DEBUG !== 'undefined' && window.__PALEOBOT_DEBUG;
+  const log   = DEBUG ? console.log.bind(console,  '[PB66-Fauna]') : () => {};
+  const warn  = DEBUG ? console.warn.bind(console, '[PB66-Fauna]') : () => {};
+
+  /* ════════════════════════════════════════════════════════════════════════
+     A. BASE DE DATOS DE FAUNA ASOCIADA
+     Fuentes principales (DOI en comentarios inline):
+       · Bobe & Behrensmeyer 2004 (DOI:10.1016/j.jhevol.2004.07.009)
+       · Reed 1997 — Hominid paleoenvironments (DOI:10.1002/(SICI)1096-8644)
+       · Faith 2011 — Late Pleistocene Africa (DOI:10.1016/j.quascirev.2011.01.005)
+       · Parfitt et al. 2005 — Pakefield (DOI:10.1038/nature04117)
+       · Agustí & Antón 2002 — Mammoths, Sabertooths and Hominids
+       · Turner & Antón 2004 — Evolving Eden
+       · Brugal & Denys 1997 (Ed.) — African Suidae fossil record
+     ════════════════════════════════════════════════════════════════════════ */
+  const FAUNA_DB = {
+
+    /* ── Mioceno basal ────────────────────────────────────────────── */
+    koru_rusinga: {
+      taxa: ['Proconsul nyanzae','Limnopithecus legetet','Dendropithecus macinnesi',
+             'Rhinocerotidae indet.','Anthracotheriidae','Microchoeridae','Creodonta'],
+      bioma: 'Bosque cerrado tropical',
+      nota: 'Fauna de bosque mioceno; diversidad de primatas catarinos.',
+      // Pickford 1986; Leakey & Leakey 1987
+      riqueza: 'media'
+    },
+    moroto_ii: {
+      taxa: ['Morotopithecus bishopi','Limnopithecus','Bovidae basales',
+             'Suidae primitivos','Proboscidea'],
+      bioma: 'Mosaico boscoso',
+      nota: 'Conjunto restringido; contexto de hominoideo con bipedalismo temprano.',
+      riqueza: 'baja'
+    },
+    saint_gaudens: {
+      taxa: ['Dryopithecus fontani','Sivapithecus darwini','Ursavus','Hipparion',
+             'Cervidae europeos','Suidae','Lophiomeryx'],
+      bioma: 'Bosque y matorral templado-cálido',
+      nota: 'MNR europeo del Mioceno medio; referencia para radiación de simios europeos.',
+      // Begun 2002 — European Miocene hominoids
+      riqueza: 'media'
+    },
+    can_mata: {
+      taxa: ['Pierolapithecus catalaunicus','Anoiapithecus brevirostris',
+             'Hispanopithecus laietanus','Bovidae','Suidae europeos','Cervidae'],
+      bioma: 'Bosque subtropical',
+      nota: 'IPS-UAB yacimiento de referencia para simios ibéricos; fauna acompañante diversa.',
+      // Moyà-Solà et al. 2004 (DOI:10.1126/science.1096429)
+      riqueza: 'alta'
+    },
+    nakali: {
+      taxa: ['Nakalipithecus nakayamai','Bovidae','Suidae africanos','Elephantidae'],
+      bioma: 'Sabana boscosa',
+      nota: 'Mioceno tardío africano; pocos taxa documentados.',
+      riqueza: 'baja'
+    },
+    chorora: {
+      taxa: ['Chororapithecus abyssinicus','Bovidae','Rhinocerotidae'],
+      bioma: 'Mosaico húmedo',
+      nota: 'Registro fragmentario; gorila ancestral según Suwa et al. 2007.',
+      riqueza: 'baja'
+    },
+    pyrgos_azmaka: {
+      taxa: ['Graecopithecus freybergi','Bovidae eurosiberios','Cervidae',
+             'Hipparion','Proboscidea'],
+      bioma: 'Sabana mediterránea',
+      nota: 'Potencial homínido del Mediterráneo; contexto de sabana seca.',
+      // Fuss et al. 2017 (DOI:10.1371/journal.pone.0177127)
+      riqueza: 'media'
+    },
+
+    /* ── Plioceno temprano ────────────────────────────────────────── */
+    toros_menalla: {
+      taxa: ['Anthracotheriidae','Bovidae','Suidae','Hippopotamidae',
+             'Colobinae','Proboscidea','Reptilia acuáticos'],
+      bioma: 'Delta lacustre y galería forestal',
+      nota: 'Asociación de lago/delta; contexto de Sahelanthropus (Brunet et al. 2002).',
+      // Vignaud et al. 2002 (DOI:10.1038/nature00879)
+      riqueza: 'alta'
+    },
+    tugen_hills: {
+      taxa: ['Bovidae','Suidae','Proboscidea','Hippopotamidae','Carnivora',
+             'Cercopithecidae'],
+      bioma: 'Ribera lacustre y galería forestal',
+      nota: 'Ambiente ribereño-lacustre; contexto de Orrorin (Senut et al. 2001).',
+      riqueza: 'media'
+    },
+    middle_awash: {
+      taxa: ['Bovidae','Suidae','Equidae','Cercopithecidae','Proboscidea',
+             'Hippopotamidae','Carnivora','Crocuta crocuta'],
+      bioma: 'Mosaico lacustre y sabana',
+      nota: 'Secuencia continua; contexto de Ardipithecus, A. garhi, Homo sapiens idàltu.',
+      // Bobe & Behrensmeyer 2004 (DOI:10.1016/j.jhevol.2004.07.009)
+      riqueza: 'muy alta'
+    },
+    kanapoi_allia_bay: {
+      taxa: ['Bovidae','Suidae','Equidae','Cercopithecidae Colobinae',
+             'Hippopotamidae','Carnivora','Cheloniidae'],
+      bioma: 'Ribera de lago',
+      nota: 'Holoceno tropical; contexto de A. anamensis (Leakey et al. 1995).',
+      riqueza: 'media'
+    },
+    hadar_dikika: {
+      taxa: ['Bovidae (Tragelaphus, Reduncinae)','Equidae (Hipparion)',
+             'Suidae (Kolpochoerus)','Cercopithecidae','Crocodylidae',
+             'Hippopotamidae','Carnivora (Megantereon)'],
+      bioma: 'Mosaico ribereño-sabana abierta',
+      nota: 'Fauna de referencia del Plioceno afar; contexto de A. afarensis Lucy.',
+      // Reed 1997; Kappelman et al. 1997
+      riqueza: 'muy alta'
+    },
+    woranso_mille: {
+      taxa: ['Bovidae','Suidae','Cercopithecidae','Carnivora','Hippopotamidae'],
+      bioma: 'Sabana con galería riparia',
+      nota: 'Fauna similar a Hadar; contexto de Australopithecus deyiremeda.',
+      riqueza: 'media'
+    },
+    ledi_geraru: {
+      taxa: ['Bovidae','Suidae','Cercopithecidae','Bovidae C4',
+             'Hippopotamidae','Carnivora'],
+      bioma: 'Sabana abierta con C4',
+      nota: 'Fauna del Plioceno-Pleistoceno; contexto de mandíbula LD 350-1 (Homo, 2.8 Ma).',
+      // DiMaggio et al. 2015 (DOI:10.1126/science.aaa1343)
+      riqueza: 'media'
+    },
+    koro_toro: {
+      taxa: ['Bovidae','Suidae','Equidae','Hippopotamidae','Proboscidea'],
+      bioma: 'Lago-sabana',
+      nota: 'Contexto de Australopithecus bahrelghazali; primer australopiteco occidental.',
+      riqueza: 'media'
+    },
+    west_turkana_lomekwi: {
+      taxa: ['Cercopithecidae','Bovidae','Suidae','Hippopotamidae','Carnivora'],
+      bioma: 'Ribera lacustre con bosque',
+      nota: 'Contexto de Kenyanthropus platyops; industria Lomekwiana (3.3 Ma).',
+      riqueza: 'media'
+    },
+
+    /* ── Plioceno tardío / Pleistoceno temprano ───────────────────── */
+    sterkfontein: {
+      taxa: ['Cercopithecidae (Parapapio)','Bovidae','Equidae','Suidae',
+             'Carnivora (Dinofelis, Chasmaporthetes)','Chelonidae','Microfauna'],
+      bioma: 'Matorral y bosque semiarido',
+      nota: 'Fauna de cueva; Dinofelis como predador de australopitecos propuesto.',
+      // Brain 1981 — The Hunters or the Hunted?
+      riqueza: 'alta'
+    },
+    bouri: {
+      taxa: ['Bovidae','Equidae','Hippopotamidae','Bovidae con marcas de corte',
+             'Cercopithecidae'],
+      bioma: 'Sabana húmeda',
+      nota: 'Huesos con marcas de corte de herramientas; contexto de Australopithecus garhi.',
+      riqueza: 'media'
+    },
+    malapa: {
+      taxa: ['Cercopithecidae (Parapapio broomi)','Carnivora (Ursus spelaeus?)',
+             'Bovidae','Suidae (Kolpochoerus)','Microfauna','Reptilia'],
+      bioma: 'Cueva con paleosuelo kárstico',
+      nota: 'Preservación excepcional; contexto de A. sediba (Berger et al. 2010).',
+      // Dirks et al. 2010 (DOI:10.1126/science.1184950)
+      riqueza: 'alta'
+    },
+    omo_olduvai: {
+      taxa: ['Equidae (Hipparion, Equus)','Bovidae Alcelaphinae','Suidae (Kolpochoerus)',
+             'Carnivora (Dinofelis, Panthera)','Proboscidea','Cercopithecidae',
+             'Hippopotamidae','Crocodylidae'],
+      bioma: 'Mosaico lacustre, sabana y galería riparia',
+      nota: 'Conjunto de referencia del Plioceno-Pleistoceno africano; industria Olduvayense.',
+      // Bobe & Behrensmeyer 2004; Leakey 1971
+      riqueza: 'muy alta'
+    },
+    swartkrans_kromdraai: {
+      taxa: ['Cercopithecidae (Theropithecus, Papio)','Carnivora (Dinofelis, Megantereon)',
+             'Bovidae','Suidae','Chelonidae','Microfauna'],
+      bioma: 'Matorral semiárido y cueva',
+      nota: 'Carnívoros como contexto tafonómico de Paranthropus robustus.',
+      // Brain 1981; Pickering et al. 2004
+      riqueza: 'alta'
+    },
+    koobi_fora: {
+      taxa: ['Cercopithecidae (Theropithecus oswaldi, Colobus)','Bovidae Reduncinae',
+             'Equidae','Suidae (Kolpochoerus, Metridiochoerus)','Hippopotamidae',
+             'Proboscidea (Elephas recki)','Carnivora','Crocodylidae'],
+      bioma: 'Ribera de lago tropical con sabana',
+      nota: 'Fauna de referencia del Este africano del Pleistoceno inferior; contexto de H. habilis, H. rudolfensis, H. erectus.',
+      // Bobe & Behrensmeyer 2004; Harris 1983
+      riqueza: 'muy alta'
+    },
+
+    /* ── Pleistoceno temprano-medio: dispersión OoA ───────────────── */
+    dmanisi: {
+      taxa: ['Megantereon cultridens','Homotherium crenatidens','Pachycrocuta brevirostris',
+             'Cervus perrieri','Equus stenonis','Gazella borbonica',
+             'Bovidae','Camelus grusinicus'],
+      bioma: 'Sabana templada euroasiática',
+      nota: 'Dépôt eurasien clé; fauna de transición Plio-Pleistocena.',
+      // Vekua et al. 2002 (DOI:10.1126/science.1077181); Lordkipanidze et al. 2007
+      riqueza: 'alta'
+    },
+    java: {
+      taxa: ['Stegodon trigonocephalus','Elephas hysudricus','Rhinoceros sondaicus',
+             'Hippopotamus sivalensis','Cervus zwaani','Bibos palaeosondaicus',
+             'Geochelone','Crocodylidae'],
+      bioma: 'Selva tropical y sabana insular',
+      nota: 'Fauna de Trinil y Sangiran; contexto de Homo erectus javanensis.',
+      // von Koenigswald 1956; Dennell & Roebroeks 2005
+      riqueza: 'alta'
+    },
+    atapuerca: {
+      taxa: ['Ursus deningeri','Cervus elaphus','Equus ferus','Bison priscus',
+             'Stephanorhinus hundheimensis','Hippopotamus antiquus',
+             'Canis lupus mosbachensis','Lynx pardina spelaea','Microtus arvalis'],
+      bioma: 'Bosque templado con praderas',
+      nota: 'TDW-Aurora: megafauna del Pleistoceno inferior europeo.',
+      // Bermúdez de Castro et al. 1997 (DOI:10.1126/science.276.5317.1392)
+      riqueza: 'muy alta'
+    },
+    sima_elefante_te7: {
+      taxa: ['Ursus dolinensis','Cervidae indet.','Equus altidens',
+             'Stephanorhinus etruscus','Bovidae','Lepus','Microtus brecciensis'],
+      bioma: 'Bosque frío templado',
+      nota: 'TE7: registro más antiguo de homínidos en Europa occidental (~1.2 Ma).',
+      // Carbonell et al. 2008 (DOI:10.1038/nature06372)
+      riqueza: 'media'
+    },
+    ceprano: {
+      taxa: ['Cervidae','Bovidae','Equidae','Elephas antiquus'],
+      bioma: 'Bosque mediterráneo interglacial',
+      nota: 'Contexto sedimentario limitado; fauna inferida por correlación.',
+      riqueza: 'baja'
+    },
+    mauer: {
+      taxa: ['Elephas antiquus','Rhinoceros kirchbergensis','Hippopotamus major',
+             'Cervus elaphus','Equus mosbachensis','Bos primigenius','Ursus arctos'],
+      bioma: 'Bosque ribereño cálido',
+      nota: 'Interglaciar Mindel-Riss; contexto de Homo heidelbergensis (mandíbula holotipo).',
+      // Roebroeks & Tuffreau 1999
+      riqueza: 'alta'
+    },
+    bodo_dar: {
+      taxa: ['Hippopotamus gorgops','Equidae','Bovidae','Cercopithecidae',
+             'Carnivora','Elephantidae'],
+      bioma: 'Ribera lacustre africana',
+      nota: 'Contexto de Homo bodoensis/rhodesiensis; fauna del Pleistoceno medio.',
+      riqueza: 'media'
+    },
+    kabwe: {
+      taxa: ['Equus capensis','Hippopotamus amphibius','Ceratotherium simum',
+             'Syncerus caffer','Bovidae','Carnivora'],
+      bioma: 'Sabana-mosaico',
+      nota: 'Contexto minero; fauna del Pleistoceno medio africano.',
+      riqueza: 'media'
+    },
+
+    /* ── Pleistoceno tardío ───────────────────────────────────────── */
+    florisbad: {
+      taxa: ['Equus capensis','Megalotragus','Pelorovis antiquus',
+             'Hippopotamus amphibius','Ceratotherium simum','Lycaon pictus'],
+      bioma: 'Sabana con manantial',
+      nota: 'Fauna del OIS 5; contexto de Homo helmei/sapiens arcaico sudafricano.',
+      // Grün et al. 1996 (DOI:10.1016/0277-3791(95)00046-1)
+      riqueza: 'media'
+    },
+    rising_star: {
+      taxa: ['Micromammalia de cueva (roedores, Insectivora)','Bovidae pequeños',
+             'Lepus','Carnivora pequeña','Reptilia'],
+      bioma: 'Sistema cavernario con aislamiento',
+      nota: 'Acumulación intencional; poca megafauna. Naledi como posible enterrador.',
+      // Berger et al. 2015 (DOI:10.7554/eLife.09560)
+      riqueza: 'baja'
+    },
+    jebel_irhoud_site: {
+      taxa: ['Gazella dorcas','Equus','Alcelaphus buselaphus','Phacochoerus',
+             'Carnivora norteafricana (Acinonyx, Canis)','Lepus'],
+      bioma: 'Estepa árida y sabana mediterránea',
+      nota: 'Cueva-refugio; sapiens más antiguos conocidos (315 ka, Richter et al. 2017).',
+      // Hublin et al. 2017 (DOI:10.1038/nature22336)
+      riqueza: 'media'
+    },
+    blombos_cave: {
+      taxa: ['Arctocephalus pusillus','Mola mola','Sparus','Tursiops truncatus',
+             'Reptilia marinos','Pequeños bovidos costeros','Lepus'],
+      bioma: 'Costa y dunas sudafricanas',
+      nota: 'Fauna marina dominante; primera pintura ocre y artefactos simbólicos.',
+      // Henshilwood et al. 2002 (DOI:10.1126/science.1089911)
+      riqueza: 'media'
+    },
+    omo_kibish: {
+      taxa: ['Hippopotamus amphibius','Bovidae','Equidae','Cercopithecidae',
+             'Crocodylidae','Tilapia (peces)'],
+      bioma: 'Ribera de lago y sabana',
+      nota: 'Omo I y Omo II; sapiens anatómicamente modernos (~195 ka).',
+      // McDougall et al. 2005 (DOI:10.1038/nature03258)
+      riqueza: 'media'
+    },
+    neander_valley: {
+      taxa: ['Rhinoceros tichorhinus','Equus ferus','Bison priscus',
+             'Cervus elaphus','Ursus spelaeus','Crocuta crocuta spelaea',
+             'Mammuthus primigenius'],
+      bioma: 'Tundra-estepa periglaciar',
+      nota: 'Contexto glaciar; holotipo de Homo neanderthalensis (Fuhlrott 1856).',
+      riqueza: 'alta'
+    },
+    denisova_cave: {
+      taxa: ['Cervidae (Rangifer, Cervus)','Bovidae (Bison, Bos)','Equus ferus',
+             'Ursus spelaeus','Felis silvestris','Panthera spelaea',
+             'Coelodonta antiquitatis'],
+      bioma: 'Estepa-bosque altaica',
+      nota: 'Capas con denisovanos, neandertales y sapiens; fauna glaciar diversa.',
+      // Douka et al. 2019 (DOI:10.1038/s41586-019-1257-6)
+      riqueza: 'alta'
+    },
+    liang_bua: {
+      taxa: ['Stegodon florensis insularis','Varanus komodoensis','Varanus salvator',
+             'Macropygia (pichón)','Rattus hainaldi','Spelaeornis','Crocodylus'],
+      bioma: 'Selva tropical insular con enanismo',
+      nota: 'Insularidad extrema; fauna nanizada coexistió con H. floresiensis.',
+      // van den Bergh et al. 2016 (DOI:10.1038/nature17418)
+      riqueza: 'media'
+    },
+    callao: {
+      taxa: ['Bovidae enano (Bubalus mindorensis)','Cervo enano',
+             'Varanus','Micromammalia filipina','Testudines'],
+      bioma: 'Selva tropical insular',
+      nota: 'Insularismo filipino; contexto de Homo luzonensis (Détroit et al. 2019).',
+      // Détroit et al. 2019 (DOI:10.1038/s41586-019-1067-9)
+      riqueza: 'baja'
+    },
+    dali_site: {
+      taxa: ['Cervidae chinos','Equidae','Bovidae','Elephantidae',
+             'Rhinocerotidae','Ursidae'],
+      bioma: 'Sabana-bosque loess',
+      nota: 'Pleistoceno medio tardío; contexto de Homo daliensis.',
+      riqueza: 'media'
+    },
+    harbin: {
+      taxa: ['Mamíferos del Pleistoceno medio tardío chino (inferidos por correlación)',
+             'Cervidae','Bovidae'],
+      bioma: 'Llanura aluvial fría',
+      nota: 'Contexto aislado; Homo longi (Ji et al. 2021, DOI:10.1016/j.xinn.2021.100132).',
+      riqueza: 'baja'
+    }
+  };
+
+  /* ── Riqueza → color ──────────────────────────────────────────────────── */
+  const RIQUEZA_COLOR = {
+    'muy alta': '#0e7f65',
+    'alta':     '#1a4fa0',
+    'media':    '#c07800',
+    'baja':     '#8a96a6'
+  };
+  const RIQUEZA_PCT = { 'muy alta': 100, 'alta': 72, 'media': 48, 'baja': 24 };
+
+  /* ── Escape XSS ──────────────────────────────────────────────────────── */
+  function _esc(str) {
+    const el = document.createElement('span');
+    el.textContent = str || '';
+    return el.innerHTML;
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     B. RENDERIZADO DEL BLOQUE DE FAUNA
+     ════════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Genera el HTML del bloque de fauna para una ficha de yacimiento.
+   * @param {string} siteId - ID del yacimiento (clave en FAUNA_DB)
+   * @returns {string|null} HTML o null si no hay datos
+   */
+  function _faunaBlockHtml(siteId) {
+    const data = FAUNA_DB[siteId];
+    if (!data || !data.taxa || data.taxa.length === 0) return null;
+
+    const col = RIQUEZA_COLOR[data.riqueza] || '#8a96a6';
+    const pct = RIQUEZA_PCT[data.riqueza]   || 24;
+
+    const pills = data.taxa
+      .map(t => `<span class="pb-fauna-pill">${_esc(t)}</span>`)
+      .join('');
+
+    return `
+      <div class="pb-fauna-block" aria-label="Fauna asociada a este yacimiento">
+        <div class="pb-fauna-header">
+          <strong>Fauna asociada</strong>
+          <span class="pb-fauna-bioma">${_esc(data.bioma || '')}</span>
+          <div class="pb-fauna-riqueza" title="Riqueza faunística: ${_esc(data.riqueza)}">
+            <div class="pb-fauna-riqueza-bar"
+                 style="width:${pct}%;background:${col}"
+                 role="meter" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Riqueza faunística ${_esc(data.riqueza)}"></div>
+            <span class="pb-fauna-riqueza-label" style="color:${col}">${_esc(data.riqueza)}</span>
+          </div>
+        </div>
+        <div class="pb-fauna-pills">${pills}</div>
+        ${data.nota ? `<p class="pb-fauna-nota">${_esc(data.nota)}</p>` : ''}
+      </div>`;
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     C. INYECCIÓN EN LAS FICHAS EXISTENTES
+     ════════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Inyecta los bloques de fauna en las fichas del #siteGrid ya renderizado.
+   * Usa data-site-id para localizar cada card sin reescribir renderSiteView.
+   */
+  function _injectFaunaIntoCards() {
+    const grid = document.getElementById('siteGrid');
+    if (!grid || grid.dataset.pbFaunaInjected === '1') return;
+
+    const cards = grid.querySelectorAll('article.site-card');
+    if (!cards.length) return;
+
+    let injected = 0;
+    cards.forEach(card => {
+      if (card.dataset.pbFaunaInjected) return;
+
+      /* Inferir site ID desde el nombre del yacimiento en la card */
+      const h3 = card.querySelector('h3');
+      const titleText = h3?.textContent?.trim() || '';
+      const siteId = _inferSiteId(titleText);
+
+      if (!siteId) return;
+
+      const html = _faunaBlockHtml(siteId);
+      if (!html) return;
+
+      /* Insertar antes del último site-section (Species) si existe, o al final */
+      const sections = card.querySelectorAll('.site-section');
+      const lastSection = sections[sections.length - 1];
+      if (lastSection) {
+        lastSection.insertAdjacentHTML('beforebegin', html);
+      } else {
+        card.insertAdjacentHTML('beforeend', html);
+      }
+      card.dataset.pbFaunaInjected = '1';
+      injected++;
+    });
+
+    if (injected > 0) {
+      grid.dataset.pbFaunaInjected = '1';
+      log(`Fauna inyectada en ${injected} fichas de yacimiento`);
+    }
+  }
+
+  /* ── Mapeo nombre → site_id ──────────────────────────────────────────── */
+  /**
+   * Infiere el ID del SITE_CATALOG desde el nombre visible de la ficha.
+   * Usamos un mapa explícito para evitar lógica frágil de normalización.
+   */
+  const NAME_TO_ID = {
+    'Koru / Rusinga':                   'koru_rusinga',
+    'Moroto II':                        'moroto_ii',
+    'Saint-Gaudens y cuencas europeas': 'saint_gaudens',
+    'Abocador de Can Mata / Els Hostalets de Pierola': 'can_mata',
+    'Nakali':                           'nakali',
+    'Formación Chorora':                'chorora',
+    'Pyrgos / Azmaka':                  'pyrgos_azmaka',
+    'Toros-Menalla':                    'toros_menalla',
+    'Tugen Hills':                      'tugen_hills',
+    'Middle Awash':                     'middle_awash',
+    'Kanapoi / Allia Bay':              'kanapoi_allia_bay',
+    'Hadar / Dikika':                   'hadar_dikika',
+    'Woranso-Mille':                    'woranso_mille',
+    'Ledi-Geraru':                      'ledi_geraru',
+    'Koro Toro':                        'koro_toro',
+    'Lomekwi / Turkana occidental':     'west_turkana_lomekwi',
+    'Sterkfontein':                     'sterkfontein',
+    'Bouri':                            'bouri',
+    'Malapa':                           'malapa',
+    'Omo / Olduvai / Peninj':           'omo_olduvai',
+    'Swartkrans / Kromdraai':           'swartkrans_kromdraai',
+    'Koobi Fora / Nariokotome':         'koobi_fora',
+    'Dmanisi':                          'dmanisi',
+    'Sangiran / Ngandong':              'java',
+    'Atapuerca, Gran Dolina':           'atapuerca',
+    'Sima del Elefante TE7':            'sima_elefante_te7',
+    'Ceprano':                          'ceprano',
+    'Mauer':                            'mauer',
+    "Bodo D'ar":                        'bodo_dar',
+    'Broken Hill / Kabwe':              'kabwe',
+    'Florisbad':                        'florisbad',
+    'Rising Star / Dinaledi':           'rising_star',
+    'Jebel Irhoud':                     'jebel_irhoud_site',
+    'Blombos Cave':                     'blombos_cave',
+    'Omo Kibish':                       'omo_kibish',
+    'Valle de Neander':                 'neander_valley',
+    'Cueva Denisova':                   'denisova_cave',
+    'Liang Bua':                        'liang_bua',
+    'Cueva Callao':                     'callao',
+    'Dali':                             'dali_site',
+    'Harbin':                           'harbin'
+  };
+
+  function _inferSiteId(titleText) {
+    if (NAME_TO_ID[titleText]) return NAME_TO_ID[titleText];
+    /* Búsqueda parcial por prefijo como fallback */
+    const lower = titleText.toLowerCase();
+    for (const [name, id] of Object.entries(NAME_TO_ID)) {
+      if (lower.startsWith(name.substring(0,8).toLowerCase())) return id;
+    }
+    return null;
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     D. WRAP DE renderSiteView PARA INYECCIÓN AUTOMÁTICA
+     ════════════════════════════════════════════════════════════════════════ */
+
+  function _wrapRenderSiteView() {
+    if (typeof window.renderSiteView !== 'function') return;
+    const orig = window.renderSiteView;
+    window.renderSiteView = function() {
+      orig.apply(this, arguments);
+      /* Diferir un frame para que el DOM esté actualizado */
+      window.requestAnimationFrame(_injectFaunaIntoCards);
+    };
+    log('renderSiteView() envuelto para inyección de fauna');
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     E. CSS DEL BLOQUE DE FAUNA
+     ════════════════════════════════════════════════════════════════════════ */
+
+  function _injectStyles() {
+    if (document.getElementById('pb-m4-fauna-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'pb-m4-fauna-styles';
+    style.textContent = `
+      /* ── Bloque de fauna en fichas de yacimiento ──────────────── */
+      .pb-fauna-block {
+        background: #f7f3ed;
+        border: 1.5px solid #e0dbd4;
+        border-left: 4px solid var(--accent, #0e7f65);
+        border-radius: 10px;
+        padding: 12px 14px 10px;
+        margin: 10px 0 2px;
+        font-family: var(--font-sans, sans-serif);
+      }
+      .pb-fauna-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+      .pb-fauna-header strong {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--primary, #1c2b3a);
+        white-space: nowrap;
+      }
+      .pb-fauna-bioma {
+        font-size: 0.73rem;
+        color: var(--text-sec, #6b5f4e);
+        font-style: italic;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .pb-fauna-riqueza {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+      .pb-fauna-riqueza-bar {
+        width: 0;
+        height: 6px;
+        border-radius: 3px;
+        transition: width 0.4s ease;
+        min-width: 0;
+        max-width: 72px;
+      }
+      .pb-fauna-riqueza-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
+      .pb-fauna-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 7px;
+      }
+      .pb-fauna-pill {
+        font-size: 0.72rem;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: white;
+        border: 1px solid #d0cbc4;
+        color: var(--primary, #1c2b3a);
+        font-style: italic;
+        line-height: 1.5;
+      }
+      .pb-fauna-nota {
+        font-size: 0.72rem;
+        color: var(--text-sec, #6b5f4e);
+        line-height: 1.5;
+        margin: 0;
+        padding-top: 4px;
+        border-top: 1px solid #e0dbd4;
+      }
+      @media (max-width: 600px) {
+        .pb-fauna-block { padding: 10px 10px 8px; }
+        .pb-fauna-bioma { display: none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .pb-fauna-riqueza-bar { transition: none; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     F. INICIALIZACIÓN
+     ════════════════════════════════════════════════════════════════════════ */
+
+  function _init() {
+    _injectStyles();
+    _wrapRenderSiteView();
+
+    /* Si la vista yacimientos ya está activa, inyectar inmediatamente */
+    if (document.getElementById('view-yacimientos')?.classList.contains('active')) {
+      window.setTimeout(_injectFaunaIntoCards, 300);
+    }
+
+    /* Escuchar cambios de vista */
+    ['paleobot:viewchange','paleobot:v55-viewchange','paleobot:combined-viewchange'].forEach(evt => {
+      document.addEventListener(evt, function(e) {
+        const view = e.detail?.view || e.detail?.viewId || '';
+        if (view === 'yacimientos') window.setTimeout(_injectFaunaIntoCards, 300);
+      });
+    });
+
+    /* MutationObserver en #siteGrid como último recurso */
+    const grid = document.getElementById('siteGrid');
+    if (grid && window.MutationObserver) {
+      const obs = new MutationObserver(() => {
+        if (grid.querySelector('article.site-card')) {
+          window.requestAnimationFrame(_injectFaunaIntoCards);
+        }
+      });
+      obs.observe(grid, { childList: true });
+    }
+
+    /* Exponer API pública */
+    window.FAUNA_DB = FAUNA_DB;
+    window.PaleoBotV66Fauna = { FAUNA_DB, faunaBlockHtml: _faunaBlockHtml };
+    log(`M4 Fauna listo — ${Object.keys(FAUNA_DB).length} yacimientos con datos`);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init, { once: true });
+  } else {
+    _init();
+  }
+
+})();
+</script>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     PaleoBot v66 — M5: Viewer craneal multi-norma
+     ──────────────────────────────────────────────────────────────────────────
+     El viewer craneal existente (_cmpRender3DComparativeViewer) muestra
+     solo lateral + frontal en cada tarjeta. M5 añade:
+
+       A. Norma superior (superius) — vista desde arriba del cráneo:
+          elipsoide del neurocráneo + cresta sagital si presente +
+          arco cigomático estimado + proyección de la bóveda.
+
+       B. Selector de vista (lateral / frontal / superior) mediante
+          botones accesibles [aria-pressed] por encima de las tarjetas.
+          La vista activa se aplica a todas las tarjetas simultáneamente.
+
+       C. Wrap defensivo de _cmpRender3DComparativeViewer:
+          · Añade el selector de vista sobre el .cmp-3d-stage
+          · Registra los SVG de norma superior en cada .cmp-3d-scene
+          · El lateral y frontal originales se conservan sin modificar
+
+     Métricas añadidas para norma superior (derivadas de _cmp3DMetricProfile):
+       · Anchura craneal relativa (braquicefalia vs. dolicocefalia)
+         estimada desde: vault + clado + corpus textual
+       · Proyección occipital (bun): inferida de corpus texto
+       · Arco cigomático: proporcional al jaw + prognathism
+
+     Referencias anatómicas:
+       · Martin & Saller 1956 — Lehrbuch der Anthropologie
+       · Bass 2005 — Human Osteology (norma superius)
+       · Holloway et al. 2004 — The Human Fossil Record vol. 3
+     ══════════════════════════════════════════════════════════════════════════ -->
+<script id="paleobot-v66-cranial-norma">
+(function PaleoBotV66CranialNorma() {
+  'use strict';
+
+  const DEBUG = typeof window.__PALEOBOT_DEBUG !== 'undefined' && window.__PALEOBOT_DEBUG;
+  const log   = DEBUG ? console.log.bind(console,  '[PB66-Cran]') : () => {};
+
+  /* ════════════════════════════════════════════════════════════════════════
+     A. MÉTRICAS PARA NORMA SUPERIOR
+     Extiende _cmp3DMetricProfile con índice cefálico e índices occipitales.
+     ════════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Calcula el perfil de norma superior para un taxón.
+   * @param {object} sp — objeto especie del DB
+   * @returns {{ width, length, bun, zygo, sagittal, crestWidth }}
+   *   width, length: semiejes del elipsoide craneal (px en viewBox 200×160)
+   *   bun: proyección occipital (0–1)
+   *   zygo: anchura del arco cigomático (factor)
+   *   sagittal: boolean (cresta sagital)
+   *   crestWidth: grosor de la cresta sagital
+   */
+  function _superiorProfile(sp) {
+    // Acceder a _cmp3DMetricProfile si está disponible
+    const base = (typeof window._cmp3DMetricProfile === 'function' ||
+                  typeof _cmp3DMetricProfile === 'function')
+      ? (window._cmp3DMetricProfile || _cmp3DMetricProfile)(sp)
+      : null;
+
+    const vault = base?.vault ?? 50;
+    const jaw   = base?.jaw   ?? 30;
+    const prog  = base?.prognathism ?? 40;
+
+    // Corpus textual para inferencias
+    const txt = (sp.descripcion || '') + ' ' +
+                (sp.experto?.descripcion_tecnica || '') + ' ' +
+                (sp.experto?.anatomia_craneal || '');
+    const txtN = txt.toLowerCase();
+
+    // Índice cefálico: dolicocéfalo (largo-estrecho) vs braquicéfalo (corto-ancho)
+    // Neandertales y erectus: dolicocéfalos; sapiens modernos: mesocéfalos-braquicéfalos
+    // Paranthropus: muy ancho por cigomáticos
+    let breadthFactor = 0.72; // mesocéfalo por defecto
+    if (/neandertal|neanderthal|dolicocefal|cráneo alargado|neurocrá.*alarg/.test(txtN)) breadthFactor = 0.62;
+    if (/braquicefal|cráneo redondeado|globular|neurocrá.*globular/.test(txtN)) breadthFactor = 0.84;
+    if (sp.clado === 'paran') breadthFactor = 0.88; // cigomáticos muy prominentes
+    if (sp.clado === 'basal') breadthFactor = 0.68;
+
+    // Proyección occipital (bun occipital)
+    const bun = /chignon occipital|bun occipital|protuberancia occipital|occipital muy proyectado/.test(txtN)
+      ? 0.85 : /occipital.*redondeado|occipital liso/.test(txtN) ? 0.25 : 0.45;
+
+    // Anchura cigomática relativa al vault (en norma superior se ve la anchura)
+    const zygoFactor = 0.9 + (jaw / 100) * 0.35 + (prog / 100) * 0.12;
+
+    // Longitud y anchura del elipsoide (semiejes, px sobre viewBox 200×160)
+    const length = 52 + vault * 0.22;      // eje anteroposterior
+    const width  = length * breadthFactor; // eje mediolateral
+
+    // Cresta sagital
+    const sagittal = base?.sagittal ?? /cresta sagital|quilla sagital/.test(txtN);
+    const crestWidth = sp.clado === 'paran' ? 5 : 3;
+
+    return { width, length, bun, zygoFactor, sagittal, crestWidth, breadthFactor };
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     B. SVG DE NORMA SUPERIOR
+     ════════════════════════════════════════════════════════════════════════ */
+
+  function _esc(str) {
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /**
+   * Genera el SVG de norma superior para un taxón.
+   * @param {object} sp — objeto especie
+   * @param {string} color — color de serie
+   * @returns {string} SVG string
+   */
+  function _superiorSvg(sp, color) {
+    const p = _superiorProfile(sp);
+
+    // Centro del viewBox
+    const cx = 100, cy = 82;
+    // Elipsoide principal (neurocráneo en plano horizontal)
+    const rx = p.width;
+    const ry = p.length;
+
+    // Polo anterior (frontal) y posterior (occipital)
+    const frontY  = cy - ry;
+    const backY   = cy + ry;
+    // Anchura máxima (parietales)
+    const maxX    = cx + rx;
+
+    // Arcos cigomáticos (laterales, en norma superior se ven como protuberancias)
+    const zygoRx  = rx * p.zygoFactor;
+    const zygoY   = cy + ry * 0.12; // a la altura de los temporales
+
+    // Proyección del occipital (bun)
+    const bunExt  = ry * p.bun * 0.18; // extensión extra del polo posterior
+
+    // Colores
+    const fillStop1 = color || '#8a96a6';
+
+    return `<svg class="cmp-3d-model cmp-superior-model"
+      viewBox="0 0 200 164"
+      role="img"
+      aria-label="Norma superior (vista desde arriba) de ${_esc(sp.nombre)}">
+      <defs>
+        <radialGradient id="supGrad-${_esc(sp.id)}" cx="42%" cy="35%" r="68%">
+          <stop offset="0" stop-color="#fff" stop-opacity="0.72"/>
+          <stop offset="0.55" stop-color="${_esc(fillStop1)}" stop-opacity="0.55"/>
+          <stop offset="1" stop-color="#1c2b3a" stop-opacity="0.82"/>
+        </radialGradient>
+        <filter id="supShadow-${_esc(sp.id)}" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#00000044"/>
+        </filter>
+      </defs>
+
+      <!-- Neurocráneo — elipsoide principal -->
+      <ellipse
+        cx="${cx}" cy="${cy}"
+        rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}"
+        fill="url(#supGrad-${_esc(sp.id)})"
+        stroke="${_esc(fillStop1)}" stroke-width="1.8"
+        filter="url(#supShadow-${_esc(sp.id)})"/>
+
+      <!-- Proyección occipital (bun) si presente -->
+      ${p.bun > 0.55 ? `
+      <ellipse
+        cx="${cx}" cy="${(backY + bunExt * 0.5).toFixed(1)}"
+        rx="${(rx * 0.42).toFixed(1)}" ry="${(bunExt * 0.9).toFixed(1)}"
+        fill="${_esc(fillStop1)}" opacity="0.45"/>
+      ` : ''}
+
+      <!-- Arcos cigomáticos (protuberancias laterales) -->
+      <ellipse
+        cx="${(cx + zygoRx).toFixed(1)}" cy="${zygoY.toFixed(1)}"
+        rx="${(rx * 0.22).toFixed(1)}" ry="${(ry * 0.12).toFixed(1)}"
+        fill="${_esc(fillStop1)}" opacity="0.38" stroke="${_esc(fillStop1)}" stroke-width="1"/>
+      <ellipse
+        cx="${(cx - zygoRx).toFixed(1)}" cy="${zygoY.toFixed(1)}"
+        rx="${(rx * 0.22).toFixed(1)}" ry="${(ry * 0.12).toFixed(1)}"
+        fill="${_esc(fillStop1)}" opacity="0.38" stroke="${_esc(fillStop1)}" stroke-width="1"/>
+
+      <!-- Sutura metópica / glabela (polo anterior) -->
+      <line
+        x1="${cx}" y1="${frontY.toFixed(1)}"
+        x2="${cx}" y2="${(frontY + ry * 0.22).toFixed(1)}"
+        stroke="rgba(255,255,255,0.55)" stroke-width="1.2" stroke-dasharray="3,3"/>
+
+      <!-- Cresta sagital (si presente) -->
+      ${p.sagittal ? `
+      <path
+        d="M${cx} ${(frontY + 4).toFixed(1)} L${cx} ${(backY - 4).toFixed(1)}"
+        fill="none"
+        stroke="rgba(255,255,255,0.88)"
+        stroke-width="${p.crestWidth}"
+        stroke-linecap="round"/>
+      <text x="${cx + 7}" y="${(cy - ry * 0.3).toFixed(1)}"
+        font-size="8" fill="rgba(255,255,255,0.72)"
+        font-family="sans-serif" font-style="italic">cresta</text>
+      ` : ''}
+
+      <!-- Suturas parietales (líneas transversales indicativas) -->
+      <path
+        d="M${(cx - rx * 0.7).toFixed(1)} ${cy.toFixed(1)} Q${cx} ${(cy - ry * 0.12).toFixed(1)} ${(cx + rx * 0.7).toFixed(1)} ${cy.toFixed(1)}"
+        fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+
+      <!-- Etiquetas de orientación -->
+      <text x="${cx}" y="${(frontY - 6).toFixed(1)}" text-anchor="middle"
+        font-size="8.5" fill="rgba(255,255,255,0.65)" font-family="sans-serif">frontal</text>
+      <text x="${cx}" y="${(backY + bunExt + 13).toFixed(1)}" text-anchor="middle"
+        font-size="8.5" fill="rgba(255,255,255,0.65)" font-family="sans-serif">occipital</text>
+
+      <!-- Indicador de índice cefálico -->
+      <text x="8" y="158"
+        font-size="8" fill="rgba(255,255,255,0.52)" font-family="sans-serif">
+        ${p.breadthFactor < 0.66 ? 'dolicocéfalo' : p.breadthFactor > 0.80 ? 'braquicéfalo' : 'mesocéfalo'}
+      </text>
+    </svg>`;
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     C. SELECTOR DE VISTA (lateral / frontal / superior)
+     ════════════════════════════════════════════════════════════════════════ */
+
+  const VIEWS = ['lateral', 'frontal', 'superior'];
+  const VIEW_LABELS = {
+    lateral:  'Lateral',
+    frontal:  'Frontal',
+    superior: 'Superior'
+  };
+  const VIEW_ARIA = {
+    lateral:  'Vista lateral del modelo craneal',
+    frontal:  'Vista frontal del modelo craneal',
+    superior: 'Vista superior (norma superius) del modelo craneal'
+  };
+
+  /** HTML del selector de normas */
+  function _selectorHtml() {
+    return `
+      <div class="pb-norma-selector" role="group" aria-label="Seleccionar vista craneal">
+        <span class="pb-norma-label">Vista:</span>
+        ${VIEWS.map(v => `
+          <button type="button"
+            class="pb-norma-btn${v === 'lateral' ? ' active' : ''}"
+            data-pb-norma="${v}"
+            aria-pressed="${v === 'lateral' ? 'true' : 'false'}"
+            aria-label="${VIEW_ARIA[v]}">
+            ${VIEW_LABELS[v]}
+          </button>`).join('')}
+      </div>`;
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     D. INYECCIÓN EN EL COMPARADOR 3D
+     ════════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Envuelve _cmpRender3DComparativeViewer para añadir selector y norma superior.
+   * El resultado es el HTML del comparador original + selector + SVGs superiores cacheados
+   * en data-attributes para conmutación CSS.
+   */
+  function _wrapComparativeViewer() {
+    const origFn = window._cmpRender3DComparativeViewer ||
+                   (typeof _cmpRender3DComparativeViewer === 'function' ? _cmpRender3DComparativeViewer : null);
+    if (!origFn) { log('_cmpRender3DComparativeViewer no encontrada, omitiendo wrap'); return; }
+
+    const wrapped = function(species, seriesColors) {
+      const originalHtml = origFn(species, seriesColors);
+
+      if (!species || species.length === 0) return originalHtml;
+
+      // Los SVGs de norma superior, un fragmento HTML oculto por cada tarjeta
+      // Se insertarán en el DOM tras renderizar el HTML original
+      // Los almacenamos en un div#pb-norma-cache con data-id
+      const superiorCache = species.map(sp => {
+        const col = (seriesColors && seriesColors[sp.id]) ||
+                    (window.CLADE_COLORS && window.CLADE_COLORS[sp.clado]) || '#8a96a6';
+        return `<div class="pb-norma-cache-item" data-norma-id="${_esc(sp.id)}">
+          ${_superiorSvg(sp, col)}
+        </div>`;
+      }).join('');
+
+      return `
+        ${_selectorHtml()}
+        <div id="pb-norma-cache" style="display:none" aria-hidden="true">${superiorCache}</div>
+        ${originalHtml}`;
+    };
+
+    window._cmpRender3DComparativeViewer = wrapped;
+    log('_cmpRender3DComparativeViewer envuelta con norma superior');
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     E. CONTROLADOR DE EVENTOS DEL SELECTOR
+     ════════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Activa la vista seleccionada en todas las tarjetas del comparador.
+   * Para lateral/frontal: muestra el SVG original (.cmp-3d-model).
+   * Para superior: sustituye el SVG por el de norma superior desde el cache.
+   */
+  function _activateView(view) {
+    const stage = document.querySelector('.cmp-3d-stage');
+    if (!stage) return;
+
+    // Actualizar botones
+    stage.querySelectorAll('[data-pb-norma]').forEach(btn => {
+      const isActive = btn.dataset.pbNorma === view;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    // Actualizar etiqueta de eje en cada escena
+    stage.querySelectorAll('.cmp-3d-axis').forEach(axis => {
+      if (view === 'lateral') axis.innerHTML = '<i></i> lateral + frontal';
+      else if (view === 'frontal') axis.innerHTML = '<i></i> vista frontal';
+      else axis.innerHTML = '<i></i> norma superior (superius)';
+    });
+
+    // Conmutar SVG en cada tarjeta
+    const cards = stage.querySelectorAll('.cmp-3d-card');
+    cards.forEach(card => {
+      const scene = card.querySelector('.cmp-3d-scene');
+      if (!scene) return;
+
+      if (view === 'superior') {
+        // Buscar SVG de norma superior para este taxón
+        const titleEl = card.querySelector('.cmp-3d-title');
+        // El id del taxón está en el data-cranial o en el aria-label del SVG original
+        const origSvg = scene.querySelector('.cmp-3d-model:not(.cmp-superior-model)');
+        if (!origSvg) return;
+
+        // Extraer id del taxón desde aria-label del SVG original
+        const ariaLabel = origSvg.getAttribute('aria-label') || '';
+        // Buscar en el cache por texto coincidente del nombre del taxón
+        const cache = document.getElementById('pb-norma-cache');
+        if (!cache) return;
+
+        // Intentar match por id del SVG (data-norma-id)
+        const cacheItems = cache.querySelectorAll('[data-norma-id]');
+        let supSvg = null;
+        cacheItems.forEach(item => {
+          // Comparar con aria-label del SVG original (contiene el nombre del taxón)
+          const supModel = item.querySelector('.cmp-superior-model');
+          if (supModel && ariaLabel.includes(supModel.getAttribute('aria-label')?.split('de ')[1] || '__NO__')) {
+            supSvg = supModel.cloneNode(true);
+          }
+        });
+        // Fallback: primer item del cache si solo hay un taxón
+        if (!supSvg && cacheItems.length === 1) {
+          supSvg = cacheItems[0].querySelector('.cmp-superior-model')?.cloneNode(true);
+        }
+
+        if (supSvg) {
+          origSvg.style.display = 'none';
+          const existing = scene.querySelector('.cmp-superior-model.active-norma');
+          if (existing) existing.remove();
+          supSvg.classList.add('active-norma');
+          scene.insertBefore(supSvg, scene.querySelector('.cmp-3d-axis'));
+        }
+      } else {
+        // Restaurar SVG original
+        const origSvg = scene.querySelector('.cmp-3d-model:not(.cmp-superior-model)');
+        const supSvg  = scene.querySelector('.active-norma');
+        if (origSvg) origSvg.style.display = '';
+        if (supSvg)  supSvg.remove();
+
+        // Para frontal: aplicar transform adicional al SVG original
+        if (origSvg) {
+          origSvg.style.transform = view === 'frontal'
+            ? 'none'   // El SVG ya tiene la vista frontal como segundo grupo
+            : '';      // lateral: CSS por defecto
+        }
+      }
+    });
+
+    log('Vista craneal activada:', view);
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     F. MATCH PRECISO POR ESPECIE para la conmutación
+     El sistema anterior usa aria-label para el match, lo que es frágil.
+     Esta versión inyecta data-sp-id directamente en cada card al renderizar.
+     ════════════════════════════════════════════════════════════════════════ */
+
+  /**
+   * Tras renderizar el comparador, añade data-sp-id a cada .cmp-3d-card
+   * leyendo el nombre del taxón y cruzándolo con el DB.
+   */
+  function _tagCardsWithSpId() {
+    const stage = document.querySelector('.cmp-3d-stage');
+    if (!stage) return;
+    const db = window.DB_INDEX || {};
+
+    stage.querySelectorAll('.cmp-3d-card').forEach((card, idx) => {
+      if (card.dataset.spId) return;
+      // Intentar leer el nombre desde .cmp-3d-title
+      const nameEl = card.querySelector('.cmp-3d-title [lang="la"], .cmp-3d-title');
+      const name = nameEl?.textContent?.trim() || '';
+      // Buscar en DB_INDEX por nombre
+      const match = Object.values(db).find(sp => sp.nombre === name || sp.nombre?.startsWith(name.split(' ')[0]));
+      if (match) card.dataset.spId = match.id;
+      else card.dataset.spId = `idx-${idx}`; // fallback por índice
+    });
+  }
+
+  /**
+   * Versión mejorada de _activateView que usa data-sp-id para match preciso.
+   */
+  function _activateViewPrecise(view) {
+    const stage = document.querySelector('.cmp-3d-stage');
+    if (!stage) return;
+
+    _tagCardsWithSpId();
+
+    // Actualizar botones del selector
+    stage.querySelectorAll('[data-pb-norma]').forEach(btn => {
+      const isActive = btn.dataset.pbNorma === view;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    // Actualizar etiqueta de eje
+    stage.querySelectorAll('.cmp-3d-axis').forEach(axis => {
+      axis.innerHTML = {
+        lateral:  '<i></i> lateral + frontal',
+        frontal:  '<i></i> vista frontal',
+        superior: '<i></i> norma superior (superius)'
+      }[view] || '<i></i>';
+    });
+
+    const cache = document.getElementById('pb-norma-cache');
+
+    stage.querySelectorAll('.cmp-3d-card').forEach(card => {
+      const scene  = card.querySelector('.cmp-3d-scene');
+      if (!scene) return;
+      const spId   = card.dataset.spId || '';
+      const origSvg = scene.querySelector('.cmp-3d-model:not(.cmp-superior-model):not(.active-norma)');
+      const activeSup = scene.querySelector('.active-norma');
+
+      if (view === 'superior') {
+        // Buscar en cache por spId
+        const cacheItem = cache?.querySelector(`[data-norma-id="${CSS.escape(spId)}"]`);
+        const supModel  = cacheItem?.querySelector('.cmp-superior-model');
+        if (supModel) {
+          const clone = supModel.cloneNode(true);
+          clone.classList.add('active-norma');
+          if (origSvg) origSvg.style.display = 'none';
+          if (activeSup) activeSup.remove();
+          scene.insertBefore(clone, scene.querySelector('.cmp-3d-axis'));
+        }
+      } else {
+        // Restaurar original
+        if (activeSup) activeSup.remove();
+        if (origSvg) origSvg.style.display = '';
+      }
+    });
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     G. CSS DEL SELECTOR DE NORMAS
+     ════════════════════════════════════════════════════════════════════════ */
+
+  function _injectStyles() {
+    if (document.getElementById('pb-m5-cranial-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'pb-m5-cranial-styles';
+    style.textContent = `
+      /* ── Selector de vista craneal ────────────────────────── */
+      .pb-norma-selector {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+      .pb-norma-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: rgba(255,255,255,0.55);
+        margin-right: 2px;
+        font-family: var(--font-sans, sans-serif);
+      }
+      .pb-norma-btn {
+        background: rgba(255,255,255,0.10);
+        color: rgba(255,255,255,0.72);
+        border: 1.5px solid rgba(255,255,255,0.18);
+        border-radius: 6px;
+        padding: 4px 13px;
+        font-size: 0.76rem;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: var(--font-sans, sans-serif);
+        transition: background 0.16s, color 0.16s, border-color 0.16s;
+      }
+      .pb-norma-btn:hover {
+        background: rgba(255,255,255,0.18);
+        color: #fff;
+      }
+      .pb-norma-btn.active,
+      .pb-norma-btn[aria-pressed="true"] {
+        background: var(--accent, #0e7f65);
+        border-color: var(--accent, #0e7f65);
+        color: #fff;
+      }
+      .pb-norma-btn:focus-visible {
+        outline: 2px solid var(--accent, #0e7f65);
+        outline-offset: 2px;
+      }
+      /* ── Modelo de norma superior ─────────────────────────── */
+      .cmp-superior-model {
+        width: 168px;
+        height: 140px;
+        filter: drop-shadow(0 3px 10px rgba(0,0,0,0.45));
+        transition: opacity 0.18s;
+      }
+      .cmp-superior-model.active-norma {
+        display: block;
+      }
+      /* Fade-in al activar norma */
+      .active-norma {
+        animation: pb-norma-fade 0.22s ease-out;
+      }
+      @keyframes pb-norma-fade {
+        from { opacity: 0; transform: scale(0.95); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .active-norma { animation: none; }
+        .pb-norma-btn { transition: none; }
+      }
+      /* ── Cache oculto ─────────────────────────────────────── */
+      #pb-norma-cache { display: none !important; }
+    `;
+    document.head.appendChild(style);
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     H. DELEGACIÓN DE EVENTOS
+     ════════════════════════════════════════════════════════════════════════ */
+
+  function _attachEvents() {
+    // Usar event delegation en el compareModal para los botones de selector
+    const modal = document.getElementById('compareModal');
+    if (!modal) return;
+
+    modal.addEventListener('click', function(e) {
+      const btn = e.target.closest('[data-pb-norma]');
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      _activateViewPrecise(btn.dataset.pbNorma);
+    });
+
+    log('Delegación de eventos del selector de normas instalada');
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════
+     I. INICIALIZACIÓN
+     ════════════════════════════════════════════════════════════════════════ */
+
+  function _init() {
+    _injectStyles();
+
+    // El wrap debe ocurrir antes de que se llame a _cmpRender3DComparativeViewer
+    // Intentamos inmediatamente y también con un retry si la función aún no existe
+    function _tryWrap(tries) {
+      const fn = window._cmpRender3DComparativeViewer ||
+                 (typeof _cmpRender3DComparativeViewer !== 'undefined' ? _cmpRender3DComparativeViewer : null);
+      if (fn && fn._isM5Wrapped !== true) {
+        _wrapComparativeViewer();
+        if (window._cmpRender3DComparativeViewer) {
+          window._cmpRender3DComparativeViewer._isM5Wrapped = true;
+        }
+      } else if (!fn && (tries || 0) < 30) {
+        setTimeout(() => _tryWrap((tries || 0) + 1), 100);
+      }
+    }
+    _tryWrap(0);
+
+    _attachEvents();
+
+    // Re-etiquetar tarjetas cuando el comparador se re-renderiza
+    ['paleobot:viewchange','paleobot:v55-viewchange'].forEach(evt => {
+      document.addEventListener(evt, () => {
+        setTimeout(_tagCardsWithSpId, 300);
+      });
+    });
+
+    // MutationObserver en compareResult para detectar re-renders
+    const compResult = document.getElementById('compareResult');
+    if (compResult && window.MutationObserver) {
+      const obs = new MutationObserver(() => {
+        setTimeout(_tagCardsWithSpId, 100);
+      });
+      obs.observe(compResult, { childList: true, subtree: false });
+    }
+
+    window.PaleoBotV66CranialNorma = {
+      superiorSvg: _superiorSvg,
+      activateView: _activateViewPrecise
+    };
+    log('M5 Viewer craneal multi-norma listo');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init, { once: true });
+  } else {
+    _init();
+  }
+
+})();
+</script>
+
+
+<script id="paleobot-v79-consolidated-dispatcher">
+(function(){
+  'use strict';
+
+  const MODAL_SELECTOR = '.modal-overlay.active,.pb-v50-modal.active,.pres-overlay.active,.pres-map-modal.active,.lightbox.active,.socratic-overlay.active';
+
+  function syncModalState(){
+    document.body.classList.toggle('modal-open', Boolean(document.querySelector(MODAL_SELECTOR)));
+  }
+
+  function call(name, ...args){
+    try {
+      const fn = window[name];
+      if (typeof fn === 'function') {
+        fn.apply(window, args);
+        return true;
+      }
+    } catch(err) {
+      console.warn('[PB79] Acción recuperada:', name, err);
+    }
+    return false;
+  }
+
+  function setModal(id, open){
+    if (typeof window.setModal === 'function' && window.setModal !== setModal) {
+      try {
+        const ok = window.setModal(id, open);
+        syncModalState();
+        return ok;
+      } catch(err) {}
+    }
+    const modal = document.getElementById(id);
+    if (!modal) return false;
+    const wasOpen = modal.classList.contains('active');
+    modal.classList.toggle('active', !!open);
+    modal.setAttribute('aria-hidden', open ? 'false' : 'true');
+    syncModalState();
+    if (open && !wasOpen) {
+      if (id === 'matrixModal') call('renderMatrix');
+      if (id === 'statsModal') call('drawChart');
+      if (id === 'glossaryModal') call('renderGlossary');
+      if (id === 'biblioModal') call('renderBibliography');
+      window.setTimeout(() => {
+        try { modal.querySelector('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')?.focus?.({ preventScroll:true }); } catch(err) {}
+      }, 40);
+    }
+    return true;
+  }
+
+  function runAction(action){
+    if (!action || action.includes('$' + '{')) return false;
+    const v68 = window.PaleoBotV68InteractionStabilizer;
+    if (v68 && typeof v68.runAction === 'function') {
+      try { if (v68.runAction(action)) return true; } catch(err) {}
+    }
+    if (action === 'runAdaptiveQuiz') return call('runAdaptiveQuiz') || setModal('examModal', true);
+    if (action === 'openGlobalSearch') return call('openGlobalSearch') || setModal('globalSearchModal', true);
+    if (action === 'exportPhyloSvg') return call('exportPhyloSvg');
+    if (action === 'exportBuilderSvg') return call('exportBuilderSvg');
+    return call(action);
+  }
+
+  function runDetailAction(action){
+    if (!action || action.includes('$' + '{')) return false;
+    const v68 = window.PaleoBotV68InteractionStabilizer;
+    if (v68 && typeof v68.runDetailAction === 'function') {
+      try { if (v68.runDetailAction(action)) return true; } catch(err) {}
+    }
+    if (action === 'openResearchGapModal') return call('openResearchGapModal') || setModal('researchGapModal', true);
+    if (action === 'exportAcademicPDF') return call('exportAcademicPDF') || call('printFicha') || (window.print(), true);
+    if (action === 'exportSpeciesPrintSheet') return call('exportSpeciesPrintSheet') || call('printFicha') || (window.print(), true);
+    return call(action);
+  }
+
+  function routeView(viewId, trigger){
+    if (!viewId || viewId.includes('$' + '{') || !document.getElementById('view-' + viewId)) return false;
+    const routers = [window.PaleoBotV68InteractionStabilizer, window.PaleoBotV55Router, window.PaleoBotCanonicalNav];
+    for (const router of routers) {
+      try {
+        if (router?.routeView?.(viewId, trigger)) return true;
+        if (router?.activateView?.(viewId, { scroll:true })) return true;
+        if (router?.setCanonical) router.setCanonical(viewId);
+      } catch(err) {}
+    }
+    try { if (typeof window.switchView === 'function') { window.switchView(viewId, trigger); return true; } } catch(err) {}
+    document.querySelectorAll('.view-section').forEach(section => {
+      const active = section.id === 'view-' + viewId;
+      section.classList.toggle('active', active);
+      section.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+    document.getElementById('view-' + viewId)?.scrollIntoView({ behavior:'smooth', block:'start' });
+    return true;
+  }
+
+  function quizNext(type){
+    if (type === 'generative') return call('runGenerativeQuiz') || call('runAdaptiveQuiz') || setModal('examModal', true);
+    const v69 = window.PaleoBotV69QuizStartRepair;
+    if (v69?.startClassicQuiz) return v69.startClassicQuiz();
+    return call('runExam') || setModal('examModal', true);
+  }
+
+  function quizBack(){
+    const intro = document.getElementById('examIntro');
+    const q = document.getElementById('examQ');
+    if (intro) intro.style.display = '';
+    if (q) q.style.display = 'none';
+    return true;
+  }
+
+  function priorityClick(event){
+    if (!event.target?.closest) return;
+    const t = event.target;
+
+    const modalToggle = t.closest('[data-modal-toggle]');
+    if (modalToggle) {
+      const id = modalToggle.dataset.modalToggle;
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      setModal(id, !modal.classList.contains('active'));
+      return;
+    }
+
+    const actionEl = t.closest('[data-action],[data-pb-v50-action]');
+    if (actionEl) {
+      const action = actionEl.dataset.action || actionEl.dataset.pbV50Action;
+      if (runAction(action)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+      return;
+    }
+
+    const detailEl = t.closest('[data-detail-action]');
+    if (detailEl) {
+      if (runDetailAction(detailEl.dataset.detailAction)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+      return;
+    }
+
+    const quizNextEl = t.closest('[data-quiz-next]');
+    if (quizNextEl) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      quizNext(quizNextEl.dataset.quizNext);
+      return;
+    }
+
+    const quizBackEl = t.closest('[data-quiz-back]');
+    if (quizBackEl) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      quizBack();
+      return;
+    }
+
+    const viewEl = t.closest('[data-view]');
+    if (viewEl && viewEl.closest('.toolbar,.nav-bar,.fab-group,.landing-routes,.quick-start-panel,.teaching-actions,.pb-v50-module-grid,.main-cover,.learning-compass,.paleobot-cover-v45,.atlas-workbench,.view-section-header')) {
+      if (routeView(viewEl.dataset.view, viewEl)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    }
+  }
+
+  function repairFaunaReinjection(){
+    const fauna = window.PaleoBotV66Fauna;
+    if (!fauna || !fauna.faunaBlockHtml) return;
+    const grid = document.getElementById('siteGrid');
+    if (!grid || grid.dataset.pbV79FaunaObserver === 'ready') return;
+    grid.dataset.pbV79FaunaObserver = 'ready';
+    const inject = () => {
+      grid.querySelectorAll('article.site-card').forEach(card => {
+        if (card.dataset.pbFaunaInjected) return;
+        const id = card.dataset.siteId || card.dataset.id || card.getAttribute('data-site');
+        if (!id) return;
+        const block = fauna.faunaBlockHtml(id);
+        if (!block) return;
+        const anchor = card.querySelector('.site-card-body,.site-meta,h3') || card;
+        anchor.insertAdjacentHTML(anchor === card ? 'beforeend' : 'afterend', block);
+        card.dataset.pbFaunaInjected = '1';
+      });
+    };
+    new MutationObserver(() => window.requestAnimationFrame(inject)).observe(grid, { childList:true, subtree:true });
+    window.requestAnimationFrame(inject);
+  }
+
+  window.addEventListener('click', priorityClick, true);
+  document.addEventListener('DOMContentLoaded', repairFaunaReinjection, { once:true });
+  document.addEventListener('paleobot:viewchange', event => {
+    if (event.detail?.view === 'yacimientos') window.setTimeout(repairFaunaReinjection, 120);
+  });
+  if (document.readyState !== 'loading') repairFaunaReinjection();
+
+  document.documentElement.dataset.paleobotV79ConsolidatedDispatcher = 'ready';
+  window.PaleoBotV79ConsolidatedDispatcher = { runAction, runDetailAction, routeView, setModal, syncModalState, repairFaunaReinjection };
+})();
+</script>
+
+
+<style id="paleobot-v80-map-lens-image-repair-style">
+body.pb-v50-unified .map-lens-stage{
+  background:
+    linear-gradient(135deg, rgba(238,243,237,.92), rgba(216,226,221,.82)),
+    radial-gradient(circle at 18% 22%, rgba(14,127,101,.18), transparent 34%),
+    radial-gradient(circle at 78% 72%, rgba(178,105,0,.16), transparent 36%)!important;
+}
+body.pb-v50-unified .map-lens-topo[data-pb-map-lens-fixed="true"]{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  opacity:.94!important;
+  visibility:visible!important;
+  filter:saturate(.92) contrast(1.04)!important;
+}
+body.pb-v50-unified .map-lens-topo[data-pb-map-lens-fixed="true"].is-map-lens-hidden{
+  opacity:0!important;
+}

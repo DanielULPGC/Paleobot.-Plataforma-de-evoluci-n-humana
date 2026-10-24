@@ -1,0 +1,22 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v85-speed-guard-style */
+html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified #timelineList .species-item,
+  html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .site-card,
+  html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .glossary-card,
+  html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .bib-ref,
+  html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .resource-card,
+  html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .map-lens-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 120px 420px;
+  }
+
+  @media print {
+    html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified #timelineList .species-item,
+    html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .site-card,
+    html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .glossary-card,
+    html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .bib-ref,
+    html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .resource-card,
+    html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified .map-lens-card {
+      content-visibility: visible !important;
+      contain: none !important;
+    }
+  }

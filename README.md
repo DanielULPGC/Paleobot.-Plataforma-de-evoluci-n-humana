@@ -11,6 +11,22 @@ comprobaciones de este repositorio no certifican navegador, lector de pantalla
 ni Moodle. La confirmación de funcionamiento recuperada corresponde a v9,
 sin atribuir ese resultado a v11.
 
+## Atlas v1.0 (paquete IMS para Moodle)
+
+[![Atlas PaleoBot v1.0](docs/atlas-v1/img/portada.png)](atlas/index.html)
+
+Atlas interactivo de 52 entradas, 31 vistas de trabajo y 5 rutas didácticas, con
+recorrido guiado, glosario de 359 términos y bibliografía con DOI. Se conserva en
+[`atlas/`](atlas/index.html) tal como se recibió (169 archivos idénticos al ZIP;
+huellas en `provenance/ATLAS_V1_IMPORT.json`).
+
+- **Abrir:** `atlas/index.html` (atlas) y `atlas/recorrido/index.html` (recorrido guiado).
+- **Entender y enseñar con él:** [`docs/atlas-v1/README.md`](docs/atlas-v1/README.md)
+  (capturas, usos por perfil, rigor científico, límites).
+- **Estado:** NO_GO para promoción docente. Pendientes Moodle, lector de pantalla
+  y navegadores distintos de Chromium; la auditoría detecta 1 fallo crítico y 1 grave
+  de accesibilidad y una CSP más laxa que la del resto del repositorio.
+
 ## Abrir PaleoBot
 
 Abra `index.html` con un navegador para consultar las fichas. El contenido básico

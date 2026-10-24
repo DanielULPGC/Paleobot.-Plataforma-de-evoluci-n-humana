@@ -1,0 +1,26 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v84-deep-audit-cleanup-style */
+body.pb-v50-unified .badge-research{
+  white-space:nowrap!important;
+}
+body.pb-v50-unified button,
+body.pb-v50-unified [role="button"],
+body.pb-v50-unified a[href]{
+  touch-action:manipulation;
+}
+body.pb-v50-unified button:focus-visible,
+body.pb-v50-unified [role="button"]:focus-visible,
+body.pb-v50-unified a[href]:focus-visible,
+body.pb-v50-unified input:focus-visible,
+body.pb-v50-unified select:focus-visible,
+body.pb-v50-unified textarea:focus-visible{
+  outline:3px solid rgba(14,127,101,.72)!important;
+  outline-offset:2px!important;
+}
+body.pb-v50-unified .summary-pill,
+body.pb-v50-unified .sp-tag,
+body.pb-v50-unified .badge-estado,
+body.pb-v50-unified .evidence-badge,
+body.pb-v50-unified .sa-chip{
+  max-width:100%;
+  overflow-wrap:anywhere;
+}

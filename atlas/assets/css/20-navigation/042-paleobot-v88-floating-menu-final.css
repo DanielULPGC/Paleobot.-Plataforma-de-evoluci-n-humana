@@ -1,0 +1,78 @@
+/* PaleoBot v88: final floating menu visibility and hit-area repair. */
+body.pb-v50-unified .fab-group,
+.fab-group{
+  /* FIX (Claude 2026-06): rejilla de 2 columnas en vez de columna única.
+     11 botones en 1 columna (~500px) se recortaban en pantallas bajas o con
+     zoom alto (alumnado mayor) y quedaban fuera del área clicable. En 2 cols
+     son 6 filas (~304px) y caben siempre. */
+  display:grid!important;
+  grid-template-columns:repeat(2,44px)!important;
+  gap:8px!important;
+  width:96px!important;       /* FIX: v74 fijaba width/max-width:48px (1 col) */
+  max-width:96px!important;
+  justify-content:end!important;
+  align-content:end!important;
+  position:fixed!important;
+  right:18px!important;
+  top:auto!important;          /* resetea el top:50% que dejó v74 */
+  bottom:86px!important;
+  transform:none!important;     /* anula el translateY(-50%) de v74 */
+  z-index:4700!important;
+  max-height:min(88vh,560px)!important;
+  overflow-y:auto!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+}
+
+/* FIX (Claude 2026-06): tamaño táctil mínimo 44px (WCAG 2.5.5) */
+body.pb-v50-unified .fab-group .fab-wrapper,
+.fab-group .fab-wrapper{
+  width:44px!important;
+  height:44px!important;
+}
+body.pb-v50-unified .fab-group .fab,
+.fab-group .fab{
+  width:44px!important;
+  height:44px!important;
+  min-width:44px!important;
+  min-height:44px!important;
+}
+
+body.pb-v50-unified .fab-group .fab-wrapper,
+.fab-group .fab-wrapper{
+  pointer-events:auto!important;
+}
+
+body.pb-v50-unified .fab-group .fab,
+.fab-group .fab,
+.scroll-top-btn{
+  pointer-events:auto!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+
+body.pb-v50-unified.modal-open .fab-group{
+  display:none!important;
+}
+
+.modal-overlay.active,
+.pb-v50-modal.active{
+  pointer-events:auto!important;
+}
+
+.modal-overlay.active[aria-hidden="false"],
+.pb-v50-modal.active[aria-hidden="false"],
+.pres-overlay.active[aria-hidden="false"]{
+  visibility:visible;
+}
+
+@media(max-width:680px){
+  body.pb-v50-unified .fab-group,
+  .fab-group{
+    right:10px!important;
+    bottom:78px!important;
+    max-height:54vh!important;
+    transform:none!important;
+  }
+}

@@ -1,0 +1,35 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v73-itinerary-rubric-repair-style */
+body.pb-v50-unified #view-itinerarios {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+body.pb-v50-unified #view-itinerarios .itin-outer {
+  width: min(100%, 1320px) !important;
+  max-width: calc(100vw - 40px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow-x: hidden !important;
+}
+
+body.pb-v50-unified #view-itinerarios .itin-selector {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 10px !important;
+}
+
+body.pb-v50-unified #view-itinerarios .itin-btn {
+  width: 100% !important;
+  text-align: left !important;
+}
+
+body.pb-v50-unified #view-itinerarios #itinBody {
+  min-height: 260px !important;
+}
+
+@media (max-width: 720px) {
+  body.pb-v50-unified #view-itinerarios .itin-outer {
+    max-width: calc(100vw - 20px) !important;
+  }
+}

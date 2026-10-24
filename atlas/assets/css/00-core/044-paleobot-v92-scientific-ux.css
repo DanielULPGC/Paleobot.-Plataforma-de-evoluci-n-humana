@@ -1,0 +1,175 @@
+/* PaleoBot v92: capa final de UX/UI cientifica. */
+:root {
+  --pb92-ink: #102027;
+  --pb92-panel: #fffdf7;
+  --pb92-line: rgba(16, 32, 39, .13);
+  --pb92-amber: #c98925;
+  --pb92-shadow: 0 14px 40px rgba(12, 28, 35, .12);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: #f1eadc !important;
+  color: var(--pb92-ink) !important;
+}
+
+#pb-skip-intro-bar {
+  background: #071015 !important;
+  border-bottom-color: var(--pb92-amber) !important;
+}
+
+#pb-hub {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,.028) 1px, transparent 1px),
+    linear-gradient(135deg, #071015 0%, #10272d 48%, #173c3a 100%) !important;
+  background-size: 56px 56px, 56px 56px, auto !important;
+}
+
+#pb-hub .pb-hub-card,
+#pb-hub [data-hub-view] {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.main-cover.paleobot-cover-v45 {
+  min-height: min(880px, 92vh) !important;
+  display: grid !important;
+  align-items: stretch !important;
+  background: #071015 !important;
+  overflow: hidden !important;
+}
+
+.main-cover-media.paleobot-cover-media-v45 img {
+  content: url("../../media/paleobot-hero-scientific.svg");
+  object-fit: cover !important;
+  filter: saturate(.96) contrast(1.05) brightness(.86) !important;
+}
+
+.cover-noise-v45 { opacity: .08 !important; }
+.cover-inner-v45 {
+  max-width: 1280px !important;
+  padding: clamp(42px, 6vw, 78px) 24px clamp(30px, 4vw, 58px) !important;
+}
+.cover-hero-grid-v45 {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(310px, .42fr) !important;
+  gap: clamp(24px, 4vw, 56px) !important;
+  align-items: end !important;
+}
+.cover-copy-v45 {
+  max-width: 760px !important;
+  text-shadow: 0 2px 18px rgba(0,0,0,.42) !important;
+}
+.cover-copy-v45 h1 {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: clamp(3.4rem, 9vw, 8.4rem) !important;
+  line-height: .88 !important;
+  letter-spacing: 0 !important;
+}
+.cover-copy-v45 h1 span {
+  display: block !important;
+  font-size: clamp(1.05rem, 2.2vw, 1.9rem) !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+  color: #f1c168 !important;
+  margin-top: 18px !important;
+}
+.main-cover-lead {
+  max-width: 62ch !important;
+  font-size: clamp(1.05rem, 1.7vw, 1.28rem) !important;
+}
+.cover-lab-card-v45 {
+  border-radius: 8px !important;
+  border-color: rgba(244, 234, 214, .28) !important;
+  background: rgba(7, 16, 21, .82) !important;
+  backdrop-filter: blur(12px) !important;
+}
+.cover-modules-v45 button,
+.main-cover-action,
+.cover-nav-v45 button {
+  border-radius: 8px !important;
+}
+.cover-modules-v45 button {
+  background: rgba(7,16,21,.78) !important;
+  border-color: rgba(244,234,214,.17) !important;
+}
+
+body.pb-v50-unified .container {
+  max-width: 1560px !important;
+  padding: clamp(14px, 2vw, 28px) !important;
+}
+body.pb-v50-unified .header,
+.view-hero,
+.data-section,
+.panel-card,
+.species-item,
+.academic-card,
+.teaching-ticket,
+.holotype-card,
+.revision-card,
+.biogeo-record {
+  border-radius: 8px !important;
+  box-shadow: var(--pb92-shadow) !important;
+}
+
+.view-hero {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(180deg, #10232a 0%, #173936 100%) !important;
+  background-size: 48px 48px, auto !important;
+  color: #f8f1df !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+}
+.view-hero h1,
+.view-hero h2,
+.view-hero-title {
+  color: #fff8e6 !important;
+  letter-spacing: 0 !important;
+}
+.view-hero p,
+.view-hero-copy { color: #d7e0d6 !important; }
+
+.species-item {
+  background: var(--pb92-panel) !important;
+  border-color: var(--pb92-line) !important;
+}
+.species-item:hover { transform: translateY(-2px) !important; }
+
+img[data-pb-v92-science-plate="1"] {
+  object-fit: cover !important;
+  background: #efe5d3 !important;
+}
+.sp-img-thumb[data-pb-v92-science-plate="1"],
+.biogeo-record-thumb[data-pb-v92-science-plate="1"] {
+  border: 1px solid rgba(16,32,39,.18) !important;
+  border-radius: 8px !important;
+}
+.species-header-image[data-pb-v92-science-plate="1"],
+.academic-img[data-pb-v92-science-plate="1"],
+.itin-card-img[data-pb-v92-science-plate="1"],
+.visual-evidence-img[data-pb-v92-science-plate="1"] {
+  border-radius: 8px !important;
+}
+
+.introg-photo-card {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: #fbf7ed !important;
+}
+.introg-photo-card img[data-pb-v92-science-plate="1"] { aspect-ratio: 16 / 9; }
+
+button,
+[role="button"],
+input,
+select,
+textarea {
+  border-radius: 8px !important;
+}
+
+@media (max-width: 760px) {
+  .cover-hero-grid-v45 { grid-template-columns: 1fr !important; }
+  .cover-lab-card-v45 { max-width: none !important; }
+  .cover-modules-v45 { grid-template-columns: 1fr !important; }
+  .main-cover.paleobot-cover-v45 { min-height: auto !important; }
+}

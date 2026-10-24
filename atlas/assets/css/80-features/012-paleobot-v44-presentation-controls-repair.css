@@ -1,0 +1,50 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v44-presentation-controls-repair */
+#presOverlay.pres-overlay.active{
+  display:grid!important;
+  grid-template-rows:auto minmax(0, 1fr) auto!important;
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100vh!important;
+  height:100dvh!important;
+  z-index:2800!important;
+  overflow:hidden!important;
+}
+#presOverlay.active .pres-topbar{
+  grid-row:1!important;
+  position:relative!important;
+  z-index:25!important;
+  pointer-events:auto!important;
+}
+#presOverlay.active .pres-main{
+  grid-row:2!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+#presOverlay.active .pres-info-panel{
+  min-height:0!important;
+  overflow:auto!important;
+  padding-bottom:96px!important;
+}
+#presOverlay.active .pres-nav-bar{
+  grid-row:3!important;
+  position:relative!important;
+  z-index:35!important;
+  pointer-events:auto!important;
+}
+#presOverlay.active .pres-nav-bar button,
+#presOverlay.active [data-pres-detail],
+#presOverlay.active [data-pres-nav],
+#presOverlay.active [data-pres-close],
+#presOverlay.active [data-pres-back]{
+  pointer-events:auto!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+#presOverlay.active .pres-top-controls{
+  padding-right:22px!important;
+}
+#presOverlay.active .pres-close-btn{
+  position:relative!important;
+  right:14px!important;
+}

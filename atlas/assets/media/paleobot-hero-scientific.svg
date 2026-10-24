@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">Lamina cientifica de PaleoBot</title>
+  <desc id="desc">Composicion de craneo hominino, estratigrafia, mapa y lineas de evidencia para portada cientifica.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#071015"/>
+      <stop offset=".42" stop-color="#10232a"/>
+      <stop offset="1" stop-color="#efe8d6"/>
+    </linearGradient>
+    <linearGradient id="bone" x1=".12" y1=".12" x2=".92" y2=".94">
+      <stop stop-color="#f4ead4"/>
+      <stop offset=".52" stop-color="#d2ba8b"/>
+      <stop offset="1" stop-color="#8b7655"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#d59f3a"/>
+      <stop offset="1" stop-color="#5fbca1"/>
+    </linearGradient>
+    <filter id="paper" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="5" seed="31"/>
+      <feColorMatrix type="saturate" values=".18"/>
+      <feBlend mode="multiply" in2="SourceGraphic"/>
+    </filter>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="980" fill="url(#bg)"/>
+  <path d="M0 760 C260 660 390 730 560 650 C770 550 950 620 1130 515 C1320 405 1440 435 1600 355 L1600 980 L0 980 Z" fill="#e9dfc9" opacity=".92"/>
+  <path d="M0 805 C210 735 392 790 575 704 C796 600 1015 678 1238 545 C1374 464 1500 475 1600 435 L1600 980 L0 980 Z" fill="#cfc1a3" opacity=".55"/>
+  <g opacity=".22" stroke="#f7f1df" stroke-width="1">
+    <path d="M88 111 H1520"/><path d="M88 179 H1520"/><path d="M88 247 H1520"/><path d="M88 315 H1520"/><path d="M88 383 H1520"/><path d="M88 451 H1520"/><path d="M88 519 H1520"/>
+    <path d="M160 84 V870"/><path d="M330 84 V870"/><path d="M500 84 V870"/><path d="M670 84 V870"/><path d="M840 84 V870"/><path d="M1010 84 V870"/><path d="M1180 84 V870"/><path d="M1350 84 V870"/>
+  </g>
+  <g transform="translate(165 115)" filter="url(#softShadow)">
+    <path d="M128 572 C142 315 270 138 468 108 C684 75 842 198 850 383 C858 582 661 719 395 693 C226 676 122 639 128 572 Z" fill="url(#bone)" filter="url(#paper)"/>
+    <path d="M264 596 C352 512 510 510 690 574 C591 639 457 665 308 654 C278 652 262 629 264 596 Z" fill="#715d40" opacity=".34"/>
+    <path d="M382 313 C413 247 499 225 569 254 C643 285 666 369 624 420 C561 496 423 455 382 313 Z" fill="#14262c" opacity=".46"/>
+    <path d="M670 320 C724 325 763 365 765 417 C768 483 719 520 650 510 C699 464 708 393 670 320 Z" fill="#132329" opacity=".3"/>
+    <path d="M280 458 C391 476 525 479 690 447" fill="none" stroke="#f8efd8" stroke-width="20" stroke-linecap="round" opacity=".55"/>
+    <path d="M222 313 C294 178 442 116 616 151" fill="none" stroke="#fff6df" stroke-width="8" stroke-linecap="round" opacity=".45"/>
+    <circle cx="487" cy="345" r="20" fill="#0c161a" opacity=".42"/>
+    <path d="M806 407 C926 422 1005 483 1040 579 C920 544 814 540 692 575" fill="none" stroke="#7a6040" stroke-width="30" stroke-linecap="round" opacity=".66"/>
+  </g>
+  <g transform="translate(1035 125)">
+    <rect x="0" y="0" width="390" height="245" rx="8" fill="#f4ead6" opacity=".94"/>
+    <path d="M28 59 H360" stroke="#b89961" stroke-width="3"/><path d="M28 106 H360" stroke="#b36e43" stroke-width="3"/><path d="M28 154 H360" stroke="#8d7759" stroke-width="3"/><path d="M28 198 H360" stroke="#496f68" stroke-width="3"/>
+    <circle cx="104" cy="106" r="11" fill="#10232a"/><circle cx="248" cy="154" r="9" fill="#10232a"/><circle cx="170" cy="198" r="7" fill="#10232a"/>
+    <text x="28" y="34" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#132329">Estratigrafia y datacion</text>
+    <text x="28" y="232" font-family="Arial,sans-serif" font-size="13" fill="#56655f">capas, material, metodo y margen</text>
+  </g>
+  <g transform="translate(1035 420)">
+    <rect x="0" y="0" width="390" height="245" rx="8" fill="#092029" opacity=".9"/>
+    <path d="M76 76 C120 35 178 46 223 88 C269 129 317 118 350 92" fill="none" stroke="#5fbca1" stroke-width="4"/>
+    <path d="M76 146 C119 188 178 177 223 136 C269 94 317 106 350 132" fill="none" stroke="#d59f3a" stroke-width="4"/>
+    <circle cx="76" cy="76" r="6" fill="#f5e7c8"/><circle cx="223" cy="88" r="6" fill="#f5e7c8"/><circle cx="350" cy="92" r="6" fill="#f5e7c8"/>
+    <circle cx="76" cy="146" r="6" fill="#f5e7c8"/><circle cx="223" cy="136" r="6" fill="#f5e7c8"/><circle cx="350" cy="132" r="6" fill="#f5e7c8"/>
+    <text x="28" y="34" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#f5e7c8">Paleogenomica</text>
+    <text x="28" y="220" font-family="Arial,sans-serif" font-size="13" fill="#bad8d0">ADN antiguo, proteinas y cautela tafonomica</text>
+  </g>
+  <g transform="translate(108 808)">
+    <rect x="0" y="0" width="1240" height="72" rx="8" fill="#071015" opacity=".86"/>
+    <rect x="42" y="31" width="1065" height="8" rx="4" fill="#34464b"/>
+    <rect x="112" y="31" width="805" height="8" rx="4" fill="url(#amber)"/>
+    <g fill="#f4ead6" font-family="Arial,sans-serif" font-size="13" font-weight="700">
+      <text x="42" y="24">23 Ma</text><text x="360" y="24">4 Ma</text><text x="686" y="24">700 ka</text><text x="1068" y="24">actualidad</text>
+    </g>
+    <g>
+      <circle cx="182" cy="35" r="12" fill="#d59f3a"/><circle cx="492" cy="35" r="12" fill="#5fbca1"/><circle cx="825" cy="35" r="12" fill="#b36e43"/><circle cx="1056" cy="35" r="12" fill="#f4ead6"/>
+    </g>
+  </g>
+</svg>

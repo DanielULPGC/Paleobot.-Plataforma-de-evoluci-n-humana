@@ -1,0 +1,24 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html */
+.gs-result {
+        display:flex; align-items:center; gap:10px; width:100%;
+        text-align:left; padding:9px 12px; border:none; background:transparent;
+        border-radius:9px; cursor:pointer; font-family:var(--font-sans);
+        transition:background 0.12s; margin-bottom:2px;
+      }
+      .gs-result:hover, .gs-result[aria-selected="true"] {
+        background: #f0ede8;
+      }
+      .gs-result:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+      .gs-type-badge {
+        flex: 0 0 auto; font-size:0.66rem; font-weight:800; color:white;
+        border-radius:999px; padding:2px 8px; letter-spacing:0.05em;
+        font-family:var(--font-sans); white-space:nowrap;
+      }
+      .gs-result-title { font-size:0.88rem; color:var(--text-main); font-weight:600; }
+      .gs-hl { background:#fef3c7; border-radius:2px; font-weight:900; }
+      .gs-empty { text-align:center; padding:24px 16px; color:var(--text-sec); }
+      .gs-empty-icon { font-size:2rem; display:block; margin-bottom:8px; }
+      .gs-empty p { font-size:0.84rem; margin:0 0 4px; }
+      .gs-hint { font-size:0.76rem !important; opacity:0.8; }
+      .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+                 overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }

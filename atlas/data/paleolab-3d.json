@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-14",
+  "institution": "Smithsonian 3D Digitization",
+  "sourcePackage": {
+    "file": "PaleoBot_v56.3_PaleoLab50_Nutcracker_Man_SCORM_1.2.zip",
+    "localExtraction": "work/scorm-v56_3-paleolab50-nutcracker/species-lab.js",
+    "integrationMode": "Metadatos institucionales separados del código de interfaz"
+  },
+  "rightsNote": "Los metadatos se identifican como CC0 en las fichas institucionales. Los medios 3D conservan las condiciones de uso indicadas por Smithsonian y se abren en su fuente original.",
+  "models": [
+    {
+      "id": "boisei",
+      "taxonName": "Paranthropus boisei",
+      "specimen": "OH 5, Olduvai",
+      "label": "Paranthropus boisei: cráneo",
+      "url": "https://3d.si.edu/object/3d/paranthropus-boisei-cranium%3Af71256ba-fb5d-4a26-b44d-3d4cc2a8b533",
+      "note": "Escaneo de una réplica del cráneo OH 5. Metadatos CC0; el medio está sujeto a las condiciones de uso del Smithsonian.",
+      "verifiedAt": "2026-07-14"
+    },
+    {
+      "id": "afarensis",
+      "taxonName": "Australopithecus afarensis",
+      "specimen": "A.L. 444-2, Hadar",
+      "label": "Australopithecus afarensis: cráneo",
+      "url": "https://3d.si.edu/object/3d/australopithecus-afarensis-cranium%3A6faf8121-250c-47cb-a5cc-139d7b16c570",
+      "note": "Escaneo de una réplica de A.L. 444-2. Metadatos CC0; el medio está sujeto a las condiciones de uso del Smithsonian.",
+      "verifiedAt": "2026-07-14"
+    },
+    {
+      "id": "habilis",
+      "taxonName": "Homo habilis",
+      "specimen": "KNM-ER 1813, Koobi Fora",
+      "label": "Homo habilis: cráneo",
+      "url": "https://3d.si.edu/object/3d/homo-habilis-cranium%3Ade47a0c6-20c6-4d70-bcc8-4992d5f4ff66",
+      "note": "Escaneo de una réplica de KNM-ER 1813. Metadatos CC0; el medio está sujeto a las condiciones de uso del Smithsonian.",
+      "verifiedAt": "2026-07-14"
+    },
+    {
+      "id": "erectus",
+      "taxonName": "Homo erectus",
+      "specimen": "Sangiran 17, Java",
+      "label": "Homo erectus: cráneo",
+      "url": "https://3d.si.edu/object/3d/homo-erectus-cranium%3Ab2c8c6ff-069d-42da-98ae-9bf12fce60f2",
+      "note": "Escaneo de una réplica de Sangiran 17. Metadatos CC0; el medio está sujeto a las condiciones de uso del Smithsonian.",
+      "verifiedAt": "2026-07-14"
+    },
+    {
+      "id": "neander",
+      "dataTaxonId": "neanderthalensis",
+      "taxonName": "Homo neanderthalensis",
+      "specimen": "La Ferrassie 1, Francia",
+      "label": "Homo neanderthalensis: cráneo",
+      "url": "https://3d.si.edu/object/3d/homo-neanderthalensis-cranium%3A62c5a1ab-24bc-467d-8566-5e67be2fc41d",
+      "note": "Escaneo de una réplica de La Ferrassie 1. Metadatos CC0; el medio está sujeto a las condiciones de uso del Smithsonian.",
+      "verifiedAt": "2026-07-14"
+    }
+  ]
+}

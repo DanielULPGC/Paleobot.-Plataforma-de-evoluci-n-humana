@@ -1,0 +1,126 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #pb-v65-mobile-fab-clearance */
+/* ── PaleoBot v65 · Fix solapamiento FABs en móvil ───────────────────────
+   Estrategia diferenciada:
+   A) Contenedores SIN overflow:hidden → padding-right directo.
+   B) Contenedores CON overflow:hidden (.main-cover) → limitar max-width
+      del contenido interior para que no llegue hasta el borde derecho.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* ══ A. CONTENEDORES SIN overflow:hidden ════════════════════════════════ */
+/* Container principal, tablero v34, módulos, landing */
+@media (max-width: 768px) {
+  .container,
+  .v34-pro-dashboard,
+  .pb-v50-module-grid,
+  .landing-section,
+  .landing-inner,
+  .quick-start-panel {
+    padding-right: 62px !important;
+  }
+}
+@media (max-width: 480px) {
+  .container,
+  .v34-pro-dashboard,
+  .pb-v50-module-grid,
+  .landing-section,
+  .landing-inner,
+  .quick-start-panel {
+    padding-right: 54px !important;
+  }
+}
+@media (max-width: 360px) {
+  .container,
+  .v34-pro-dashboard,
+  .pb-v50-module-grid,
+  .landing-section,
+  .landing-inner,
+  .quick-start-panel {
+    padding-right: 50px !important;
+  }
+}
+
+/* ══ B. PORTADA HERO (overflow:hidden → restringir ancho del contenido) ═ */
+/* El texto y botones de la portada viven en .cover-copy-v45 y
+   .cover-actions-v45. En móvil se limita su max-width para que
+   no lleguen bajo los FABs fijos. */
+@media (max-width: 768px) {
+  .cover-copy-v45,
+  .cover-actions-v45,
+  .cover-proof-v45,
+  .main-cover-next,
+  .cover-next-v45,
+  .landing-eyebrow,
+  .landing-search,
+  .landing-actions {
+    max-width: calc(100% - 62px) !important;
+    box-sizing: border-box !important;
+  }
+  /* El grid hero en móvil pasa a una sola columna y también se limita */
+  .cover-hero-grid-v45 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    max-width: calc(100% - 62px) !important;
+  }
+}
+@media (max-width: 480px) {
+  .cover-copy-v45,
+  .cover-actions-v45,
+  .cover-proof-v45,
+  .main-cover-next,
+  .cover-next-v45,
+  .landing-eyebrow,
+  .landing-search,
+  .landing-actions,
+  .cover-hero-grid-v45 {
+    max-width: calc(100% - 54px) !important;
+  }
+}
+@media (max-width: 360px) {
+  .cover-copy-v45,
+  .cover-actions-v45,
+  .cover-proof-v45,
+  .main-cover-next,
+  .cover-next-v45,
+  .landing-eyebrow,
+  .landing-search,
+  .landing-actions,
+  .cover-hero-grid-v45 {
+    max-width: calc(100% - 50px) !important;
+  }
+}
+
+/* ══ Restaurar en modo presentación / modal ══════════════════════════════ */
+body.pres-active .cover-copy-v45,
+body.modal-open  .cover-copy-v45,
+body.pres-active .container,
+body.modal-open  .container {
+  max-width: none !important;
+  padding-right: revert !important;
+}
+
+/* ══ FAB Mi Sesión (Fase 3): compacto en móvil ══════════════════════════ */
+@media (max-width: 680px) {
+  .pb-ssm-fab {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .pb-ssm-fab-badge {
+    font-size: 0.55rem !important;
+    min-width: 15px !important;
+    height: 15px !important;
+  }
+}
+
+/* ══ Panel activación SDD: una columna en móvil ═════════════════════════ */
+@media (max-width: 600px) {
+  .pb-dap {
+    margin: 0 0 14px !important;
+    border-radius: 12px !important;
+  }
+  .pb-dap-question {
+    font-size: 0.92rem !important;
+    margin: 8px 12px 10px !important;
+  }
+  .pb-dap-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

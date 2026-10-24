@@ -1,0 +1,69 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v82-fauna-rigor-and-layout-style */
+body.pb-v50-unified #v34FaunaPanel,
+body.pb-v50-unified .v34-fauna-panel,
+body.pb-v50-unified .v34-fauna-card{
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+body.pb-v50-unified .v34-fauna-panel{
+  grid-template-columns:minmax(180px,320px) minmax(0,1fr)!important;
+  align-items:start!important;
+}
+body.pb-v50-unified .v34-fauna-card{
+  overflow:hidden!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+  line-height:1.55!important;
+}
+body.pb-v50-unified .v34-fauna-card p,
+body.pb-v50-unified .v34-fauna-card h4{
+  max-width:100%!important;
+}
+body.pb-v50-unified .v34-fauna-card a{
+  overflow-wrap:anywhere!important;
+}
+body.pb-v50-unified .pb-v82-fauna-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:8px 0 10px;
+}
+body.pb-v50-unified .pb-v82-fauna-pills span{
+  display:inline-flex;
+  max-width:100%;
+  border:1px solid rgba(28,43,58,.16);
+  border-radius:999px;
+  background:#fff;
+  padding:3px 9px;
+  font-size:.74rem;
+  font-style:italic;
+  color:#1c2b3a;
+  line-height:1.35;
+}
+body.pb-v50-unified .pb-v82-fauna-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:6px 0 8px;
+  font-size:.76rem;
+}
+body.pb-v50-unified .pb-v82-fauna-meta span{
+  border-radius:999px;
+  background:#eef6f1;
+  color:#0a6b49;
+  font-weight:800;
+  padding:4px 8px;
+}
+body.pb-v50-unified .pb-v82-fauna-caution{
+  border-top:1px solid rgba(28,43,58,.12);
+  margin-top:10px!important;
+  padding-top:8px;
+  color:#54657a;
+  font-size:.8rem;
+}
+@media(max-width:850px){
+  body.pb-v50-unified .v34-fauna-panel{
+    grid-template-columns:1fr!important;
+  }
+}

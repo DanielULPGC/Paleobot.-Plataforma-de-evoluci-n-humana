@@ -1,0 +1,126 @@
+/* ════════════════════════════════════════════════════════════════
+   PaleoBot · Refinamiento de frontend (Claude 2026-06)
+   Capa de pulido visual: más limpio, minimalista y con más aire.
+   Solo estética; no toca lógica ni estructura. Carga la última, así
+   que gana en la cascada. 100% reversible: borra este <link>.
+   Público mixto → legibilidad alta, contraste cuidado.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── 1 · Ritmo tipográfico y aire general ─────────────────────── */
+#view-timeline p, .view-section p, .data-section p,
+.panel-body p, .species-detail p {
+  line-height: 1.62;
+  letter-spacing: .002em;
+}
+.view-section { --pb-air: clamp(20px, 3vw, 40px); }
+
+/* ── 2 · Sombras y bordes: calmar el ruido ────────────────────── */
+/* Sombras pesadas → sutiles y coherentes en tarjetas de contenido. */
+.species-item, .data-section, .panel-card, .holotype-card,
+.coexist-outer, .revision-card, .biogeo-record, .sp-card,
+.teaching-ticket, .academic-card, .itin-card {
+  box-shadow: 0 1px 2px rgba(28,43,58,.04), 0 6px 18px rgba(28,43,58,.05) !important;
+  border-color: rgba(28,43,58,.08) !important;
+}
+
+/* ── 3 · Filas de especie (cronología): más aire, acento fino ── */
+#view-timeline .species-item, .view-section .species-item, .species-item {
+  padding: 22px 24px !important;
+  border-radius: 16px !important;
+  border-left-width: 4px !important;
+  margin-bottom: 14px !important;
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+#view-timeline .species-item:hover, .species-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(28,43,58,.05), 0 14px 30px rgba(28,43,58,.09) !important;
+}
+
+/* ── 4 · Chips / pills: paleta calmada y consistente ──────────── */
+.view-hero-pill, [class*="badge"]:not(.view-hero-badge), .pill, .chip, .tag {
+  letter-spacing: .02em;
+}
+.view-hero-pills { gap: 8px !important; }
+
+/* ── 5 · Cabeceras de vista y sección: jerarquía clara, más aire ─ */
+.view-section h2, .data-section h2 {
+  letter-spacing: -.01em;
+  line-height: 1.12;
+}
+.data-section, .panel-section {
+  padding: clamp(20px, 2.4vw, 30px) !important;
+  border-radius: 16px !important;
+  margin-bottom: 18px !important;
+}
+
+/* ── 6 · Ficha de especie (detalle): respiración interna ──────── */
+#detailView .panel-header { padding-bottom: 18px !important; }
+#detailView .panel-body, #detailView .detail-body { line-height: 1.6; }
+#detailView .data-section + .data-section { margin-top: 18px !important; }
+
+/* ── 7 · Botones: forma coherente y táctil ────────────────────── */
+.view-section button:not(.fab):not([class*="hero"]),
+.data-section button {
+  border-radius: 10px;
+}
+
+/* ── 8 · Foco accesible uniforme (público mixto) ──────────────── */
+a:focus-visible, button:focus-visible,
+[role="button"]:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid #c79030 !important;
+  outline-offset: 2px !important;
+  border-radius: 8px;
+}
+
+/* ── 9 · Scrollbar discreta (desktop) ─────────────────────────── */
+* { scrollbar-width: thin; scrollbar-color: #c3cdd6 transparent; }
+
+/* ── 10 · HUB de entrada: más aire y minimalismo ──────────────── */
+#pb-hub { padding: clamp(48px, 6vw, 70px) 22px clamp(54px, 7vw, 76px) !important; }
+#pb-hub-blocks { gap: 24px !important; }
+.pb-hub-card {
+  padding: 30px 28px !important;
+  border-top-width: 4px !important;
+  border-radius: 20px !important;
+}
+#pb-hub-tools-grid { gap: 16px !important; }
+
+/* ── 11 · Cabecera / navegación del atlas: limpia y con aire ───── */
+.pb-v50-blocks, #pbV50Blocks {
+  padding-top: clamp(24px, 3vw, 40px) !important;
+  padding-bottom: clamp(24px, 3vw, 40px) !important;
+}
+[data-view], [data-pb-v50-view] {
+  letter-spacing: .01em;
+}
+/* Pestañas / botones de navegación activos: subrayado fino en vez de bloque pesado */
+[data-view].active, [data-pb-v50-view].active {
+  box-shadow: inset 0 -3px 0 0 #c79030 !important;
+}
+
+/* ── 12 · Ficha de especie (detalle): pase fino ───────────────── */
+#detailView .panel-header {
+  border-bottom: 1px solid rgba(28,43,58,.10) !important;
+  margin-bottom: 18px !important;
+}
+#detailView .panel-header-text h1,
+#detailView .panel-header-text h2 {
+  letter-spacing: -.01em;
+  line-height: 1.1;
+}
+#detailView .panel-header-meta { gap: 8px !important; opacity: .92; }
+#detailView .panel-actions { gap: 10px !important; }
+#detailView .data-section h3, #detailView .data-section h4 {
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: .82rem;
+  color: #5b6b75;
+  margin-bottom: 10px;
+}
+/* Tarjetas internas de la ficha: respiración y borde calmado */
+#detailView .teaching-ticket, #detailView .academic-card,
+#detailView .panel-card {
+  padding: 18px 20px !important;
+  border-radius: 14px !important;
+}
+

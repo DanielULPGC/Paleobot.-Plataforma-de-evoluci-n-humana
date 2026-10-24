@@ -1,0 +1,18 @@
+/* Extracted from paleobot_best_science_didactic_v66_7_speed_audited.html :: #paleobot-v71-compare-picker-repair-style */
+#compareModal .cmp-picker-dropdown {
+  max-height: min(220px, 32vh) !important;
+  overflow-y: auto !important;
+  box-shadow: 0 14px 36px rgba(28, 43, 58, 0.16) !important;
+}
+
+#compareModal .cmp-picker-dropdown:not(.open) {
+  display: none !important;
+}
+
+#compareModal .cmp-picker-opt {
+  min-height: 40px;
+}
+
+#compareModal #compareResult {
+  scroll-margin-top: 20px;
+}
