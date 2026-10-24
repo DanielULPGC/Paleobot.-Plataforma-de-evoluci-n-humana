@@ -1,0 +1,39 @@
+{
+  "schema": "paleobot-immersive-p9-independent-zip-verification-v1",
+  "status": "PASS",
+  "zip_sha256": "f974449db3ab5cc0d1df9b6b0b8250904b35c83668e6318c80a0cb87b65523cb",
+  "zip_bytes": 1864546,
+  "checks": [
+    {
+      "name": "twin builds byte-identical",
+      "pass": true
+    },
+    {
+      "name": "safe single-root paths",
+      "pass": true
+    },
+    {
+      "name": "no duplicate ZIP entries",
+      "pass": true
+    },
+    {
+      "name": "fixed deterministic timestamps",
+      "pass": true
+    },
+    {
+      "name": "embedded exact P8 package",
+      "pass": true,
+      "detail": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74"
+    },
+    {
+      "name": "internal package verification PASS",
+      "pass": true,
+      "detail": {
+        "passed": 7,
+        "failed": 0
+      }
+    }
+  ],
+  "passed": 6,
+  "failed": 0
+}

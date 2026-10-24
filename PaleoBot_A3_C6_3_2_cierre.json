@@ -1,0 +1,55 @@
+{
+  "a3_release_gate": "NO_GO",
+  "adjudication": "CLOSED_VERIFIED",
+  "checkpoint": "A3-C6.3.2/R05-T2",
+  "deterministic_builds_byte_identical": true,
+  "external_gates": "PENDING",
+  "formal_adjudication_sha256": "0677552ac5cb82a3b477aec2520392a84be96fd564bd608996a8f7011f74bb15",
+  "formal_battery": {
+    "active_controls": "466/466",
+    "deterministic_probes": 11000,
+    "meta_checks": "29/29",
+    "sha256": "dcc405c49e0c83d6427efac378c331101d32814f1c06692c1e901363abe93f1a"
+  },
+  "independent_package_verification": {
+    "failed": 0,
+    "passed": 28,
+    "sha256": "72ec48f5cd23e9374546a5e7559b89cdc14781b26463fc1de55bebfadabf1bb0"
+  },
+  "internal_package_verification": {
+    "failed": 0,
+    "passed": 22,
+    "sha256": "5063204e4b1be7b1d402e029927229f452f3cbd3cfcc97b4bfd44be96df72d1b"
+  },
+  "manifest": {
+    "content_tree_sha256": "dd1936cce192bcf2d14cce922dac486d6095aa9e95479682ef1d6fdb35afaad1",
+    "file_count_excluding_manifest": 246,
+    "file_entries": 247,
+    "runtime_files": 160,
+    "runtime_tree_sha256": "9a956d1a98cf1ceea990f2cd05fa309140c7b429bfec96c2f88b4ce7f0af5bc7"
+  },
+  "next_checkpoint": "A3-C6.3.3/R05-T3",
+  "next_cohort": [
+    "sediba",
+    "aethiopicus",
+    "boisei",
+    "robustus",
+    "habilis",
+    "rudolfensis",
+    "ergaster",
+    "georgicus",
+    "erectus",
+    "antecessor"
+  ],
+  "package": "PaleoBot_A3_C6_3_2_R05_T2_checkpoint_NO_GO.zip",
+  "package_bytes": 84544505,
+  "package_sha256": "099ba01a6b39c165b6c8007109c19c44ffd0e64357f872eb93f8daa839e54e8b",
+  "parent_checkpoint": {
+    "id": "A3-C6.3.1/R05-T1",
+    "independent_verification_sha256": "5a27be47f18205f34ee5db4ec9b76614ee936ac3db57ca15446feadf1fd5e45c",
+    "sha256": "4c5f75c1572b4eeff5da2ffc82c52b45ef2e3b060257b2c458ef74e86f64b6e2"
+  },
+  "remaining_r05_unreviewed": 25,
+  "schema": "paleobot-a3-c6.3.2-r05-t2-closure-v1",
+  "status": "A3_C6_3_2_R05_T2_CHRONOLOGY_CONTRACTS_PASS__NO_FALSE_OCCUPANCY_OR_COEXISTENCE_PASS__CORE_50_SCIENTIFIC_INTEGRITY_PASS__INHERITED_REGRESSIONS_ADJUDICATED_PASS__R05_T2_FORMAL_BATTERY_PASS__DETERMINISTIC_ZIP_VERIFIED__C6_3_2_CLOSED__A3_NO_GO"
+}

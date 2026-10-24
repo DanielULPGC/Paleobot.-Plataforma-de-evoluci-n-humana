@@ -1,0 +1,71 @@
+{
+  "schema": "paleobot-a3-historical-v69-intake-v1",
+  "sources": {
+    "paleobot_modular_v69_lazy(1).zip": {
+      "sha256": "3549dea2e4f80887d69d4eb38b37a67f65ce950f393478dd6a03239c985e1f6a",
+      "files": 116,
+      "javascript_files": 70,
+      "syntax_errors": [],
+      "local_static_asset_references": 103,
+      "missing_static_assets": [],
+      "unsafe_eval_in_document_csp": true,
+      "unsafe_inline_in_document_csp": true
+    },
+    "OneDrive_2026-09-22.zip": {
+      "sha256": "6c495f382bdad1af9c154d9b2bb95ac15ef1c6d9c4de7beec24d58fa780e4c10",
+      "files": 118,
+      "javascript_files": 70,
+      "syntax_errors": [],
+      "local_static_asset_references": 103,
+      "missing_static_assets": [],
+      "unsafe_eval_in_document_csp": true,
+      "unsafe_inline_in_document_csp": true
+    }
+  },
+  "source_common_files": 116,
+  "onedrive_unique_files": [
+    "AUDIT_SDD_UIUX.md",
+    "audit-harness.html"
+  ],
+  "v69_unique_files": [],
+  "different_common_files": [
+    "assets/js/00-core/002-script.js",
+    "assets/js/30-search/069-paleobot-v86-global-search-final.js"
+  ],
+  "current": {
+    "runtime_files": 160,
+    "overlap_with_onedrive": 104,
+    "identical_overlap": 55,
+    "other_or_new_in_onedrive": [
+      "AUDIT_SDD_UIUX.md",
+      "README_LAZY.md",
+      "README_PRUNED.md",
+      "README_REFACTOR.md",
+      "assets/js/20-navigation/019-paleobot-v45-cover-navigation.js",
+      "assets/js/20-navigation/034-paleobot-v63-modal-control-repair.js",
+      "assets/js/20-navigation/046-paleobot-v66-student-guide-router-repair.js",
+      "assets/js/30-search/050-paleobot-v70-global-search-open-repair.js",
+      "assets/js/30-search/056-paleobot-v77-search-guard.js",
+      "assets/js/90-guards/018-paleobot-v44-presentation-controls-guard.js",
+      "assets/js/90-guards/021-paleobot-v47-special-button-repair.js",
+      "assets/js/90-guards/032-paleobot-v60-passive-click-guard.js",
+      "audit-harness.html",
+      "manifest.json"
+    ],
+    "records": 50,
+    "public_media_api": true,
+    "search_closes_modal": true,
+    "search_routes_through_public_api": true,
+    "files": 160,
+    "javascript_files": 76,
+    "syntax_errors": [],
+    "local_static_asset_references": 118,
+    "missing_static_assets": [],
+    "unsafe_eval_in_document_csp": false,
+    "unsafe_inline_in_document_csp": false
+  },
+  "historical_harness_requires_eval": true,
+  "current_document_blocks_eval": true,
+  "browser_executed": false,
+  "decision": "NO_RUNTIME_CODE_TO_CHERRY_PICK; ADAPT_AUDIT_AS_EXTERNAL_TEST_ONLY; NO_GO"
+}

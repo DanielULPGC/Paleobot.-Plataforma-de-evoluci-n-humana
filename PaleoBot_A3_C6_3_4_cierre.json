@@ -1,0 +1,41 @@
+{
+  "checkpoint": "A3-C6.3.4/R05-T4",
+  "external_gates": {
+    "moodle": "PENDING",
+    "real_browser": "PENDING",
+    "real_screen_reader": "PENDING"
+  },
+  "next_node": "A3-C6.3.5/R05-T5",
+  "package": {
+    "bytes": 170503305,
+    "content_tree_sha256": "3d80e7e5903cd429d971e3b18af0c81d621251e849bb774db1d1c65ecc606dcf",
+    "manifest_files_excluding_self": 285,
+    "name": "PaleoBot_A3_C6_3_4_R05_T4_checkpoint_NO_GO.zip",
+    "runtime_files": 160,
+    "runtime_tree_sha256": "55e3295c4d748ede69ec1ee72257b1f34c0023273901680612257d00e7df3af8",
+    "sha256": "8843d17b5ec5f49d3dfa9c58f9bdf304d7bdc777ac988ba6a55b1409d3aebc15",
+    "zip_entries": 286
+  },
+  "r05_coverage": {
+    "legacy_unreviewed": 5,
+    "remaining_ids": [
+      "idaltu",
+      "neander",
+      "flores",
+      "luzon",
+      "sapiens"
+    ],
+    "reviewed": 45
+  },
+  "release_gate": "NO_GO",
+  "schema": "paleobot-a3-c6.3.4-closure-v1",
+  "state": "A3_C6_3_4_R05_T4_CHRONOLOGY_CONTRACTS_PASS__NO_FALSE_OCCUPANCY_OR_COEXISTENCE_PASS__CORE_50_SCIENTIFIC_INTEGRITY_PASS__INHERITED_REGRESSIONS_ADJUDICATED_PASS__R05_T4_FORMAL_BATTERY_PASS__DETERMINISTIC_ZIP_VERIFIED__C6_3_4_CLOSED__A3_NO_GO",
+  "verification": {
+    "deterministic_probes": 12000,
+    "formal_battery": "496/496 PASS",
+    "formal_meta": "40/40 PASS",
+    "independent": "33/33 PASS",
+    "independent_verification_sha256": "37671d0ff65822d2c2b5ec8cfb71a248fbbd465b772b6bf0686a99a62796aefd",
+    "internal": "26/26 PASS"
+  }
+}

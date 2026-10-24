@@ -1,0 +1,79 @@
+{
+  "schema": "paleobot-a3-c4-package-verification-v1",
+  "archive_sha256": "b3e86df5fabc4a8ce69bb75fdfe197f9d28e44c0920f8b3fa148194eb6e8586b",
+  "members": 203,
+  "passed": 17,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "manifest has exactly every archive member",
+      "pass": true
+    },
+    {
+      "name": "all member SHA-256 and sizes match",
+      "pass": true
+    },
+    {
+      "name": "release status is NO-GO",
+      "pass": true
+    },
+    {
+      "name": "C3 SHA-256",
+      "pass": true
+    },
+    {
+      "name": "C2.1 SHA-256",
+      "pass": true
+    },
+    {
+      "name": "C1 SHA-256",
+      "pass": true
+    },
+    {
+      "name": "R92 SHA-256",
+      "pass": true
+    },
+    {
+      "name": "delta parent identities",
+      "pass": true
+    },
+    {
+      "name": "reconstructed runtime matches embedded runtime byte for byte",
+      "pass": true
+    },
+    {
+      "name": "reconstructed runtime tree digest",
+      "pass": true
+    },
+    {
+      "name": "temporal-core-tests.json recorded results",
+      "pass": true
+    },
+    {
+      "name": "adapter-tests.json recorded results",
+      "pass": true
+    },
+    {
+      "name": "dom-tests.json recorded results",
+      "pass": true
+    },
+    {
+      "name": "evidence-dom-tests.json recorded results",
+      "pass": true
+    },
+    {
+      "name": "static-verification.json recorded results",
+      "pass": true
+    },
+    {
+      "name": "browser HTTP remains blocked",
+      "pass": true
+    },
+    {
+      "name": "full-index DOM remains inconclusive",
+      "pass": true
+    }
+  ],
+  "runtime_tree_sha256": "9bd6121cac80cb4a490cb7c1496f0c3fa2a7b0d7027bf29b84e896b4d45da51f",
+  "status": "PACKAGE_INTEGRITY_PASS__A3_NO_GO"
+}

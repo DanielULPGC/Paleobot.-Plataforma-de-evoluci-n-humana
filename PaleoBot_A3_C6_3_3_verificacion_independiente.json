@@ -1,0 +1,164 @@
+{
+  "a3_release_gate": "NO_GO",
+  "c6_3_3_gate": "VERIFIED_CLOSED",
+  "checkpoint": "A3-C6.3.3/R05-T3",
+  "checks": [
+    {
+      "detail": 169138234,
+      "name": "package exists and non-empty",
+      "pass": true
+    },
+    {
+      "name": "second independent build is byte-identical",
+      "pass": true
+    },
+    {
+      "detail": "1c3ebe277d72f54c92b3d96449aa4eacae79131ea7448cdae9908572397aa7e2",
+      "name": "package SHA-256 exact",
+      "pass": true
+    },
+    {
+      "name": "ZIP integrity",
+      "pass": true
+    },
+    {
+      "detail": 270,
+      "name": "ZIP entry count exactly 270",
+      "pass": true
+    },
+    {
+      "name": "ZIP names unique",
+      "pass": true
+    },
+    {
+      "name": "ZIP names sorted",
+      "pass": true
+    },
+    {
+      "name": "no explicit directory entries",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "all paths safe and relative",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no symlinks",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "deterministic timestamps and modes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no bytecode/cache artifacts",
+      "pass": true
+    },
+    {
+      "detail": [
+        "A3_C6_3_3_R05_T3_checkpoint_NO_GO"
+      ],
+      "name": "single expected top-level root",
+      "pass": true
+    },
+    {
+      "name": "manifest schema/checkpoint/root exact",
+      "pass": true
+    },
+    {
+      "detail": {
+        "declared": 269,
+        "listed": 269
+      },
+      "name": "manifest declares exactly 269 non-self files",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actual": 269,
+        "listed": 269
+      },
+      "name": "manifest file set exact",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "all manifest hashes and sizes exact",
+      "pass": true
+    },
+    {
+      "detail": "8dd7b7eaae6d6577de3e94a450482f72b163854fa3fd9c24d5dcdeff231c240d",
+      "name": "content tree SHA-256 exact",
+      "pass": true
+    },
+    {
+      "detail": 160,
+      "name": "runtime contains exactly 160 files",
+      "pass": true
+    },
+    {
+      "detail": "be3d018e57c2760aeb58821ccaf2459a3a7861bc7d7c4c1f7df162e2ec39a18a",
+      "name": "runtime tree SHA-256 exact",
+      "pass": true
+    },
+    {
+      "detail": "099ba01a6b39c165b6c8007109c19c44ffd0e64357f872eb93f8daa839e54e8b",
+      "name": "immediate C6.3.2 parent authenticated",
+      "pass": true
+    },
+    {
+      "detail": "72ec48f5cd23e9374546a5e7559b89cdc14781b26463fc1de55bebfadabf1bb0",
+      "name": "parent independent verification authenticated",
+      "pass": true
+    },
+    {
+      "detail": "a6134db0880aac14fe673a33e2c87297e9040dfed80ceb23e73faff208923bb5",
+      "name": "stored formal battery SHA-256 exact",
+      "pass": true
+    },
+    {
+      "name": "stored formal battery semantics exact",
+      "pass": true
+    },
+    {
+      "detail": "8972d37700ca3499791c7ce2aaadb76e08a34982e0655628b2e85b3e782cb8d3",
+      "name": "stored formal adjudication SHA-256 exact",
+      "pass": true
+    },
+    {
+      "name": "release remains A3 NO_GO with 15 R05 pending",
+      "pass": true
+    },
+    {
+      "detail": {
+        "hardcoded": [],
+        "returncode": 0,
+        "sha256": "a6134db0880aac14fe673a33e2c87297e9040dfed80ceb23e73faff208923bb5",
+        "stderr": ""
+      },
+      "name": "extracted formal runner is portable and byte-identical",
+      "pass": true
+    },
+    {
+      "detail": "1c3ebe277d72f54c92b3d96449aa4eacae79131ea7448cdae9908572397aa7e2",
+      "name": "independent ZIP reconstruction byte-identical",
+      "pass": true
+    }
+  ],
+  "content_tree_sha256": "8dd7b7eaae6d6577de3e94a450482f72b163854fa3fd9c24d5dcdeff231c240d",
+  "failed": 0,
+  "formal_battery": "490/490 + 10000 probes + 38/38 meta",
+  "formal_battery_sha256": "a6134db0880aac14fe673a33e2c87297e9040dfed80ceb23e73faff208923bb5",
+  "manifest_files_excluding_self": 269,
+  "package_bytes": 169138234,
+  "package_sha256": "1c3ebe277d72f54c92b3d96449aa4eacae79131ea7448cdae9908572397aa7e2",
+  "passed": 28,
+  "runtime_files": 160,
+  "runtime_tree_sha256": "be3d018e57c2760aeb58821ccaf2459a3a7861bc7d7c4c1f7df162e2ec39a18a",
+  "schema": "paleobot-a3-c6.3.3-independent-verification-v1",
+  "zip_entries": 270
+}

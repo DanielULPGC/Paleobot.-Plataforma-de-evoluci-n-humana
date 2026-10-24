@@ -1,0 +1,141 @@
+{
+  "schema": "paleobot-immersive-p8-independent-verification-v1",
+  "status": "PASS",
+  "package": "PaleoBot_Immersive_P8_Integration_Candidate.zip",
+  "bytes": 1882159,
+  "sha256": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74",
+  "passed": 12,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "deterministic twin byte-identical",
+      "pass": true,
+      "detail": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74"
+    },
+    {
+      "name": "single expected root",
+      "pass": true,
+      "detail": 189
+    },
+    {
+      "name": "safe paths",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no duplicate entries",
+      "pass": true,
+      "detail": 189
+    },
+    {
+      "name": "no symlinks",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "fixed timestamps",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "package verifier PASS",
+      "pass": true,
+      "detail": {
+        "schema": "paleobot-immersive-p8-package-verifier-v1",
+        "status": "PASS",
+        "passed": 3,
+        "failed": 0,
+        "checks": [
+          {
+            "name": "manifest exact file set",
+            "pass": true,
+            "detail": {
+              "actual": 188,
+              "expected": 188,
+              "extra": [],
+              "missing": []
+            }
+          },
+          {
+            "name": "manifest hashes and sizes",
+            "pass": true,
+            "detail": []
+          },
+          {
+            "name": "status remains candidate NO GO",
+            "pass": true,
+            "detail": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "portable selftest PASS",
+      "pass": true,
+      "detail": {
+        "schema": "paleobot-immersive-p8-selftest-v1",
+        "status": "PASS",
+        "passed": 4,
+        "failed": 0,
+        "checks": [
+          {
+            "name": "P7 full regression replay",
+            "pass": true,
+            "detail": {
+              "status": "PASS",
+              "passed": null,
+              "failed": null
+            }
+          },
+          {
+            "name": "P8 candidate audit",
+            "pass": true,
+            "detail": {
+              "status": "PASS",
+              "passed": 24,
+              "failed": 0
+            }
+          },
+          {
+            "name": "P8 adapter scientific gate",
+            "pass": true,
+            "detail": {
+              "status": "PASS",
+              "passed": 7,
+              "failed": 0
+            }
+          },
+          {
+            "name": "P8 rollback rehearsal",
+            "pass": true,
+            "detail": {
+              "status": "PASS",
+              "passed": null,
+              "failed": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate diff exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "scientific activation blocked",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "rollback verified",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "sealed A3 unchanged",
+      "pass": true,
+      "detail": null
+    }
+  ]
+}

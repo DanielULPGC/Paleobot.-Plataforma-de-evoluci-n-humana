@@ -1,0 +1,65 @@
+{
+  "a3_release_gate": "NO_GO",
+  "checkpoint": "A3-C6.3.5/R05-T5",
+  "external_gates": {
+    "moodle": "PENDING",
+    "real_browser": "PENDING",
+    "real_screen_reader": "PENDING"
+  },
+  "external_return_kit": {
+    "runtime_tree_sha256": "416912cbd047de711fa8519429784c9f9880fdd702004042efe85bb248b4db02",
+    "source_revision": "A3-C6.3.5",
+    "synthetic_harness": "17/17 PASS"
+  },
+  "formal_battery": {
+    "active_controls": "504/504 PASS",
+    "adjudication_sha256": "8ab475e57b102693e9c06ab62c547d906093adb9a98d934c9a5cf6c5fcca95ec",
+    "deterministic_probes": 9000,
+    "meta_controls": "43/43 PASS",
+    "sha256": "3e0b9eca975345e5ce09a3070db5f713565608a6a0d6379a27340d40bd2d1acd"
+  },
+  "manifest": {
+    "content_tree_sha256": "d4f25ec437f6e7f8ffc6c444a5c5e1bebe00fc6e6ca8e4ad90bd6f055d5e983a",
+    "files_excluding_self": 307,
+    "runtime_files": 160,
+    "runtime_tree_sha256": "d6ff84372b10e67aadac7c45882adc41585780dea8febd4c2ea493b4f816231e"
+  },
+  "next_action": "BEGIN_EXTERNAL_VALIDATION__REAL_BROWSER_FIRST__THEN_REAL_SCREEN_READER__THEN_MOODLE__NO_PROMOTION_UNTIL_REQUIRED_GATES_PASS",
+  "package": {
+    "bytes": 171941884,
+    "path": "PaleoBot_A3_C6_3_5_R05_T5_checkpoint_NO_GO.zip",
+    "sha256": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05",
+    "zip_entries": 308
+  },
+  "parent": {
+    "checkpoint": "A3-C6.3.4/R05-T4",
+    "independent_verification_sha256": "37671d0ff65822d2c2b5ec8cfb71a248fbbd465b772b6bf0686a99a62796aefd",
+    "zip_sha256": "8843d17b5ec5f49d3dfa9c58f9bdf304d7bdc777ac988ba6a55b1409d3aebc15"
+  },
+  "r05_review": {
+    "legacy_unreviewed": 0,
+    "reviewed": 50,
+    "status": "COMPLETE"
+  },
+  "schema": "paleobot-a3-c6.3.5-r05-t5-closure-v1",
+  "scientific_core": {
+    "aggregate_sha256": "12eaf5e5fa130180d3e08bb2be375e2c71c94dbb0325c2ad9b5160dc87e7dd4e",
+    "canonical_drift": 0,
+    "canonical_records": 50,
+    "runtime_files": 160
+  },
+  "status": "A3_C6_3_5_R05_T5_CHRONOLOGY_CONTRACTS_PASS__NO_FALSE_OCCUPANCY_OR_COEXISTENCE_PASS__CORE_50_SCIENTIFIC_INTEGRITY_PASS__INHERITED_REGRESSIONS_ADJUDICATED_PASS__R05_T5_FORMAL_BATTERY_PASS__DETERMINISTIC_ZIP_VERIFIED__RETURN_KIT_CURRENT_RUNTIME_BOUND__C6_3_5_CLOSED__R05_COMPLETE__A3_NO_GO",
+  "verification": {
+    "independent": {
+      "failed": 0,
+      "passed": 38,
+      "sha256": "fd13907b7512fd10f3d961efb266e64e87795efed1d8383cc02082903f22b121"
+    },
+    "independent_verifier_sha256": "9fb1419dbb22409306db7069680f39d7c9d49e9b1962ffc4f8d0b28b8ac24c23",
+    "internal": {
+      "failed": 0,
+      "passed": 31,
+      "sha256": "aa6d2604f4cfd35a2bd7135366b3f54e49304b82c3cef6590b65d0ddc8391cd9"
+    }
+  }
+}

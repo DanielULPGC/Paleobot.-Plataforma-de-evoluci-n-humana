@@ -1,0 +1,92 @@
+{
+  "schema": "paleobot-immersive-p9.1-independent-verification-v1",
+  "status": "PASS",
+  "passed": 9,
+  "failed": 0,
+  "zip_sha256": "56ee2de7ccc1cfd705405c0122e8bd8414822f9c950006d0191bb78e4fa7d208",
+  "checks": [
+    {
+      "name": "single root",
+      "pass": true,
+      "detail": 15
+    },
+    {
+      "name": "safe paths",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no duplicates",
+      "pass": true,
+      "detail": 15
+    },
+    {
+      "name": "no symlinks",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "manifest exact file set",
+      "pass": true,
+      "detail": {
+        "expected": 14,
+        "actual": 14
+      }
+    },
+    {
+      "name": "manifest hashes",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "packaged verifier",
+      "pass": true,
+      "detail": {
+        "schema": "paleobot-immersive-p9.1-package-verification-v1",
+        "status": "PASS",
+        "passed": 5,
+        "failed": 0,
+        "checks": [
+          {
+            "name": "source P9 package exact",
+            "pass": true,
+            "detail": "f974449db3ab5cc0d1df9b6b0b8250904b35c83668e6318c80a0cb87b65523cb"
+          },
+          {
+            "name": "contract exists",
+            "pass": true,
+            "detail": null
+          },
+          {
+            "name": "intake exists",
+            "pass": true,
+            "detail": null
+          },
+          {
+            "name": "frozen adjudicator exists",
+            "pass": true,
+            "detail": null
+          },
+          {
+            "name": "empty intake awaits",
+            "pass": true,
+            "detail": "AWAITING_AUTHENTIC_P9_RETURN__P10_NOT_AUTHORIZED__A3_NO_GO"
+          }
+        ]
+      }
+    },
+    {
+      "name": "packaged selftest",
+      "pass": true,
+      "detail": {
+        "passed": 5,
+        "failed": 0
+      }
+    },
+    {
+      "name": "independent rebuild byte-identical",
+      "pass": true,
+      "detail": "56ee2de7ccc1cfd705405c0122e8bd8414822f9c950006d0191bb78e4fa7d208"
+    }
+  ]
+}

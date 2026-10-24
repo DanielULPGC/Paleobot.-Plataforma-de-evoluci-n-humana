@@ -1,0 +1,78 @@
+{
+  "schema": "paleobot-a3-c4.3-package-verification-v1",
+  "passed": 14,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "status is NO_GO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "parent zip included",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "parent hash matches",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "changed file present assets/js/00-core/002-script.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "changed file present assets/js/00-core/006-script.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "changed file present assets/js/60-science/079-paleobot-a3-temporal-policy.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required evidence evidence-c4.3/residual-consumer-tests.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required evidence evidence-c4.3/static-verification.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required evidence INFORME_A3_C4_3.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required evidence README.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest file set matches",
+      "pass": true,
+      "detail": "manifest=236; actual=236"
+    },
+    {
+      "name": "manifest hashes and sizes match",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "C4.3 residual suite executes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "C4.3 residual suite 31/31",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "release_gate": "NO_GO"
+}

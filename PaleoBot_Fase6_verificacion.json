@@ -1,0 +1,15 @@
+{
+  "phase": 6,
+  "status": "NO_GO",
+  "records": 50,
+  "changed_science_records": 5,
+  "primary_bianfu_dois": [
+    "10.1038/s41586-026-10976-9",
+    "10.1038/s41586-026-10997-4"
+  ],
+  "chronology": "unchanged vs fase4",
+  "internal_tests": "PASS",
+  "runtime_files": 163,
+  "runtime_hashes_sha256": "9a69c37bd9eb847fae59e6ce0a9af82c75720bc1c4844095e24d0fd3fc409ded",
+  "browser_moodle": "NOT_VERIFIED"
+}

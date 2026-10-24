@@ -1,0 +1,294 @@
+{
+  "a3_release_gate": "NO_GO",
+  "c6_3_5_gate": "VERIFIED_CLOSED",
+  "checkpoint": "A3-C6.3.5/R05-T5",
+  "checks": [
+    {
+      "detail": 171941884,
+      "name": "package exists and non-empty",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "name": "second independent build is byte-identical",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05",
+      "name": "package SHA-256 exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "name": "ZIP integrity",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": 308,
+      "name": "ZIP entry count exactly 308",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "name": "ZIP names unique",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "name": "ZIP names sorted",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "name": "no explicit directory entries",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": [],
+      "name": "all paths safe and relative",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": [],
+      "name": "no symlinks",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": [],
+      "name": "deterministic timestamps and modes",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": [],
+      "name": "no bytecode/cache artifacts",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": [
+        "A3_C6_3_5_R05_T5_checkpoint_NO_GO"
+      ],
+      "name": "single expected top-level root",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "name": "manifest schema/checkpoint/root exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": {
+        "declared": 307,
+        "listed": 307
+      },
+      "name": "manifest declares exactly 307 non-self files",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": {
+        "actual": 307,
+        "listed": 307
+      },
+      "name": "manifest file set exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": [],
+      "name": "all manifest hashes and sizes exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": "d4f25ec437f6e7f8ffc6c444a5c5e1bebe00fc6e6ca8e4ad90bd6f055d5e983a",
+      "name": "content tree SHA-256 exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": 160,
+      "name": "runtime contains exactly 160 files",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": "d6ff84372b10e67aadac7c45882adc41585780dea8febd4c2ea493b4f816231e",
+      "name": "runtime tree SHA-256 exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": "8843d17b5ec5f49d3dfa9c58f9bdf304d7bdc777ac988ba6a55b1409d3aebc15",
+      "name": "immediate C6.3.4 parent authenticated",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": "37671d0ff65822d2c2b5ec8cfb71a248fbbd465b772b6bf0686a99a62796aefd",
+      "name": "parent independent verification authenticated",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": [
+        "PaleoBot_A3_C6_3_4_R05_T4_checkpoint_NO_GO.zip",
+        "PaleoBot_A3_C6_3_4_verificacion_independiente.json"
+      ],
+      "name": "top-level inputs contain immediate parent only",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": "3e0b9eca975345e5ce09a3070db5f713565608a6a0d6379a27340d40bd2d1acd",
+      "name": "stored formal battery SHA-256 exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": "8ab475e57b102693e9c06ab62c547d906093adb9a98d934c9a5cf6c5fcca95ec",
+      "name": "stored formal adjudication SHA-256 exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "name": "stored formal battery semantics exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "name": "release remains A3 NO_GO with R05 complete",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": "416912cbd047de711fa8519429784c9f9880fdd702004042efe85bb248b4db02",
+      "name": "external return-kit runtime identity exact",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": [],
+      "name": "return-kit contains no stale C6.1/R05-open operational markers",
+      "pass": true,
+      "phase": "structural"
+    },
+    {
+      "detail": "",
+      "name": "extracted formal runner exits 0",
+      "pass": true,
+      "phase": "formal"
+    },
+    {
+      "detail": "3e0b9eca975345e5ce09a3070db5f713565608a6a0d6379a27340d40bd2d1acd",
+      "name": "extracted formal evidence byte-identical",
+      "pass": true,
+      "phase": "formal"
+    },
+    {
+      "detail": "8ab475e57b102693e9c06ab62c547d906093adb9a98d934c9a5cf6c5fcca95ec",
+      "name": "extracted formal adjudication byte-identical",
+      "pass": true,
+      "phase": "formal"
+    },
+    {
+      "detail": [
+        "PaleoBot_A3_C6_3_4_R05_T4_checkpoint_NO_GO.zip",
+        "PaleoBot_A3_C6_3_4_verificacion_independiente.json"
+      ],
+      "name": "formal nested-parent bridge leaves no residue",
+      "pass": true,
+      "phase": "formal"
+    },
+    {
+      "detail": {
+        "changed": [],
+        "extra": [],
+        "missing": []
+      },
+      "name": "formal execution leaves packaged tree byte-identical",
+      "pass": true,
+      "phase": "formal"
+    },
+    {
+      "detail": {
+        "cases": 17,
+        "failed": 0,
+        "passed": 17,
+        "returncode": 0
+      },
+      "name": "return-kit synthetic intake harness 17/17",
+      "pass": true,
+      "phase": "returnkit"
+    },
+    {
+      "detail": {
+        "changed": [],
+        "extra": [],
+        "missing": []
+      },
+      "name": "return-kit harness leaves packaged tree byte-identical",
+      "pass": true,
+      "phase": "returnkit"
+    },
+    {
+      "detail": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05",
+      "name": "independent rebuild SHA-256 exact",
+      "pass": true,
+      "phase": "rebuild"
+    },
+    {
+      "name": "independent ZIP reconstruction byte-identical",
+      "pass": true,
+      "phase": "rebuild"
+    }
+  ],
+  "content_tree_sha256": "d4f25ec437f6e7f8ffc6c444a5c5e1bebe00fc6e6ca8e4ad90bd6f055d5e983a",
+  "external_gates": {
+    "moodle": "PENDING",
+    "real_browser": "PENDING",
+    "real_screen_reader": "PENDING"
+  },
+  "external_return_runtime_tree_sha256": "416912cbd047de711fa8519429784c9f9880fdd702004042efe85bb248b4db02",
+  "failed": 0,
+  "formal_battery": "504/504 + 9000 probes + 43/43 meta",
+  "formal_battery_sha256": "3e0b9eca975345e5ce09a3070db5f713565608a6a0d6379a27340d40bd2d1acd",
+  "manifest_files_excluding_self": 307,
+  "package_bytes": 171941884,
+  "package_sha256": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05",
+  "passed": 38,
+  "phase_results": {
+    "formal": {
+      "failed": 0,
+      "passed": 5
+    },
+    "rebuild": {
+      "failed": 0,
+      "passed": 2
+    },
+    "returnkit": {
+      "failed": 0,
+      "passed": 2
+    },
+    "structural": {
+      "failed": 0,
+      "passed": 29
+    }
+  },
+  "r05_gate": "COMPLETE",
+  "r05_review_coverage": "50/50 reviewed; 0 legacy-unreviewed",
+  "return_kit_harness": "17/17 PASS",
+  "runtime_files": 160,
+  "runtime_tree_sha256": "d6ff84372b10e67aadac7c45882adc41585780dea8febd4c2ea493b4f816231e",
+  "schema": "paleobot-a3-c6.3.5-independent-verification-v1",
+  "second_build_sha256": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05",
+  "verification_mode": "phased-independent",
+  "zip_entries": 308
+}

@@ -1,0 +1,110 @@
+{
+  "schema": "paleobot-a3-c6.1-package-verification-v1",
+  "mode": "quick",
+  "package_sha256": "d2b594d9dde60a6e8168584eab1a91352e30f75ee9140cbbe5f1ee98b191598d",
+  "passed": 20,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "ZIP safe paths",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ZIP no symlinks",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "single top-level root",
+      "pass": true,
+      "detail": "{'A3_C6_1_external_gate_NO_GO'}"
+    },
+    {
+      "name": "manifest readable",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest exact file set",
+      "pass": true,
+      "detail": "{'actual': 223, 'listed': 223}"
+    },
+    {
+      "name": "all manifest hashes and sizes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest release NO_GO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "stored package preflight 33/33",
+      "pass": true,
+      "detail": "{'schema': 'paleobot-a3-c6.1-package-preflight-v1', 'local_verification': {'passed': 33, 'failed': 0}, 'functional': {'passed': 225, 'failed': 0, 'probes': 6000}, 'a11y_static': {'passed': 32, 'failed': 0}, 'a3_intake_harness': {'passed': 16, 'failed': 0}, 'r93_harness': {'passed': 15, 'failed': 0}, 'browser_local': 'BLOCKED_BY_ENVIRONMENT', 'release_gate': 'NO_GO'}"
+    },
+    {
+      "name": "stored local verification 33/33",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "stored functional regressions 225/225 + 6000",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "stored accessibility preflight 32/32",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "stored A3 intake harness 16/16",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "stored R93 harness 15/15",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "browser local block retained honestly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "C5.3 parent identity retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "R93 identity retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "R93 explicitly not reused",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "screen reader remains NOT_RUN",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Moodle A3 remains NOT_RUN",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "release status remains NO_GO",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "release_gate": "NO_GO"
+}

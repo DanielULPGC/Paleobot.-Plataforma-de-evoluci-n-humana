@@ -1,0 +1,39 @@
+{
+  "schema": "paleobot-immersive-p7-closure-v1",
+  "source_revision": "A3-C6.3.5/R05-T5",
+  "status": "P7_INTEGRAL_REGRESSION_PASS__INTEGRATION_PREFLIGHT_PASS__P8_CLONED_CANDIDATE_ONLY__SCIENTIFIC_ACTIVATION_BLOCKED__A3_RUNTIME_UNCHANGED",
+  "package": {
+    "name": "PaleoBot_Immersive_P7_Regresion_Preflight.zip",
+    "bytes": 813779,
+    "sha256": "d2e5536a950a82fdefa3eb7e162c0015b8171cf7aadb9cc0d71293c371d62262",
+    "deterministic_twins": "BYTE_IDENTICAL"
+  },
+  "validation": {
+    "parent_chain_replay": "5/5 PASS",
+    "mode_science_matrix": "22/22 PASS",
+    "integration_preflight": "11/11 PASS",
+    "negative_cases": "12/12 PASS",
+    "selftest": "6/6 PASS",
+    "independent_verification": "13/13 PASS"
+  },
+  "scientific_gate": {
+    "available_assets": 0,
+    "approved_pairs": 0,
+    "scientific_reveal": "BLOCKED",
+    "production_synthetic_demo": "FORBIDDEN"
+  },
+  "a3": {
+    "release_gate": "NO_GO",
+    "runtime_files": 160,
+    "writes": 0,
+    "runtime_tree_sha256": "b51187430ecd211492c1b7f40d93a9f1710b69e80a256d01a73fc62317d2cf93",
+    "unchanged": true
+  },
+  "external": {
+    "browser": "NOT_RUN",
+    "screen_reader": "NOT_RUN",
+    "moodle": "NOT_RUN",
+    "wcag_conformance_claim": false
+  },
+  "next_node": "P8 — candidato de integración sobre clon de A3 con diff/rollback; no modificar el checkpoint sellado y no activar reveal científico."
+}

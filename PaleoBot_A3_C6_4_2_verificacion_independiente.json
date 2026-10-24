@@ -1,0 +1,129 @@
+{
+  "schema": "paleobot-a3-c6.4.2-independent-verification-v1",
+  "status": "PASS",
+  "passed": 15,
+  "failed": 0,
+  "zip_sha256": "559550bcd278b296992c6fd5f389f4184c7f4881037f71246e2c18a8a272b2e6",
+  "checks": [
+    {
+      "name": "zip exists",
+      "status": "PASS",
+      "detail": "/mnt/data/PaleoBot_A3_C6_4_2_browser_return_intake.run1.zip"
+    },
+    {
+      "name": "zip sha256",
+      "status": "PASS",
+      "detail": "559550bcd278b296992c6fd5f389f4184c7f4881037f71246e2c18a8a272b2e6"
+    },
+    {
+      "name": "single expected root",
+      "status": "PASS",
+      "detail": 10
+    },
+    {
+      "name": "safe paths",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "no duplicate entries",
+      "status": "PASS",
+      "detail": 10
+    },
+    {
+      "name": "no symlinks",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "deterministic timestamps",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "manifest present",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "manifest exact file set",
+      "status": "PASS",
+      "detail": {
+        "actual": 10,
+        "expected": 10,
+        "extra": [],
+        "missing": []
+      }
+    },
+    {
+      "name": "manifest hashes and sizes",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "embedded transfer sha",
+      "status": "PASS",
+      "detail": "2f7c4f6a5afa9d0b02199679c27567bdd91bff386581d67fce8124030c7f4e01"
+    },
+    {
+      "name": "packaged verifier PASS",
+      "status": "PASS",
+      "detail": {
+        "returncode": 0,
+        "passed": 13,
+        "failed": 0
+      }
+    },
+    {
+      "name": "portable intake selftest 4/4",
+      "status": "PASS",
+      "detail": {
+        "schema": "paleobot-a3-c6.4.2-intake-selftest-v1",
+        "status": "PASS",
+        "passed": 4,
+        "failed": 0,
+        "checks": [
+          {
+            "name": "empty intake is awaiting, not pass",
+            "status": "PASS",
+            "detail": "AWAITING_AUTHENTIC_BROWSER_RETURN__SCREEN_READER_NOT_AUTHORIZED__A3_NO_GO"
+          },
+          {
+            "name": "diagnostic/blocked return quarantined",
+            "status": "PASS",
+            "detail": "QUARANTINED_BROWSER_RETURN__SCREEN_READER_NOT_AUTHORIZED__A3_NO_GO"
+          },
+          {
+            "name": "synthetic valid contract admitted by mechanics",
+            "status": "PASS",
+            "detail": {
+              "status": "ADMITTED_BROWSER_PASS__SCREEN_READER_GATE_AUTHORIZED__MOODLE_PENDING__A3_NO_GO",
+              "passed": 44,
+              "failed": 0
+            }
+          },
+          {
+            "name": "synthetic admission never claims release",
+            "status": "PASS",
+            "detail": {
+              "release_gate": "NO_GO",
+              "screen_reader": "AUTHORIZED_NOT_RUN",
+              "moodle": "NOT_RUN"
+            }
+          }
+        ],
+        "synthetic_positive_is_not_real_browser_evidence": true
+      }
+    },
+    {
+      "name": "empty intake remains AWAITING",
+      "status": "PASS",
+      "detail": "AWAITING_AUTHENTIC_BROWSER_RETURN__SCREEN_READER_NOT_AUTHORIZED__A3_NO_GO"
+    },
+    {
+      "name": "independent rebuild byte-identical",
+      "status": "PASS",
+      "detail": "559550bcd278b296992c6fd5f389f4184c7f4881037f71246e2c18a8a272b2e6"
+    }
+  ]
+}

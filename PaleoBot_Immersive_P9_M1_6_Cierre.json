@@ -1,0 +1,39 @@
+{
+  "schema": "paleobot-immersive-p9-m1-6-closure-v1",
+  "node": "P9-M1.6",
+  "title": "Moodle Balanced v7 — rutas didácticas guiadas ligeras",
+  "source_v6_sha256": "712b61b0c6dd34940453defc46e45ca7e3afb6d52ecaaa06ff5a4b2116e4694d",
+  "artifact": {
+    "name": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v7_routes_candidate_NO_GO.zip",
+    "bytes": 62463,
+    "sha256": "ece6a81a84d8deb82381ddbd92ca7aee1824c507d03dc9d206ea0e01962c1732",
+    "deterministic_twin_builds": "BYTE_IDENTICAL"
+  },
+  "scientific_integrity": {
+    "record_count": 50,
+    "data_block_sha256": "cb9ba72ffa22e6e116c755b6312b51f2725ceeb264c79f3bec4cb11d60924a32",
+    "data_byte_identical_to_v6": true,
+    "scientific_assets_available": 0,
+    "scientific_reveal": false
+  },
+  "new_feature": {
+    "didactic_routes": 4,
+    "didactic_steps": 16,
+    "lazy": true,
+    "persistence": "NONE",
+    "new_scientific_claims": 0
+  },
+  "validation": {
+    "static_structural": "37/37 PASS",
+    "independent_archive": "14/14 PASS",
+    "javascript_syntax": "PASS"
+  },
+  "external_validation": {
+    "real_moodle": "RETEST_REQUIRED",
+    "real_browser": "NOT_CLAIMED",
+    "screen_reader": "NOT_CLAIMED"
+  },
+  "a3_release_gate": "NO_GO",
+  "status": "P9_M1_6_DIDACTIC_ROUTES_ENRICHMENT_STATIC_PASS__REAL_MOODLE_RETEST_REQUIRED__A3_NO_GO",
+  "next_node": "P9-M1.7 — selective low-cost enrichment only if v7 remains stable in real Moodle; do not restore heavy legacy UI."
+}

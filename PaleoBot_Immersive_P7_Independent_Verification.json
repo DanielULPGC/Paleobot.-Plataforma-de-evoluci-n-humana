@@ -1,0 +1,84 @@
+{
+  "schema": "paleobot-immersive-p7-independent-verification-v1",
+  "status": "PASS",
+  "passed": 13,
+  "failed": 0,
+  "zip_sha256": "d2e5536a950a82fdefa3eb7e162c0015b8171cf7aadb9cc0d71293c371d62262",
+  "checks": [
+    {
+      "name": "zip exists",
+      "pass": true,
+      "detail": "/mnt/data/PaleoBot_Immersive_P7_Regresion_Preflight.zip"
+    },
+    {
+      "name": "single expected root",
+      "pass": true,
+      "detail": 112
+    },
+    {
+      "name": "safe paths",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no duplicate entries",
+      "pass": true,
+      "detail": 112
+    },
+    {
+      "name": "no symlinks",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "deterministic timestamps",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "manifest exact hashes and file set",
+      "pass": true,
+      "detail": {
+        "expected": 112,
+        "actual": 112,
+        "bad": [],
+        "extra": [],
+        "missing": []
+      }
+    },
+    {
+      "name": "P6 parent exact SHA",
+      "pass": true,
+      "detail": "df67f8890469c3263f73ebf2c8770427edfd32d0bd88056802935ed146077aec"
+    },
+    {
+      "name": "portable P7 selftest",
+      "pass": true,
+      "detail": {
+        "status": "PASS",
+        "passed": 6,
+        "failed": 0
+      }
+    },
+    {
+      "name": "scientific activation blocked",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "P8 not executed",
+      "pass": true,
+      "detail": "NOT_STARTED"
+    },
+    {
+      "name": "A3 remains unchanged/no-go",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no external validation claims",
+      "pass": true,
+      "detail": null
+    }
+  ]
+}

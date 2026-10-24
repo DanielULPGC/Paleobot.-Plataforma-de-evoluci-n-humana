@@ -1,0 +1,30 @@
+{
+  "browser_result": {
+    "schema": "paleobot-fase7b-browser-return-v1",
+    "source_revision": "FASE7",
+    "runtime_tree_sha256": "4763aa4ad32c9f0aef46988db9a7cadda313eaded9f7491d0214d84b9fc4bec7",
+    "captured_at_utc": "2026-09-23T06:16:07.335372+00:00",
+    "status": "BLOCKED_BY_ENVIRONMENT",
+    "tree_check": "PASS",
+    "cases": [],
+    "browser_name": "",
+    "browser_version": "",
+    "request_policy": "LOCAL_ONLY",
+    "external_images": "NOT_VERIFIED",
+    "moodle": "NOT_ASSESSED",
+    "scorm": "NOT_ASSESSED",
+    "reason": "Falta el paquete Python playwright"
+  },
+  "adjudication": {
+    "schema": "paleobot-fase7b-adjudication-v1",
+    "state": "ADJUDICATED_BLOCKED",
+    "defects": [],
+    "runtime_tree_sha256": "4763aa4ad32c9f0aef46988db9a7cadda313eaded9f7491d0214d84b9fc4bec7",
+    "source_status": "BLOCKED_BY_ENVIRONMENT",
+    "manual_accessibility": "NOT_ASSESSED",
+    "external_media": "NOT_VERIFIED",
+    "moodle": "NOT_ASSESSED",
+    "scorm": "NOT_ASSESSED",
+    "release_gate": "NO_GO"
+  }
+}

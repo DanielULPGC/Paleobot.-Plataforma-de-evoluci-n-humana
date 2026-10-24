@@ -1,0 +1,26 @@
+{
+  "schema": "paleobot-immersive-p9.1-closure-v1",
+  "node": "P9.1",
+  "source_p9_sha256": "f974449db3ab5cc0d1df9b6b0b8250904b35c83668e6318c80a0cb87b65523cb",
+  "authentic_returns_received": 0,
+  "current_intake_state": "AWAITING_AUTHENTIC_P9_RETURN__P10_NOT_AUTHORIZED__A3_NO_GO",
+  "p10_authorized": false,
+  "scientific_activation_authorized": false,
+  "screen_reader": "NOT_AUTHORIZED_NOT_RUN",
+  "moodle": "NOT_RUN",
+  "a3_release_gate": "NO_GO",
+  "package": {
+    "name": "PaleoBot_Immersive_P9_1_Return_Intake.zip",
+    "sha256": "56ee2de7ccc1cfd705405c0122e8bd8414822f9c950006d0191bb78e4fa7d208",
+    "bytes": 1879161,
+    "deterministic_twin_builds": "BYTE_IDENTICAL"
+  },
+  "independent_verification": {
+    "name": "PaleoBot_Immersive_P9_1_Independent_Verification.json",
+    "sha256": "22fc57f7a35371c37818e8009edcdc2c6d09700d06c02c52ff1975aa98f4ba25",
+    "status": "PASS",
+    "checks": "9/9 PASS"
+  },
+  "status": "P9_1_RETURN_INTAKE_READY__NO_AUTHENTIC_RETURN_RECEIVED__P10_NOT_AUTHORIZED__SCIENTIFIC_ACTIVATION_BLOCKED__A3_NO_GO",
+  "next_exact_action": "Execute P9 on an authorized HTTPS host, seal PaleoBot_Immersive_P9_Return.zip, then run P9.1 intake. Only an admitted P9 browser PASS authorizes P10."
+}

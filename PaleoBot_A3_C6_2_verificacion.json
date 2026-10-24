@@ -1,0 +1,73 @@
+{
+  "schema": "paleobot-a3-c6.2-independent-verification-v1",
+  "passed": 16,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "zip exists",
+      "pass": true
+    },
+    {
+      "name": "zip test",
+      "pass": true
+    },
+    {
+      "name": "manifest files verify",
+      "pass": true
+    },
+    {
+      "name": "runtime has 160 files",
+      "pass": true
+    },
+    {
+      "name": "parent C6.1 present",
+      "pass": true
+    },
+    {
+      "name": "parent C6.1 hash",
+      "pass": true
+    },
+    {
+      "name": "eight M16 records",
+      "pass": true
+    },
+    {
+      "name": "legacy boolean retired",
+      "pass": true
+    },
+    {
+      "name": "active regressions 259/259",
+      "pass": true
+    },
+    {
+      "name": "7000 probes",
+      "pass": true
+    },
+    {
+      "name": "accessibility preflight 32/32",
+      "pass": true
+    },
+    {
+      "name": "release remains NO_GO",
+      "pass": true
+    },
+    {
+      "name": "R04 closed",
+      "pass": true
+    },
+    {
+      "name": "R05 open",
+      "pass": true
+    },
+    {
+      "name": "zip paths safe",
+      "pass": true
+    },
+    {
+      "name": "single runtime change recorded",
+      "pass": true
+    }
+  ],
+  "zip_sha256": "89785b2cd5a2f822303a949c8e25ee5ffad97c313fd395cac7c0da4ee381cd91",
+  "release_gate": "NO_GO"
+}

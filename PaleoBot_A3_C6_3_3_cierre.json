@@ -1,0 +1,61 @@
+{
+  "checkpoint": "A3-C6.3.3/R05-T3",
+  "content_tree_sha256": "8dd7b7eaae6d6577de3e94a450482f72b163854fa3fd9c24d5dcdeff231c240d",
+  "decision": "C6_3_3_CLOSED__A3_NO_GO",
+  "external_gates": {
+    "moodle": "PENDING",
+    "real_browser": "PENDING",
+    "real_screen_reader": "PENDING"
+  },
+  "formal_battery": {
+    "active_controls": "490/490",
+    "deterministic_probes": 10000,
+    "meta_controls": "38/38",
+    "sha256": "a6134db0880aac14fe673a33e2c87297e9040dfed80ceb23e73faff208923bb5"
+  },
+  "independent_verification": {
+    "failed": 0,
+    "passed": 28,
+    "sha256": "bee0ca46b004d6ba71a73103f7441090725bfbd2213e6965a414003f6808642d"
+  },
+  "independent_verifier_sha256": "d4db537c45dd7bb3e0836f6a4ff409550fc33ed0b6c0b5a75dfd4b68928fe30d",
+  "internal_verification": {
+    "failed": 0,
+    "passed": 23,
+    "sha256": "a347483e624dfa6e4c3e3c63ecc0af474daee4c244d0f36fdc3af1744dd7bc0f"
+  },
+  "next_sequential_node": "A3-C6.3.4/R05-T4",
+  "package": {
+    "bytes": 169138234,
+    "manifest_files_excluding_self": 269,
+    "path": "PaleoBot_A3_C6_3_3_R05_T3_checkpoint_NO_GO.zip",
+    "sha256": "1c3ebe277d72f54c92b3d96449aa4eacae79131ea7448cdae9908572397aa7e2",
+    "zip_entries": 270
+  },
+  "r05": {
+    "legacy_unreviewed": 15,
+    "remaining_ids": [
+      "cepranensis",
+      "heidelbergensis",
+      "bodoensis",
+      "helmei",
+      "daliensis",
+      "juluensis",
+      "soloensis",
+      "gautengensis",
+      "naledi",
+      "jebel_irhoud",
+      "idaltu",
+      "neander",
+      "flores",
+      "luzon",
+      "sapiens"
+    ],
+    "reviewed": 35
+  },
+  "release_gate": "NO_GO",
+  "runtime_files": 160,
+  "runtime_tree_sha256": "be3d018e57c2760aeb58821ccaf2459a3a7861bc7d7c4c1f7df162e2ec39a18a",
+  "schema": "paleobot-a3-c6.3.3-r05-t3-closure-v1",
+  "state": "A3_C6_3_3_R05_T3_CHRONOLOGY_CONTRACTS_PASS__NO_FALSE_OCCUPANCY_OR_COEXISTENCE_PASS__CORE_50_SCIENTIFIC_INTEGRITY_PASS__INHERITED_REGRESSIONS_ADJUDICATED_PASS__R05_T3_FORMAL_BATTERY_PASS__DETERMINISTIC_ZIP_VERIFIED__C6_3_3_CLOSED__A3_NO_GO"
+}

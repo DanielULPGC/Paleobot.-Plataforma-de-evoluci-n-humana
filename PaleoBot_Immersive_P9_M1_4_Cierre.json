@@ -1,0 +1,44 @@
+{
+  "schema": "paleobot-immersive-p9-m1.4-closure-v1",
+  "node": "P9-M1.4",
+  "title": "Moodle Balanced v5 — enriquecimiento bibliográfico selectivo",
+  "artifact": {
+    "name": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v5_bibliography_candidate_NO_GO.zip",
+    "sha256": "4bb2d9fd5d578a3eb8006c9c4d02c45273dd17018f3e0a429f260437608dc665",
+    "bytes": 56484,
+    "deterministic_twin_builds": "BYTE_IDENTICAL"
+  },
+  "verification": {
+    "name": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v5_bibliography_verification.json",
+    "sha256": "adac040ac458537ead1d25c1feb2ef98551e7c06f16b9a2ecf89f7c2f0d31a31",
+    "checks": "30/30 PASS"
+  },
+  "bibliography": {
+    "unique_references": 113,
+    "with_doi": 102,
+    "source": "existing experto.referencias only",
+    "initial_render_limit": 20,
+    "new_sources_added": 0
+  },
+  "performance_contract": {
+    "main_navigation_sections": 5,
+    "lazy_bibliography": true,
+    "fetch": false,
+    "localStorage": false,
+    "MutationObserver": false,
+    "external_images": 0,
+    "external_network_dependencies": 0
+  },
+  "scientific_gate": {
+    "assets_available": 0,
+    "scientific_reveal": false,
+    "a3_release_gate": "NO_GO"
+  },
+  "moodle": {
+    "real_retest": "REQUIRED",
+    "recommended_display": "Nueva ventana",
+    "upload_as": "Paquete SCORM sin descomprimir"
+  },
+  "status": "P9_M1_4_BIBLIOGRAPHY_ENRICHMENT_STATIC_PASS__REAL_MOODLE_RETEST_REQUIRED__A3_NO_GO",
+  "next_node": "P9-M1.5 — siguiente enriquecimiento selectivo solo tras confirmar que v5 mantiene la estabilidad en Moodle; candidato preferente: glosario epistemico/didactico ligero."
+}

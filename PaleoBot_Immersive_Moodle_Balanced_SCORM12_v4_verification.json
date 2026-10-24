@@ -1,0 +1,145 @@
+{
+  "artifact": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v4_candidate_NO_GO.zip",
+  "sha256": "391b7ff2908994668d10f431cc4fae0d62e97ffa3129d766da05b43eeb92bc9c",
+  "bytes": 55140,
+  "status": "P9_M1_3_MOODLE_BALANCED_STATIC_PASS__REAL_MOODLE_RETEST_REQUIRED__A3_NO_GO",
+  "checks_passed": 24,
+  "checks_total": 24,
+  "checks": [
+    {
+      "name": "zip_opens",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "manifest_root",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "index_root",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "only_4_files",
+      "pass": true,
+      "detail": "['MOODLE_BALANCED_METADATA.json', 'README_MOODLE_BALANCED.txt', 'imsmanifest.xml', 'index.html']"
+    },
+    {
+      "name": "safe_paths",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest_xml_parse",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_fetch",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_mutationobserver",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_localstorage",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_remote_http",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_leaflet",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "five_tabs",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "progressive_12",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "lazy_chrono",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "lazy_compare",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "lazy_immersive",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "scientific_reveal_blocked",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "binding_present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "catalog_hash_present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "js_syntax",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "record_count_50",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source_p8_pinned",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "scientific_assets_0",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "deterministic_twin",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "design": {
+    "initial_cards": 12,
+    "lazy_sections": [
+      "Cronología",
+      "Comparar",
+      "Immersive"
+    ],
+    "external_network": 0,
+    "remote_images": 0,
+    "heavy_libraries": 0
+  },
+  "scientific_gate": {
+    "available_assets": 0,
+    "scientific_reveal": false
+  }
+}

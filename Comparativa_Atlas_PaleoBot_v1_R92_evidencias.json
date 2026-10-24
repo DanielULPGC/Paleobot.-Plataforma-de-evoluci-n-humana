@@ -1,0 +1,471 @@
+{
+  "title": "Comparativa técnica Atlas-PaleoBot v1.0 IMS frente a PaleoBot R92/R93",
+  "date": "2026-09-07",
+  "method": "Inspección estática de los dos ZIP, diff SHA-256, análisis sintáctico JavaScript, verificación de manifiesto, comparación de datos y contraste bibliográfico selectivo. No se ejecutó importación Moodle ni regresión visual real.",
+  "input_sha256": {
+    "atlas": "776ebfbfbbe86993c2853f75ec5af54f2e38d9fb84cff0a9f5c4e99a4ba25165",
+    "r92": "b5223e16a72ec3135c3770166b6a6717ecd2628f7cf31eca19248f8b579a22c8"
+  },
+  "files": {
+    "identical": [
+      "assets/css/00-core/002-paleobot-v34-style.css",
+      "assets/css/00-core/003-style.css",
+      "assets/css/00-core/004-style.css",
+      "assets/css/00-core/005-paleobot-v34-m11m20-style.css",
+      "assets/css/00-core/006-style.css",
+      "assets/css/00-core/007-paleobot-v35-separated-design-style.css",
+      "assets/css/00-core/008-paleobot-v36-workspace-redesign-style.css",
+      "assets/css/00-core/014-paleobot-v47-special-button-repair-style.css",
+      "assets/css/00-core/015-style.css",
+      "assets/css/00-core/016-paleobot-v49-map-navigation-shield-style.css",
+      "assets/css/00-core/018-paleobot-v50-media-guard-style.css",
+      "assets/css/00-core/026-style.css",
+      "assets/css/00-core/027-paleobot-v69-mobile-control-quiz-repair-style.css",
+      "assets/css/00-core/028-paleobot-v71-compare-picker-repair-style.css",
+      "assets/css/00-core/029-paleobot-v72-compare-clear-repair-style.css",
+      "assets/css/00-core/030-paleobot-v73-itinerary-rubric-repair-style.css",
+      "assets/css/00-core/031-paleobot-v74-floating-a11y-repair-style.css",
+      "assets/css/00-core/033-paleobot-v77-search-guard-style.css",
+      "assets/css/00-core/034-paleobot-v78-africa-question-actions-style.css",
+      "assets/css/00-core/036-style.css",
+      "assets/css/00-core/037-paleobot-v81-map-and-species-media-repair-style.css",
+      "assets/css/00-core/038-paleobot-v82-fauna-rigor-and-layout-style.css",
+      "assets/css/00-core/039-paleobot-v83-search-sa-final-repair-style.css",
+      "assets/css/00-core/040-paleobot-v84-deep-audit-cleanup-style.css",
+      "assets/css/00-core/041-paleobot-v85-speed-guard-style.css",
+      "assets/css/10-legacy-ui/020-paleobot-v56-readable-ui.css",
+      "assets/css/10-legacy-ui/035-pb-v65-mobile-fab-clearance.css",
+      "assets/css/20-navigation/013-paleobot-v45-cover-redesign.css",
+      "assets/css/20-navigation/021-paleobot-v57-block-cover-redesign.css",
+      "assets/css/80-features/009-paleobot-v41-layout-repair.css",
+      "assets/css/80-features/010-paleobot-v42-detail-view-repair.css",
+      "assets/css/80-features/011-paleobot-v43-detail-tabs-repair.css",
+      "assets/css/80-features/012-paleobot-v44-presentation-controls-repair.css",
+      "assets/css/80-features/019-paleobot-v53-floating-menu-restore.css",
+      "assets/css/80-features/022-paleobot-v62-readability-and-layout-fix.css",
+      "assets/css/80-features/023-paleobot-v64-real-image-visuals.css",
+      "assets/css/80-features/025-paleobot-v55-css.css",
+      "assets/css/80-features/032-paleobot-v76-readability-guard.css",
+      "assets/css/90-guards/024-paleobot-v65-hero-readability-routing-fix.css",
+      "assets/js/00-core/001-paleobot-v63-error-capture.js",
+      "assets/js/00-core/003-script.js",
+      "assets/js/00-core/004-script.js",
+      "assets/js/00-core/071-paleobot-v69-lazy-loader.js",
+      "assets/js/10-legacy-ui/010-paleobot-v36-workspace-redesign-layer.js",
+      "assets/js/20-navigation/047-paleobot-v67-modal-state-reconciler.js",
+      "assets/js/90-guards/015-paleobot-v41-layout-guard.js",
+      "assets/js/90-guards/062-paleobot-v65-audit-fix.js",
+      "assets/js/90-guards/070-paleobot-v85-speed-guard.js"
+    ],
+    "changed": [
+      "assets/css/00-core/001-style.css",
+      "assets/css/00-core/017-paleobot-v50-unified-ux-style.css",
+      "assets/js/00-core/002-script.js",
+      "assets/js/00-core/005-script.js",
+      "assets/js/00-core/006-script.js",
+      "assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
+      "assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js",
+      "assets/js/10-legacy-ui/009-paleobot-v35-separated-design-layer.js",
+      "assets/js/10-legacy-ui/011-paleobot-v37-control-bus.js",
+      "assets/js/10-legacy-ui/012-paleobot-v38-bibliography-controls.js",
+      "assets/js/10-legacy-ui/013-paleobot-v39-doi-links.js",
+      "assets/js/10-legacy-ui/014-paleobot-v40-species-open-bus.js",
+      "assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js",
+      "assets/js/10-legacy-ui/031-paleobot-v59-block-panel-sync.js",
+      "assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js",
+      "assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js",
+      "assets/js/20-navigation/023-paleobot-v49-map-navigation-shield.js",
+      "assets/js/20-navigation/026-paleobot-v51-navigation-audit-guard.js",
+      "assets/js/20-navigation/028-paleobot-v55-functional-router.js",
+      "assets/js/20-navigation/037-paleobot-v55-nav.js",
+      "assets/js/20-navigation/039-paleobot-canonical-nav-v58.js",
+      "assets/js/20-navigation/048-paleobot-v68-interaction-stabilizer.js",
+      "assets/js/30-search/029-paleobot-v58-biblio-filter-contrast.js",
+      "assets/js/30-search/068-paleobot-v83-search-sa-final-repair.js",
+      "assets/js/30-search/069-paleobot-v86-global-search-final.js",
+      "assets/js/40-media/022-paleobot-v48-map-controls-repair.js",
+      "assets/js/40-media/025-paleobot-v50-media-guard.js",
+      "assets/js/40-media/033-paleobot-v61-image-fallbacks.js",
+      "assets/js/40-media/035-paleobot-v64-real-image-visuals-runtime.js",
+      "assets/js/40-media/065-paleobot-v80-map-lens-image-repair.js",
+      "assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js",
+      "assets/js/50-aula/064-paleobot-v66-sa-session.js",
+      "assets/js/60-science/067-paleobot-v82-fauna-rigor-and-layout.js",
+      "assets/js/70-export/063-paleobot-v66-svg-export.js",
+      "assets/js/80-features/040-script.js",
+      "assets/js/80-features/041-script.js",
+      "assets/js/80-features/042-script.js",
+      "assets/js/80-features/043-script.js",
+      "assets/js/80-features/044-script.js",
+      "assets/js/80-features/045-script.js",
+      "assets/js/80-features/051-paleobot-v71-compare-picker-repair.js",
+      "assets/js/80-features/052-paleobot-v72-compare-clear-repair.js",
+      "assets/js/80-features/053-paleobot-v73-itinerary-rubric-repair.js",
+      "assets/js/80-features/058-script.js",
+      "assets/js/80-features/059-script.js",
+      "assets/js/80-features/060-script.js",
+      "assets/js/80-features/061-script.js",
+      "assets/js/90-guards/017-paleobot-v43-detail-tabs-guard.js",
+      "assets/js/90-guards/020-paleobot-v46-button-audit-bus.js",
+      "assets/js/90-guards/027-paleobot-v52-no-home-bounce-guard.js",
+      "assets/js/90-guards/036-paleobot-v65-hero-readability-routing-fix-runtim.js",
+      "assets/js/90-guards/038-paleobot-v56-final-fix.js",
+      "assets/js/90-guards/049-paleobot-v69-quiz-start-repair.js",
+      "assets/js/90-guards/054-paleobot-v74-floating-a11y-repair.js",
+      "assets/js/90-guards/055-paleobot-v75-hidden-pending-guard.js",
+      "index.html"
+    ],
+    "only_atlas": [
+      "CAMBIOS-v1.0.md",
+      "LEEME-MOODLE.md",
+      "POLITICA-PRIVACIDAD-DOCENTE.md",
+      "PROPUESTA-DIDACTICA.md",
+      "assets/css/00-core/043-paleobot-frontend-refine.css",
+      "assets/css/00-core/044-paleobot-v92-scientific-ux.css",
+      "assets/css/00-core/045-paleobot-v93-embedded-layout-repair.css",
+      "assets/css/00-core/046-paleobot-integrated-pathways.css",
+      "assets/css/00-core/047-paleobot-wcag22-a11y.css",
+      "assets/css/00-core/048-paleobot-didactic-itineraries.css",
+      "assets/css/00-core/052-paleobot-moodle-usability.css",
+      "assets/css/00-core/053-paleobot-visual-system.css",
+      "assets/css/20-navigation/042-paleobot-v88-floating-menu-final.css",
+      "assets/css/80-features/049-paleobot-nutcracker-archive.css",
+      "assets/css/80-features/050-paleobot-paleolab50.css",
+      "assets/css/80-features/051-paleobot-landing-redesign.css",
+      "assets/js/00-core/076-paleobot-clean-branding.js",
+      "assets/js/00-core/083-view-orientation-sync.js",
+      "assets/js/20-navigation/019-paleobot-v45-cover-navigation.js",
+      "assets/js/20-navigation/034-paleobot-v63-modal-control-repair.js",
+      "assets/js/20-navigation/046-paleobot-v66-student-guide-router-repair.js",
+      "assets/js/20-navigation/070-paleobot-v87-detail-card-open-final.js",
+      "assets/js/20-navigation/071-paleobot-v88-floating-menu-final.js",
+      "assets/js/20-navigation/073-paleobot-v90-special-close-buttons.js",
+      "assets/js/20-navigation/074-paleobot-v91-final-button-actions.js",
+      "assets/js/20-navigation/077-paleobot-integrated-route-bridge.js",
+      "assets/js/30-search/050-paleobot-v70-global-search-open-repair.js",
+      "assets/js/30-search/056-paleobot-v77-search-guard.js",
+      "assets/js/40-media/072-paleobot-v89-leaflet-button-guard.js",
+      "assets/js/40-media/075-paleobot-v92-scientific-images.js",
+      "assets/js/80-features/080-paleobot-nutcracker-archive.js",
+      "assets/js/80-features/081-paleobot-paleolab50.js",
+      "assets/js/90-guards/018-paleobot-v44-presentation-controls-guard.js",
+      "assets/js/90-guards/021-paleobot-v47-special-button-repair.js",
+      "assets/js/90-guards/032-paleobot-v60-passive-click-guard.js",
+      "assets/js/90-guards/078-paleobot-wcag22-a11y-guard.js",
+      "assets/js/90-guards/079-paleobot-privacy-ai-guard.js",
+      "assets/media/institutional/nhm-gibraltar-neanderthal.jpg",
+      "assets/media/institutional/smithsonian-hominin-crania.webp",
+      "assets/media/institutional/smithsonian-olduvai-chopper.webp",
+      "assets/media/landing/chronology.jpg",
+      "assets/media/landing/classroom.jpg",
+      "assets/media/landing/climate.jpg",
+      "assets/media/landing/hero.jpg",
+      "assets/media/landing/methods.jpg",
+      "assets/media/landing/territory.jpg",
+      "assets/media/paleobot-hero-scientific.svg",
+      "data/nutcracker-corpus.json",
+      "data/paleolab-3d.json",
+      "data/taxones.json",
+      "imsmanifest.xml",
+      "recorrido/BIBLIOGRAFIA.md",
+      "recorrido/atlas.html",
+      "recorrido/aula.html",
+      "recorrido/clima.html",
+      "recorrido/cronologia.html",
+      "recorrido/datos.js",
+      "recorrido/ficha.html",
+      "recorrido/index.html",
+      "recorrido/integracion.css",
+      "recorrido/integracion.js",
+      "recorrido/introduccion.html",
+      "recorrido/metodos.html",
+      "recorrido/parentesco.html",
+      "recorrido/territorio.html"
+    ],
+    "only_r92": [
+      "assets/css/00-core/042-paleobot-r67-externalized-runtime-styles.css",
+      "assets/css/00-core/043-paleobot-r69-low-risk-style-state.css",
+      "assets/css/00-core/044-paleobot-r70-generated-static-styles.css",
+      "assets/css/00-core/045-paleobot-r71-dynamic-style-registry.css",
+      "assets/css/00-core/046-paleobot-r74-finite-runtime-states.css",
+      "assets/css/00-core/047-paleobot-r75-dynamic-token-states.css",
+      "assets/css/00-core/048-paleobot-r76-media-runtime-contract.css",
+      "assets/css/00-core/049-paleobot-r77-accessibility-state-contract.css",
+      "assets/css/00-core/050-paleobot-r78-animation-progress-contract.css",
+      "assets/css/00-core/051-paleobot-r79-indirect-style-states.css",
+      "assets/css/00-core/052-paleobot-r81-geometry-registry.css",
+      "assets/js/00-core/072-paleobot-public-api-shadow.js",
+      "assets/js/00-core/073-paleobot-storage-adapter.js",
+      "assets/js/00-core/074-paleobot-storage-scope.js",
+      "assets/vendor/leaflet/1.9.4/LICENSE.txt",
+      "assets/vendor/leaflet/1.9.4/images/layers-2x.png",
+      "assets/vendor/leaflet/1.9.4/images/layers.png",
+      "assets/vendor/leaflet/1.9.4/images/marker-icon-2x.png",
+      "assets/vendor/leaflet/1.9.4/images/marker-icon.png",
+      "assets/vendor/leaflet/1.9.4/images/marker-shadow.png",
+      "assets/vendor/leaflet/1.9.4/leaflet.css",
+      "assets/vendor/leaflet/1.9.4/leaflet.js",
+      "deployment/r91/README_R91_TARGET_TEST_BUNDLE.md",
+      "deployment/r91/config/DEPLOYMENT_CONFIG_GUIDE_R91.md",
+      "deployment/r91/config/index-loader-insertion.template.html",
+      "deployment/r91/config/paleobot-deployment-config.template.js",
+      "deployment/r91/headers/apache-mod_headers.template.conf",
+      "deployment/r91/headers/frame-ancestors-cross-origin.headers.txt",
+      "deployment/r91/headers/frame-ancestors-moodle-mobile-optional.headers.txt",
+      "deployment/r91/headers/frame-ancestors-same-origin.headers.txt",
+      "deployment/r91/headers/iis-web.config.template.xml",
+      "deployment/r91/headers/nginx.template.conf",
+      "deployment/r91/tests/TARGET_TEST_RUNBOOK_R91.md",
+      "deployment/r91/tests/paleobot-r91-target-result.schema.json",
+      "deployment/r91/tests/paleobot-r91-target-result.template.json",
+      "deployment/r91/tests/paleobot-target-context-probe.js",
+      "deployment/r91/tests/parent-embed-harness.js",
+      "deployment/r91/tests/parent-embed-harness.template.html",
+      "deployment/r91/tests/target-result-gate.js",
+      "operator/CANDIDATE_MANIFEST_R92.json",
+      "operator/CHECKSUMS_SHA256.txt",
+      "operator/DEPLOYMENT_PARAMETERS.template.json",
+      "operator/OPERATOR_HANDOFF_R92.md",
+      "operator/README_UPLOAD_R92.md",
+      "operator/RELEASE_STATUS_R92.json"
+    ]
+  },
+  "metrics": {
+    "atlas": {
+      "file_count": 169,
+      "uncompressed_bytes": 7733713,
+      "app_js_count": 83,
+      "app_css_count": 53,
+      "index_inline_scripts": 3,
+      "index_inline_styles": 1,
+      "index_style_attributes": 166,
+      "index_event_attributes": 2,
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://upload.wikimedia.org https://commons.wikimedia.org https://maps.wikimedia.org https://*.tile.openstreetmap.org https://server.arcgisonline.com; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; worker-src 'self' blob:; media-src 'self' data: blob:; manifest-src 'self';",
+      "source_uses": {
+        "PaleoBotStorage": 0,
+        "PaleoBotGeometryStyle": 0,
+        "PaleoBotDynamicStyle": 0
+      }
+    },
+    "r92": {
+      "file_count": 149,
+      "uncompressed_bytes": 3060145,
+      "app_js_count": 65,
+      "app_css_count": 52,
+      "index_inline_scripts": 0,
+      "index_inline_styles": 0,
+      "index_style_attributes": 0,
+      "index_event_attributes": 0,
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-elem 'self' https://fonts.googleapis.com; style-src-attr 'none'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://upload.wikimedia.org https://commons.wikimedia.org https://*.tile.openstreetmap.org https://*.tile.opentopomap.org https://server.arcgisonline.com https://www.um.u-tokyo.ac.jp; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; worker-src 'none'; media-src 'none'; manifest-src 'none';",
+      "source_uses": {
+        "PaleoBotStorage": 49,
+        "PaleoBotGeometryStyle": 17,
+        "PaleoBotDynamicStyle": 13
+      }
+    }
+  },
+  "scientific_core": {
+    "atlas_taxa": 50,
+    "r92_taxa": 50,
+    "unchanged_taxa": 45,
+    "changed_taxa": [
+      "rhodesiensis",
+      "penghu",
+      "omo_i",
+      "denisova",
+      "longi"
+    ],
+    "field_differences": {
+      "rhodesiensis": [
+        {
+          "path": "/anos",
+          "kind": "CHANGED",
+          "r92": "400 ka",
+          "atlas": "~300 ka"
+        },
+        {
+          "path": "/val_time",
+          "kind": "CHANGED",
+          "r92": 0.4,
+          "atlas": 0.3
+        }
+      ],
+      "penghu": [
+        {
+          "path": "/experto/debate",
+          "kind": "CHANGED",
+          "r92": "Podría representar una línea arcaica asiática persistente, una población relacionada con Denisovanos o parte de la variabilidad regional de Homo. La ausencia de contexto estratigráfico directo y de material craneal limita cualquier diagnóstico específico.",
+          "atlas": "ACTUALIZADO EN 2025: el análisis paleoproteómico (más de 4.000 aminoácidos de 51 proteínas, con variantes denisovanas) identificó Penghu 1 como DENISOVANO, y la amelogenina Y confirmó que era un varón (Tsutaya et al., Science 2025). Resuelve buena parte de su ambigüedad taxonómica y extiende el rango denisovano hasta el sudeste asiático costero."
+        },
+        {
+          "path": "/experto/referencias/1",
+          "kind": "ATLAS_ONLY",
+          "atlas": {
+            "a": "Tsutaya et al.",
+            "y": 2025,
+            "t": "A male Denisovan mandible from Pleistocene Taiwan",
+            "j": "Science",
+            "d": "10.1126/science.ads3888"
+          }
+        }
+      ],
+      "omo_i": [
+        {
+          "path": "/anos",
+          "kind": "CHANGED",
+          "r92": "195 ka",
+          "atlas": "≥233 ka"
+        },
+        {
+          "path": "/val_time",
+          "kind": "CHANGED",
+          "r92": 0.195,
+          "atlas": 0.233
+        }
+      ],
+      "denisova": [
+        {
+          "path": "/experto/debate",
+          "kind": "CHANGED",
+          "r92": "Sin cráneo conocido, no hay diagnóstico morfológico formal posible. ¿Debería denominarse formalmente Homo denisova? El ICZN no acepta nombres basados únicamente en ADN sin holotipo morfológico. La reconstrucción in silico sugiere cara ancha y robusta.",
+          "atlas": "Sin cráneo conocido, no había diagnóstico morfológico formal. AVANCE DE 2025: la paleoproteómica identificó como denisovanos el cráneo de Harbin ('Homo longi', Fu et al. 2025) y la mandíbula de Penghu (Tsutaya et al. 2025), aportando por primera vez un rostro y ampliando su distribución asiática. Sigue abierto si 'Homo longi' debería ser el nombre formal de los denisovanos."
+        },
+        {
+          "path": "/experto/referencias/3",
+          "kind": "ATLAS_ONLY",
+          "atlas": {
+            "a": "Fu et al.",
+            "y": 2025,
+            "t": "The proteome of the late Middle Pleistocene Harbin individual",
+            "j": "Science",
+            "d": "10.1126/science.adu9677"
+          }
+        },
+        {
+          "path": "/nombre",
+          "kind": "CHANGED",
+          "r92": "Homo denisova",
+          "atlas": "Linaje denisovano"
+        },
+        {
+          "path": "/ubicacion",
+          "kind": "CHANGED",
+          "r92": "Siberia",
+          "atlas": "Siberia y Asia"
+        }
+      ],
+      "longi": [
+        {
+          "path": "/experto/debate",
+          "kind": "CHANGED",
+          "r92": "¿Es Homo longi sinónimo de Homo daliensis (descrito en 1978 para el cráneo de Dali, China)? ¿Es el grupo hermano de H. sapiens? ¿Es un denisovano? Las tres hipótesis tienen defensores activos en la literatura reciente.",
+          "atlas": "RESUELTO EN 2025: estudios paleoproteómicos (95 proteínas con 3 variantes denisovanas) y ADN mitocondrial del sarro dental identificaron el cráneo de Harbin como DENISOVANO (Fu et al., Science y Cell 2025). Por primera vez se pone rostro a los denisovanos. Sigue el debate nomenclatural: si 'Homo longi' pasa a ser el nombre válido de los denisovanos, y su relación con el cráneo de Dali."
+        },
+        {
+          "path": "/experto/referencias/2",
+          "kind": "ATLAS_ONLY",
+          "atlas": {
+            "a": "Fu et al.",
+            "y": 2025,
+            "t": "The proteome of the late Middle Pleistocene Harbin individual",
+            "j": "Science",
+            "d": "10.1126/science.adu9677"
+          }
+        },
+        {
+          "path": "/experto/referenciasProteomica",
+          "kind": "ATLAS_ONLY",
+          "atlas": true
+        }
+      ]
+    },
+    "other_sections": {
+      "SITES": {
+        "identical": true,
+        "atlas_sha256": "8e6980bdf960f9db4abf1db33b4c5c94ce82d3b4b0cac219753d281ce4169bdf",
+        "r92_sha256": "8e6980bdf960f9db4abf1db33b4c5c94ce82d3b4b0cac219753d281ce4169bdf"
+      },
+      "ITINERARIES": {
+        "identical": true,
+        "atlas_sha256": "c6fa85b40412df35cf84f38628b8b267e2e01738d9b3b481fe1ebcefd6bcfbae",
+        "r92_sha256": "c6fa85b40412df35cf84f38628b8b267e2e01738d9b3b481fe1ebcefd6bcfbae"
+      },
+      "DISPERSAL_ROUTES": {
+        "identical": true,
+        "atlas_sha256": "2394f8769e4cb2d58e68f420bccdf6729d581a8142f882e13894ee39bf0f769b",
+        "r92_sha256": "2394f8769e4cb2d58e68f420bccdf6729d581a8142f882e13894ee39bf0f769b"
+      },
+      "TEACHING_COMPETENCY_RUBRIC": {
+        "identical": true,
+        "atlas_sha256": "0783022e7c9d46ac34c679b7de2e0ee8c3b1349e93a92f795627aef1b4698403",
+        "r92_sha256": "0783022e7c9d46ac34c679b7de2e0ee8c3b1349e93a92f795627aef1b4698403"
+      },
+      "AFRICA_REGIONS": {
+        "identical": true,
+        "atlas_sha256": "6cb3a0d7e275544d7f3231d01a555f8e537b29565c5e08dca53ce079e80f6e43",
+        "r92_sha256": "6cb3a0d7e275544d7f3231d01a555f8e537b29565c5e08dca53ce079e80f6e43"
+      },
+      "AFRICA_LEARNING_ROUTES": {
+        "identical": true,
+        "atlas_sha256": "8a67c724208fd2c6670e8c3993d77a710f846ac4393899cba7c79793bd4ce2e4",
+        "r92_sha256": "8a67c724208fd2c6670e8c3993d77a710f846ac4393899cba7c79793bd4ce2e4"
+      },
+      "AFRICA_EVIDENCE_GUIDE": {
+        "identical": true,
+        "atlas_sha256": "3912a7076dd313dde1faf65ac1287aed203bbe49f7bd76828ae33c5b7cab2316",
+        "r92_sha256": "3912a7076dd313dde1faf65ac1287aed203bbe49f7bd76828ae33c5b7cab2316"
+      },
+      "AFRICA_QUESTION_BANK": {
+        "identical": true,
+        "atlas_sha256": "99698bf0d5fccc6839cb94f8508ab76a14b2dd24235c548532fbb37084ffbb49",
+        "r92_sha256": "99698bf0d5fccc6839cb94f8508ab76a14b2dd24235c548532fbb37084ffbb49"
+      },
+      "CLADOGRAM_LEAF_ORDER": {
+        "identical": true,
+        "atlas_sha256": "8b4947992522522cc3d097a71d827917e519cf55e91184075e41809754b9f76a",
+        "r92_sha256": "8b4947992522522cc3d097a71d827917e519cf55e91184075e41809754b9f76a"
+      }
+    }
+  },
+  "external_taxa": {
+    "count": 52,
+    "common_identifiers": 42,
+    "only_external": [
+      "ardipithecus",
+      "denisovanos",
+      "erectus_erectus",
+      "erectus_pekinensis",
+      "erectus_soloensis",
+      "floresiensis",
+      "luzonensis",
+      "neanderthalensis",
+      "platyops",
+      "sahelanthropus"
+    ],
+    "only_core": [
+      "denisova",
+      "flores",
+      "kenyanthropus",
+      "luzon",
+      "neander",
+      "ramidus",
+      "sahel",
+      "soloensis"
+    ]
+  },
+  "ims": {
+    "manifest_files": 168,
+    "missing_declared_files": 0,
+    "unlisted_files": 0,
+    "entrypoint": "index.html",
+    "runtime_import": "NOT_TESTED"
+  },
+  "validation_limits": {
+    "atlas_js_syntax": "85/85 PASS (83 app + 2 recorrido)",
+    "r92_js_syntax": "65/65 PASS",
+    "atlas_reported_integrity": "13 tests claimed in included CAMBIOS-v1.0.md, not independently reproduced",
+    "r92_existing_contracts": "660/660 and 147/147, existing R92/R93 evidence, not new browser executions",
+    "moodle_target": "NOT_TESTED for both",
+    "visual": "NOT_TESTED in this comparison"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "artifact": "PaleoBot_A3_Moodle_SCORM12_candidate_NO_GO.zip",
+  "sha256": "6da32b7c4f5955fea1bee073624195f7098f0508d133d84d33cfaa78984fb575",
+  "bytes": 975027,
+  "status": "MOODLE_CANDIDATE_STATIC_VALIDATION_PASS__REAL_MOODLE_VALIDATION_PENDING__A3_NO_GO",
+  "checks_passed": 12,
+  "checks_total": 12,
+  "checks": [
+    {
+      "check": "zip_opens",
+      "pass": true,
+      "detail": {
+        "entries": 163
+      }
+    },
+    {
+      "check": "no_outer_directory",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "imsmanifest_at_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "index_at_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "safe_paths",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_symlinks",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "check": "scorm_launch_index",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "manifest_lists_all_package_files",
+      "pass": true,
+      "detail": {
+        "listed": 162,
+        "actual": 162,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "check": "no_local_absolute_refs_in_executable_files",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "check": "source_checkpoint_sha_pinned",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "moodle_status_not_overclaimed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "runtime_file_count_recorded",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "notes": [
+    "Dual-mode package: Moodle File resource or SCORM 1.2 launch candidate.",
+    "SCORM API grade/completion tracking is intentionally not added in this candidate.",
+    "Real Moodle, browser, and screen-reader validation remain pending."
+  ]
+}

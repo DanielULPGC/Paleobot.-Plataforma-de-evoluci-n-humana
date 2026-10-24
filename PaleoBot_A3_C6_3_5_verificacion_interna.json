@@ -1,0 +1,172 @@
+{
+  "checks": [
+    {
+      "name": "ZIP integrity",
+      "pass": true
+    },
+    {
+      "name": "no duplicate ZIP entries",
+      "pass": true
+    },
+    {
+      "name": "entries sorted",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no explicit directory entries",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "safe relative paths",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no symlinks",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "fixed timestamps and 0644 modes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no bytecode",
+      "pass": true
+    },
+    {
+      "detail": [
+        "A3_C6_3_5_R05_T5_checkpoint_NO_GO"
+      ],
+      "name": "single expected root",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actual": 307,
+        "listed": 307
+      },
+      "name": "manifest exact file set",
+      "pass": true
+    },
+    {
+      "detail": {
+        "manifest": 307,
+        "zip": 308
+      },
+      "name": "ZIP count matches manifest + self",
+      "pass": true
+    },
+    {
+      "name": "manifest hashes and sizes",
+      "pass": true
+    },
+    {
+      "detail": "d4f25ec437f6e7f8ffc6c444a5c5e1bebe00fc6e6ca8e4ad90bd6f055d5e983a",
+      "name": "manifest content tree hash",
+      "pass": true
+    },
+    {
+      "detail": "d6ff84372b10e67aadac7c45882adc41585780dea8febd4c2ea493b4f816231e",
+      "name": "manifest runtime tree hash",
+      "pass": true
+    },
+    {
+      "name": "manifest root/checkpoint",
+      "pass": true
+    },
+    {
+      "name": "parent C6.3.4 exact SHA",
+      "pass": true
+    },
+    {
+      "name": "parent independent verification exact SHA",
+      "pass": true
+    },
+    {
+      "detail": [
+        "PaleoBot_A3_C6_3_4_R05_T4_checkpoint_NO_GO.zip",
+        "PaleoBot_A3_C6_3_4_verificacion_independiente.json"
+      ],
+      "name": "top-level inputs contain immediate parent only",
+      "pass": true
+    },
+    {
+      "name": "stored formal battery exact SHA",
+      "pass": true
+    },
+    {
+      "name": "stored formal adjudication exact SHA",
+      "pass": true
+    },
+    {
+      "name": "stored formal battery 504/504 + 9000 + 43/43",
+      "pass": true
+    },
+    {
+      "name": "runtime has exactly 160 files",
+      "pass": true
+    },
+    {
+      "detail": "416912cbd047de711fa8519429784c9f9880fdd702004042efe85bb248b4db02",
+      "name": "external return-kit runtime identity exact",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "return-kit contains no stale C6.1/R05-open operational markers",
+      "pass": true
+    },
+    {
+      "name": "A3 release remains NO_GO with R05 50/50",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no T5 working-tree path dependency",
+      "pass": true
+    },
+    {
+      "name": "fresh extracted formal battery exit 0",
+      "pass": true
+    },
+    {
+      "detail": "3e0b9eca975345e5ce09a3070db5f713565608a6a0d6379a27340d40bd2d1acd",
+      "name": "fresh extracted formal battery file byte-identical",
+      "pass": true
+    },
+    {
+      "detail": "8ab475e57b102693e9c06ab62c547d906093adb9a98d934c9a5cf6c5fcca95ec",
+      "name": "fresh extracted formal adjudication file byte-identical",
+      "pass": true
+    },
+    {
+      "detail": [
+        "PaleoBot_A3_C6_3_4_R05_T4_checkpoint_NO_GO.zip",
+        "PaleoBot_A3_C6_3_4_verificacion_independiente.json"
+      ],
+      "name": "formal run leaves immediate-parent-only inputs",
+      "pass": true
+    },
+    {
+      "detail": {
+        "cases": 17,
+        "failed": 0,
+        "passed": 17
+      },
+      "name": "return-kit synthetic intake harness 17/17",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "formal_battery": "504/504 + 9000 probes + 43/43 meta",
+  "mode": "phased-equivalent-to-full",
+  "package_sha256": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05",
+  "passed": 31,
+  "release_gate": "NO_GO",
+  "return_kit_harness": "17/17",
+  "schema": "paleobot-a3-c6.3.5-internal-verification-phased-v1"
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "paleobot-immersive-p9-closure-v1",
+  "node": "P9",
+  "source_p8_sha256": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74",
+  "candidate_runtime_tree_sha256": "e3623c9d893330983b9e3d705e841c907e5bc651e3000bf46ed0e3c857f44aaf",
+  "current_environment": {
+    "browser_gate": "BLOCKED_BY_ENVIRONMENT",
+    "reason": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "admissible_pass": false
+  },
+  "authorized_host": {
+    "browser_gate": "NOT_RUN",
+    "execution_kit": "READY"
+  },
+  "screen_reader": "NOT_AUTHORIZED_NOT_RUN",
+  "moodle": "NOT_RUN",
+  "wcag_conformance_claim": false,
+  "scientific_assets_available": 0,
+  "approved_scientific_pairs": 0,
+  "scientific_reveal_enabled": false,
+  "sealed_a3_unchanged": true,
+  "a3_release_gate": "NO_GO",
+  "package": {
+    "name": "PaleoBot_Immersive_P9_Real_Browser_Gate.zip",
+    "sha256": "f974449db3ab5cc0d1df9b6b0b8250904b35c83668e6318c80a0cb87b65523cb",
+    "bytes": 1864546,
+    "deterministic_twin_builds": "BYTE_IDENTICAL"
+  },
+  "independent_verification": {
+    "name": "PaleoBot_Immersive_P9_Independent_Verification.json",
+    "sha256": "23a7f04d605c6a895b5982ddd6213e1f7a1d37c1b19d842ee77c3939542f5abb",
+    "status": "PASS",
+    "checks": "6/6 PASS"
+  },
+  "status": "P9_CURRENT_ENVIRONMENT_BLOCK_CONFIRMED__AUTHORIZED_HOST_EXECUTION_KIT_READY__REAL_BROWSER_PASS_NOT_YET_OBSERVED__SCREEN_READER_NOT_AUTHORIZED__SCIENTIFIC_ACTIVATION_BLOCKED__A3_NO_GO",
+  "next_exact_action": "Run the P9 browser gate on an authorized HTTPS host with sandboxed Chromium. If and only if adjudication is ADMIT, proceed to real screen-reader/manual accessibility validation."
+}

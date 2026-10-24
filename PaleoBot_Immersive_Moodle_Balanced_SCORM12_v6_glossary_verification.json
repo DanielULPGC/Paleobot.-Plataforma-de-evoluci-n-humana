@@ -1,0 +1,77 @@
+{
+  "artifact": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v6_glossary_candidate_NO_GO.zip",
+  "sha256": "712b61b0c6dd34940453defc46e45ca7e3afb6d52ecaaa06ff5a4b2116e4694d",
+  "bytes": 60128,
+  "checks_passed": 13,
+  "checks_total": 13,
+  "checks": [
+    {
+      "check": "zip_opens",
+      "pass": true,
+      "detail": {
+        "entries": 5
+      }
+    },
+    {
+      "check": "imsmanifest_at_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "index_at_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "metadata_v6_at_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "readme_v6_at_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "internal_verification_at_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_outer_directory",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "safe_paths",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "glossary_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bibliography_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_legacy_labels",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "twin_build_byte_identical",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "internal_checks_all_pass",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "status": "PASS"
+}

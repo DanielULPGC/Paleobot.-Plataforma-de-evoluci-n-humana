@@ -1,0 +1,46 @@
+{
+  "schema": "paleobot-immersive-p8-closure-v1",
+  "phase": "P8",
+  "status": "P8_CLONED_INTEGRATION_CANDIDATE_PASS__DORMANT_SHELL_ONLY__SCIENTIFIC_ACTIVATION_BLOCKED__ROLLBACK_VERIFIED__SEALED_A3_UNCHANGED__P9_NOT_STARTED",
+  "package": {
+    "name": "PaleoBot_Immersive_P8_Integration_Candidate.zip",
+    "bytes": 1882159,
+    "sha256": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74",
+    "deterministic_twin_builds": "BYTE_IDENTICAL"
+  },
+  "candidate": {
+    "baseline_files": 160,
+    "candidate_files": 165,
+    "baseline_tree_sha256": "b51187430ecd211492c1b7f40d93a9f1710b69e80a256d01a73fc62317d2cf93",
+    "candidate_tree_sha256": "e3623c9d893330983b9e3d705e841c907e5bc651e3000bf46ed0e3c857f44aaf",
+    "additions": 5,
+    "modifications": 1,
+    "deletions": 0
+  },
+  "validation": {
+    "parent_p7_replay": "PASS",
+    "candidate_audit": "24/24 PASS",
+    "adapter_test": "7/7 PASS",
+    "rollback_rehearsal": "PASS",
+    "selftest": "4/4 PASS",
+    "independent_archive_verification": "12/12 PASS"
+  },
+  "scientific_gate": {
+    "assets_available": 0,
+    "approved_pairs": 0,
+    "reveal": "BLOCKED"
+  },
+  "external_validation": {
+    "real_browser": "NOT_RUN",
+    "real_screen_reader": "NOT_RUN",
+    "moodle": "NOT_RUN",
+    "wcag_conformance_claim": false
+  },
+  "sealed_a3": {
+    "files": 160,
+    "writes": 0,
+    "tree_sha256": "b51187430ecd211492c1b7f40d93a9f1710b69e80a256d01a73fc62317d2cf93",
+    "unchanged": true
+  },
+  "next_node": "P9 — validación del candidato integrado en navegador real sobre host autorizado, sin promover A3 y sin activar contenido científico; después, si procede, accesibilidad real del candidato."
+}

@@ -1,0 +1,158 @@
+{
+  "schema": "paleobot-a3-c5.2-package-verification-v1",
+  "passed": 30,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "manifest schema",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest exact file set",
+      "pass": true,
+      "detail": "275"
+    },
+    {
+      "name": "all manifest hashes and sizes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest source parent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "release remains NO_GO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source parent identity",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source chain contains exact parent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source chain R92 and R93 identities",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime file set and hashes",
+      "pass": true,
+      "detail": "160"
+    },
+    {
+      "name": "runtime tree digest",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "six-file patch declaration",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch source preconditions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/00-core/002-script.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/30-search/069-paleobot-v86-global-search-final.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/60-science/079-paleobot-a3-temporal-policy.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/70-export/063-paleobot-v66-svg-export.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime file set preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all 160 runtime files",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "227 current functional assertions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "6000 deterministic probes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "67 local static controls",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "parent 201/201 and 40/40 reproduction retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "legacy scope failures retained, not reclassified",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "residual register and 16-workstream matrix",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "six negative verifier tests retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "external gates not promoted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fresh exact parent-to-child replay",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fresh eight-suite regression reproduction",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "release_gate": "NO_GO"
+}

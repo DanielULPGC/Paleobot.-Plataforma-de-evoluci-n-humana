@@ -1,0 +1,168 @@
+{
+  "status": "PASS",
+  "passed": 16,
+  "total": 16,
+  "checks": [
+    {
+      "name": "zip_has_exactly_two_entries",
+      "pass": true,
+      "detail": "imsmanifest.xml,index.html"
+    },
+    {
+      "name": "manifest_at_root",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "index_at_root",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest_launches_index",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "single_inline_script",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_external_stylesheets",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_external_images",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_network_calls",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_persistent_storage",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_teacher_surface",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_leaflet",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "no_popup_dependency",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "embedded_50_records",
+      "pass": true,
+      "detail": "50"
+    },
+    {
+      "name": "all_chronology_reviewed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "deterministic_zip",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "node_syntax_check_passed",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "zip": {
+    "filename": "PaleoBot_A3_Moodle_Student_Lite_SCORM12_candidate_NO_GO.zip",
+    "bytes": 49322,
+    "sha256": "522efa264b20c62b158db07954b391532fa7828e84a28215de264c81b33c5826",
+    "entries": [
+      "imsmanifest.xml",
+      "index.html"
+    ]
+  },
+  "index_bytes": 163530,
+  "architecture": {
+    "html_files": 1,
+    "external_js_files": 0,
+    "external_css_files": 0,
+    "external_images": 0,
+    "network_calls": 0,
+    "storage_dependencies": 0,
+    "teacher_mode": false,
+    "dynamic_map": false,
+    "features": [
+      "explore",
+      "chronology",
+      "compare",
+      "method"
+    ]
+  },
+  "note": "Static/package verification only; real Moodle execution still required.",
+  "scientific_identity_checks": [
+    {
+      "name": "exact_50_ids",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "exact_50_names",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "chronology_objects_exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "legacy_unreviewed_zero",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "coverage_50",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest_xml_parse",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest_two_files_package",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "index_under_200kb",
+      "pass": true,
+      "detail": "163530"
+    },
+    {
+      "name": "no_duplicate_dom_ids",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all_buttons_typed",
+      "pass": true,
+      "detail": "5"
+    }
+  ],
+  "scientific_identity_passed": 10,
+  "scientific_identity_total": 10
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "paleobot-immersive-p9-m1-5-closure-v1",
+  "node": "P9-M1.5",
+  "title": "Moodle Balanced v6 — glosario epistemológico/didáctico ligero",
+  "source_v5_sha256": "4bb2d9fd5d578a3eb8006c9c4d02c45273dd17018f3e0a429f260437608dc665",
+  "package": {
+    "name": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v6_glossary_candidate_NO_GO.zip",
+    "sha256": "712b61b0c6dd34940453defc46e45ca7e3afb6d52ecaaa06ff5a4b2116e4694d",
+    "bytes": 60128,
+    "deterministic_twin_builds": "BYTE_IDENTICAL"
+  },
+  "glossary": {
+    "terms": 27,
+    "categories": 7,
+    "initial_render_limit": 12,
+    "lazy": true,
+    "network": false
+  },
+  "scientific_invariants": {
+    "record_count": 50,
+    "source_catalog_sha256": "625bff86a1719a972acf03bc253e4abe8c8ec59c7ba490a602d03cb4f2fc8409",
+    "source_p8_sha256": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74",
+    "afarensis_binding_sha256": "e66d2cdf67937511e44cae36786efe2067ee51976b6e1a3fa160c4179ed21479",
+    "scientific_assets_available": 0,
+    "scientific_reveal": false,
+    "a3_release_gate": "NO_GO"
+  },
+  "performance_invariants": {
+    "fetch": false,
+    "localStorage": false,
+    "MutationObserver": false,
+    "Leaflet": false,
+    "remote_images": 0,
+    "external_scripts": 0
+  },
+  "validation": {
+    "static_and_structural": "33/33 PASS",
+    "independent_archive": "13/13 PASS"
+  },
+  "moodle_real_retest": "REQUIRED",
+  "status": "P9_M1_5_GLOSSARY_ENRICHMENT_STATIC_PASS__REAL_MOODLE_RETEST_REQUIRED__A3_NO_GO",
+  "next_node": "P9-M1.6 — siguiente enriquecimiento selectivo de bajo coste solo si v6 mantiene estabilidad en Moodle real"
+}

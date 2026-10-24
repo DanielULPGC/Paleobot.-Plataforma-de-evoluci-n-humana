@@ -1,0 +1,73 @@
+{
+  "schema": "paleobot-a3-c6.1-package-negative-tests-v1",
+  "tested_package_sha256": "d2b594d9dde60a6e8168584eab1a91352e30f75ee9140cbbe5f1ee98b191598d",
+  "cases": 5,
+  "passed": 5,
+  "failed": 0,
+  "checks": [
+    {
+      "case": "unsafe_path_rejected",
+      "pass": true,
+      "returncode": 1,
+      "reported_failed": 15,
+      "failures": [
+        "ZIP safe paths",
+        "single top-level root",
+        "manifest readable",
+        "manifest release NO_GO",
+        "stored package preflight 33/33",
+        "stored local verification 33/33",
+        "stored functional regressions 225/225 + 6000",
+        "stored accessibility preflight 32/32",
+        "stored A3 intake harness 16/16",
+        "stored R93 harness 15/15",
+        "browser local block retained honestly",
+        "C5.3 parent identity retained",
+        "R93 identity retained",
+        "R93 explicitly not reused",
+        "release status remains NO_GO"
+      ]
+    },
+    {
+      "case": "runtime_tamper_rejected",
+      "pass": true,
+      "returncode": 1,
+      "reported_failed": 1,
+      "failures": [
+        "all manifest hashes and sizes"
+      ]
+    },
+    {
+      "case": "manifest_promotion_rejected",
+      "pass": true,
+      "returncode": 1,
+      "reported_failed": 1,
+      "failures": [
+        "manifest release NO_GO"
+      ]
+    },
+    {
+      "case": "missing_r93_rejected",
+      "pass": true,
+      "returncode": 1,
+      "reported_failed": 4,
+      "failures": [
+        "manifest exact file set",
+        "C5.3 parent identity retained",
+        "R93 identity retained",
+        "R93 explicitly not reused"
+      ]
+    },
+    {
+      "case": "unexpected_file_rejected",
+      "pass": true,
+      "returncode": 1,
+      "reported_failed": 2,
+      "failures": [
+        "manifest exact file set",
+        "all manifest hashes and sizes"
+      ]
+    }
+  ],
+  "release_gate": "NO_GO"
+}

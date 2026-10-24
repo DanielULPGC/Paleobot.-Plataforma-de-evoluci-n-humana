@@ -1,0 +1,17 @@
+{
+  "schema": "paleobot-fase7-verification-v1",
+  "status": "NO_GO",
+  "source": "PaleoBot_A3_Fase6_revisado_runtime_NO_GO",
+  "records_compared": 50,
+  "unreviewed_taxonomic_status": 43,
+  "javascript_syntax_pass": 71,
+  "internal_references_resolved": 120,
+  "local_http_200_and_hash_match": 137,
+  "local_functional_tests": "PASS",
+  "browser": "BLOCKED_BY_ENVIRONMENT",
+  "moodle": "NOT_EXECUTED",
+  "scorm_manifest": "ABSENT",
+  "external_species_images": "NOT_INDIVIDUALLY_VERIFIED",
+  "runtime_files_in_zip": 166,
+  "runtime_hash_manifest_sha256": "8b11a91a458481a8429810a4cd05913e7590a417130ba57ce7373f64053cc63d"
+}

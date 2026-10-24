@@ -1,0 +1,34 @@
+{
+  "schema": "paleobot-a3-c4.2-package-verification-v1",
+  "passed": 5,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "single top root",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest schema",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest covers files",
+      "pass": true,
+      "detail": "223 actual/223 listed"
+    },
+    {
+      "name": "all member hashes and sizes",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "NO-GO status retained",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "zip_sha256": "2526cb029fc4ce5a68ac7961ddadb93b3813f5bf12649f2d6fe144c02831389d",
+  "release_gate": "NO_GO"
+}

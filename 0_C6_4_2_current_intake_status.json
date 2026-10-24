@@ -1,0 +1,24 @@
+{
+  "checks": [
+    {
+      "detail": "/mnt/data/PaleoBot_A3_C6_4_2_browser_return_intake/inputs/PaleoBot_A3_C6_4_1_browser_authorized_host_transfer.zip",
+      "name": "sealed C6.4.1 transfer package present",
+      "status": "PASS"
+    },
+    {
+      "detail": "2f7c4f6a5afa9d0b02199679c27567bdd91bff386581d67fce8124030c7f4e01",
+      "name": "sealed C6.4.1 transfer package sha256",
+      "status": "PASS"
+    }
+  ],
+  "defects": [],
+  "moodle": "NOT_RUN",
+  "payload_sha256": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05",
+  "release_gate": "NO_GO",
+  "runtime_tree_sha256": "416912cbd047de711fa8519429784c9f9880fdd702004042efe85bb248b4db02",
+  "schema": "paleobot-a3-c6.4.2-browser-return-intake-v1",
+  "screen_reader": "NOT_AUTHORIZED",
+  "source_revision": "A3-C6.3.5",
+  "status": "AWAITING_AUTHENTIC_BROWSER_RETURN__SCREEN_READER_NOT_AUTHORIZED__A3_NO_GO",
+  "transfer_package_sha256": "2f7c4f6a5afa9d0b02199679c27567bdd91bff386581d67fce8124030c7f4e01"
+}

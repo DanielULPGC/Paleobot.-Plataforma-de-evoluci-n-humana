@@ -1,0 +1,28 @@
+{
+  "a3_release_gate": "NO_GO",
+  "adjudication": "CLOSED_VERIFIED",
+  "checkpoint": "A3-C6.3.1/R05-T1",
+  "deterministic_builds_byte_identical": true,
+  "external_gates": "PENDING",
+  "formal_battery": {
+    "active_controls": "453/453",
+    "deterministic_probes": 10000,
+    "meta_checks": "25/25",
+    "sha256": "0129c13b45cd0d58650c5960ef4811b0a3229112147e4157957edcbb1c87c1b0"
+  },
+  "independent_package_verification": {
+    "failed": 0,
+    "passed": 28,
+    "sha256": "5a27be47f18205f34ee5db4ec9b76614ee936ac3db57ca15446feadf1fd5e45c"
+  },
+  "package": "PaleoBot_A3_C6_3_1_R05_T1_checkpoint_NO_GO.zip",
+  "package_bytes": 42260492,
+  "package_sha256": "4c5f75c1572b4eeff5da2ffc82c52b45ef2e3b060257b2c458ef74e86f64b6e2",
+  "parent_checkpoint": {
+    "id": "A3-C6.2",
+    "sha256": "89785b2cd5a2f822303a949c8e25ee5ffad97c313fd395cac7c0da4ee381cd91"
+  },
+  "remaining_r05_unreviewed": 35,
+  "schema": "paleobot-a3-c6.3.1-r05-t1-closure-v1",
+  "status": "A3_C6_3_1_R05_T1_CHRONOLOGY_CONTRACTS_PASS__NO_FALSE_OCCUPANCY_OR_COEXISTENCE_PASS__CORE_50_SCIENTIFIC_INTEGRITY_PASS__INHERITED_REGRESSIONS_ADJUDICATED_PASS__R05_T1_FORMAL_BATTERY_PASS__DETERMINISTIC_ZIP_VERIFIED__C6_3_1_CLOSED__A3_NO_GO"
+}

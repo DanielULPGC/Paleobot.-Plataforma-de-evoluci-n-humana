@@ -1,0 +1,163 @@
+{
+  "schema": "paleobot-a3-c5.3-package-verification-v1",
+  "passed": 31,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "manifest schema",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest exact file set",
+      "pass": true,
+      "detail": "321"
+    },
+    {
+      "name": "all manifest hashes and sizes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest source parent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "release remains NO_GO",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source parent identity",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source chain contains exact parent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source chain preserves R92 and R93 identities",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "source chain C5.2 identity",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime file set and hashes",
+      "pass": true,
+      "detail": "160"
+    },
+    {
+      "name": "runtime tree digest",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "five-file patch declaration",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch source preconditions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime file set preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/00-core/002-script.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/30-search/068-paleobot-v83-search-sa-final-repair.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/30-search/069-paleobot-v86-global-search-final.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "patch old/new identity assets/js/80-features/045-script.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "all 160 runtime files",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "225 current functional assertions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "6000 deterministic probes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "superseded historical suite retained honestly",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "66 local static controls",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "AST audit zero unadjudicated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "seven residual findings fully adjudicated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "scientific gates remain open",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "external gates not promoted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "negative verifier tests retained",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fresh exact C5.2-to-C5.3 replay",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fresh current-suite regression reproduction",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "release_gate": "NO_GO"
+}

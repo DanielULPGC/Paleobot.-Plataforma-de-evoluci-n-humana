@@ -1,0 +1,118 @@
+{
+  "schema": "paleobot-a3-c5.1-package-verification-v1",
+  "passed": 22,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "manifest schema",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "manifest file set",
+      "pass": true,
+      "detail": "220 files"
+    },
+    {
+      "name": "all hashes and sizes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "NO_GO release status",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "original C4.3 parent hash",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "parent identity in release status",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "exact controlled delta",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required artifact INFORME_A3_C5_1.md",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required artifact evidence-c5/local-regressions.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required artifact evidence-c5/static-verification.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required artifact evidence-c5/browser-local.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required artifact evidence-c5/temporal-ast-inventory.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required artifact evidence-c5/workstream-adjudication.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required artifact return-kit/browser-gate.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required artifact return-kit/intake/r93/schemas/paleobot-r93-return-manifest.schema.json",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "required artifact historical-c4.1-tests/chronology-v1.cjs",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "historical chronology test dependency matches local copy",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "201 historical-current functional assertions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "5000 deterministic probes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "40/40 local static controls",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "browser blocker not promoted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "fresh local regression reproduction",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "release_gate": "NO_GO"
+}

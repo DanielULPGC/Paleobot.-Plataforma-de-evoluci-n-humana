@@ -1,0 +1,136 @@
+{
+  "checks": [
+    {
+      "name": "ZIP integrity",
+      "pass": true
+    },
+    {
+      "name": "no duplicate ZIP entries",
+      "pass": true
+    },
+    {
+      "name": "entries sorted",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no explicit directory entries",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "safe relative paths",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no symlinks",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "fixed timestamps and 0644 modes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no bytecode",
+      "pass": true
+    },
+    {
+      "detail": [
+        "A3_C6_3_4_R05_T4_checkpoint_NO_GO"
+      ],
+      "name": "single expected root",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actual": 285,
+        "listed": 285
+      },
+      "name": "manifest exact file set",
+      "pass": true
+    },
+    {
+      "detail": {
+        "manifest": 285,
+        "zip": 286
+      },
+      "name": "ZIP count matches manifest + self",
+      "pass": true
+    },
+    {
+      "name": "manifest hashes and sizes",
+      "pass": true
+    },
+    {
+      "detail": "3d80e7e5903cd429d971e3b18af0c81d621251e849bb774db1d1c65ecc606dcf",
+      "name": "manifest content tree hash",
+      "pass": true
+    },
+    {
+      "detail": "55e3295c4d748ede69ec1ee72257b1f34c0023273901680612257d00e7df3af8",
+      "name": "manifest runtime tree hash",
+      "pass": true
+    },
+    {
+      "name": "manifest root/checkpoint",
+      "pass": true
+    },
+    {
+      "name": "parent C6.3.3 exact SHA",
+      "pass": true
+    },
+    {
+      "name": "parent independent verification exact SHA",
+      "pass": true
+    },
+    {
+      "name": "stored formal battery exact SHA",
+      "pass": true
+    },
+    {
+      "name": "stored formal adjudication exact SHA",
+      "pass": true
+    },
+    {
+      "name": "stored formal battery 496/496 + 12000 + 40/40",
+      "pass": true
+    },
+    {
+      "name": "runtime has exactly 160 files",
+      "pass": true
+    },
+    {
+      "name": "A3 release remains NO_GO",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no T4 working-tree path dependency",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "fresh extracted formal battery exit 0",
+      "pass": true
+    },
+    {
+      "detail": "67fdd3e8fa01f4cfe8e695fbcae58b120c16d2a97507ce66e6cdb08cb0132f52",
+      "name": "fresh extracted formal battery file byte-identical",
+      "pass": true
+    },
+    {
+      "detail": "26f12835ec4486481f22cdcbd5164b2dd47a759fbabf374a078832a53983a9fd",
+      "name": "fresh extracted formal adjudication file byte-identical",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "mode": "full",
+  "package_sha256": "8843d17b5ec5f49d3dfa9c58f9bdf304d7bdc777ac988ba6a55b1409d3aebc15",
+  "passed": 26,
+  "release_gate": "NO_GO",
+  "schema": "paleobot-a3-c6.3.4-package-verification-v1"
+}

@@ -1,0 +1,28 @@
+{
+  "source_runtime_files": 160,
+  "derived_runtime_files": 160,
+  "records": 50,
+  "reviewed_chronology": 50,
+  "source_catalog_sha256": "625bff86a1719a972acf03bc253e4abe8c8ec59c7ba490a602d03cb4f2fc8409",
+  "derived_catalog_sha256": "539b4fc1dcedd52cff1996996e485f8f5cf98b1450494570ec9c6e315f550852",
+  "changed_files": {
+    "assets/js/00-core/002-script.js": {
+      "before": "bd307b76813c3087c3c13ab7030ab6037a70f2c7a12f250cb481b109332bb0e8",
+      "after": "fe3eaea60a1dc249641da3aca6e845024064598056b74471420b79b5caddad18"
+    },
+    "assets/js/60-science/078-paleobot-a3-catalog.js": {
+      "before": "a08d951cc6a33b3662faf8fb974741db881f561cc30cf3a65f8ce1392af57041",
+      "after": "ce1643ce3ec1e8c1f7b11a546bfa70dee0c0c01deaa03ba755766c20056d102d"
+    },
+    "science/catalog.json": {
+      "before": "625bff86a1719a972acf03bc253e4abe8c8ec59c7ba490a602d03cb4f2fc8409",
+      "after": "539b4fc1dcedd52cff1996996e485f8f5cf98b1450494570ec9c6e315f550852"
+    }
+  },
+  "new_checks": {
+    "node_check_changed_js": "2/2 PASS",
+    "targeted_regression": "PASS — 50 records, 50 chronology contracts, image mismatch removed and map label corrected",
+    "real_browser": "NOT_RUN",
+    "real_moodle": "NOT_RUN"
+  }
+}

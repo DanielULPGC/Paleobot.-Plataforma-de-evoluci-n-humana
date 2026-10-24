@@ -1,0 +1,46 @@
+{
+  "artifacts": {
+    "current_status": {
+      "bytes": 985,
+      "path": "C6_4_2_current_intake_status.json",
+      "sha256": "14fb383f80ae3fd907828f526db674ad982381ce4821bda6901373d08a08d880"
+    },
+    "independent_verification": {
+      "bytes": 3381,
+      "path": "PaleoBot_A3_C6_4_2_verificacion_independiente.json",
+      "sha256": "9cf9b8873214448acce16b1d5b97905216c4fe6df547d142122604aa952c3320"
+    },
+    "independent_verifier": {
+      "bytes": 4749,
+      "path": "verify_PaleoBot_A3_C6_4_2_independent.py",
+      "sha256": "9b6e4e72e6fa5796282a9ad29334f31f89eca46867075c40d695297af2861f54"
+    },
+    "package": {
+      "bytes": 171962354,
+      "path": "PaleoBot_A3_C6_4_2_browser_return_intake.zip",
+      "sha256": "559550bcd278b296992c6fd5f389f4184c7f4881037f71246e2c18a8a272b2e6"
+    },
+    "selftest": {
+      "bytes": 1039,
+      "path": "C6_4_2_intake_selftest.json",
+      "sha256": "88dd33a2adb89e6184530bd2e306ca2347b3a8d26191a57a069ef50c4d7d8dfd"
+    }
+  },
+  "authentic_returns_received": 0,
+  "browser_gate_closed": false,
+  "current_intake_state": "AWAITING_AUTHENTIC_BROWSER_RETURN__SCREEN_READER_NOT_AUTHORIZED__A3_NO_GO",
+  "intake_selftest": "4/4 PASS",
+  "moodle_run": false,
+  "next_action": "Receive the authentic C6.4.1 browser return and run intake_browser_return.py. Only ADMITTED_BROWSER_PASS authorizes the real screen-reader/manual-accessibility gate.",
+  "package_builds_byte_identical": true,
+  "package_independent_verification": "15/15 PASS",
+  "payload_sha256": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05",
+  "release_gate": "NO_GO",
+  "runtime_tree_sha256": "416912cbd047de711fa8519429784c9f9880fdd702004042efe85bb248b4db02",
+  "schema": "paleobot-a3-c6.4.2-browser-return-intake-closure-v1",
+  "screen_reader_authorized": false,
+  "source_revision": "A3-C6.3.5",
+  "source_transfer_sha256": "2f7c4f6a5afa9d0b02199679c27567bdd91bff386581d67fce8124030c7f4e01",
+  "status": "BROWSER_RETURN_INTAKE_READY__NO_AUTHENTIC_RETURN_RECEIVED__SCREEN_READER_NOT_AUTHORIZED__MOODLE_NOT_RUN__A3_NO_GO",
+  "synthetic_positive_counts_as_real_evidence": false
+}

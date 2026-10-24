@@ -1,0 +1,25 @@
+{
+  "status": "NO_GO",
+  "records": 50,
+  "legacy_secondary_images_exposed": false,
+  "cross_taxon_fossil_fallbacks": false,
+  "map_gallery_replaced_by_species_repair": false,
+  "site_coordinates_individually_verified": false,
+  "scientific_catalog_preserved": true,
+  "changed_files": {
+    "assets/js/00-core/002-script.js": {
+      "before": "cd45f8738fc1865d9905c68161f8b3f863f55753ebe13343fc7fed1152e0ec2b",
+      "after": "80cdd9b78327cfc0715d4b07643e93eb2796bf85807906fa66cf725170824fb4"
+    },
+    "assets/js/40-media/025-paleobot-v50-media-guard.js": {
+      "before": "290327b9d1313716bfc3ba1d5af681d01f2db7262e3da66ea0ae72ff46a04aaf",
+      "after": "4a7d4ac60580feff6abb4c2c87daa57548cd5e74d12335a4e691b285cc992d9e"
+    },
+    "assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js": {
+      "before": "4365dc5edf27740b3e6d31b664f15bbf1e5186c4d0045a3a3270449b2649312f",
+      "after": "400bf1ebcfebdf889e2364251ff8901e33b3eccd7f1449101bcb8e8229b1081b"
+    }
+  },
+  "browser": "NOT_RUN",
+  "moodle": "NOT_RUN"
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "paleobot-immersive-p6-closure-v1",
+  "phase": "P6",
+  "title": "accesibilidad formal y degradacion funcional completa",
+  "source_revision": "A3-C6.3.5/R05-T5",
+  "package": {
+    "name": "PaleoBot_Immersive_P6_Accesibilidad_Formal.zip",
+    "bytes": 292740,
+    "sha256": "df67f8890469c3263f73ebf2c8770427edfd32d0bd88056802935ed146077aec",
+    "deterministic_twin_builds": "BYTE_IDENTICAL",
+    "manifest_files_excluding_self": 84
+  },
+  "verification": {
+    "node": "81/81 PASS",
+    "static_audit": "25/25 PASS",
+    "accessibility_structural_audit": "26/26 PASS",
+    "inherited_p5_audit": "55/55 PASS",
+    "declared_contrast_preflight": "6/6 PASS",
+    "portable_selftest": "6/6 PASS",
+    "http_smoke": "5/5 PASS",
+    "parent_p5_selftest": "4/4 PASS",
+    "independent_archive_verification": "16/16 PASS"
+  },
+  "scientific_gate": {
+    "available_scientific_assets": 0,
+    "approved_scientific_pairs": 0,
+    "scientific_reveal": "BLOCKED"
+  },
+  "a3_non_mutation": {
+    "runtime_files_before": 160,
+    "runtime_files_after": 160,
+    "writes": 0,
+    "runtime_tree_sha256_before_after": "b51187430ecd211492c1b7f40d93a9f1710b69e80a256d01a73fc62317d2cf93"
+  },
+  "external_validation": {
+    "real_browser": "NOT_RUN",
+    "real_screen_reader": "NOT_RUN",
+    "moodle": "NOT_RUN",
+    "wcag_conformance_claim": false
+  },
+  "status": "P6_ACCESSIBILITY_PREFLIGHT_PASS__FUNCTIONAL_DEGRADATION_PASS__NO_WCAG_CONFORMANCE_CLAIM__SCIENTIFIC_CONTENT_BLOCKED__A3_RUNTIME_UNCHANGED__P7_NOT_STARTED",
+  "next_node": "P7_REGRESSION_MATRIX_AND_INTEGRATION_PREFLIGHT"
+}

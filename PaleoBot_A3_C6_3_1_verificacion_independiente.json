@@ -1,0 +1,154 @@
+{
+  "a3_release_gate": "NO_GO",
+  "c6_3_1_gate": "VERIFIED_CLOSED",
+  "checks": [
+    {
+      "detail": {
+        "bytes": 42260492,
+        "sha256": "4c5f75c1572b4eeff5da2ffc82c52b45ef2e3b060257b2c458ef74e86f64b6e2"
+      },
+      "name": "package exists and nonempty",
+      "pass": true
+    },
+    {
+      "detail": {
+        "second_sha256": "4c5f75c1572b4eeff5da2ffc82c52b45ef2e3b060257b2c458ef74e86f64b6e2"
+      },
+      "name": "second independent build byte-identical",
+      "pass": true
+    },
+    {
+      "name": "ZIP integrity test",
+      "pass": true
+    },
+    {
+      "detail": 229,
+      "name": "229 total file entries",
+      "pass": true
+    },
+    {
+      "name": "entry names unique",
+      "pass": true
+    },
+    {
+      "name": "entry names sorted",
+      "pass": true
+    },
+    {
+      "name": "no explicit directory entries",
+      "pass": true
+    },
+    {
+      "detail": [
+        "A3_C6_3_1_R05_T1_checkpoint_NO_GO"
+      ],
+      "name": "single top-level root",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "safe paths",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no symlinks",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "deterministic metadata",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no bytecode",
+      "pass": true
+    },
+    {
+      "name": "manifest schema/checkpoint/root",
+      "pass": true
+    },
+    {
+      "detail": {
+        "actual": 228,
+        "listed": 228
+      },
+      "name": "manifest exact 228-file set",
+      "pass": true
+    },
+    {
+      "name": "manifest every hash and size exact",
+      "pass": true
+    },
+    {
+      "detail": "9fe86b641df3872a00d70664d10c0eba60f603f3e461971f1d538437d01d815e",
+      "name": "content tree hash exact",
+      "pass": true
+    },
+    {
+      "detail": "6a129002829ae86628f607ed657446e4e109836ab58084de6c03db3c1ffb13df",
+      "name": "runtime tree hash exact",
+      "pass": true
+    },
+    {
+      "name": "runtime exactly 160 files",
+      "pass": true
+    },
+    {
+      "name": "immediate parent present and authenticated",
+      "pass": true
+    },
+    {
+      "name": "parent independent verification retained",
+      "pass": true
+    },
+    {
+      "detail": "0129c13b45cd0d58650c5960ef4811b0a3229112147e4157957edcbb1c87c1b0",
+      "name": "formal battery stored SHA exact",
+      "pass": true
+    },
+    {
+      "detail": "f64bc34a258daec4c2f5ba45f46ce2945884da87fbddc2b37eb176b3b336f104",
+      "name": "formal adjudication stored SHA exact",
+      "pass": true
+    },
+    {
+      "name": "formal battery content 453/453 + 10000 + 25/25",
+      "pass": true
+    },
+    {
+      "name": "sealed content status and A3 NO_GO",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "tests/tools have no hardcoded working-root dependency",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "fresh formal battery on extracted tree exits 0",
+      "pass": true
+    },
+    {
+      "detail": "0129c13b45cd0d58650c5960ef4811b0a3229112147e4157957edcbb1c87c1b0",
+      "name": "fresh formal battery is byte-identical to sealed evidence",
+      "pass": true
+    },
+    {
+      "detail": {
+        "package_sha256": "4c5f75c1572b4eeff5da2ffc82c52b45ef2e3b060257b2c458ef74e86f64b6e2",
+        "rebuild_sha256": "4c5f75c1572b4eeff5da2ffc82c52b45ef2e3b060257b2c458ef74e86f64b6e2"
+      },
+      "name": "independent reconstruction byte-identical",
+      "pass": true
+    }
+  ],
+  "failed": 0,
+  "package": "PaleoBot_A3_C6_3_1_R05_T1_checkpoint_NO_GO.zip",
+  "package_bytes": 42260492,
+  "package_sha256": "4c5f75c1572b4eeff5da2ffc82c52b45ef2e3b060257b2c458ef74e86f64b6e2",
+  "passed": 28,
+  "schema": "paleobot-a3-c6.3.1-independent-package-verification-v1"
+}

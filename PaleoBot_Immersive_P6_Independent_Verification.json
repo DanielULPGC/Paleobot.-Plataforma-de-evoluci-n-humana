@@ -1,0 +1,98 @@
+{
+  "schema": "paleobot-immersive-p6-independent-verification-v1",
+  "status": "PASS",
+  "zip_sha256": "df67f8890469c3263f73ebf2c8770427edfd32d0bd88056802935ed146077aec",
+  "passed": 16,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "zip exists",
+      "pass": true,
+      "detail": "/mnt/data/PaleoBot_Immersive_P6_Accesibilidad_Formal.zip"
+    },
+    {
+      "name": "zip sha matches optional expected",
+      "pass": true,
+      "detail": "df67f8890469c3263f73ebf2c8770427edfd32d0bd88056802935ed146077aec"
+    },
+    {
+      "name": "nonempty archive",
+      "pass": true,
+      "detail": 85
+    },
+    {
+      "name": "single expected root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "safe paths",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no duplicate entries",
+      "pass": true,
+      "detail": 85
+    },
+    {
+      "name": "no symlinks",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "fixed timestamps",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "manifest present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "manifest exact file set",
+      "pass": true,
+      "detail": {
+        "actual": 85,
+        "expected": 85,
+        "extra": [],
+        "missing": []
+      }
+    },
+    {
+      "name": "manifest hashes and sizes",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "parent P5 exact SHA",
+      "pass": true,
+      "detail": "82072ce76832cdf0e9346cba42f15cbf0d10e3f11c4468171a41e62f653deb81"
+    },
+    {
+      "name": "packaged P6 selftest PASS",
+      "pass": true,
+      "detail": {
+        "returncode": 0,
+        "passed": 6,
+        "failed": 0
+      }
+    },
+    {
+      "name": "baseline does not claim WCAG conformance",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "baseline keeps external gates NOT_RUN",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "baseline keeps scientific content blocked",
+      "pass": true,
+      "detail": null
+    }
+  ]
+}

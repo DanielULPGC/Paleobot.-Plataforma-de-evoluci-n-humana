@@ -1,0 +1,81 @@
+{
+  "artifact": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v7_routes_candidate_NO_GO.zip",
+  "sha256": "ece6a81a84d8deb82381ddbd92ca7aee1824c507d03dc9d206ea0e01962c1732",
+  "status": "PASS",
+  "checks_passed": 14,
+  "checks_total": 14,
+  "checks": [
+    {
+      "check": "zip_opens",
+      "pass": true,
+      "detail": {
+        "entries": 5
+      }
+    },
+    {
+      "check": "safe_paths",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "manifest_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "index_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "scorm_1_2",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "routes_feature_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "four_routes",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "sixteen_steps",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "data_hash_preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "zero_external_dependencies",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "scientific_gate_closed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "internal_verification_pass",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_heavy_legacy_tokens",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "deterministic_twin",
+      "pass": true,
+      "detail": null
+    }
+  ]
+}

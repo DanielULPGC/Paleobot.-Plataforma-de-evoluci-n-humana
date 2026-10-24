@@ -1,0 +1,91 @@
+{
+  "schema": "paleobot-immersive-moodle-scorm12-candidate-verification-v1",
+  "artifact": "PaleoBot_Immersive_Moodle_SCORM12_candidate_NO_GO.zip",
+  "sha256": "656c0ef50454b07843dc2f20eef88ec9e5c47cef41da8355570df77203654d7a",
+  "bytes": 990516,
+  "status": "MOODLE_CANDIDATE_STATIC_VALIDATION_PASS__REAL_MOODLE_VALIDATION_PENDING__A3_NO_GO",
+  "checks_passed": 15,
+  "checks_total": 15,
+  "checks": [
+    {
+      "name": "zip_opens",
+      "pass": true,
+      "detail": {
+        "entries": 171
+      }
+    },
+    {
+      "name": "no_outer_directory",
+      "pass": true
+    },
+    {
+      "name": "imsmanifest_at_root",
+      "pass": true
+    },
+    {
+      "name": "launcher_index_at_root",
+      "pass": true
+    },
+    {
+      "name": "candidate_app_index",
+      "pass": true
+    },
+    {
+      "name": "safe_paths",
+      "pass": true
+    },
+    {
+      "name": "no_symlinks",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "deterministic_timestamps",
+      "pass": true
+    },
+    {
+      "name": "manifest_lists_all_non_manifest_files",
+      "pass": true,
+      "detail": {
+        "listed": 170,
+        "actual": 170,
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "name": "candidate_runtime_file_count_165",
+      "pass": true,
+      "detail": 165
+    },
+    {
+      "name": "candidate_runtime_byte_identical_to_p8",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "launcher_no_file_scheme",
+      "pass": true
+    },
+    {
+      "name": "launcher_targets_app_relative",
+      "pass": true
+    },
+    {
+      "name": "immersive_contract_packaged",
+      "pass": true
+    },
+    {
+      "name": "immersive_adapter_packaged",
+      "pass": true
+    }
+  ],
+  "source_p8_sha256": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74",
+  "candidate_runtime_tree_declared": "e3623c9d893330983b9e3d705e841c907e5bc651e3000bf46ed0e3c857f44aaf",
+  "notes": [
+    "Upload this ZIP directly as a SCORM 1.2 package; do not unzip it.",
+    "Recommended Moodle display mode: New window.",
+    "Browser, screen-reader, and real Moodle validation remain pending.",
+    "Scientific activation remains blocked."
+  ]
+}

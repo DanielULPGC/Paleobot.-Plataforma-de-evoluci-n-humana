@@ -1,0 +1,64 @@
+{
+  "schema": "paleobot-fase7b-verification-v1",
+  "runtime_tree_sha256": "4763aa4ad32c9f0aef46988db9a7cadda313eaded9f7491d0214d84b9fc4bec7",
+  "checks": [
+    {
+      "check": "fixed_runtime_tree",
+      "passed": true,
+      "detail": "4763aa4ad32c9f0aef46988db9a7cadda313eaded9f7491d0214d84b9fc4bec7"
+    },
+    {
+      "check": "support_file_hashes",
+      "passed": true,
+      "detail": "five support files unchanged"
+    },
+    {
+      "check": "script_syntax",
+      "passed": true,
+      "detail": "Python compile passed"
+    },
+    {
+      "check": "positive_integrity_only",
+      "passed": true,
+      "detail": "integrity PASS, browser untested"
+    },
+    {
+      "check": "real_browser_environment",
+      "passed": true,
+      "detail": "no Playwright/Chromium here; browser NOT RUN"
+    },
+    {
+      "check": "altered_DUT_rejected",
+      "passed": true,
+      "detail": "INVALID_DUT before browser"
+    },
+    {
+      "check": "blocked_return_stays_NO_GO",
+      "passed": true,
+      "detail": "ADJUDICATED_BLOCKED / NO_GO"
+    },
+    {
+      "check": "unsupported_pass_rejected",
+      "passed": true,
+      "detail": "missing scenario evidence rejected"
+    },
+    {
+      "check": "wrong_tree_identity_rejected",
+      "passed": true,
+      "detail": "wrong SHA-256 rejected"
+    },
+    {
+      "check": "altered_instructions_rejected",
+      "passed": true,
+      "detail": "INVALID_KIT before browser"
+    },
+    {
+      "check": "altered_verifier_context_rejected",
+      "passed": true,
+      "detail": "INVALID_KIT on adjudication"
+    }
+  ],
+  "all_passed": true,
+  "browser_executed": false,
+  "release_gate": "NO_GO"
+}

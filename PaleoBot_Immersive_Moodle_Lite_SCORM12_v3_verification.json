@@ -1,0 +1,117 @@
+{
+  "artifact": "PaleoBot_Immersive_Moodle_Lite_SCORM12_v3_candidate_NO_GO.zip",
+  "sha256": "ff3111f3ceafb155b1188f7896d6ff625780567ec9ab68a0c8a55b443c4391fd",
+  "bytes": 52412,
+  "source_p8_sha256": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74",
+  "source_catalog_sha256": "625bff86a1719a972acf03bc253e4abe8c8ec59c7ba490a602d03cb4f2fc8409",
+  "checks_passed": 21,
+  "checks_total": 21,
+  "checks": [
+    {
+      "name": "record_count_50",
+      "pass": true,
+      "detail": 50
+    },
+    {
+      "name": "source_p8_pinned",
+      "pass": true,
+      "detail": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74"
+    },
+    {
+      "name": "catalog_pinned",
+      "pass": true,
+      "detail": "625bff86a1719a972acf03bc253e4abe8c8ec59c7ba490a602d03cb4f2fc8409"
+    },
+    {
+      "name": "imsmanifest_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "scorm_1_2_declared",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "single_executable_html",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_external_images",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_remote_script_or_css",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_fetch",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_localstorage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_mutationobserver",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no_leaflet_runtime",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "five_primary_tabs",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "scientific_gate_zero_available",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "name": "scientific_reveal_false",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "afarensis_binding_preserved",
+      "pass": true,
+      "detail": "e66d2cdf67937511e44cae36786efe2067ee51976b6e1a3fa160c4179ed21479"
+    },
+    {
+      "name": "no_image_or_map_fields_in_runtime_data",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "zip_twin_byte_identical",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "zip_small_under_300kb",
+      "pass": true,
+      "detail": 52412
+    },
+    {
+      "name": "index_small_under_300kb",
+      "pass": true,
+      "detail": 168347
+    },
+    {
+      "name": "javascript_syntax_node",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "status": "P9_M1_2_MOODLE_LITE_STATIC_PASS__REAL_MOODLE_RETEST_REQUIRED__A3_NO_GO"
+}

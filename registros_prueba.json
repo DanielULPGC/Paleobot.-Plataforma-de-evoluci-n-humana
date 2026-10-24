@@ -1,0 +1,202 @@
+[
+  {
+    "id": "proconsul",
+    "nombre": "Proconsul"
+  },
+  {
+    "id": "morotopithecus",
+    "nombre": "Morotopithecus bishopi"
+  },
+  {
+    "id": "dryopithecus",
+    "nombre": "Dryopithecus"
+  },
+  {
+    "id": "pierolapithecus",
+    "nombre": "Pierolapithecus catalaunicus"
+  },
+  {
+    "id": "anoiapithecus",
+    "nombre": "Anoiapithecus brevirostris"
+  },
+  {
+    "id": "nakalipithecus",
+    "nombre": "Nakalipithecus nakayamai"
+  },
+  {
+    "id": "chororapithecus",
+    "nombre": "Chororapithecus abyssinicus"
+  },
+  {
+    "id": "graecopithecus",
+    "nombre": "Graecopithecus freybergi"
+  },
+  {
+    "id": "sahel",
+    "nombre": "Sahelanthropus tchadensis"
+  },
+  {
+    "id": "orrorin",
+    "nombre": "Orrorin tugenensis"
+  },
+  {
+    "id": "kadabba",
+    "nombre": "Ardipithecus kadabba"
+  },
+  {
+    "id": "ramidus",
+    "nombre": "Ardipithecus ramidus"
+  },
+  {
+    "id": "anamensis",
+    "nombre": "Au. anamensis"
+  },
+  {
+    "id": "afarensis",
+    "nombre": "Au. afarensis"
+  },
+  {
+    "id": "deyiremeda",
+    "nombre": "Au. deyiremeda"
+  },
+  {
+    "id": "bahrelghazali",
+    "nombre": "Au. bahrelghazali"
+  },
+  {
+    "id": "kenyanthropus",
+    "nombre": "Kenyanthropus platyops"
+  },
+  {
+    "id": "africanus",
+    "nombre": "Au. africanus"
+  },
+  {
+    "id": "prometheus",
+    "nombre": "Au. prometheus"
+  },
+  {
+    "id": "garhi",
+    "nombre": "Au. garhi"
+  },
+  {
+    "id": "sediba",
+    "nombre": "Au. sediba"
+  },
+  {
+    "id": "aethiopicus",
+    "nombre": "P. aethiopicus"
+  },
+  {
+    "id": "boisei",
+    "nombre": "P. boisei"
+  },
+  {
+    "id": "robustus",
+    "nombre": "P. robustus"
+  },
+  {
+    "id": "habilis",
+    "nombre": "Homo habilis"
+  },
+  {
+    "id": "rudolfensis",
+    "nombre": "Homo rudolfensis"
+  },
+  {
+    "id": "ergaster",
+    "nombre": "Homo ergaster"
+  },
+  {
+    "id": "georgicus",
+    "nombre": "Homo georgicus"
+  },
+  {
+    "id": "erectus",
+    "nombre": "Homo erectus"
+  },
+  {
+    "id": "antecessor",
+    "nombre": "Homo antecessor"
+  },
+  {
+    "id": "cepranensis",
+    "nombre": "Homo cepranensis"
+  },
+  {
+    "id": "heidelbergensis",
+    "nombre": "H. heidelbergensis"
+  },
+  {
+    "id": "bodoensis",
+    "nombre": "Homo bodoensis"
+  },
+  {
+    "id": "rhodesiensis",
+    "nombre": "H. rhodesiensis"
+  },
+  {
+    "id": "helmei",
+    "nombre": "Homo helmei"
+  },
+  {
+    "id": "daliensis",
+    "nombre": "Homo daliensis"
+  },
+  {
+    "id": "juluensis",
+    "nombre": "Homo juluensis"
+  },
+  {
+    "id": "soloensis",
+    "nombre": "H. erectus soloensis"
+  },
+  {
+    "id": "penghu",
+    "nombre": "Homo sp. (Penghu 1)"
+  },
+  {
+    "id": "gautengensis",
+    "nombre": "Homo gautengensis"
+  },
+  {
+    "id": "naledi",
+    "nombre": "Homo naledi"
+  },
+  {
+    "id": "jebel_irhoud",
+    "nombre": "H. sapiens (Jebel Irhoud)"
+  },
+  {
+    "id": "omo_i",
+    "nombre": "H. sapiens (Omo I)"
+  },
+  {
+    "id": "idaltu",
+    "nombre": "H. s. idaltu"
+  },
+  {
+    "id": "neander",
+    "nombre": "H. neanderthalensis"
+  },
+  {
+    "id": "denisova",
+    "nombre": "Denisovanos (linaje)"
+  },
+  {
+    "id": "flores",
+    "nombre": "Homo floresiensis"
+  },
+  {
+    "id": "luzon",
+    "nombre": "Homo luzonensis"
+  },
+  {
+    "id": "longi",
+    "nombre": "Homo longi"
+  },
+  {
+    "id": "sapiens",
+    "nombre": "Homo sapiens"
+  }
+]

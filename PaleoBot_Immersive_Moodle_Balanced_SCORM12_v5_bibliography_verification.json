@@ -1,0 +1,177 @@
+{
+  "artifact": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v5_bibliography_candidate_NO_GO.zip",
+  "node": "P9-M1.4",
+  "sha256": "4bb2d9fd5d578a3eb8006c9c4d02c45273dd17018f3e0a429f260437608dc665",
+  "bytes": 56484,
+  "entries": 4,
+  "source_v4_sha256": "391b7ff2908994668d10f431cc4fae0d62e97ffa3129d766da05b43eeb92bc9c",
+  "source_p8_sha256": "953aa0e00a35fa9c0dbc56debde6b9264e15c32c3dc37f29e9aa0b640be70b74",
+  "source_catalog_sha256": "625bff86a1719a972acf03bc253e4abe8c8ec59c7ba490a602d03cb4f2fc8409",
+  "bibliography": {
+    "unique_references": 113,
+    "with_doi": 102,
+    "source": "existing record references only",
+    "initial_render_limit": 20
+  },
+  "checks_passed": 30,
+  "checks_total": 30,
+  "checks": [
+    {
+      "check": "scorm_manifest_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "index_root",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "scorm_1_2_declared",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "manifest_launches_index",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "record_count_50",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "main_navigation_still_5",
+      "pass": true,
+      "detail": 5
+    },
+    {
+      "check": "bibliography_toggle_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bibliography_lazy_guard",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bibliography_deduplicates",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bibliography_existing_refs_only",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bibliography_progressive_20",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bibliography_search",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bibliography_no_new_external_links",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_fetch",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_mutation_observer",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_local_storage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_external_script_src",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_external_images",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_leaflet",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_legacy_dea_v58",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "no_legacy_v69",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "immersive_assets_zero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "immersive_reveal_false",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "afarensis_binding_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "source_p8_present",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "node_js_syntax",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "all_paths_safe",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "manifest_lists_all_support_files",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "bibliography_unique_refs_computable",
+      "pass": true,
+      "detail": {
+        "unique": 113,
+        "with_doi": 102
+      }
+    },
+    {
+      "check": "deterministic_twin_byte_identical",
+      "pass": true,
+      "detail": {
+        "sha256_1": "4bb2d9fd5d578a3eb8006c9c4d02c45273dd17018f3e0a429f260437608dc665",
+        "sha256_2": "4bb2d9fd5d578a3eb8006c9c4d02c45273dd17018f3e0a429f260437608dc665"
+      }
+    }
+  ],
+  "status": "P9_M1_4_BIBLIOGRAPHY_ENRICHMENT_STATIC_PASS__REAL_MOODLE_RETEST_REQUIRED__A3_NO_GO"
+}

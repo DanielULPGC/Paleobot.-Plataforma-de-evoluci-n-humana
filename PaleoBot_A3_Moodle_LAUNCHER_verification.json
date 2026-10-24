@@ -1,0 +1,67 @@
+{
+  "artifact": "PaleoBot_A3_Moodle_LAUNCHER_SCORM12_candidate_NO_GO.zip",
+  "sha256": "59a486b24d034bce01c5a8038897be2caaa3418316bd4cc2a9562e9ff9183690",
+  "bytes": 937606,
+  "entries": 143,
+  "strategy": "lightweight SCORM 1.2 launcher; full PaleoBot opens only on user action, preferably new tab",
+  "checks": [
+    {
+      "name": "deterministic twin builds",
+      "pass": true
+    },
+    {
+      "name": "imsmanifest.xml at root",
+      "pass": true
+    },
+    {
+      "name": "launcher index at root",
+      "pass": true
+    },
+    {
+      "name": "full app separate",
+      "pass": true
+    },
+    {
+      "name": "diagnostic page included",
+      "pass": true
+    },
+    {
+      "name": "launcher script included",
+      "pass": true
+    },
+    {
+      "name": "SCORM 1.2 schema declared",
+      "pass": true
+    },
+    {
+      "name": "SCO launches lightweight index",
+      "pass": true
+    },
+    {
+      "name": "launcher opens paleobot.html in new tab",
+      "pass": true
+    },
+    {
+      "name": "same-window fallback present",
+      "pass": true
+    },
+    {
+      "name": "launcher is lightweight",
+      "pass": true
+    },
+    {
+      "name": "no file scheme in launcher",
+      "pass": true
+    },
+    {
+      "name": "all local app refs packaged",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "pass_count": 13,
+  "total": 13,
+  "status": "MOODLE_REAL_VALIDATION_PENDING_NO_GO",
+  "recommended_moodle_setting": "SCORM package; if available set Display package = New window. Otherwise use launcher button Open in new tab.",
+  "diagnostic": "If PaleoBot still stalls, open diagnostic.html from launcher and report which checks fail."
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "paleobot-a3-c6.3.5-external-browser-gate-block-v1",
+  "captured_at_utc": "2026-09-10T22:33:31.403235+00:00",
+  "source_revision": "A3-C6.3.5",
+  "package": {
+    "path": "PaleoBot_A3_C6_3_5_R05_T5_checkpoint_NO_GO.zip",
+    "sha256": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05",
+    "expected_sha256": "7e0190d008012203a2af116a6fe58433f761ec829e4ae2a4e69af2d68ec76d05"
+  },
+  "runtime_tree_sha256": "416912cbd047de711fa8519429784c9f9880fdd702004042efe85bb248b4db02",
+  "browser": {
+    "executable": "/usr/bin/chromium",
+    "version": "Chromium 144.0.7559.96 built on Debian GNU/Linux 13 (trixie)",
+    "playwright_available": true
+  },
+  "attempts": [
+    {
+      "label": "LOCAL_HTTP_SANDBOXED",
+      "status": "BLOCKED_BY_ENVIRONMENT",
+      "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:37717/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:37717/index.html\", waiting until \"domcontentloaded\"\n",
+      "passed": 1,
+      "failed": 0,
+      "sha256": "5de194e19e07b4b0e3f039d50a09f0f18af2e232970378dc02bb0c31c5fedcf1"
+    },
+    {
+      "label": "LOCAL_HTTP_NO_SANDBOX_DIAGNOSTIC",
+      "status": "BLOCKED_BY_ENVIRONMENT",
+      "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:41279/index.html\nCall log:\n  - navigating to \"http://127.0.0.1:41279/index.html\", waiting until \"domcontentloaded\"\n",
+      "passed": 1,
+      "failed": 0,
+      "sha256": "0e979dceb67b5ce8907048e49c63d12f70a93236e9aa5476dbc61e4f96208d6f"
+    },
+    {
+      "label": "FILE_SCHEME_NO_SANDBOX_DIAGNOSTIC",
+      "status": "FAIL",
+      "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///mnt/data/A3_C6_3_5_BROWSER_GATE_WORK/A3_C6_3_5_R05_T5_checkpoint_NO_GO/runtime/index.html\nCall log:\n  - navigating to \"file:///mnt/data/A3_C6_3_5_BROWSER_GATE_WORK/A3_C6_3_5_R05_T5_checkpoint_NO_GO/runtime/index.html\", waiting until \"domcontentloaded\"\n",
+      "sha256": "c357a9c98fd1daf9630f6a2398d6804a98651fa44213b2c7f40590c8cbd882c2"
+    },
+    {
+      "label": "UNRELATED_HTTPS_CONTROL",
+      "status": "BLOCKED_BY_ENVIRONMENT",
+      "error": "https://example.com returned net::ERR_BLOCKED_BY_ADMINISTRATOR with and without --no-sandbox."
+    }
+  ],
+  "gate_status": "BLOCKED_BY_ENVIRONMENT",
+  "browser_gate": "NOT_CLOSED",
+  "manual_screen_reader": "NOT_RUN",
+  "moodle": "NOT_RUN",
+  "release_gate": "NO_GO",
+  "reason": "Chromium navigation is blocked by host administrator policy before target content loads; this also affects unrelated HTTPS and file:// URLs.",
+  "resume_requirement": "Run the sealed return-kit browser gate on an authorized host where Chromium navigation is permitted and sandboxing remains enabled.",
+  "resume_command": "python return-kit/a3-browser-accessibility-gate.py --url https://HOST/RUTA/index.html --verify-all-files --output evidence/browser-result.json"
+}
