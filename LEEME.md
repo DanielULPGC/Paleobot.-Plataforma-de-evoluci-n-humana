@@ -1,56 +1,23 @@
-# PaleoBot. Expediente PB-AUD-01
+# PaleoBot · Atlas original en un archivo directo para Moodle (piloto)
 
-Fecha de corte: 24 de octubre de 2026.
+**Origen:** `PaleoBot_Moodle_R98.zip`, adjuntado el 28 de septiembre de 2026. **Estado:** candidato de prueba, **sin validación de funcionamiento en el Moodle de la ULPGC** y sin promoción de la puerta científica A3. La entrada ligera v11 queda disponible como recurso comprobado por el usuario.
 
-Abra `PaleoBot_Informe_consolidado.md` para leer el informe sin Word.
-`registro_decisiones.csv` y su JSON contienen 36 asuntos con sus motivos, pruebas,
-pendientes, consecuencias de error y reversión propuesta. P0/P1/P2 son prioridades
-de trabajo, no una declaración de que cada asunto sea un defecto confirmado.
+## Qué conserva
 
-`inventario_artefactos.csv` conserva 272 identidades. Solo 115 tienen bytes
-recuperados y hash. Los restantes 157 son metadatos, no contenido revisado.
-Los informes históricos se conservan como evidencia de lo registrado entonces;
-sus resultados no se presentan como ejecutados de nuevo en esta sesión.
+La estructura de navegación y las vistas del atlas R98, sus mapas, filogenia, comparadores, bibliografía y herramientas docentes. Se han incluido en un único HTML 74 módulos JavaScript originales: el cargador diferido se sustituyó por los dos módulos que cargaba. También se incluyen 55 hojas CSS y la hoja de la cronología A3. Los archivos de imagen propios de Leaflet se han insertado dentro del CSS. La consulta «Cronología crítica · A3», antes situada en `science/chronology.html`, aparece dentro del atlas con su catálogo A3 y su advertencia experimental.
 
-## Reproducir el conflicto de imágenes
+Las 50 fichas y sus evidencias cronológicas proceden del mismo catálogo A3 utilizado en la entrada ligera. En la capa visual de las especies se usan los 47 recursos documentados en el expediente de la v10/v11. *Anoiapithecus*, *Chororapithecus* y *Homo gautengensis* muestran avisos tipográficos explícitos porque no se confirmó una imagen reutilizable en el expediente. Los créditos y enlaces de los recursos documentados se incorporaron a los metadatos de las fichas. Sus identificaciones siguen sujetas a la cautela de cada fuente.
 
-Con Node instalado, desde esta carpeta:
+## Para probar en Moodle
 
-```bash
-node reproducir_colision_medios.cjs
-```
+1. Subir **`PaleoBot_Atlas_Original_Directo_R98_PILOTO.html`** como un recurso Archivo nuevo y abrirlo en ventana nueva. El ZIP de fuentes sirve para reproducir el piloto, no para instalarlo en el curso.
+2. Abrir «Entrar al atlas» y comprobar que cambian las vistas «Cronología», «Mapas» y «Filogenia».
+3. Abrir una ficha de especie y comprobar imagen, características, edad, procedencia y fuente. Revisar también una de las tres fichas con imagen pendiente.
+4. Comprobar «Bibliografía» y «Modo clase»; seguir el enlace «Cronología crítica · A3» desde la portada.
+5. Si una imagen o una tesela cartográfica falla, comprobar el panel «Diagnóstico técnico» del atlas: el contenido visual externo sigue requiriendo acceso de red o una política de imágenes que lo permita.
 
-El ensayo lee el módulo original 066 y 47 URL documentadas. Usa un DOM simulado,
-sin red, sin navegador y sin Moodle. Debe reproducir tres sustituciones a SVG
-(proconsul, boisei, soloensis), preservar las otras 44 URL y respetar un mapa de
-control. Escribe `resultado_reproduccion_actual.json` sin alterar el programa.
-La comprobación del hash impide confundir el módulo con otro no revisado.
-`reproduccion_colision_medios.json` conserva el resultado original de esta revisión.
-Una ejecución correcta de este ensayo demuestra el defecto aislado, no que se
-haya corregido ni que el efecto final de todos los observadores esté validado.
+## Evidencia y límites
 
-## Resultados actuales
+Se verificaron **77 bloques JavaScript** con el analizador de Node y los hashes de **77 scripts y 56 hojas CSS** incorporados; todos los enlaces internos presentes en el HTML tienen destino, y la página no depende de rutas CSS o JS externas. La misma política de contenido del atlas se adaptó mediante hashes para permitir esos bloques; una cabecera de Moodle podría imponer restricciones adicionales. La vista «Cronología crítica» ya no solicita `catalog.json` por red. Las imágenes de Commons, otras imágenes temáticas, las fuentes web y las teselas de mapa siguen siendo externas. No se ha podido ejecutar esta versión en el navegador o el Moodle institucional desde este entorno; **no se puede dar por validado ningún botón por una inspección estática**.
 
-Los JSON de cotejo, integridad, estructura, sintaxis, genealogía y verificación
-contienen las observaciones nuevas. Las fuentes del programa completo se
-localizan desde el inventario; no se incluye aquí otro paquete de ejecución.
-El manifiesto SHA-256 fija el contenido de esta entrega. Se excluye a sí mismo
-para evitar autorreferencia.
-
-## Fuentes primarias focales
-
-- Rao et al. (2026): https://www.nature.com/articles/s41586-026-10976-9
-- Ruan et al. (2026): https://www.nature.com/articles/s41586-026-10997-4
-- ICZN, artículo 73: https://code.iczn.org/types-in-the-species-group/article-73-name-bearing-types-fixed-in-the-original-publication-holotypes-and-syntypes/
-
-## Antecedentes de conversación
-
-Se recuperaron resúmenes temáticos de los antecedentes de Paleobot, incluidos
-los fallos comunicados el 20-23 de septiembre, la confirmación de la entrada
-ligera hasta v9 y la propuesta de conexión con Habla con Lucy del 28 de
-septiembre. No se dispone de una transcripción íntegra ni de los enlaces de
-todos los chats; por ello no se declara cobertura conversacional exhaustiva.
-
-No se modificó ni publicó Paleobot en esta revisión. Las retiradas, ampliaciones
-y correcciones del registro son propuestas salvo donde se identifica un cambio
-histórico ya documentado.
+Este HTML **no sustituye una certificación científica** de las vistas heredadas: algunas muestran intervalos antiguos con semánticas distintas de los contratos de cronología A3. La cronología A3 describe la edad y el tipo de evidencia publicada; no demuestra la duración de los taxones. La capa completa conserva el estado experimental y el SCORM 1.2 no forma parte de esta prueba.
