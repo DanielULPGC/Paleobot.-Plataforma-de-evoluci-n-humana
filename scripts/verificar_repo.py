@@ -82,7 +82,20 @@ def verify(include_syntax=True):
     current_preserved=[row for row in current_base['files'] if any((ROOT/p).is_file() and digest(ROOT/p)==row['sha256'] for p in row['retained_paths'])]
     check('Archivos de la base de trabajo preservados',len(current_base['files'])==len(current_preserved)==current_base['source_files'] and current_base['source_commit']==observed.get('source_commit'))
     atlas_import=load('provenance/ATLAS_V1_IMPORT.json')
-    check('169 archivos Atlas v1 conservan las huellas importadas',len(atlas_import['sha256'])==169 and all((ROOT/'atlas'/p).is_file() and digest(ROOT/'atlas'/p)==sha for p,sha in atlas_import['sha256'].items()))
+    # PB-GH-03: un archivo del Atlas puede diferir de su huella importada solo si la
+    # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
+    fixes={c['path']:c for c in load('provenance/PB_GH_03_CORRECCIONES.json')['corrections']}
+    def atlas_ok(p,sha):
+        f=ROOT/'atlas'/p
+        if not f.is_file():return False
+        if digest(f)==sha:return True
+        c=fixes.get('atlas/'+p)
+        return bool(c) and c['import_sha256']==sha and digest(f)==c['corrected_sha256'] and (ROOT/c['snapshot']).is_file() and digest(ROOT/c['snapshot'])==sha
+    check('169 archivos Atlas v1 conservan las huellas importadas o una corrección documentada',len(atlas_import['sha256'])==169 and all(atlas_ok(p,sha) for p,sha in atlas_import['sha256'].items()))
+    check('Correcciones PB-GH-03 con motivo, evidencia, impacto y retorno',bool(fixes) and all(all(c.get(k) for k in ('change','reason','evidence','impact','return')) for c in fixes.values()))
+    atlas_text=' '.join(f.read_text(encoding='utf-8',errors='ignore') for f in (ROOT/'atlas').rglob('*') if f.suffix in ('.js','.html','.json'))
+    check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
+    check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
     check('Referencia v9 y licencia Leaflet intactas',all(digest(ROOT/name)==baseline[name] for name in frozen))
     check('Catálogo original preservado',digest(ROOT/'src/entrada_ligera/catalog.json')==baseline['src/entrada_ligera/catalog.json'])

@@ -609,7 +609,8 @@
       "git_blob_sha1": "2013098b7a93728e8337d34d6b7a94bb8a6d6473",
       "sha256": "b6052b999d1021ab4b28af6be25e89fe584db45cf135d7100e9d324bc484035f",
       "retained_paths": [
-        "atlas/assets/js/00-core/002-script.js"
+        "atlas/assets/js/00-core/002-script.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/002-script.js.snapshot"
       ]
     },
     {
@@ -643,7 +644,8 @@
       "git_blob_sha1": "bf34822441a3cb7ceb7ee8b7199ed59fb9fbfa0a",
       "sha256": "9fb11cbea15e41b6c91b40163c8c804814fca04f02ab13858d00e69e7838b9c4",
       "retained_paths": [
-        "atlas/assets/js/00-core/006-script.js"
+        "atlas/assets/js/00-core/006-script.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/006-script.js.snapshot"
       ]
     },
     {
@@ -1384,7 +1386,8 @@
       "git_blob_sha1": "a04ad975e741635f3ff41b1dedd0f05f68a3d2c1",
       "sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
       "retained_paths": [
-        "atlas/index.html"
+        "atlas/index.html",
+        "docs/historial/BASE_4D320EE/atlas/index.html.snapshot"
       ]
     },
     {
