@@ -38,6 +38,16 @@ class AtlasCorrections(unittest.TestCase):
         (self.repo/'docs/historial/BASE_4D320EE'/(ATLAS_JS+'.snapshot')).unlink()
         self.assertFalse(self.result(CHECK_ATLAS))
 
+    def test_rechaza_cadena_sin_estado_intermedio(self):
+        (self.repo/'docs/historial/PB_GH_03'/(ATLAS_JS+'.snapshot')).unlink()
+        self.assertFalse(self.result('Cadena de correcciones del Atlas con estados intermedios archivados'))
+
+    def test_rechaza_reintroducir_error_de_cronologia(self):
+        target=self.repo/ATLAS_JS
+        t=target.read_text(encoding='utf-8').replace('anos: "~100–60 ka"','anos: "50 ka"',1)
+        target.write_text(t,encoding='utf-8')
+        self.assertFalse(self.result('Atlas v1 sin los errores de cronología corregidos en PB-GH-04'))
+
     def test_rechaza_reintroducir_imagen_sin_permiso(self):
         target=self.repo/'atlas/assets/js/00-core/005-script.js'
         target.write_text(target.read_text(encoding='utf-8')+'\n// B44_02.jpg\n',encoding='utf-8')

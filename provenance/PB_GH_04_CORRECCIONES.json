@@ -1,0 +1,104 @@
+{
+  "preparation": "PB-GH-04",
+  "date": "2026-10-25",
+  "base_commit": "a4eee50",
+  "scope": "Correcciones de cronología y referencias en Atlas v1.0 (002-script.js). Catálogo, capa revisada y entrada ligera sin cambios.",
+  "application_logic_changed": false,
+  "release_gate": "NO_GO",
+  "corrections": [
+    {
+      "path": "atlas/assets/js/00-core/002-script.js",
+      "import_sha256": "b6052b999d1021ab4b28af6be25e89fe584db45cf135d7100e9d324bc484035f",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/002-script.js.snapshot",
+      "previous_sha256": "4c2f5aa7cd83b3a7e7453cc1c3529f10c6d347b5d11de2a4d08315e8b4e8d962",
+      "previous_snapshot": "docs/historial/PB_GH_03/atlas/assets/js/00-core/002-script.js.snapshot",
+      "corrected_sha256": "f476adcee6ac1c2b1041ece649753a1e5c8aa073e0666c00a4c83f48b6a58aa9",
+      "change": "Cronología heredada del Atlas v1.0: ocho fichas cuyos campos anos/datacion contradecían la capa revisada o indicaban un método imposible; ficha de prometheus con atribución de posturas invertida y dos referencias no localizables. Siete taxones con validez discutida en su propio texto pasan a estado «debatida»; año de descubrimiento de prometheus corregido.",
+      "reason": "Errores científicos visibles en la ficha, el buscador, el comparador y los textos generados del atlas (unas treinta vistas leen anos y datacion).",
+      "evidence": "Capa cronológica revisada (src/entrada_ligera/catalog.json, chronology) y fuentes contrastadas el 25-10-2026 en fichas editoriales, institucionales y bibliográficas abiertas (no en Crossref).",
+      "impact": "Cambian textos y la posición temporal (val_time) de pierolapithecus, cepranensis y flores. El formato conserva el punto decimal porque getTimeRange y getDetailTimeRange no interpretan la coma. Sin cambios de lógica.",
+      "return": "Restaurar previous_snapshot (estado PB-GH-03) o revertir el commit.",
+      "items": [
+        {
+          "taxon": "sahel",
+          "campo": "anos, datacion",
+          "antes": "7.0 Ma; Biocronología",
+          "despues": "7.2–6.8 Ma; Nucleidos cosmogénicos (10Be/9Be) en sedimentos",
+          "fuente": "Lebatard et al. (2008), PNAS 105(9), 3226-3231, 10.1073/pnas.0708015105; capa revisada de PaleoBot"
+        },
+        {
+          "taxon": "pierolapithecus",
+          "campo": "anos, val_time",
+          "antes": "~12.5 Ma; 12.5",
+          "despues": "~11.9 Ma; 11.9",
+          "fuente": "Capa revisada de PaleoBot (IPS 21350, ~11,9 Ma); fuente primaria no reverificada en PB-GH-04"
+        },
+        {
+          "taxon": "africanus",
+          "campo": "anos, datacion",
+          "antes": "2.5 Ma; U-Pb",
+          "despues": "3.6–2.1 Ma (en debate); U-Pb en coladas frente a nucleidos cosmogénicos (en debate)",
+          "fuente": "Granger et al. (2022), 10.1073/pnas.2123516119; Frost et al. (2022), 10.1073/pnas.2210627119; Granger et al. (2023), 10.1073/pnas.2300314120"
+        },
+        {
+          "taxon": "prometheus",
+          "campo": "datacion, descripcion, debate, referencias",
+          "antes": "U-Pb; «redatado en 2022 mediante U-Pb en ~3.67 Ma»; Berger presentado como defensor de prometheus; «Sutton et al. (2023)»; referencia «Berger et al. (2020), 10.1002/ajpa.24122»",
+          "despues": "Nucleidos cosmogénicos (26Al/10Be); 3,67 Ma cosmogénico (2015) y ~2,2 Ma U-Pb (2006); Clarke y Kuman defienden prometheus, Berger y Hawks y Martin et al. lo rechazan; Kramers y Dirks (2017)",
+          "fuente": "Granger et al. (2015), Nature 522, 85-88, 10.1038/nature14268; Walker et al. (2006), Science 314(5805), 1592-1594 (DOI no localizado); Kramers y Dirks (2017), 10.17159/sajs.2017/20160085; Clarke y Kuman (2019), 10.1016/j.jhevol.2019.06.005; Berger y Hawks (2019), 10.1002/ajpa.23743; Martin et al. (2025), 10.1002/ajpa.70177",
+          "nota": "La referencia «Berger et al. (2020), The new Australopithecus prometheus from Sterkfontein» no se localiza y contradice la postura publicada de Berger; «Sutton et al. (2023)» tampoco se localiza. Ambas se retiran."
+        },
+        {
+          "taxon": "erectus",
+          "campo": "anos, datacion",
+          "antes": "1.5 Ma; U-Series",
+          "despues": "~2.0 Ma–110 ka; Múltiples (según yacimiento)",
+          "fuente": "Capa revisada de PaleoBot (DNH 134 ~2,04-1,95 Ma; Ngandong 117-108 ka); fuentes primarias no reverificadas en PB-GH-04"
+        },
+        {
+          "taxon": "cepranensis",
+          "campo": "anos, datacion, val_time",
+          "antes": "~900–450 ka; K-Ar / biocronología; 0.7",
+          "despues": "~430–385 ka; Correlación estratigráfica (MIS 11); 0.41",
+          "fuente": "Capa revisada de PaleoBot (CE 0001 asociada a MIS 11, ~430-385 ka); fuente primaria no reverificada en PB-GH-04"
+        },
+        {
+          "taxon": "neander",
+          "campo": "datacion",
+          "antes": "14C",
+          "despues": "Múltiples (14C solo para los últimos ~50 ka)",
+          "fuente": "El radiocarbono no alcanza más de unos 50 ka; Arsuaga et al. (2014), 10.1126/science.1253958; Higham et al. (2014), 10.1038/nature13621"
+        },
+        {
+          "taxon": "flores",
+          "campo": "anos, datacion, val_time",
+          "antes": "50 ka; U-Series; 0.05",
+          "despues": "~100–60 ka; Múltiples (U-series, luminiscencia, ESR, 14C); 0.08",
+          "fuente": "Capa revisada de PaleoBot (restos esqueléticos de Liang Bua ~100-60 ka; artefactos ~190-50 ka por separado); fuente primaria no reverificada en PB-GH-04"
+        },
+        {
+          "taxon": "prometheus, deyiremeda, bahrelghazali, bodoensis, rhodesiensis, helmei, cepranensis",
+          "campo": "estado",
+          "antes": "(sin campo; la interfaz mostraba «aceptada» por defecto)",
+          "despues": "debatida",
+          "fuente": "El propio debate o descripción de cada ficha afirma que la validez del taxón está en discusión; para prometheus, además, Berger y Hawks (2019) y Martin et al. (2025)"
+        },
+        {
+          "taxon": "prometheus",
+          "campo": "tabla de descubrimientos",
+          "antes": "2019 · D. Stratford et al. · «holotipo reconocido 2019»",
+          "despues": "1948 · R. A. Dart · MLD 1, Makapansgat (holotipo); StW 573 atribuido por Clarke y Kuman (2019)",
+          "fuente": "Dart (1948), nombre y holotipo MLD 1 de Makapansgat (noticia de Wits «Rise of the Prometheus»; PalBlog de la PSSA, 15-2-2026); Clarke y Kuman (2019)"
+        },
+        {
+          "taxon": "cepranensis",
+          "campo": "debate",
+          "antes": "Razonamiento sobre ~900 ka frente a ~450 ka",
+          "despues": "Cronología revisada a MIS 11 (~430–385 ka); validez como especie propia discutida",
+          "fuente": "Capa revisada de PaleoBot"
+        }
+      ],
+      "not_changed": "Diferencias de escala (rango del taxón frente a edad del holotipo) y simplificaciones discutibles (rudolfensis «2.4 Ma», ergaster «1.8 Ma», boisei «2.3–1.2 Ma»): pendientes de decisión, no corregidas."
+    }
+  ]
+}
