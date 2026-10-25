@@ -1,0 +1,2707 @@
+{
+  "preparation": "PB-GH-02",
+  "source_commit": "af35a8e56cd9c995ff3636c41e3409a5184c48a4",
+  "source_files": 330,
+  "files": [
+    {
+      "source_path": "066-paleobot-v81-map-and-species-media-repair.js",
+      "git_blob_sha1": "12207d784611c72cb5c9f89844e0f7ccac92903b",
+      "sha256": "72f59642fdbf4b1eca60ea71a7f55896fccea849da5f569a8013e5647624dc42",
+      "retained_paths": [
+        "docs/auditoria/evidencias_codigo/066-paleobot-v81-map-and-species-media-repair.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js"
+      ]
+    },
+    {
+      "source_path": "0_C6_4_2_current_intake_status.json",
+      "git_blob_sha1": "7412e4c907efdd642ea92ade40ffd53fb6268e35",
+      "sha256": "14fb383f80ae3fd907828f526db674ad982381ce4821bda6901373d08a08d880",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/0_C6_4_2_current_intake_status.json"
+      ]
+    },
+    {
+      "source_path": "0_README.md",
+      "git_blob_sha1": "e456dcfa48a3d123362a6e0e423ebf19467b068d",
+      "sha256": "ff04bf5e71e59a56892b7870a5602726b427c8ac68b34137424a7902146e501d",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/0_README.md"
+      ]
+    },
+    {
+      "source_path": "1_README.md",
+      "git_blob_sha1": "2e9e1a242cc37f57e980bc6ae9d8c7f6c1f07e66",
+      "sha256": "45afe94426105903bdd73adab7b7e59517b7cd24adc656195af298f7db15a459",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/1_README.md"
+      ]
+    },
+    {
+      "source_path": "2_INFORME_A3_C6_1.md",
+      "git_blob_sha1": "34c42d3970e38db0b27d4cf743bd0e8887ddc4cd",
+      "sha256": "56ae42229600837de0b8b44536b7125c6fdb3f5825c334b3d5a24cb5c36888c0",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_1.md"
+      ]
+    },
+    {
+      "source_path": "2_INFORME_A3_C6_2.md",
+      "git_blob_sha1": "feed2f9bb7923755981297e2044aece1755c617c",
+      "sha256": "f0d1f337dd593011da7864e964e93d65274c28c1a5a663a16554f2fd741d2dcf",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_2.md"
+      ]
+    },
+    {
+      "source_path": "2_INFORME_A3_C6_3_1.md",
+      "git_blob_sha1": "b0e0c14201b8962f6ed1bfe0e67448e4dce6a930",
+      "sha256": "11793c6fcc30d1081eb0d4f2d3db4ad3fee6b33d6898da6e2295027aedafcc83",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_1.md"
+      ]
+    },
+    {
+      "source_path": "2_INFORME_A3_C6_3_2.md",
+      "git_blob_sha1": "9e1c7acbca40f21782d0795f046254ebcbaf9bcb",
+      "sha256": "2203cd9af3b5b9dd57d284c554f1f662e78513b8540a83e491c3855ba205c0c3",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_2.md"
+      ]
+    },
+    {
+      "source_path": "2_INFORME_A3_C6_3_3.md",
+      "git_blob_sha1": "6938c1c0db3ba78de40856b5a4ae433b05cd7668",
+      "sha256": "b551e289399c68eb763cc4b24ef0363f39393c9478ecc03930294e2c7f099d4e",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_3.md"
+      ]
+    },
+    {
+      "source_path": "2_INFORME_A3_C6_3_4.md",
+      "git_blob_sha1": "57d1794e4365f4640914c8873fdba8aa4407d196",
+      "sha256": "b27439ab0d53ce04eaee463d0f33100326e3ade4e489291d2fa1bd5a07901264",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_4.md"
+      ]
+    },
+    {
+      "source_path": "2_INFORME_A3_C6_3_5.md",
+      "git_blob_sha1": "ea850b6de788b0ffebe1315760ad400811547b14",
+      "sha256": "39662b93d5a51da75bbb74ed3fd67f9c013f0eacb246cb40c397c560c1c0ebcc",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/2_INFORME_A3_C6_3_5.md"
+      ]
+    },
+    {
+      "source_path": "2_README.md",
+      "git_blob_sha1": "54797062fe7823ff34a8e9413f4fa56ad4665616",
+      "sha256": "a7b903b26b749e51b6624787a1712759481fc2bbfb15187b193684066558c05f",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/2_README.md"
+      ]
+    },
+    {
+      "source_path": "2_RELEASE_STATUS.json",
+      "git_blob_sha1": "9871a44f0614d3be9f5215bbf794cfdf2e44f69f",
+      "sha256": "097e78467f26a07d53efa3baffc702b43025e02ba5ee3c617daa235e50f47a99",
+      "retained_paths": [
+        "docs/auditoria/fuentes_c6/2_RELEASE_STATUS.json"
+      ]
+    },
+    {
+      "source_path": "AGENTS.md",
+      "git_blob_sha1": "616f75326f98c29727e0f0864f9569f7f0407f27",
+      "sha256": "60436eda3a3edb254c25f39dd502025ab13e6d3c3c315dace92635ae0215e61c",
+      "retained_paths": [
+        "docs/historial/BASE_F09A07B/AGENTS.md"
+      ]
+    },
+    {
+      "source_path": "AUDITORIA_PALEOBOT_R98_v11.md",
+      "git_blob_sha1": "19efeecd0c9aed6a1e69ead8fe8230b0c9119308",
+      "sha256": "1b7fdac54e4b684903d331192d6e4f270d5ab38e1c35e3937c71aa0d8d142d15",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/AUDITORIA_PALEOBOT_R98_v11.md"
+      ]
+    },
+    {
+      "source_path": "CHANGELOG.md",
+      "git_blob_sha1": "49cf52fb2fa01dbc0996effd98409c3709bbb188",
+      "sha256": "3413e22ccaa52dffc846a7b746eb0a230cd16a8f364346c5fb528d9f488bf495",
+      "retained_paths": [
+        "docs/historial/PB_GH_01/CHANGELOG.md"
+      ]
+    },
+    {
+      "source_path": "CONTRIBUTING.md",
+      "git_blob_sha1": "f0e37767702a653189195df8cf83363dc1720e86",
+      "sha256": "21bc6ca06e00756cb6a70a44f7c934a22b39b0d9a66bc62d61d8017a0e5227e7",
+      "retained_paths": [
+        "CONTRIBUTING.md"
+      ]
+    },
+    {
+      "source_path": "Comparativa_Atlas_PaleoBot_v1_R92_2026-09-07.md",
+      "git_blob_sha1": "33f04245fbc993fbad9ee18ba4944755cd9a9cc7",
+      "sha256": "2982f51092a60a258e67a64268f7fa2e7a77996d32eec863b3f044dc12a40402",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/Comparativa_Atlas_PaleoBot_v1_R92_2026-09-07.md"
+      ]
+    },
+    {
+      "source_path": "Comparativa_Atlas_PaleoBot_v1_R92_evidencias.json",
+      "git_blob_sha1": "a003ddad0e4ea2c08f38c78f7a22fb5634947d5c",
+      "sha256": "63261c1bd12bafe47205e73ab7062f60f3eca73f1bc1599aeed1702fe77ab79a",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/Comparativa_Atlas_PaleoBot_v1_R92_evidencias.json"
+      ]
+    },
+    {
+      "source_path": "ESTADO.md",
+      "git_blob_sha1": "b2b7ee1c73d2b41ec5ec897c9236b1f1c57bf0de",
+      "sha256": "f5b9453e69b8f4fa5df0003c49e15a170046a9531de81ca71ef7f5722d060aa6",
+      "retained_paths": [
+        "experimental/atlas-r98/ESTADO.md"
+      ]
+    },
+    {
+      "source_path": "INFORME_A1_RECONCILIACION_CIENTIFICA.md",
+      "git_blob_sha1": "732535d5ac60de66beac620e9b412da45c85c586",
+      "sha256": "306352d9d629214e1e7448c466280bd5779a1475e32fba9ad28207c8f92325ac",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/INFORME_A1_RECONCILIACION_CIENTIFICA.md"
+      ]
+    },
+    {
+      "source_path": "INFORME_A2_MODELO_CRONOLOGICO_Y_PARCHE.md",
+      "git_blob_sha1": "a0b12d77753a7e9631eeb2f01aeaf06a1a58c971",
+      "sha256": "55985cc4cd4a338194b19220b45817667dc7112d297bd114c47ec3522e565daf",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/INFORME_A2_MODELO_CRONOLOGICO_Y_PARCHE.md"
+      ]
+    },
+    {
+      "source_path": "ISSUE_TEMPLATE/defecto.yml",
+      "git_blob_sha1": "358cd69cbb4d95a663db0b6da58d659a45840490",
+      "sha256": "75ce5bfe8ed80fcccb3c1001b57d27ba89340aa2cefd067e92e8fe6c46ad087b",
+      "retained_paths": [
+        ".github/ISSUE_TEMPLATE/defecto.yml"
+      ]
+    },
+    {
+      "source_path": "ISSUE_TEMPLATE/propuesta.yml",
+      "git_blob_sha1": "88c05315dfc99f7799e5879b21c7fb86a950400b",
+      "sha256": "77e734bdaddb37cf032be35db21efe5ddc302a24b1951e470e86dff37b604657",
+      "retained_paths": [
+        ".github/ISSUE_TEMPLATE/propuesta.yml"
+      ]
+    },
+    {
+      "source_path": "LEEME.md",
+      "git_blob_sha1": "cd8311cb76289ef13a1aab65d9ccf823d38213e0",
+      "sha256": "249678b0ab9def9543edc571d5f3b7e8a335198c24dd07750cdd10ae1fb191b7",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PALEOBOT_ATLAS_DIRECTO_R98_PILOTO_LEEME.md",
+        "experimental/atlas-r98/fuentes/LEEME.md"
+      ]
+    },
+    {
+      "source_path": "LICENSE_STATUS.md",
+      "git_blob_sha1": "b0d341d9f8d57683c6e30d2922676afb634c8224",
+      "sha256": "5493be7f8946eb44d3e58e727f4f168dfdcbaa17bef9d87c2674c1237e4f7ad8",
+      "retained_paths": [
+        "LICENSE_STATUS.md"
+      ]
+    },
+    {
+      "source_path": "NOTA_IMPORTACION_GITHUB.md",
+      "git_blob_sha1": "ec3a8f31267102eea137e47f854309357deb5745",
+      "sha256": "2282bd381b1d8a55817ac5dab0e579bd57483fa1f2969f958c465921833aec08",
+      "retained_paths": [
+        "docs/auditoria/NOTA_IMPORTACION_GITHUB.md"
+      ]
+    },
+    {
+      "source_path": "PALEOBOT_ATLAS_DIRECTO_R98_PILOTO_LEEME.md",
+      "git_blob_sha1": "cd8311cb76289ef13a1aab65d9ccf823d38213e0",
+      "sha256": "249678b0ab9def9543edc571d5f3b7e8a335198c24dd07750cdd10ae1fb191b7",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PALEOBOT_ATLAS_DIRECTO_R98_PILOTO_LEEME.md",
+        "experimental/atlas-r98/fuentes/LEEME.md"
+      ]
+    },
+    {
+      "source_path": "PB-01.md",
+      "git_blob_sha1": "585596b5f2f1a4888fa53776a4198988d116a07c",
+      "sha256": "ed1b117ff1558c3d4e950ad591f85ac477a0dd6f17fc003c227d970224bd88f7",
+      "retained_paths": [
+        "docs/incidencias/PB-01.md"
+      ]
+    },
+    {
+      "source_path": "PB-02.md",
+      "git_blob_sha1": "ddff0bbd0f3eddba2274eff7d3a30785596d700b",
+      "sha256": "4ada4fcc1f708ce6d62a2dd6df4fa3c8b36601959bd42bc35046a6456710b393",
+      "retained_paths": [
+        "docs/incidencias/PB-02.md"
+      ]
+    },
+    {
+      "source_path": "PB-03.md",
+      "git_blob_sha1": "87c3cb1be45f98ec3ae2afd8f8939a12841596c6",
+      "sha256": "5e38ea3621397d0fcc4e3a3d79a0d130ba4c0cb824fcb803cc337560a1ff37c0",
+      "retained_paths": [
+        "docs/incidencias/PB-03.md"
+      ]
+    },
+    {
+      "source_path": "PB-04.md",
+      "git_blob_sha1": "c2014c3589af13b93a984a0725d39ebb40bea65a",
+      "sha256": "f592277151592e0b891d39b50b0fa2094f07f905847d746b043991f1eec51d0d",
+      "retained_paths": [
+        "docs/incidencias/PB-04.md"
+      ]
+    },
+    {
+      "source_path": "PB-05.md",
+      "git_blob_sha1": "cfe365afc70220b3427bafbbf9fbefaf6e0d72cf",
+      "sha256": "39f9f7c3f4a054d99b5cb81d3daf1b0c469d0f6f40fce7d68b6ec7b2997c938c",
+      "retained_paths": [
+        "docs/incidencias/PB-05.md"
+      ]
+    },
+    {
+      "source_path": "PB-06.md",
+      "git_blob_sha1": "4fb299a713f652cf30ca90bc18f41d1d71397761",
+      "sha256": "21b891e5226d34686ecace0ac9b6ec5775008baa18e3c48422c16c67aaaac4a7",
+      "retained_paths": [
+        "docs/incidencias/PB-06.md"
+      ]
+    },
+    {
+      "source_path": "PB-07.md",
+      "git_blob_sha1": "4db91246266c6d638ad8bc2d15abe87e00858fe2",
+      "sha256": "b04dcc49fea55109da074ce959d18f07dc095d9e63957ea76290f5a9657e58e7",
+      "retained_paths": [
+        "docs/incidencias/PB-07.md"
+      ]
+    },
+    {
+      "source_path": "PB-08.md",
+      "git_blob_sha1": "490c2b1a622e941f7f7bc45212c8f2717af2c773",
+      "sha256": "098ca6ecaa94e877e8433ca241aa41b0213429842877cb172a606711384b6c13",
+      "retained_paths": [
+        "docs/incidencias/PB-08.md"
+      ]
+    },
+    {
+      "source_path": "PB-09.md",
+      "git_blob_sha1": "e391289be0c108258c81919b4c870aae8aae713d",
+      "sha256": "5c391b27f5fd53cc60f5021c87e9a62880cffd05f968a9613ecf4d5d11e6bd1e",
+      "retained_paths": [
+        "docs/incidencias/PB-09.md"
+      ]
+    },
+    {
+      "source_path": "PB-10.md",
+      "git_blob_sha1": "60a3c056e3f8fd41808dfa260bba44319ab96fae",
+      "sha256": "93dd1caddf820c61c31a27bf7e6c86e641d00012e0a260fb223f22b4c2df0f4b",
+      "retained_paths": [
+        "docs/incidencias/PB-10.md"
+      ]
+    },
+    {
+      "source_path": "PB-11.md",
+      "git_blob_sha1": "3a7bb1d726a07f40b6939af96496565f26b6418e",
+      "sha256": "4d83198b237241b690d1ba0f9c36a3677c516f99b532e3ac6b41d5674eccf7d9",
+      "retained_paths": [
+        "docs/incidencias/PB-11.md"
+      ]
+    },
+    {
+      "source_path": "PB-12.md",
+      "git_blob_sha1": "c73204813461486f1fea0af03ebcd09cfdeab98b",
+      "sha256": "d4447079b1d4a7614f0b3824e800ccac546a25c963a547eb80dbb18d1d748dd8",
+      "retained_paths": [
+        "docs/incidencias/PB-12.md"
+      ]
+    },
+    {
+      "source_path": "PB-13.md",
+      "git_blob_sha1": "af6f9a4c7cf0910e76bcd3e2081965b603266bba",
+      "sha256": "daf312ea286634366e24e9aeae135306a068d23e43bdd7111bccfd6ee92a7248",
+      "retained_paths": [
+        "docs/incidencias/PB-13.md"
+      ]
+    },
+    {
+      "source_path": "PB-14.md",
+      "git_blob_sha1": "eef52554daa0bd4d53fbe02c9f4ffd857765ab03",
+      "sha256": "0bd9567817f2de6f669a1cee8050f04504645511adfa8623f5fd620fbd43afc4",
+      "retained_paths": [
+        "docs/incidencias/PB-14.md"
+      ]
+    },
+    {
+      "source_path": "PB-15.md",
+      "git_blob_sha1": "ab8aca9179f2dc4c5464c119571a2cfa471966de",
+      "sha256": "6319e16e8c53eb92853ddf55ae4057eed28d8e4db68d40d857d49a99d0b47213",
+      "retained_paths": [
+        "docs/incidencias/PB-15.md"
+      ]
+    },
+    {
+      "source_path": "PB-16.md",
+      "git_blob_sha1": "04b5b83da19dd69902d1b8ad239b8a2ca7cc942e",
+      "sha256": "057b83971dc9fb98689f12671d48911e5bae43b2fc5dea403a381c9681cb2399",
+      "retained_paths": [
+        "docs/incidencias/PB-16.md"
+      ]
+    },
+    {
+      "source_path": "PB-17.md",
+      "git_blob_sha1": "13cb52a83e282600afc3e0b33779b38b26605c02",
+      "sha256": "863a19f3cee7101cff3884ce40efbe5f2755e3181e1a94d29da2de5fae8f0513",
+      "retained_paths": [
+        "docs/incidencias/PB-17.md"
+      ]
+    },
+    {
+      "source_path": "PB-18.md",
+      "git_blob_sha1": "294f69cf6bd399c2dc81afefbe5bb336a279268c",
+      "sha256": "bb24c485da04a0b9b3eefa639c0b302843402d14ca710362310d3745aa5a4820",
+      "retained_paths": [
+        "docs/incidencias/PB-18.md"
+      ]
+    },
+    {
+      "source_path": "PB-19.md",
+      "git_blob_sha1": "6d736ce4b61a1984c7e169bcb77dcb5e3204b7bd",
+      "sha256": "de89969c1d650d6548fce2a931d6da53ee55557d45787ffb46ea4b757ca1e4db",
+      "retained_paths": [
+        "docs/incidencias/PB-19.md"
+      ]
+    },
+    {
+      "source_path": "PB-20.md",
+      "git_blob_sha1": "103d03b4734bdd1e8f097f6d6bbf7bc02971b169",
+      "sha256": "7939df36df58e1d341d2c0221f9076ed42a2768625935c3bd124c647ba16cdd6",
+      "retained_paths": [
+        "docs/incidencias/PB-20.md"
+      ]
+    },
+    {
+      "source_path": "PB-21.md",
+      "git_blob_sha1": "be7c11023daa5f016c0b3999ef20ec035135d88e",
+      "sha256": "12eb09120fd9bcf28f92a0f5a39b401926c8011ea4ada3fa567622ce1e1c7920",
+      "retained_paths": [
+        "docs/incidencias/PB-21.md"
+      ]
+    },
+    {
+      "source_path": "PB-22.md",
+      "git_blob_sha1": "ba090cc79e466e6151ebcd4b983df3a3c4c666ac",
+      "sha256": "1713809f3a3d58d2ad0ff6a1253cda99070e14937784fe6d97d95a34096b5ada",
+      "retained_paths": [
+        "docs/incidencias/PB-22.md"
+      ]
+    },
+    {
+      "source_path": "PB-23.md",
+      "git_blob_sha1": "48f84d238f4585147c652919fef0bd1d1bb1cba3",
+      "sha256": "536a06dd27b9b3fed2f61b5507d1cc5d04a305d5638c4dd54bca173dfecd61fe",
+      "retained_paths": [
+        "docs/incidencias/PB-23.md"
+      ]
+    },
+    {
+      "source_path": "PB-24.md",
+      "git_blob_sha1": "72c7d22acb8bb7298ef2e7c4aa12067afd719baf",
+      "sha256": "43c7a7f4438d86994beda681727ad94514bdd4e81576afd15605451da658b9f6",
+      "retained_paths": [
+        "docs/incidencias/PB-24.md"
+      ]
+    },
+    {
+      "source_path": "PB-25.md",
+      "git_blob_sha1": "d77c3112f784827aa487f1b62d07b50ae692c17e",
+      "sha256": "48d808d5ba3f24cce751e0fa4df650194a58de8b710aeb043f982d3303c5f4ab",
+      "retained_paths": [
+        "docs/incidencias/PB-25.md"
+      ]
+    },
+    {
+      "source_path": "PB-26.md",
+      "git_blob_sha1": "ae32d6e8ecd01ca308384daa3a3a819d55a16dd8",
+      "sha256": "d3910ef62647248d2167a85001030c0cf2de5d7bb2ac8a1214ad3da8f5eed015",
+      "retained_paths": [
+        "docs/incidencias/PB-26.md"
+      ]
+    },
+    {
+      "source_path": "PB-27.md",
+      "git_blob_sha1": "369963e5b4079fb480f7937c7fd3c5a9403a3e77",
+      "sha256": "dc47ff521df178de45c43df209e352140d561009145e0c3379309e8db0fc4422",
+      "retained_paths": [
+        "docs/incidencias/PB-27.md"
+      ]
+    },
+    {
+      "source_path": "PB-28.md",
+      "git_blob_sha1": "a78bfe383e2e62354f9df24e0f6bc987731948f3",
+      "sha256": "f0f74405819608a55f0daa6c46b87bc34f919b11bbc33485677e4f57a6f2174a",
+      "retained_paths": [
+        "docs/incidencias/PB-28.md"
+      ]
+    },
+    {
+      "source_path": "PB-29.md",
+      "git_blob_sha1": "3ea1eb0831df3e2f7b8efd3aa02d7088ef926aa3",
+      "sha256": "4419ae0e883c741d1b9075ec27eb492bb7ed03e5735ed38471e4aa3bd4220d2d",
+      "retained_paths": [
+        "docs/incidencias/PB-29.md"
+      ]
+    },
+    {
+      "source_path": "PB-30.md",
+      "git_blob_sha1": "bb67569090734763a2bb27dafc65a757895cb47c",
+      "sha256": "900c12d81afbeaa54cb7c07aebe80a877c0f8a758b6bcf69e05bdde250873ef6",
+      "retained_paths": [
+        "docs/incidencias/PB-30.md"
+      ]
+    },
+    {
+      "source_path": "PB-31.md",
+      "git_blob_sha1": "cb04864e27f2a31f70fdf4d1e666818f74a45dd4",
+      "sha256": "9b637da7fb0e73270aef114c156d28e28f8c7a7802bd74ce2197edbff5f2fd7e",
+      "retained_paths": [
+        "docs/incidencias/PB-31.md"
+      ]
+    },
+    {
+      "source_path": "PB-32.md",
+      "git_blob_sha1": "5869b284c036e8a87534f2e74321682f17f0644e",
+      "sha256": "037576da300e77ce7c3e82f3db6b0b406cd5e1fbb29713c624776748c80c897d",
+      "retained_paths": [
+        "docs/incidencias/PB-32.md"
+      ]
+    },
+    {
+      "source_path": "PB-33.md",
+      "git_blob_sha1": "3275ea093b143cb5f2cb45ef9d5f6589933cbd7e",
+      "sha256": "260d3812a6d6c5b00e3401b0d6b81ea6f0b68e2ff5fcf932ee7ac091d8fabd17",
+      "retained_paths": [
+        "docs/incidencias/PB-33.md"
+      ]
+    },
+    {
+      "source_path": "PB-34.md",
+      "git_blob_sha1": "1c6700c29c8b33992dba88e03b3331f115961312",
+      "sha256": "8bf253f4b9031a01c82abc06a5ab772fabbd8b41b1cb88f99b67224c32bb75c0",
+      "retained_paths": [
+        "docs/incidencias/PB-34.md"
+      ]
+    },
+    {
+      "source_path": "PB-35.md",
+      "git_blob_sha1": "08251a13364ad0b0c1a53314378677bad6e244e0",
+      "sha256": "8e2cfa6a3c8bec125f48f9a2b3ce01ec208ef59799742051df32293c10f827ee",
+      "retained_paths": [
+        "docs/incidencias/PB-35.md"
+      ]
+    },
+    {
+      "source_path": "PB-36.md",
+      "git_blob_sha1": "8653013004139867931ae62ac2874a8d7249b919",
+      "sha256": "c59929ec53f400e22e388bccbc6471902b704df3ba0deb971274971a07c234ad",
+      "retained_paths": [
+        "docs/incidencias/PB-36.md"
+      ]
+    },
+    {
+      "source_path": "PREPARACION_Y_COMPROBACIONES.md",
+      "git_blob_sha1": "d04465c81c6c6b7143cf6c78e33aa200a0ff4f71",
+      "sha256": "3a16c44a63b2bbe9189b33c7a036d8cc532e819398ad012dbbab45a8c871b018",
+      "retained_paths": [
+        "docs/PREPARACION_Y_COMPROBACIONES.md"
+      ]
+    },
+    {
+      "source_path": "PRUEBAS_Y_LIMITES.md",
+      "git_blob_sha1": "6ec3ae6d4048996ae1115fe96f006eee53ab3941",
+      "sha256": "af865563a63e04d69719b2fecb71b034a9b718b61136190908496e09496328dd",
+      "retained_paths": [
+        "docs/PRUEBAS_Y_LIMITES.md"
+      ]
+    },
+    {
+      "source_path": "PULL_REQUEST_TEMPLATE.md",
+      "git_blob_sha1": "4e56571c08ae8db9907120f654adc66cd22f05be",
+      "sha256": "86d4ac27a8c7be9e3f348d9261ebbb676ed89848371284e7943f3ac8e2051c51",
+      "retained_paths": [
+        ".github/PULL_REQUEST_TEMPLATE.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C4_1_verificacion.json",
+      "git_blob_sha1": "d7338bdcf61b97c5e6d4f1a87d94f81b54db1321",
+      "sha256": "46923ac123c3d799df951bdca7346700e3a8fc0ef091b2b8c67f96ef8c577cf7",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C4_1_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C4_2_verificacion.json",
+      "git_blob_sha1": "6dd0f0f3cbe21ab637ebcfd699310dcf64edc676",
+      "sha256": "64e7a3c9d4bdde8624e17d7ed4daeb5565115044e807429c07fcfff7e8da038c",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C4_2_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C4_3_verificacion.json",
+      "git_blob_sha1": "fb396dd22c1996f2f8779cdcaa14847e9c88cc7d",
+      "sha256": "a99f72b885be2be3c28b1bf2c30b71b831338f5ff753fe1052bf9081f301fa50",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C4_3_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C5_1_verificacion.json",
+      "git_blob_sha1": "716427354385fda2fb81fca85821d2057cbc81bd",
+      "sha256": "131180931523771f46e391986291d0d0fb1afc8dc116af3efc380099435b5997",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C5_1_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C5_2_verificacion.json",
+      "git_blob_sha1": "a433d19102f64112de6e125bfa59319063552497",
+      "sha256": "1979bf96de630b2ce0ea836706b3b7cb0372f448162d432597735e1b79c5fe32",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C5_2_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C5_3_verificacion.json",
+      "git_blob_sha1": "aae53db6b2d2a196497dc72b7aee9da28448904f",
+      "sha256": "7d58ff6693945d521da72065a50b019afb911946c967c2c8bd4d750877450fd7",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C5_3_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_1_negative_tests.json",
+      "git_blob_sha1": "e1e45cdb9cc61e86e021900bcddd6ffa1953d217",
+      "sha256": "5359ead3c6e0a763813f2287a6b0250f819c33f626c27be918bbdb6657750f9c",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_1_negative_tests.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_1_verificacion.json",
+      "git_blob_sha1": "c766765f2483451ecd0b361631da722523a5ab32",
+      "sha256": "e2f0767c44fef8a5715df9e93d160f779b42c7b36586dbd1bd5472aa28f8ebe8",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_1_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_2_verificacion.json",
+      "git_blob_sha1": "94d2f8d33a871a44659cf326e44e2a3f2146d6db",
+      "sha256": "8c9868dbe5e2fd12fa6b857cb97cc79716638d8fccd3d10592aab804b54ecd41",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_2_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_1_cierre.json",
+      "git_blob_sha1": "ee0bf7f71e2b45edecf523e7d9be406c3c5f7367",
+      "sha256": "d4ea9ed05c2c73ebe4ada11250d35398b0ab5801531c62e5f2eb1597bc87cf8a",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_1_cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_1_verificacion_independiente.json",
+      "git_blob_sha1": "63c85559172c9f8f8507df6db9e797b9e9e27fb4",
+      "sha256": "5a27be47f18205f34ee5db4ec9b76614ee936ac3db57ca15446feadf1fd5e45c",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_1_verificacion_independiente.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_2_cierre.json",
+      "git_blob_sha1": "b13092839017523139e5fdf326b02933e1347d1e",
+      "sha256": "537e2e6fdb400920af7c0d3161977db1295f5a2cfbba7dd42b5c3964e446466f",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_2_cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_2_verificacion_independiente.json",
+      "git_blob_sha1": "29c248953aa3a30e6756e940fe0100e244ff1c8c",
+      "sha256": "72ec48f5cd23e9374546a5e7559b89cdc14781b26463fc1de55bebfadabf1bb0",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_2_verificacion_independiente.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_3_cierre.json",
+      "git_blob_sha1": "e54e680016a6400a289d9dd8b54d2ff0db7c80c5",
+      "sha256": "441de63883fb5e7a5b4d531ea4ed57d696f7b06e5f1e453f32c8f676ae476fa6",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_3_cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_3_verificacion_independiente.json",
+      "git_blob_sha1": "e2aaa7168fcf1814f4de66b444a082ab1d910344",
+      "sha256": "bee0ca46b004d6ba71a73103f7441090725bfbd2213e6965a414003f6808642d",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_3_verificacion_independiente.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_4_cierre.json",
+      "git_blob_sha1": "e85a652c1310a6fb33fbbe517fe807fe1c98d848",
+      "sha256": "9aac575691bf16e8099ac6633de717a1b1c122af30c2d916ec625cd312a80227",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_4_cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_4_verificacion_independiente.json",
+      "git_blob_sha1": "1f10a3ed91e9362da3b8d95e5874d9a85ab5bd1c",
+      "sha256": "37671d0ff65822d2c2b5ec8cfb71a248fbbd465b772b6bf0686a99a62796aefd",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_4_verificacion_independiente.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_4_verificacion_interna.json",
+      "git_blob_sha1": "7cde501135a245e43c1f42e9f771310524cf3bfb",
+      "sha256": "d92bb92814958a88e7393035d3a3e8b4a601cbb7e4128b51ce935ded74c2c569",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_4_verificacion_interna.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_5_browser_gate_BLOCKED_BY_ENVIRONMENT.json",
+      "git_blob_sha1": "04942ab74e729e698e617429509dd21ca6ce3056",
+      "sha256": "dfef7fafa00b1c75e152898a197993bda1bf388491f695af07eeababf7311f22",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_5_browser_gate_BLOCKED_BY_ENVIRONMENT.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_5_cierre.json",
+      "git_blob_sha1": "75368d3b44d37518be51f85bb56d0252fe81e125",
+      "sha256": "67a4063beccd6966c520f4d7235f9fbcbc484e0d5656966d25a2f02fdc73ad19",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_5_cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_5_verificacion_independiente.json",
+      "git_blob_sha1": "018d8250f6ae1cfde67e98ca94a3a0233b09ea82",
+      "sha256": "fd13907b7512fd10f3d961efb266e64e87795efed1d8383cc02082903f22b121",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_5_verificacion_independiente.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_3_5_verificacion_interna.json",
+      "git_blob_sha1": "ff39b1f8ae6f3e6a6755effb3496d577f0225ef4",
+      "sha256": "aa6d2604f4cfd35a2bd7135366b3f54e49304b82c3cef6590b65d0ddc8391cd9",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_3_5_verificacion_interna.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_4_1_browser_transfer_cierre.json",
+      "git_blob_sha1": "e1850ed2539b5d36626aecbf55a9e1e63fb0fadf",
+      "sha256": "8a15a8a091cb584d1867abeb2f619e1b8d9837ec46260c5942b2f9553ecad2ec",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_4_1_browser_transfer_cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_4_1_browser_transfer_verification.json",
+      "git_blob_sha1": "2d98628b8e4616d34d06b647ff519cfb2933947a",
+      "sha256": "33ad953bc253f49405d130a04a36b6e8dcac407a9393981523b1f83d9d5a170b",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_4_1_browser_transfer_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_4_2_cierre.json",
+      "git_blob_sha1": "50512be34bc1ac78dd3b48b4e9e7621416041234",
+      "sha256": "8856b7349942bcc0aba6ca19620d74dbaca8b9f4f9c0d7e4b8d6bbd49d6fc347",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_4_2_cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_C6_4_2_verificacion_independiente.json",
+      "git_blob_sha1": "ce9962fe1419278a3c3424ddcf95efd6f8c4813c",
+      "sha256": "9cf9b8873214448acce16b1d5b97905216c4fe6df547d142122604aa952c3320",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_C6_4_2_verificacion_independiente.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_Moodle_LAUNCHER_verification.json",
+      "git_blob_sha1": "165dfbf0d16de25f537b9637f8fcae7920ff74c4",
+      "sha256": "a22cf6be15adb5c5432bd59d06ca944bbb835ad30640c7784eecfbd279c1519c",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_Moodle_LAUNCHER_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_Moodle_Student_Lite_verification.json",
+      "git_blob_sha1": "b7caa47cad6138aee78f8d34e93b267128bd908a",
+      "sha256": "4b4f140e78c88827cb2a435f9d8807b2c1bdec315b54cf5b459aa639e45eeab9",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_Moodle_Student_Lite_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_A3_Moodle_candidate_verification.json",
+      "git_blob_sha1": "cd3f1cee784d3415ade49948aba6bfc27b9fb71d",
+      "sha256": "3d1ff0c841b2d3b029220ce7bc19684d0c199188ff07aca01f54c45b91d639a2",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_A3_Moodle_candidate_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Atlas_Original_Directo_R98_PILOTO.html",
+      "git_blob_sha1": "70d8156d464412484532abeeefb2f1fcf843ea66",
+      "sha256": "905de165886f476b01ebd4fdea276c0481801dba5c49feb74666575faa53f58c",
+      "retained_paths": [
+        "experimental/atlas-r98/PaleoBot_Atlas_Original_Directo_R98_PILOTO.html"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase1_auditoria_y_correccion.md",
+      "git_blob_sha1": "f75e4a97b300e8ba317b8de22aa3c1e9c0314891",
+      "sha256": "d301f7bfb2f658f1c95982aaa628e44948c770f11a9fff62e854fb240917fa13",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase1_auditoria_y_correccion.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase1_verificacion.json",
+      "git_blob_sha1": "0ce61080206abd6e23c6a90b8d323895739d664f",
+      "sha256": "68b256595e1c548f9a01bd509d4a23704823be526f6e4c041512586b3d3f673c",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase1_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase2_auditoria_medios.md",
+      "git_blob_sha1": "1edcb343eb18ec14e57bc5a715fa66cad3b7d7d3",
+      "sha256": "df5e84f6302d773d278628b7c7a1c82ba3b5ea19ae902b5355d60164acacf3b3",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase2_auditoria_medios.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase3_auditoria_integrada.md",
+      "git_blob_sha1": "154faaa67ca23826bd35a7407c1d19d1d2915a7d",
+      "sha256": "a69eafa990d8e3eda9b33298b763d19d0cf6e9514e413d842ece9e8a94fa6047",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase3_auditoria_integrada.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase3_verificacion.json",
+      "git_blob_sha1": "6f8e8b4c583ed669b93282571a54fc396a9d4378",
+      "sha256": "5c3610040a916a053446f89c14a70a097b435536a035e5b87c741effb1781fd3",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase3_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase4_auditoria_caracteristicas.md",
+      "git_blob_sha1": "3bd267df09aac0dd7d52ad1b7e0b8d2bf91fcebb",
+      "sha256": "a42c3129a885d0ea7c1a5030a4b0069356021359ddaf74d26caca58ecdb8e65a",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase4_auditoria_caracteristicas.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase5_ingesta_v69.md",
+      "git_blob_sha1": "984c8982f0404e95680209981aede032b43f1369",
+      "sha256": "a3489870ac760898484cba91eb4431e49e43d3ff86308a912bb6696660dcf2a8",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase5_ingesta_v69.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase5_ingesta_v69_verificacion.json",
+      "git_blob_sha1": "c1e5c5ba1380fdef96fa5168a6d3a246865ddb93",
+      "sha256": "6420146cecd8d96093ea1b139532a97bbe61904b1894a83a5f29be67460322ce",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase5_ingesta_v69_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase6_auditoria_y_correccion.md",
+      "git_blob_sha1": "30f8e515fefe4206432cb90747d0bca36f07b5d9",
+      "sha256": "e07994b5fa2b71bb657c1933abb43e79d4d593e288163b8f8a30576f6816e5fe",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase6_auditoria_y_correccion.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase6_verificacion.json",
+      "git_blob_sha1": "6550d012ef85e6221df4e0137e0936746f5780fd",
+      "sha256": "2c553dfce33501219462042ab693065ace843994e050d94b12343da8180ea9f4",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase6_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase7_funcionamiento_y_limites.md",
+      "git_blob_sha1": "d97238f7a6e0d4f011e45a437593b9cb7ee416f9",
+      "sha256": "e5c3b8dee2fdae5fb0dcf40abc4b9e75e77760d95f3ed6131d4575a96b576712",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase7_funcionamiento_y_limites.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase7_verificacion.json",
+      "git_blob_sha1": "45568571f4df2a58b2224b492e672e2319739154",
+      "sha256": "534461e9dc1332f185c7cd0cd3ff512484804459ec48568d8432273a57476fbc",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase7_verificacion.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase7b_puerta_navegador_NO_GO.md",
+      "git_blob_sha1": "0f2bea2a25b62272b13e5299c2015b844bd2b1c9",
+      "sha256": "c08547943038bee351c685e11b0602ef72977450467c3351f6ebceb11d18de32",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase7b_puerta_navegador_NO_GO.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase7b_resultado_entorno_NO_GO.json",
+      "git_blob_sha1": "960e2ed737e3498a0b5e70245c344d89528163a0",
+      "sha256": "f759568fe5696138019e02b0deff73141cb0d3152c6ede38761ca2536e55411d",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase7b_resultado_entorno_NO_GO.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Fase7b_verificacion_kit_NO_GO.json",
+      "git_blob_sha1": "0397f98f620833ee2acb80cba22c8caf8e12fd29",
+      "sha256": "2e90ed0b5509df5b5fa86b4ee1780a7f8edd2abeca4b9fd28c79ac4e6a51c5eb",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Fase7b_verificacion_kit_NO_GO.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v4_verification.json",
+      "git_blob_sha1": "8d92675fe025234387480c7ae9eac8f5b196a03d",
+      "sha256": "87de49779c3ea4baf53d6a8de09522cd5fd96e839869767b339c4e7d4d45a791",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Balanced_SCORM12_v4_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v5_bibliography_verification.json",
+      "git_blob_sha1": "b995cb939b6362896668b47efc2bb5b712f97414",
+      "sha256": "adac040ac458537ead1d25c1feb2ef98551e7c06f16b9a2ecf89f7c2f0d31a31",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Balanced_SCORM12_v5_bibliography_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v6_glossary_verification.json",
+      "git_blob_sha1": "77f2d9846c32d96cab633841b26e2e5c6d8eb256",
+      "sha256": "9010bbb0c66a7b7dcd6994828cc8144c4b2167473006bbd78bed4f94c986ced3",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Balanced_SCORM12_v6_glossary_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_Moodle_Balanced_SCORM12_v7_routes_verification.json",
+      "git_blob_sha1": "334a71a60687183fdb9e7c52da143350d9b7b67b",
+      "sha256": "b81093823c942dfcb5efcbffa12322e1e455aa3b8772e3cd898b5033b74a0174",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Balanced_SCORM12_v7_routes_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_Moodle_Lite_SCORM12_v3_verification.json",
+      "git_blob_sha1": "dfa3cd312dedef59aa188f18d89eb5edafd47835",
+      "sha256": "48edfe2fd18772a72491515e6f21ad9d3730b791c3c8c6d04b354b7b2087efd2",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_Lite_SCORM12_v3_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_Moodle_SCORM12_candidate_verification.json",
+      "git_blob_sha1": "cfb9fea61c049057aabe7ed000d229ef953803a0",
+      "sha256": "00764b67e794fd4dee30c7dbdc65e0c45d34f13cce4591c54b46dc476495b30b",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_Moodle_SCORM12_candidate_verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P6_Cierre.json",
+      "git_blob_sha1": "1f54b7b363904b480f07f02ff0e15297b7e57bd9",
+      "sha256": "04c1222a2add999d98e6ccd39a6aac8e819a0b2fc5711d2ccc60a5e39e4d3c85",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P6_Cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P6_Independent_Verification.json",
+      "git_blob_sha1": "21ebbefeb0c6adb4c8c49fa86b91ac13c7afef3d",
+      "sha256": "a17d154416c948e9fcd256184e65e2b230d77ecd93012044421fe9e2a5c48668",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P6_Independent_Verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P7_Cierre.json",
+      "git_blob_sha1": "c389808e28eb93ceac71f22b1004b6ecdaf116b0",
+      "sha256": "213e8ad285c2767b5085e178415f88845d6fe4e0788a26e35521c5f21f75c690",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P7_Cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P7_Independent_Verification.json",
+      "git_blob_sha1": "5ff9a28f80504ab0914d63811c198a701186f7fe",
+      "sha256": "85da152c43c888482b726b3c8f65a12d4ea12f35a5c95fcddce0d6beb5b45055",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P7_Independent_Verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P8_Cierre.json",
+      "git_blob_sha1": "2242eb2db05f98d256ae95d720a670d83fd103e5",
+      "sha256": "6c78699057b8a77a91781f98b91fd566133deb5f1cbcffcbe901cd3b1597fcd7",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P8_Cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P8_Independent_Verification.json",
+      "git_blob_sha1": "fdd650dbf480f6442bbadd52d9091b3c68567745",
+      "sha256": "da5e3729abc20b765fc650ba6fd02ce0823ea5978c5c7fd1a4d8b0cfdaf7d56b",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P8_Independent_Verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P9_1_Cierre.json",
+      "git_blob_sha1": "ba87f3d9c915e36e1a68db0b6e7ed75271fa60a4",
+      "sha256": "e68a6bde96df6e27476f40ec7e1fc9edca2bfe31543c00b73622bc949d802cc1",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_1_Cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P9_1_Independent_Verification.json",
+      "git_blob_sha1": "243ef9dc1a5832dc6b0b43f1571c2ef56110ba52",
+      "sha256": "22fc57f7a35371c37818e8009edcdc2c6d09700d06c02c52ff1975aa98f4ba25",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_1_Independent_Verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P9_Cierre.json",
+      "git_blob_sha1": "0857d427a60a15761877a8acae58a50001356aed",
+      "sha256": "a4df8c661e2155c6dc19aa5007357181727ffa4815fbe23daca092ebbd0f80b6",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_Cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P9_Independent_Verification.json",
+      "git_blob_sha1": "9acb0f7b946f5f1984ef9c228d3d79e2be483146",
+      "sha256": "23a7f04d605c6a895b5982ddd6213e1f7a1d37c1b19d842ee77c3939542f5abb",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_Independent_Verification.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P9_M1_4_Cierre.json",
+      "git_blob_sha1": "6720c1333b83b0dcea96a87934786130261b3c93",
+      "sha256": "c7a8e8d049703fedd1400889df4db4b884b005731ace4c6c9c09f4edbdba6245",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_M1_4_Cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P9_M1_5_Cierre.json",
+      "git_blob_sha1": "81fae74dced906840845b65d2437c508507816b3",
+      "sha256": "230114704fdbec067c12ce6e06f99faed11c481f7fbc56abdb9a007ccf1558ce",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_M1_5_Cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Immersive_P9_M1_6_Cierre.json",
+      "git_blob_sha1": "cca94f10269b74de9f83d33172553818d6a9094d",
+      "sha256": "360798058cb7b454eb4143a2ca09c68d2fa4f00a97b18da64f51eb0cc878e06b",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/PaleoBot_Immersive_P9_M1_6_Cierre.json"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Informe_consolidado.md",
+      "git_blob_sha1": "92db72fbb5144106b22d42b211f94998557d636a",
+      "sha256": "c0a1ecfcf577e1a8687402c1446e5f41f6130152ce1507b5067be92b94ff01fa",
+      "retained_paths": [
+        "docs/auditoria/PaleoBot_Informe_consolidado.md"
+      ]
+    },
+    {
+      "source_path": "PaleoBot_Informe_consolidado_2026-10-24.docx",
+      "git_blob_sha1": "ca5607a2766d2b3356c1f79f9635e933aa0175a9",
+      "sha256": "e3832c6631db28faf8cdefac6337b4d1fb7f2961e38a59efa0565b8257c05d5d",
+      "retained_paths": [
+        "docs/PaleoBot_Informe_consolidado_2026-10-24.docx"
+      ]
+    },
+    {
+      "source_path": "README.md",
+      "git_blob_sha1": "283306878199ef35e06208e57560efe3a6c62fc8",
+      "sha256": "36193d2dc18fdf842ec2fecc2288a74cca657e012cd2dea16bf0354f5f72d5fb",
+      "retained_paths": [
+        "docs/historial/PB_GH_01/README.md"
+      ]
+    },
+    {
+      "source_path": "RECOVERY_CONSOLIDATION_R48.md",
+      "git_blob_sha1": "cea62d1b1ba66ac2e0fd444ee798aba31bf32ab5",
+      "sha256": "ee45f36971d06d0b0e24e7d04467078c5df9b495d6f8a49e0bff0b6bd1a1a845",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/RECOVERY_CONSOLIDATION_R48.md"
+      ]
+    },
+    {
+      "source_path": "RECOVERY_MOODLE_CSP_PERMISSION_MINIMIZATION_R89.md",
+      "git_blob_sha1": "d951e1b4f6c1e5c11846d0b0fca9fd3940491a3f",
+      "sha256": "a7aa886757bba4e7deff1e51d3b78f220e4c736494d0318b4538542b1f4f40aa",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/RECOVERY_MOODLE_CSP_PERMISSION_MINIMIZATION_R89.md"
+      ]
+    },
+    {
+      "source_path": "RECOVERY_MOODLE_PATH_SW_R57.md",
+      "git_blob_sha1": "5d794782f3964e91b9108db0b0ba0c2b71277a98",
+      "sha256": "f9071e39cafe08f3689a7a7fedbcb93312f2b5fe13ba5258746f15a2cf8ed984",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/RECOVERY_MOODLE_PATH_SW_R57.md"
+      ]
+    },
+    {
+      "source_path": "RECOVERY_MOODLE_STORAGE_RELEASE_SCOPE_R64.md",
+      "git_blob_sha1": "70078cf667004259908c586ac6b09ae7c86e2bf4",
+      "sha256": "ed2c2c8e8d890e51ff902e770093a539c42be57b08d012160223d7017742ae4a",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/RECOVERY_MOODLE_STORAGE_RELEASE_SCOPE_R64.md"
+      ]
+    },
+    {
+      "source_path": "RECOVERY_MOODLE_TARGET_EXECUTION_INTAKE_ADJUDICATION_R93.md",
+      "git_blob_sha1": "b3ebb94f4a27c6251d5b776029eee29bcd6c71b0",
+      "sha256": "ff6d4fd90a67571ba719300c14e12560233e73281457d2e6f8532b3d7035a6cb",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/RECOVERY_MOODLE_TARGET_EXECUTION_INTAKE_ADJUDICATION_R93.md"
+      ]
+    },
+    {
+      "source_path": "RECOVERY_REGRESSION_R12.md",
+      "git_blob_sha1": "565603a23894204a1343e4ca8d25e3f070158593",
+      "sha256": "5f4980c0fe39a105f806673e37ba76e879d5276cebf95f5a302d0c9a00ab9146",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/RECOVERY_REGRESSION_R12.md"
+      ]
+    },
+    {
+      "source_path": "RECOVERY_SHOWDETAIL_OWNERSHIP_R49.md",
+      "git_blob_sha1": "6d6848803d4be8706df541fb2b5f042d65069a50",
+      "sha256": "4a8c30dd9e458bccace3606f94810690d1972b95897f846d2244df2a8f3b4c35",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/RECOVERY_SHOWDETAIL_OWNERSHIP_R49.md"
+      ]
+    },
+    {
+      "source_path": "RECOVERY_V37_R15.md",
+      "git_blob_sha1": "13ebf3db2af13acfa9585267e09014bd542d31ed",
+      "sha256": "3417de78b89bddd4dc896f29fb5950c66797edf77aab9eaaf92d1b9561622eaf",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/RECOVERY_V37_R15.md"
+      ]
+    },
+    {
+      "source_path": "RECOVERY_V45_COVER_R38.md",
+      "git_blob_sha1": "d4d8891d3fc025cbbe485d0eb813d73a3b97e101",
+      "sha256": "546ede90889374e780c50995758de5fb8de35ec6c2d82dac66d634e92bef9be6",
+      "retained_paths": [
+        "docs/auditoria/fuentes_historicas/RECOVERY_V45_COVER_R38.md"
+      ]
+    },
+    {
+      "source_path": "RETORNO.md",
+      "git_blob_sha1": "d416305293b99dcbd2122c9136644c141f9de3f0",
+      "sha256": "570e82914728d1b9695bd3074e5ce5ab2ae38385c8eec60a18c2cbc6e160e58c",
+      "retained_paths": [
+        "docs/RETORNO.md"
+      ]
+    },
+    {
+      "source_path": "SUBIR_A_GITHUB.md",
+      "git_blob_sha1": "9bcc00fb494a2080735648edf6fee47a1dd8838a",
+      "sha256": "93f633273062a6ce1784c247a4368433faa7fa96004f4947d6fa3a925852a2f5",
+      "retained_paths": [
+        "docs/SUBIR_A_GITHUB.md",
+        "docs/historial/BASE_F09A07B/docs/SUBIR_A_GITHUB.md",
+        "docs/historial/PB_GH_01/docs/SUBIR_A_GITHUB.md"
+      ]
+    },
+    {
+      "source_path": "THIRD_PARTY_NOTICES.md",
+      "git_blob_sha1": "36a0192f8c5ee26d557f680202de48e440625c2c",
+      "sha256": "ea7c6b7471a2e4088e1c30680a84d142884d865a69e2371a8d39bec85d295136",
+      "retained_paths": [
+        "docs/historial/AF35A8E/THIRD_PARTY_NOTICES.md.snapshot"
+      ]
+    },
+    {
+      "source_path": "baselines/entrada-ligera-v9.html",
+      "git_blob_sha1": "dd20ee756782e3dbe871da7893809dbd0c1cf68a",
+      "sha256": "86e9a4b6185f734560b7f5ed6e121431cfef051ca1759558ef9c43b4b81014e5",
+      "retained_paths": [
+        "baselines/entrada-ligera-v9.html"
+      ]
+    },
+    {
+      "source_path": "build_directo_r98.py",
+      "git_blob_sha1": "65f21fa2d0b9b2fb4f6898be94fe62c63349a29f",
+      "sha256": "776a6b437874020e0c7e267f6831d350785ad3fa297de6d3c66cb2949efcf783",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/build_directo_r98.py"
+      ]
+    },
+    {
+      "source_path": "colisiones_medios.json",
+      "git_blob_sha1": "0bce24a3ed4eb81abe5a008dbe506ae9b6a74278",
+      "sha256": "fe44ecdd9d1a68e528595fe7c7aa8215cdbb419199175654c55b831afedf469f",
+      "retained_paths": [
+        "docs/auditoria/colisiones_medios.json"
+      ]
+    },
+    {
+      "source_path": "comparacion_archivos_fase7_r98.json",
+      "git_blob_sha1": "166e304af055195f793e1be461bb3589816d1173",
+      "sha256": "d8154f21533a0659fb29ef0d4d92c86a4761bccc251af937016bf9ccf26f7fe6",
+      "retained_paths": [
+        "docs/auditoria/comparacion_archivos_fase7_r98.json"
+      ]
+    },
+    {
+      "source_path": "cotejo_catalogos.json",
+      "git_blob_sha1": "7e5019747eed196f5374ffc3d518ef070141bd28",
+      "sha256": "b6923a057a856432856ba5aa33660f2006c609cd19cf789c532fac1152600410",
+      "retained_paths": [
+        "docs/auditoria/cotejo_catalogos.json"
+      ]
+    },
+    {
+      "source_path": "cotejo_db_y_catalogo.json",
+      "git_blob_sha1": "7220cfd88f525a0de0488d785738461f05858a34",
+      "sha256": "2b7f923c467adfbfa4330d79dfe627f1146438f03c0ddf787efa6cc8d20ef3ef",
+      "retained_paths": [
+        "docs/auditoria/cotejo_db_y_catalogo.json"
+      ]
+    },
+    {
+      "source_path": "css/00-core/001-style.css",
+      "git_blob_sha1": "81b11a12e084cc1f70251a695b947f03f8394644",
+      "sha256": "11d91231bc39693e8471293273a6b1a7bd5c0bebd50a481061d9f1dbb65b7352",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/001-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/002-paleobot-v34-style.css",
+      "git_blob_sha1": "2683b9749b12bd76bfd277d509e80266cfb58d36",
+      "sha256": "877983672741e1de209c0ca2079dc05eb26753e47c5566f7c4762e861f6e309f",
+      "retained_paths": [
+        "atlas/assets/css/00-core/002-paleobot-v34-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/002-paleobot-v34-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/003-style.css",
+      "git_blob_sha1": "30817276f5689bab475385ae7df0d11fc5b8d6f0",
+      "sha256": "caf27079bc0d8987495a9de496c0f74ebd2913776536e0b37ca426723ddb9ad0",
+      "retained_paths": [
+        "atlas/assets/css/00-core/003-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/003-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/004-style.css",
+      "git_blob_sha1": "48ab4f71d4e7dca22737a1dbb2cceae8f7a6fd73",
+      "sha256": "a94ded82db86dbefdd22d5d78345239e365bd5a7a0425fe6d83c871d31b07a2f",
+      "retained_paths": [
+        "atlas/assets/css/00-core/004-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/004-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/005-paleobot-v34-m11m20-style.css",
+      "git_blob_sha1": "1439d0eaed91f00d2dc62f7e3fb73d09dae1a878",
+      "sha256": "6478a9a2128a51471ff248c84bd4cfdf5ca08538a99baa170e339c853c0782e6",
+      "retained_paths": [
+        "atlas/assets/css/00-core/005-paleobot-v34-m11m20-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/005-paleobot-v34-m11m20-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/006-style.css",
+      "git_blob_sha1": "e11191a990d26db1bd476406a34d25ad46a11878",
+      "sha256": "f8c83919e18ef9150588c21838efc8e665d024873bad7dae9acadd6cd26f08c1",
+      "retained_paths": [
+        "atlas/assets/css/00-core/006-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/006-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/007-paleobot-v35-separated-design-style.css",
+      "git_blob_sha1": "75e33648880c6c7065c26df006e421436cc309d5",
+      "sha256": "05d282a0d88add42fb41abb439e6504a4d4eebecf5fb1588951921a9938521fa",
+      "retained_paths": [
+        "atlas/assets/css/00-core/007-paleobot-v35-separated-design-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/007-paleobot-v35-separated-design-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/008-paleobot-v36-workspace-redesign-style.css",
+      "git_blob_sha1": "a4f74f6ec6c275eb526001dd4e67d262a4df21b8",
+      "sha256": "5ae4f5360a9c99770d9f40d4b176f6c9f7ed034483bd31a10f3f665fb766262b",
+      "retained_paths": [
+        "atlas/assets/css/00-core/008-paleobot-v36-workspace-redesign-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/008-paleobot-v36-workspace-redesign-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/014-paleobot-v47-special-button-repair-style.css",
+      "git_blob_sha1": "b6b8e76fc27cd0759e5d6595c739b71e99e5edce",
+      "sha256": "4059b9358a95069416e7dac54fdcbd634d1571da597fdac6fc587a4a7fa20308",
+      "retained_paths": [
+        "atlas/assets/css/00-core/014-paleobot-v47-special-button-repair-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/014-paleobot-v47-special-button-repair-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/015-style.css",
+      "git_blob_sha1": "ea939b12d8795ab01151f490ad32da7293edd9d3",
+      "sha256": "6a7ff59a53dc6e89f2d4db991d2e519495d4c2e1e5c9e2111ed0c48c96ff23e3",
+      "retained_paths": [
+        "atlas/assets/css/00-core/015-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/015-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/016-paleobot-v49-map-navigation-shield-style.css",
+      "git_blob_sha1": "8c05779a209309a44c0aaa0bab1076ad2ffbae8a",
+      "sha256": "4fdfb59930e3d2c949aeb30efd884b2311d013a8ef9534e08e0ec25e44e89d26",
+      "retained_paths": [
+        "atlas/assets/css/00-core/016-paleobot-v49-map-navigation-shield-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/016-paleobot-v49-map-navigation-shield-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/017-paleobot-v50-unified-ux-style.css",
+      "git_blob_sha1": "0da98e0b4ac7239beb57062440ffae6afff7cd91",
+      "sha256": "7fc77a5f1bd3a1efd035bd5ee5d9c7e8b2383f60bec5c3f2fb4df0f4d9cb17ec",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/017-paleobot-v50-unified-ux-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/018-paleobot-v50-media-guard-style.css",
+      "git_blob_sha1": "3448604ad67f0ef78e9a854bedbe37102e0a9a09",
+      "sha256": "cb1fb39988dec382c4a2694fde20fd6495bdd7dde54b44624ae9c59c1cf5e610",
+      "retained_paths": [
+        "atlas/assets/css/00-core/018-paleobot-v50-media-guard-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/018-paleobot-v50-media-guard-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/026-style.css",
+      "git_blob_sha1": "99981d89b5673787075b9d2f8ac18cf0fb28f4b9",
+      "sha256": "ddd3a06ae9629cf8aabcbacd185a0b297f83923b18861e814f642f1468cf4704",
+      "retained_paths": [
+        "atlas/assets/css/00-core/026-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/026-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/027-paleobot-v69-mobile-control-quiz-repair-style.css",
+      "git_blob_sha1": "3e691a13872a9858113793735bddec994a1605f4",
+      "sha256": "763dbdd8d649a6e08248d1ceef212eb608caec7446aa2fa4156a67de68fd1d51",
+      "retained_paths": [
+        "atlas/assets/css/00-core/027-paleobot-v69-mobile-control-quiz-repair-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/027-paleobot-v69-mobile-control-quiz-repair-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/028-paleobot-v71-compare-picker-repair-style.css",
+      "git_blob_sha1": "b4826a9f87d84c7a4a7304c5ce2dc0fc3ee67bd4",
+      "sha256": "3edbc8479bd1340cd90fed949e0c5b202eb669013621d185e7fcb08e6929ed30",
+      "retained_paths": [
+        "atlas/assets/css/00-core/028-paleobot-v71-compare-picker-repair-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/028-paleobot-v71-compare-picker-repair-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/029-paleobot-v72-compare-clear-repair-style.css",
+      "git_blob_sha1": "238fc86077bb741f78cd0f684afed2b1014d101c",
+      "sha256": "d012f2b7bff14fb9d8255bf3fa2354adf3d5069c27896b5498720bc77e83acc3",
+      "retained_paths": [
+        "atlas/assets/css/00-core/029-paleobot-v72-compare-clear-repair-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/029-paleobot-v72-compare-clear-repair-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/030-paleobot-v73-itinerary-rubric-repair-style.css",
+      "git_blob_sha1": "0e439abaf5aefaaf006d947c28530c8870241926",
+      "sha256": "2bb3021afeb3b5d2ff9bbe489cb32f6c30a651c89164c74497154dfeab180356",
+      "retained_paths": [
+        "atlas/assets/css/00-core/030-paleobot-v73-itinerary-rubric-repair-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/030-paleobot-v73-itinerary-rubric-repair-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/031-paleobot-v74-floating-a11y-repair-style.css",
+      "git_blob_sha1": "cda13b1c89b7e7e1c55565fc2221e12074a99647",
+      "sha256": "aa368197ab3739aa50bb78a593bbcf29ab74541998e198c556ba9eb1a0531a7a",
+      "retained_paths": [
+        "atlas/assets/css/00-core/031-paleobot-v74-floating-a11y-repair-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/031-paleobot-v74-floating-a11y-repair-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/033-paleobot-v77-search-guard-style.css",
+      "git_blob_sha1": "6af7cb398463102aaf2d8c251264364c0ed88660",
+      "sha256": "06f7713ffc88856821fdf7e7989fb72dfc33e6334153dc53737b7180100424c7",
+      "retained_paths": [
+        "atlas/assets/css/00-core/033-paleobot-v77-search-guard-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/033-paleobot-v77-search-guard-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/034-paleobot-v78-africa-question-actions-style.css",
+      "git_blob_sha1": "1762ec85d43befd64432c97b12ffcc005efc91a7",
+      "sha256": "e84dc9c364397fa83e6c4b59dbcc4f774f51de9cdfa91281f9aeef59808ee57c",
+      "retained_paths": [
+        "atlas/assets/css/00-core/034-paleobot-v78-africa-question-actions-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/034-paleobot-v78-africa-question-actions-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/036c-paleobot-v80-map-lens-image-repair.css",
+      "git_blob_sha1": "6582080b39d8a66a1c1e1241f246fdb31f4c0f20",
+      "sha256": "88d898abb7c6500b61a64be156b130a000cbdccaa2e6e9c96adb0a1ea95800e7",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/036c-paleobot-v80-map-lens-image-repair.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/037-paleobot-v81-map-and-species-media-repair-style.css",
+      "git_blob_sha1": "573355ed9b834c3ea258cf038ca76a6c01a39af9",
+      "sha256": "667acf98ca68d31009dad54fb6c0c5c8e7d35a3a4449f8e865e9463b7db86411",
+      "retained_paths": [
+        "atlas/assets/css/00-core/037-paleobot-v81-map-and-species-media-repair-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/037-paleobot-v81-map-and-species-media-repair-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/038-paleobot-v82-fauna-rigor-and-layout-style.css",
+      "git_blob_sha1": "7a9a612725c9af71513029e34911c84636281627",
+      "sha256": "f37507fbc0018eca87f6e15370c44984dadca9db9fa6150cb9f171959541310a",
+      "retained_paths": [
+        "atlas/assets/css/00-core/038-paleobot-v82-fauna-rigor-and-layout-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/038-paleobot-v82-fauna-rigor-and-layout-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/039-paleobot-v83-search-sa-final-repair-style.css",
+      "git_blob_sha1": "456dfc63441c2b7ffd190319c3c7c7fe4b7cde09",
+      "sha256": "6dad2043fd2be3a23d6d4af2b9b71992dc6fea9014bbabc1f34138569456ae59",
+      "retained_paths": [
+        "atlas/assets/css/00-core/039-paleobot-v83-search-sa-final-repair-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/039-paleobot-v83-search-sa-final-repair-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/040-paleobot-v84-deep-audit-cleanup-style.css",
+      "git_blob_sha1": "a5227d80cfe200d8d3884c86df4388f643d64935",
+      "sha256": "4d5001a1f5efea6f961e3b32a896feb6253b5aad5c8fa9ddd36751cd960e442d",
+      "retained_paths": [
+        "atlas/assets/css/00-core/040-paleobot-v84-deep-audit-cleanup-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/040-paleobot-v84-deep-audit-cleanup-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/041-paleobot-v85-speed-guard-style.css",
+      "git_blob_sha1": "267c0a4a677d4b1d42088c40b2c68f9bec56fe9a",
+      "sha256": "ad3ab4d5e52c09a19cc748c958f54d73c16fd81a1f64511c589947226833ab5d",
+      "retained_paths": [
+        "atlas/assets/css/00-core/041-paleobot-v85-speed-guard-style.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/041-paleobot-v85-speed-guard-style.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/042-paleobot-r67-externalized-runtime-styles.css",
+      "git_blob_sha1": "6c52085385fa761b1f96cc17f10e11940ea20410",
+      "sha256": "44a2c481e0e7aafcf606d2de9b2bf530de9cedffeaac7770ae6b2a3a14214eeb",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/042-paleobot-r67-externalized-runtime-styles.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/043-paleobot-r69-low-risk-style-state.css",
+      "git_blob_sha1": "8e4572a4a00c7ea1667d9b2e3530f7ac2b2b68d1",
+      "sha256": "96232adb211e1c04c4eab83748fa9a9b2be4c7076afadc7d64ed4c7bc9183e9c",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/043-paleobot-r69-low-risk-style-state.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/044-paleobot-r70-generated-static-styles.css",
+      "git_blob_sha1": "029c8fa1e06ef7fbb790ee725b647cd4ff01e374",
+      "sha256": "46e8ee67dc7d8c39375424c92b989bf192d231b0f09b44d54506cb0670d6f8cf",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/044-paleobot-r70-generated-static-styles.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/045-paleobot-r71-dynamic-style-registry.css",
+      "git_blob_sha1": "61b394be83ea610adf4588e20a544518f2d29f9f",
+      "sha256": "e2a8615375e429b794c23962c371be49b502f4d3398bc218f85a450826c84b20",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/045-paleobot-r71-dynamic-style-registry.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/046-paleobot-r74-finite-runtime-states.css",
+      "git_blob_sha1": "fd3f438fa8b4306a55be75cc5ac4286db4202aac",
+      "sha256": "325e130810bbbe4dcb7e27e4e9dff7294bdd5e3744876431c8642a426271f4c6",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/046-paleobot-r74-finite-runtime-states.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/047-paleobot-r75-dynamic-token-states.css",
+      "git_blob_sha1": "ce650df29cbb38dbb7723093c694d315a3a80ecd",
+      "sha256": "9ce27b3ee464f6356a345df9a27d16cc3705a7c1710266c4a2a47e7472102394",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/047-paleobot-r75-dynamic-token-states.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/048-paleobot-r76-media-runtime-contract.css",
+      "git_blob_sha1": "394d028941bbfdcccdd90cfeaf2422811b8298c3",
+      "sha256": "591556312dc800602845a5b99adcb031c658b733bf5d7114cb8f705f968da16d",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/048-paleobot-r76-media-runtime-contract.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/049-paleobot-r77-accessibility-state-contract.css",
+      "git_blob_sha1": "677f1e08f07489e153710bf2b4269049f18af0d6",
+      "sha256": "0c5fa83a7f3de767466c6b22201d808114afb0753813ecceeb8f83fb9578b84e",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/049-paleobot-r77-accessibility-state-contract.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/050-paleobot-r78-animation-progress-contract.css",
+      "git_blob_sha1": "6f88abd58ec27ee689001acb39279d3556587034",
+      "sha256": "3cfd056dd646495ae7cd12c610c097f034606b0380b7eed3da7597026433d4bc",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/050-paleobot-r78-animation-progress-contract.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/051-paleobot-r79-indirect-style-states.css",
+      "git_blob_sha1": "02c2cab09ec2f02b77a5df94c0585ef7c9f8467e",
+      "sha256": "dac3ac39fc6c89c7bb11793ffc0c2bc24cc3857d8c77a28192989da69997bdfa",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/051-paleobot-r79-indirect-style-states.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/052-paleobot-r81-geometry-registry.css",
+      "git_blob_sha1": "da9f1c7e4778c54f885ca6eb40dfac517fd3129a",
+      "sha256": "dec0d154eaa2c2cd92bb30a9c7ea146e0945ac28835dc2d3b8c431fc1e74c76b",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/052-paleobot-r81-geometry-registry.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/053-paleobot-r92-mobile-focus-clearance.css",
+      "git_blob_sha1": "625203469d762577edbb2b7f049fb61db30f12a5",
+      "sha256": "b899fb5673f21f7254713bfbbf60a8d7f809feace9496109db94724047d5a698",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/053-paleobot-r92-mobile-focus-clearance.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/056-paleobot-r93-diagnostic-panel.css",
+      "git_blob_sha1": "460763dc92c70ee4bcca342148bd11f8da0f065a",
+      "sha256": "082f5b4a53e84b72003e6d3adca05be479910941e50f07729fdc8985edf163f2",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/056-paleobot-r93-diagnostic-panel.css"
+      ]
+    },
+    {
+      "source_path": "css/00-core/057-paleobot-r94-boot-fallback.css",
+      "git_blob_sha1": "bf67c0b61bd05ab976d8299ee17fe620033773a8",
+      "sha256": "972669f00371bf71d1df446982569d599e9501e799b41508920c3f406cf3ff92",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/00-core/057-paleobot-r94-boot-fallback.css"
+      ]
+    },
+    {
+      "source_path": "css/10-legacy-ui/020-paleobot-v56-readable-ui.css",
+      "git_blob_sha1": "ed3809b1dd13d9496e07224adf4859143b4f204e",
+      "sha256": "35494b87ea471b351bc20d785cfd8011627bb3756d21223502f82dd02ce2a074",
+      "retained_paths": [
+        "atlas/assets/css/10-legacy-ui/020-paleobot-v56-readable-ui.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/10-legacy-ui/020-paleobot-v56-readable-ui.css"
+      ]
+    },
+    {
+      "source_path": "css/10-legacy-ui/035-pb-v65-mobile-fab-clearance.css",
+      "git_blob_sha1": "b5d0bd79767731bb7cc5b12fd66b88581669eb71",
+      "sha256": "622b88c81a20f26fd857eb94657e988ac9b3c2846f8d7510c3f4fed411d05909",
+      "retained_paths": [
+        "atlas/assets/css/10-legacy-ui/035-pb-v65-mobile-fab-clearance.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/10-legacy-ui/035-pb-v65-mobile-fab-clearance.css"
+      ]
+    },
+    {
+      "source_path": "css/20-navigation/013-paleobot-v45-cover-redesign.css",
+      "git_blob_sha1": "c9c19cf61b00bdf7fb99beca45c2213e2a78692f",
+      "sha256": "53bcd5f3bc4aeb84445e244690aefab6a9f0449ff7a4415c4e03bcd8c450480b",
+      "retained_paths": [
+        "atlas/assets/css/20-navigation/013-paleobot-v45-cover-redesign.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/20-navigation/013-paleobot-v45-cover-redesign.css"
+      ]
+    },
+    {
+      "source_path": "css/20-navigation/021-paleobot-v57-block-cover-redesign.css",
+      "git_blob_sha1": "d93e9c07e277b73bf6f6681972451478944f431c",
+      "sha256": "bd1b31cf4bf620681c3f9db70bd72ee57392e81f6813df892d5aa926473525b6",
+      "retained_paths": [
+        "atlas/assets/css/20-navigation/021-paleobot-v57-block-cover-redesign.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/20-navigation/021-paleobot-v57-block-cover-redesign.css"
+      ]
+    },
+    {
+      "source_path": "css/60-science/036a-paleobot-v66-fauna.css",
+      "git_blob_sha1": "d6911e1d1e61c96b666e00bf8a991992ca41de92",
+      "sha256": "7367bedd9e7326ab67148ae33d960380c4fc3a3ca5a4021668058c33474385a0",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/60-science/036a-paleobot-v66-fauna.css"
+      ]
+    },
+    {
+      "source_path": "css/60-science/036b-paleobot-v66-cranial-norma.css",
+      "git_blob_sha1": "1ff3f7c165ae6c33209d0ae4cb28db81aa347fc9",
+      "sha256": "2dc84c6671aa47e355697b17350261c774a5d2a7844fe95148f3c95b600e128d",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/60-science/036b-paleobot-v66-cranial-norma.css"
+      ]
+    },
+    {
+      "source_path": "css/60-science/053-paleobot-a3-scientific-workspace.css",
+      "git_blob_sha1": "5c2b85567f107863fd3822575a7352c87a655d85",
+      "sha256": "5ea394e14fbc7bcbaafeeac3466ac4183d73f1cf52277899cc72dff6dc86fe41",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/60-science/053-paleobot-a3-scientific-workspace.css"
+      ]
+    },
+    {
+      "source_path": "css/60-science/054-paleobot-a3-launcher.css",
+      "git_blob_sha1": "0b431dad80fdce5919324b0033a3663b3c1bb364",
+      "sha256": "8181e27a8c362fbaeabf5a96672fd30d1e7139c78f3312bff7ea9babea024cc1",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/60-science/054-paleobot-a3-launcher.css"
+      ]
+    },
+    {
+      "source_path": "css/60-science/055-paleobot-a3-critical-consumers.css",
+      "git_blob_sha1": "328687ca995c90b66a7b18946bd1b437f83da83c",
+      "sha256": "152c8d469152c2718908b34d943220608f24638cda54167f9cce43ffb7cc2f0c",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/60-science/055-paleobot-a3-critical-consumers.css"
+      ]
+    },
+    {
+      "source_path": "css/80-features/009-paleobot-v41-layout-repair.css",
+      "git_blob_sha1": "1ef9ceb89e49aa1bb4c81b169eeecf850e930b5c",
+      "sha256": "be216f615b379e8a22e49d67f0aac95ebe35cba6cebc80170fa588eec77ebcd8",
+      "retained_paths": [
+        "atlas/assets/css/80-features/009-paleobot-v41-layout-repair.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/80-features/009-paleobot-v41-layout-repair.css"
+      ]
+    },
+    {
+      "source_path": "css/80-features/010-paleobot-v42-detail-view-repair.css",
+      "git_blob_sha1": "4cbb2f4d9cc462719d129bea7a5f65099fc8c5aa",
+      "sha256": "b1f644490a842193295812b6cee602c547ede019172614e839ad5895abf1694e",
+      "retained_paths": [
+        "atlas/assets/css/80-features/010-paleobot-v42-detail-view-repair.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/80-features/010-paleobot-v42-detail-view-repair.css"
+      ]
+    },
+    {
+      "source_path": "css/80-features/011-paleobot-v43-detail-tabs-repair.css",
+      "git_blob_sha1": "3ce80b369756f361f3d5fed383b4493b48b9a755",
+      "sha256": "cb8b9260984cfd28d9c1ace9201c2064dc2db8e98ed490ffd5ad7cd11565faa1",
+      "retained_paths": [
+        "atlas/assets/css/80-features/011-paleobot-v43-detail-tabs-repair.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/80-features/011-paleobot-v43-detail-tabs-repair.css"
+      ]
+    },
+    {
+      "source_path": "css/80-features/012-paleobot-v44-presentation-controls-repair.css",
+      "git_blob_sha1": "580bd8d5aa2538a5462ebb166d81fccef4348478",
+      "sha256": "19ec53954380a2b25459df8e51dfeff1799bd36404f390716e9ca8e4bccc9d6f",
+      "retained_paths": [
+        "atlas/assets/css/80-features/012-paleobot-v44-presentation-controls-repair.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/80-features/012-paleobot-v44-presentation-controls-repair.css"
+      ]
+    },
+    {
+      "source_path": "css/80-features/019-paleobot-v53-floating-menu-restore.css",
+      "git_blob_sha1": "b3f7eb784529394363fa054a9e470be2fc12aaae",
+      "sha256": "16a29dda2015e79890557245a9f7a90c42365d269801960613852adf1884b153",
+      "retained_paths": [
+        "atlas/assets/css/80-features/019-paleobot-v53-floating-menu-restore.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/80-features/019-paleobot-v53-floating-menu-restore.css"
+      ]
+    },
+    {
+      "source_path": "css/80-features/022-paleobot-v62-readability-and-layout-fix.css",
+      "git_blob_sha1": "fa8b1014c7b7b3fb462c53f20d2d7f8f4890cd89",
+      "sha256": "f858c2de1b7058e3c812d5456349e6d36334a5b889ea274202778c144a0a7fdf",
+      "retained_paths": [
+        "atlas/assets/css/80-features/022-paleobot-v62-readability-and-layout-fix.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/80-features/022-paleobot-v62-readability-and-layout-fix.css"
+      ]
+    },
+    {
+      "source_path": "css/80-features/023-paleobot-v64-real-image-visuals.css",
+      "git_blob_sha1": "9e69ecdb1914dc51f14c849b2229f0a22e8bcbc3",
+      "sha256": "39363e414d98458fdeafa2ed6521ab53f906cdaee3ef3757c29d15964a171635",
+      "retained_paths": [
+        "atlas/assets/css/80-features/023-paleobot-v64-real-image-visuals.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/80-features/023-paleobot-v64-real-image-visuals.css"
+      ]
+    },
+    {
+      "source_path": "css/80-features/025-paleobot-v55-css.css",
+      "git_blob_sha1": "915bd07c955e054f3a11e485ea2a2cf4fe1371dd",
+      "sha256": "7591757acae2308e8d45bec73b3c1aa2d9ae6e67f949c76950a9f2de419cb874",
+      "retained_paths": [
+        "atlas/assets/css/80-features/025-paleobot-v55-css.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/80-features/025-paleobot-v55-css.css"
+      ]
+    },
+    {
+      "source_path": "css/80-features/032-paleobot-v76-readability-guard.css",
+      "git_blob_sha1": "1bfeb4ea2fc43e1c2d481952cabec5637b3051f5",
+      "sha256": "547addb8a617173d9e593a3f29d4b97ff8e513ff020af41b64f58244d7274855",
+      "retained_paths": [
+        "atlas/assets/css/80-features/032-paleobot-v76-readability-guard.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/80-features/032-paleobot-v76-readability-guard.css"
+      ]
+    },
+    {
+      "source_path": "css/90-guards/024-paleobot-v65-hero-readability-routing-fix.css",
+      "git_blob_sha1": "21adf3f91cb948b2a90a1d1ee02590157411e573",
+      "sha256": "60e5c9a66c5ad2ec1b40b5af78cd484f4216214300826f136e291d7240c6801c",
+      "retained_paths": [
+        "atlas/assets/css/90-guards/024-paleobot-v65-hero-readability-routing-fix.css",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/css/90-guards/024-paleobot-v65-hero-readability-routing-fix.css"
+      ]
+    },
+    {
+      "source_path": "decisiones/0001-estructura-y-estado.md",
+      "git_blob_sha1": "dd18338720ae01fb37f8b3d516e1fb6234dc46a0",
+      "sha256": "0279e8a5acb43e25c5a3e3d6d2af355c595a218c8c6c814cbe5ac938c306ac09",
+      "retained_paths": [
+        "docs/decisiones/0001-estructura-y-estado.md"
+      ]
+    },
+    {
+      "source_path": "decisiones/0002-procedencia-y-portabilidad.md",
+      "git_blob_sha1": "acf09e6ede89cbf56127bbed9b5e07a47817e746",
+      "sha256": "e2ce1ab60ab15f5126c75e6f0a9664fd39cda409ad019cdb7d604bf1895da748",
+      "retained_paths": [
+        "docs/decisiones/0002-procedencia-y-portabilidad.md"
+      ]
+    },
+    {
+      "source_path": "decisiones/0003-integridad-de-build.md",
+      "git_blob_sha1": "da517816eabb5f8ec26d889cbe2839ea262dc7a6",
+      "sha256": "861a4aa448874ceb1c18bec5d239dfc54ccf49181ad6290464a9453726a7473e",
+      "retained_paths": [
+        "docs/decisiones/0003-integridad-de-build.md"
+      ]
+    },
+    {
+      "source_path": "decisiones/0004-ci-no-es-release.md",
+      "git_blob_sha1": "7ca702a2930123d7f193052a53e5ba62d9d6c91b",
+      "sha256": "442b76b0a6daf49005307cc41ba8ccb41fd7ab3bcad329cf985dbbfc69408059",
+      "retained_paths": [
+        "docs/decisiones/0004-ci-no-es-release.md"
+      ]
+    },
+    {
+      "source_path": "diferencias_catalogo_fase7_r98.json",
+      "git_blob_sha1": "fb6dedbf0afce399b800a4b9720c20b7aaa93a28",
+      "sha256": "441740b794e758bcfc1a4b1e9c15ca9ecb7cdbab983e0445b3a96fde22f02c90",
+      "retained_paths": [
+        "docs/auditoria/diferencias_catalogo_fase7_r98.json"
+      ]
+    },
+    {
+      "source_path": "entrada-ligera-v9.html",
+      "git_blob_sha1": "dd20ee756782e3dbe871da7893809dbd0c1cf68a",
+      "sha256": "86e9a4b6185f734560b7f5ed6e121431cfef051ca1759558ef9c43b4b81014e5",
+      "retained_paths": [
+        "baselines/entrada-ligera-v9.html"
+      ]
+    },
+    {
+      "source_path": "estructura_html_actual.json",
+      "git_blob_sha1": "4cd60e8a93604b0c1b809d19f200bdeeb5ebcc66",
+      "sha256": "95028ec3c20ccbce95e493ca316ad38c5e8c20ce1e7fa4dca09a9546b246c03e",
+      "retained_paths": [
+        "docs/auditoria/estructura_html_actual.json"
+      ]
+    },
+    {
+      "source_path": "fuentes_externas.json",
+      "git_blob_sha1": "96894e2672ac1f67fb5076c5cd9abfe71347cd1d",
+      "sha256": "0ab495d778c98842b32f329c4ae8b0ecdff0085b3bfd14f38123222ef6ef5af6",
+      "retained_paths": [
+        "docs/auditoria/fuentes_externas.json"
+      ]
+    },
+    {
+      "source_path": "genealogia_paquetes.json",
+      "git_blob_sha1": "c50280ccef360a98c131ef87b793dc6375fb8778",
+      "sha256": "07faf0866681bb6235d295d880d9ab2bcb4a7bd1e641ffe0e3ff7d8871767df7",
+      "retained_paths": [
+        "docs/auditoria/genealogia_paquetes.json"
+      ]
+    },
+    {
+      "source_path": "image_audit.json",
+      "git_blob_sha1": "58b0a047411870a9116bf12bc5c9a8e50c2f8100",
+      "sha256": "88b8221759091768e650c2990540ed59532a85368abb5de702293c02ba4ce6fc",
+      "retained_paths": [
+        "docs/auditoria/evidencias_codigo/image_audit.json",
+        "experimental/atlas-r98/fuentes/PaleoBot_Moodle_Entrada_Ligera_v11_NO_GO/image_audit.json",
+        "src/entrada_ligera/image_audit.json"
+      ]
+    },
+    {
+      "source_path": "img/manifest.js",
+      "git_blob_sha1": "ea70fa62d995655dddf8cfc58f074af7b9c19543",
+      "sha256": "cb115c0087e72b8fa20e1079e5a409c8101b270d02789a3ce5f8c3b20be34790",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/img/manifest.js"
+      ]
+    },
+    {
+      "source_path": "index.html",
+      "git_blob_sha1": "816bd230962121246a24e15be12919121653f430",
+      "sha256": "c82a5e1dd1479d002e5c77deae85c8e498ac40b43b6b8579357d2128fdfc1d38",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/index.html"
+      ]
+    },
+    {
+      "source_path": "integridad_archivos_zip.json",
+      "git_blob_sha1": "446f2b0adeea233ab845decbde1cbb78ff573424",
+      "sha256": "c81b8ebf962beae748430a8bd76be4a95c4a34c4ceadd6714f38967c00e2799e",
+      "retained_paths": [
+        "docs/auditoria/integridad_archivos_zip.json"
+      ]
+    },
+    {
+      "source_path": "inventario_artefactos.csv",
+      "git_blob_sha1": "2c5ad99e8d6c862e14b46d60ff12b002ddaf1292",
+      "sha256": "fd006cfbe1fb212ae86011a0db8dd53b5ec5db5f3cfd2c6f8922b69781832e2c",
+      "retained_paths": [
+        "docs/auditoria/inventario_artefactos.csv"
+      ]
+    },
+    {
+      "source_path": "inventario_artefactos.json",
+      "git_blob_sha1": "cbd85327462df759d52548e9d9c03178cd84f53a",
+      "sha256": "35767dd70a76592c6fb4ef66274fabab68ef4b085ee7b51c26aa4d9c8429ef30",
+      "retained_paths": [
+        "docs/auditoria/inventario_artefactos.json"
+      ]
+    },
+    {
+      "source_path": "js/00-core/000-paleobot-r98-local-images.js",
+      "git_blob_sha1": "719b0ea21dfb50dd88efd42fbc2b04e98fa69ae1",
+      "sha256": "1ee9c7ddbffc4605b7026ebdb470c814bfe10e3698254120cda2a8247e316e19",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/000-paleobot-r98-local-images.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/001-paleobot-v63-error-capture.js",
+      "git_blob_sha1": "958e4200e55b42b40a35549145d43196d200d423",
+      "sha256": "ee0caeb16fd96118541f5d90a3d3cd9ebc99a44401c0719c5cfff96e3c66e4c4",
+      "retained_paths": [
+        "atlas/assets/js/00-core/001-paleobot-v63-error-capture.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/001-paleobot-v63-error-capture.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/002-script.js",
+      "git_blob_sha1": "b8773197abfffad58c38618ea091d591a746a868",
+      "sha256": "233d89d7d6061fbc049cae3cbdfe5824f4cd6ce8dbb762235a2df0b41ce5c2c5",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/002-script.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/003-script.js",
+      "git_blob_sha1": "0dbb386ae77132ad02a0a43a72cd74d57e255768",
+      "sha256": "a3bf6e38a5a62609bddf53b44761ac2efdcda962c340a37c1dec27a218efb1d0",
+      "retained_paths": [
+        "atlas/assets/js/00-core/003-script.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/003-script.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/004-script.js",
+      "git_blob_sha1": "83460ce0bc1e538d17b5ca38a17d755164c8c73f",
+      "sha256": "8e2cf283c88dabf281b458597f7409ab779ff2b261f6e1aeb56e5d12ac999666",
+      "retained_paths": [
+        "atlas/assets/js/00-core/004-script.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/004-script.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/005-script.js",
+      "git_blob_sha1": "b690a61a8cec602373d9fa13ca2a2e0a52dabef8",
+      "sha256": "25ea449aecadc0ec8d52e1f79bc1d655aef7be1a24e6c1a482857908c70ff06d",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/005-script.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/006-script.js",
+      "git_blob_sha1": "2225ab30fc7d0de7133cfc89e7c5d11ac4fd2177",
+      "sha256": "74de21c552837b67f7be72d623a6dc88de8c93f6529df6967cf4ec2d45f95234",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/006-script.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/071-paleobot-v69-lazy-loader.js",
+      "git_blob_sha1": "1b15cb16f4627b22ea3446000375b085c0103b9e",
+      "sha256": "f4bd7a3cdd972932a5f897794770f0632b6075753f0a925b34920a450eaee627",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/071-paleobot-v69-lazy-loader.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/072-paleobot-public-api-shadow.js",
+      "git_blob_sha1": "537a0176254fae0afcaddfdd05a53fd985243123",
+      "sha256": "2a14b346e3766c36e87c16cd5cf4415739d0e654c5fe32c834afcbd8d407345a",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/072-paleobot-public-api-shadow.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/073-paleobot-storage-adapter.js",
+      "git_blob_sha1": "1d1541f6589aa4c22f0305b4fde93dbae13ac160",
+      "sha256": "c5d0df22581508a8968f79787eec30063f29db9f7651163a0bfa62a9d08bf29a",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/073-paleobot-storage-adapter.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/074-paleobot-storage-scope.js",
+      "git_blob_sha1": "25c182b0e116ea3c603e6ea3c2b1856637a4f8fa",
+      "sha256": "d4819f99eab8eda2d8b80265bf4959790b78a8dbeca7bbb0f7c1e3714eeedbb3",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/074-paleobot-storage-scope.js"
+      ]
+    },
+    {
+      "source_path": "js/00-core/081-paleobot-r93-diagnostic-panel.js",
+      "git_blob_sha1": "54e79bc8d07e82bce844a6dfadea38b335be4d73",
+      "sha256": "035e6b65c73a9ded6854b257b1c8ba330359ad59fbe861f412d900b41e8b6a5d",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/00-core/081-paleobot-r93-diagnostic-panel.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/007-paleobot-v34-layer.js",
+      "git_blob_sha1": "e93e856da73cdeb6a1c533b4e63fd853224b969b",
+      "sha256": "162dbf7a85f24e98659147e3b3930a3470756194287407bf6cb144aae3809ef9",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/007-paleobot-v34-layer.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js",
+      "git_blob_sha1": "d2ae4796fd54d1a955aa663d6c96429b4e14c838",
+      "sha256": "9080742d02c928580346a2d20bd0fbbbedd604c1572a6b1917769b4d746c7ea3",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/009-paleobot-v35-separated-design-layer.js",
+      "git_blob_sha1": "01a5c045c2f88cec4467fcfd491b738200aa0d78",
+      "sha256": "9ae69488dbadf4f3bfc9de0ed80c31056763d9b3e7985625a323564ec7591766",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/009-paleobot-v35-separated-design-layer.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/010-paleobot-v36-workspace-redesign-layer.js",
+      "git_blob_sha1": "996b74fe27b4efcf80bc59469e00916ebeeeba28",
+      "sha256": "500ebeb68501d3f86cc6398bc788cb5c3509e550ba05e5b7c47a4355d6505d34",
+      "retained_paths": [
+        "atlas/assets/js/10-legacy-ui/010-paleobot-v36-workspace-redesign-layer.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/010-paleobot-v36-workspace-redesign-layer.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/011-paleobot-v37-control-bus.js",
+      "git_blob_sha1": "70194f934b09c178badecd8e772d0b9ab0501a76",
+      "sha256": "5401acc12ca656762fc9857c4153664868091d2e5e60b02f728aadcdb23579df",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/011-paleobot-v37-control-bus.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/012-paleobot-v38-bibliography-controls.js",
+      "git_blob_sha1": "007433cde2e41e3970541058facaebad7c226f47",
+      "sha256": "36d68fc543912c701840502573be7ddeb09b08c0937415a4d5aa155a702eedba",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/012-paleobot-v38-bibliography-controls.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/013-paleobot-v39-doi-links.js",
+      "git_blob_sha1": "6878e72882a0874f94aa3cd7e48d8b00186a6ed7",
+      "sha256": "043651e442342ed6a775486b4a2a88c571132af746949b8ecec4158686866da5",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/013-paleobot-v39-doi-links.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/014-paleobot-v40-species-open-bus.js",
+      "git_blob_sha1": "5d326c0bd4b17ea774924df93efd5be712a355d7",
+      "sha256": "c4e8f48b64c46cf1d84be477b70be248cf5ecc013bb3b019961af79ac8114fda",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/014-paleobot-v40-species-open-bus.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js",
+      "git_blob_sha1": "895aa99e7d0c55831bddfa92512f75edd20e7363",
+      "sha256": "b7479421378ae2e5dd21ed9b9a90293160d307202ad287609ed0287cb462f0b0",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/031-paleobot-v59-block-panel-sync.js",
+      "git_blob_sha1": "d88e3acefc33843eec01eba60a029faea18df7a2",
+      "sha256": "a3533a804783afbf897c8d2012d0c28b385357298e003d8e4b88e13e14d15a1a",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/031-paleobot-v59-block-panel-sync.js"
+      ]
+    },
+    {
+      "source_path": "js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js",
+      "git_blob_sha1": "9b97653a1b294592782ab8f6d096316893e892b8",
+      "sha256": "2f20089deeea0cecb2ab85832849d5e4f05a15def80d8098a4c05461a2813b17",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js"
+      ]
+    },
+    {
+      "source_path": "js/20-navigation/016-paleobot-v42-detail-view-guard.js",
+      "git_blob_sha1": "8724ab04855fb6e9aeabb4494c0f2b4029428afa",
+      "sha256": "45165f25430423b5f48f807bcd9b904d56f2bbd82a20135488781c3004a811bc",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js"
+      ]
+    },
+    {
+      "source_path": "js/20-navigation/023-paleobot-v49-map-navigation-shield.js",
+      "git_blob_sha1": "e106484c73737ca0d3a435a94f7c6fe9e1d09238",
+      "sha256": "feaa0e0bab935a1bd4f1a58be4cdf1c7d4cd91074d3e4d14f00e36573d7b4088",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/20-navigation/023-paleobot-v49-map-navigation-shield.js"
+      ]
+    },
+    {
+      "source_path": "js/20-navigation/026-paleobot-v51-navigation-audit-guard.js",
+      "git_blob_sha1": "3498ed43ef08bd256ac8af902b8aa49c26c4f99b",
+      "sha256": "ae66f92d72d9c835511c37d081c8dbbd678f6f21f3155f566416add862ced61a",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/20-navigation/026-paleobot-v51-navigation-audit-guard.js"
+      ]
+    },
+    {
+      "source_path": "js/20-navigation/028-paleobot-v55-functional-router.js",
+      "git_blob_sha1": "7ee62ac8638eff7a8260d2ba4e46e6b0fa618c3f",
+      "sha256": "57421a92b61f9afb4b6cd5107d7cf254a60dcceb78c7ecfb9bf86306cebe79e0",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/20-navigation/028-paleobot-v55-functional-router.js"
+      ]
+    },
+    {
+      "source_path": "js/20-navigation/037-paleobot-v55-nav.js",
+      "git_blob_sha1": "a3a1c317a2087bced532f4e34a1f1747c119ffdb",
+      "sha256": "f0cfcef60f4ce843eba22af9513bf1e78c1a60610ce4a40008ce9ff42e45937f",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/20-navigation/037-paleobot-v55-nav.js"
+      ]
+    },
+    {
+      "source_path": "js/20-navigation/039-paleobot-canonical-nav-v58.js",
+      "git_blob_sha1": "7caf0b22018996200e2a11356e81c63dd0ea516a",
+      "sha256": "f0132726ac527d76a1670da566eb856d7bb7ec7c79dda038e54a436b8e303a29",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/20-navigation/039-paleobot-canonical-nav-v58.js"
+      ]
+    },
+    {
+      "source_path": "js/20-navigation/047-paleobot-v67-modal-state-reconciler.js",
+      "git_blob_sha1": "458424f24b4e928c4e3ae68eb4ee515186b86094",
+      "sha256": "0317a87af0d6932254969e8b082f135aee1235eb6b5e0fb8598691ceb431aea3",
+      "retained_paths": [
+        "atlas/assets/js/20-navigation/047-paleobot-v67-modal-state-reconciler.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/20-navigation/047-paleobot-v67-modal-state-reconciler.js"
+      ]
+    },
+    {
+      "source_path": "js/20-navigation/048-paleobot-v68-interaction-stabilizer.js",
+      "git_blob_sha1": "6eb728228b40a1702288258cd8e87ff3222e2714",
+      "sha256": "da1d0ef512a4320200382a26028599d3dedd89a96c8b7ea50ca9ef2f0fd10774",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/20-navigation/048-paleobot-v68-interaction-stabilizer.js"
+      ]
+    },
+    {
+      "source_path": "js/30-search/029-paleobot-v58-biblio-filter-contrast.js",
+      "git_blob_sha1": "40f5a6c9bd1225f8ea68cba8c9bbfa6e1fbbd3db",
+      "sha256": "b921ffd7200dfcc1b99eeb921cacd9064c7d0cb001a4ec284ba6cab6bdb5f8be",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/30-search/029-paleobot-v58-biblio-filter-contrast.js"
+      ]
+    },
+    {
+      "source_path": "js/30-search/068-paleobot-v83-search-sa-final-repair.js",
+      "git_blob_sha1": "794f75ad619f88dbe77ea3ce79c12286c64c8585",
+      "sha256": "c8c1e8d0528dd0340494f6c1ef989ad1fc438e2124d9543d60daa175de8f6416",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/30-search/068-paleobot-v83-search-sa-final-repair.js"
+      ]
+    },
+    {
+      "source_path": "js/30-search/069-paleobot-v86-global-search-final.js",
+      "git_blob_sha1": "5f5386659befeeed180e0e3755e6175e05607fae",
+      "sha256": "98fdfe09b6508ef4f6cbd7225666d41a7c1877462d531efedd3f3d858ac6d515",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/30-search/069-paleobot-v86-global-search-final.js"
+      ]
+    },
+    {
+      "source_path": "js/40-media/022-paleobot-v48-map-controls-repair.js",
+      "git_blob_sha1": "04141a7a54cc7cefb9932b80526369419b309b7c",
+      "sha256": "450c409fa5ad4c6a920eda26891bd36da3c0212408a7a32b423238d8c3928905",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/40-media/022-paleobot-v48-map-controls-repair.js"
+      ]
+    },
+    {
+      "source_path": "js/40-media/025-paleobot-v50-media-guard.js",
+      "git_blob_sha1": "7b3d0b396bdb975cc7d83208bd2821cd2659abfb",
+      "sha256": "57ca6ecbac06c1a461663eb9512f9fa4aa358fbce807cb534109394c296c705c",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/40-media/025-paleobot-v50-media-guard.js"
+      ]
+    },
+    {
+      "source_path": "js/40-media/033-paleobot-v61-image-fallbacks.js",
+      "git_blob_sha1": "3f1d716918dc2165c3f62a6f95b53618d986e59e",
+      "sha256": "a8d6833e4c6062fcdd82748bca4d2b0d0c913c43cc1f533e0611614960b72594",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/40-media/033-paleobot-v61-image-fallbacks.js"
+      ]
+    },
+    {
+      "source_path": "js/40-media/035-paleobot-v64-real-image-visuals-runtime.js",
+      "git_blob_sha1": "baf43633f533e948a7025679febe7cac00e96fe9",
+      "sha256": "786b17fc320ed3e5e91a44ae71641ca5bb3ee239f88abfa86943ee42adf93e93",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/40-media/035-paleobot-v64-real-image-visuals-runtime.js"
+      ]
+    },
+    {
+      "source_path": "js/40-media/065-paleobot-v80-map-lens-image-repair.js",
+      "git_blob_sha1": "21a696e3e3a7abe1631a4a5f3cb62fca64d2201f",
+      "sha256": "b624537ea51aa6dd434b8478bc50936d0b31930117726537cc53598313bd3f7e",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/40-media/065-paleobot-v80-map-lens-image-repair.js"
+      ]
+    },
+    {
+      "source_path": "js/40-media/066-paleobot-v81-map-and-species-media-repair.js",
+      "git_blob_sha1": "12207d784611c72cb5c9f89844e0f7ccac92903b",
+      "sha256": "72f59642fdbf4b1eca60ea71a7f55896fccea849da5f569a8013e5647624dc42",
+      "retained_paths": [
+        "docs/auditoria/evidencias_codigo/066-paleobot-v81-map-and-species-media-repair.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js"
+      ]
+    },
+    {
+      "source_path": "js/60-science/036a-paleobot-v66-fauna.js",
+      "git_blob_sha1": "0234f2ad2b7a32cc7fec0699c96083b1190eb615",
+      "sha256": "aecb7f623f7f1c036d72a840b38553149a1f5b400eb51047728ab40e1969aca3",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/60-science/036a-paleobot-v66-fauna.js"
+      ]
+    },
+    {
+      "source_path": "js/60-science/036b-paleobot-v66-cranial-norma.js",
+      "git_blob_sha1": "e39ec02ecbb9e7f1b87694a5dde45d7838385732",
+      "sha256": "7f864a831baf3a529f2ab1ac3fa5da08f95c844416496974848c370393e7ab78",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/60-science/036b-paleobot-v66-cranial-norma.js"
+      ]
+    },
+    {
+      "source_path": "js/60-science/067-paleobot-v82-fauna-rigor-and-layout.js",
+      "git_blob_sha1": "4b1aef35e04f1ee2baa6941f8cde4f6096a81cde",
+      "sha256": "4044b3cfdb6e719819833acb7cfbd104e6046f46662c2015a7177e63805c2d17",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/60-science/067-paleobot-v82-fauna-rigor-and-layout.js"
+      ]
+    },
+    {
+      "source_path": "js/60-science/075-paleobot-a2-chronology.js",
+      "git_blob_sha1": "ebf791089912b716e60acdefe0b73d3bbca33e4d",
+      "sha256": "a0e1bd3ccb479103323c8cf5aef47db9c6316b0dd8654084dc8f50fa620ee42e",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/60-science/075-paleobot-a2-chronology.js"
+      ]
+    },
+    {
+      "source_path": "js/60-science/076-paleobot-a3-scientific-adapter.js",
+      "git_blob_sha1": "6527f2807ecb6ab2861a5b255e18b25b93b9d00c",
+      "sha256": "f8a724660686825563ccf2154604025eade321c9a23ff11539b31ed3559adad6",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/60-science/076-paleobot-a3-scientific-adapter.js"
+      ]
+    },
+    {
+      "source_path": "js/60-science/077-paleobot-a3-scientific-workspace.js",
+      "git_blob_sha1": "75aba7111dd13ddf09cfce8f3340103960bca807",
+      "sha256": "c9e542fdfc2acb9edbcbdff2fff643bb8ea202176c19c48e9052ede899b1b7c8",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/60-science/077-paleobot-a3-scientific-workspace.js"
+      ]
+    },
+    {
+      "source_path": "js/60-science/078-paleobot-a3-catalog.js",
+      "git_blob_sha1": "7c7c597409ae478e139b1de0dd93985fb3672682",
+      "sha256": "345203fcff5c6481a342dc624ff519122f77bc1216a81854b4aca340be940d79",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/60-science/078-paleobot-a3-catalog.js"
+      ]
+    },
+    {
+      "source_path": "js/60-science/079-paleobot-a3-temporal-policy.js",
+      "git_blob_sha1": "2898f4359142fe2bdb2ea62dbe9eaf9831a32025",
+      "sha256": "c104f2f2d47e7cde31b90f014eca2f74d0f2b03a0b92280e6b6cd7d38c1b4ead",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/60-science/079-paleobot-a3-temporal-policy.js"
+      ]
+    },
+    {
+      "source_path": "js/60-science/080-paleobot-a3-evidence-views.js",
+      "git_blob_sha1": "2159219576a133bd1be97ffe48f857a569f77878",
+      "sha256": "a03b59fc3ee74daa6a2981d88df9f163aa8d01507d855d5d7eeea9b96799e510",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/60-science/080-paleobot-a3-evidence-views.js"
+      ]
+    },
+    {
+      "source_path": "js/70-export/063-paleobot-v66-svg-export.js",
+      "git_blob_sha1": "21d5fb015b3f22bfa5dc2c9b7743b59c3beee4a6",
+      "sha256": "7d95718a3d885bf3d1a0dcdbe8127b813d46a70fc9e28ce8744ca56d4479db04",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/70-export/063-paleobot-v66-svg-export.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/040-script.js",
+      "git_blob_sha1": "f53c41a2734513197c511e0f38db661ca5d019b6",
+      "sha256": "fb4fd2bb1eda1a437c9035bd0aed424fb05873c4a83b40e56205f1889d08b2ea",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/040-script.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/041-script.js",
+      "git_blob_sha1": "475e40826e7c321719661710704bc9a0c9377da8",
+      "sha256": "b80599fedfde6924b97432cbaaca40554be5b42bb72091d07196d0f6744ad06f",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/041-script.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/042-script.js",
+      "git_blob_sha1": "4844836f039340576ed85b0f58786c819dc17e19",
+      "sha256": "3c62f67dd36391ebdea12818b7e1d6a44b4225a329602cde98576d494d463cd0",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/042-script.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/043-script.js",
+      "git_blob_sha1": "281776894af602a86e95db9bb517f288b43cad0b",
+      "sha256": "222667c983c369a0cabaf496e292054cf0c7c897edef6ee32429af7a82f1bd41",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/043-script.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/044-script.js",
+      "git_blob_sha1": "3e5fd446c4227c8240600b1083832230bdf8423d",
+      "sha256": "2abf52a31992e6a64f0e04c630b63bc6f12b3f2619da5b6dcfe8047c4fee8437",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/044-script.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/045-script.js",
+      "git_blob_sha1": "902463261c1f0b870d4f9e3ea68ff9f6bb804676",
+      "sha256": "14c424cfa284d949967e0e1389ac708c4e0423bfbad61cc75268412ca8f8dd1a",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/045-script.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/051-paleobot-v71-compare-picker-repair.js",
+      "git_blob_sha1": "8a84df1c89509f2306ec913265b90e379083f597",
+      "sha256": "147b161ebfa77ef7fd53a28417f922834f08a9eaa9e7dfb352d582544b3da3d8",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/051-paleobot-v71-compare-picker-repair.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/052-paleobot-v72-compare-clear-repair.js",
+      "git_blob_sha1": "d736a4f2874d4e9a66e5cb934ce93b76af42e8e3",
+      "sha256": "ba83f50fcde2384d915a4f2d7206a6e39eca586ba955c874641e8c17501ada14",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/052-paleobot-v72-compare-clear-repair.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/053-paleobot-v73-itinerary-rubric-repair.js",
+      "git_blob_sha1": "3276f7d02be3c2e3f11d75ebd577e6b0a95eabb5",
+      "sha256": "9c43f96dc30d8debcc3130bc212cf085b1dbd3b5ba8cbbaa2735d5ee8e88cd8b",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/053-paleobot-v73-itinerary-rubric-repair.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/058-script.js",
+      "git_blob_sha1": "df6081fe97bcb40eb259684e20795928c23b8eda",
+      "sha256": "a4393633733f873e57d9b409a57025b370d855b6686b0aa0f4b63e51f9cc5dd3",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/058-script.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/059-script.js",
+      "git_blob_sha1": "63bbca37b2cda50d4e4188681e8b3fdf3a906cd5",
+      "sha256": "46464d8007687e3da4107eb28d86aeda20ab658e4256b95033e6badea2b760d3",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/059-script.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/060-script.js",
+      "git_blob_sha1": "86aa51ac35b8f9df3b6559ca15228b3d123e111b",
+      "sha256": "8ab94638acdca1358618b4930f0779cd2a80a88e25f1cf467ad7b57117d5673a",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/060-script.js"
+      ]
+    },
+    {
+      "source_path": "js/80-features/061-script.js",
+      "git_blob_sha1": "c334841826eed2190283cbc2cd6f5114aa158a0f",
+      "sha256": "e85161ea971098a0a8154cbfd55552290873d98a117347d8eccddfa0bc6abea2",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/80-features/061-script.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/015-paleobot-v41-layout-guard.js",
+      "git_blob_sha1": "8e603e28c3dcdae941fa662eab8b8570a093a25f",
+      "sha256": "5eb4d6d2ea84a6c483cdd0fb350a08191c9cb3cb0abad3b9502055b6647929be",
+      "retained_paths": [
+        "atlas/assets/js/90-guards/015-paleobot-v41-layout-guard.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/015-paleobot-v41-layout-guard.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/017-paleobot-v43-detail-tabs-guard.js",
+      "git_blob_sha1": "5accb8b607f7d37d7fa3e69127156a82d73fb196",
+      "sha256": "37e9956a2ce217faaadb8a4b6c527e2bc48aae944d56acac9b99d3396742dc97",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/017-paleobot-v43-detail-tabs-guard.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/020-paleobot-v46-button-audit-bus.js",
+      "git_blob_sha1": "d4625030d2f664363d2b1d59b15ebaaacd05b006",
+      "sha256": "1985a0a7c31ebd6029972cf1568aeeea05bce3c4664e908a8d114a13cfa7300c",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/020-paleobot-v46-button-audit-bus.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/027-paleobot-v52-no-home-bounce-guard.js",
+      "git_blob_sha1": "0d2a3527485121d024cc02fb84a3b13cf4c98fc7",
+      "sha256": "fc794d5c061ceb597dc01da8412ef81c1054ceb867173cae49a6fbf5f4c7243d",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/027-paleobot-v52-no-home-bounce-guard.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/036-paleobot-v65-hero-readability-routing-fix-runtim.js",
+      "git_blob_sha1": "1d78ca97c237b6a535fa3623d77816e3269f2ffc",
+      "sha256": "edc0551f939c903347dd75fa9ab0e9e71a43a5ed68b6ca16901be8dd46dbc587",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/036-paleobot-v65-hero-readability-routing-fix-runtim.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/038-paleobot-v56-final-fix.js",
+      "git_blob_sha1": "d67b284bd3f14708459fee095a1f3d298fb30b72",
+      "sha256": "27ba721e0b370977c363ab7f598d60dc4f4dce4637befa423ead6e7f4af63024",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/038-paleobot-v56-final-fix.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/049-paleobot-v69-quiz-start-repair.js",
+      "git_blob_sha1": "8eb43bc081e5d671e54885bb8ca9b6e5e0eae8ab",
+      "sha256": "2cdce6cab58720d523ef960fed8fa120d5f31d0bfcbe5c1aaa04ba73ec46ab84",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/049-paleobot-v69-quiz-start-repair.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/054-paleobot-v74-floating-a11y-repair.js",
+      "git_blob_sha1": "95b1a5e3dab6983386dcbca1fcfef3075b7592bc",
+      "sha256": "abb90e10f85d53822edb8123837295dd5ec1f398b76778a73c63354e1a72a679",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/054-paleobot-v74-floating-a11y-repair.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/055-paleobot-v75-hidden-pending-guard.js",
+      "git_blob_sha1": "a6587c5f7b80aae940aedc94e61b50e65490da76",
+      "sha256": "4cd66d00419f3dcba18d68e92e38172ce5e1dd112fa98cb9f0ecbcfbf736080e",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/055-paleobot-v75-hidden-pending-guard.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/062-paleobot-v65-audit-fix.js",
+      "git_blob_sha1": "b956ec6c42c5cc691756bd72d59aa904157778f0",
+      "sha256": "dcb82f6f5095ad66671a1d8303ce2d23d19cc9aea5fcb29e05e12d58d044be11",
+      "retained_paths": [
+        "atlas/assets/js/90-guards/062-paleobot-v65-audit-fix.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/062-paleobot-v65-audit-fix.js"
+      ]
+    },
+    {
+      "source_path": "js/90-guards/070-paleobot-v85-speed-guard.js",
+      "git_blob_sha1": "b3bf1f3c844fe21b1585f62cdf0a6e7f60b39a80",
+      "sha256": "daa9175ad0c9d44807280fa5bcea5aa11fe607642fe020beb83196160e4ff94e",
+      "retained_paths": [
+        "atlas/assets/js/90-guards/070-paleobot-v85-speed-guard.js",
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/90-guards/070-paleobot-v85-speed-guard.js"
+      ]
+    },
+    {
+      "source_path": "js/_quarantine/036d-paleobot-v79-consolidated-dispatcher.QUARANTINE.js",
+      "git_blob_sha1": "f8f03ad8c943301dbc0662f6c9e50a1d7e4c4402",
+      "sha256": "292a68ce6f1a4922a23b917510509365bf48550e0fcc3e8a15217a000d3cc9ed",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/_quarantine/036d-paleobot-v79-consolidated-dispatcher.QUARANTINE.js"
+      ]
+    },
+    {
+      "source_path": "provenance/AUDITORIA_SHA256.json",
+      "git_blob_sha1": "798d4ddf4dc7758305982f25943b4096f75e9ab9",
+      "sha256": "f879a05d483e59ddccc4e9f8c359786e3cb0b7c501ba6242781e95b421795340",
+      "retained_paths": [
+        "provenance/AUDITORIA_SHA256.json"
+      ]
+    },
+    {
+      "source_path": "provenance/BASELINE_IMPORTADA.json",
+      "git_blob_sha1": "3f9a739eb8540311b0373f8804d61f4e93a2020d",
+      "sha256": "34b4424556ec5bef2406396079e92c9d4fbb83ac2f62c511c169ec09aceb69c3",
+      "retained_paths": [
+        "provenance/BASELINE_IMPORTADA.json"
+      ]
+    },
+    {
+      "source_path": "provenance/ESTADO.json",
+      "git_blob_sha1": "7f1f49a8c02937b34621f75eb78b457df2de4d31",
+      "sha256": "f8d1b8890fc84f2c7c52cf7233baed300c55b22a12c50477ee09930c9dc3b9c9",
+      "retained_paths": [
+        "docs/historial/BASE_F09A07B/provenance/ESTADO.json",
+        "docs/historial/PB_GH_01/provenance/ESTADO.json"
+      ]
+    },
+    {
+      "source_path": "provenance/FUENTES_GITHUB.json",
+      "git_blob_sha1": "250a061e63f36fc52ed37399a76e5112c59ca089",
+      "sha256": "b9cbe6090cc414b37c78c3e4d1ec746745f5aed7c7a1faa23430558a3e62d892",
+      "retained_paths": [
+        "provenance/FUENTES_GITHUB.json"
+      ]
+    },
+    {
+      "source_path": "provenance/PREPARACION_VERIFICADA.json",
+      "git_blob_sha1": "d81da8963652745a29c116cbdb09212b74a34edb",
+      "sha256": "3de09355d8ab3e01ab15c5bba6014630da684c21101efdbd593ef188e2084dfa",
+      "retained_paths": [
+        "provenance/PREPARACION_VERIFICADA.json"
+      ]
+    },
+    {
+      "source_path": "provenance/importacion.json",
+      "git_blob_sha1": "0e71b539359f9acf932aaefefe827f69e831dad5",
+      "sha256": "6d650ddcbe78bd0c916a02613a505fa8db954a0250ed304058d5c03e63e17f58",
+      "retained_paths": [
+        "provenance/importacion.json"
+      ]
+    },
+    {
+      "source_path": "registro_decisiones.csv",
+      "git_blob_sha1": "7e19a6b70a3cecb843e34723025ff4e8ebd7c8a4",
+      "sha256": "1272fe1afc1c9149f260874e055deefea5d716f9513ac7af3fc6806cca89f4e5",
+      "retained_paths": [
+        "docs/auditoria/registro_decisiones.csv"
+      ]
+    },
+    {
+      "source_path": "registro_decisiones.json",
+      "git_blob_sha1": "292959f7791d82753f3357bca59688762e6474a8",
+      "sha256": "d7f8f46fe1bf6ac7472b08bb856be1035d10226e766d04be7e4085185209baf6",
+      "retained_paths": [
+        "docs/auditoria/registro_decisiones.json"
+      ]
+    },
+    {
+      "source_path": "registros_prueba.json",
+      "git_blob_sha1": "552723eb3804e21da62e1f1a896ecaee771c08ba",
+      "sha256": "d3794aea565ee979e575aa62bf91cc45abe30aa58fb33e2214f23f9082f467da",
+      "retained_paths": [
+        "docs/auditoria/evidencias_codigo/registros_prueba.json"
+      ]
+    },
+    {
+      "source_path": "reproduccion_colision_medios.json",
+      "git_blob_sha1": "9deec565f4503639a9d69eff67667e9d76b09781",
+      "sha256": "3b840ab47a7df09e1ca2460588b05877a81a46038a12dc606e2f89209611b912",
+      "retained_paths": [
+        "docs/auditoria/reproduccion_colision_medios.json",
+        "docs/auditoria/resultado_reproduccion_actual.json"
+      ]
+    },
+    {
+      "source_path": "reproducir_colision_medios.cjs",
+      "git_blob_sha1": "df2f75fd595e73e5b3112e9ee12792ecba7eb003",
+      "sha256": "1ad4e7290f216392d62c47e69d78a160d4ee6f9a2ffb318f4c75bdd9edf5f35a",
+      "retained_paths": [
+        "docs/auditoria/reproducir_colision_medios.cjs"
+      ]
+    },
+    {
+      "source_path": "resultado_reproduccion_actual.json",
+      "git_blob_sha1": "9deec565f4503639a9d69eff67667e9d76b09781",
+      "sha256": "3b840ab47a7df09e1ca2460588b05877a81a46038a12dc606e2f89209611b912",
+      "retained_paths": [
+        "docs/auditoria/reproduccion_colision_medios.json",
+        "docs/auditoria/resultado_reproduccion_actual.json"
+      ]
+    },
+    {
+      "source_path": "resumen_expediente.json",
+      "git_blob_sha1": "d8b63d191a0bb9d59ae7684cab1c9f0bce345bfe",
+      "sha256": "5c7b2a32ecc71277a9134e5d87222e213b5530947f6ac4e4489c0543542b9651",
+      "retained_paths": [
+        "docs/auditoria/resumen_expediente.json"
+      ]
+    },
+    {
+      "source_path": "science/catalog.json",
+      "git_blob_sha1": "945766235c470ba04cb98c30d8fab7b559da6671",
+      "sha256": "62f11f05a4c58ab3938ffb7263c80f3098cdf5b9701a02e25678e042ecd7593b",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/science/catalog.json"
+      ]
+    },
+    {
+      "source_path": "science/chronology.html",
+      "git_blob_sha1": "5274b9b1c62401411c50a7f4577f4aeee38dabf0",
+      "sha256": "419babe39c3659cf71c04f958ae1dadc888d21a86d7e1471cb941af5f8202e20",
+      "retained_paths": [
+        "experimental/atlas-r98/fuentes/Auditoria_R98/science/chronology.html"
+      ]
+    },
+    {
+      "source_path": "scripts/construir.py",
+      "git_blob_sha1": "d7ca67d792dbfe3e6a72cca55d51f11f5db687fe",
+      "sha256": "19abf2d7387b13c4da6f65381aaebabe717a19f807d84fd0a7c95b6933f0f26c",
+      "retained_paths": [
+        "docs/historial/AF35A8E/scripts/construir.py.snapshot"
+      ]
+    },
+    {
+      "source_path": "scripts/reproducir_pb01.cjs",
+      "git_blob_sha1": "6c8317f89346b3faa5e0c5f0938cb477f11afb53",
+      "sha256": "9a52ba3933eac1253d4be942de6771226295e48998f3691da9fdd455997cecd8",
+      "retained_paths": [
+        "scripts/reproducir_pb01.cjs"
+      ]
+    },
+    {
+      "source_path": "scripts/verificar_repo.py",
+      "git_blob_sha1": "48ed5aac70d7fde58aa2c41ca3e06be330f6d72d",
+      "sha256": "9ca97e2c4931ef14baf458b0c6ef7ef597f30cc2e21e098feb30be858439d70f",
+      "retained_paths": [
+        "docs/historial/PB_GH_01/scripts/verificar_repo.py"
+      ]
+    },
+    {
+      "source_path": "sintaxis_js_actual.json",
+      "git_blob_sha1": "c8334deaabc8a926742f2ade90586556b65a2df2",
+      "sha256": "46b10b1f140ffa228c07e863e42005b1975390f88862b6ed530732e35033c276",
+      "retained_paths": [
+        "docs/auditoria/sintaxis_js_actual.json"
+      ]
+    },
+    {
+      "source_path": "src/entrada_ligera/build.py",
+      "git_blob_sha1": "94fdf8d0da23b298979c8c9dff053b60e49a2d5d",
+      "sha256": "5408add2377e1f568747fbe1934985aae8a5aff05a179597893db8c7eb0cf7c1",
+      "retained_paths": [
+        "src/entrada_ligera/build.py"
+      ]
+    },
+    {
+      "source_path": "src/entrada_ligera/catalog.json",
+      "git_blob_sha1": "2a458ed527a7060c4837866ff704a7185b7eebcd",
+      "sha256": "5eb460063f873b3be5ef3aa9874ff5cc0ab17612ba706506d1c8f8c22411a0a2",
+      "retained_paths": [
+        "src/entrada_ligera/catalog.json"
+      ]
+    },
+    {
+      "source_path": "src/entrada_ligera/estilos.css",
+      "git_blob_sha1": "6b8595000a9678756d5f13431f9ece098ec79da5",
+      "sha256": "10a81869cdfdd01cc93ab05fb9601a92d850940498128acc5a3dae475c007b0e",
+      "retained_paths": [
+        "src/entrada_ligera/estilos.css"
+      ]
+    },
+    {
+      "source_path": "src/entrada_ligera/image_audit.json",
+      "git_blob_sha1": "58b0a047411870a9116bf12bc5c9a8e50c2f8100",
+      "sha256": "88b8221759091768e650c2990540ed59532a85368abb5de702293c02ba4ce6fc",
+      "retained_paths": [
+        "docs/auditoria/evidencias_codigo/image_audit.json",
+        "experimental/atlas-r98/fuentes/PaleoBot_Moodle_Entrada_Ligera_v11_NO_GO/image_audit.json",
+        "src/entrada_ligera/image_audit.json"
+      ]
+    },
+    {
+      "source_path": "src/entrada_ligera/interaccion.js",
+      "git_blob_sha1": "b6b065717c00c74e03b5aaf9e7d0b446acb2219c",
+      "sha256": "b7779dcc655c88e5b29b253467dde9f2041e27ae65c33d89eb57c908965e87f4",
+      "retained_paths": [
+        "docs/historial/AF35A8E/src/entrada_ligera/interaccion.js.snapshot"
+      ]
+    },
+    {
+      "source_path": "tests/test_preparacion.py",
+      "git_blob_sha1": "bfa03d017906e29b545de79f0bb9b0420dacad54",
+      "sha256": "0d7639f03dd011e229632372da49c3274e4d42eb100290457ceb8fe71b677c8f",
+      "retained_paths": [
+        "docs/historial/AF35A8E/tests/test_preparacion.py.snapshot"
+      ]
+    },
+    {
+      "source_path": "verificacion_entrega.json",
+      "git_blob_sha1": "ad6c7a5b48b7c3801ba8762ba95777049bfc0ed8",
+      "sha256": "e51de5dcf170bdad12402e4bcd2a9a96b4ae26f2ea79c9dd32f98dd4ca798e77",
+      "retained_paths": [
+        "docs/auditoria/verificacion_entrega.json"
+      ]
+    },
+    {
+      "source_path": "verificacion_sesion.json",
+      "git_blob_sha1": "b3bd0c5f45911fed1d733a6beb935afa328ed088",
+      "sha256": "61bf9d6da36935ae977fae88610c0654fd678fdf0168012fba387f4abf66af89",
+      "retained_paths": [
+        "docs/auditoria/verificacion_sesion.json"
+      ]
+    },
+    {
+      "source_path": "workflows/verificar.yml",
+      "git_blob_sha1": "e4498731b2be232fda0f831aa3646175b68b4fd9",
+      "sha256": "5640f77ed1b6d34dee09acf53f07e44d57cbf5c441bf7d8fbfd1f3ffb2ba2e4f",
+      "retained_paths": [
+        "docs/historial/BASE_F09A07B/.github/workflows/verificar.yml",
+        "docs/historial/PB_GH_01/.github/workflows/verificar.yml"
+      ]
+    }
+  ]
+}

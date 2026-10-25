@@ -2746,7 +2746,7 @@ const DB = [
     descripcion: "Nakalipithecus nakayamai procede de Nakali, Kenia, y ayuda a rellenar el vacío africano del Mioceno tardío entre los hominoideos tempranos y los primeros candidatos homininos. Su mandíbula y dientes muestran un gran simio africano poco especializado, importante para discutir si el último ancestro común de gorilas, chimpancés y humanos tuvo una historia africana continua o euroafricana.",
     experto: { descripcion_tecnica: "Mandíbula y dentición de gran simio, con caracteres menos especializados que Ouranopithecus y cúspides menos infladas. Material principalmente craneodental.", debate: "Puede estar cerca del tronco de los grandes simios africanos, pero el material es limitado y no permite asignarlo de forma segura a la línea humana, gorilina o panina.", anatomia_craneal: "Conocida sobre todo por mandíbula y dientes; cráneo y neurocráneo no documentados.", anatomia_postcraneal: "No recuperada.", paleoecologia: "África oriental durante el Mioceno tardío temprano, con una fauna de catarrinos más diversa de lo que se pensaba.", cultura: "No documentada.", referencias: [{a:"Kunimatsu et al.", y:2007, t:"A new Late Miocene great ape from Kenya and its implications for the origins of African great apes and humans", j:"PNAS", d:"10.1073/pnas.0706190104"}] }, val_time: 9.9 },
 
-  { id: "chororapithecus", clado: "basal", nombre: "Chororapithecus abyssinicus", anos: "~8 Ma", ubicacion: "Etiopía", holo: "CH0-BT 4", datacion: "Ar-Ar / magnetoestratigrafía", cc: null, dieta: "Folívora / abrasiva", herramientas: "Ninguna", imagen: "https://www.um.u-tokyo.ac.jp/japanese/UMUTopenlab/en/assets/img/library/B44_02.jpg", mapa: MAPS.etiopia, estado: "debatida",
+  { id: "chororapithecus", clado: "basal", nombre: "Chororapithecus abyssinicus", anos: "~8 Ma", ubicacion: "Etiopía", holo: "CH0-BT 4", datacion: "Ar-Ar / magnetoestratigrafía", cc: null, dieta: "Folívora / abrasiva", herramientas: "Ninguna", imagen: "", mapa: MAPS.etiopia, estado: "debatida",
     descripcion: "Chororapithecus abyssinicus es un gran simio del Mioceno tardío de la Formación Chorora, Etiopía. Su dentición se ha interpretado como posible señal temprana de afinidad gorilina, por lo que es útil para enseñar que el origen humano debe situarse dentro de una radiación africana de grandes simios, no como una línea aislada.",
     experto: { descripcion_tecnica: "Molares grandes con crestas de cizalla y esmalte relativamente grueso; patrón dental comparado con gorilas actuales. Material craneal y postcraneal muy limitado.", debate: "La hipótesis gorilina es influyente pero no cerrada. La edad original de 10-10.5 Ma fue revisada hacia ~8 Ma, lo que cambia su peso en los relojes de divergencia de gorilas y homininos.", anatomia_craneal: "Conocida casi exclusivamente por dientes; no hay cráneo completo.", anatomia_postcraneal: "No recuperada.", paleoecologia: "Depósitos del margen sur de Afar con señales de ambientes boscosos y recursos vegetales fibrosos o abrasivos.", cultura: "No documentada.", referencias: [{a:"Suwa et al.", y:2007, t:"A new species of great ape from the late Miocene epoch in Ethiopia", j:"Nature", d:"10.1038/nature06113"}, {a:"Katoh et al.", y:2016, t:"New geological and palaeontological age constraint for the gorilla-human lineage split", j:"Nature", d:"10.1038/nature16510"}] }, val_time: 8.0 },
 
@@ -2942,6 +2942,7 @@ window.__PB_DB_DEFINED = true;
 // window.DB_INDEX = DB_INDEX;  ← ELIMINADO (expone datos al scope global — antipatrón)
 
 const NO_IMAGE_URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/No_image_available.svg/800px-No_image_available.svg.png";
+const CHORORA_PENDIENTE_SVG = "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22800%22%20height%3D%22600%22%20viewBox%3D%220%200%20800%20600%22%3E%3Crect%20width%3D%22800%22%20height%3D%22600%22%20fill%3D%22%23efe9df%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%22752%22%20height%3D%22552%22%20fill%3D%22none%22%20stroke%3D%22%239a8b74%22%20stroke-width%3D%223%22%20stroke-dasharray%3D%2214%2010%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22270%22%20text-anchor%3D%22middle%22%20font-family%3D%22Georgia%2Cserif%22%20font-style%3D%22italic%22%20font-size%3D%2240%22%20fill%3D%22%234a3f30%22%3EChororapithecus%20abyssinicus%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22330%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2226%22%20fill%3D%22%234a3f30%22%3EImagen%20pendiente%20de%20permiso%20de%20reutilizaci%C3%B3n%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22372%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2220%22%20fill%3D%22%236b5e4c%22%3EConsulte%20la%20ficha%20institucional%20enlazada%3C%2Ftext%3E%3C%2Fsvg%3E";
 const MEDIA_OVERRIDES = {
   proconsul: { tipo: "lámina provisional", titulo: "Representación didáctica de Proconsul", nota: "Falta una imagen libre fiable cargada en la base local; se muestra una lámina específica del taxón.", fuente: "PaleoBot", licencia: "CC BY-NC educativo" },
   morotopithecus: { tipo: "lámina provisional", titulo: "Representación didáctica de Morotopithecus bishopi", nota: "Taxón con material fragmentario; evitar reconstrucciones faciales no verificadas.", fuente: "PaleoBot", licencia: "CC BY-NC educativo" },
@@ -2994,9 +2995,10 @@ Object.assign(MEDIA_OVERRIDES, {
     fuente: "Wikimedia Commons", licencia: "CC BY-SA 4.0", sourceUrl: "https://commons.wikimedia.org/wiki/File:Nakalipithecus_mandible.jpg"
   },
   chororapithecus: {
-    tipo: "dientes fósiles / fuente institucional", titulo: "Chororapithecus abyssinicus, dientes fósiles",
-    nota: "Imagen institucional de la Universidad de Tokio. Se usa como referencia académica del material dental; no procede de Commons y conviene verificar permisos antes de redistribuir el recurso fuera del aula.",
-    fuente: "PaleoBot / University Museum, University of Tokyo", licencia: "fuente institucional; verificar permisos de reutilización",
+    url: CHORORA_PENDIENTE_SVG, thumbUrl: CHORORA_PENDIENTE_SVG,
+    tipo: "lámina provisional", titulo: "Chororapithecus abyssinicus, imagen pendiente de permiso",
+    nota: "Imagen pendiente (PB-GH-03): la fotografía de los dientes que conserva The University Museum, The University of Tokyo, se ha retirado porque no consta permiso explícito para reproducirla. Se muestra una lámina neutra sin imagen de otro taxón; la ficha institucional se enlaza como referencia del material, sin reproducirlo.",
+    fuente: "PaleoBot (lámina provisional); referencia: The University Museum, The University of Tokyo",
     sourceUrl: "https://www.um.u-tokyo.ac.jp/UMUTopenlab/en/library/b_44.html"
   },
   graecopithecus: {
@@ -3201,10 +3203,10 @@ Object.assign(MEDIA_OVERRIDES, {
 
 Object.assign(MEDIA_OVERRIDES, {
   chororapithecus: {
-    url: "https://www.um.u-tokyo.ac.jp/japanese/UMUTopenlab/en/assets/img/library/B44_02.jpg",
-    tipo: "dientes fósiles / fuente institucional", titulo: "Chororapithecus abyssinicus, dientes fósiles",
-    nota: "Imagen institucional de The University Museum, The University of Tokyo; se usa como referencia académica del material dental, no como licencia abierta Commons.",
-    fuente: "The University Museum, The University of Tokyo", licencia: "fuente institucional; verificar permisos de reutilización", sourceUrl: "https://www.um.u-tokyo.ac.jp/japanese/UMUTopenlab/en/library/b_44.html"
+    url: CHORORA_PENDIENTE_SVG, thumbUrl: CHORORA_PENDIENTE_SVG,
+    tipo: "lámina provisional", titulo: "Chororapithecus abyssinicus, imagen pendiente de permiso",
+    nota: "Imagen pendiente (PB-GH-03): la fotografía de los dientes que conserva The University Museum, The University of Tokyo, se ha retirado porque no consta permiso explícito para reproducirla. Se muestra una lámina neutra sin imagen de otro taxón; la ficha institucional se enlaza como referencia del material, sin reproducirlo.",
+    fuente: "PaleoBot (lámina provisional); referencia: The University Museum, The University of Tokyo", sourceUrl: "https://www.um.u-tokyo.ac.jp/japanese/UMUTopenlab/en/library/b_44.html"
   }
 });
 

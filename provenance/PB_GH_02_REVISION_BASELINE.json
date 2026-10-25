@@ -1,0 +1,244 @@
+{
+  "schema_version": "1.0.0",
+  "review": {
+    "id": "PB-GH-02-BASELINE",
+    "mode": "REVIEW_AND_FIX",
+    "depth": "ANALYTICAL",
+    "subject": "Diagnóstico de estructura y procedencia del commit publicado; corrección local separada en PB_GH_02_RESULTADOS.json",
+    "baseline": "DanielULPGC/Paleobot.-Plataforma-de-evoluci-n-humana@af35a8e56cd9c995ff3636c41e3409a5184c48a4"
+  },
+  "scope": {
+    "included": [
+      "**"
+    ],
+    "excluded": [],
+    "languages": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Python",
+      "JSON",
+      "YAML",
+      "Markdown"
+    ],
+    "components": [
+      "Árbol y hashes de los 330 archivos",
+      "Resolución de recursos estáticos",
+      "Entrada y procedencia",
+      "Controles de preparación y flujo CI"
+    ],
+    "instructions_read": [
+      "AGENTS.md",
+      "README.md",
+      "CHANGELOG.md",
+      "provenance/ESTADO.json"
+    ]
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "C1: rutas de recursos ausentes en el árbol publicado",
+      "status": "CONFIRMED",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "category": "configuration",
+      "location": {
+        "path": "index.html",
+        "start_line": 99,
+        "end_line": 99
+      },
+      "trigger": "Servir el árbol del commit remoto como sitio estático.",
+      "mechanism": "El HTML solicita assets/... pero los blobs están en js, css e img fuera de esa ubicación; Leaflet no está en la ruta prevista.",
+      "impact": "Las referencias de recursos no se resuelven; no se acredita aquí una traza del navegador remoto.",
+      "evidence": [
+        {
+          "kind": "TOOL_OUTPUT",
+          "observation": "128 de 128 referencias locales de recursos del índice y 4 de la cronología apuntan a archivos ausentes.",
+          "command": "Inspección del árbol Git y análisis HTML de rutas locales",
+          "artifact": "provenance/PB_GH_02_RESULTADOS.json"
+        }
+      ],
+      "minimal_remediation": "Restaurar el árbol canónico; corrección aplicada y comprobada localmente en PB-GH-02.",
+      "verification_plan": "Restaurar las rutas y la entrada; repetir los controles, la construcción y las pruebas HTTP bajo el prefijo del proyecto.",
+      "regression_scope": [
+        "Integridad de los 330 contenidos",
+        "Entrada v11, Atlas modular, piloto y cronología",
+        "Configuración CI y controles locales"
+      ]
+    },
+    {
+      "id": "F-002",
+      "title": "C2: entrada modular distinta de la entrada v11 documentada",
+      "status": "CONFIRMED",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "category": "documentation-contract",
+      "location": {
+        "path": "provenance/ESTADO.json",
+        "start_line": 5,
+        "end_line": 5
+      },
+      "trigger": "Interpretar la entrada publicada según la procedencia declarada.",
+      "mechanism": "El índice tiene SHA-256 c82a5e1d y 179250 bytes, mientras la referencia v11 exige 812c6de5 y 217992 bytes.",
+      "impact": "La portada y los resultados atribuidos no corresponden a la versión documentada.",
+      "evidence": [
+        {
+          "kind": "TOOL_OUTPUT",
+          "observation": "La huella del índice coincide exactamente con el índice modular R98 original.",
+          "command": "Comparación SHA-256 frente a BASELINE_IMPORTADA.json",
+          "artifact": "provenance/PB_GH_02_RESULTADOS.json"
+        }
+      ],
+      "minimal_remediation": "Restaurar v11 en la raíz y mantener el Atlas en experimental; aplicado localmente.",
+      "verification_plan": "Restaurar las rutas y la entrada; repetir los controles, la construcción y las pruebas HTTP bajo el prefijo del proyecto.",
+      "regression_scope": [
+        "Integridad de los 330 contenidos",
+        "Entrada v11, Atlas modular, piloto y cronología",
+        "Configuración CI y controles locales"
+      ]
+    },
+    {
+      "id": "F-003",
+      "title": "C3: controles y configuración sin los directorios requeridos",
+      "status": "CONFIRMED",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "category": "testing",
+      "location": {
+        "path": "scripts/verificar_repo.py",
+        "start_line": 56,
+        "end_line": 56
+      },
+      "trigger": "Ejecutar los controles documentados en la línea base.",
+      "mechanism": "Los controles requieren docs/auditoria y experimental/atlas-r98; el flujo está en workflows y no en .github/workflows.",
+      "impact": "Los cuatro comandos fallan y GitHub no descubre ese flujo en su ubicación original.",
+      "evidence": [
+        {
+          "kind": "TOOL_OUTPUT",
+          "observation": "Verificador, constructor y reproducción terminan con código 1; unittest repite 6 errores y 1 fallo de 8.",
+          "command": "python3 -m unittest discover -s tests -p \"test_*.py\"",
+          "artifact": "provenance/PB_GH_02_RESULTADOS.json"
+        }
+      ],
+      "minimal_remediation": "Restaurar el árbol de controles y añadir la regresión de prefijo; aplicado localmente.",
+      "verification_plan": "Restaurar las rutas y la entrada; repetir los controles, la construcción y las pruebas HTTP bajo el prefijo del proyecto.",
+      "regression_scope": [
+        "Integridad de los 330 contenidos",
+        "Entrada v11, Atlas modular, piloto y cronología",
+        "Configuración CI y controles locales"
+      ]
+    }
+  ],
+  "open_questions": [
+    {
+      "id": "Q-001",
+      "question": "¿Qué versión y comportamiento sirve el dominio Pages tras integrar?",
+      "missing_evidence": "HTML del dominio real y prueba en un navegador ejecutable.",
+      "consequence": "La corrección permanece validada localmente, sin acreditación de despliegue."
+    },
+    {
+      "id": "Q-002",
+      "question": "¿Se reproducen los resultados axe y los problemas científicos aportados?",
+      "missing_evidence": "Nueva ejecución de accesibilidad y contraste con fuentes primarias por vista.",
+      "consequence": "Se conservan como pendientes; no se levantan los gates docentes."
+    },
+    {
+      "id": "Q-003",
+      "question": "¿Cuál fue el mecanismo exacto de aplanamiento de la subida?",
+      "missing_evidence": "Registro del procedimiento de subida.",
+      "consequence": "Se confirma el árbol incorrecto, sin atribuir automáticamente la causa al servicio web."
+    }
+  ],
+  "dismissed_signals": [
+    {
+      "id": "D-001",
+      "signal": "47 recursos frente a 50 URL como si fueran el mismo conteo",
+      "reason": "Se cuentan recursos documentados y valores heredados del catálogo, respectivamente; existen 3 pendientes identificados.",
+      "evidence": "src/entrada_ligera/image_audit.json y los dos catalog.json conservados."
+    }
+  ],
+  "verification": {
+    "environment": "Python 3.12.14; Node 24.22.1; copia exacta por blobs del árbol remoto. Sin ejecutable de navegador.",
+    "checks": [
+      {
+        "id": "V-001",
+        "tool": "GitHub API y SHA-1 de objetos Git",
+        "result": "PASS",
+        "observation": "330 de 330 blobs coinciden con bytes originales conocidos.",
+        "coverage": "Árbol completo no truncado; no revisión semántica de toda la lógica."
+      },
+      {
+        "id": "V-002",
+        "tool": "Cuatro controles originales sobre línea base",
+        "result": "FAIL",
+        "exit_code": 1,
+        "observation": "Se reproducen rutas ausentes y 6 errores y 1 fallo en 8 pruebas.",
+        "coverage": "Controles de preparación, construcción y PB-01."
+      },
+      {
+        "id": "V-003",
+        "tool": "Controles sobre corrección PB-GH-02",
+        "result": "PASS",
+        "exit_code": 0,
+        "observation": "47 controles; 11 pruebas; dos HTML idénticos; 296 rutas HTTP; 245 unidades sintácticas sobre la base 4d320ee.",
+        "coverage": "Corrección local de estructura, entrada y procedencia."
+      },
+      {
+        "id": "V-004",
+        "tool": "Reproducción PB-01",
+        "result": "PASS",
+        "exit_code": 0,
+        "observation": "El defecto permanece reproducible en tres URL; no se ha corregido.",
+        "coverage": "Módulo 066, DOM sintético, 47 URL y mapa de control."
+      },
+      {
+        "id": "V-005",
+        "tool": "Navegador real, axe, lector de pantalla y Moodle",
+        "result": "BLOCKED",
+        "exit_code": null,
+        "observation": "Sin ejecutable de navegador; pruebas institucionales no realizadas.",
+        "coverage": "No se acredita interacción, accesibilidad ni uso docente."
+      }
+    ]
+  },
+  "coverage": {
+    "complete": false,
+    "files_in_scope": 330,
+    "files_inspected": 330,
+    "lines_in_scope": null,
+    "lines_inspected": null,
+    "risk_areas_required": [
+      "rutas",
+      "entrada y procedencia",
+      "preservación",
+      "controles",
+      "despliegue real"
+    ],
+    "risk_areas_checked": [
+      "rutas",
+      "entrada y procedencia",
+      "preservación",
+      "controles"
+    ],
+    "uninspected": [],
+    "limitations": [
+      "Inspección de todos los archivos por bytes y ubicación; no lectura semántica integral línea a línea.",
+      "No hay ejecución de navegador ni recuperación del HTML del dominio Pages.",
+      "Las pruebas de la corrección local se separan del dictamen de la línea base."
+    ]
+  },
+  "decision": {
+    "status": "REQUEST_CHANGES",
+    "rationale": "Dictamen histórico de af35a8e. La propuesta conserva las correcciones posteriores, el Atlas v1.0 y el portal de f09a07b; añade procedencia y regresiones, sin acreditar uso docente.",
+    "blocking_findings": [
+      "F-001",
+      "F-002",
+      "F-003"
+    ],
+    "next_steps": [
+      "Revisar e integrar la corrección preparada.",
+      "Verificar el despliegue en el dominio real.",
+      "Mantener NO_GO y abordar PB-01 y las pruebas pendientes."
+    ]
+  }
+}

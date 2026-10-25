@@ -100,9 +100,10 @@ const PAGES2K = [
 ];
 
 // ────────────────────────────────────────────────────────────────────────
-// DATASET 4: Marine Isotope Stages (MIS) — ICS 2023 / Railsback et al. 2015
-// Cohen, K.M. et al. (2023). The ICS International Chronostratigraphic Chart
-// v2023/09. Episodes 46(2):1-4. DOI: 10.18814/epiiugs/2023/023025
+// DATASET 4: Marine Isotope Stages (MIS) — Railsback et al. 2015 / tabla ICS v2023/09
+// Cohen, K.M., Finney, S.C., Gibbard, P.L. & Fan, J.-X. (2013; updated). The ICS
+// International Chronostratigraphic Chart (v2023/09). Episodes 36(3):199-204.
+// (PB-GH-03: corrige la cita «Cohen et al. 2023, Episodes 46(2)», no localizada.)
 // Railsback, L.B. et al. (2015). An optimized scheme of lettered marine isotope
 // substages for the last 1.0 million years.
 // Quaternary Science Reviews 111:94-106. DOI: 10.1016/j.quascirev.2015.01.012

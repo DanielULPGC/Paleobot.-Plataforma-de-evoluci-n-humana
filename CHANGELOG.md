@@ -1,5 +1,30 @@
 # Registro de cambios
 
+## PB-GH-03 · 25-10-2026
+
+- Atlas v1.0: Chororapithecus deja de cargar la fotografía de la Universidad de Tokio,
+  sin permiso explícito de reutilización (ya pendiente en `image_audit.json`). Se muestra
+  una lámina neutra, no el sustituto por clado, que habría atribuido una foto de
+  Proconsul a otro taxón.
+- Atlas v1.0: la cita «Cohen et al. (2023), Episodes 46(2), DOI 10.18814/epiiugs/2023/023025»,
+  no localizada, se sustituye por la que recomienda la propia tabla ICS: Cohen, Finney,
+  Gibbard y Fan (2013; actualizada), Episodes 36(3), 199-204 (v2023/09). Los estadios
+  isotópicos marinos se atribuyen a Railsback et al. (2015), no a la ICS.
+- Los tres archivos corregidos se archivan en `docs/historial/BASE_4D320EE/`;
+  `provenance/PB_GH_03_CORRECCIONES.json` recoge motivo, evidencia, impacto, retorno y
+  huellas. El control del Atlas acepta solo correcciones documentadas con original
+  archivado; se añaden 3 controles y 4 pruebas. Lógica, catálogo, cronología y entrada
+  ligera sin cambios. Se mantiene NO_GO.
+
+## PB-GH-02 · 24-10-2026
+
+- Se contrasta af35a8e y se reconoce la evolución posterior hasta 4d320ee.
+- Se conserva el portal Sylva, el Atlas, v11 en ligera/ y su corrección loading=eager.
+- Se actualiza procedencia y se añaden pruebas de HTTP con prefijo y preservación.
+- Se mantienen íntegros el Atlas v1.0 y sus 169 archivos; los documentos anteriores
+  que cambian se archivan con sus hashes. Se mantiene NO_GO.
+
+
 ## Portada 3D Sylva del atlas · 24-10-2026
 
 - Se incorpora `atlas/recorrido/portada-sylva.html` (escena Sylva de ThreeUI 1.2.0 adaptada

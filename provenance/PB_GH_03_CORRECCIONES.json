@@ -1,0 +1,43 @@
+{
+  "preparation": "PB-GH-03",
+  "date": "2026-10-25",
+  "base_commit": "4d320ee6126c8857a8d4b53daa932d547188a906",
+  "scope": "Correcciones de contenido en Atlas v1.0 (derechos de imagen y cita bibliográfica). No cambia lógica, datos cronológicos, catálogo ni la entrada ligera.",
+  "application_logic_changed": false,
+  "release_gate": "NO_GO",
+  "corrections": [
+    {
+      "path": "atlas/assets/js/00-core/002-script.js",
+      "change": "Chororapithecus deja de cargar la fotografía de The University Museum, The University of Tokyo (B44_02.jpg): se vacía imagen en el registro y los dos MEDIA_OVERRIDES pasan a una lámina SVG neutra (CHORORA_PENDIENTE_SVG) con la ficha institucional como enlace de referencia. Se evita el sustituto por clado de buildMediaPlaceholder, que mostraría una foto de Proconsul atribuida a otro taxón.",
+      "reason": "No consta permiso explícito de reutilización; image_audit.json ya la mantenía pendiente y /ligera/ no la carga.",
+      "evidence": "src/entrada_ligera/image_audit.json (pending.chororapithecus); auditoría de cotejo del 24-10-2026.",
+      "impact": "La ficha muestra una lámina provisional generada (capa v92) o la SVG neutra, sin peticiones a u-tokyo.ac.jp; comprobado en Chromium local. Sin cambios de lógica.",
+      "return": "Restaurar el snapshot o revertir el commit, solo si se obtiene permiso escrito del museo.",
+      "import_sha256": "b6052b999d1021ab4b28af6be25e89fe584db45cf135d7100e9d324bc484035f",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/002-script.js.snapshot",
+      "corrected_sha256": "4c2f5aa7cd83b3a7e7453cc1c3529f10c6d347b5d11de2a4d08315e8b4e8d962"
+    },
+    {
+      "path": "atlas/index.html",
+      "change": "Cita ICS: 'Cohen et al. (2023), Episodes 46(2), DOI 10.18814/epiiugs/2023/023025' sustituida por la cita recomendada en la propia tabla ICS (Cohen, Finney, Gibbard y Fan, 2013; actualizada, Episodes 36(3):199-204, v2023/09), con enlace al artículo en stratigraphy.org. Los MIS se atribuyen a Railsback et al. (2015), no a la ICS.",
+      "reason": "La referencia de 2023 no se localiza; la tabla ICS v2024/12 recomienda citar Cohen et al. (2013; updated). Los estadios isotópicos marinos no los define la tabla ICS.",
+      "evidence": "https://stratigraphy.org/ICSchart/ChronostratChart2024-12.pdf (cita recomendada); https://stratigraphy.org/ICSchart/Cohen2013_Episodes.pdf (Episodes 36(3):199-204). DOI de 2013 no verificado: no se incluye.",
+      "impact": "Texto y enlaces de la vista climática; sin cambios de datos ni de lógica.",
+      "return": "Restaurar el snapshot o revertir el commit.",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "corrected_sha256": "6d5481b2564091e33c4ba5020d0758e34ea7cfbdbb32d1cf216f6f4f87938278"
+    },
+    {
+      "path": "atlas/assets/js/00-core/006-script.js",
+      "change": "Solo comentarios de procedencia del conjunto MIS: misma corrección de la cita ICS.",
+      "reason": "Coherencia con atlas/index.html.",
+      "evidence": "Igual que atlas/index.html.",
+      "impact": "Ninguno en ejecución (comentarios).",
+      "return": "Restaurar el snapshot o revertir el commit.",
+      "import_sha256": "9fb11cbea15e41b6c91b40163c8c804814fca04f02ab13858d00e69e7838b9c4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/006-script.js.snapshot",
+      "corrected_sha256": "64d95025173a6066eac1856643ba15510be3360d1d3ef3b6456daf3416255a73"
+    }
+  ]
+}

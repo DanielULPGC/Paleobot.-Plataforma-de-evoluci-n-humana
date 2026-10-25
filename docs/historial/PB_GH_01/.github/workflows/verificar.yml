@@ -1,0 +1,31 @@
+name: Verificar preparación y reproducir PB-01
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Obtener el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Comprobar herramientas
+        run: |
+          python3 --version
+          node --version
+      - name: Verificar datos, procedencia y estructura
+        run: python3 scripts/verificar_repo.py
+      - name: Comprobar construcción de los dos HTML
+        run: python3 scripts/construir.py --check
+      - name: Comprobar rechazo de alteraciones y retorno de construcción
+        run: python3 -m unittest discover -s tests -p "test_*.py"
+      - name: Reproducir el defecto conocido PB-01
+        run: node scripts/reproducir_pb01.cjs

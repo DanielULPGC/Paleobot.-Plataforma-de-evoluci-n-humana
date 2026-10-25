@@ -1,0 +1,12 @@
+{
+  "preparation": "PB-GH-02",
+  "source_commit": "4d320ee6126c8857a8d4b53daa932d547188a906",
+  "main_entry": "SYLVA_PORTAL",
+  "main_html": "index.html",
+  "light_html": "ligera/index.html",
+  "sha256": {
+    "index.html": "450d073a2b19c56af1b332ef24bb1718a5e8fc30d2fee51420ede3d45121c5a3",
+    "ligera/index.html": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
+    "src/entrada_ligera/interaccion.js": "95df6159427941d0a1f908d392caf1173f336deef3013035da4f8637190096c0"
+  }
+}
