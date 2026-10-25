@@ -25,6 +25,8 @@ jobs:
         run: python3 scripts/verificar_repo.py
       - name: Comprobar construcción de los dos HTML
         run: python3 scripts/construir.py --check
+      - name: Comprobar recursos bajo el prefijo de GitHub Pages
+        run: python3 scripts/verificar_publicacion.py
       - name: Comprobar rechazo de alteraciones y retorno de construcción
         run: python3 -m unittest discover -s tests -p "test_*.py"
       - name: Reproducir el defecto conocido PB-01

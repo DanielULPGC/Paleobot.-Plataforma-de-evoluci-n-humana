@@ -42,7 +42,10 @@ def verify(include_syntax=True):
     status=load('provenance/ESTADO.json')
     check('NO_GO no promovido',status['release_gate']=='NO_GO')
     check('Moodle y lector pendientes',status['moodle']=='NOT_RUN' and status['screen_reader']=='NOT_RUN')
-    check('Sin publicación registrada',status['remote_push'] is False and status['pages_deployed'] is False)
+    observed=status.get('remote_observation',{})
+    check('Procedencia remota explícita',status.get('remote_repository')=='https://github.com/DanielULPGC/Paleobot.-Plataforma-de-evoluci-n-humana' and bool(re.fullmatch(r'[0-9a-f]{40}',observed.get('source_commit',''))))
+    deployment=status.get('correction_deployment')
+    check('Publicación observada separada de validación',observed.get('pages_enabled') is True and deployment in ('NOT_VERIFIED','VERIFIED') and (deployment!='VERIFIED' or bool(status.get('deployment_evidence'))) and status['release_gate']=='NO_GO')
     cat=load('src/entrada_ligera/catalog.json');ids=[s['id'] for s in cat['records']]
     check('50 IDs canónicos únicos',len(ids)==len(set(ids))==50)
     check('50 contratos con IDs coincidentes',set(ids)==set(cat['chronology']['records']))
@@ -70,6 +73,16 @@ def verify(include_syntax=True):
     bad=[name for name,sha in audit_hashes.items() if not (ROOT/name).is_file() or digest(ROOT/name)!=sha]
     check('Integridad del expediente importado',not bad,', '.join(bad[:4]))
     baseline=load('provenance/BASELINE_IMPORTADA.json')['sha256']
+    entries=load('provenance/PB_GH_02_ENTRADAS.json')['sha256']
+    check('Entradas actuales coinciden con su procedencia',all((ROOT/p).is_file() and digest(ROOT/p)==sha for p,sha in entries.items()))
+    migration=load('provenance/PB_GH_02_MIGRACION.json')
+    preserved=[row for row in migration['files'] if any((ROOT/p).is_file() and digest(ROOT/p)==row['sha256'] for p in row['retained_paths'])]
+    check('330 archivos auditados preservados por contenido',len(migration['files'])==len(preserved)==330 and migration['source_commit']==status.get('audit_source_commit'))
+    current_base=load('provenance/PB_GH_02_BASE_ACTUAL.json')
+    current_preserved=[row for row in current_base['files'] if any((ROOT/p).is_file() and digest(ROOT/p)==row['sha256'] for p in row['retained_paths'])]
+    check('Archivos de la base de trabajo preservados',len(current_base['files'])==len(current_preserved)==current_base['source_files'] and current_base['source_commit']==observed.get('source_commit'))
+    atlas_import=load('provenance/ATLAS_V1_IMPORT.json')
+    check('169 archivos Atlas v1 conservan las huellas importadas',len(atlas_import['sha256'])==169 and all((ROOT/'atlas'/p).is_file() and digest(ROOT/'atlas'/p)==sha for p,sha in atlas_import['sha256'].items()))
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
     check('Referencia v9 y licencia Leaflet intactas',all(digest(ROOT/name)==baseline[name] for name in frozen))
     check('Catálogo original preservado',digest(ROOT/'src/entrada_ligera/catalog.json')==baseline['src/entrada_ligera/catalog.json'])
@@ -109,6 +122,7 @@ def verify(include_syntax=True):
     check('Hashes CSP de los 133 bloques del piloto',len(pilot.scripts)==77 and len(pilot.styles)==56 and not cspbad)
     # Verificación de esta preparación: el repositorio no publica ni toma credenciales.
     workflow=(ROOT/'.github/workflows/verificar.yml').read_text()
+    check('Pages estático explícito', (ROOT/'.nojekyll').is_file())
     check('Checkout fijado a commit oficial','actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' in workflow)
     check('CI con permisos de lectura y sin despliegue','contents: read' in workflow and 'persist-credentials: false' in workflow and 'pull_request_target' not in workflow and 'deploy-pages' not in workflow)
     files=[f for f in ROOT.rglob('*') if f.is_file() and not any(p in ('.git','local-results','dist','__pycache__') for p in f.relative_to(ROOT).parts)]

@@ -1,5 +1,14 @@
 # Registro de cambios
 
+## PB-GH-02 · 24-10-2026
+
+- Se contrasta af35a8e y se reconoce la evolución posterior hasta 4d320ee.
+- Se conserva el portal Sylva, el Atlas, v11 en ligera/ y su corrección loading=eager.
+- Se actualiza procedencia y se añaden pruebas de HTTP con prefijo y preservación.
+- Se mantienen íntegros el Atlas v1.0 y sus 169 archivos; los documentos anteriores
+  que cambian se archivan con sus hashes. Se mantiene NO_GO.
+
+
 ## Portada 3D Sylva del atlas · 24-10-2026
 
 - Se incorpora `atlas/recorrido/portada-sylva.html` (escena Sylva de ThreeUI 1.2.0 adaptada

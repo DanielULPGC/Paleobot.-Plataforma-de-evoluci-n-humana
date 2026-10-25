@@ -1,16 +1,31 @@
 {
-  "preparation": "PB-GH-01",
+  "preparation": "PB-GH-02",
   "date": "2026-10-24",
   "release_gate": "NO_GO",
-  "main_entry": "v11",
+  "main_entry": "SYLVA_PORTAL",
   "last_recovered_user_confirmation": "v9",
   "application_code_changed": false,
   "pb01": "OPEN_REPRODUCED_IN_ISOLATION",
   "moodle": "NOT_RUN",
-  "real_browser": "NOT_RUN",
+  "real_browser": "NOT_RUN_IN_THIS_REVIEW",
   "screen_reader": "NOT_RUN",
-  "remote_repository": null,
-  "remote_push": false,
-  "github_actions_run": "NOT_RUN",
-  "pages_deployed": false
+  "remote_repository": "https://github.com/DanielULPGC/Paleobot.-Plataforma-de-evoluci-n-humana",
+  "remote_observation": {
+    "date": "2026-10-24",
+    "branch": "main",
+    "source_commit": "4d320ee6126c8857a8d4b53daa932d547188a906",
+    "source_tree": "b3a5ec3050d56ff499225beb75fb59d5bb47fa11",
+    "public": true,
+    "pages_enabled": true,
+    "published_html_retrieved": false,
+    "original_structure_restored_in": "bbe2f59e217c25a32a9fe21e51ebd7db65a5edbd",
+    "existing_ci": "NOT_CHECKED_FOR_THIS_HEAD",
+    "existing_pages_build": "NOT_CHECKED_FOR_THIS_HEAD"
+  },
+  "correction_branch": "fix/pb-gh-02-verificacion",
+  "correction_deployment": "NOT_VERIFIED",
+  "github_actions_run": "NOT_RUN_AT_PREPARATION",
+  "previous_preparation": "docs/historial/BASE_F09A07B/",
+  "audit_source_commit": "af35a8e56cd9c995ff3636c41e3409a5184c48a4",
+  "light_entry": "ligera/index.html"
 }

@@ -1,0 +1,422 @@
+{
+  "preparation": "PB-GH-02",
+  "date": "2026-10-24",
+  "audit_source_commit": "af35a8e56cd9c995ff3636c41e3409a5184c48a4",
+  "integration_base_commit": "4d320ee6126c8857a8d4b53daa932d547188a906",
+  "historical_files_preserved": 330,
+  "base_files_preserved": 531,
+  "atlas_v1_files_preserved": 169,
+  "application_code_changed_by_this_proposal": false,
+  "checks": {
+    "repository": {
+      "checks": [
+        {
+          "name": "Python 3.10+",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Node disponible",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Node 20+",
+          "pass": true,
+          "detail": "v24.22.1"
+        },
+        {
+          "name": "NO_GO no promovido",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Moodle y lector pendientes",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Procedencia remota explícita",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Publicación observada separada de validación",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "50 IDs canónicos únicos",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "50 contratos con IDs coincidentes",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "47 recursos y tres pendientes",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Cobertura visual sin solapamiento",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Tres pendientes conservados",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Cuatro candidatas excluidas",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "47 URL https documentadas",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "36 decisiones únicas",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Cada decisión tiene motivo, evidencia, impacto y retorno",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "36 borradores de incidencias",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "272 entradas de inventario",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "115 archivos con hash recuperado",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Inventario sin enlaces privados",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Filas CSV registro_decisiones.csv",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Filas CSV inventario_artefactos.csv",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Integridad del expediente importado",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Entradas actuales coinciden con su procedencia",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "330 archivos auditados preservados por contenido",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Archivos de la base de trabajo preservados",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "169 archivos Atlas v1 conservan las huellas importadas",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Referencia v9 y licencia Leaflet intactas",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Catálogo original preservado",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Solo inventarios transformados",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "JSON legibles",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "50 fichas HTML en la entrada",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Entrada sin IDs duplicados",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Anclas de entrada con destino",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Aviso v9/v11 conservado",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Rutas estáticas de tres HTML",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Cuarentena no cargada desde el índice",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Hashes CSP de los 133 bloques del piloto",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Pages estático explícito",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Checkout fijado a commit oficial",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "CI con permisos de lectura y sin despliegue",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Archivos por debajo de 25 MiB",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Rutas compatibles sin colisiones de mayúsculas",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Sin identificadores privados de plataforma en texto",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Sin patrones de credenciales reconocidos",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Sin archivos de credenciales ni ZIP ancestrales",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "name": "Sintaxis JavaScript de archivos y bloques",
+          "pass": true,
+          "detail": "245 unidades; "
+        }
+      ],
+      "passed": 47,
+      "failed": 0,
+      "javascript_units_checked": 245,
+      "syntax_executed": true,
+      "application_files": 560,
+      "release_gate": "NO_GO",
+      "real_browser_executed": false,
+      "screen_reader_executed": false,
+      "moodle_executed": false,
+      "note": "PASS de preparación y estructura no equivale a corrección de PB-01 o validación docente."
+    },
+    "build": {
+      "mode": "compare_only",
+      "builds": [
+        {
+          "target": "light",
+          "sha256": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
+          "bytes": 218019,
+          "matches_preserved": true
+        },
+        {
+          "target": "atlas",
+          "sha256": "905de165886f476b01ebd4fdea276c0481801dba5c49feb74666575faa53f58c",
+          "bytes": 3395289,
+          "matches_preserved": true
+        }
+      ],
+      "application_sources_modified": false,
+      "release_gate": "NO_GO",
+      "moodle_executed": false
+    },
+    "http": {
+      "scope": "STATIC_FILES_AND_LOCAL_HTTP_ONLY",
+      "prefix": "/Paleobot.-Plataforma-de-evoluci-n-humana/",
+      "passed": true,
+      "main_entry_matches_declared": true,
+      "main_entry_sha256": "450d073a2b19c56af1b332ef24bb1718a5e8fc30d2fee51420ede3d45121c5a3",
+      "nojekyll_present": true,
+      "pages": [
+        {
+          "path": "index.html",
+          "references": 6,
+          "local_issues": 0
+        },
+        {
+          "path": "ligera/index.html",
+          "references": 315,
+          "local_issues": 0
+        },
+        {
+          "path": "atlas/index.html",
+          "references": 177,
+          "local_issues": 0
+        },
+        {
+          "path": "atlas/recorrido/index.html",
+          "references": 13,
+          "local_issues": 0
+        },
+        {
+          "path": "atlas/recorrido/portada-sylva.html",
+          "references": 12,
+          "local_issues": 0
+        },
+        {
+          "path": "baselines/entrada-ligera-v9.html",
+          "references": 311,
+          "local_issues": 0
+        },
+        {
+          "path": "experimental/atlas-r98/PaleoBot_Atlas_Original_Directo_R98_PILOTO.html",
+          "references": 22,
+          "local_issues": 0
+        },
+        {
+          "path": "experimental/atlas-r98/fuentes/Auditoria_R98/index.html",
+          "references": 150,
+          "local_issues": 0
+        },
+        {
+          "path": "experimental/atlas-r98/fuentes/Auditoria_R98/science/chronology.html",
+          "references": 7,
+          "local_issues": 0
+        }
+      ],
+      "css_files_inspected": 105,
+      "local_resources": 295,
+      "reference_issues": [],
+      "http_requests_passed": 296,
+      "http_failures": [],
+      "external_references_skipped": 493,
+      "external_requests_executed": 0,
+      "javascript_executed": false,
+      "browser_executed": false,
+      "moodle_executed": false,
+      "release_gate": "NO_GO"
+    },
+    "pb01": {
+      "executed_at": "2026-10-24T16:23:19.656Z",
+      "scope": "MODULE_066_SYNTHETIC_DOM_ONLY",
+      "source": "experimental/atlas-r98/fuentes/Auditoria_R98/assets/js/40-media/066-paleobot-v81-map-and-species-media-repair.js",
+      "source_sha256": "72f59642fdbf4b1eca60ea71a7f55896fccea849da5f569a8013e5647624dc42",
+      "known_defect_reproduced": true,
+      "affected_ids": [
+        "boisei",
+        "proconsul",
+        "soloensis"
+      ],
+      "documented_resources": 47,
+      "urls_preserved": 44,
+      "map_control_preserved": true,
+      "full_application_executed": false,
+      "network_used": false,
+      "real_browser": false,
+      "moodle": false,
+      "corrected": false,
+      "release_gate": "NO_GO"
+    }
+  },
+  "tests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "real_browser": "BLOCKED_NO_EXECUTABLE",
+  "axe": "NOT_RUN",
+  "screen_reader": "NOT_RUN",
+  "moodle": "NOT_RUN",
+  "github_actions_this_proposal": "NOT_RUN_AT_PREPARATION",
+  "release_gate": "NO_GO",
+  "baseline_commands": [
+    {
+      "command": [
+        "python3",
+        "scripts/verificar_repo.py"
+      ],
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/construir.py",
+        "--check"
+      ],
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 1
+    },
+    {
+      "command": [
+        "node",
+        "scripts/reproducir_pb01.cjs"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "setup_notes": [
+    "During rebasing, preservation manifests had to be completed before negative tests could run.",
+    "The legacy three-page asset check remains on light entry, R98 and chronology; the new HTTP checker additionally covers portal and directory URLs."
+  ],
+  "remote_write": "BLOCKED_BY_AUTOMATIC_APPROVAL_REVIEW",
+  "remote_write_reason": "Authorization covered preparation; remote publication required explicit approval. The earlier base had also advanced.",
+  "local_base_updated_after_block": true
+}

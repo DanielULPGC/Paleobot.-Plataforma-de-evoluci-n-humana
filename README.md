@@ -4,12 +4,18 @@ Recurso educativo para consultar y comparar evidencias de la evolución humana.
 Incluye un catálogo de 50 fichas, cronología tipada, referencias y recursos visuales
 documentados, junto con las fuentes del Atlas y su expediente de revisión.
 
-**Estado: preparación para revisión en GitHub, PB-GH-01, 24-10-2026.**
-La entrada principal es la consulta ligera v11. Su prueba institucional sigue
+**Estado: contraste y regresiones, PB-GH-02, 24-10-2026.**
+La raíz abre la portada Sylva del Atlas y la consulta ligera v11 está en `ligera/`. Su prueba institucional sigue
 pendiente. A3 y el Atlas R98 conservan **NO_GO para promoción docente**. Las
 comprobaciones de este repositorio no certifican navegador, lector de pantalla
 ni Moodle. La confirmación de funcionamiento recuperada corresponde a v9,
 sin atribuir ese resultado a v11.
+
+PB-GH-02 contrasta la auditoría histórica de `af35a8e` con la base de trabajo
+`4d320ee`, que ya incorpora la restauración, el Atlas v1.0, la carga inmediata de
+imágenes en v11 y el portal de entrada y la portada Sylva. Se conservan esas incorporaciones.
+Se actualiza la procedencia y se añaden pruebas de rutas bajo el prefijo Pages
+con preservación de contenidos. Consulte [el informe](docs/PB_GH_02_INFORME.md).
 
 ## Atlas v1.0 (paquete IMS para Moodle)
 
@@ -29,7 +35,7 @@ huellas en `provenance/ATLAS_V1_IMPORT.json`).
 
 ## Abrir PaleoBot
 
-La raíz del sitio (`index.html`) redirige al atlas interactivo v1.0 (`atlas/`). La consulta ligera v11 está en `ligera/index.html`.
+La raíz del sitio (`index.html`) redirige a la portada Sylva (`atlas/recorrido/portada-sylva.html`), que permite acceder al Atlas v1.0 (`atlas/`). La consulta ligera v11 está en `ligera/index.html`.
 
 Abra `ligera/index.html` con un navegador para consultar las fichas. El contenido básico
 usa HTML nativo. Los filtros y el diagnóstico de imágenes requieren JavaScript.
@@ -68,6 +74,7 @@ Requisitos de desarrollo: Python 3.10 o superior y Node 20 o superior.
 ```bash
 python3 scripts/verificar_repo.py
 python3 scripts/construir.py --check
+python3 scripts/verificar_publicacion.py
 python3 -m unittest discover -s tests -p "test_*.py"
 node scripts/reproducir_pb01.cjs
 ```
@@ -93,11 +100,11 @@ La preparación PB-GH-01 conserva el código de aplicación; no incorpora ese ar
 
 ## Subir a GitHub
 
-Siga [la guía de subida](docs/SUBIR_A_GITHUB.md). El paquete no está vinculado a
-un repositorio remoto ni presupone que exista `paleobot` en una cuenta concreta.
-GitHub Desktop es la vía recomendada para subir el árbol completo y conservar
-las carpetas de configuración. Para empezar, se propone un repositorio privado
-mientras se adjudica la licencia global y la revisión de materiales.
+El repositorio público es
+[DanielULPGC/Paleobot.-Plataforma-de-evoluci-n-humana](https://github.com/DanielULPGC/Paleobot.-Plataforma-de-evoluci-n-humana).
+Pages está habilitado. La propuesta PB-GH-02 se prepara en otra rama; consulte
+[la guía de integración](docs/SUBIR_A_GITHUB.md). Un resultado correcto de CI no
+acredita por sí solo funcionamiento docente ni permisos de reutilización.
 
 ## Derechos y fuentes
 
