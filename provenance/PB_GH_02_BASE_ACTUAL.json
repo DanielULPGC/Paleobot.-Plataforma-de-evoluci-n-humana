@@ -9,7 +9,8 @@
       "git_blob_sha1": "6c214f503cbaadbe4c4002c147a6e18ebca69cdb",
       "sha256": "1d54fc4245dfb9c67d60c29168aaa6b6406d1c75fdd3bf9b4941e6e1a035d4d3",
       "retained_paths": [
-        ".gitattributes"
+        ".gitattributes",
+        "docs/historial/BASE_4D320EE/.gitattributes.snapshot"
       ]
     },
     {
