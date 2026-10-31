@@ -1,5 +1,25 @@
 # Registro de cambios
 
+## PB-GH-05 · Errores técnicos del sitio · 31-10-2026
+
+Sin eliminar contenido, páginas ni imágenes; solo atributos, estilos de color, espacios
+y manifiesto. Registro con motivo, evidencia, impacto, retorno y estados archivados en
+`provenance/PB_GH_05_CORRECCIONES.json`.
+
+- Portada Sylva: los cuatro enlaces del menú tienen nombre accesible también en móvil;
+  la etiqueta del logotipo describe su destino real (recorrido guiado).
+- Atlas v1.0: `body` deja de recibir `aria-selected` y la clase `active` (selector
+  `[data-pb-v50-block]:not(body)` en seis módulos).
+- Atlas v1.0: la limpieza de marca ya no pega palabras («comprender quiénes»,
+  «de *Australopithecus*»).
+- Atlas v1.0: contraste AA en 38 textos secundarios (reglas añadidas al final de
+  `051-paleobot-landing-redesign.css`) y recarga forzada de los recursos cambiados.
+- `imsmanifest.xml`: añade las 10 entradas de la portada Sylva (178, todas presentes).
+- Resultado: axe-core 4.10.2 sin infracciones WCAG A/AA en la portada del atlas,
+  la portada Sylva (1280 y 390 px), los diez documentos del recorrido y `ligera/`.
+  Verificador 56/56; pruebas 20/20. Sigue NO_GO (Moodle, lector de pantalla,
+  navegadores no Chromium y rendimiento en aula sin probar).
+
 ## PB-GH-04 · 25-10-2026
 
 - Atlas v1.0, cronología heredada: ocho fichas contradecían la capa revisada o daban un

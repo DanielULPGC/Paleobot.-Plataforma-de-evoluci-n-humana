@@ -49,7 +49,7 @@
 
     /* Block tabs */
     /* Exclude body: body gets data-pb-v50-block dataset which matches this selector */
-    document.querySelectorAll('[data-pb-v50-block]').forEach(function(b) {
+    document.querySelectorAll('[data-pb-v50-block]:not(body)').forEach(function(b) {
       if (b === document.body || b === document.documentElement) return;
       var on = b.dataset.pbV50Block === blockId;
       b.classList.toggle('active', on);

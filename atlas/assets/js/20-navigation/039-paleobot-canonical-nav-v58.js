@@ -65,7 +65,7 @@
       if (b.tagName === 'BUTTON' || b.getAttribute('role') === 'button' || b.getAttribute('role') === 'tab')
         b.setAttribute(b.getAttribute('role') === 'tab' ? 'aria-selected' : 'aria-pressed', on ? 'true' : 'false');
     });
-    document.querySelectorAll('[data-pb-v50-block]').forEach(function(b) {
+    document.querySelectorAll('[data-pb-v50-block]:not(body)').forEach(function(b) {
       if (b === document.body || b === document.documentElement) return;
       var on = b.dataset.pbV50Block === blockId;
       b.classList.toggle('active', on);

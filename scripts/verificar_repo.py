@@ -86,7 +86,7 @@ def verify(include_syntax=True):
     # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
     # PB-GH-04 encadena una segunda ronda: la última corrección de cada ruta debe partir
     # exactamente del estado anterior, conservado en su propio snapshot.
-    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json') if (ROOT/n).is_file()]
+    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json') if (ROOT/n).is_file()]
     fixes={}
     cadena_ok=True
     for ronda in rondas:
@@ -108,6 +108,17 @@ def verify(include_syntax=True):
     errores_cronologia=[p for p in (r'nombre: "H\. neanderthalensis", anos: "[^"]*", [^\n]*datacion: "14C"', r'nombre: "Homo floresiensis", anos: "50 ka"', r"datacion: \"U-Pb\", cc: 408", r'nombre: "Homo cepranensis", anos: "~900', 'ajpa.24122', 'Sutton et al. \\(2023\\)') if re.search(p,atlas_db)]
     check('Atlas v1 sin los errores de cronología corregidos en PB-GH-04',not errores_cronologia,', '.join(errores_cronologia))
     atlas_text=' '.join(f.read_text(encoding='utf-8',errors='ignore') for f in (ROOT/'atlas').rglob('*') if f.suffix in ('.js','.html','.json'))
+    # PB-GH-05: regresiones de accesibilidad y texto del sitio publicado.
+    js_dir=ROOT/'atlas/assets/js'
+    selector_body=[str(f.relative_to(ROOT)) for f in js_dir.rglob('*.js') if "querySelectorAll('[data-pb-v50-block]')" in f.read_text(encoding='utf-8',errors='ignore')]
+    check('Selectores de bloque no marcan body como pestaña',not selector_body,', '.join(selector_body[:3]))
+    limpieza=(js_dir/'00-core/076-paleobot-clean-branding.js').read_text(encoding='utf-8')
+    check('Limpieza de marca conserva los espacios de borde',"before.match(/^\\s*/)[0] + clean(before)" in limpieza)
+    portada=(ROOT/'atlas/recorrido/portada-sylva.html').read_text(encoding='utf-8')
+    check('Menú de la portada con nombre accesible en pantallas estrechas',all(f'href="{h}" style="--d:{d}ms" aria-label=' in portada for h,d in (('parentesco.html',180),('territorio.html',230),('ficha.html',280),('atlas.html',330))))
+    manifiesto=(ROOT/'atlas/imsmanifest.xml').read_text(encoding='utf-8')
+    hrefs=re.findall(r'<file href="([^"]+)"',manifiesto)
+    check('Manifiesto IMS completo e incluye la portada',all((ROOT/'atlas'/h).is_file() for h in hrefs) and 'recorrido/portada-sylva.html' in hrefs)
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
     check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']

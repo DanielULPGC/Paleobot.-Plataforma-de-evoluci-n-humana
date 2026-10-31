@@ -52,7 +52,7 @@
       if (b.tagName === 'BUTTON' || b.getAttribute('role') === 'button')
         b.setAttribute('aria-pressed', v === viewId ? 'true' : 'false');
     });
-    document.querySelectorAll('[data-pb-v50-block]').forEach(function(b) {
+    document.querySelectorAll('[data-pb-v50-block]:not(body)').forEach(function(b) {
       if (b === document.body || b === document.documentElement) return;
       var on = b.dataset.pbV50Block === blockId;
       b.classList.toggle('active', on);

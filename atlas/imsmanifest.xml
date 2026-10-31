@@ -182,5 +182,15 @@
       <file href="recorrido/parentesco.html"/>
       <file href="recorrido/territorio.html"/>
     </resource>
+      <file href="recorrido/portada-sylva.html"/>
+      <file href="recorrido/medir-rendimiento.html"/>
+      <file href="recorrido/inner-green-assets/card-ecostove.jpg"/>
+      <file href="recorrido/inner-green-assets/card-ethos.jpg"/>
+      <file href="recorrido/inner-green-assets/lexend-latin.woff2"/>
+      <file href="recorrido/inner-green-assets/three.min.js"/>
+      <file href="recorrido/licencias/ASSET-LICENSES.md"/>
+      <file href="recorrido/licencias/FONT-LICENSES.md"/>
+      <file href="recorrido/licencias/THIRD_PARTY_NOTICES.md"/>
+      <file href="recorrido/licencias/THREEUI-LICENSE.txt"/>
   </resources>
 </manifest>

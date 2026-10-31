@@ -53,5 +53,23 @@ class AtlasCorrections(unittest.TestCase):
         target.write_text(target.read_text(encoding='utf-8')+'\n// B44_02.jpg\n',encoding='utf-8')
         self.assertFalse(self.result('Atlas v1 no carga la imagen sin permiso de reutilización'))
 
+    def test_rechaza_selector_que_marca_body(self):
+        target=self.repo/'atlas/assets/js/20-navigation/037-paleobot-v55-nav.js'
+        t=target.read_text(encoding='utf-8').replace("[data-pb-v50-block]:not(body)","[data-pb-v50-block]",1)
+        target.write_text(t,encoding='utf-8')
+        self.assertFalse(self.result('Selectores de bloque no marcan body como pestaña'))
+
+    def test_rechaza_menu_portada_sin_nombre_accesible(self):
+        target=self.repo/'atlas/recorrido/portada-sylva.html'
+        t=target.read_text(encoding='utf-8').replace(' aria-label="Parentesco"','',1)
+        target.write_text(t,encoding='utf-8')
+        self.assertFalse(self.result('Menú de la portada con nombre accesible en pantallas estrechas'))
+
+    def test_rechaza_manifiesto_con_fichero_inexistente(self):
+        target=self.repo/'atlas/imsmanifest.xml'
+        t=target.read_text(encoding='utf-8').replace('<file href="recorrido/portada-sylva.html"/>','<file href="recorrido/no-existe.html"/>',1)
+        target.write_text(t,encoding='utf-8')
+        self.assertFalse(self.result('Manifiesto IMS completo e incluye la portada'))
+
 if __name__=='__main__':
     unittest.main()

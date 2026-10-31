@@ -1,0 +1,134 @@
+{
+  "preparation": "PB-GH-05",
+  "date": "2026-10-31",
+  "base_commit": "486fbeb (rama fix/pb-gh-04-cronologia)",
+  "scope": "Errores técnicos del sitio: accesibilidad (nombre de enlaces, ARIA en body, contraste), espacios perdidos y manifiesto IMS. No elimina contenido, páginas ni imágenes; no cambia datos, cronología ni catálogo.",
+  "application_logic_changed": false,
+  "release_gate": "NO_GO",
+  "note": "ATLAS_V1_IMPORT.json conserva las huellas del ZIP recibido; las diferencias actuales están documentadas en PB_GH_03/04/05_CORRECCIONES.json y atlas/recorrido contiene además los ficheros de la portada añadidos el 24-10-2026.",
+  "corrections": [
+    {
+      "path": "atlas/assets/css/80-features/051-paleobot-landing-redesign.css",
+      "import_sha256": "28dc1ea2de999d42952412b88721104f1fb403bc8e3ad366d6a19e51922e494a",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/css/80-features/051-paleobot-landing-redesign.css.snapshot",
+      "corrected_sha256": "cf490d6c55588a0c42fe74882ee3f3f8e39cff2fa53c5c0d469c92c1a3eae7fb",
+      "change": "Añade al final reglas de color para la numeración de rutas, pasos, metadatos de bloques, contadores de vistas, enlace de salto, nivel, antetítulo y distintivo de la cabecera.",
+      "reason": "Contraste por debajo de 4,5:1 (WCAG 1.4.3), entre 1,19:1 y 4,06:1.",
+      "evidence": "axe-core 4.10.2: 20 + 18 nodos color-contrast; contrastes recalculados con la fórmula WCAG (5,5–7,3:1).",
+      "impact": "Solo color de texto; sin cambios de maqueta, tamaño ni contenido.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/00-core/076-paleobot-clean-branding.js",
+      "import_sha256": "6265ec623f9d2418a39a3779c20e7236d3d796ade854d27433cbcb4da15d29ca",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/076-paleobot-clean-branding.js.snapshot",
+      "corrected_sha256": "08a977973cc603fe5f3830ad36ea299ac86434289fc6f9a2f6cb684336808470",
+      "change": "clean() se aplica a nodos de texto conservando los espacios de los bordes; los nodos solo de espacios no se tocan.",
+      "reason": "El trim() pegaba palabras junto a <em>/<strong> («comprenderquiénes», «deAustralopithecus»).",
+      "evidence": "Traza en Chromium: nodeValue reescrito en 076-paleobot-clean-branding.js:39.",
+      "impact": "Texto visible con espacios correctos; la limpieza de identificadores de versión no cambia.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js",
+      "import_sha256": "cd34caef39e8df21b22ca8c6a7c583e68c3da31907f26ceb1f9d5309c80504f9",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js.snapshot",
+      "corrected_sha256": "9037fe567b71a09499efafb2cd9e3b6472e32c680d5bffbe493effd0a8cb71aa",
+      "change": "El selector [data-pb-v50-block] excluye body (:not(body)).",
+      "reason": "body recibe data-pb-v50-block como estado y el selector lo trataba como pestaña: le añadía aria-selected=\"true\" y la clase active (axe aria-allowed-attr, crítico).",
+      "evidence": "Traza en Chromium: setAttribute en 024-…:340 y 026-…:316.",
+      "impact": "Solo deja de marcar body; las pestañas reales siguen igual.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/20-navigation/026-paleobot-v51-navigation-audit-guard.js",
+      "import_sha256": "c7661d3a0d29fc71b9b2618c337f2319a3ff10903d18999f8986c72bc2118d52",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/20-navigation/026-paleobot-v51-navigation-audit-guard.js.snapshot",
+      "corrected_sha256": "482e7d4e1fd83aa4ab1cd936ecb870f40f5ba0c64eb5415117504126444d6b62",
+      "change": "El selector [data-pb-v50-block] excluye body (:not(body)).",
+      "reason": "body recibe data-pb-v50-block como estado y el selector lo trataba como pestaña: le añadía aria-selected=\"true\" y la clase active (axe aria-allowed-attr, crítico).",
+      "evidence": "Traza en Chromium: setAttribute en 024-…:340 y 026-…:316.",
+      "impact": "Solo deja de marcar body; las pestañas reales siguen igual.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/20-navigation/037-paleobot-v55-nav.js",
+      "import_sha256": "4e1f38cdf30a47ab3343f371703d8911c38300cc110666518d863343360b91a4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/20-navigation/037-paleobot-v55-nav.js.snapshot",
+      "corrected_sha256": "a4c2adb8fa9145206179b038536e4666f67c32c3caa10069de8d31e0ef6bd67c",
+      "change": "El selector [data-pb-v50-block] excluye body (:not(body)).",
+      "reason": "body recibe data-pb-v50-block como estado y el selector lo trataba como pestaña: le añadía aria-selected=\"true\" y la clase active (axe aria-allowed-attr, crítico).",
+      "evidence": "Traza en Chromium: setAttribute en 024-…:340 y 026-…:316.",
+      "impact": "Solo deja de marcar body; las pestañas reales siguen igual.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/20-navigation/039-paleobot-canonical-nav-v58.js",
+      "import_sha256": "70decd6b4c58fab9227b6b3936543e4ee0ca733abbea2921ffea118e90721fe3",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/20-navigation/039-paleobot-canonical-nav-v58.js.snapshot",
+      "corrected_sha256": "334b73e7bd2de92a98ca7c513bf0625ee9c4a442c32c0100d53a90a9db2afdd5",
+      "change": "El selector [data-pb-v50-block] excluye body (:not(body)).",
+      "reason": "body recibe data-pb-v50-block como estado y el selector lo trataba como pestaña: le añadía aria-selected=\"true\" y la clase active (axe aria-allowed-attr, crítico).",
+      "evidence": "Traza en Chromium: setAttribute en 024-…:340 y 026-…:316.",
+      "impact": "Solo deja de marcar body; las pestañas reales siguen igual.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/90-guards/027-paleobot-v52-no-home-bounce-guard.js",
+      "import_sha256": "cfab4f25b3ca179eddcf826dceb9696c64771b8e1b0fa47392d5b1c357e603bf",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/90-guards/027-paleobot-v52-no-home-bounce-guard.js.snapshot",
+      "corrected_sha256": "831170665513a93315828445163e529a8a7e1038f98d9963b7454f6e1480152e",
+      "change": "El selector [data-pb-v50-block] excluye body (:not(body)).",
+      "reason": "body recibe data-pb-v50-block como estado y el selector lo trataba como pestaña: le añadía aria-selected=\"true\" y la clase active (axe aria-allowed-attr, crítico).",
+      "evidence": "Traza en Chromium: setAttribute en 024-…:340 y 026-…:316.",
+      "impact": "Solo deja de marcar body; las pestañas reales siguen igual.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/90-guards/038-paleobot-v56-final-fix.js",
+      "import_sha256": "de46131fbe10a8260577b85f63fdbb668ffa39227c13ae10ed5072df43966c4f",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/90-guards/038-paleobot-v56-final-fix.js.snapshot",
+      "corrected_sha256": "f6f8db34d0a7bd35acead96392421c977f914ddb697c82bccb3cf3b38f4dc3ca",
+      "change": "El selector [data-pb-v50-block] excluye body (:not(body)).",
+      "reason": "body recibe data-pb-v50-block como estado y el selector lo trataba como pestaña: le añadía aria-selected=\"true\" y la clase active (axe aria-allowed-attr, crítico).",
+      "evidence": "Traza en Chromium: setAttribute en 024-…:340 y 026-…:316.",
+      "impact": "Solo deja de marcar body; las pestañas reales siguen igual.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/imsmanifest.xml",
+      "import_sha256": "f7b757706b78805c1700039fc88c189000896e4439f98f18cde6070a55c95369",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/imsmanifest.xml.snapshot",
+      "corrected_sha256": "b726a81efd275f1a6a484b668c2326425d8a423b3d0846767dda31b28ffc175b",
+      "change": "Añade las 10 entradas de la portada Sylva (página, medidor, activos y licencias).",
+      "reason": "El paquete IMS para Moodle no incluía la portada añadida el 24-10-2026.",
+      "evidence": "Comprobado: 178 entradas, todas presentes, XML válido.",
+      "impact": "El ZIP para Moodle llevará la portada; no cambia el resto del manifiesto.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "6d5481b2564091e33c4ba5020d0758e34ea7cfbdbb32d1cf216f6f4f87938278",
+      "previous_snapshot": "docs/historial/PB_GH_03/atlas/index.html.snapshot",
+      "corrected_sha256": "08b52055ebe764860078992781cd186997ae9cf51b14e63663a3848b5adf976e",
+      "change": "Cambia el parámetro de versión (?v=pbgh05) de los recursos modificados para evitar copias en caché.",
+      "reason": "Sin ese cambio el navegador puede seguir sirviendo las versiones anteriores.",
+      "evidence": "Rutas de script/link en atlas/index.html.",
+      "impact": "Ninguno en contenido; fuerza la recarga de 9 recursos.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/recorrido/portada-sylva.html",
+      "import_sha256": "42c5ae43684b847c0ab59fae8acc29348358f067b821c32db89068ee86031ead",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/portada-sylva.html.snapshot",
+      "corrected_sha256": "2191f20473fe77ef9d88537e148d3cdccb6bb31b5c25a0d6c4bf4af0c98014f0",
+      "change": "Añade aria-label a los cuatro enlaces del menú (Parentesco, Territorio, Fichas, Entrar en el atlas) y ajusta la etiqueta del logotipo a su destino real («Recorrido guiado del atlas»).",
+      "reason": "En pantallas estrechas el rótulo visible se oculta y los enlaces quedaban sin nombre accesible (axe link-name, grave); el logotipo prometía la portada y lleva a recorrido/index.html.",
+      "evidence": "Auditoría portada Sylva 24-10-2026 (auditorias/paleobot-portada-sylva.md); axe-core 4.10.2 a 390 px.",
+      "impact": "Solo atributos; sin cambios de texto visible, destinos, shaders ni render.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    }
+  ]
+}

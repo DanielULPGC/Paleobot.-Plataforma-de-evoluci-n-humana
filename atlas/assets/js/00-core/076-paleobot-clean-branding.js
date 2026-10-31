@@ -35,7 +35,9 @@
       Array.from(element.childNodes).forEach(function(node){
         if (node.nodeType !== Node.TEXT_NODE) return;
         const before = node.nodeValue || '';
-        const after = clean(before);
+        if (!before.trim()) return;
+        // PB-GH-05: conserva los espacios de los bordes para no pegar palabras junto a <em>/<strong>.
+        const after = before.match(/^\s*/)[0] + clean(before) + before.match(/\s*$/)[0];
         if (after !== before) node.nodeValue = after;
       });
     });

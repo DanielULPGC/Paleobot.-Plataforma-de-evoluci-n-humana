@@ -583,7 +583,8 @@
       "git_blob_sha1": "50ae52b2f3892e5ec4bb4aae08640f70a2432fe7",
       "sha256": "28dc1ea2de999d42952412b88721104f1fb403bc8e3ad366d6a19e51922e494a",
       "retained_paths": [
-        "atlas/assets/css/80-features/051-paleobot-landing-redesign.css"
+        "atlas/assets/css/80-features/051-paleobot-landing-redesign.css",
+        "docs/historial/BASE_4D320EE/atlas/assets/css/80-features/051-paleobot-landing-redesign.css.snapshot"
       ]
     },
     {
@@ -661,7 +662,8 @@
       "git_blob_sha1": "3c8d9f188c8121af5dfbcbc7813ecaa293af6058",
       "sha256": "6265ec623f9d2418a39a3779c20e7236d3d796ade854d27433cbcb4da15d29ca",
       "retained_paths": [
-        "atlas/assets/js/00-core/076-paleobot-clean-branding.js"
+        "atlas/assets/js/00-core/076-paleobot-clean-branding.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/076-paleobot-clean-branding.js.snapshot"
       ]
     },
     {
@@ -742,7 +744,8 @@
       "git_blob_sha1": "2c9f6918a82eab078a155d5592c07a697ff6ed64",
       "sha256": "cd34caef39e8df21b22ca8c6a7c583e68c3da31907f26ceb1f9d5309c80504f9",
       "retained_paths": [
-        "atlas/assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js"
+        "atlas/assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/024-paleobot-v50-unified-ux-layer.js.snapshot"
       ]
     },
     {
@@ -790,7 +793,8 @@
       "git_blob_sha1": "fa81bd572d3a341191ac7d89db83ef55425328b2",
       "sha256": "c7661d3a0d29fc71b9b2618c337f2319a3ff10903d18999f8986c72bc2118d52",
       "retained_paths": [
-        "atlas/assets/js/20-navigation/026-paleobot-v51-navigation-audit-guard.js"
+        "atlas/assets/js/20-navigation/026-paleobot-v51-navigation-audit-guard.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/20-navigation/026-paleobot-v51-navigation-audit-guard.js.snapshot"
       ]
     },
     {
@@ -814,7 +818,8 @@
       "git_blob_sha1": "255278455b6871187079751fdca5efaac8db1471",
       "sha256": "4e1f38cdf30a47ab3343f371703d8911c38300cc110666518d863343360b91a4",
       "retained_paths": [
-        "atlas/assets/js/20-navigation/037-paleobot-v55-nav.js"
+        "atlas/assets/js/20-navigation/037-paleobot-v55-nav.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/20-navigation/037-paleobot-v55-nav.js.snapshot"
       ]
     },
     {
@@ -822,7 +827,8 @@
       "git_blob_sha1": "ae28dfa9cb05ea261c743beb22f11d2036da4095",
       "sha256": "70decd6b4c58fab9227b6b3936543e4ee0ca733abbea2921ffea118e90721fe3",
       "retained_paths": [
-        "atlas/assets/js/20-navigation/039-paleobot-canonical-nav-v58.js"
+        "atlas/assets/js/20-navigation/039-paleobot-canonical-nav-v58.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/20-navigation/039-paleobot-canonical-nav-v58.js.snapshot"
       ]
     },
     {
@@ -1184,7 +1190,8 @@
       "git_blob_sha1": "55de97e2b91671a4dc551ec3250569f2a00cc937",
       "sha256": "cfab4f25b3ca179eddcf826dceb9696c64771b8e1b0fa47392d5b1c357e603bf",
       "retained_paths": [
-        "atlas/assets/js/90-guards/027-paleobot-v52-no-home-bounce-guard.js"
+        "atlas/assets/js/90-guards/027-paleobot-v52-no-home-bounce-guard.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/90-guards/027-paleobot-v52-no-home-bounce-guard.js.snapshot"
       ]
     },
     {
@@ -1208,7 +1215,8 @@
       "git_blob_sha1": "7ab420a9cee7b864a1853717a2b23e243585b32c",
       "sha256": "de46131fbe10a8260577b85f63fdbb668ffa39227c13ae10ed5072df43966c4f",
       "retained_paths": [
-        "atlas/assets/js/90-guards/038-paleobot-v56-final-fix.js"
+        "atlas/assets/js/90-guards/038-paleobot-v56-final-fix.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/90-guards/038-paleobot-v56-final-fix.js.snapshot"
       ]
     },
     {
@@ -1378,7 +1386,8 @@
       "git_blob_sha1": "9738f265e498026e2003d499fe0c40d1c5fd9372",
       "sha256": "f7b757706b78805c1700039fc88c189000896e4439f98f18cde6070a55c95369",
       "retained_paths": [
-        "atlas/imsmanifest.xml"
+        "atlas/imsmanifest.xml",
+        "docs/historial/BASE_4D320EE/atlas/imsmanifest.xml.snapshot"
       ]
     },
     {
@@ -1571,7 +1580,8 @@
       "git_blob_sha1": "339214be3a7ded1d6a5173679a24a01ab7cadc77",
       "sha256": "42c5ae43684b847c0ab59fae8acc29348358f067b821c32db89068ee86031ead",
       "retained_paths": [
-        "atlas/recorrido/portada-sylva.html"
+        "atlas/recorrido/portada-sylva.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/portada-sylva.html.snapshot"
       ]
     },
     {
