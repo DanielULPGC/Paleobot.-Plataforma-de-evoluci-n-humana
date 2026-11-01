@@ -295,8 +295,6 @@ function exportQuizProgress() {
       lines.push('═══ NOTAS DEL CUADERNO ═══');
       notes.forEach(n => lines.push(n));
     }
-    lines.push('');
-    lines.push('(Este archivo puede entregarse como evidencia de trabajo en Moodle.)');
     const blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);

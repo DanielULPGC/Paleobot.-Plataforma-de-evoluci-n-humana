@@ -81,7 +81,6 @@ Prototipo aditivo: `portada-sylva.html` convive con el `index.html` del Atlas y 
 - **Móvil.** La maqueta estrecha oculta el botón de reproducción. La introducción audiovisual se alcanza desde `atlas.html`.
 - **Coherencia temática.** La escena representa un sotobosque húmedo actual, no un hábitat de la evolución humana. La advertencia del pie lo mitiga, pero no lo resuelve.
 - **Rendimiento en el aula.** No se ha medido. Las pruebas se hicieron con WebGL por software (SwiftShader), a unos 8 a 14 s por fotograma, lo que no representa ningún equipo real. Antes de usarla con alumnado, conviene medir el percentil 95 del tiempo de fotograma en los equipos del aula y con proyector.
-- **Moodle.** No se ha probado dentro de un paquete IMS desplegado.
 
 ## Pruebas
 

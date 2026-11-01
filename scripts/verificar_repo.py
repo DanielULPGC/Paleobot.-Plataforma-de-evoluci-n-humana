@@ -74,7 +74,6 @@ def verify(include_syntax=True):
     check('Integridad del expediente importado',not bad,', '.join(bad[:4]))
     baseline=load('provenance/BASELINE_IMPORTADA.json')['sha256']
     entries=load('provenance/PB_GH_02_ENTRADAS.json')['sha256']
-    check('Entradas actuales coinciden con su procedencia',all((ROOT/p).is_file() and digest(ROOT/p)==sha for p,sha in entries.items()))
     migration=load('provenance/PB_GH_02_MIGRACION.json')
     preserved=[row for row in migration['files'] if any((ROOT/p).is_file() and digest(ROOT/p)==row['sha256'] for p in row['retained_paths'])]
     check('330 archivos auditados preservados por contenido',len(migration['files'])==len(preserved)==330 and migration['source_commit']==status.get('audit_source_commit'))
@@ -86,7 +85,7 @@ def verify(include_syntax=True):
     # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
     # PB-GH-04 encadena una segunda ronda: la última corrección de cada ruta debe partir
     # exactamente del estado anterior, conservado en su propio snapshot.
-    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json') if (ROOT/n).is_file()]
+    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json') if (ROOT/n).is_file()]
     fixes={}
     cadena_ok=True
     for ronda in rondas:
@@ -96,12 +95,17 @@ def verify(include_syntax=True):
                 cadena_ok=cadena_ok and c.get('previous_sha256')==prev['corrected_sha256'] and (ROOT/c.get('previous_snapshot','')).is_file() and digest(ROOT/c['previous_snapshot'])==prev['corrected_sha256']
             fixes[c['path']]=c
     check('Cadena de correcciones del Atlas con estados intermedios archivados',cadena_ok)
-    def atlas_ok(p,sha):
-        f=ROOT/'atlas'/p
-        if not f.is_file():return False
-        if digest(f)==sha:return True
-        c=fixes.get('atlas/'+p)
-        return bool(c) and c['import_sha256']==sha and digest(f)==c['corrected_sha256'] and (ROOT/c['snapshot']).is_file() and digest(ROOT/c['snapshot'])==sha
+    def documentado(ruta,sha):
+        # Coincide con su huella, o la difiere una corrección registrada que conserva el original.
+        # PB-GH-06: una retirada (removed) exige que el fichero ya no exista y que su original esté archivado.
+        f=ROOT/ruta
+        if f.is_file() and digest(f)==sha:return True
+        c=fixes.get(ruta)
+        if not c or c['import_sha256']!=sha or not (ROOT/c['snapshot']).is_file() or digest(ROOT/c['snapshot'])!=sha:return False
+        if c.get('removed'):return not f.exists() and c.get('corrected_sha256') is None
+        return f.is_file() and digest(f)==c['corrected_sha256']
+    def atlas_ok(p,sha):return documentado('atlas/'+p,sha)
+    check('Entradas actuales coinciden con su procedencia',all(documentado(p,sha) for p,sha in entries.items()))
     check('169 archivos Atlas v1 conservan las huellas importadas o una corrección documentada',len(atlas_import['sha256'])==169 and all(atlas_ok(p,sha) for p,sha in atlas_import['sha256'].items()))
     check('Correcciones PB-GH-03 con motivo, evidencia, impacto y retorno',bool(fixes) and all(all(c.get(k) for k in ('change','reason','evidence','impact','return')) for ronda in rondas for c in ronda))
     atlas_db=(ROOT/'atlas/assets/js/00-core/002-script.js').read_text(encoding='utf-8')
@@ -119,6 +123,12 @@ def verify(include_syntax=True):
     manifiesto=(ROOT/'atlas/imsmanifest.xml').read_text(encoding='utf-8')
     hrefs=re.findall(r'<file href="([^"]+)"',manifiesto)
     check('Manifiesto IMS completo e incluye la portada',all((ROOT/'atlas'/h).is_file() for h in hrefs) and 'recorrido/portada-sylva.html' in hrefs)
+    # PB-GH-06: sin puntos de entrada a funciones de IA ni instrucciones de Moodle en lo publicado.
+    publicado=[ROOT/'index.html',ROOT/'ligera/index.html',ROOT/'atlas/index.html',*sorted((ROOT/'atlas/recorrido').glob('*.html'))]
+    ia_ui=[str(f.relative_to(ROOT)) for f in [*publicado,*js_dir.rglob('*.js')] if re.search(r'data-quiz-next="generative">Preguntas con IA|data-detail-action="generateFacialDescription"|no usa IA',f.read_text(encoding='utf-8',errors='ignore'))]
+    check('Sin botones ni rótulos de IA en la interfaz',not ia_ui,', '.join(ia_ui[:3]))
+    moodle_ui=[str(f.relative_to(ROOT)) for f in [*publicado,*js_dir.rglob('*.js')] if re.search(r"FORMATO MOODLE|evidencia de trabajo en Moodle|Entrada ligera para Moodle",f.read_text(encoding='utf-8',errors='ignore'))]
+    check('Sin textos de Moodle en la interfaz ni instrucciones de subida',not moodle_ui and not (ROOT/'atlas/LEEME-MOODLE.md').exists(),', '.join(moodle_ui[:3]))
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
     check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
@@ -138,7 +148,8 @@ def verify(include_syntax=True):
     check('Entrada sin IDs duplicados',not [x for x,n in Counter(main.ids).items() if n>1])
     check('Anclas de entrada con destino',all(a in main.ids for a in main.anchors if a))
     text=(ROOT/'ligera/index.html').read_text()
-    check('Aviso v9/v11 conservado','v9 funciona en Moodle según la prueba del usuario' in text and 'diagnóstico de v11 están pendientes' in text)
+    # PB-GH-06: el aviso de prueba en Moodle se retira por indicación de la titular (registro en PB_GH_06_CORRECCIONES.json).
+    check('Consulta ligera sin referencias a Moodle','moodle' not in text.lower() and 'Comprobar las imágenes' in text)
     atlasroot=ROOT/'experimental/atlas-r98/fuentes/Auditoria_R98'
     missing=[]
     for html in [ROOT/'ligera/index.html',atlasroot/'index.html',atlasroot/'science/chronology.html']:
