@@ -71,5 +71,18 @@ class AtlasCorrections(unittest.TestCase):
         target.write_text(t,encoding='utf-8')
         self.assertFalse(self.result('Manifiesto IMS completo e incluye la portada'))
 
+    def test_rechaza_reintroducir_boton_ia(self):
+        target=self.repo/'atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js'
+        target.write_text(target.read_text(encoding='utf-8')+'\n// <button data-quiz-next="generative">Preguntas con IA</button>\n',encoding='utf-8')
+        self.assertFalse(self.result('Sin botones ni rótulos de IA en la interfaz'))
+
+    def test_rechaza_retirada_sin_original_archivado(self):
+        (self.repo/'docs/historial/BASE_4D320EE/atlas/LEEME-MOODLE.md.snapshot').unlink()
+        self.assertFalse(self.result(CHECK_ATLAS))
+
+    def test_rechaza_reintroducir_instrucciones_moodle(self):
+        (self.repo/'atlas/LEEME-MOODLE.md').write_text('# LEEME MOODLE\n',encoding='utf-8')
+        self.assertFalse(self.result('Sin textos de Moodle en la interfaz ni instrucciones de subida'))
+
 if __name__=='__main__':
     unittest.main()

@@ -5,11 +5,10 @@ Incluye un catálogo de 50 fichas, cronología tipada, referencias y recursos vi
 documentados, junto con las fuentes del Atlas y su expediente de revisión.
 
 **Estado: contraste y regresiones, PB-GH-02, 24-10-2026.**
-La raíz abre la portada Sylva del Atlas y la consulta ligera v11 está en `ligera/`. Su prueba institucional sigue
-pendiente. A3 y el Atlas R98 conservan **NO_GO para promoción docente**. Las
-comprobaciones de este repositorio no certifican navegador, lector de pantalla
-ni Moodle. La confirmación de funcionamiento recuperada corresponde a v9,
-sin atribuir ese resultado a v11.
+La raíz abre la portada Sylva del Atlas y la consulta ligera v11 está en `ligera/`.
+A3 y el Atlas R98 conservan **NO_GO para promoción docente**. Las
+comprobaciones de este repositorio no certifican navegador ni lector de pantalla.
+El recurso se publica como sitio web; no se distribuye como paquete para Moodle.
 
 PB-GH-02 contrasta la auditoría histórica de `af35a8e` con la base de trabajo
 `4d320ee`, que ya incorpora la restauración, el Atlas v1.0, la carga inmediata de
@@ -17,7 +16,7 @@ imágenes en v11 y el portal de entrada y la portada Sylva. Se conservan esas in
 Se actualiza la procedencia y se añaden pruebas de rutas bajo el prefijo Pages
 con preservación de contenidos. Consulte [el informe](docs/PB_GH_02_INFORME.md).
 
-## Atlas v1.0 (paquete IMS para Moodle)
+## Atlas v1.0
 
 [![Atlas PaleoBot v1.0](docs/atlas-v1/img/portada.png)](atlas/index.html)
 
@@ -29,9 +28,8 @@ huellas en `provenance/ATLAS_V1_IMPORT.json`).
 - **Abrir:** `atlas/index.html` (atlas) y `atlas/recorrido/index.html` (recorrido guiado).
 - **Entender y enseñar con él:** [`docs/atlas-v1/README.md`](docs/atlas-v1/README.md)
   (capturas, usos por perfil, rigor científico, límites).
-- **Estado:** NO_GO para promoción docente. Pendientes Moodle, lector de pantalla
-  y navegadores distintos de Chromium; la auditoría detecta 1 fallo crítico y 1 grave
-  de accesibilidad y una CSP más laxa que la del resto del repositorio.
+- **Estado:** NO_GO para promoción docente. Pendientes lector de pantalla
+  y navegadores distintos de Chromium; la CSP es más laxa que la del resto del repositorio.
 
 ## Abrir PaleoBot
 
@@ -40,7 +38,7 @@ La raíz del sitio (`index.html`) redirige a la portada Sylva (`atlas/recorrido/
 Abra `ligera/index.html` con un navegador para consultar las fichas. El contenido básico
 usa HTML nativo. Los filtros y el diagnóstico de imágenes requieren JavaScript.
 Las 47 imágenes documentadas siguen siendo remotas; hay tres fichas con recurso
-visual pendiente. Abrir el archivo local es una consulta, no una prueba Moodle.
+visual pendiente.
 
 Para una comprobación HTTP de desarrollo, desde esta carpeta:
 
@@ -95,7 +93,7 @@ reproducción. No publica Pages, no sube releases y no crea incidencias.
 
 Revisar [PB-01](docs/incidencias/PB-01.md), fijar una copia de trabajo y preparar
 una corrección que preserve las imágenes de su propia ficha y siga rechazando
-reservas ajenas. Comprobar mapas, errores y las 47 fichas antes de evaluar Moodle.
+reservas ajenas. Comprobar mapas, errores y las 47 fichas.
 La preparación PB-GH-01 conserva el código de aplicación; no incorpora ese arreglo.
 
 ## Subir a GitHub

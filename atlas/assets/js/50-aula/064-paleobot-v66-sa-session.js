@@ -268,7 +268,7 @@
       const rubrSection = [
         '',
         '═'.repeat(70),
-        'RÚBRICA — FORMATO MOODLE (separado por tabulaciones)',
+        'RÚBRICA (separada por tabulaciones)',
         '═'.repeat(70),
         rubrHeader,
         ...rubrRows

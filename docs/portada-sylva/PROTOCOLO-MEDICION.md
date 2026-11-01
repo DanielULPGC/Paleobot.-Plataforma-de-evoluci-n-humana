@@ -9,7 +9,7 @@ mantenerse la portada actual (`index.html`).
 1. Copie en la raíz del Atlas, junto a `datos.js` y `index.html`:
    `portada-sylva.html`, la carpeta `inner-green-assets/`, la carpeta
    `licencias/` y `medir-rendimiento.html`.
-2. Abra el Atlas como lo abrirá el alumnado (servidor web o Moodle). Si abre
+2. Abra el Atlas como lo abrirá el alumnado (servidor web). Si abre
    los ficheros directamente desde el disco, anótelo: el resultado puede diferir.
 
 ## Medición

@@ -170,7 +170,7 @@
     const q = m13Exam.items[m13Exam.index];
     if (!q) return renderM13Result();
     const opts = [q.a,...[...new Set(q.pool.filter(x=>x&&x!==q.a))].sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);
-    host.innerHTML = `<div class="v34-exam-head"><div><div class="quiz-card-kicker">Pregunta ${m13Exam.index+1}/${m13Exam.items.length} · ${escapeHtmlText(q.comp)}</div><p class="quiz-card-question">${escapeHtmlText(q.q)}</p></div><div class="v34-exam-clock">${Math.max(0,10-Math.floor((Date.now()-m13Exam.started)/60000))}:00</div></div>${opts.map(o=>`<button type="button" class="exam-opt" data-m13-answer="${escapeHtmlAttr(o)}">${escapeHtmlText(o)}</button>`).join('')}<p class="quiz-footnote">Modo offline: no usa IA ni conexión.</p>`;
+    host.innerHTML = `<div class="v34-exam-head"><div><div class="quiz-card-kicker">Pregunta ${m13Exam.index+1}/${m13Exam.items.length} · ${escapeHtmlText(q.comp)}</div><p class="quiz-card-question">${escapeHtmlText(q.q)}</p></div><div class="v34-exam-clock">${Math.max(0,10-Math.floor((Date.now()-m13Exam.started)/60000))}:00</div></div>${opts.map(o=>`<button type="button" class="exam-opt" data-m13-answer="${escapeHtmlAttr(o)}">${escapeHtmlText(o)}</button>`).join('')}<p class="quiz-footnote">Funciona sin conexión.</p>`;
   }
   function renderM13Result(){
     const pct = m13Exam.items.length ? Math.round(m13Exam.score/m13Exam.items.length*100) : 0;

@@ -115,7 +115,8 @@
       "git_blob_sha1": "cc63ab803129582c922a30537bdce66848f7c0e6",
       "sha256": "8a7262b54da2e991cf178c1f6cb7495f4699c5329701302624eff1c1bf3d9b06",
       "retained_paths": [
-        "atlas/LEEME-MOODLE.md"
+        "atlas/LEEME-MOODLE.md",
+        "docs/historial/BASE_4D320EE/atlas/LEEME-MOODLE.md.snapshot"
       ]
     },
     {
@@ -123,7 +124,8 @@
       "git_blob_sha1": "55fcb1db8a6f6dcf88fb285f5e48ebe23ed90977",
       "sha256": "f96ed5587541a151aa51d3f55f73b1080ebd9af2518336901dfea4df3e812888",
       "retained_paths": [
-        "atlas/POLITICA-PRIVACIDAD-DOCENTE.md"
+        "atlas/POLITICA-PRIVACIDAD-DOCENTE.md",
+        "docs/historial/BASE_4D320EE/atlas/POLITICA-PRIVACIDAD-DOCENTE.md.snapshot"
       ]
     },
     {
@@ -680,7 +682,8 @@
       "git_blob_sha1": "71dc7e9f4201f963a06d0a1e6081fc8fe4ac0a02",
       "sha256": "fab0d660b913db50208c5e53587fa80534563928c10ce053eba16b973bacf75c",
       "retained_paths": [
-        "atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js"
+        "atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot"
       ]
     },
     {
@@ -688,7 +691,8 @@
       "git_blob_sha1": "228247de9f1ee0abf6345bf61d30c1772bcca9af",
       "sha256": "cb419e5be37ef4faf0c7076c7e2cb896fe8c238595f724244afb8015a208f06c",
       "retained_paths": [
-        "atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js"
+        "atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js.snapshot"
       ]
     },
     {
@@ -1006,7 +1010,8 @@
       "git_blob_sha1": "b4c19078156156f5c8471dfa4a3667ebb8f555a4",
       "sha256": "389325147eba9d8e189020a87ce515f623dfae502af03642527741d43c90f72d",
       "retained_paths": [
-        "atlas/assets/js/50-aula/064-paleobot-v66-sa-session.js"
+        "atlas/assets/js/50-aula/064-paleobot-v66-sa-session.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/50-aula/064-paleobot-v66-sa-session.js.snapshot"
       ]
     },
     {
@@ -1647,7 +1652,8 @@
       "git_blob_sha1": "1b891ba4354dbb4339f79aa5a0bfd49b7bb31369",
       "sha256": "bda384aaa1f4a84d3df55869ff598ed1db45a048730994518863dedd2e6c78c1",
       "retained_paths": [
-        "docs/atlas-v1/README.md"
+        "docs/atlas-v1/README.md",
+        "docs/historial/BASE_4D320EE/docs/atlas-v1/README.md.snapshot"
       ]
     },
     {
@@ -2941,7 +2947,8 @@
       "git_blob_sha1": "c80c1ac3beac2c823eb0d666ffab05b7e7d90a2f",
       "sha256": "6f624930275a6ac9b498e0fd43815b74414128463106872bc06e2fdd0d8bfa11",
       "retained_paths": [
-        "docs/portada-sylva/CAMBIOS.md"
+        "docs/portada-sylva/CAMBIOS.md",
+        "docs/historial/BASE_4D320EE/docs/portada-sylva/CAMBIOS.md.snapshot"
       ]
     },
     {
@@ -2949,7 +2956,8 @@
       "git_blob_sha1": "658c7f8e1eaf0a3de270e8b562ea322e2b198170",
       "sha256": "1df661ff25b5ca29c085486032c03fddbe1fe4865cbfaa2d49c235dba80b22b2",
       "retained_paths": [
-        "docs/portada-sylva/PROTOCOLO-MEDICION.md"
+        "docs/portada-sylva/PROTOCOLO-MEDICION.md",
+        "docs/historial/BASE_4D320EE/docs/portada-sylva/PROTOCOLO-MEDICION.md.snapshot"
       ]
     },
     {
@@ -4239,7 +4247,8 @@
       "git_blob_sha1": "34534d66ea8be33856e013e94e6c9d01faaf6d82",
       "sha256": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
       "retained_paths": [
-        "ligera/index.html"
+        "ligera/index.html",
+        "docs/historial/BASE_4D320EE/ligera/index.html.snapshot"
       ]
     },
     {
@@ -4328,7 +4337,8 @@
       "git_blob_sha1": "94fdf8d0da23b298979c8c9dff053b60e49a2d5d",
       "sha256": "5408add2377e1f568747fbe1934985aae8a5aff05a179597893db8c7eb0cf7c1",
       "retained_paths": [
-        "src/entrada_ligera/build.py"
+        "src/entrada_ligera/build.py",
+        "docs/historial/BASE_4D320EE/src/entrada_ligera/build.py.snapshot"
       ]
     },
     {

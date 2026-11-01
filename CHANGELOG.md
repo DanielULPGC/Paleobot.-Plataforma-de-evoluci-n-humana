@@ -1,5 +1,23 @@
 # Registro de cambios
 
+## PB-GH-06 · Sin Moodle ni IA · 01-11-2026
+
+Por indicación de la titular se retiran las referencias a Moodle (subida e instalación)
+y a la IA. Registro con motivo, evidencia, impacto, retorno y originales archivados en
+`provenance/PB_GH_06_CORRECCIONES.json`.
+
+- Atlas: fuera los botones «Preguntas con IA» (autoevaluación) y «Reconstrucción facial IA»
+  (ficha); la nota «Modo offline: no usa IA ni conexión» pasa a «Funciona sin conexión».
+- Atlas: las exportaciones TXT ya no mencionan Moodle.
+- Consulta ligera: título «PaleoBot · Consulta ligera», sin el aviso de prueba en Moodle;
+  el diagnóstico pasa a «Comprobar las imágenes».
+- Documentación: se retira `atlas/LEEME-MOODLE.md` (y su entrada en el manifiesto); la
+  política de privacidad pierde las secciones de IA; README, guía del atlas y protocolo
+  de la portada sin instrucciones ni pruebas de Moodle.
+- Se conservan: el código de las funciones generativas sin punto de entrada, la
+  protección 079 que bloquea servicios externos, `CAMBIOS-v1.0.md` y las evidencias
+  históricas. Sigue NO_GO (lector de pantalla y navegadores no Chromium).
+
 ## PB-GH-05 · Errores técnicos del sitio · 31-10-2026
 
 Sin eliminar contenido, páginas ni imágenes; solo atributos, estilos de color, espacios

@@ -1,0 +1,180 @@
+{
+  "preparation": "PB-GH-06",
+  "date": "2026-11-01",
+  "base_commit": "4f27fa7",
+  "scope": "Retirada de las referencias a Moodle (subida e instalación) y a la IA en las páginas publicadas y en la documentación de uso. No cambia datos, cronología, catálogo ni fichas. El código de las funciones generativas y la protección de privacidad (079) permanecen, sin punto de entrada en la interfaz.",
+  "application_logic_changed": false,
+  "release_gate": "NO_GO",
+  "not_changed": [
+    "atlas/CAMBIOS-v1.0.md (registro histórico de la versión recibida)",
+    "docs/historial/ y docs/auditoria/ (evidencias históricas)",
+    "provenance/ESTADO.json (estado de validación registrado)",
+    "atlas/assets/js/90-guards/079-paleobot-privacy-ai-guard.js (bloqueo de servicios externos; se conserva por seguridad)",
+    "atlas/imsmanifest.xml como fichero (sin instrucciones de subida)"
+  ],
+  "corrections": [
+    {
+      "path": "atlas/LEEME-MOODLE.md",
+      "import_sha256": "8a7262b54da2e991cf178c1f6cb7495f4699c5329701302624eff1c1bf3d9b06",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/LEEME-MOODLE.md.snapshot",
+      "removed": true,
+      "corrected_sha256": null,
+      "change": "Se retira el documento de instalación en Moodle.",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "El recurso deja de documentar su subida a Moodle; el original queda archivado.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/POLITICA-PRIVACIDAD-DOCENTE.md",
+      "import_sha256": "f96ed5587541a151aa51d3f55f73b1080ebd9af2518336901dfea4df3e812888",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/POLITICA-PRIVACIDAD-DOCENTE.md.snapshot",
+      "corrected_sha256": "e8e60b6c42c9be537506883a544c70ba98216dadf652783cc1dff092f1891af8",
+      "change": "Se retiran las secciones de IA externa y proxy institucional, las variables de IA del modo sin envío, las responsabilidades sobre salidas de IA y las menciones a Moodle; se renumeran las secciones.",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Documento docente; la descripción de datos locales y servicios externos (Wikimedia, teselas, fuentes, cdnjs) se mantiene.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/00-core/002-script.js",
+      "import_sha256": "b6052b999d1021ab4b28af6be25e89fe584db45cf135d7100e9d324bc484035f",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/002-script.js.snapshot",
+      "previous_sha256": "f476adcee6ac1c2b1041ece649753a1e5c8aa073e0666c00a4c83f48b6a58aa9",
+      "previous_snapshot": "docs/historial/PB_GH_04/atlas/assets/js/00-core/002-script.js.snapshot",
+      "corrected_sha256": "d6fbe3f499b0379bb80c1a64a38c48a278d465ed6e75273d04d060eefe50ab91",
+      "change": "Se retira el botón «Reconstrucción facial IA» de la ficha de especie.",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "La función queda sin botón; el panel vacío no se muestra. Los demás botones de la ficha siguen igual.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
+      "import_sha256": "fab0d660b913db50208c5e53587fa80534563928c10ce053eba16b973bacf75c",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot",
+      "corrected_sha256": "bcdb8b0063db4fcf1db730597006a88c1d9e9ba48361f22fe1856cfad734a2f8",
+      "change": "Se retira el botón «Preguntas con IA» que esta capa vuelve a pintar en la autoevaluación.",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Coherente con atlas/index.html; quedan los modos clásico y adaptativo.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js",
+      "import_sha256": "cb419e5be37ef4faf0c7076c7e2cb896fe8c238595f724244afb8015a208f06c",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js.snapshot",
+      "corrected_sha256": "05b6a98e25617dc3545d1458e2cbaaf262602867b80163fbca982c1356c93ecb",
+      "change": "La nota «Modo offline: no usa IA ni conexión.» pasa a «Funciona sin conexión.».",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Solo texto.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/50-aula/064-paleobot-v66-sa-session.js",
+      "import_sha256": "389325147eba9d8e189020a87ce515f623dfae502af03642527741d43c90f72d",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/50-aula/064-paleobot-v66-sa-session.js.snapshot",
+      "corrected_sha256": "476f00d147ff9628dd41ba73df259e493f40312ab25ad592651499411ed60de3",
+      "change": "El rótulo «RÚBRICA — FORMATO MOODLE (separado por tabulaciones)» pasa a «RÚBRICA (separada por tabulaciones)».",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Solo texto del archivo exportado; el formato tabulado no cambia.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/90-guards/038-paleobot-v56-final-fix.js",
+      "import_sha256": "de46131fbe10a8260577b85f63fdbb668ffa39227c13ae10ed5072df43966c4f",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/90-guards/038-paleobot-v56-final-fix.js.snapshot",
+      "previous_sha256": "f6f8db34d0a7bd35acead96392421c977f914ddb697c82bccb3cf3b38f4dc3ca",
+      "previous_snapshot": "docs/historial/PB_GH_05/atlas/assets/js/90-guards/038-paleobot-v56-final-fix.js.snapshot",
+      "corrected_sha256": "0dc9435e9c49fdd66129edf49478b2990633293f773180f3db93f9a968ecc68a",
+      "change": "El TXT de progreso deja de terminar con «(Este archivo puede entregarse como evidencia de trabajo en Moodle.)».",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Solo texto del archivo exportado.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/imsmanifest.xml",
+      "import_sha256": "f7b757706b78805c1700039fc88c189000896e4439f98f18cde6070a55c95369",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/imsmanifest.xml.snapshot",
+      "previous_sha256": "b726a81efd275f1a6a484b668c2326425d8a423b3d0846767dda31b28ffc175b",
+      "previous_snapshot": "docs/historial/PB_GH_05/atlas/imsmanifest.xml.snapshot",
+      "corrected_sha256": "b0c5ee699ed05a9aa6e3ff0b6b3e880c70a4a060b9c931e9d3119f0f9c71c25b",
+      "change": "Se retira la entrada de LEEME-MOODLE.md.",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "El manifiesto sigue listando solo ficheros existentes.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "08b52055ebe764860078992781cd186997ae9cf51b14e63663a3848b5adf976e",
+      "previous_snapshot": "docs/historial/PB_GH_05/atlas/index.html.snapshot",
+      "corrected_sha256": "2b78a2a9964959dc27214b8aba0cb326cc6353f09c2a3529ade8f29d0bf7907a",
+      "change": "Se retira el botón «Preguntas con IA (requiere conexión)» de la autoevaluación y se fuerza la recarga (?v=pbgh06) de los recursos modificados.",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Las funciones generativas quedan sin punto de entrada; el resto de modos (clásico y adaptativo) sigue igual.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "docs/atlas-v1/README.md",
+      "import_sha256": "bda384aaa1f4a84d3df55869ff598ed1db45a048730994518863dedd2e6c78c1",
+      "snapshot": "docs/historial/BASE_4D320EE/docs/atlas-v1/README.md.snapshot",
+      "corrected_sha256": "c01727be4dee9b5b4ed68aaad69ff6a31b9fce5c65a2f53af403b044f37247c4",
+      "change": "Se retiran la fila Moodle, la mención en pruebas pendientes y las instrucciones para generar el paquete IMS; se actualiza la frase de procedencia.",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Documentación.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "docs/portada-sylva/CAMBIOS.md",
+      "import_sha256": "6f624930275a6ac9b498e0fd43815b74414128463106872bc06e2fdd0d8bfa11",
+      "snapshot": "docs/historial/BASE_4D320EE/docs/portada-sylva/CAMBIOS.md.snapshot",
+      "corrected_sha256": "6524803ddb94c6ac647940aad9405a297dadec4b11c26c70230e0cb032f27a91",
+      "change": "Se retira el problema abierto «Moodle».",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Documentación recibida; resto sin cambios.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "docs/portada-sylva/PROTOCOLO-MEDICION.md",
+      "import_sha256": "1df661ff25b5ca29c085486032c03fddbe1fe4865cbfaa2d49c235dba80b22b2",
+      "snapshot": "docs/historial/BASE_4D320EE/docs/portada-sylva/PROTOCOLO-MEDICION.md.snapshot",
+      "corrected_sha256": "e7069d71f360afe35afe94cde4639bd63521f11c90f8f7a1d982fdbad2cb09cb",
+      "change": "«(servidor web o Moodle)» pasa a «(servidor web)».",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Documentación recibida; resto sin cambios.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "ligera/index.html",
+      "import_sha256": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
+      "snapshot": "docs/historial/BASE_4D320EE/ligera/index.html.snapshot",
+      "corrected_sha256": "aaa9f1e123a55229bd179bf241396832d339981a603abac5ba68193549b0ba6d",
+      "change": "Regenerado desde src/entrada_ligera/build.py: título «PaleoBot · Consulta ligera», sin el aviso de prueba en Moodle y con el diagnóstico titulado «Comprobar las imágenes».",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Solo texto de la cabecera, el aviso y el diagnóstico; fichas, cronología y datos sin cambios.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "src/entrada_ligera/build.py",
+      "import_sha256": "5408add2377e1f568747fbe1934985aae8a5aff05a179597893db8c7eb0cf7c1",
+      "snapshot": "docs/historial/BASE_4D320EE/src/entrada_ligera/build.py.snapshot",
+      "corrected_sha256": "152a84186d7814746d4b4ab9f05d83c37883615b8db017cf07216da35f2b4dd0",
+      "change": "Plantilla de la consulta ligera sin referencias a Moodle (título, aviso, diagnóstico y docstring).",
+      "reason": "Retirar las referencias a Moodle y a la IA, por indicación de la titular (01-11-2026).",
+      "evidence": "Petición de la titular en la sesión del 01-11-2026; búsqueda de texto visible en Chromium tras el cambio (0 apariciones de Moodle o IA en /, /ligera/ y /atlas/).",
+      "impact": "Fuente de ligera/index.html.",
+      "return": "Restaurar el snapshot o revertir el commit."
+    }
+  ]
+}
