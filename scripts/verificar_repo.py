@@ -84,7 +84,18 @@ def verify(include_syntax=True):
     atlas_import=load('provenance/ATLAS_V1_IMPORT.json')
     # PB-GH-03: un archivo del Atlas puede diferir de su huella importada solo si la
     # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
-    fixes={c['path']:c for c in load('provenance/PB_GH_03_CORRECCIONES.json')['corrections']}
+    # PB-GH-04 encadena una segunda ronda: la última corrección de cada ruta debe partir
+    # exactamente del estado anterior, conservado en su propio snapshot.
+    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json') if (ROOT/n).is_file()]
+    fixes={}
+    cadena_ok=True
+    for ronda in rondas:
+        for c in ronda:
+            prev=fixes.get(c['path'])
+            if prev is not None:
+                cadena_ok=cadena_ok and c.get('previous_sha256')==prev['corrected_sha256'] and (ROOT/c.get('previous_snapshot','')).is_file() and digest(ROOT/c['previous_snapshot'])==prev['corrected_sha256']
+            fixes[c['path']]=c
+    check('Cadena de correcciones del Atlas con estados intermedios archivados',cadena_ok)
     def atlas_ok(p,sha):
         f=ROOT/'atlas'/p
         if not f.is_file():return False
@@ -92,8 +103,22 @@ def verify(include_syntax=True):
         c=fixes.get('atlas/'+p)
         return bool(c) and c['import_sha256']==sha and digest(f)==c['corrected_sha256'] and (ROOT/c['snapshot']).is_file() and digest(ROOT/c['snapshot'])==sha
     check('169 archivos Atlas v1 conservan las huellas importadas o una corrección documentada',len(atlas_import['sha256'])==169 and all(atlas_ok(p,sha) for p,sha in atlas_import['sha256'].items()))
-    check('Correcciones PB-GH-03 con motivo, evidencia, impacto y retorno',bool(fixes) and all(all(c.get(k) for k in ('change','reason','evidence','impact','return')) for c in fixes.values()))
+    check('Correcciones PB-GH-03 con motivo, evidencia, impacto y retorno',bool(fixes) and all(all(c.get(k) for k in ('change','reason','evidence','impact','return')) for ronda in rondas for c in ronda))
+    atlas_db=(ROOT/'atlas/assets/js/00-core/002-script.js').read_text(encoding='utf-8')
+    errores_cronologia=[p for p in (r'nombre: "H\. neanderthalensis", anos: "[^"]*", [^\n]*datacion: "14C"', r'nombre: "Homo floresiensis", anos: "50 ka"', r"datacion: \"U-Pb\", cc: 408", r'nombre: "Homo cepranensis", anos: "~900', 'ajpa.24122', 'Sutton et al. \\(2023\\)') if re.search(p,atlas_db)]
+    check('Atlas v1 sin los errores de cronología corregidos en PB-GH-04',not errores_cronologia,', '.join(errores_cronologia))
     atlas_text=' '.join(f.read_text(encoding='utf-8',errors='ignore') for f in (ROOT/'atlas').rglob('*') if f.suffix in ('.js','.html','.json'))
+    # PB-GH-05: regresiones de accesibilidad y texto del sitio publicado.
+    js_dir=ROOT/'atlas/assets/js'
+    selector_body=[str(f.relative_to(ROOT)) for f in js_dir.rglob('*.js') if "querySelectorAll('[data-pb-v50-block]')" in f.read_text(encoding='utf-8',errors='ignore')]
+    check('Selectores de bloque no marcan body como pestaña',not selector_body,', '.join(selector_body[:3]))
+    limpieza=(js_dir/'00-core/076-paleobot-clean-branding.js').read_text(encoding='utf-8')
+    check('Limpieza de marca conserva los espacios de borde',"before.match(/^\\s*/)[0] + clean(before)" in limpieza)
+    portada=(ROOT/'atlas/recorrido/portada-sylva.html').read_text(encoding='utf-8')
+    check('Menú de la portada con nombre accesible en pantallas estrechas',all(f'href="{h}" style="--d:{d}ms" aria-label=' in portada for h,d in (('parentesco.html',180),('territorio.html',230),('ficha.html',280),('atlas.html',330))))
+    manifiesto=(ROOT/'atlas/imsmanifest.xml').read_text(encoding='utf-8')
+    hrefs=re.findall(r'<file href="([^"]+)"',manifiesto)
+    check('Manifiesto IMS completo e incluye la portada',all((ROOT/'atlas'/h).is_file() for h in hrefs) and 'recorrido/portada-sylva.html' in hrefs)
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
     check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']

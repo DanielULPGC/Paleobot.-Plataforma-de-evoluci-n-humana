@@ -1,5 +1,46 @@
 # Registro de cambios
 
+## PB-GH-05 · Errores técnicos del sitio · 31-10-2026
+
+Sin eliminar contenido, páginas ni imágenes; solo atributos, estilos de color, espacios
+y manifiesto. Registro con motivo, evidencia, impacto, retorno y estados archivados en
+`provenance/PB_GH_05_CORRECCIONES.json`.
+
+- Portada Sylva: los cuatro enlaces del menú tienen nombre accesible también en móvil;
+  la etiqueta del logotipo describe su destino real (recorrido guiado).
+- Atlas v1.0: `body` deja de recibir `aria-selected` y la clase `active` (selector
+  `[data-pb-v50-block]:not(body)` en seis módulos).
+- Atlas v1.0: la limpieza de marca ya no pega palabras («comprender quiénes»,
+  «de *Australopithecus*»).
+- Atlas v1.0: contraste AA en 38 textos secundarios (reglas añadidas al final de
+  `051-paleobot-landing-redesign.css`) y recarga forzada de los recursos cambiados.
+- `imsmanifest.xml`: añade las 10 entradas de la portada Sylva (178, todas presentes).
+- Resultado: axe-core 4.10.2 sin infracciones WCAG A/AA en la portada del atlas,
+  la portada Sylva (1280 y 390 px), los diez documentos del recorrido y `ligera/`.
+  Verificador 56/56; pruebas 20/20. Sigue NO_GO (Moodle, lector de pantalla,
+  navegadores no Chromium y rendimiento en aula sin probar).
+
+## PB-GH-04 · 25-10-2026
+
+- Atlas v1.0, cronología heredada: ocho fichas contradecían la capa revisada o daban un
+  método imposible. *H. floresiensis* «50 ka» → ~100–60 ka; neandertales «14C» para
+  400–40 ka → métodos múltiples; *Au. prometheus* «U-Pb» → nucleidos cosmogénicos;
+  *H. erectus* «1.5 Ma» → ~2.0 Ma–110 ka; *H. cepranensis* ~900–450 → ~430–385 ka;
+  *Pierolapithecus* ~12.5 → ~11.9 Ma; *Sahelanthropus* «biocronología» → nucleidos
+  cosmogénicos (7.2–6.8 Ma); *Au. africanus* «2.5 Ma» → 3.6–2.1 Ma (en debate).
+- *Au. prometheus*: la ficha atribuía la edad de 3,67 Ma a U-Pb en 2022 e invertía las
+  posturas (Berger como defensor de la especie). Se corrige con Granger et al. (2015),
+  Walker et al. (2006), Kramers y Dirks (2017), Clarke y Kuman (2019), Berger y Hawks (2019)
+  y Martin et al. (2025). Se retiran dos referencias no localizables («Berger et al., 2020»,
+  DOI 10.1002/ajpa.24122, y «Sutton et al., 2023»). Año de descubrimiento: 1948 (Dart), no 2019.
+- Siete taxones cuya ficha declara su validez discutida dejan de mostrarse como «aceptada»
+  y pasan a «debatida».
+- El formato conserva el punto decimal: `getTimeRange` no interpreta la coma.
+- Estado PB-GH-03 archivado en `docs/historial/PB_GH_03/`; registro en
+  `provenance/PB_GH_04_CORRECCIONES.json`. El verificador encadena las dos rondas de
+  correcciones y añade 2 controles y 2 pruebas. Catálogo, capa revisada y entrada ligera sin
+  cambios. Se mantiene NO_GO.
+
 ## PB-GH-03 · 25-10-2026
 
 - Atlas v1.0: Chororapithecus deja de cargar la fotografía de la Universidad de Tokio,

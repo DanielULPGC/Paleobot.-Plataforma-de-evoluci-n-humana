@@ -11,3 +11,6 @@
 
 # El paquete IMS importado conserva sus bytes originales (huellas en provenance/ATLAS_V1_IMPORT.json)
 atlas/** -text
+
+# Estados archivados de las correcciones: bytes exactos (huellas en provenance/PB_GH_0*_CORRECCIONES.json)
+docs/historial/** -text

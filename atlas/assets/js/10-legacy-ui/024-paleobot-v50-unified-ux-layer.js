@@ -123,7 +123,7 @@
   function setBlock(blockId, viewId){
     activeBlock = BLOCKS[blockId] ? blockId : 'explorar';
     document.body.dataset.pbV50Block = activeBlock;
-    document.querySelectorAll('[data-pb-v50-block]').forEach(btn => {
+    document.querySelectorAll('[data-pb-v50-block]:not(body)').forEach(btn => {
       const active = btn.dataset.pbV50Block === activeBlock;
       btn.classList.toggle('active', active);
       btn.setAttribute('aria-selected', active ? 'true' : 'false');
@@ -334,7 +334,7 @@
       const block = blockForView(cur);
       activeBlock = block;
       document.body.dataset.pbV50Block = block;
-      document.querySelectorAll('[data-pb-v50-block]').forEach(btn => {
+      document.querySelectorAll('[data-pb-v50-block]:not(body)').forEach(btn => {
         const active = btn.dataset.pbV50Block === block;
         btn.classList.toggle('active', active);
         btn.setAttribute('aria-selected', active ? 'true' : 'false');

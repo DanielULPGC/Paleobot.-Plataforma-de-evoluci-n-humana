@@ -39,7 +39,7 @@
 
   function setActiveBlock(blockId) {
     document.body.dataset.pbV50Block = blockId;
-    document.querySelectorAll('[data-pb-v50-block]').forEach(btn => {
+    document.querySelectorAll('[data-pb-v50-block]:not(body)').forEach(btn => {
       const active = btn.dataset.pbV50Block === blockId;
       btn.classList.toggle('active', active);
       btn.setAttribute('aria-selected', active ? 'true' : 'false');

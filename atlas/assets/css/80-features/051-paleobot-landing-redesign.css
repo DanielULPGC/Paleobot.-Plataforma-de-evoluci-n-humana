@@ -770,3 +770,15 @@ html[data-paleobot-v85-speed-guard="ready"] body.pb-v50-unified #timelineList .s
     display: none !important;
   }
 }
+
+/* PB-GH-05: contraste AA (WCAG 1.4.3) de la numeración de rutas sobre fondo claro. */
+#pb-hub .pb-pathway-icon { color:#1d6b56; }
+#pb-hub .pb-pathway.full .pb-pathway-icon { color:#7a4f00; }
+/* PB-GH-05: contraste AA de textos secundarios con color en línea o heredado (sin cambiar maqueta ni contenido). */
+#pb-hub .pb-landing-steps > span > span { color:#7a5a00 !important; }
+#pb-hub button[data-hub-block] > div > span:nth-child(2) { color:#5b6b65 !important; }
+#pb-hub .pb-landing-index-group > span { color:#56636a !important; }
+#pb-hub-skip { color:#4f5f58 !important; }
+body .level-hint, body .level-hint strong { color:#8796a8 !important; }
+body.pb-v50-unified .view-hero .view-hero-kicker { color:#6fd3b8 !important; }
+body.pb-v50-unified .view-hero .view-hero-badge { color:#172331 !important; }

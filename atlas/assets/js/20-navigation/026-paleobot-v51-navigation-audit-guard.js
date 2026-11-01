@@ -149,7 +149,7 @@
       ? viewId
       : (views.includes(currentView()) ? currentView() : (BLOCKS[safeBlock].defaultView || views[0]));
     document.body.dataset.pbV50Block = safeBlock;
-    document.querySelectorAll('[data-pb-v50-block]').forEach(btn => {
+    document.querySelectorAll('[data-pb-v50-block]:not(body)').forEach(btn => {
       const active = btn.dataset.pbV50Block === safeBlock;
       btn.classList.toggle('active', active);
       btn.setAttribute('aria-selected', active ? 'true' : 'false');
@@ -310,7 +310,7 @@
     const view = currentView() || BLOCKS.explorar.defaultView;
     const block = blockForView(view);
     document.body.dataset.pbV50Block = block;
-    document.querySelectorAll('[data-pb-v50-block]').forEach(btn => {
+    document.querySelectorAll('[data-pb-v50-block]:not(body)').forEach(btn => {
       const active = btn.dataset.pbV50Block === block;
       btn.classList.toggle('active', active);
       btn.setAttribute('aria-selected', active ? 'true' : 'false');
