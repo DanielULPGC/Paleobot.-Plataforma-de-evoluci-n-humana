@@ -85,7 +85,7 @@ def verify(include_syntax=True):
     # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
     # PB-GH-04 encadena una segunda ronda: la última corrección de cada ruta debe partir
     # exactamente del estado anterior, conservado en su propio snapshot.
-    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json') if (ROOT/n).is_file()]
+    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json') if (ROOT/n).is_file()]
     fixes={}
     cadena_ok=True
     for ronda in rondas:
@@ -138,6 +138,8 @@ def verify(include_syntax=True):
     check('Entrada DEA con CSP estricta y sin conexiones de red',"script-src 'self'" in dea_html and "connect-src 'none'" in dea_html and not re.search(r'fetch\(|XMLHttpRequest|sendBeacon|WebSocket',dea_js))
     gen=subprocess.run([node,str(ROOT/'scripts/generar_glosario_dea.cjs'),'--check'],capture_output=True,text=True,timeout=30) if node else None
     check('Glosario DEA sincronizado con el del atlas',bool(gen) and gen.returncode==0,(gen.stdout or gen.stderr).strip() if gen else 'sin Node')
+    check('Portada enlaza la entrada DEA sin perder enlaces',all(h in portada for h in ('href="../../dea/"','href="parentesco.html"','href="territorio.html"','href="ficha.html"','href="atlas.html"','href="index.html"')))
+    check('Referencia no localizada marcada y conservada','10.1002/ajpa.24122</a> <em>(Referencia no localizada' in (ROOT/'ligera/index.html').read_text(encoding='utf-8'))
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
     check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']

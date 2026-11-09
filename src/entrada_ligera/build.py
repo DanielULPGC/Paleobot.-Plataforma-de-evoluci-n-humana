@@ -59,6 +59,12 @@ def chronology_type(entry: dict) -> str:
     }.get(entry.get("kind"), "Tipo pendiente de revisión")
 
 
+# Referencias del catálogo que no se han podido localizar en las comprobaciones realizadas.
+# Se conservan tal cual y se marcan a la vista; no se retiran (PB-GH-07).
+REFERENCIAS_SIN_LOCALIZAR = {"10.1002/ajpa.24122"}
+AVISO_SIN_LOCALIZAR = " <em>(Referencia no localizada en las comprobaciones realizadas; pendiente de verificación.)</em>"
+
+
 def bibliography(species: dict) -> str:
     refs = species.get("experto", {}).get("referencias") or []
     if not refs:
@@ -73,7 +79,8 @@ def bibliography(species: dict) -> str:
             f' <a href="https://doi.org/{e(doi)}" target="_blank" rel="noopener noreferrer">DOI: {e(doi)}</a>'
             if re.fullmatch(r"10\.\d{4,9}/[^\s<>\"']+", doi) else ""
         )
-        lines.append(f"<li>{e(desc)}{link}</li>")
+        aviso = AVISO_SIN_LOCALIZAR if doi in REFERENCIAS_SIN_LOCALIZAR else ""
+        lines.append(f"<li>{e(desc)}{link}{aviso}</li>")
     return "<ul class=references>" + "".join(lines) + "</ul>" if lines else "<p>Sin referencias detalladas.</p>"
 
 

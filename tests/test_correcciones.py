@@ -100,5 +100,17 @@ class AtlasCorrections(unittest.TestCase):
         target.write_text(target.read_text(encoding='utf-8').replace('"bipedismo"','"bipedalismo"',1),encoding='utf-8')
         self.assertFalse(self.result('Glosario DEA sincronizado con el del atlas'))
 
+    def test_rechaza_retirar_la_referencia_marcada(self):
+        target=self.repo/'ligera/index.html'
+        t=target.read_text(encoding='utf-8').replace(' <em>(Referencia no localizada en las comprobaciones realizadas; pendiente de verificación.)</em>','',1)
+        target.write_text(t,encoding='utf-8')
+        self.assertFalse(self.result('Referencia no localizada marcada y conservada'))
+
+    def test_rechaza_portada_que_pierde_un_enlace(self):
+        target=self.repo/'atlas/recorrido/portada-sylva.html'
+        t=target.read_text(encoding='utf-8').replace('href="territorio.html"','href="#"',1)
+        target.write_text(t,encoding='utf-8')
+        self.assertFalse(self.result('Portada enlaza la entrada DEA sin perder enlaces'))
+
 if __name__=='__main__':
     unittest.main()

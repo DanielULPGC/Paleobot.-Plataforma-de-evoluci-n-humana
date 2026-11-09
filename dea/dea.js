@@ -1,7 +1,8 @@
 /* DEA · África, cuna de la humanidad.
    Usa los datos del recorrido del atlas (window.AtlasPaleo, ../atlas/recorrido/datos.js)
    y el contorno de window.DEA_MAPA. No hace peticiones de red ni guarda datos personales:
-   solo recuerda, en este dispositivo, el tamaño de letra, el modo proyección y las sesiones hechas. */
+   solo recuerda, en este dispositivo, el tamaño de letra, el modo proyección, las sesiones hechas
+   y las notas que escriba cada persona. */
 (function () {
   'use strict';
 
@@ -56,6 +57,13 @@
   };
   var ajustes = almacen.leer();
   ajustes.hechas = ajustes.hechas || {};
+  var notas = (function () { try { return JSON.parse(localStorage.getItem('dea-notas') || '{}'); } catch (e) { return {}; } })();
+  var temporizadorNotas = null;
+  function guardarNotas() {
+    clearTimeout(temporizadorNotas);
+    temporizadorNotas = setTimeout(function () { try { localStorage.setItem('dea-notas', JSON.stringify(notas)); } catch (e) { /* sin almacenamiento */ } }, 400);
+  }
+  function textoPlano(html) { var d = document.createElement('div'); d.innerHTML = html; return d.textContent; }
 
   var taxones = A.taxones.slice().sort(function (a, b) { return b.desde - a.desde || b.hasta - a.hasta; });
 
@@ -84,14 +92,44 @@
   });
 
   /* ---------- Navegación por secciones ---------- */
-  var SECCIONES = ['inicio', 'tiempo', 'mapa', 'especies', 'comparar', 'metodos', 'clima', 'glosario', 'trabajo'];
+  var SECCIONES = ['inicio', 'tiempo', 'mapa', 'especies', 'comparar', 'metodos', 'clima', 'glosario', 'repaso', 'trabajo'];
+  var DESCRIPCIONES = {
+    tiempo: 'Qué especies vivieron y cuándo.',
+    mapa: 'Dónde se han hallado, región a región.',
+    especies: 'Una ficha breve de cada especie, con sus fuentes.',
+    comparar: 'Si dos especies coincidieron en el tiempo.',
+    metodos: 'Cómo se fechan y se estudian los fósiles.',
+    clima: 'Qué relación hay entre ambiente y evolución.',
+    glosario: 'El significado de los términos técnicos.',
+    repaso: 'Preguntas para comprobar lo aprendido.',
+    trabajo: 'Orientaciones para el trabajo individual.'
+  };
+  function nombreSeccion(id) { var a = document.querySelector('.pestanas a[data-seccion="' + id + '"]'); return a ? a.textContent : id; }
+  function avisoPestanas() {
+    var n = document.querySelector('.pestanas');
+    n.classList.toggle('hay-mas', n.scrollLeft + n.clientWidth < n.scrollWidth - 4);
+    n.classList.toggle('hay-antes', n.scrollLeft > 4);
+  }
+  function pintarPasoSeccion(id) {
+    var nav = document.getElementById('paso-seccion');
+    nav.textContent = '';
+    var i = SECCIONES.indexOf(id);
+    if (i > 0) nav.appendChild(el('a', { href: '#' + SECCIONES[i - 1], clase: 'anterior' }, ['← ' + nombreSeccion(SECCIONES[i - 1])]));
+    else nav.appendChild(el('span'));
+    if (i < SECCIONES.length - 1) nav.appendChild(el('a', { href: '#' + SECCIONES[i + 1], clase: 'siguiente' }, [nombreSeccion(SECCIONES[i + 1]) + ' →']));
+  }
   function mostrar(id, enfocar) {
     if (SECCIONES.indexOf(id) === -1) id = 'inicio';
     document.querySelectorAll('.seccion').forEach(function (s) { s.hidden = s.dataset.seccion !== id; });
     document.querySelectorAll('.pestanas a').forEach(function (a) {
-      if (a.dataset.seccion === id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      if (a.dataset.seccion === id) {
+        a.setAttribute('aria-current', 'page');
+        var n = a.parentNode; n.scrollLeft = Math.max(0, a.offsetLeft - (n.clientWidth - a.offsetWidth) / 2);
+      } else a.removeAttribute('aria-current');
     });
-    var titulo = document.querySelector('#seccion-' + id + ' h1');
+    avisoPestanas();
+    pintarPasoSeccion(id);
+    var titulo = document.getElementById(id).querySelector('h1');
     document.title = (id === 'inicio' ? 'África, cuna de la humanidad' : titulo.textContent) + ' · DEA';
     if (enfocar) { titulo.setAttribute('tabindex', '-1'); titulo.focus(); window.scrollTo(0, 0); }
   }
@@ -102,8 +140,15 @@
   }
   window.addEventListener('hashchange', function () {
     var r = leerHash(); mostrar(r.seccion, true);
-    if (r.seccion === 'especies' && r.id) abrirFicha(r.id);
+    irADetalle(r);
   });
+  function irADetalle(r) {
+    if (!r.id) return;
+    if (r.seccion === 'especies') abrirFicha(r.id);
+    else if (r.seccion === 'mapa' && A.regiones[r.id]) elegirRegion(r.id);
+    else if (r.seccion === 'comparar') { var sel = document.getElementById('comparar-a'); sel.value = r.id; if (sel.value === r.id) pintarComparar(); }
+    else if (r.seccion === 'inicio') { var d = document.getElementById('bloque-sesion-' + r.id); if (d) { d.open = true; d.scrollIntoView({ block: 'start' }); } }
+  }
 
   /* ---------- Sesiones ---------- */
   function enlace(seccion, texto) { return '<a href="#' + seccion + '">' + texto + '</a>'; }
@@ -170,40 +215,108 @@
       fuentes: [['Piltdown Man forgery (British Geological Survey)', 'https://earthwise.bgs.ac.uk/index.php/Piltdown_Man_forgery'], ['The discovery of Australopithecus and its implications (Leakey Foundation)', 'https://leakeyfoundation.org/the-discovery-of-australopithecus-and-its-implications/'], ['KNM-WT 15000, Turkana Boy (Smithsonian)', 'https://si.edu/object/knm-wt-15000a-knm-wt-15000-turkana-boy-human-fossil:nmnheducation_13109587'], ['Zeresenay Alemseged y Selam (Universidad de Chicago)', 'https://news.uchicago.edu/story/paleoanthropologist-explores-roots-evolution']],
       mas: [['../atlas/recorrido/parentesco.html', 'Parentesco del recorrido']] }
   ];
+  function pintarProgreso() {
+    var hechas = SESIONES.filter(function (s) { return ajustes.hechas[s.n]; }).length;
+    document.getElementById('progreso-sesiones').textContent = hechas === 0
+      ? 'Seis sesiones. Pulse una para abrirla.'
+      : 'Ha completado ' + hechas + ' de ' + SESIONES.length + ' sesiones.';
+  }
   function pintarSesiones() {
     var cont = document.getElementById('lista-sesiones');
+    var primeraPendiente = SESIONES.filter(function (s) { return !ajustes.hechas[s.n]; })[0];
     SESIONES.forEach(function (s) {
-      var art = el('article', { clase: 'sesion' + (s.preparacion ? ' preparacion' : ''), 'aria-labelledby': 'sesion-' + s.n });
-      var cab = el('header', null, [el('span', { clase: 'numero', 'aria-hidden': 'true', texto: String(s.n) }), el('h3', { id: 'sesion-' + s.n, texto: 'Sesión ' + s.n + '. ' + s.titulo })]);
-      art.appendChild(cab);
-      art.appendChild(el('p', { clase: 'pregunta', texto: s.pregunta }));
-      if (s.preparacion) {
-        art.appendChild(el('p', null, [el('span', { clase: 'etiqueta', texto: 'En preparación' }), ' Sus contenidos se publicarán cuando estén comprobados en las fuentes.']));
-      } else {
-        if (s.contenido) { var bloque = el('div', { clase: 'contenido' }); bloque.innerHTML = s.contenido; art.appendChild(bloque); }
-        var ol = el('ol');
-        s.pasos.forEach(function (p) { var li = el('li'); li.innerHTML = p; ol.appendChild(li); });
-        art.appendChild(ol);
-        art.appendChild(el('p', { clase: 'trabajo' }, [el('strong', { texto: 'Para su trabajo: ' }), s.trabajo]));
-        if (s.fuentes) {
-          var uf = el('ul', { clase: 'fuentes-sesion' });
-          s.fuentes.forEach(function (f) { uf.appendChild(el('li', null, [el('a', { href: f[1], rel: 'noopener noreferrer', texto: f[0] })])); });
-          art.appendChild(el('details', null, [el('summary', { texto: 'Fuentes de esta sesión (consultadas el 9 de noviembre de 2026)' }), uf]));
-        }
-        var pie = el('div', { clase: 'pie-sesion' });
-        var mas = el('span', null, ['Para profundizar: ']);
-        s.mas.forEach(function (m, i) { if (i) mas.appendChild(document.createTextNode(' · ')); mas.appendChild(el('a', { href: m[0], texto: m[1] })); });
-        var id = 'hecha-' + s.n;
-        var caja = el('input', { type: 'checkbox', id: id });
-        caja.checked = !!ajustes.hechas[s.n];
-        caja.addEventListener('change', function () { ajustes.hechas[s.n] = caja.checked; almacen.guardar(ajustes); });
-        pie.appendChild(mas);
-        pie.appendChild(el('label', { for: id }, [caja, ' Sesión hecha']));
-        art.appendChild(pie);
+      var art = el('details', { clase: 'sesion', id: 'bloque-sesion-' + s.n });
+      if (primeraPendiente && primeraPendiente.n === s.n) art.open = true;
+      var estado = el('span', { clase: 'etiqueta hecha', texto: 'Hecha' });
+      estado.hidden = !ajustes.hechas[s.n];
+      art.appendChild(el('summary', null, [
+        el('span', { clase: 'numero', 'aria-hidden': 'true', texto: String(s.n) }),
+        el('span', { clase: 'cabecera-sesion' }, [el('h3', { id: 'sesion-' + s.n, texto: 'Sesión ' + s.n + '. ' + s.titulo }), el('span', { clase: 'pregunta', texto: s.pregunta })]),
+        estado
+      ]));
+      if (s.contenido) { var bloque = el('div', { clase: 'contenido' }); bloque.innerHTML = s.contenido; art.appendChild(bloque); }
+      var ol = el('ol');
+      s.pasos.forEach(function (p, i) {
+        var li = el('li'); li.innerHTML = p;
+        var clave = s.n + '-' + i, idNota = 'nota-' + clave;
+        var area = el('textarea', { id: idNota, rows: '3', 'aria-label': 'Mis notas del paso ' + (i + 1) + ' de la sesión ' + s.n });
+        area.value = notas[clave] || '';
+        var impresa = el('div', { clase: 'nota-impresa', 'aria-hidden': 'true', texto: area.value });
+        area.addEventListener('input', function () { notas[clave] = area.value; impresa.textContent = area.value; guardarNotas(); });
+        li.appendChild(el('div', { clase: 'nota' }, [el('label', { for: idNota, texto: 'Mis notas' }), area, impresa]));
+        ol.appendChild(li);
+      });
+      art.appendChild(ol);
+      art.appendChild(el('p', { clase: 'trabajo' }, [el('strong', { texto: 'Para su trabajo: ' }), s.trabajo]));
+      if (s.fuentes) {
+        var uf = el('ul', { clase: 'fuentes-sesion' });
+        s.fuentes.forEach(function (f) { uf.appendChild(el('li', null, [el('a', { href: f[1], rel: 'noopener noreferrer', texto: f[0] })])); });
+        art.appendChild(el('details', { clase: 'fuentes-plegadas' }, [el('summary', { texto: 'Fuentes de esta sesión (consultadas el 9 de noviembre de 2026)' }), uf]));
       }
+      var pie = el('div', { clase: 'pie-sesion' });
+      var mas = el('span', null, ['Para profundizar: ']);
+      s.mas.forEach(function (m, i) { if (i) mas.appendChild(document.createTextNode(' · ')); mas.appendChild(el('a', { href: m[0], texto: m[1] })); });
+      var id = 'hecha-' + s.n;
+      var caja = el('input', { type: 'checkbox', id: id });
+      caja.checked = !!ajustes.hechas[s.n];
+      caja.addEventListener('change', function () { ajustes.hechas[s.n] = caja.checked; estado.hidden = !caja.checked; almacen.guardar(ajustes); pintarProgreso(); });
+      pie.appendChild(mas);
+      pie.appendChild(el('label', { for: id }, [caja, ' Sesión hecha']));
+      art.appendChild(pie);
       cont.appendChild(art);
     });
+    pintarProgreso();
+    var indice = document.getElementById('indice-secciones');
+    SECCIONES.slice(1).forEach(function (id) {
+      indice.appendChild(el('li', null, [el('a', { href: '#' + id }, [el('strong', { texto: nombreSeccion(id) }), el('span', { texto: DESCRIPCIONES[id] })])]));
+    });
   }
+
+  /* ---------- Notas: descarga y borrado (todo ocurre en el dispositivo) ---------- */
+  function textoNotas() {
+    var lineas = ['África, cuna de la humanidad · Diploma de Estudios Africanos (ULPGC)', 'Mis notas', ''];
+    var hay = false;
+    SESIONES.forEach(function (s) {
+      var propias = s.pasos.map(function (p, i) { return (notas[s.n + '-' + i] || '').trim(); });
+      if (!propias.some(Boolean)) return;
+      hay = true;
+      lineas.push('SESIÓN ' + s.n + '. ' + s.titulo.toUpperCase(), s.pregunta, '');
+      s.pasos.forEach(function (p, i) {
+        if (!propias[i]) return;
+        lineas.push('Paso ' + (i + 1) + '. ' + textoPlano(p), propias[i], '');
+      });
+      lineas.push('Para su trabajo: ' + s.trabajo, '');
+    });
+    return hay ? lineas.join('\r\n') : '';
+  }
+  function avisarNotas(texto) { document.querySelectorAll('[data-estado-notas]').forEach(function (n) { n.textContent = texto; }); }
+  document.querySelectorAll('[data-accion="descargar-notas"]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var texto = textoNotas();
+      if (!texto) { avisarNotas('Todavía no ha escrito ninguna nota.'); return; }
+      var url = URL.createObjectURL(new Blob(['\ufeff' + texto], { type: 'text/plain;charset=utf-8' }));
+      var a = el('a', { href: url, download: 'mis-notas-africa-cuna-de-la-humanidad.txt' });
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      avisarNotas('Notas descargadas como archivo de texto.');
+    });
+  });
+  document.querySelectorAll('[data-accion="borrar-notas"]').forEach(function (b) {
+    var original = b.textContent, armado = false, reloj = null;
+    b.addEventListener('click', function () {
+      if (!armado) {
+        armado = true; b.textContent = 'Pulse otra vez para borrar todas sus notas';
+        reloj = setTimeout(function () { armado = false; b.textContent = original; }, 6000);
+        return;
+      }
+      clearTimeout(reloj); armado = false; b.textContent = original;
+      notas = {};
+      try { localStorage.removeItem('dea-notas'); } catch (e) { /* sin almacenamiento */ }
+      document.querySelectorAll('.nota textarea').forEach(function (t) { t.value = ''; });
+      document.querySelectorAll('.nota-impresa').forEach(function (d) { d.textContent = ''; });
+      avisarNotas('Notas borradas de este dispositivo.');
+    });
+  });
 
   /* ---------- Línea del tiempo ---------- */
   function pista(t, max) {
@@ -232,6 +345,23 @@
     document.getElementById('tiempo-resumen').textContent = lista.length + ' especies o poblaciones, de la más antigua a la más reciente. Las barras rayadas indican validez debatida.';
   }
 
+  function pintarDia() {
+    var primero = taxones.filter(function (x) { return x.n === 'Sahelanthropus tchadensis'; })[0];
+    var total = primero ? primero.desde : 7, ul = document.getElementById('lista-dia');
+    document.getElementById('dia-total').textContent = num(total, 1);
+    function hora(ma) {
+      var seg = Math.round((1 - ma / total) * 86400), h = Math.floor(seg / 3600), m = Math.floor((seg % 3600) / 60);
+      return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+    }
+    [['Sahelanthropus tchadensis', 'el hominino más antiguo propuesto'], ['Australopithecus afarensis', 'la especie de «Lucy»'], ['Homo erectus', null], ['Homo sapiens', 'nuestra especie']].forEach(function (par) {
+      var t = taxones.filter(function (x) { return x.n === par[0]; })[0];
+      if (!t || t.desde > total) return;
+      ul.appendChild(el('li', null, [el('strong', { texto: (t.desde === total ? 'A medianoche (00:00): ' : 'A las ' + hora(t.desde) + ': ') }), el('i', { texto: t.n }), (par[1] ? ', ' + par[1] : '') + ' (' + hace(t.desde) + ').']));
+    });
+    var segundos = Math.round(2000 / (total * 1e6) * 86400);
+    ul.appendChild(el('li', null, [el('strong', { texto: 'En los últimos ' + segundos + ' segundos: ' }), 'los últimos 2000 años de historia.']));
+  }
+
   /* ---------- Mapa ---------- */
   var regionActiva = null;
   function pintarMapa() {
@@ -249,10 +379,14 @@
       var r = A.regiones[clave]; if (!r) return;
       var n = taxones.filter(function (t) { return t.region === clave; }).length;
       var etiqueta = r.nombre + ' (' + n + (n === 1 ? ' especie)' : ' especies)');
-      var c = document.createElementNS(ns, 'circle');
-      c.setAttribute('cx', (r.lon + 20).toFixed(2)); c.setAttribute('cy', (38 - r.lat).toFixed(2)); c.setAttribute('r', '1.15');
+      var cx = (r.lon + 20).toFixed(2), cy = (38 - r.lat).toFixed(2);
+      var c = document.createElementNS(ns, 'g');
       c.setAttribute('class', 'punto'); c.setAttribute('tabindex', '0'); c.setAttribute('role', 'button'); c.setAttribute('aria-label', etiqueta); c.dataset.region = clave;
       var tt = document.createElementNS(ns, 'title'); tt.textContent = etiqueta; c.appendChild(tt);
+      // Área táctil de al menos 24 px en un teléfono, con el punto visible en el centro.
+      [['zona', '2.7'], ['marca', '1.15']].forEach(function (par) {
+        var k = document.createElementNS(ns, 'circle'); k.setAttribute('cx', cx); k.setAttribute('cy', cy); k.setAttribute('r', par[1]); k.setAttribute('class', par[0]); c.appendChild(k);
+      });
       c.addEventListener('click', function () { elegirRegion(clave); });
       c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegirRegion(clave); } });
       svg.appendChild(c);
@@ -266,6 +400,15 @@
     document.querySelectorAll('#mapa-svg .punto').forEach(function (c) { c.classList.toggle('activo', c.dataset.region === clave); });
     document.querySelectorAll('#lista-regiones button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.region === clave ? 'true' : 'false'); });
     var r = A.regiones[clave];
+    var svg = document.getElementById('mapa-svg'), previa = svg.querySelector('.rotulo');
+    if (previa) previa.remove();
+    var rot = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    var x = r.lon + 20, derecha = x < 45;
+    rot.setAttribute('class', 'rotulo'); rot.setAttribute('aria-hidden', 'true');
+    rot.setAttribute('x', (derecha ? x + 2 : x - 2).toFixed(2)); rot.setAttribute('y', (38 - r.lat - 2).toFixed(2));
+    rot.setAttribute('text-anchor', derecha ? 'start' : 'end');
+    rot.textContent = r.nombre.split(',')[0].split('(')[0].trim();
+    svg.appendChild(rot);
     var det = document.getElementById('detalle-region');
     det.textContent = '';
     var ul = el('ul');
@@ -303,7 +446,10 @@
       ]);
       if (t.etimologia) { dl.appendChild(el('dt', { texto: 'Origen del nombre' })); dl.appendChild(el('dd', { texto: t.etimologia })); }
       dl.appendChild(el('dt', { texto: 'Fuentes' })); dl.appendChild(el('dd', null, [fuentesDe(t.fuentes)]));
-      cont.appendChild(el('details', { clase: 'ficha', id: 'ficha-' + t.id }, [sum, dl]));
+      var cruces = el('p', { clase: 'cruces' });
+      if (esAfrica(t)) { cruces.appendChild(el('a', { href: '#mapa/' + t.region, texto: 'Ver en el mapa' })); cruces.appendChild(document.createTextNode(' · ')); }
+      cruces.appendChild(el('a', { href: '#comparar/' + t.id, texto: 'Comparar con otra especie' }));
+      cont.appendChild(el('details', { clase: 'ficha', id: 'ficha-' + t.id }, [sum, dl, cruces]));
     });
     document.getElementById('especies-resumen').textContent = lista.length === 0 ? 'Ninguna especie coincide con la búsqueda.' : lista.length + ' fichas.';
   }
@@ -391,11 +537,95 @@
     document.getElementById('glosario-resumen').textContent = n === 0 ? 'Ningún término coincide con la búsqueda.' : n + (n === 1 ? ' término.' : ' términos.');
   }
 
+  /* ---------- Repaso: preguntas generadas a partir de los datos del recurso ---------- */
+  function azar(n) { return Math.floor(Math.random() * n); }
+  function barajar(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = azar(i + 1), x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+  var africanos = taxones.filter(function (t) { return esAfrica(t) && t.desde <= LIMITE_MIOCENO; });
+  function parDistinto(valido) {
+    for (var k = 0; k < 200; k++) {
+      var a = africanos[azar(africanos.length)], b = africanos[azar(africanos.length)];
+      if (a.id !== b.id && valido(a, b)) return [a, b];
+    }
+    return null;
+  }
+  function cursiva(n) { return el('i', { texto: n }); }
+  var GENERADORES = [
+    function () { // ¿cuál es más antigua?
+      var par = parDistinto(function (a, b) { return Math.abs(a.desde - b.desde) >= 0.5; });
+      if (!par) return null;
+      var vieja = par[0].desde > par[1].desde ? par[0] : par[1], otra = vieja === par[0] ? par[1] : par[0];
+      return { texto: ['¿Cuál de estas dos especies aparece antes en el registro fósil?'], opciones: barajar(par).map(function (t) { return { nodo: cursiva(t.n), bien: t === vieja }; }),
+        explica: [cursiva(vieja.n), ': ' + intervalo(vieja).toLowerCase() + '. ', cursiva(otra.n), ': ' + intervalo(otra).toLowerCase() + '.'], ficha: vieja.id };
+    },
+    function () { // ¿en qué región?
+      var candidatos = africanos.filter(function (t) { return t.region !== 'africa'; });
+      var t = candidatos[azar(candidatos.length)];
+      var otras = barajar(REGIONES_AFRICA.filter(function (r) { return r !== t.region && r !== 'africa' && A.regiones[r]; })).slice(0, 2);
+      return { texto: ['¿En qué región se documenta ', cursiva(t.n), '?'], opciones: barajar([t.region].concat(otras)).map(function (r) { return { nodo: A.regiones[r].nombre, bien: r === t.region }; }),
+        explica: [cursiva(t.n), ' se documenta en ' + region(t) + '.' + (t.geoNota ? ' ' + t.geoNota : '')], ficha: t.id };
+    },
+    function () { // ¿coincidieron?
+      var par = parDistinto(function (a, b) { var s = Math.min(a.desde, b.desde) - Math.max(a.hasta, b.hasta); return s >= 0.2 || s <= -0.3; });
+      if (!par) return null;
+      var solape = Math.min(par[0].desde, par[1].desde) - Math.max(par[0].hasta, par[1].hasta) > 0;
+      return { texto: ['¿Coincidieron en el tiempo ', cursiva(par[0].n), ' y ', cursiva(par[1].n), '?'], opciones: [{ nodo: 'Sí', bien: solape }, { nodo: 'No', bien: !solape }],
+        explica: [cursiva(par[0].n), ': ' + intervalo(par[0]).toLowerCase() + '. ', cursiva(par[1].n), ': ' + intervalo(par[1]).toLowerCase() + '.' + (solape ? ' Coincidir en el tiempo no implica que se encontraran.' : '')], ficha: par[0].id };
+    },
+    function () { // ¿debatida?
+      var t = africanos[azar(africanos.length)];
+      return { texto: ['En este recurso, ¿figura ', cursiva(t.n), ' como especie debatida?'], opciones: [{ nodo: 'Sí', bien: !!t.debatido }, { nodo: 'No', bien: !t.debatido }],
+        explica: [t.debatido ? 'Sí: su validez o su posición se discuten. ' : 'No figura como debatida. ', t.nota || ''], ficha: t.id };
+    }
+  ];
+  var repaso = { total: 0, respondidas: 0, aciertos: 0 };
+  function marcadorRepaso() {
+    document.getElementById('repaso-marcador').textContent = repaso.respondidas === repaso.total && repaso.total
+      ? 'Ha acertado ' + repaso.aciertos + ' de ' + repaso.total + '. Puede pedir preguntas nuevas.'
+      : 'Respondidas: ' + repaso.respondidas + ' de ' + repaso.total + '. Aciertos: ' + repaso.aciertos + '.';
+  }
+  function pintarRepaso() {
+    var cont = document.getElementById('lista-repaso');
+    cont.textContent = '';
+    var preguntas = [];
+    barajar([0, 1, 2, 3, 0, 1, 2, 3]).forEach(function (g) { var q = GENERADORES[g](); if (q) preguntas.push(q); });
+    repaso = { total: preguntas.length, respondidas: 0, aciertos: 0 };
+    preguntas.forEach(function (q, i) {
+      var nombre = 'repaso-' + i;
+      var campo = el('fieldset', { clase: 'tarjeta pregunta-repaso' }, [el('legend', { texto: 'Pregunta ' + (i + 1) + ' de ' + preguntas.length })]);
+      campo.appendChild(el('p', { clase: 'enunciado' }, q.texto));
+      q.opciones.forEach(function (o, j) {
+        var id = nombre + '-' + j;
+        campo.appendChild(el('label', { clase: 'opcion', for: id }, [el('input', { type: 'radio', name: nombre, id: id, value: String(j) }), ' ', o.nodo]));
+      });
+      var boton = el('button', { type: 'button', texto: 'Comprobar' });
+      var salida = el('div', { clase: 'respuesta', role: 'status' });
+      boton.addEventListener('click', function () {
+        var marcada = campo.querySelector('input:checked');
+        if (!marcada) { salida.textContent = 'Elija una respuesta.'; return; }
+        var elegida = q.opciones[Number(marcada.value)], correcta = q.opciones.filter(function (o) { return o.bien; })[0];
+        campo.querySelectorAll('input').forEach(function (n) { n.disabled = true; });
+        boton.disabled = true;
+        repaso.respondidas++; if (elegida.bien) repaso.aciertos++;
+        salida.textContent = '';
+        salida.className = 'respuesta ' + (elegida.bien ? 'bien' : 'mal');
+        var veredicto = el('p', null, [el('strong', { texto: elegida.bien ? '✓ Correcto. ' : '✗ No es correcto. ' })]);
+        if (!elegida.bien) { veredicto.appendChild(document.createTextNode('La respuesta es: ')); veredicto.appendChild(typeof correcta.nodo === 'string' ? document.createTextNode(correcta.nodo) : correcta.nodo.cloneNode(true)); veredicto.appendChild(document.createTextNode('.')); }
+        salida.appendChild(veredicto);
+        salida.appendChild(el('p', null, q.explica.concat([' ', el('a', { href: '#especies/' + q.ficha, texto: 'Ver la ficha' }), '.'])));
+        marcadorRepaso();
+      });
+      campo.appendChild(boton); campo.appendChild(salida);
+      cont.appendChild(campo);
+    });
+    marcadorRepaso();
+  }
+
   /* ---------- Arranque ---------- */
   aplicarAjustes();
   pintarSesiones();
   ['tiempo-africa', 'tiempo-mioceno'].forEach(function (id) { document.getElementById(id).addEventListener('change', pintarTiempo); });
   pintarTiempo();
+  pintarDia();
   pintarMapa();
   document.getElementById('buscar-especie').addEventListener('input', pintarEspecies);
   document.getElementById('especies-africa').addEventListener('change', pintarEspecies);
@@ -410,7 +640,11 @@
   pintarGlosario();
   document.getElementById('boton-imprimir').addEventListener('click', function () { window.print(); });
   document.getElementById('nota-datos').textContent = (A.meta && A.meta.notaDatos) || '';
+  pintarRepaso();
+  document.getElementById('repaso-nuevo').addEventListener('click', function () { pintarRepaso(); document.getElementById('t-repaso').scrollIntoView({ block: 'start' }); });
+  document.querySelector('.pestanas').addEventListener('scroll', avisoPestanas, { passive: true });
+  window.addEventListener('resize', avisoPestanas);
   var inicio = leerHash();
   mostrar(inicio.seccion, false);
-  if (inicio.seccion === 'especies' && inicio.id) abrirFicha(inicio.id);
+  irADetalle(inicio);
 })();

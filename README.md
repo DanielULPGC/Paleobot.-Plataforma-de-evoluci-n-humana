@@ -20,8 +20,9 @@ con preservación de contenidos. Consulte [el informe](docs/PB_GH_02_INFORME.md)
 
 Entrada «África, cuna de la humanidad» para el alumnado del Diploma de Estudios Africanos
 de la ULPGC: sesiones guiadas, línea del tiempo, mapa de África, fichas, comparador,
-métodos y clima. Pensada para ordenador, tableta y teléfono, con modo proyección y letra
-ampliable. Usa los datos de `atlas/recorrido/datos.js` y no hace peticiones externas.
+métodos, clima, glosario, repaso con autoevaluación y guía del trabajo individual, con
+cuaderno de notas local. Pensada para ordenador, tableta y teléfono, con modo proyección
+y letra ampliable. Usa los datos de `atlas/recorrido/datos.js` y no hace peticiones externas.
 Dirección: `…/Paleobot.-Plataforma-de-evoluci-n-humana/dea/`. Prototipo en revisión.
 
 ## Atlas v1.0

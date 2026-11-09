@@ -2,6 +2,24 @@
 
 ## PB-GH-07 · Entrada DEA «África, cuna de la humanidad» (prototipo) · 09-11-2026
 
+Segunda ampliación (09-11-2026, noche), sin eliminar nada:
+- Uso en el teléfono: sesiones plegables con contador de progreso (la portada de la
+  entrada pasa de 9,2 a 5,1 pantallas), puntos del mapa con área táctil de 24 px y rótulo
+  de la región elegida, aviso de que hay más pestañas, enlaces «anterior/siguiente» e
+  índice de secciones; el detalle de la región aparece junto al mapa.
+- Cuaderno: cada paso tiene un espacio para notas, guardadas solo en el dispositivo, con
+  descarga en un archivo de texto, borrado en dos pulsaciones e impresión.
+- Repaso: ocho preguntas de autoevaluación generadas a partir de los datos (antigüedad,
+  región, coincidencia en el tiempo, validez debatida), con explicación y enlace a la ficha.
+- «Imagine un solo día»: equivalencia de los 7,2 Ma en 24 horas, calculada con los datos.
+- Fichas con enlaces «Ver en el mapa» y «Comparar con otra especie».
+- Corrección: la etiqueta «Hecha» se mostraba siempre; los destinos de las pestañas
+  pasan a ser identificadores reales (axe `skip-link`).
+- Portada Sylva: sexto enlace del menú, «DEA», hacia `dea/`; los cinco anteriores se conservan.
+- Consulta ligera: la referencia con DOI 10.1002/ajpa.24122 se conserva y se marca como
+  «no localizada; pendiente de verificación».
+- Registro en `provenance/PB_GH_07_CORRECCIONES.json`.
+
 Ampliación posterior el mismo día, también aditiva:
 - Sesiones 5 («Patrimonio de la humanidad en África») y 6 («Imágenes de nuestros orígenes»)
   completas, con cinco sitios del Patrimonio Mundial, tres casos (Piltdown, Taung,
