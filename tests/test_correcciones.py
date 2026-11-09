@@ -84,5 +84,16 @@ class AtlasCorrections(unittest.TestCase):
         (self.repo/'atlas/LEEME-MOODLE.md').write_text('# LEEME MOODLE\n',encoding='utf-8')
         self.assertFalse(self.result('Sin textos de Moodle en la interfaz ni instrucciones de subida'))
 
+    def test_rechaza_dea_con_recurso_externo(self):
+        target=self.repo/'dea/index.html'
+        t=target.read_text(encoding='utf-8').replace('<link rel="stylesheet" href="dea.css">','<link rel="stylesheet" href="https://cdn.example.org/x.css">',1)
+        target.write_text(t,encoding='utf-8')
+        self.assertFalse(self.result('Entrada DEA completa y con recursos locales'))
+
+    def test_rechaza_dea_con_conexion_de_red(self):
+        target=self.repo/'dea/dea.js'
+        target.write_text(target.read_text(encoding='utf-8')+'\nfetch("/x");\n',encoding='utf-8')
+        self.assertFalse(self.result('Entrada DEA con CSP estricta y sin conexiones de red'))
+
 if __name__=='__main__':
     unittest.main()

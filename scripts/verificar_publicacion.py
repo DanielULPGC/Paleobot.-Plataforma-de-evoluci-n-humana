@@ -25,6 +25,7 @@ ENTRIES = [
     "atlas/index.html",
     "atlas/recorrido/index.html",
     "atlas/recorrido/portada-sylva.html",
+    "dea/index.html",
     "baselines/entrada-ligera-v9.html",
     "experimental/atlas-r98/PaleoBot_Atlas_Original_Directo_R98_PILOTO.html",
     ATLAS + "index.html",

@@ -129,6 +129,13 @@ def verify(include_syntax=True):
     check('Sin botones ni rótulos de IA en la interfaz',not ia_ui,', '.join(ia_ui[:3]))
     moodle_ui=[str(f.relative_to(ROOT)) for f in [*publicado,*js_dir.rglob('*.js')] if re.search(r"FORMATO MOODLE|evidencia de trabajo en Moodle|Entrada ligera para Moodle",f.read_text(encoding='utf-8',errors='ignore'))]
     check('Sin textos de Moodle en la interfaz ni instrucciones de subida',not moodle_ui and not (ROOT/'atlas/LEEME-MOODLE.md').exists(),', '.join(moodle_ui[:3]))
+    # PB-GH-07: entrada del Diploma de Estudios Africanos (dea/), sin peticiones externas.
+    dea=ROOT/'dea'
+    dea_html=(dea/'index.html').read_text(encoding='utf-8') if (dea/'index.html').is_file() else ''
+    dea_js=(dea/'dea.js').read_text(encoding='utf-8') if (dea/'dea.js').is_file() else ''
+    dea_srcs=re.findall(r'<(?:script|link)[^>]+(?:src|href)="([^"]+)"',dea_html)
+    check('Entrada DEA completa y con recursos locales',bool(dea_html) and all(not s.startswith(('http:','https:','//')) and (dea/s).resolve().is_file() for s in dea_srcs) and (dea/'mapa-africa.js').is_file())
+    check('Entrada DEA con CSP estricta y sin conexiones de red',"script-src 'self'" in dea_html and "connect-src 'none'" in dea_html and not re.search(r'fetch\(|XMLHttpRequest|sendBeacon|WebSocket',dea_js))
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
     check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']

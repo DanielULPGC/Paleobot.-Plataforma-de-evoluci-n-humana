@@ -16,6 +16,14 @@ imágenes en v11 y el portal de entrada y la portada Sylva. Se conservan esas in
 Se actualiza la procedencia y se añaden pruebas de rutas bajo el prefijo Pages
 con preservación de contenidos. Consulte [el informe](docs/PB_GH_02_INFORME.md).
 
+## Diploma de Estudios Africanos (`dea/`)
+
+Entrada «África, cuna de la humanidad» para el alumnado del Diploma de Estudios Africanos
+de la ULPGC: sesiones guiadas, línea del tiempo, mapa de África, fichas, comparador,
+métodos y clima. Pensada para ordenador, tableta y teléfono, con modo proyección y letra
+ampliable. Usa los datos de `atlas/recorrido/datos.js` y no hace peticiones externas.
+Dirección: `…/Paleobot.-Plataforma-de-evoluci-n-humana/dea/`. Prototipo en revisión.
+
 ## Atlas v1.0
 
 [![Atlas PaleoBot v1.0](docs/atlas-v1/img/portada.png)](atlas/index.html)

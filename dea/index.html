@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Recurso del Diploma de Estudios Africanos (ULPGC) para estudiar los orígenes de la humanidad en África con el Atlas de paleoantropología.">
+<title>África, cuna de la humanidad · DEA</title>
+<link rel="stylesheet" href="dea.css">
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera">
+  <div class="cabecera-texto">
+    <p class="antetitulo">Diploma de Estudios Africanos · ULPGC</p>
+    <p class="marca">África, cuna de la humanidad</p>
+  </div>
+  <div class="ajustes" role="group" aria-label="Ajustes de lectura">
+    <button type="button" class="boton-ajuste" data-texto="-1" aria-label="Reducir el tamaño del texto">A−</button>
+    <button type="button" class="boton-ajuste" data-texto="1" aria-label="Aumentar el tamaño del texto">A+</button>
+    <button type="button" class="boton-ajuste" id="boton-proyectar" aria-pressed="false">Proyectar</button>
+  </div>
+</header>
+
+<nav class="pestanas" aria-label="Secciones">
+  <a href="#inicio" data-seccion="inicio">Inicio</a>
+  <a href="#tiempo" data-seccion="tiempo">Tiempo</a>
+  <a href="#mapa" data-seccion="mapa">Mapa</a>
+  <a href="#especies" data-seccion="especies">Especies</a>
+  <a href="#comparar" data-seccion="comparar">Comparar</a>
+  <a href="#metodos" data-seccion="metodos">Métodos</a>
+  <a href="#clima" data-seccion="clima">Clima</a>
+</nav>
+
+<main id="contenido" tabindex="-1">
+
+  <section id="seccion-inicio" class="seccion" data-seccion="inicio" aria-labelledby="t-inicio">
+    <h1 id="t-inicio">Los orígenes de la humanidad en África</h1>
+    <p class="entradilla">Este recurso acompaña al Diploma de Estudios Africanos de la ULPGC, sobre todo a la materia <em>Antropología africana</em> y al tema «Orígenes de la humanidad». Funciona en ordenador, tableta y teléfono, y se puede proyectar en clase.</p>
+    <ol class="como-usar">
+      <li><strong>Elija una sesión.</strong> Cada una parte de una pregunta.</li>
+      <li><strong>Siga los pasos.</strong> Los enlaces le llevan a la parte del recurso que necesita.</li>
+      <li><strong>Anote sus respuestas.</strong> Le servirán para el trabajo individual de la materia.</li>
+    </ol>
+    <h2>Sesiones</h2>
+    <div id="lista-sesiones" class="sesiones"></div>
+    <p class="nota-progreso">Las marcas de «Sesión hecha» se guardan solo en este dispositivo. El recurso no recoge ni envía datos personales.</p>
+  </section>
+
+  <section id="seccion-tiempo" class="seccion" data-seccion="tiempo" aria-labelledby="t-tiempo" hidden>
+    <h1 id="t-tiempo">Línea del tiempo</h1>
+    <p class="entradilla">Cada barra muestra el intervalo aproximado en el que se documenta una especie o población. Las fechas están en millones de años (Ma) antes del presente.</p>
+    <div class="filtros" role="group" aria-label="Opciones de la línea del tiempo">
+      <label><input type="checkbox" id="tiempo-africa" checked> Solo África</label>
+      <label><input type="checkbox" id="tiempo-mioceno"> Incluir los primates más antiguos del Mioceno (hasta 23 Ma)</label>
+    </div>
+    <p id="tiempo-resumen" class="resumen" aria-live="polite"></p>
+    <ol id="lista-tiempo" class="linea-tiempo"></ol>
+  </section>
+
+  <section id="seccion-mapa" class="seccion" data-seccion="mapa" aria-labelledby="t-mapa" hidden>
+    <h1 id="t-mapa">Mapa de yacimientos en África</h1>
+    <p class="entradilla">Cada punto es una región de hallazgos. Pulse un punto, o un nombre de la lista, para ver qué especies se documentan allí. Las posiciones son orientativas.</p>
+    <div class="mapa-envoltorio">
+      <svg id="mapa-svg" role="group" aria-labelledby="mapa-titulo" aria-describedby="mapa-desc"><title id="mapa-titulo">Mapa de África con las regiones de hallazgos</title><desc id="mapa-desc">Contorno de África y de Canarias con un punto por cada región de hallazgos del atlas. La lista que sigue al mapa contiene la misma información.</desc></svg>
+    </div>
+    <h2>Regiones</h2>
+    <ul id="lista-regiones" class="regiones"></ul>
+    <div id="detalle-region" class="detalle" aria-live="polite"></div>
+    <p class="fuente-mapa">Contorno: Natural Earth (dominio público). Puntos: coordenadas aproximadas del atlas.</p>
+  </section>
+
+  <section id="seccion-especies" class="seccion" data-seccion="especies" aria-labelledby="t-especies" hidden>
+    <h1 id="t-especies">Especies y poblaciones</h1>
+    <p class="entradilla">Fichas breves. «Debatida» indica que su validez o su posición son objeto de discusión científica.</p>
+    <div class="filtros" role="group" aria-label="Filtrar especies">
+      <label class="campo">Buscar <input type="search" id="buscar-especie" autocomplete="off"></label>
+      <label><input type="checkbox" id="especies-africa" checked> Solo África</label>
+    </div>
+    <p id="especies-resumen" class="resumen" aria-live="polite"></p>
+    <div id="lista-especies" class="fichas"></div>
+  </section>
+
+  <section id="seccion-comparar" class="seccion" data-seccion="comparar" aria-labelledby="t-comparar" hidden>
+    <h1 id="t-comparar">Comparar dos especies</h1>
+    <p class="entradilla">Elija dos especies para ver si convivieron en el tiempo y dónde se documentan.</p>
+    <div class="comparador">
+      <label class="campo">Primera especie <select id="comparar-a"></select></label>
+      <label class="campo">Segunda especie <select id="comparar-b"></select></label>
+    </div>
+    <div id="resultado-comparar" class="detalle" aria-live="polite"></div>
+  </section>
+
+  <section id="seccion-metodos" class="seccion" data-seccion="metodos" aria-labelledby="t-metodos" hidden>
+    <h1 id="t-metodos">¿Cómo lo sabemos?</h1>
+    <p class="entradilla">Tres métodos con los que se estudian los restos humanos antiguos: qué preguntan, cómo funcionan, qué aportan y qué límites tienen.</p>
+    <div id="lista-metodos" class="tarjetas"></div>
+  </section>
+
+  <section id="seccion-clima" class="seccion" data-seccion="clima" aria-labelledby="t-clima" hidden>
+    <h1 id="t-clima">Paisajes y climas del origen</h1>
+    <p class="entradilla">Tres ideas sobre la relación entre el ambiente y la evolución humana.</p>
+    <div id="lista-clima" class="tarjetas"></div>
+  </section>
+
+  <p id="aviso-error" class="aviso" hidden>No se han podido cargar los datos del atlas. Recargue la página.</p>
+</main>
+
+<footer class="pie">
+  <p id="nota-datos"></p>
+  <p><a href="../atlas/recorrido/index.html">Recorrido guiado del atlas</a> · <a href="../atlas/index.html">Atlas completo</a> · <a href="../ligera/index.html">Consulta ligera</a></p>
+</footer>
+
+<script src="../atlas/recorrido/datos.js"></script>
+<script src="mapa-africa.js"></script>
+<script src="dea.js"></script>
+</body>
+</html>

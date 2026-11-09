@@ -1,5 +1,24 @@
 # Registro de cambios
 
+## PB-GH-07 · Entrada DEA «África, cuna de la humanidad» (prototipo) · 09-11-2026
+
+Por indicación de la titular, la mejora didáctica se centra en el alumnado del Diploma
+de Estudios Africanos (ULPGC), que usará el recurso en ordenador, tableta y teléfono,
+con proyección opcional. Cambio aditivo: nuevo directorio `dea/`; no modifica el atlas,
+la portada ni la consulta ligera.
+
+- Inicio con seis sesiones (cuatro completas; «Patrimonio» e «Imágenes de nuestros
+  orígenes» en preparación hasta comprobar sus datos), pasos enlazados, propuesta para
+  el trabajo individual y marca local de «Sesión hecha».
+- Línea del tiempo (solo África o todo; con o sin primates del Mioceno), mapa de África
+  con Canarias (contorno Natural Earth, dominio público), fichas con fuentes y DOI,
+  comparador de coexistencia, métodos y clima tomados de `atlas/recorrido/datos.js`.
+- Letra ampliable, modo proyección con pantalla completa, impresión, tema oscuro,
+  CSP estricta (`script-src 'self'`, `connect-src 'none'`) y ningún dato personal.
+- Comprobado en Chromium a 390, 820 y 1366 px y al 200 % de zoom: axe-core sin
+  infracciones A/AA, sin desbordamiento, sin errores JS ni peticiones externas.
+  Pendiente: Safari/iOS, Firefox, lector de pantalla y prueba con el alumnado.
+
 ## PB-GH-06 · Sin Moodle ni IA · 01-11-2026
 
 Por indicación de la titular se retiran las referencias a Moodle (subida e instalación)
