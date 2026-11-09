@@ -21,6 +21,7 @@
     <button type="button" class="boton-ajuste" data-texto="-1" aria-label="Reducir el tamaño del texto">A−</button>
     <button type="button" class="boton-ajuste" data-texto="1" aria-label="Aumentar el tamaño del texto">A+</button>
     <button type="button" class="boton-ajuste" id="boton-proyectar" aria-pressed="false">Proyectar</button>
+    <button type="button" class="boton-ajuste" id="boton-imprimir">Imprimir</button>
   </div>
 </header>
 
@@ -32,6 +33,8 @@
   <a href="#comparar" data-seccion="comparar">Comparar</a>
   <a href="#metodos" data-seccion="metodos">Métodos</a>
   <a href="#clima" data-seccion="clima">Clima</a>
+  <a href="#glosario" data-seccion="glosario">Glosario</a>
+  <a href="#trabajo" data-seccion="trabajo">Su trabajo</a>
 </nav>
 
 <main id="contenido" tabindex="-1">
@@ -105,6 +108,53 @@
     <div id="lista-clima" class="tarjetas"></div>
   </section>
 
+  <section id="seccion-glosario" class="seccion" data-seccion="glosario" aria-labelledby="t-glosario" hidden>
+    <h1 id="t-glosario">Glosario</h1>
+    <p class="entradilla">Los términos del atlas, en orden alfabético. Escriba una palabra para buscarla en el término o en su definición.</p>
+    <div class="filtros"><label class="campo">Buscar término <input type="search" id="buscar-termino" autocomplete="off"></label></div>
+    <p id="glosario-resumen" class="resumen" aria-live="polite"></p>
+    <dl id="lista-glosario" class="glosario"></dl>
+  </section>
+
+  <section id="seccion-trabajo" class="seccion" data-seccion="trabajo" aria-labelledby="t-trabajo" hidden>
+    <h1 id="t-trabajo">Guía para su trabajo individual</h1>
+    <p class="entradilla">Orientaciones para preparar el trabajo de la materia con este recurso. Siga siempre los criterios que le indique el profesorado al comienzo del curso: esta guía es solo orientativa.</p>
+    <h2>1. Elija una pregunta</h2>
+    <p>Un buen trabajo responde a una pregunta concreta. Puede partir de la propuesta «Para su trabajo» de cualquier sesión, por ejemplo:</p>
+    <ul>
+      <li>¿Qué nos dicen cinco especies africanas sobre seis millones de años de evolución?</li>
+      <li>¿Por qué se habla de un árbol, y no de una escalera, en la evolución humana?</li>
+      <li>¿Qué sitio del Patrimonio Mundial africano explica mejor el origen de la humanidad, y por qué?</li>
+    </ul>
+    <h2>2. Organice el texto</h2>
+    <ol>
+      <li><strong>Título</strong> claro, que anticipe la respuesta.</li>
+      <li><strong>Introducción:</strong> la pregunta y por qué le interesa.</li>
+      <li><strong>Desarrollo:</strong> datos del recurso (fechas, lugares, especies) y lo que se interpreta a partir de ellos. Indique siempre si una especie o una fecha están debatidas.</li>
+      <li><strong>Conclusión:</strong> su respuesta a la pregunta, en pocas líneas.</li>
+      <li><strong>Fuentes:</strong> todas las obras que haya utilizado.</li>
+    </ol>
+    <h2>3. Use fuentes fiables</h2>
+    <ul>
+      <li>Prefiera artículos científicos, libros especializados, museos y organismos oficiales, como la UNESCO.</li>
+      <li>Compruebe quién firma el texto, cuándo se publicó y en qué se basa.</li>
+      <li>Desconfíe de las páginas sin autor ni fecha y de las imágenes sin origen.</li>
+      <li>Las fichas de este recurso incluyen sus fuentes; puede partir de ellas.</li>
+    </ul>
+    <h2>4. Cite sus fuentes (normas APA, 7.ª edición)</h2>
+    <p>Artículo científico con DOI:</p>
+    <p class="cita">Wood, B., y Boyle, E. K. (2016). Hominin taxic diversity: Fact or fantasy? <i>American Journal of Physical Anthropology</i>, <i>159</i>(S61), S37-S78. https://doi.org/10.1002/ajpa.22902</p>
+    <p>Este recurso web:</p>
+    <p class="cita">Facultad de Ciencias de la Educación, Universidad de Las Palmas de Gran Canaria. (2026). <i>África, cuna de la humanidad</i> [Recurso web]. https://danielulpgc.github.io/Paleobot.-Plataforma-de-evoluci-n-humana/dea/</p>
+    <h2>5. Antes de entregar</h2>
+    <ul class="lista-comprobacion">
+      <li>¿Responde a la pregunta del título?</li>
+      <li>¿Distingue los datos de las interpretaciones?</li>
+      <li>¿Las fechas aparecen como aproximadas cuando lo son?</li>
+      <li>¿Están citadas todas las fuentes?</li>
+    </ul>
+  </section>
+
   <p id="aviso-error" class="aviso" hidden>No se han podido cargar los datos del atlas. Recargue la página.</p>
 </main>
 
@@ -115,6 +165,7 @@
 
 <script src="../atlas/recorrido/datos.js"></script>
 <script src="mapa-africa.js"></script>
+<script src="glosario.js"></script>
 <script src="dea.js"></script>
 </body>
 </html>

@@ -84,7 +84,7 @@
   });
 
   /* ---------- Navegación por secciones ---------- */
-  var SECCIONES = ['inicio', 'tiempo', 'mapa', 'especies', 'comparar', 'metodos', 'clima'];
+  var SECCIONES = ['inicio', 'tiempo', 'mapa', 'especies', 'comparar', 'metodos', 'clima', 'glosario', 'trabajo'];
   function mostrar(id, enfocar) {
     if (SECCIONES.indexOf(id) === -1) id = 'inicio';
     document.querySelectorAll('.seccion').forEach(function (s) { s.hidden = s.dataset.seccion !== id; });
@@ -140,8 +140,35 @@
       ],
       trabajo: 'Comente cómo el clima y el paisaje condicionan tanto la evolución humana como lo que hoy podemos encontrar. Puede relacionarlo con la materia de Geografía africana.',
       mas: [['../atlas/recorrido/clima.html', 'Clima del recorrido']] },
-    { n: 5, titulo: 'Patrimonio de la humanidad en África', pregunta: '¿Quién conserva, estudia y cuenta hoy esta historia?', preparacion: true },
-    { n: 6, titulo: 'Imágenes de nuestros orígenes', pregunta: '¿Cómo se ha representado el origen humano y qué imagen de África ha transmitido?', preparacion: true }
+    { n: 5, titulo: 'Patrimonio de la humanidad en África', pregunta: '¿Quién conserva, estudia y cuenta hoy esta historia?',
+      contenido: '<p><strong>Cinco sitios del Patrimonio Mundial (UNESCO) ligados a los orígenes humanos</strong></p><ul>' +
+        '<li><strong>Bajo valle del Awash</strong> (Etiopía), inscrito en 1980. Allí apareció en 1974 «Lucy», un esqueleto parcial de <i>Australopithecus afarensis</i>.</li>' +
+        '<li><strong>Bajo valle del Omo</strong> (Etiopía), inscrito en 1980. Según la UNESCO, conserva fósiles de <i>Australopithecus</i> y de <i>Homo</i>, y herramientas de piedra de hace unos 2,4 millones de años.</li>' +
+        '<li><strong>Parques nacionales del lago Turkana</strong> (Kenia), inscritos en 1997. Incluyen los depósitos de Koobi Fora, con fósiles de homininos.</li>' +
+        '<li><strong>Área de conservación del Ngorongoro</strong> (Tanzania), inscrita en 1979 por su naturaleza y ampliada en 2010 por sus valores culturales. Comprende la garganta de Olduvai y las huellas de Laetoli.</li>' +
+        '<li><strong>Sitios de homínidos fósiles de Sudáfrica</strong>, inscritos en 1999 (Sterkfontein, Swartkrans, Kromdraai y alrededores) y ampliados en 2005 con el valle de Makapan y el yacimiento del cráneo de Taung.</li></ul>' +
+        '<p>Los nombres en español son traducciones; los oficiales están en inglés y en francés.</p>',
+      pasos: [
+        'En ' + enlace('mapa', 'Mapa') + ', localice las regiones del Afar, el Omo, Turkana y Sudáfrica. ¿Qué sitio de la lista corresponde a cada una?',
+        'En ' + enlace('especies', 'Especies') + ', anote qué especies del recurso se documentan en dos de esas regiones.',
+        'Piense quién estudia, conserva y explica hoy estos fósiles: museos, universidades, investigadores africanos y extranjeros, comunidades locales. ¿Qué papel debería tener cada uno?'
+      ],
+      trabajo: 'Elija uno de los cinco sitios y elabore una ficha: país, año de inscripción, qué se encontró allí y por qué es patrimonio de toda la humanidad. Consulte su página oficial en la web de la UNESCO.',
+      fuentes: [['Lista del Patrimonio Mundial de la UNESCO', 'https://whc.unesco.org/es/list/'], ['Lower Valley of the Awash (worldheritagesite.org)', 'https://www.worldheritagesite.org/list/id/10'], ['Lower Valley of the Omo (worldheritagesite.org)', 'https://www.worldheritagesite.org/list/id/17'], ['Lake Turkana National Parks (worldheritagesite.org)', 'https://www.worldheritagesite.org/list/id/801'], ['Ngorongoro Conservation Area (worldheritagesite.org)', 'https://www.worldheritagesite.org/list/id/39'], ['Fossil Hominid Sites of South Africa (worldheritagesite.org)', 'https://www.worldheritagesite.org/list/id/915']],
+      mas: [['../atlas/recorrido/territorio.html', 'Territorio del recorrido']] },
+    { n: 6, titulo: 'Imágenes de nuestros orígenes', pregunta: '¿Cómo se ha representado el origen humano y qué imagen de África ha transmitido?',
+      contenido: '<p><strong>Tres casos para pensar</strong></p><ul>' +
+        '<li><strong>Piltdown (Inglaterra).</strong> Presentado en 1912 como el «eslabón perdido», en 1953 se demostró que era una falsificación: un cráneo humano combinado con la mandíbula de un simio moderno, probablemente un orangután.</li>' +
+        '<li><strong>El niño de Taung (Sudáfrica).</strong> Raymond Dart lo describió en <i>Nature</i> en 1925 como <i>Australopithecus africanus</i>: un ser bípedo de cerebro pequeño que situaba el origen humano en África. Muchos colegas lo rechazaron, porque se buscaba ese origen en Asia o en Europa y porque Piltdown parecía confirmarlo. Su interpretación solo se aceptó de forma general décadas después.</li>' +
+        '<li><strong>Investigación hecha desde África.</strong> El niño de Turkana, un esqueleto de <i>Homo erectus</i> (o <i>H. ergaster</i>) de hace 1,5-1,6 millones de años, fue hallado en 1984 por el keniano Kamoya Kimeu en Nariokotome (Kenia). Selam, una niña de <i>Australopithecus afarensis</i> de hace unos 3,3 millones de años, la halló en 2000 en Dikika (Etiopía) el equipo del etíope Zeresenay Alemseged, que la publicó en 2006.</li></ul>',
+      pasos: [
+        'En ' + enlace('especies', 'Especies') + ', busque <i>Australopithecus africanus</i> y <i>Homo erectus</i>: ¿qué dicen sus fichas?',
+        'En ' + enlace('tiempo', 'Tiempo') + ', compare la línea del tiempo con la imagen de la «marcha del progreso» (una fila de figuras cada vez más erguidas). ¿En qué se diferencian?',
+        'Busque en un libro de texto, un periódico o un documental una imagen del origen humano y analice qué idea transmite sobre África.'
+      ],
+      trabajo: 'Analice, con un caso concreto, cómo ha cambiado la imagen de África en la investigación sobre los orígenes humanos. Puede relacionarlo con la materia El imaginario africano.',
+      fuentes: [['Piltdown Man forgery (British Geological Survey)', 'https://earthwise.bgs.ac.uk/index.php/Piltdown_Man_forgery'], ['The discovery of Australopithecus and its implications (Leakey Foundation)', 'https://leakeyfoundation.org/the-discovery-of-australopithecus-and-its-implications/'], ['KNM-WT 15000, Turkana Boy (Smithsonian)', 'https://si.edu/object/knm-wt-15000a-knm-wt-15000-turkana-boy-human-fossil:nmnheducation_13109587'], ['Zeresenay Alemseged y Selam (Universidad de Chicago)', 'https://news.uchicago.edu/story/paleoanthropologist-explores-roots-evolution']],
+      mas: [['../atlas/recorrido/parentesco.html', 'Parentesco del recorrido']] }
   ];
   function pintarSesiones() {
     var cont = document.getElementById('lista-sesiones');
@@ -153,10 +180,16 @@
       if (s.preparacion) {
         art.appendChild(el('p', null, [el('span', { clase: 'etiqueta', texto: 'En preparación' }), ' Sus contenidos se publicarán cuando estén comprobados en las fuentes.']));
       } else {
+        if (s.contenido) { var bloque = el('div', { clase: 'contenido' }); bloque.innerHTML = s.contenido; art.appendChild(bloque); }
         var ol = el('ol');
         s.pasos.forEach(function (p) { var li = el('li'); li.innerHTML = p; ol.appendChild(li); });
         art.appendChild(ol);
         art.appendChild(el('p', { clase: 'trabajo' }, [el('strong', { texto: 'Para su trabajo: ' }), s.trabajo]));
+        if (s.fuentes) {
+          var uf = el('ul', { clase: 'fuentes-sesion' });
+          s.fuentes.forEach(function (f) { uf.appendChild(el('li', null, [el('a', { href: f[1], rel: 'noopener noreferrer', texto: f[0] })])); });
+          art.appendChild(el('details', null, [el('summary', { texto: 'Fuentes de esta sesión (consultadas el 9 de noviembre de 2026)' }), uf]));
+        }
         var pie = el('div', { clase: 'pie-sesion' });
         var mas = el('span', null, ['Para profundizar: ']);
         s.mas.forEach(function (m, i) { if (i) mas.appendChild(document.createTextNode(' · ')); mas.appendChild(el('a', { href: m[0], texto: m[1] })); });
@@ -342,6 +375,22 @@
     });
   }
 
+  /* ---------- Glosario ---------- */
+  function pintarGlosario() {
+    var datos = window.DEA_GLOSARIO || [];
+    var q = document.getElementById('buscar-termino').value.trim().toLowerCase();
+    var dl = document.getElementById('lista-glosario');
+    dl.textContent = '';
+    var n = 0;
+    datos.forEach(function (e) {
+      if (q && e[0].toLowerCase().indexOf(q) === -1 && e[1].toLowerCase().indexOf(q) === -1) return;
+      dl.appendChild(el('dt', { texto: e[0].charAt(0).toUpperCase() + e[0].slice(1) }));
+      dl.appendChild(el('dd', { texto: e[1] }));
+      n++;
+    });
+    document.getElementById('glosario-resumen').textContent = n === 0 ? 'Ningún término coincide con la búsqueda.' : n + (n === 1 ? ' término.' : ' términos.');
+  }
+
   /* ---------- Arranque ---------- */
   aplicarAjustes();
   pintarSesiones();
@@ -357,6 +406,9 @@
   pintarComparar();
   pintarMetodos();
   pintarClima();
+  document.getElementById('buscar-termino').addEventListener('input', pintarGlosario);
+  pintarGlosario();
+  document.getElementById('boton-imprimir').addEventListener('click', function () { window.print(); });
   document.getElementById('nota-datos').textContent = (A.meta && A.meta.notaDatos) || '';
   var inicio = leerHash();
   mostrar(inicio.seccion, false);

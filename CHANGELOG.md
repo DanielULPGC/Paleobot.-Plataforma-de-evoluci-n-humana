@@ -2,6 +2,15 @@
 
 ## PB-GH-07 · Entrada DEA «África, cuna de la humanidad» (prototipo) · 09-11-2026
 
+Ampliación posterior el mismo día, también aditiva:
+- Sesiones 5 («Patrimonio de la humanidad en África») y 6 («Imágenes de nuestros orígenes»)
+  completas, con cinco sitios del Patrimonio Mundial, tres casos (Piltdown, Taung,
+  investigación hecha desde África) y sus fuentes consultadas el 09-11-2026.
+- Glosario de 359 términos, generado desde el del atlas (`scripts/generar_glosario_dea.cjs`)
+  y comprobado por el verificador.
+- Guía para el trabajo individual (pregunta, estructura, fuentes fiables, citas en APA 7,
+  lista de comprobación) y botón «Imprimir».
+
 Por indicación de la titular, la mejora didáctica se centra en el alumnado del Diploma
 de Estudios Africanos (ULPGC), que usará el recurso en ordenador, tableta y teléfono,
 con proyección opcional. Cambio aditivo: nuevo directorio `dea/`; no modifica el atlas,

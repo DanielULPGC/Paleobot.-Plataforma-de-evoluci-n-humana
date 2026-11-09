@@ -95,5 +95,10 @@ class AtlasCorrections(unittest.TestCase):
         target.write_text(target.read_text(encoding='utf-8')+'\nfetch("/x");\n',encoding='utf-8')
         self.assertFalse(self.result('Entrada DEA con CSP estricta y sin conexiones de red'))
 
+    def test_rechaza_glosario_dea_desincronizado(self):
+        target=self.repo/'dea/glosario.js'
+        target.write_text(target.read_text(encoding='utf-8').replace('"bipedismo"','"bipedalismo"',1),encoding='utf-8')
+        self.assertFalse(self.result('Glosario DEA sincronizado con el del atlas'))
+
 if __name__=='__main__':
     unittest.main()

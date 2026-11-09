@@ -136,6 +136,8 @@ def verify(include_syntax=True):
     dea_srcs=re.findall(r'<(?:script|link)[^>]+(?:src|href)="([^"]+)"',dea_html)
     check('Entrada DEA completa y con recursos locales',bool(dea_html) and all(not s.startswith(('http:','https:','//')) and (dea/s).resolve().is_file() for s in dea_srcs) and (dea/'mapa-africa.js').is_file())
     check('Entrada DEA con CSP estricta y sin conexiones de red',"script-src 'self'" in dea_html and "connect-src 'none'" in dea_html and not re.search(r'fetch\(|XMLHttpRequest|sendBeacon|WebSocket',dea_js))
+    gen=subprocess.run([node,str(ROOT/'scripts/generar_glosario_dea.cjs'),'--check'],capture_output=True,text=True,timeout=30) if node else None
+    check('Glosario DEA sincronizado con el del atlas',bool(gen) and gen.returncode==0,(gen.stdout or gen.stderr).strip() if gen else 'sin Node')
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
     check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
