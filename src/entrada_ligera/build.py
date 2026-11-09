@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a low-load, static Moodle entry from the preserved PaleoBot A3 catalog."""
+"""Build a low-load, static entry from the preserved PaleoBot A3 catalog."""
 
 from __future__ import annotations
 
@@ -59,6 +59,12 @@ def chronology_type(entry: dict) -> str:
     }.get(entry.get("kind"), "Tipo pendiente de revisión")
 
 
+# Referencias del catálogo que no se han podido localizar en las comprobaciones realizadas.
+# Se conservan tal cual y se marcan a la vista; no se retiran (PB-GH-07).
+REFERENCIAS_SIN_LOCALIZAR = {"10.1002/ajpa.24122"}
+AVISO_SIN_LOCALIZAR = " <em>(Referencia no localizada en las comprobaciones realizadas; pendiente de verificación.)</em>"
+
+
 def bibliography(species: dict) -> str:
     refs = species.get("experto", {}).get("referencias") or []
     if not refs:
@@ -73,7 +79,8 @@ def bibliography(species: dict) -> str:
             f' <a href="https://doi.org/{e(doi)}" target="_blank" rel="noopener noreferrer">DOI: {e(doi)}</a>'
             if re.fullmatch(r"10\.\d{4,9}/[^\s<>\"']+", doi) else ""
         )
-        lines.append(f"<li>{e(desc)}{link}</li>")
+        aviso = AVISO_SIN_LOCALIZAR if doi in REFERENCIAS_SIN_LOCALIZAR else ""
+        lines.append(f"<li>{e(desc)}{link}{aviso}</li>")
     return "<ul class=references>" + "".join(lines) + "</ul>" if lines else "<p>Sin referencias detalladas.</p>"
 
 
@@ -162,21 +169,20 @@ def build() -> None:
     digest = hashlib.sha256(raw).hexdigest()
     page = f'''<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PaleoBot · Entrada ligera para Moodle</title><link rel="stylesheet" href="estilos.css"></head><body>
+<title>PaleoBot · Consulta ligera</title><link rel="stylesheet" href="estilos.css"></head><body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="hero"><div class="wrap"><p class="kicker">PALEOBOT · CATÁLOGO A3 · ENTRADA LIGERA</p>
 <h1>Explorar el registro de la evolución humana</h1>
 <p>Consulta de 50 fichas, evidencias cronológicas, localidades y referencias del catálogo existente.</p>
 <nav aria-label="Secciones"><a href="#fichas">Fichas</a><a href="#cronologia">Cronología</a><a href="#localidades">Localidades</a><a href="#metodo">Cómo interpretar</a></nav></div></header>
 <main id="contenido" class="wrap">
-<section class="notice" aria-label="Estado de la versión"><strong>La entrada ligera v9 funciona en Moodle según la prueba del usuario. Las imágenes añadidas en v10 y el diagnóstico de v11 están pendientes de prueba allí.</strong>
-Conserva los datos del catálogo A3. Hay {len(verified)} fichas con recursos visuales documentados (fotografías, figuras, ilustraciones o mapas) y {len(records) - len(verified)} fichas con imagen pendiente de revisión; estas últimas no cargan archivos visuales. Los datos cronológicos describen evidencias publicadas; no representan automáticamente la duración de un taxón.</section>
+<section class="notice" aria-label="Estado de la versión">Conserva los datos del catálogo A3. Hay {len(verified)} fichas con recursos visuales documentados (fotografías, figuras, ilustraciones o mapas) y {len(records) - len(verified)} fichas con imagen pendiente de revisión; estas últimas no cargan archivos visuales. Los datos cronológicos describen evidencias publicadas; no representan automáticamente la duración de un taxón.</section>
 <section id="fichas"><div class="section-head"><h2>Fichas del catálogo</h2><p>El encabezado indica el tipo de datación; abra la ficha para leer el dato revisado, sus cautelas y la bibliografía. La consulta básica funciona sin JavaScript.</p></div>
 <label class="search">Filtrar por nombre o localidad <input id="search" type="search" placeholder="Ej.: Dmanisi o Etiopía" autocomplete="off"></label>
 <p id="search-status" aria-live="polite">50 fichas disponibles.</p>
 <div id="cards">{''.join(cards)}</div></section>
-<section id="diagnostico" class="method" aria-label="Diagnóstico de imágenes"><h2>Comprobar las imágenes en Moodle</h2>
-<p>Una imagen puede no cargarse aunque la ficha y los botones funcionen. Pruebe tres recursos y lea el resultado aquí; las otras imágenes se comprueban al abrir su ficha. Esta prueba no modifica el curso.</p>
+<section id="diagnostico" class="method" aria-label="Diagnóstico de imágenes"><h2>Comprobar las imágenes</h2>
+<p>Una imagen puede no cargarse aunque la ficha y los botones funcionen. Pruebe tres recursos y lea el resultado aquí; las otras imágenes se comprueban al abrir su ficha.</p>
 <button id="probe-images" type="button">Probar tres imágenes</button>
 <p id="image-status" role="status">Aún no se han solicitado imágenes en esta sesión.</p>
 <p id="image-security">Todavía no se ha detectado un bloqueo de imágenes por la política de seguridad del navegador.</p>

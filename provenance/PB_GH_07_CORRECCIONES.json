@@ -1,0 +1,57 @@
+{
+  "preparation": "PB-GH-07",
+  "date": "2026-11-09",
+  "base_commit": "rama fix/pb-gh-06-sin-moodle-ia",
+  "scope": "Mejora didáctica para el alumnado del Diploma de Estudios Africanos: nuevo directorio dea/ (aditivo), enlace desde la portada y aviso en una referencia no localizada. No se elimina contenido.",
+  "application_logic_changed": false,
+  "release_gate": "NO_GO",
+  "new_paths": [
+    "dea/index.html",
+    "dea/dea.css",
+    "dea/dea.js",
+    "dea/mapa-africa.js",
+    "dea/glosario.js",
+    "scripts/generar_glosario_dea.cjs"
+  ],
+  "corrections": [
+    {
+      "path": "atlas/recorrido/portada-sylva.html",
+      "import_sha256": "42c5ae43684b847c0ab59fae8acc29348358f067b821c32db89068ee86031ead",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/portada-sylva.html.snapshot",
+      "previous_sha256": "2191f20473fe77ef9d88537e148d3cdccb6bb31b5c25a0d6c4bf4af0c98014f0",
+      "previous_snapshot": "docs/historial/PB_GH_05/atlas/recorrido/portada-sylva.html.snapshot",
+      "corrected_sha256": "84391d88c906978a18e28fc73798bda7fd25d49e23735f80ac7053c020c3c3d1",
+      "change": "Añade al menú superior un sexto enlace, «DEA», que lleva a la entrada del Diploma de Estudios Africanos (../../dea/). No se quita ni se cambia ningún enlace existente.",
+      "reason": "La entrada DEA no era accesible desde la portada; el alumnado solo podía llegar con la dirección directa.",
+      "evidence": "Chromium a 1280 y 390 px con WebGL por software: axe-core 4.10.2 sin infracciones A/AA, sin desbordamiento, seis elementos de menú visibles y navegación comprobada hasta dea/.",
+      "impact": "Solo el menú; escena, textos, tarjetas y demás enlaces sin cambios.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "src/entrada_ligera/build.py",
+      "import_sha256": "5408add2377e1f568747fbe1934985aae8a5aff05a179597893db8c7eb0cf7c1",
+      "snapshot": "docs/historial/BASE_4D320EE/src/entrada_ligera/build.py.snapshot",
+      "previous_sha256": "152a84186d7814746d4b4ab9f05d83c37883615b8db017cf07216da35f2b4dd0",
+      "previous_snapshot": "docs/historial/PB_GH_06/src/entrada_ligera/build.py.snapshot",
+      "corrected_sha256": "a538e52e512a3b5a964674eddf36437c0edd8704bbce05362370405ebad2f67c",
+      "change": "La referencia con DOI 10.1002/ajpa.24122 (ficha de Au. prometheus) se muestra con el aviso «Referencia no localizada en las comprobaciones realizadas; pendiente de verificación». La referencia y su enlace se conservan.",
+      "reason": "La referencia no pudo localizarse (pendiente S7); la titular pide no eliminar nada, de modo que se marca en lugar de retirarse.",
+      "evidence": "PB_GH_04_CORRECCIONES.json (referencia no localizable en el atlas); búsqueda web del DOI el 09-11-2026 sin resultado coincidente. No se pudo consultar Crossref desde el entorno.",
+      "impact": "Una línea de aviso en una ficha; catalog.json no se modifica.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "ligera/index.html",
+      "import_sha256": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
+      "snapshot": "docs/historial/BASE_4D320EE/ligera/index.html.snapshot",
+      "previous_sha256": "aaa9f1e123a55229bd179bf241396832d339981a603abac5ba68193549b0ba6d",
+      "previous_snapshot": "docs/historial/PB_GH_06/ligera/index.html.snapshot",
+      "corrected_sha256": "51eb6ca2657a5408b481eb99ca9a8cebf7f1b65c24474ee13e0c5c7ab5fd6872",
+      "change": "Regenerado desde build.py: la referencia de Au. prometheus con DOI 10.1002/ajpa.24122 lleva el aviso de «no localizada».",
+      "reason": "Mismo motivo que build.py.",
+      "evidence": "scripts/construir.py --check coincide con el fichero publicado.",
+      "impact": "Solo esa línea.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    }
+  ]
+}

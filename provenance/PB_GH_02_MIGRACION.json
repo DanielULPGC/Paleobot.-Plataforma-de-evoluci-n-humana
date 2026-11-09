@@ -2633,7 +2633,8 @@
       "git_blob_sha1": "94fdf8d0da23b298979c8c9dff053b60e49a2d5d",
       "sha256": "5408add2377e1f568747fbe1934985aae8a5aff05a179597893db8c7eb0cf7c1",
       "retained_paths": [
-        "src/entrada_ligera/build.py"
+        "src/entrada_ligera/build.py",
+        "docs/historial/BASE_4D320EE/src/entrada_ligera/build.py.snapshot"
       ]
     },
     {

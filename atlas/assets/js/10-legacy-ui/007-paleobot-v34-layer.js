@@ -324,8 +324,7 @@
         '</div>',
         '<p class="exam-intro-copy">Banco de preguntas: ' + QUESTION_BANK.length + ' preguntas sobre ' + (typeof DB !== 'undefined' ? DB.length : 46) + ' taxones. Evaluación por competencias LOMLOE (STEM, CCL, CPSAA, CCEC).<br><strong>Las respuestas son solo para ti — no se guardan ni se envían.</strong></p>',
         '<button type="button" class="exam-btn" data-quiz-next="classic">Comenzar clásico</button>',
-        '<button type="button" class="exam-btn" data-action="runAdaptiveQuiz" style="background:#2c5f4a;">Quiz adaptativo 🧠 <small style="display:block;font-size:0.72rem;opacity:0.8">Se ajusta a tus errores anteriores</small></button>',
-        '<button type="button" class="exam-btn accent" data-quiz-next="generative">Preguntas con IA <small style="display:block;font-size:0.72rem;opacity:0.8">(requiere conexión)</small></button>'
+        '<button type="button" class="exam-btn" data-action="runAdaptiveQuiz" style="background:#2c5f4a;">Quiz adaptativo 🧠 <small style="display:block;font-size:0.72rem;opacity:0.8">Se ajusta a tus errores anteriores</small></button>'
       ].join('');
       try { if (typeof renderQuizProgress === 'function') renderQuizProgress(); } catch(e) { /* recuperable: suprimido intencionalmente */ }
     }

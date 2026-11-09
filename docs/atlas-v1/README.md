@@ -2,7 +2,7 @@
 
 Atlas interactivo de paleoantropología de la Facultad de Ciencias de la Educación (FCEDU), Universidad de Las Palmas de Gran Canaria (ULPGC). Esta carpeta documenta la integración del paquete **Atlas-PaleoBot-v1.0-Moodle-IMS** en el repositorio. La aplicación está en [`/atlas/`](../../atlas/index.html) y se conserva tal como se recibió.
 
-> **Estado: NO_GO para promoción docente.** Esta integración publica el recurso para su revisión; no acredita Moodle, lector de pantalla ni navegadores distintos de Chromium. Véase «Límites y estado».
+> **Estado: NO_GO para promoción docente.** Esta integración publica el recurso para su revisión; no acredita lector de pantalla ni navegadores distintos de Chromium. Véase «Límites y estado».
 
 ## 1. Qué es, de un vistazo
 
@@ -69,12 +69,11 @@ Hallazgos de la auditoría de integración (24-10-2026), sin corregir porque la 
 | Seguridad | La CSP del `index.html` permite `'unsafe-inline'` en `script-src` y `style-src`, más laxa que la del resto del repositorio. Sin `eval` ni `new Function`; 228 usos de `innerHTML` no revisados línea a línea. |
 | Privacidad | Al abrir el atlas se contacta con Google Fonts, cdnjs (Leaflet 1.9.4 con SRI), Wikimedia, servidores de teselas y el Smithsonian. Véase `atlas/POLITICA-PRIVACIDAD-DOCENTE.md`. |
 | IMS | `imsmanifest.xml` correcto en integridad (168 archivos, todos presentes) pero mínimo: sin `schema`/`schemaversion` ni metadatos. |
-| Moodle | No ejecutado. El kit R93 exige un candidato R92 con SHA-256 `b5223e16…`, distinto de este paquete. |
-| Pruebas pendientes | Navegador real distinto de Chromium, lector de pantalla, Moodle, revisión disciplinar de las fichas. |
+| Pruebas pendientes | Navegador real distinto de Chromium, lector de pantalla, revisión disciplinar de las fichas. |
 
 ## 6. Procedencia
 
-Huellas y origen en [`provenance/ATLAS_V1_IMPORT.json`](../../provenance/ATLAS_V1_IMPORT.json). Los 169 archivos de `atlas/` son idénticos a los del ZIP recibido; el ZIP no se incluye en el árbol (`.gitignore`). Para Moodle, genere el paquete IMS comprimiendo el **contenido** de `atlas/` (con `imsmanifest.xml` en la raíz del ZIP) y súbalo sin descomprimir.
+Huellas y origen en [`provenance/ATLAS_V1_IMPORT.json`](../../provenance/ATLAS_V1_IMPORT.json). Las diferencias de `atlas/` respecto al ZIP recibido están documentadas en `provenance/PB_GH_0*_CORRECCIONES.json`, con los originales archivados en `docs/historial/`; el ZIP no se incluye en el árbol (`.gitignore`). El recurso se publica como sitio web; no se distribuye como paquete para Moodle.
 
 ## 7. Atribución y licencia
 

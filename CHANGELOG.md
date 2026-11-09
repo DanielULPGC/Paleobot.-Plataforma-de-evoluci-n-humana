@@ -1,5 +1,69 @@
 # Registro de cambios
 
+## PB-GH-07 · Entrada DEA «África, cuna de la humanidad» (prototipo) · 09-11-2026
+
+Segunda ampliación (09-11-2026, noche), sin eliminar nada:
+- Uso en el teléfono: sesiones plegables con contador de progreso (la portada de la
+  entrada pasa de 9,2 a 5,1 pantallas), puntos del mapa con área táctil de 24 px y rótulo
+  de la región elegida, aviso de que hay más pestañas, enlaces «anterior/siguiente» e
+  índice de secciones; el detalle de la región aparece junto al mapa.
+- Cuaderno: cada paso tiene un espacio para notas, guardadas solo en el dispositivo, con
+  descarga en un archivo de texto, borrado en dos pulsaciones e impresión.
+- Repaso: ocho preguntas de autoevaluación generadas a partir de los datos (antigüedad,
+  región, coincidencia en el tiempo, validez debatida), con explicación y enlace a la ficha.
+- «Imagine un solo día»: equivalencia de los 7,2 Ma en 24 horas, calculada con los datos.
+- Fichas con enlaces «Ver en el mapa» y «Comparar con otra especie».
+- Corrección: la etiqueta «Hecha» se mostraba siempre; los destinos de las pestañas
+  pasan a ser identificadores reales (axe `skip-link`).
+- Portada Sylva: sexto enlace del menú, «DEA», hacia `dea/`; los cinco anteriores se conservan.
+- Consulta ligera: la referencia con DOI 10.1002/ajpa.24122 se conserva y se marca como
+  «no localizada; pendiente de verificación».
+- Registro en `provenance/PB_GH_07_CORRECCIONES.json`.
+
+Ampliación posterior el mismo día, también aditiva:
+- Sesiones 5 («Patrimonio de la humanidad en África») y 6 («Imágenes de nuestros orígenes»)
+  completas, con cinco sitios del Patrimonio Mundial, tres casos (Piltdown, Taung,
+  investigación hecha desde África) y sus fuentes consultadas el 09-11-2026.
+- Glosario de 359 términos, generado desde el del atlas (`scripts/generar_glosario_dea.cjs`)
+  y comprobado por el verificador.
+- Guía para el trabajo individual (pregunta, estructura, fuentes fiables, citas en APA 7,
+  lista de comprobación) y botón «Imprimir».
+
+Por indicación de la titular, la mejora didáctica se centra en el alumnado del Diploma
+de Estudios Africanos (ULPGC), que usará el recurso en ordenador, tableta y teléfono,
+con proyección opcional. Cambio aditivo: nuevo directorio `dea/`; no modifica el atlas,
+la portada ni la consulta ligera.
+
+- Inicio con seis sesiones (cuatro completas; «Patrimonio» e «Imágenes de nuestros
+  orígenes» en preparación hasta comprobar sus datos), pasos enlazados, propuesta para
+  el trabajo individual y marca local de «Sesión hecha».
+- Línea del tiempo (solo África o todo; con o sin primates del Mioceno), mapa de África
+  con Canarias (contorno Natural Earth, dominio público), fichas con fuentes y DOI,
+  comparador de coexistencia, métodos y clima tomados de `atlas/recorrido/datos.js`.
+- Letra ampliable, modo proyección con pantalla completa, impresión, tema oscuro,
+  CSP estricta (`script-src 'self'`, `connect-src 'none'`) y ningún dato personal.
+- Comprobado en Chromium a 390, 820 y 1366 px y al 200 % de zoom: axe-core sin
+  infracciones A/AA, sin desbordamiento, sin errores JS ni peticiones externas.
+  Pendiente: Safari/iOS, Firefox, lector de pantalla y prueba con el alumnado.
+
+## PB-GH-06 · Sin Moodle ni IA · 01-11-2026
+
+Por indicación de la titular se retiran las referencias a Moodle (subida e instalación)
+y a la IA. Registro con motivo, evidencia, impacto, retorno y originales archivados en
+`provenance/PB_GH_06_CORRECCIONES.json`.
+
+- Atlas: fuera los botones «Preguntas con IA» (autoevaluación) y «Reconstrucción facial IA»
+  (ficha); la nota «Modo offline: no usa IA ni conexión» pasa a «Funciona sin conexión».
+- Atlas: las exportaciones TXT ya no mencionan Moodle.
+- Consulta ligera: título «PaleoBot · Consulta ligera», sin el aviso de prueba en Moodle;
+  el diagnóstico pasa a «Comprobar las imágenes».
+- Documentación: se retira `atlas/LEEME-MOODLE.md` (y su entrada en el manifiesto); la
+  política de privacidad pierde las secciones de IA; README, guía del atlas y protocolo
+  de la portada sin instrucciones ni pruebas de Moodle.
+- Se conservan: el código de las funciones generativas sin punto de entrada, la
+  protección 079 que bloquea servicios externos, `CAMBIOS-v1.0.md` y las evidencias
+  históricas. Sigue NO_GO (lector de pantalla y navegadores no Chromium).
+
 ## PB-GH-05 · Errores técnicos del sitio · 31-10-2026
 
 Sin eliminar contenido, páginas ni imágenes; solo atributos, estilos de color, espacios
