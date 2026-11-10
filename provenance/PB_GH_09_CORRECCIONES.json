@@ -1,0 +1,39 @@
+{
+  "preparation": "PB-GH-09",
+  "date": "2026-11-10",
+  "base_commit": "7981a6e",
+  "scope": "La consulta ligera usa las copias locales de img/taxones/ en lugar de pedir las imágenes a Wikimedia Commons. No se elimina contenido.",
+  "application_logic_changed": false,
+  "release_gate": "NO_GO",
+  "new_paths": [
+    "src/entrada_ligera/copias_locales.json"
+  ],
+  "corrections": [
+    {
+      "path": "src/entrada_ligera/build.py",
+      "import_sha256": "5408add2377e1f568747fbe1934985aae8a5aff05a179597893db8c7eb0cf7c1",
+      "snapshot": "docs/historial/BASE_4D320EE/src/entrada_ligera/build.py.snapshot",
+      "previous_sha256": "a538e52e512a3b5a964674eddf36437c0edd8704bbce05362370405ebad2f67c",
+      "previous_snapshot": "docs/historial/PB_GH_07/src/entrada_ligera/build.py.snapshot",
+      "corrected_sha256": "5f3008a2507886cafe6bd6a499b68320feb329e2af5d64d6c328c8b1b1ceb742",
+      "change": "Si existe copias_locales.json, cada imagen verificada se sirve desde la copia alojada en el sitio (con ancho y alto declarados) y el pie indica que es una miniatura; sin ese fichero, el comportamiento es el anterior.",
+      "reason": "Decisión de la titular (10-11-2026): imágenes en copia. La consulta ligera dependía de Wikimedia Commons para sus 47 imágenes.",
+      "evidence": "Chromium a 390 y 1366 px: 47 de 47 imágenes cargan desde ../img/taxones/, 0 peticiones externas, axe-core sin infracciones A/AA.",
+      "impact": "Origen de las imágenes y una frase del pie; fichas, cronología, referencias y avisos sin cambios.",
+      "return": "Restaurar el snapshot anterior o retirar copias_locales.json y reconstruir."
+    },
+    {
+      "path": "ligera/index.html",
+      "import_sha256": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
+      "snapshot": "docs/historial/BASE_4D320EE/ligera/index.html.snapshot",
+      "previous_sha256": "51eb6ca2657a5408b481eb99ca9a8cebf7f1b65c24474ee13e0c5c7ab5fd6872",
+      "previous_snapshot": "docs/historial/PB_GH_07/ligera/index.html.snapshot",
+      "corrected_sha256": "491c1a1a735a5e8af6f8b540a4a41471a9ce8588bbcac8f23efa1fd0bb1abd80",
+      "change": "Regenerado desde build.py con las copias locales.",
+      "reason": "Mismo motivo que build.py.",
+      "evidence": "scripts/construir.py --check coincide con el fichero publicado.",
+      "impact": "Las 47 imágenes dejan de pedirse a un servicio externo.",
+      "return": "Restaurar el snapshot anterior o retirar copias_locales.json y reconstruir."
+    }
+  ]
+}

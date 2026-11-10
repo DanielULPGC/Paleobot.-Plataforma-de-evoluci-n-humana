@@ -14,6 +14,7 @@ from urllib.parse import quote, unquote, urlsplit
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "catalog.json"
 IMAGE_AUDIT = ROOT / "image_audit.json"
+LOCAL_COPIES = ROOT / "copias_locales.json"  # copias alojadas en el sitio (PB-GH-09); opcional
 OUT = ROOT / "index.html"
 OUT_SINGLE = ROOT / "PaleoBot_Moodle_Entrada_Directa_v11.html"
 
@@ -92,6 +93,7 @@ def build() -> None:
     image_audit = json.loads(IMAGE_AUDIT.read_text(encoding="utf-8"))
     verified = image_audit["verified"]
     pending = image_audit.get("pending", {})
+    local = json.loads(LOCAL_COPIES.read_text(encoding="utf-8"))["copias"] if LOCAL_COPIES.is_file() else {}
     ids = [sp["id"] for sp in records]
     assert len(ids) == len(set(ids)) == 50
     assert set(ids) == set(chrono)
@@ -113,12 +115,17 @@ def build() -> None:
                 f' · <a href="{e(audit["upstream_page"])}" target="_blank" rel="noopener noreferrer">Publicación de origen</a>'
                 if safe_url(audit.get("upstream_page")) else ""
             )
+            copy = local.get(key)
+            # Con copia local, la imagen se sirve desde el propio sitio; sin ella, desde Wikimedia Commons.
+            img_src = copy["src"] if copy else audit["image_url"]
+            img_size = f' width={int(copy["width"])} height={int(copy["height"])}' if copy else ""
+            changes = copy["changes"] if copy else audit["changes"]
             figure = (
-                f'<figure class=media><img data-src="{e(audit["image_url"])}" alt="{e(audit["alt"])}" loading=lazy hidden>'
+                f'<figure class=media><img data-src="{e(img_src)}"{img_size} alt="{e(audit["alt"])}" loading=lazy hidden>'
                 f'<figcaption><strong>{e(audit["object"])}</strong> · {e(audit["credit"])}. '
                 f'<a href="{e(audit["source_page"])}" target="_blank" rel="noopener noreferrer">Ficha de la imagen</a> · '
                 f'<a href="{e(audit["license_url"])}" target="_blank" rel="noopener noreferrer">{e(audit["license"])}' 
-                f'</a>{upstream}. {e(audit["changes"])}</figcaption></figure>'
+                f'</a>{upstream}. {e(changes)}</figcaption></figure>'
             )
         elif key in pending:
             caution = pending[key]

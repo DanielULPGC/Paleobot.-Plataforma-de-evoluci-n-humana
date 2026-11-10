@@ -126,5 +126,11 @@ class AtlasCorrections(unittest.TestCase):
         target.write_text(target.read_text(encoding='utf-8').replace('CC BY-SA 3.0','Sin licencia',1),encoding='utf-8')
         self.assertFalse(self.result('Imágenes y créditos de la entrada DEA sincronizados con el manifiesto'))
 
+    def test_rechaza_ligera_con_imagen_remota(self):
+        target=self.repo/'ligera/index.html'
+        t=target.read_text(encoding='utf-8').replace('data-src="../img/taxones/penghu.jpg"','data-src="https://commons.wikimedia.org/wiki/Special:FilePath/x.jpg"',1)
+        target.write_text(t,encoding='utf-8')
+        self.assertFalse(self.result('Consulta ligera con imágenes en copia local'))
+
 if __name__=='__main__':
     unittest.main()

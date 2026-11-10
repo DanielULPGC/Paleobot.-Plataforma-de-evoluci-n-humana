@@ -85,7 +85,7 @@ def verify(include_syntax=True):
     # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
     # PB-GH-04 encadena una segunda ronda: la última corrección de cada ruta debe partir
     # exactamente del estado anterior, conservado en su propio snapshot.
-    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json') if (ROOT/n).is_file()]
+    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json','provenance/PB_GH_09_CORRECCIONES.json') if (ROOT/n).is_file()]
     fixes={}
     cadena_ok=True
     for ronda in rondas:
@@ -143,6 +143,10 @@ def verify(include_syntax=True):
     check('Copias de imágenes íntegras, registradas y con licencia',copias.returncode==0,copias.stdout.strip().splitlines()[-1] if copias.stdout.strip() else copias.stderr.strip()[:200])
     gen_img=subprocess.run([node,str(ROOT/'scripts/generar_imagenes_dea.cjs'),'--check'],capture_output=True,text=True,timeout=30) if node else None
     check('Imágenes y créditos de la entrada DEA sincronizados con el manifiesto',bool(gen_img) and gen_img.returncode==0,(gen_img.stdout or gen_img.stderr).strip() if gen_img else 'sin Node')
+    # PB-GH-09: la consulta ligera sirve sus imágenes desde las copias locales.
+    lig=(ROOT/'ligera/index.html').read_text(encoding='utf-8')
+    rutas=re.findall(r'<img data-src="([^"]+)"',lig)
+    check('Consulta ligera con imágenes en copia local',len(rutas)==47 and all(r.startswith('../img/taxones/') and (ROOT/'ligera'/r).resolve().is_file() for r in rutas),f'{len(rutas)} imágenes')
     check('Portada enlaza la entrada DEA sin perder enlaces',all(h in portada for h in ('href="../../dea/"','href="parentesco.html"','href="territorio.html"','href="ficha.html"','href="atlas.html"','href="index.html"')))
     check('Referencia no localizada marcada y conservada','10.1002/ajpa.24122</a> <em>(Referencia no localizada' in (ROOT/'ligera/index.html').read_text(encoding='utf-8'))
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
