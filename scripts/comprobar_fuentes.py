@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs/fiabilidad"
 UA = "PaleoBotDEA/1.0 (https://github.com/DanielULPGC/Paleobot.-Plataforma-de-evoluci-n-humana; comprobacion de fuentes)"
-DOI_RE = re.compile(r"10\.\d{4,9}/(?:\(SICI\)[^\s\"'`\\]+|[^\s\"'`<>\\,;)\]}]+)")
+DOI_RE = re.compile(r"10\.\d{4,9}/(?:\(SICI\)[^\s\"'`\\]+|[^\s\"'`<>\\,;\]}]+)")
 UNESCO = {  # ficha → años que afirma la sesión 5 de la entrada DEA
     "10": {"sitio": "Bajo valle del Awash (Etiopía)", "esperado": ["1980"]},
     "17": {"sitio": "Bajo valle del Omo (Etiopía)", "esperado": ["1980"]},
@@ -61,7 +61,9 @@ def collect() -> dict[str, dict]:
     found: dict[str, dict] = {}
 
     def add(doi: str, origin: str, cita: str | None = None) -> None:
-        doi = doi.rstrip(".").strip()
+        doi = doi.strip().rstrip(".")
+        while doi.endswith(")") and doi.count(")") > doi.count("("):  # paréntesis de cierre que es del texto, no del DOI
+            doi = doi[:-1].rstrip(".")
         if doi.endswith("/") or len(doi) < 9:
             return
         rec = found.setdefault(doi.lower(), {"doi": doi, "origenes": [], "cita": None})
@@ -78,6 +80,14 @@ def collect() -> dict[str, dict]:
     for path in sorted((ROOT / "atlas/recorrido").glob("*.html")) + sorted((ROOT / "atlas/recorrido").glob("*.md")):
         for doi in DOI_RE.findall(html.unescape(path.read_text(encoding="utf-8", errors="ignore"))):
             add(doi, "recorrido y entrada DEA")
+    catalogo = json.loads((ROOT / "src/entrada_ligera/catalog.json").read_text(encoding="utf-8"))
+    especies = catalogo if isinstance(catalogo, list) else next(v for v in catalogo.values() if isinstance(v, list))
+    for especie in especies:
+        for ref in (especie.get("experto") or {}).get("referencias") or []:
+            if isinstance(ref, dict) and str(ref.get("d") or "").startswith("10."):
+                cita = f"{ref.get('a') or ''} ({ref.get('y') or ''}). {ref.get('t') or ''}. {ref.get('j') or ''}"
+                add(str(ref["d"]), "consulta ligera", cita)
+                found[str(ref["d"]).strip().rstrip(".").lower()].setdefault("titulo_citado", str(ref.get("t") or ""))
     for doi in DOI_RE.findall((ROOT / "src/entrada_ligera/catalog.json").read_text(encoding="utf-8")):
         add(doi, "consulta ligera")
     for path in sorted((ROOT / "atlas/assets/js").rglob("*.js")):
@@ -89,7 +99,7 @@ def collect() -> dict[str, dict]:
 def check_doi(rec: dict) -> dict:
     doi = rec["doi"]
     status, body = get("https://api.crossref.org/works/" + urllib.parse.quote(doi, safe="/"))
-    out = {"doi": doi, "origenes": rec["origenes"], "estado": None}
+    out = {"doi": doi, "origenes": rec["origenes"], "estado": None, "comparada_con_cita": bool(rec.get("cita"))}
     if status == 200:
         msg = json.loads(body)["message"]
         year = None
@@ -109,6 +119,12 @@ def check_doi(rec: dict) -> dict:
                 avisos.append(f"año de la cita {years[0]} frente a {year} en Crossref")
             if authors and authors[0] and plain(authors[0]).split()[-1] not in plain(cita):
                 avisos.append(f"primer apellido en Crossref «{authors[0]}» no aparece en la cita")
+            citado = rec.get("titulo_citado") or ""
+            if citado:
+                palabras = lambda t: {w for w in re.findall(r"[a-z0-9]{4,}", plain(t))}
+                a, b = palabras(citado), palabras(out["titulo"])
+                if a and b and len(a & b) / len(a) < 0.34:
+                    avisos.append("el título citado no coincide con el del DOI en Crossref")
             out["cita"] = cita[:220]
             out["avisos"] = avisos
     elif status == 404:
