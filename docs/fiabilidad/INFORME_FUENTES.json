@@ -6,7 +6,7 @@
     "no localizado": 13,
     "fuera de Crossref, resuelve en doi.org": 1
   },
-  "con_avisos": 2,
+  "con_avisos": 1,
   "doi": [
     {
       "doi": "10.1002/(SICI)1096-8644(1998)107:27+<93::AID-AJPA5>3.0.CO;2-X",
@@ -62,10 +62,9 @@
       "revista": "American Journal of Physical Anthropology",
       "anio": 2003,
       "primer_autor": "Ant�n",
+      "nota": "apellido con caracteres dañados en los metadatos de Crossref; no se compara",
       "cita": "Antón (2003). Natural history of Homo erectus. Am J Phys Anthropol",
-      "avisos": [
-        "primer apellido en Crossref «Ant�n» no aparece en la cita"
-      ]
+      "avisos": []
     },
     {
       "doi": "10.1002/ajpa.22188",
@@ -140,6 +139,41 @@
       "avisos": [
         "primer apellido en Crossref «Croft» no aparece en la cita",
         "el título citado no coincide con el del DOI en Crossref"
+      ],
+      "candidatos": [
+        {
+          "doi": "10.1002/ajpa.1330510114",
+          "titulo": "A new study of the scapula of <i>Australopithecus africanus</i> from Sterkfontein",
+          "primer_autor": "Vrba",
+          "anio": 1979,
+          "revista": "American Journal of Physical Anthropology",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.75,
+          "coincide": false
+        },
+        {
+          "doi": "10.1002/ajpa.23743",
+          "titulo": "<i>Australopithecus prometheus</i> is a <i>nomen nudum</i>",
+          "primer_autor": "Berger",
+          "anio": 2018,
+          "revista": "American Journal of Physical Anthropology",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.5,
+          "coincide": false
+        },
+        {
+          "doi": "10.1002/ajpa.10156",
+          "titulo": "Revised age estimates of <i>Australopithecus</i>‐bearing deposits at Sterkfontein, South Africa",
+          "primer_autor": "Berger",
+          "anio": 2002,
+          "revista": "American Journal of Physical Anthropology",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.5,
+          "coincide": false
+        }
       ]
     },
     {
@@ -382,7 +416,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": false
+      "comparada_con_cita": false,
+      "candidatos": [
+        {
+          "doi": "10.1016/s0012-821x(04)00003-2",
+          "titulo": "African climate change and faunal evolution during the Pliocene–Pleistocene",
+          "primer_autor": "deMenocal",
+          "anio": 2004,
+          "revista": "Earth and Planetary Science Letters",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": null,
+          "coincide": true
+        },
+        {
+          "doi": "10.1016/j.epsl.2010.06.010",
+          "titulo": "Intensification of the Walker and Hadley atmospheric circulations during the Pliocene–Pleistocene climate transition",
+          "primer_autor": "Etourneau",
+          "anio": 2010,
+          "revista": "Earth and Planetary Science Letters",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1016/j.epsl.2013.11.039",
+          "titulo": "Ocean-atmosphere climate shift during the mid-to-late Holocene transition",
+          "primer_autor": "Morley",
+          "anio": 2014,
+          "revista": "Earth and Planetary Science Letters",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1016/j.jas.2025.106306",
@@ -894,7 +963,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": false
+      "comparada_con_cita": false,
+      "candidatos": [
+        {
+          "doi": "10.1002/(sici)1096-8644(1998)107:27+<93::aid-ajpa5>3.0.co;2-x",
+          "titulo": "Environmental hypotheses of hominin evolution",
+          "primer_autor": "Potts",
+          "anio": 1998,
+          "revista": "American Journal of Physical Anthropology",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": null,
+          "coincide": true
+        },
+        {
+          "doi": "10.1007/978-1-4020-3098-7_2",
+          "titulo": "Environmental hypotheses of Pliocene human evolution",
+          "primer_autor": "Potts",
+          "anio": null,
+          "revista": "Vertebrate Paleobiology and Paleoanthropology Series",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1016/j.quascirev.2013.04.003",
+          "titulo": "Hominin evolution in settings of strong environmental variability",
+          "primer_autor": "Potts",
+          "anio": 2013,
+          "revista": "Quaternary Science Reviews",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1016/S1251-8050(01)01529-4",
@@ -944,7 +1048,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": false
+      "comparada_con_cita": false,
+      "candidatos": [
+        {
+          "doi": "10.1023/b:edpr.0000034022.16470.f3",
+          "titulo": "Problem-Based Learning: What and How Do Students Learn?",
+          "primer_autor": "Hmelo-Silver",
+          "anio": 2004,
+          "revista": "Educational Psychology Review",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": null,
+          "coincide": true
+        },
+        {
+          "doi": "10.1023/b:truc.0000026552.14289.2c",
+          "titulo": "Learning to talk the educational psychology talk through a problem-based course",
+          "primer_autor": "Chernobilsky",
+          "anio": 2004,
+          "revista": "Instructional Science",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": true,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.4324/9781410604989",
+          "titulo": "Problem-based Learning",
+          "primer_autor": "Evensen",
+          "anio": 2000,
+          "revista": "",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1023/B:IFPR.0000006058.97459.e3",
@@ -952,7 +1091,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": false
+      "comparada_con_cita": false,
+      "candidatos": [
+        {
+          "doi": "10.1080/01411920410001689689",
+          "titulo": "Reasoning as a scientist: ways of helping children to use language to learn science",
+          "primer_autor": "Mercer",
+          "anio": 2004,
+          "revista": "British Educational Research Journal",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": null,
+          "coincide": true
+        },
+        {
+          "doi": "10.4324/9781003417965-11",
+          "titulo": "How Computers Can Help Children Think Together About Texts",
+          "primer_autor": "Mercer",
+          "anio": 2023,
+          "revista": "Interactive Literacy Education",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1080/09575140500128129",
+          "titulo": "Talking and thinking together at Key Stage 1",
+          "primer_autor": "Littleton",
+          "anio": 2005,
+          "revista": "Early Years",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1029/2004PA001071",
@@ -1137,7 +1311,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": false
+      "comparada_con_cita": false,
+      "candidatos": [
+        {
+          "doi": "10.1038/35084063",
+          "titulo": "Late Miocene hominids from the Middle Awash, Ethiopia",
+          "primer_autor": "Haile-Selassie",
+          "anio": 2001,
+          "revista": "Nature",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": null,
+          "coincide": true
+        },
+        {
+          "doi": "10.1525/9780520942509",
+          "titulo": "Ardipithecus Kadabba",
+          "primer_autor": null,
+          "anio": 2009,
+          "revista": "",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1525/9780520942509-016",
+          "titulo": "12. Giraffidae",
+          "primer_autor": "Haile-Selassie",
+          "anio": 2009,
+          "revista": "Ardipithecus Kadabba",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1038/376565a0",
@@ -1848,7 +2057,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": true
+      "comparada_con_cita": true,
+      "candidatos": [
+        {
+          "doi": "10.1038/s41586-019-1376-z",
+          "titulo": "Apidima Cave fossils provide earliest evidence of Homo sapiens in Eurasia",
+          "primer_autor": "Harvati",
+          "anio": 2019,
+          "revista": "Nature",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": 1.0,
+          "coincide": true
+        },
+        {
+          "doi": "10.1038/d41586-022-00389-9",
+          "titulo": "Evidence of Europe’s first Homo sapiens found in French cave",
+          "primer_autor": "Callaway",
+          "anio": 2022,
+          "revista": "Nature",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.44,
+          "coincide": false
+        },
+        {
+          "doi": "10.1038/d44148-022-00020-z",
+          "titulo": "Dating Homo sapiens fossils from eastern Africa",
+          "primer_autor": "Nakkazi",
+          "anio": 2022,
+          "revista": "Nature Africa",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.33,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1038/s41586-019-1401-2",
@@ -2214,7 +2458,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": true
+      "comparada_con_cita": true,
+      "candidatos": [
+        {
+          "doi": "10.1073/pnas.0901280106",
+          "titulo": "Independent evolution of knuckle-walking in African apes shows that humans did not evolve from a knuckle-walking ancestor",
+          "primer_autor": "Kivell",
+          "anio": 2009,
+          "revista": "Proceedings of the National Academy of Sciences",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": 1.0,
+          "coincide": true
+        },
+        {
+          "doi": "10.1098/rspb.2026.0556/v1/review1",
+          "titulo": "Review for \"Did modern human carpal morphology evolved from knuckle walking traits?\"",
+          "primer_autor": null,
+          "anio": 2025,
+          "revista": "",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.25,
+          "coincide": false
+        },
+        {
+          "doi": "10.1098/rspb.2026.0556/v2/review1",
+          "titulo": "Review for \"Did modern human carpal morphology evolved from knuckle walking traits?\"",
+          "primer_autor": null,
+          "anio": 2026,
+          "revista": "",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.25,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1073/pnas.1106638108",
@@ -2253,7 +2532,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": true
+      "comparada_con_cita": true,
+      "candidatos": [
+        {
+          "doi": "10.1073/pnas.1316780110",
+          "titulo": "Evidence supporting an intentional Neandertal burial at La Chapelle-aux-Saints",
+          "primer_autor": "Rendu",
+          "anio": 2013,
+          "revista": "Proceedings of the National Academy of Sciences",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": 1.0,
+          "coincide": false
+        },
+        {
+          "doi": "10.1016/j.jas.2014.04.019",
+          "titulo": "A critical look at evidence from La Chapelle-aux-Saints supporting an intentional Neandertal burial",
+          "primer_autor": "Dibble",
+          "anio": 2015,
+          "revista": "Journal of Archaeological Science",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": 1.0,
+          "coincide": false
+        },
+        {
+          "doi": "10.1016/j.jas.2016.02.006",
+          "titulo": "Let the dead speak…comments on Dibble et al.'s reply to “Evidence supporting an intentional burial at La Chapelle-aux-Saints”",
+          "primer_autor": "Rendu",
+          "anio": 2016,
+          "revista": "Journal of Archaeological Science",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.86,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1073/pnas.2123516119",
@@ -2464,7 +2778,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": false
+      "comparada_con_cita": false,
+      "candidatos": [
+        {
+          "doi": "10.1126/science.1103094",
+          "titulo": "<i>Pierolapithecus catalaunicus</i>\n            , a New Middle Miocene Great Ape from Spain",
+          "primer_autor": "Moyà-Solà",
+          "anio": 2004,
+          "revista": "Science",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": null,
+          "coincide": true
+        },
+        {
+          "doi": "10.1126/science.1108139",
+          "titulo": "Comment on \"\n            <i>Pierolapithecus catalaunicus</i>\n            , a New Middle Miocene Great Ape from Spain\"",
+          "primer_autor": "Begun",
+          "anio": 2005,
+          "revista": "Science",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1371/journal.pone.0091944",
+          "titulo": "The Middle Miocene Ape Pierolapithecus catalaunicus Exhibits Extant Great Ape-Like Morphometric Affinities on Its Patella: Inferences on Knee Function and Evolution",
+          "primer_autor": "Pina",
+          "anio": 2014,
+          "revista": "PLoS ONE",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1126/science.1103094",
@@ -2513,7 +2862,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": true
+      "comparada_con_cita": true,
+      "candidatos": [
+        {
+          "doi": "10.1126/science.1154197",
+          "titulo": "<i>Orrorin tugenensis</i>\n            Femoral Morphology and the Evolution of Hominin Bipedalism",
+          "primer_autor": "Richmond",
+          "anio": 2008,
+          "revista": "Science",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": 1.0,
+          "coincide": true
+        },
+        {
+          "doi": "10.1007/978-3-319-16999-6_3420-1",
+          "titulo": "Orrorin tugenensis",
+          "primer_autor": "Richmond",
+          "anio": 2016,
+          "revista": "Encyclopedia of Evolutionary Psychological Science",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.29,
+          "coincide": false
+        },
+        {
+          "doi": "10.1007/978-3-319-19650-3_3420",
+          "titulo": "Orrorin tugenensis",
+          "primer_autor": "Richmond",
+          "anio": 2021,
+          "revista": "Encyclopedia of Evolutionary Psychological Science",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": 0.29,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1126/science.1175802",
@@ -2690,7 +3074,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": false
+      "comparada_con_cita": false,
+      "candidatos": [
+        {
+          "doi": "10.1126/science.7638598",
+          "titulo": "Lower Pleistocene Hominids and Artifacts from Atapuerca-TD6 (Spain)",
+          "primer_autor": "Carbonell",
+          "anio": 1995,
+          "revista": "Science",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": true,
+          "solape_titulo": null,
+          "coincide": true
+        },
+        {
+          "doi": "10.1073/pnas.96.7.4210",
+          "titulo": "A modern human pattern of dental development in Lower Pleistocene hominids from Atapuerca-TD6 (Spain)",
+          "primer_autor": "Bermúdez de Castro",
+          "anio": 1999,
+          "revista": "Proceedings of the National Academy of Sciences",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1002/gea.10071",
+          "titulo": "New archaeo‐stratigraphic data for the TD6 level in relation to <i>Homo antecessor</i> (Lower Pleistocene) at the site of Atapuerca, north‐central Spain",
+          "primer_autor": "Canals",
+          "anio": 2003,
+          "revista": "Geoarchaeology",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.1126/science.274.5294.1870",
@@ -3110,7 +3529,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": false
+      "comparada_con_cita": false,
+      "candidatos": [
+        {
+          "doi": "10.1080/00461520903433562",
+          "titulo": "Merlin C. Wittrock and the Revision of Bloom's Taxonomy",
+          "primer_autor": "KRATHWOHL",
+          "anio": 2010,
+          "revista": "Educational Psychologist",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1002/aehe.3640030109",
+          "titulo": "Appendix B: Taxonomy of educational objectives (Bloom 1956; Krathwohl, Bloom and Masia 1964)",
+          "primer_autor": null,
+          "anio": 1974,
+          "revista": "AAHE-ERIC/Higher Education Research Report",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1207/s15430421tip4104_2",
+          "titulo": "A Revision of Bloom's Taxonomy: An Overview",
+          "primer_autor": "Krathwohl",
+          "anio": 2002,
+          "revista": "Theory Into Practice",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.2478/v10307-012-0015-4",
@@ -3118,7 +3572,42 @@
         "atlas"
       ],
       "estado": "no localizado",
-      "comparada_con_cita": false
+      "comparada_con_cita": false,
+      "candidatos": [
+        {
+          "doi": "10.55782/ane-1994-1003",
+          "titulo": "Optimization of repetition spacing in the practice of learning",
+          "primer_autor": "Woźniak",
+          "anio": 1994,
+          "revista": "Acta Neurobiologiae Experimentalis",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1007/978-1-4615-5915-3_28",
+          "titulo": "The Educational Technology of Repetition Spacing in Information Systems Development",
+          "primer_autor": "Wozniak",
+          "anio": 1997,
+          "revista": "Systems Development Methods for the Next Century",
+          "apellido_en_la_cita": true,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        },
+        {
+          "doi": "10.1016/b978-012370509-9.00168-6",
+          "titulo": "Repetition and Spacing Effects",
+          "primer_autor": "Greene",
+          "anio": 2008,
+          "revista": "Learning and Memory: A Comprehensive Reference",
+          "apellido_en_la_cita": false,
+          "anio_en_la_cita": false,
+          "solape_titulo": null,
+          "coincide": false
+        }
+      ]
     },
     {
       "doi": "10.3389/feart.2021.683010",
