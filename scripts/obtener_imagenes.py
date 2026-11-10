@@ -2,8 +2,8 @@
 """Obtiene copias locales de las imágenes verificadas del expediente visual.
 
 Fuente de verdad: src/entrada_ligera/image_audit.json (bloque «verified»). Solo se descargan
-las direcciones que figuran allí, siempre de Wikimedia Commons, como miniatura de 640 px de
-ancho. Cada copia queda registrada en img/taxones/MANIFIESTO.json con su huella SHA-256,
+las direcciones que figuran allí, siempre de Wikimedia Commons, como miniatura de hasta 500 px
+de ancho. Cada copia queda registrada en img/taxones/MANIFIESTO.json con su huella SHA-256,
 tamaño, dimensiones, autoría, licencia y página de origen.
 
 Uso:
@@ -26,12 +26,12 @@ ROOT = Path(__file__).resolve().parents[1]
 AUDIT = ROOT / "src/entrada_ligera/image_audit.json"
 DEST = ROOT / "img/taxones"
 MANIFEST = DEST / "MANIFIESTO.json"
-WIDTH = 640
+WIDTH = 500  # el mismo ancho que la dirección verificada en el expediente
 MAX_BYTES = 1_500_000
-ALLOWED_HOSTS = {"commons.wikimedia.org", "upload.wikimedia.org"}
+ALLOWED_HOSTS = {"commons.wikimedia.org", "upload.wikimedia.org", "thumb.wikimedia.org"}
 PREFIX = "https://commons.wikimedia.org/wiki/Special:FilePath/"
 USER_AGENT = "PaleoBotDEA/1.0 (https://github.com/DanielULPGC/Paleobot.-Plataforma-de-evoluci-n-humana; recurso docente)"
-CHANGES = f"Miniatura de {WIDTH} px de ancho generada por Wikimedia Commons; sin otros cambios."
+CHANGES = f"Miniatura de hasta {WIDTH} px de ancho servida por Wikimedia Commons; sin otros cambios."
 
 
 def sha256(data: bytes) -> str:
