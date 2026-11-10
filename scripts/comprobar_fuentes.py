@@ -117,7 +117,9 @@ def check_doi(rec: dict) -> dict:
             years = re.findall(r"\((\d{4})[a-z]?\)", cita)
             if year and years and str(year) not in years and str(year - 1) not in years and str(year + 1) not in years:
                 avisos.append(f"año de la cita {years[0]} frente a {year} en Crossref")
-            if authors and authors[0] and plain(authors[0]).split()[-1] not in plain(cita):
+            if authors and authors[0] and "\ufffd" in authors[0]:
+                out["nota"] = "apellido con caracteres dañados en los metadatos de Crossref; no se compara"
+            elif authors and authors[0] and plain(authors[0]).split()[-1] not in plain(cita):
                 avisos.append(f"primer apellido en Crossref «{authors[0]}» no aparece en la cita")
             citado = rec.get("titulo_citado") or ""
             if citado:
@@ -138,6 +140,55 @@ def check_doi(rec: dict) -> dict:
         out["estado"] = "fuera de Crossref, resuelve en doi.org" if code == 1 else "no localizado"
     else:
         out["estado"] = f"sin comprobar (respuesta {status})"
+    return out
+
+
+# Descripción de las referencias cuyo DOI falla y que el atlas cita en texto libre (sin título estructurado).
+# Solo sirve para preguntar a Crossref; lo que se propone sale de su respuesta, no de esta lista.
+PISTAS = {
+    "10.1016/j.epsl.2004.01.036": "deMenocal 2004 African climate change and faunal evolution during the Pliocene-Pleistocene Earth and Planetary Science Letters",
+    "10.1016/s0047-2484(98)00055-2": "Potts 1998 environmental hypotheses of hominin evolution",
+    "10.1023/b:educ.0000042415.65252.f4": "Hmelo-Silver 2004 Problem-based learning: what and how do students learn Educational Psychology Review",
+    "10.1023/b:ifpr.0000006058.97459.e3": "Mercer Dawes Wegerif Sams 2004 Reasoning as a scientist: ways of helping children to use language to learn science",
+    "10.1038/35097529": "Haile-Selassie 2001 Late Miocene hominids from the Middle Awash, Ethiopia Nature",
+    "10.1126/science.1096393": "Moyà-Solà 2004 Pierolapithecus catalaunicus, a new Middle Miocene great ape from Spain Science",
+    "10.1126/science.269.5225.826": "Carbonell 1995 Lower Pleistocene hominids and artifacts from Atapuerca-TD6 (Spain) Science",
+    "10.2307/1477405": "Anderson Krathwohl 2001 A taxonomy for learning, teaching, and assessing: a revision of Bloom's taxonomy",
+    "10.2478/v10307-012-0015-4": "Wozniak Gorzelanczyk Optimization of repetition spacing in the practice of learning",
+}
+
+
+def candidatos(rec: dict) -> list[dict]:
+    """Pregunta a Crossref por la referencia descrita y devuelve hasta tres registros para revisión humana."""
+    consulta = rec.get("cita") or PISTAS.get(rec["doi"].lower())
+    if not consulta:
+        return []
+    url = ("https://api.crossref.org/works?rows=3&select=DOI,title,author,issued,container-title&query.bibliographic="
+           + urllib.parse.quote(consulta))
+    status, body = get(url)
+    if status != 200:
+        return []
+    palabras = lambda t: {w for w in re.findall(r"[a-z0-9]{4,}", plain(t))}
+    ref_titulo = palabras(rec.get("titulo_citado") or "")
+    anios = set(re.findall(r"\b(?:19|20)\d{2}\b", consulta))
+    out = []
+    for item in json.loads(body)["message"].get("items", []):
+        titulo = (item.get("title") or [""])[0]
+        autores = [a.get("family") or a.get("name") or "" for a in item.get("author", [])]
+        anio = ((item.get("issued") or {}).get("date-parts") or [[None]])[0][0]
+        apellido = plain(autores[0]).split()[-1] if autores and autores[0] else ""
+        t = palabras(titulo)
+        solape = round(len(ref_titulo & t) / len(ref_titulo), 2) if ref_titulo else None
+        out.append({
+            "doi": item.get("DOI"), "titulo": titulo[:200], "primer_autor": autores[0] if autores else None, "anio": anio,
+            "revista": (item.get("container-title") or [""])[0],
+            "apellido_en_la_cita": bool(apellido) and apellido in plain(consulta),
+            "anio_en_la_cita": bool(anio) and str(anio) in anios,
+            "solape_titulo": solape,
+            # «coincide» exige apellido, año y, si hay título citado, que al menos el 60 % de sus palabras esté en el del registro
+            "coincide": bool(apellido) and apellido in plain(consulta) and bool(anio) and str(anio) in anios
+                        and (solape is None or solape >= 0.6),
+        })
     return out
 
 
@@ -167,7 +218,11 @@ def main() -> int:
     recs = collect()
     results = []
     for i, key in enumerate(sorted(recs)):
-        results.append(check_doi(recs[key]))
+        res = check_doi(recs[key])
+        if res["estado"] == "no localizado" or any("no coincide" in a or "no aparece" in a for a in res.get("avisos") or []):
+            res["candidatos"] = candidatos(recs[key])
+            time.sleep(1)
+        results.append(res)
         time.sleep(0.25)
         if i % 25 == 0:
             print(f"{i}/{len(recs)} DOI")
@@ -194,6 +249,15 @@ def main() -> int:
             lines.append(f"| `{r['doi']}` | {', '.join(r['origenes'])} | {detalle} |")
     else:
         lines.append("Ninguno.")
+    con_candidatos = [r for r in results if r.get("candidatos")]
+    if con_candidatos:
+        lines += ["", "### Registros que Crossref propone para esas referencias", "",
+                  "Resultado de buscar la referencia en Crossref. Es una propuesta para que la revise una persona: «coincide» significa "
+                  "que cuadran el primer apellido, el año y, cuando la cita trae título, al menos el 60 % de sus palabras.", "",
+                  "| DOI citado | Registro propuesto | Primer autor, año | Título | Coincide |", "| --- | --- | --- | --- | --- |"]
+        for r in con_candidatos:
+            for c in r["candidatos"]:
+                lines.append(f"| `{r['doi']}` | `{c['doi']}` | {c['primer_autor']}, {c['anio']} | {c['titulo'][:110]} | {'sí' if c['coincide'] else 'no'} |")
     lines += ["", "## Patrimonio Mundial (sesión 5 de la entrada DEA)", "", "| Sitio | Años que afirma la sesión | Ficha de la UNESCO | Resultado |", "| --- | --- | --- | --- |"]
     for u in unesco:
         if u["respuesta"] == 200:
