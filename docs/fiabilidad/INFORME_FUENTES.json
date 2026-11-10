@@ -2,11 +2,11 @@
   "fecha": "2026-11-10",
   "total_doi": 248,
   "estados": {
-    "en Crossref": 232,
-    "no localizado": 15,
+    "en Crossref": 234,
+    "no localizado": 13,
     "fuera de Crossref, resuelve en doi.org": 1
   },
-  "con_avisos": 0,
+  "con_avisos": 2,
   "doi": [
     {
       "doi": "10.1002/(SICI)1096-8644(1998)107:27+<93::AID-AJPA5>3.0.CO;2-X",
@@ -14,6 +14,7 @@
         "recorrido y entrada DEA"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Environmental hypotheses of hominin evolution",
       "revista": "American Journal of Physical Anthropology",
       "anio": 1998,
@@ -27,6 +28,7 @@
         "recorrido y entrada DEA"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "40Ar/39Ar dating in paleoanthropology and archeology",
       "revista": "Evolutionary Anthropology: Issues, News, and Reviews",
       "anio": 1998,
@@ -40,6 +42,7 @@
         "recorrido y entrada DEA"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Variability selection in hominid evolution",
       "revista": "Evolutionary Anthropology: Issues, News, and Reviews",
       "anio": 1998,
@@ -54,10 +57,15 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Natural history ofHomo erectus",
       "revista": "American Journal of Physical Anthropology",
       "anio": 2003,
-      "primer_autor": "Ant�n"
+      "primer_autor": "Ant�n",
+      "cita": "Antón (2003). Natural history of Homo erectus. Am J Phys Anthropol",
+      "avisos": [
+        "primer apellido en Crossref «Ant�n» no aparece en la cita"
+      ]
     },
     {
       "doi": "10.1002/ajpa.22188",
@@ -67,6 +75,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A description of the geological context, discrete traits, and linear morphometrics of the Middle Pleistocene hominin from Dali, Shaanxi Province, China",
       "revista": "American Journal of Physical Anthropology",
       "anio": 2012,
@@ -80,6 +89,7 @@
         "recorrido y entrada DEA"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Hominin taxic diversity: Fact or fantasy?",
       "revista": "American Journal of Physical Anthropology",
       "anio": 2016,
@@ -95,6 +105,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A multivariate assessment of the Dali hominin cranium from China: Morphological affinities and implications for Pleistocene evolution in East Asia",
       "revista": "American Journal of Physical Anthropology",
       "anio": 2017,
@@ -108,6 +119,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "<i>Australopithecus prometheus</i> is a <i>nomen nudum</i>",
       "revista": "American Journal of Physical Anthropology",
       "anio": 2018,
@@ -119,10 +131,16 @@
         "consulta ligera"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Form in the context of function: Fundamentals of an energy effective striding walk, the role of the plantigrade foot and its expected size",
       "revista": "American Journal of Physical Anthropology",
       "anio": 2020,
-      "primer_autor": "Croft"
+      "primer_autor": "Croft",
+      "cita": "Berger et al. (2020). The new Australopithecus prometheus from Sterkfontein. Am J Phys Anthropol",
+      "avisos": [
+        "primer apellido en Crossref «Croft» no aparece en la cita",
+        "el título citado no coincide con el del DOI en Crossref"
+      ]
     },
     {
       "doi": "10.1002/ajpa.24983",
@@ -130,6 +148,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The endocast morphology of <scp>LES1</scp>, <i>Homo</i> naledi",
       "revista": "American Journal of Biological Anthropology",
       "anio": 2024,
@@ -141,6 +160,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The StW 573 Little Foot Fossil Should Not Be Attributed to\n                    <i>Australopithecus prometheus</i>",
       "revista": "American Journal of Biological Anthropology",
       "anio": 2025,
@@ -152,6 +172,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Has the combination of genetic and fossil evidence solved the riddle of modern human origins?",
       "revista": "Evolutionary Anthropology: Issues, News, and Reviews",
       "anio": 2004,
@@ -165,6 +186,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Fossil apes from the vallès‐penedès basin",
       "revista": "Evolutionary Anthropology: Issues, News, and Reviews",
       "anio": 2012,
@@ -180,6 +202,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Resolving the “muddle in the middle”: The case for <i>Homo bodoensis</i> sp. nov.",
       "revista": "Evolutionary Anthropology: Issues, News, and Reviews",
       "anio": 2021,
@@ -193,6 +216,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A process‐based approach to hominin taxonomy provides new perspectives on hominin speciation",
       "revista": "Evolutionary Anthropology: Issues, News, and Reviews",
       "anio": 2022,
@@ -204,6 +228,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "<i>The Australopithecus</i> assemblage from Sterkfontein Member 4 (South Africa) and the concept of variation in palaeontology",
       "revista": "Evolutionary Anthropology: Issues, News, and Reviews",
       "anio": 2023,
@@ -215,6 +240,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A biochronological date of 3.6 million years for “Little Foot” (StW 573, <i>Australopithecus prometheus</i> from Sterkfontein, South Africa)",
       "revista": "Evolutionary Anthropology: Issues, News, and Reviews",
       "anio": 2024,
@@ -228,6 +254,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Postcranial functional morphology of , with implications for the evolution of modern ape locomotion",
       "revista": "Journal of Human Evolution",
       "anio": 2000,
@@ -242,10 +269,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A re-appraisal of Ceprano calvaria affinities with Homo erectus, after the new reconstruction",
       "revista": "Journal of Human Evolution",
       "anio": 2000,
-      "primer_autor": "Ascenzi"
+      "primer_autor": "Ascenzi",
+      "cita": "Ascenzi et al. (2000). A re-appraisal of Ceprano calvaria affinities with Homo erectus, after the new reconstruction. J Hum Evol",
+      "avisos": []
     },
     {
       "doi": "10.1007/s10437-021-09444-8",
@@ -253,6 +283,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The 100,000–77,000-Year Old Middle Stone Age Micromammal Sequence from Blombos Cave, South Africa: Local Climatic Stability or a Tale of Predator Bias?",
       "revista": "African Archaeological Review",
       "anio": 2021,
@@ -264,6 +295,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Explanations of variability in Middle Stone Age stone tool assemblage composition and raw material use in Eastern Africa",
       "revista": "Archaeological and Anthropological Sciences",
       "anio": 2021,
@@ -275,6 +307,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The Contribution of Neanderthals to Phenotypic Variation in Modern Humans",
       "revista": "The American Journal of Human Genetics",
       "anio": 2017,
@@ -286,6 +319,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Aperçu critique du Middle Stone Age en Afrique du Nord",
       "revista": "L'Anthropologie",
       "anio": 2022,
@@ -297,6 +331,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Multiple Deeply Divergent Denisovan Ancestries in Papuans",
       "revista": "Cell",
       "anio": 2019,
@@ -309,10 +344,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Denisovan mitochondrial DNA from dental calculus of the &gt;146,000-year-old Harbin cranium",
       "revista": "Cell",
       "anio": 2025,
-      "primer_autor": "Fu"
+      "primer_autor": "Fu",
+      "cita": "Fu et al. (2025). Denisovan mitochondrial DNA from dental calculus of the >146,000-year-old Harbin cranium. Cell 188, 3919–3926.e9",
+      "avisos": []
     },
     {
       "doi": "10.1016/j.chemgeo.2021.120108",
@@ -320,6 +358,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Providing context to the Homo naledi fossils: Constraints from flowstones on the age of sediment deposits in Rising Star Cave, South Africa",
       "revista": "Chemical Geology",
       "anio": 2021,
@@ -331,6 +370,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Economy and Endurance in Human Evolution",
       "revista": "Current Biology",
       "anio": 2017,
@@ -341,7 +381,8 @@
       "origenes": [
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": false
     },
     {
       "doi": "10.1016/j.jas.2025.106306",
@@ -349,6 +390,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Rethinking early hominin toolmaking through comparative primate models",
       "revista": "Journal of Archaeological Science",
       "anio": 2025,
@@ -361,10 +403,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A review of early Homo in southern Africa focusing on cranial, mandibular and dental remains, with the description of a new species (Homo gautengensis sp. nov.)",
       "revista": "HOMO",
       "anio": 2010,
-      "primer_autor": "Curnoe"
+      "primer_autor": "Curnoe",
+      "cita": "Curnoe (2010). A review of early Homo in southern Africa focusing on cranial, mandibular and dental remains, with the description of a new species (Homo gautengensis sp. nov.). HOMO",
+      "avisos": []
     },
     {
       "doi": "10.1016/j.jhevol.2004.01.001",
@@ -372,6 +417,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The bony labyrinth of Oreopithecus bambolii",
       "revista": "Journal of Human Evolution",
       "anio": 2004,
@@ -383,6 +429,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Environments and hominin activities across the FLK Peninsula during Zinjanthropus times (1.84 Ma), Olduvai Gorge, Tanzania",
       "revista": "Journal of Human Evolution",
       "anio": 2012,
@@ -394,6 +441,7 @@
         "recorrido y entrada DEA"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Alternating high and low climate variability: The context of natural selection and speciation in Plio-Pleistocene hominin evolution",
       "revista": "Journal of Human Evolution",
       "anio": 2015,
@@ -407,6 +455,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Upper third molar internal structural organization and semicircular canal morphology in Plio-Pleistocene South African cercopithecoids",
       "revista": "Journal of Human Evolution",
       "anio": 2016,
@@ -419,10 +468,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The affinities of Homo floresiensis based on phylogenetic analyses of cranial, dental, and postcranial characters",
       "revista": "Journal of Human Evolution",
       "anio": 2017,
-      "primer_autor": "Argue"
+      "primer_autor": "Argue",
+      "cita": "Argue et al. (2017). The affinities of Homo floresiensis based on phylogenetic analyses of cranial, dental, and postcranial characters. J Hum Evol",
+      "avisos": []
     },
     {
       "doi": "10.1016/j.jhevol.2018.11.010",
@@ -431,10 +483,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Excavation, reconstruction and taphonomy of the StW 573 Australopithecus prometheus skeleton from Sterkfontein Caves, South Africa",
       "revista": "Journal of Human Evolution",
       "anio": 2019,
-      "primer_autor": "Clarke"
+      "primer_autor": "Clarke",
+      "cita": "Clarke (2019). Excavation, reconstruction and taphonomy of the StW 573 Australopithecus prometheus skeleton from Sterkfontein Caves, South Africa. J Hum Evol",
+      "avisos": []
     },
     {
       "doi": "10.1016/j.jhevol.2019.06.005",
@@ -442,6 +497,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The skull of StW 573, a 3.67 Ma Australopithecus prometheus skeleton from Sterkfontein Caves, South Africa",
       "revista": "Journal of Human Evolution",
       "anio": 2019,
@@ -453,6 +509,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Small body size phenotypes among Middle and Later Stone Age Southern Africans",
       "revista": "Journal of Human Evolution",
       "anio": 2021,
@@ -464,6 +521,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The Middle to Later Stone Age transition at Panga ya Saidi, in the tropical coastal forest of eastern Africa",
       "revista": "Journal of Human Evolution",
       "anio": 2021,
@@ -475,6 +533,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Trabecular bone properties in the ilium of the Middle Paleolithic/Middle Stone Age Border Cave 3 Homo sapiens infant and the onset of independent gait",
       "revista": "Journal of Human Evolution",
       "anio": 2021,
@@ -486,6 +545,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Introduction to special issue: A 3.67 Ma Australopithecus prometheus skeleton from Sterkfontein Caves, South Africa",
       "revista": "Journal of Human Evolution",
       "anio": 2021,
@@ -497,6 +557,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Early Pleistocene hominin subsistence behaviors in South Africa: Evidence from the hominin-bearing deposit of Cooper's D (Bloubank Valley, South Africa)",
       "revista": "Journal of Human Evolution",
       "anio": 2022,
@@ -508,6 +569,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "JHE 50th anniversary: What does a journal owe its discipline?",
       "revista": "Journal of Human Evolution",
       "anio": 2022,
@@ -519,6 +581,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The relative limb size of Homo naledi",
       "revista": "Journal of Human Evolution",
       "anio": 2022,
@@ -530,6 +593,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The taxonomic attribution of African hominin postcrania from the Miocene through the Pleistocene: Associations and assumptions",
       "revista": "Journal of Human Evolution",
       "anio": 2022,
@@ -541,6 +605,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Enamel chipping and its ecological correlates in African papionins: Implications for hominin feeding behavior",
       "revista": "Journal of Human Evolution",
       "anio": 2023,
@@ -552,6 +617,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Hominin locomotion and evolution in the Late Miocene to Late Pliocene",
       "revista": "Journal of Human Evolution",
       "anio": 2023,
@@ -564,10 +630,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Morphological and morphometric analyses of a late Middle Pleistocene hominin mandible from Hualongdong, China",
       "revista": "Journal of Human Evolution",
       "anio": 2023,
-      "primer_autor": "Wu"
+      "primer_autor": "Wu",
+      "cita": "Wu et al. (2023). Morphological and morphometric analyses of a late Middle Pleistocene hominin mandible from Hualongdong, China. J Hum Evol",
+      "avisos": []
     },
     {
       "doi": "10.1016/j.jhevol.2023.103414",
@@ -575,6 +644,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The stratigraphy and formation of Middle Stone Age deposits in Cave 1B, Klasies River Main site, South Africa, with implications for the context, age, and cultural association of the KRM 41815/SAM-AP ",
       "revista": "Journal of Human Evolution",
       "anio": 2023,
@@ -587,6 +657,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "No scientific evidence that Homo naledi buried their dead and produced rock art",
       "revista": "Journal of Human Evolution",
       "anio": 2024,
@@ -600,6 +671,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Aridity, availability of drinking water and freshwater foods, and hominin and archeological sites during the Late Pliocene–Early Pleistocene in the western region of the Turkana Basin (Kenya): A revie",
       "revista": "Journal of Human Evolution",
       "anio": 2024,
@@ -611,6 +683,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "New hominin dental remains from Olduvai Gorge (Tanzania)",
       "revista": "Journal of Human Evolution",
       "anio": 2024,
@@ -622,6 +695,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Adhesive technology based on biomass tar documents engineering capabilities in the African Middle Stone Age",
       "revista": "Journal of Human Evolution",
       "anio": 2024,
@@ -633,6 +707,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Hominin fossil inventory: Quantification and comparison of discrete regional and element representation among early African fossil hominins prior to the emergence of Homo erectus",
       "revista": "Journal of Human Evolution",
       "anio": 2025,
@@ -644,6 +719,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Acetabular orientation, pelvic shape, and the evolution of hominin bipedality",
       "revista": "Journal of Human Evolution",
       "anio": 2025,
@@ -655,6 +731,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Luminescence and radiocarbon dating the Naisiusiu Beds type section and timing of the Middle Stone Age/Later Stone Age transition at Olduvai Gorge, Tanzania",
       "revista": "Journal of Human Evolution",
       "anio": 2025,
@@ -666,6 +743,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A phylogenetic perspective on the evolution of early hominin foot morphology",
       "revista": "Journal of Human Evolution",
       "anio": 2025,
@@ -677,6 +755,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The hominin fossil record of the Omo-Turkana Basin",
       "revista": "Journal of Human Evolution",
       "anio": 2025,
@@ -688,6 +767,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The Olduvai Gorge Coring Project: Drilling high resolution palaeoclimatic and palaeoenvironmental archives to constrain hominin evolution",
       "revista": "Palaeogeography, Palaeoclimatology, Palaeoecology",
       "anio": 2021,
@@ -699,6 +779,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Effects of grain size on quartz ESR dating of Ti–Li center in fluvial and lacustrine sediments",
       "revista": "Quaternary Geochronology",
       "anio": 2015,
@@ -710,6 +791,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Early hominin group size: A perspective from Bestwood 1, Northern Cape Province, South Africa",
       "revista": "Quaternary International",
       "anio": 2022,
@@ -721,6 +803,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Climate frameworks for the Middle Stone Age and Later Stone Age in Northwest Africa",
       "revista": "Quaternary International",
       "anio": 2025,
@@ -732,6 +815,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A stratigraphic framework for abrupt climatic changes during the Last Glacial period based on three synchronized Greenland ice-core records: refining and extending the INTIMATE event stratigraphy",
       "revista": "Quaternary Science Reviews",
       "anio": 2014,
@@ -743,6 +827,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "An optimized scheme of lettered marine isotope substages for the last 1.0 million years, and the climatostratigraphic nature of isotope stages and substages",
       "revista": "Quaternary Science Reviews",
       "anio": 2015,
@@ -754,6 +839,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "On the use of δ18Oatm for ice core dating",
       "revista": "Quaternary Science Reviews",
       "anio": 2018,
@@ -765,6 +851,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Paleoenvironments of the late Middle Pleistocene Hualongdong, east-central China and their implications for the hominin evolution in eastern Asia",
       "revista": "Quaternary Science Reviews",
       "anio": 2026,
@@ -777,10 +864,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Massive cranium from Harbin in northeastern China establishes a new Middle Pleistocene human lineage",
       "revista": "The Innovation",
       "anio": 2021,
-      "primer_autor": "Ni"
+      "primer_autor": "Ni",
+      "cita": "Ni et al. (2021). Massive cranium from Harbin in northeastern China establishes a new Middle Pleistocene human lineage. Innovation",
+      "avisos": []
     },
     {
       "doi": "10.1016/j.xinn.2021.100132",
@@ -790,6 +880,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Late Middle Pleistocene Harbin cranium represents a new Homo species",
       "revista": "The Innovation",
       "anio": 2021,
@@ -798,27 +889,42 @@
       "avisos": []
     },
     {
-      "doi": "10.1016/S0047-2484(98",
+      "doi": "10.1016/S0047-2484(98)00055-2",
       "origenes": [
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": false
     },
     {
-      "doi": "10.1016/S1251-8050(01",
+      "doi": "10.1016/S1251-8050(01)01529-4",
       "origenes": [
         "consulta ligera",
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "en Crossref",
+      "comparada_con_cita": true,
+      "titulo": "First hominid from the Miocene (Lukeino Formation, Kenya)",
+      "revista": "Comptes Rendus de l'Académie des Sciences - Series IIA - Earth and Planetary Science",
+      "anio": 2001,
+      "primer_autor": "Senut",
+      "cita": "Senut et al. (2001). First hominid from the Miocene (Lukeino Formation, Kenya). CRAS",
+      "avisos": []
     },
     {
-      "doi": "10.1016/S1631-0683(03",
+      "doi": "10.1016/S1631-0683(03)00015-0",
       "origenes": [
         "consulta ligera",
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "en Crossref",
+      "comparada_con_cita": true,
+      "titulo": "Homo cepranensis sp. nov. and the evolution of African-European Middle Pleistocene hominids",
+      "revista": "Comptes Rendus Palevol",
+      "anio": 2003,
+      "primer_autor": "Mallegni",
+      "cita": "Mallegni et al. (2003). Homo cepranensis sp. nov. and the evolution of African-European Middle Pleistocene hominids. C R Palevol",
+      "avisos": []
     },
     {
       "doi": "10.1017/S0094837300005820",
@@ -826,6 +932,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Taphonomic and ecologic information from bone weathering",
       "revista": "Paleobiology",
       "anio": 1978,
@@ -836,14 +943,16 @@
       "origenes": [
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": false
     },
     {
       "doi": "10.1023/B:IFPR.0000006058.97459.e3",
       "origenes": [
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": false
     },
     {
       "doi": "10.1029/2004PA001071",
@@ -851,6 +960,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A Pliocene‐Pleistocene stack of 57 globally distributed benthic δ\n                    <sup>18</sup>\n                    O records",
       "revista": "Paleoceanography",
       "anio": 2005,
@@ -863,10 +973,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A New Cave Man from Rhodesia, South Africa",
       "revista": "Nature",
       "anio": 1921,
-      "primer_autor": "WOODWARD"
+      "primer_autor": "WOODWARD",
+      "cita": "Woodward (1921). A new cave man from Rhodesia, South Africa. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/115195a0",
@@ -875,10 +988,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Australopithecus africanus The Man-Ape of South Africa",
       "revista": "Nature",
       "anio": 1925,
-      "primer_autor": "DART"
+      "primer_autor": "DART",
+      "cita": "Dart (1925). Australopithecus africanus: The Man-Ape of South Africa. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/142377a0",
@@ -887,10 +1003,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The Pleistocene Anthropoid Apes of South Africa",
       "revista": "Nature",
       "anio": 1938,
-      "primer_autor": "BROOM"
+      "primer_autor": "BROOM",
+      "cita": "Broom (1938). The Pleistocene Anthropoid Apes of South Africa. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/184491a0",
@@ -899,10 +1018,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A New Fossil Skull From Olduvai",
       "revista": "Nature",
       "anio": 1959,
-      "primer_autor": "LEAKEY"
+      "primer_autor": "LEAKEY",
+      "cita": "Leakey (1959). A new fossil skull from Olduvai. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/202007a0",
@@ -911,10 +1033,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A New Species of The Genus Homo From Olduvai Gorge",
       "revista": "Nature",
       "anio": 1964,
-      "primer_autor": "LEAKEY"
+      "primer_autor": "LEAKEY",
+      "cita": "Leakey et al. (1964). A New Species of the Genus Homo from Olduvai Gorge. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/242447a0",
@@ -923,10 +1048,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Evidence for an Advanced Plio-Pleistocene Hominid from East Rudolf, Kenya",
       "revista": "Nature",
       "anio": 1973,
-      "primer_autor": "LEAKEY"
+      "primer_autor": "LEAKEY",
+      "cita": "Leakey (1973). Evidence for an advanced Plio-Pleistocene hominid from East Rudolf, Kenya. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/260293a0",
@@ -935,10 +1063,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Plio—Pleistocene hominid discoveries in Hadar, Ethiopia",
       "revista": "Nature",
       "anio": 1976,
-      "primer_autor": "Johanson"
+      "primer_autor": "Johanson",
+      "cita": "Johanson & Taieb (1976). Plio-Pleistocene hominid discoveries in Hadar, Ethiopia. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/316788a0",
@@ -947,10 +1078,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Early Homo erectus skeleton from west Lake Turkana, Kenya",
       "revista": "Nature",
       "anio": 1985,
-      "primer_autor": "Brown"
+      "primer_autor": "Brown",
+      "cita": "Brown et al. (1985). Early Homo erectus skeleton from west Lake Turkana, Kenya. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/322517a0",
@@ -959,10 +1093,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "2.5-Myr Australopithecus boisei from west of Lake Turkana, Kenya",
       "revista": "Nature",
       "anio": 1986,
-      "primer_autor": "Walker"
+      "primer_autor": "Walker",
+      "cita": "Walker et al. (1986). 2.5-Myr Australopithecus boisei from west of Lake Turkana, Kenya. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/35068500",
@@ -971,10 +1108,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "New hominin genus from eastern Africa shows diverse middle Pliocene lineages",
       "revista": "Nature",
       "anio": 2001,
-      "primer_autor": "Leakey"
+      "primer_autor": "Leakey",
+      "cita": "Leakey et al. (2001). New hominin genus from eastern Africa shows diverse middle Pliocene lineages. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/35084063",
@@ -983,17 +1123,21 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Late Miocene hominids from the Middle Awash, Ethiopia",
       "revista": "Nature",
       "anio": 2001,
-      "primer_autor": "Haile-Selassie"
+      "primer_autor": "Haile-Selassie",
+      "cita": "Haile-Selassie (2001). Late Miocene hominids from the Middle Awash, Ethiopia. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/35097529",
       "origenes": [
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": false
     },
     {
       "doi": "10.1038/376565a0",
@@ -1002,10 +1146,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "New four-million-year-old hominid species from Kanapoi and Allia Bay, Kenya",
       "revista": "Nature",
       "anio": 1995,
-      "primer_autor": "Leakey"
+      "primer_autor": "Leakey",
+      "cita": "Leakey et al. (1995). New four-million-year-old hominid species from Kanapoi and Allia Bay, Kenya. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/378273a0",
@@ -1014,10 +1161,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The first australopithecine 2,500 kilometres west of the Rift Valley (Chad)",
       "revista": "Nature",
       "anio": 1995,
-      "primer_autor": "Brunet"
+      "primer_autor": "Brunet",
+      "cita": "Brunet et al. (1995). The first australopithecine 2,500 kilometres west of the Rift Valley (Chad). Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/382500a0",
@@ -1025,6 +1175,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Direct dating of Florisbad hominid",
       "revista": "Nature",
       "anio": 1996,
@@ -1037,10 +1188,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The first skull of Australopithecus boisei",
       "revista": "Nature",
       "anio": 1997,
-      "primer_autor": "Suwa"
+      "primer_autor": "Suwa",
+      "cita": "Suwa et al. (1997). The first skull of Australopithecus boisei. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/419581a",
@@ -1049,10 +1203,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Sahelanthropus or 'Sahelpithecus'?",
       "revista": "Nature",
       "anio": 2002,
-      "primer_autor": "Wolpoff"
+      "primer_autor": "Wolpoff",
+      "cita": "Wolpoff (2002). Sahelanthropus or Sahelpithecus?. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/521432a",
@@ -1061,10 +1218,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The middle Pliocene gets crowded",
       "revista": "Nature",
       "anio": 2015,
-      "primer_autor": "Spoor"
+      "primer_autor": "Spoor",
+      "cita": "Spoor (2015). The middle Pliocene gets crowded. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/546212a",
@@ -1072,6 +1232,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "On the origin of our species",
       "revista": "Nature",
       "anio": 2017,
@@ -1085,6 +1246,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A new hominid from the Upper Miocene of Chad, Central Africa",
       "revista": "Nature",
       "anio": 2002,
@@ -1099,10 +1261,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Geology and palaeontology of the Upper Miocene Toros-Menalla hominid locality, Chad",
       "revista": "Nature",
       "anio": 2002,
-      "primer_autor": "Vignaud"
+      "primer_autor": "Vignaud",
+      "cita": "Vignaud (2002). Geology. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature01669",
@@ -1112,6 +1277,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Pleistocene Homo sapiens from Middle Awash, Ethiopia",
       "revista": "Nature",
       "anio": 2003,
@@ -1126,10 +1292,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Stratigraphic, chronological and behavioural contexts of Pleistocene Homo sapiens from Middle Awash, Ethiopia",
       "revista": "Nature",
       "anio": 2003,
-      "primer_autor": "Clark"
+      "primer_autor": "Clark",
+      "cita": "Clark et al. (2003). Stratigraphic, chronological and behavioural contexts of Pleistocene Homo sapiens from Middle Awash, Ethiopia. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature02999",
@@ -1138,10 +1307,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A new small-bodied hominin from the Late Pleistocene of Flores, Indonesia",
       "revista": "Nature",
       "anio": 2004,
-      "primer_autor": "Brown"
+      "primer_autor": "Brown",
+      "cita": "Brown et al. (2004). A new small-bodied hominin from the Late Pleistocene of Flores, Indonesia. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature03258",
@@ -1151,6 +1323,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Stratigraphic placement and age of modern humans from Kibish, Ethiopia",
       "revista": "Nature",
       "anio": 2005,
@@ -1165,10 +1338,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A juvenile early hominin skeleton from Dikika, Ethiopia",
       "revista": "Nature",
       "anio": 2006,
-      "primer_autor": "Alemseged"
+      "primer_autor": "Alemseged",
+      "cita": "Alemseged et al. (2006). A juvenile early hominin skeleton from Dikika, Ethiopia. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature05986",
@@ -1177,10 +1353,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Implications of new early Homo fossils from Ileret, east of Lake Turkana, Kenya",
       "revista": "Nature",
       "anio": 2007,
-      "primer_autor": "Spoor"
+      "primer_autor": "Spoor",
+      "cita": "Spoor et al. (2007). Implications of new early Homo fossils from Ileret, east of Lake Turkana, Kenya. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature06113",
@@ -1190,6 +1369,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A new species of great ape from the late Miocene epoch in Ethiopia",
       "revista": "Nature",
       "anio": 2007,
@@ -1205,6 +1385,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The complete mitochondrial DNA genome of an unknown hominin from southern Siberia",
       "revista": "Nature",
       "anio": 2010,
@@ -1220,6 +1401,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Genetic history of an archaic hominin group from Denisova Cave in Siberia",
       "revista": "Nature",
       "anio": 2010,
@@ -1234,10 +1416,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "New fossils from Koobi Fora in northern Kenya confirm taxonomic diversity in early Homo",
       "revista": "Nature",
       "anio": 2012,
-      "primer_autor": "Leakey"
+      "primer_autor": "Leakey",
+      "cita": "Leakey et al. (2012). New fossils from Koobi Fora in northern Kenya confirm taxonomic diversity in early Homo. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature13408",
@@ -1245,6 +1430,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Altitude adaptation in Tibetans caused by introgression of Denisovan-like DNA",
       "revista": "Nature",
       "anio": 2014,
@@ -1257,10 +1443,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The timing and spatiotemporal patterning of Neanderthal disappearance",
       "revista": "Nature",
       "anio": 2014,
-      "primer_autor": "Higham"
+      "primer_autor": "Higham",
+      "cita": "Higham et al. (2014). The timing and spatiotemporal patterning of Neanderthal disappearance. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature14268",
@@ -1268,6 +1457,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "New cosmogenic burial ages for Sterkfontein Member 2 Australopithecus and Member 5 Oldowan",
       "revista": "Nature",
       "anio": 2015,
@@ -1280,10 +1470,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "New species from Ethiopia further expands Middle Pliocene hominin diversity",
       "revista": "Nature",
       "anio": 2015,
-      "primer_autor": "Haile-Selassie"
+      "primer_autor": "Haile-Selassie",
+      "cita": "Haile-Selassie et al. (2015). New species from Ethiopia further expands Middle Pliocene hominin diversity. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature14464",
@@ -1292,10 +1485,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "3.3-million-year-old stone tools from Lomekwi 3, West Turkana, Kenya",
       "revista": "Nature",
       "anio": 2015,
-      "primer_autor": "Harmand"
+      "primer_autor": "Harmand",
+      "cita": "Harmand et al. (2015). 3.3-million-year-old stone tools from Lomekwi 3, West Turkana, Kenya. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature16510",
@@ -1305,6 +1501,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "New geological and palaeontological age constraint for the gorilla–human lineage split",
       "revista": "Nature",
       "anio": 2016,
@@ -1319,6 +1516,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Revised stratigraphy and chronology for Homo floresiensis at Liang Bua in Indonesia",
       "revista": "Nature",
       "anio": 2016,
@@ -1333,10 +1531,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Nuclear DNA sequences from the Middle Pleistocene Sima de los Huesos hominins",
       "revista": "Nature",
       "anio": 2016,
-      "primer_autor": "Meyer"
+      "primer_autor": "Meyer",
+      "cita": "Meyer et al. (2016). Nuclear DNA sequences from the Middle Pleistocene Sima de los Huesos hominins. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature19792",
@@ -1345,10 +1546,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Genomic analyses inform on migration events during the peopling of Eurasia",
       "revista": "Nature",
       "anio": 2016,
-      "primer_autor": "Pagani"
+      "primer_autor": "Pagani",
+      "cita": "Pagani et al. (2016). Genomic analyses inform on migration events during the peopling of Eurasia. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/nature22335",
@@ -1358,6 +1562,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The age of the hominin fossils from Jebel Irhoud, Morocco, and the origins of the Middle Stone Age",
       "revista": "Nature",
       "anio": 2017,
@@ -1373,6 +1578,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "New fossils from Jebel Irhoud, Morocco and the pan-African origin of Homo sapiens",
       "revista": "Nature",
       "anio": 2017,
@@ -1388,6 +1594,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The first archaic Homo from Taiwan",
       "revista": "Nature Communications",
       "anio": 2015,
@@ -1401,6 +1608,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Deciphering African late middle Pleistocene hominin diversity and the origin of our species",
       "revista": "Nature Communications",
       "anio": 2019,
@@ -1412,6 +1620,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "New hominin remains and revised context from the earliest Homo erectus locality in East Turkana, Kenya",
       "revista": "Nature Communications",
       "anio": 2021,
@@ -1423,6 +1632,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Early warning signals of the termination of the African Humid Period(s)",
       "revista": "Nature Communications",
       "anio": 2024,
@@ -1434,6 +1644,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Evidence for increased hominid diversity in the Early to Middle Pleistocene of Indonesia",
       "revista": "Nature Ecology &amp; Evolution",
       "anio": 2019,
@@ -1445,6 +1656,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A genome sequence from a modern human skull over 45,000 years old from Zlatý kůň in Czechia",
       "revista": "Nature Ecology &amp; Evolution",
       "anio": 2021,
@@ -1456,6 +1668,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Diversity-dependent speciation and extinction in hominins",
       "revista": "Nature Ecology &amp; Evolution",
       "anio": 2024,
@@ -1467,6 +1680,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Long-term biotic homogenization in the East African Rift System over the last 6 million years of hominin evolution",
       "revista": "Nature Ecology &amp; Evolution",
       "anio": 2024,
@@ -1478,6 +1692,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "What we know and do not know after the first decade of Homo naledi",
       "revista": "Nature Ecology &amp; Evolution",
       "anio": 2024,
@@ -1489,6 +1704,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Spatial bias in the fossil record affects understanding of human evolution",
       "revista": "Nature Ecology &amp; Evolution",
       "anio": 2024,
@@ -1500,6 +1716,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "An unbalanced history misrepresents the study of human evolution",
       "revista": "Nature Ecology &amp; Evolution",
       "anio": 2024,
@@ -1511,6 +1728,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Integrative taxonomy clarifies the evolution of a cryptic primate clade",
       "revista": "Nature Ecology &amp; Evolution",
       "anio": 2024,
@@ -1522,6 +1740,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Gradual exacerbation of obstetric constraints during hominoid evolution implied by re-evaluation of cephalopelvic fit in chimpanzees",
       "revista": "Nature Ecology &amp; Evolution",
       "anio": 2024,
@@ -1533,6 +1752,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Consistent multidecadal variability in global temperature reconstructions and simulations over the Common Era",
       "revista": "Nature Geoscience",
       "anio": 2019,
@@ -1544,6 +1764,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Chimpanzees use social information to acquire a skill they fail to innovate",
       "revista": "Nature Human Behaviour",
       "anio": 2024,
@@ -1555,6 +1776,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "More than a decade of genetic research on the Denisovans",
       "revista": "Nature Reviews Genetics",
       "anio": 2023,
@@ -1567,10 +1789,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Earliest known hominin activity in the Philippines by 709 thousand years ago",
       "revista": "Nature",
       "anio": 2018,
-      "primer_autor": "Ingicco"
+      "primer_autor": "Ingicco",
+      "cita": "Ingicco et al. (2018). Earliest known hominin activity in the Philippines by 709 thousand years ago. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/s41586-018-0455-x",
@@ -1578,6 +1803,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The genome of the offspring of a Neanderthal mother and a Denisovan father",
       "revista": "Nature",
       "anio": 2018,
@@ -1591,6 +1817,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A new species of Homo from the Late Pleistocene of the Philippines",
       "revista": "Nature",
       "anio": 2019,
@@ -1606,6 +1833,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A late Middle Pleistocene Denisovan mandible from the Tibetan Plateau",
       "revista": "Nature",
       "anio": 2019,
@@ -1619,7 +1847,8 @@
         "consulta ligera",
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": true
     },
     {
       "doi": "10.1038/s41586-019-1401-2",
@@ -1627,6 +1856,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "No evidence for globally coherent warm and cold periods over the preindustrial Common Era",
       "revista": "Nature",
       "anio": 2019,
@@ -1639,10 +1869,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A 3.8-million-year-old hominin cranium from Woranso-Mille, Ethiopia",
       "revista": "Nature",
       "anio": 2019,
-      "primer_autor": "Haile-Selassie"
+      "primer_autor": "Haile-Selassie",
+      "cita": "Haile-Selassie et al. (2019). A 3.8-million-year-old hominin cranium from Woranso-Mille, Ethiopia. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/s41586-019-1863-2",
@@ -1651,10 +1884,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Last appearance of Homo erectus at Ngandong, Java, 117,000–108,000 years ago",
       "revista": "Nature",
       "anio": 2019,
-      "primer_autor": "Rizal"
+      "primer_autor": "Rizal",
+      "cita": "Rizal et al. (2020). Last appearance of Homo erectus at Ngandong, Java, 117,000-108,000 years ago. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/s41586-020-2153-8",
@@ -1663,10 +1899,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The dental proteome of Homo antecessor",
       "revista": "Nature",
       "anio": 2020,
-      "primer_autor": "Welker"
+      "primer_autor": "Welker",
+      "cita": "Welker et al. (2020). The dental proteome of Homo antecessor. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/s41586-020-2165-4",
@@ -1675,10 +1914,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Dating the skull from Broken Hill, Zambia, and its position in human evolution",
       "revista": "Nature",
       "anio": 2020,
-      "primer_autor": "Grün"
+      "primer_autor": "Grün",
+      "cita": "Grün et al. (2020). Dating the skull from Broken Hill, Zambia, and its position in human evolution. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/s41586-021-03335-3",
@@ -1686,6 +1928,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Initial Upper Palaeolithic humans in Europe had recent Neanderthal ancestry",
       "revista": "Nature",
       "anio": 2021,
@@ -1699,6 +1942,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Age of the oldest known Homo sapiens from eastern Africa",
       "revista": "Nature",
       "anio": 2022,
@@ -1713,10 +1957,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Postcranial evidence of late Miocene hominin bipedalism in Chad",
       "revista": "Nature",
       "anio": 2022,
-      "primer_autor": "Daver"
+      "primer_autor": "Daver",
+      "cita": "Daver et al. (2022). Postcranial evidence of late Miocene hominin bipedalism in Chad. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/s41586-023-06055-y",
@@ -1724,6 +1971,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A weakly structured stem for human origins in Africa",
       "revista": "Nature",
       "anio": 2023,
@@ -1735,6 +1983,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Evidence for the earliest structural use of wood at least 476,000 years ago",
       "revista": "Nature",
       "anio": 2023,
@@ -1746,6 +1995,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Earliest modern human genomes constrain timing of Neanderthal admixture",
       "revista": "Nature",
       "anio": 2024,
@@ -1757,6 +2007,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The earliest human face of Western Europe",
       "revista": "Nature",
       "anio": 2025,
@@ -1768,6 +2019,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Complete sequencing of ape genomes",
       "revista": "Nature",
       "anio": 2025,
@@ -1779,6 +2031,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "New discoveries of Australopithecus and Homo from Ledi-Geraru, Ethiopia",
       "revista": "Nature",
       "anio": 2025,
@@ -1790,6 +2043,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Homo sapiens-specific evolution unveiled by ancient southern African genomes",
       "revista": "Nature",
       "anio": 2025,
@@ -1801,10 +2055,13 @@
         "consulta ligera"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Ancient proteins identify various Denisovan remains from Southwest China",
       "revista": "Nature",
       "anio": 2026,
-      "primer_autor": "Rao"
+      "primer_autor": "Rao",
+      "cita": "Rao et al. (2026). Ancient proteins identify various Denisovan remains from Southwest China. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/s41586-026-10997-4",
@@ -1812,10 +2069,13 @@
         "consulta ligera"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Denisovans from southwestern China and their subsistence strategies",
       "revista": "Nature",
       "anio": 2026,
-      "primer_autor": "Ruan"
+      "primer_autor": "Ruan",
+      "cita": "Ruan et al. (2026). Denisovans from southwestern China and their subsistence strategies. Nature",
+      "avisos": []
     },
     {
       "doi": "10.1038/s41588-024-01960-y",
@@ -1823,6 +2083,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A history of multiple Denisovan introgression events in modern humans",
       "revista": "Nature Genetics",
       "anio": 2024,
@@ -1834,6 +2095,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The Allen Ancient DNA Resource (AADR) a curated compendium of ancient human genomes",
       "revista": "Scientific Data",
       "anio": 2024,
@@ -1845,6 +2107,7 @@
         "recorrido y entrada DEA"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Quaternary taphonomy: understanding the past through traces",
       "revista": "Scientific Reports",
       "anio": 2022,
@@ -1858,6 +2121,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Sacrum morphology supports taxonomic heterogeneity of “Australopithecus africanus” at Sterkfontein Member 4",
       "revista": "Communications Biology",
       "anio": 2021,
@@ -1869,6 +2133,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Multidimensional primate niche space sheds light on interspecific competition in primate evolution",
       "revista": "Communications Biology",
       "anio": 2024,
@@ -1880,6 +2145,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "An ice–climate oscillatory framework for Dansgaard–Oeschger cycles",
       "revista": "Nature Reviews Earth &amp; Environment",
       "anio": 2020,
@@ -1891,6 +2157,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Hydroclimate changes in eastern Africa over the past 200,000 years may have influenced early human dispersal",
       "revista": "Communications Earth &amp; Environment",
       "anio": 2021,
@@ -1902,6 +2169,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Human evolution: taxonomy and paleobiology",
       "revista": "Journal of Anatomy",
       "anio": 2000,
@@ -1915,6 +2183,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A new Late Miocene great ape from Kenya and its implications for the origins of African great apes and humans",
       "revista": "Proceedings of the National Academy of Sciences",
       "anio": 2007,
@@ -1930,6 +2199,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A unique Middle Miocene European hominoid and the origins of the great ape and human clade",
       "revista": "Proceedings of the National Academy of Sciences",
       "anio": 2009,
@@ -1943,7 +2213,8 @@
         "consulta ligera",
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": true
     },
     {
       "doi": "10.1073/pnas.1106638108",
@@ -1952,10 +2223,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Earliest human occupations at Dmanisi (Georgian Caucasus) dated to 1.85–1.78 Ma",
       "revista": "Proceedings of the National Academy of Sciences",
       "anio": 2011,
-      "primer_autor": "Ferring"
+      "primer_autor": "Ferring",
+      "cita": "Ferring et al. (2011). Earliest human occupations at Dmanisi (Georgian Caucasus) dated to 1.85-1.78 Ma. PNAS",
+      "avisos": []
     },
     {
       "doi": "10.1073/pnas.1204209109",
@@ -1964,10 +2238,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Isotopic evidence for an early shift to C\n                    <sub>4</sub>\n                    resources by Pliocene hominins in Chad",
       "revista": "Proceedings of the National Academy of Sciences",
       "anio": 2012,
-      "primer_autor": "Lee-Thorp"
+      "primer_autor": "Lee-Thorp",
+      "cita": "Lee-Thorp et al. (2012). Isotopic evidence for an early shift to C4 resources by Pliocene hominins in Chad. PNAS",
+      "avisos": []
     },
     {
       "doi": "10.1073/pnas.1316780111",
@@ -1975,7 +2252,8 @@
         "consulta ligera",
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": true
     },
     {
       "doi": "10.1073/pnas.2123516119",
@@ -1984,10 +2262,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Cosmogenic nuclide dating of\n                    <i>Australopithecus</i>\n                    at Sterkfontein, South Africa",
       "revista": "Proceedings of the National Academy of Sciences",
       "anio": 2022,
-      "primer_autor": "Granger"
+      "primer_autor": "Granger",
+      "cita": "Granger et al. (2022). Cosmogenic nuclide dating of Australopithecus at Sterkfontein, South Africa. PNAS",
+      "avisos": []
     },
     {
       "doi": "10.1086/203931",
@@ -1996,10 +2277,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The Question of Ritual Cannibalism at Grotta Guattari [and Comments and Replies]",
       "revista": "Current Anthropology",
       "anio": 1991,
-      "primer_autor": "White"
+      "primer_autor": "White",
+      "cita": "White & Toth (1991). The Question of Ritual Cannibalism at Grotta Guattari [and Comments and Replies]. Curr Anthropol",
+      "avisos": []
     },
     {
       "doi": "10.1086/667695",
@@ -2008,10 +2292,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Early<i>Homo</i>",
       "revista": "Current Anthropology",
       "anio": 2012,
-      "primer_autor": "Antón"
+      "primer_autor": "Antón",
+      "cita": "Antón (2012). Early Homo: Who, When, and Where. Current Anthropology",
+      "avisos": []
     },
     {
       "doi": "10.1098/rstb.2015.0237",
@@ -2020,10 +2307,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The origin and evolution of\n                    <i>Homo sapiens</i>",
       "revista": "Philosophical Transactions of the Royal Society B: Biological Sciences",
       "anio": 2016,
-      "primer_autor": "Stringer"
+      "primer_autor": "Stringer",
+      "cita": "Stringer (2016). The origin and evolution of Homo sapiens. Phil Trans R Soc B",
+      "avisos": []
     },
     {
       "doi": "10.1109/TVCG.2009.113",
@@ -2031,6 +2321,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A Physiologically-based Model for Simulation of Color Vision Deficiency",
       "revista": "IEEE Transactions on Visualization and Computer Graphics",
       "anio": 2009,
@@ -2042,6 +2333,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The Complexity of ESR Signals in Tooth Enamel Fragments, A Comparison of Examples from Jebel Irhoud (Morocco) and Broken Hill (Zambia)",
       "revista": "Archaeometry",
       "anio": 2025,
@@ -2054,10 +2346,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "ELECTRON SPIN RESONANCE DATING AND THE EVOLUTION OF MODERN HUMANS",
       "revista": "Archaeometry",
       "anio": 1991,
-      "primer_autor": "GRÜN"
+      "primer_autor": "GRÜN",
+      "cita": "Grün & Stringer (1991). Electron spin resonance dating and the evolution of modern humans. Archaeometry",
+      "avisos": []
     },
     {
       "doi": "10.1111/nyas.14727",
@@ -2065,6 +2360,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A case of hominin scavenging 1.84 million years ago from Olduvai Gorge (Tanzania)",
       "revista": "Annals of the New York Academy of Sciences",
       "anio": 2021,
@@ -2076,6 +2372,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A nearly complete foot from Dikika, Ethiopia and its implications for the ontogeny and function of\n            <i>Australopithecus afarensis</i>",
       "revista": "Science Advances",
       "anio": 2018,
@@ -2087,6 +2384,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Dental evolutionary rates and its implications for the Neanderthal–modern human divergence",
       "revista": "Science Advances",
       "anio": 2019,
@@ -2098,6 +2396,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Nuclear DNA from two early Neandertals reveals 80,000 years of genetic continuity in Europe",
       "revista": "Science Advances",
       "anio": 2019,
@@ -2109,6 +2408,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Unveiling the multifunctional use of ochre in the Middle Stone Age: Specialized ochre retouchers from Blombos Cave",
       "revista": "Science Advances",
       "anio": 2025,
@@ -2120,6 +2420,7 @@
         "recorrido y entrada DEA"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Taphonomic analysis at Liang Bua reveals the behavioral and technological capabilities of\n                    <i>Homo floresiensis</i>",
       "revista": "Science Advances",
       "anio": 2026,
@@ -2134,10 +2435,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Emergence of Modern Human Behavior: Middle Stone Age Engravings from South Africa",
       "revista": "Science",
       "anio": 2002,
-      "primer_autor": "Henshilwood"
+      "primer_autor": "Henshilwood",
+      "cita": "Henshilwood et al. (2002). Emergence of modern human behaviour: Middle Stone Age engravings from South Africa. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.1092978",
@@ -2146,17 +2450,21 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Late Miocene Teeth from Middle Awash, Ethiopia, and Early Hominid Dental Evolution",
       "revista": "Science",
       "anio": 2004,
-      "primer_autor": "Haile-Selassie"
+      "primer_autor": "Haile-Selassie",
+      "cita": "Haile-Selassie et al. (2004). Late Miocene teeth from Middle Awash, Ethiopia, and early hominid dental evolution. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.1096393",
       "origenes": [
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": false
     },
     {
       "doi": "10.1126/science.1103094",
@@ -2166,6 +2474,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "<i>Pierolapithecus catalaunicus</i>\n            , a New Middle Miocene Great Ape from Spain",
       "revista": "Science",
       "anio": 2004,
@@ -2179,6 +2488,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Redefining the Age of Clovis: Implications for the Peopling of the Americas",
       "revista": "Science",
       "anio": 2007,
@@ -2190,6 +2500,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Monte Verde: Seaweed, Food, Medicine, and the Peopling of South America",
       "revista": "Science",
       "anio": 2008,
@@ -2201,7 +2512,8 @@
         "consulta ligera",
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": true
     },
     {
       "doi": "10.1126/science.1175802",
@@ -2211,6 +2523,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "<i>Ardipithecus ramidus</i>\n                    and the Paleobiology of Early Hominids",
       "revista": "Science",
       "anio": 2009,
@@ -2224,6 +2537,7 @@
         "recorrido y entrada DEA"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The Geological, Isotopic, Botanical, Invertebrate, and Lower Vertebrate Surroundings of\n            <i>Ardipithecus ramidus</i>",
       "revista": "Science",
       "anio": 2009,
@@ -2238,10 +2552,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The Pelvis and Femur of<i>Ardipithecus ramidus</i>: The Emergence of Upright Walking",
       "revista": "Science",
       "anio": 2009,
-      "primer_autor": "Lovejoy"
+      "primer_autor": "Lovejoy",
+      "cita": "Lovejoy et al. (2009). The Pelvis and Femur of Ardipithecus ramidus: The Emergence of Upright Walking. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.1184944",
@@ -2250,10 +2567,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "<i>Australopithecus sediba</i>\n                    : A New Species of\n                    <i>Homo</i>\n                    -Like Australopith from South Africa",
       "revista": "Science",
       "anio": 2010,
-      "primer_autor": "Berger"
+      "primer_autor": "Berger",
+      "cita": "Berger et al. (2010). Australopithecus sediba: A New Species of Homo-Like Australopith from South Africa. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.1188021",
@@ -2263,6 +2583,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A Draft Sequence of the Neandertal Genome",
       "revista": "Science",
       "anio": 2010,
@@ -2277,10 +2598,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Complete Fourth Metatarsal and Arches in the Foot of\n                    <i>Australopithecus afarensis</i>",
       "revista": "Science",
       "anio": 2011,
-      "primer_autor": "Ward"
+      "primer_autor": "Ward",
+      "cita": "Ward et al. (2011). Complete fourth metatarsal and arches in the foot of Australopithecus afarensis. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.1203922",
@@ -2289,10 +2613,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The Endocast of MH1,\n                    <i>Australopithecus sediba</i>",
       "revista": "Science",
       "anio": 2011,
-      "primer_autor": "Carlson"
+      "primer_autor": "Carlson",
+      "cita": "Carlson et al. (2011). The endocast of MH1, Australopithecus sediba. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.1232996",
@@ -2300,6 +2627,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The Vertebral Column of\n                    <i>Australopithecus sediba</i>",
       "revista": "Science",
       "anio": 2013,
@@ -2311,6 +2639,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Evolution of early\n                    <i>Homo</i>\n                    : An integrated biological perspective",
       "revista": "Science",
       "anio": 2014,
@@ -2323,10 +2652,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A Complete Skull from Dmanisi, Georgia, and the Evolutionary Biology of Early\n            <i>Homo</i>",
       "revista": "Science",
       "anio": 2013,
-      "primer_autor": "Lordkipanidze"
+      "primer_autor": "Lordkipanidze",
+      "cita": "Lordkipanidze et al. (2013). A Complete Skull from Dmanisi, Georgia, and the Evolutionary Biology of Early Homo. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.1253958",
@@ -2334,6 +2666,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Neandertal roots: Cranial and chronological evidence from Sima de los Huesos",
       "revista": "Science",
       "anio": 2014,
@@ -2345,6 +2678,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The Motion of Untwisted Untorted Scroll Waves in Belousov-Zhabotinsky Reagent",
       "revista": "Science",
       "anio": 1988,
@@ -2355,7 +2689,8 @@
       "origenes": [
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": false
     },
     {
       "doi": "10.1126/science.274.5294.1870",
@@ -2364,10 +2699,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Latest\n            <i>Homo erectus</i>\n            of Java: Potential Contemporaneity with\n            <i>Homo sapiens</i>\n            in Southeast Asia",
       "revista": "Science",
       "anio": 1996,
-      "primer_autor": "Swisher"
+      "primer_autor": "Swisher",
+      "cita": "Swisher et al. (1996). Latest Homo erectus of Java: Potential Contemporaneity with Homo sapiens in Southeast Asia. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.276.5311.401",
@@ -2377,6 +2715,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A Hominoid Genus from the Early Miocene of Uganda",
       "revista": "Science",
       "anio": 1997,
@@ -2391,10 +2730,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A Hominid from the Lower Pleistocene of Atapuerca, Spain: Possible Ancestor to Neandertals and Modern Humans",
       "revista": "Science",
       "anio": 1997,
-      "primer_autor": "Bermúdez de Castro"
+      "primer_autor": "Bermúdez de Castro",
+      "cita": "Bermúdez de Castro et al. (1997). A Hominid from the Lower Pleistocene of Atapuerca, Spain: Possible Ancestor to Neandertals and Modern Humans. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.284.5411.65",
@@ -2403,10 +2745,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The Human Genus",
       "revista": "Science",
       "anio": 1999,
-      "primer_autor": "Wood"
+      "primer_autor": "Wood",
+      "cita": "Wood & Collard (1999). The human genus. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.284.5414.625",
@@ -2415,10 +2760,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Environment and Behavior of 2.5-Million-Year-Old Bouri Hominids",
       "revista": "Science",
       "anio": 1999,
-      "primer_autor": "Heinzelin"
+      "primer_autor": "Heinzelin",
+      "cita": "de Heinzelin et al. (1999). Environment and Behavior of 2.5-Million-Year-Old Bouri Hominids. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.284.5414.629",
@@ -2427,10 +2775,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "<i>Australopithecus garhi</i>\n                    : A New Species of Early Hominid from Ethiopia",
       "revista": "Science",
       "anio": 1999,
-      "primer_autor": "Asfaw"
+      "primer_autor": "Asfaw",
+      "cita": "Asfaw et al. (1999). Australopithecus garhi: A New Species of Early Hominid from Ethiopia. Science",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.aaa1343",
@@ -2438,6 +2789,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Early\n            <i>Homo</i>\n            at 2.8 Ma from Ledi-Geraru, Afar, Ethiopia",
       "revista": "Science",
       "anio": 2015,
@@ -2449,6 +2801,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Contemporaneity of\n            <i>Australopithecus</i>\n            ,\n            <i>Paranthropus</i>\n            , and early\n            <i>Homo erectus</i>\n            in South Africa",
       "revista": "Science",
       "anio": 2020,
@@ -2460,6 +2813,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Late Upper Paleolithic occupation at Cooper’s Ferry, Idaho, USA, ~16,000 years ago",
       "revista": "Science",
       "anio": 2019,
@@ -2471,6 +2825,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Insights into human genetic variation and population history from 929 diverse genomes",
       "revista": "Science",
       "anio": 2020,
@@ -2482,6 +2837,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "An astronomically dated record of Earth’s climate and its predictability over the last 66 million years",
       "revista": "Science",
       "anio": 2020,
@@ -2493,6 +2849,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Denisovan ancestry and population history of early East Asians",
       "revista": "Science",
       "anio": 2020,
@@ -2504,6 +2861,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Persistent influence of precession on northern ice sheet variability since the early Pleistocene",
       "revista": "Science",
       "anio": 2022,
@@ -2515,6 +2873,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Independent age estimates resolve the controversy of ancient human footprints at White Sands",
       "revista": "Science",
       "anio": 2023,
@@ -2527,10 +2886,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The phylogenetic position of the Yunxian cranium elucidates the origin of\n            <i>Homo longi</i>\n            and the Denisovans",
       "revista": "Science",
       "anio": 2025,
-      "primer_autor": "Feng"
+      "primer_autor": "Feng",
+      "cita": "Feng et al. (2025). The phylogenetic position of the Yunxian cranium elucidates the origin of Homo longi and the Denisovans. Science 389, 1320–1324",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.adq3010",
@@ -2538,6 +2900,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Neanderthal ancestry through time: Insights from genomes of ancient and present-day humans",
       "revista": "Science",
       "anio": 2024,
@@ -2549,6 +2912,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "<i>Australopithecus</i>\n            at Sterkfontein did not consume substantial mammalian meat",
       "revista": "Science",
       "anio": 2025,
@@ -2562,6 +2926,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "A male Denisovan mandible from Pleistocene Taiwan",
       "revista": "Science",
       "anio": 2025,
@@ -2576,10 +2941,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The proteome of the late Middle Pleistocene Harbin individual",
       "revista": "Science",
       "anio": 2025,
-      "primer_autor": "Fu"
+      "primer_autor": "Fu",
+      "cita": "Fu et al. (2025). The proteome of the late Middle Pleistocene Harbin individual. Science 389, 704–707",
+      "avisos": []
     },
     {
       "doi": "10.1126/science.adw9217",
@@ -2587,6 +2955,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A mid-Holocene age for Monte Verde challenges the timeline of human colonization of South America",
       "revista": "Science",
       "anio": 2026,
@@ -2598,6 +2967,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Revisiting the age of the Florisbad hominin material",
       "revista": "HOMO",
       "anio": 2023,
@@ -2609,6 +2979,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Ancient Genomics of Modern Humans: The First Decade",
       "revista": "Annual Review of Genomics and Human Genetics",
       "anio": 2018,
@@ -2620,6 +2991,7 @@
         "recorrido y entrada DEA"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Nine Ways to Reduce Cognitive Load in Multimedia Learning",
       "revista": "Educational Psychologist",
       "anio": 2003,
@@ -2631,6 +3003,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Cognitive Load During Problem Solving: Effects on Learning",
       "revista": "Cognitive Science",
       "anio": 1988,
@@ -2643,10 +3016,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Dental Microwear and Diet of the Plio-Pleistocene Hominin Paranthropus boisei",
       "revista": "PLoS ONE",
       "anio": 2008,
-      "primer_autor": "Ungar"
+      "primer_autor": "Ungar",
+      "cita": "Ungar et al. (2008). Dental microwear and diet of the Plio-Pleistocene hominin Paranthropus boisei. PLoS One",
+      "avisos": []
     },
     {
       "doi": "10.1371/journal.pone.0169486",
@@ -2654,6 +3030,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Earliest Human Presence in North America Dated to the Last Glacial Maximum: New Radiocarbon Dates from Bluefish Caves, Canada",
       "revista": "PLOS ONE",
       "anio": 2017,
@@ -2667,6 +3044,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Potential hominin affinities of Graecopithecus from the Late Miocene of Europe",
       "revista": "PLOS ONE",
       "anio": 2017,
@@ -2682,6 +3060,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Messinian age and savannah environment of the possible hominin Graecopithecus from Europe",
       "revista": "PLOS ONE",
       "anio": 2017,
@@ -2695,6 +3074,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Correlation and prognostic accuracy between noninvasive liver fibrosismarkers and portal pressure in cirrhosis: Role of ALBI score",
       "revista": "PLOS ONE",
       "anio": 2018,
@@ -2706,6 +3086,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The age of fossil StW573 (‘Little Foot’): An alternative interpretation of 26Al/10Be burial data",
       "revista": "South African Journal of Science",
       "anio": 2017,
@@ -2717,6 +3098,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Tectonic and Paleoclimatic Setting for Hominin Evolution in Eastern Africa",
       "revista": "Elements",
       "anio": 2023,
@@ -2727,14 +3109,16 @@
       "origenes": [
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": false
     },
     {
       "doi": "10.2478/v10307-012-0015-4",
       "origenes": [
         "atlas"
       ],
-      "estado": "no localizado"
+      "estado": "no localizado",
+      "comparada_con_cita": false
     },
     {
       "doi": "10.3389/feart.2021.683010",
@@ -2742,6 +3126,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "Exploring the Past Biosphere of Chew Bahir/Southern Ethiopia: Cross-Species Hybridization Capture of Ancient Sedimentary DNA from a Deep Drill Core",
       "revista": "Frontiers in Earth Science",
       "anio": 2021,
@@ -2753,6 +3138,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "The behavioural ecology of hominin locomotion: what can we learn from landscapes of fear and primate terrestriality?",
       "revista": "Frontiers in Ecology and Evolution",
       "anio": 2025,
@@ -2764,6 +3150,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A Taphonomic Study of DS-22A (Bed I, Olduvai Gorge) and Its Implications for Reconstructing Hominin-Carnivore Interactions at Early Pleistocene Anthropogenic Sites",
       "revista": "Quaternary",
       "anio": 2025,
@@ -2775,6 +3162,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A new Upper Pleistocene hominin calvarium from West-Turkana (Kenya)",
       "revista": "Bulletins et mémoires de la société d'anthropologie de Paris",
       "anio": 2021,
@@ -2787,7 +3175,8 @@
         "consulta ligera",
         "atlas"
       ],
-      "estado": "fuera de Crossref, resuelve en doi.org"
+      "estado": "fuera de Crossref, resuelve en doi.org",
+      "comparada_con_cita": true
     },
     {
       "doi": "10.5194/sd-33-93-2024",
@@ -2795,6 +3184,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "ICDP workshop on the Deep Drilling in the Turkana Basin project: exploring the link between environmental factors and hominin evolution over the past 4 Myr",
       "revista": "Scientific Drilling",
       "anio": 2024,
@@ -2806,6 +3196,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A Critical Inventory and Associated Chronology of the Middle Stone Age and Later Stone Age in Northwest Africa",
       "revista": "Journal of Open Archaeology Data",
       "anio": 2024,
@@ -2817,6 +3208,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "A Synthesis and Critical Inventory of Nubian Cores in Middle Stone Age and Middle Palaeolithic Assemblages",
       "revista": "Journal of Open Archaeology Data",
       "anio": 2024,
@@ -2829,10 +3221,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Homo naledi, a new species of the genus Homo from the Dinaledi Chamber, South Africa",
       "revista": "eLife",
       "anio": 2015,
-      "primer_autor": "Berger"
+      "primer_autor": "Berger",
+      "cita": "Berger et al. (2015). Homo naledi, a new species of the genus Homo from the Dinaledi Chamber, South Africa. eLife",
+      "avisos": []
     },
     {
       "doi": "10.7554/eLife.24231",
@@ -2842,6 +3237,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "The age of Homo naledi and associated sediments in the Rising Star Cave, South Africa",
       "revista": "eLife",
       "anio": 2017,
@@ -2855,6 +3251,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "New fossils of Australopithecus sediba reveal a nearly complete lower back",
       "revista": "eLife",
       "anio": 2021,
@@ -2866,6 +3263,7 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": false,
       "titulo": "An initial report of circa 241,000- to 335,000-year-old rock engravings and their relation to Homo naledi in the Rising Star cave system, South Africa",
       "revista": "eLife",
       "anio": 2025,
@@ -2878,10 +3276,13 @@
         "atlas"
       ],
       "estado": "en Crossref",
+      "comparada_con_cita": true,
       "titulo": "Evidence for deliberate burial of the dead by Homo naledi",
       "revista": "eLife",
       "anio": 2025,
-      "primer_autor": "Berger"
+      "primer_autor": "Berger",
+      "cita": "Berger et al. (2025). Evidence for deliberate burial of the dead by Homo naledi. eLife",
+      "avisos": []
     }
   ],
   "unesco": [

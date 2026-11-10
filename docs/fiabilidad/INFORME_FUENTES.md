@@ -8,18 +8,18 @@ Total: 248.
 
 | Estado | DOI |
 | --- | --- |
-| en Crossref | 232 |
+| en Crossref | 234 |
 | fuera de Crossref, resuelve en doi.org | 1 |
-| no localizado | 15 |
+| no localizado | 13 |
 
 ### DOI que requieren revisión
 
 | DOI | Dónde se usa | Resultado |
 | --- | --- | --- |
+| `10.1002/ajpa.10399` | consulta ligera, atlas | primer apellido en Crossref «Ant�n» no aparece en la cita |
+| `10.1002/ajpa.24122` | consulta ligera | primer apellido en Crossref «Croft» no aparece en la cita; el título citado no coincide con el del DOI en Crossref |
 | `10.1016/j.epsl.2004.01.036` | atlas | no localizado |
-| `10.1016/S0047-2484(98` | atlas | no localizado |
-| `10.1016/S1251-8050(01` | consulta ligera, atlas | no localizado |
-| `10.1016/S1631-0683(03` | consulta ligera, atlas | no localizado |
+| `10.1016/S0047-2484(98)00055-2` | atlas | no localizado |
 | `10.1023/B:EDUC.0000042415.65252.f4` | atlas | no localizado |
 | `10.1023/B:IFPR.0000006058.97459.e3` | atlas | no localizado |
 | `10.1038/35097529` | atlas | no localizado |
