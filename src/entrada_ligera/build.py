@@ -59,10 +59,41 @@ def chronology_type(entry: dict) -> str:
     }.get(entry.get("kind"), "Tipo pendiente de revisión")
 
 
-# Referencias del catálogo que no se han podido localizar en las comprobaciones realizadas.
-# Se conservan tal cual y se marcan a la vista; no se retiran (PB-GH-07).
+# Referencias del catálogo cuyo DOI falla en la comprobación automática (docs/fiabilidad/DOI_CORRESPONDENCIAS.json).
+# Se conservan tal cual, con su enlace, y se marcan a la vista; no se retiran (PB-GH-07 y PB-GH-09).
+# DOI citado -> DOI del registro de Crossref que cuadra en primer apellido, año y título.
+DOI_COMPROBADOS = {
+    "10.1038/s41586-019-1396-2": "10.1038/s41586-019-1376-z",
+    "10.1073/pnas.0901987106": "10.1073/pnas.0901280106",
+    "10.1073/pnas.1316780111": "10.1073/pnas.1316780110",
+    "10.1126/science.1158207": "10.1126/science.1154197",
+}
+# DOI que existe pero pertenece a otro artículo, sin que se haya localizado la referencia citada.
 REFERENCIAS_SIN_LOCALIZAR = {"10.1002/ajpa.24122"}
-AVISO_SIN_LOCALIZAR = " <em>(Referencia no localizada en las comprobaciones realizadas; pendiente de verificación.)</em>"
+AVISO_SIN_LOCALIZAR = (
+    " <em>(Aviso: el DOI citado pertenece a otro artículo y la referencia no se ha localizado en Crossref; "
+    "pendiente de verificación.)</em>"
+)
+
+
+def aviso_doi(doi: str) -> str:
+    """Nota visible para un DOI que falla; cadena vacía si el DOI no está señalado."""
+    if doi in DOI_COMPROBADOS:
+        bueno = DOI_COMPROBADOS[doi]
+        return (
+            " <em>(Aviso: el DOI citado no existe. Registro comprobado en Crossref para esta referencia: "
+            f'<a href="https://doi.org/{e(bueno)}" target="_blank" rel="noopener noreferrer">DOI: {e(bueno)}</a>.)</em>'
+        )
+    return AVISO_SIN_LOCALIZAR if doi in REFERENCIAS_SIN_LOCALIZAR else ""
+
+
+def prosa(value: object) -> str:
+    """Texto escapado; si menciona un DOI señalado, añade la nota justo detrás sin tocar el texto."""
+    text = e(value)
+    for doi in DOI_COMPROBADOS:
+        if doi in text:
+            text = text.replace(doi, doi + aviso_doi(doi))
+    return text
 
 
 def bibliography(species: dict) -> str:
@@ -79,7 +110,7 @@ def bibliography(species: dict) -> str:
             f' <a href="https://doi.org/{e(doi)}" target="_blank" rel="noopener noreferrer">DOI: {e(doi)}</a>'
             if re.fullmatch(r"10\.\d{4,9}/[^\s<>\"']+", doi) else ""
         )
-        aviso = AVISO_SIN_LOCALIZAR if doi in REFERENCIAS_SIN_LOCALIZAR else ""
+        aviso = aviso_doi(doi)
         lines.append(f"<li>{e(desc)}{link}{aviso}</li>")
     return "<ul class=references>" + "".join(lines) + "</ul>" if lines else "<p>Sin referencias detalladas.</p>"
 
@@ -136,10 +167,10 @@ def build() -> None:
             )
         else:
             figure = '<p>La ficha no dispone de una imagen enlazada.</p>'
-        description = e(sp.get("descripcion") or "Descripción no disponible")
+        description = prosa(sp.get("descripcion") or "Descripción no disponible")
         detail = sp.get("experto") or {}
         specialist = "".join(
-            f"<p><strong>{label}:</strong> {e(detail.get(field))}</p>"
+            f"<p><strong>{label}:</strong> {prosa(detail.get(field))}</p>"
             for field, label in (("descripcion_tecnica", "Características"), ("anatomia_craneal", "Anatomía craneal"), ("anatomia_postcraneal", "Anatomía poscraneal"), ("paleoecologia", "Paleoecología"), ("debate", "Debate"))
             if detail.get(field)
         )

@@ -1,15 +1,10 @@
 name: Comprobar las fuentes (DOI y UNESCO)
 
 # Consulta Crossref, doi.org y las fichas de la UNESCO y deja el informe en docs/fiabilidad/.
-# Se lanza a mano; durante la preparación PB-GH-09 también al subir cambios a su rama.
+# Solo se lanza a mano (Actions > Comprobar las fuentes > Run workflow) sobre una rama de trabajo;
+# la rama principal está protegida por revisión y el informe llega a ella mediante solicitud de cambios.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feat/pb-gh-09-fiabilidad
-    paths:
-      - scripts/comprobar_fuentes.py
-      - .github/workflows/comprobar-fuentes.yml
 
 permissions:
   contents: write

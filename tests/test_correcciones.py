@@ -102,9 +102,29 @@ class AtlasCorrections(unittest.TestCase):
 
     def test_rechaza_retirar_la_referencia_marcada(self):
         target=self.repo/'ligera/index.html'
-        t=target.read_text(encoding='utf-8').replace(' <em>(Referencia no localizada en las comprobaciones realizadas; pendiente de verificación.)</em>','',1)
+        t=target.read_text(encoding='utf-8').replace(' <em>(Aviso: el DOI citado pertenece a otro artículo y la referencia no se ha localizado en Crossref; pendiente de verificación.)</em>','',1)
         target.write_text(t,encoding='utf-8')
         self.assertFalse(self.result('Referencia no localizada marcada y conservada'))
+
+    def test_rechaza_doi_comprobado_que_no_sale_del_informe(self):
+        target=self.repo/'docs/fiabilidad/DOI_CORRESPONDENCIAS.json'
+        target.write_text(target.read_text(encoding='utf-8').replace('10.1038/s41586-019-1376-z','10.1038/s41586-019-0000-0'),encoding='utf-8')
+        self.assertFalse(self.result('Cada DOI comprobado procede del informe de Crossref'))
+
+    def test_rechaza_atlas_con_un_par_distinto_al_de_la_tabla(self):
+        target=self.repo/'atlas/assets/js/90-guards/084-paleobot-doi-avisos.js'
+        target.write_text(target.read_text(encoding='utf-8').replace("'10.1126/science.1154197'","'10.1126/science.1154198'"),encoding='utf-8')
+        self.assertFalse(self.result('DOI con aviso: mismos pares en tabla, consulta ligera y atlas'))
+
+    def test_rechaza_quitar_el_enlace_original_de_un_doi_con_aviso(self):
+        target=self.repo/'ligera/index.html'
+        target.write_text(target.read_text(encoding='utf-8').replace('href="https://doi.org/10.1073/pnas.1316780111"','href="#"'),encoding='utf-8')
+        self.assertFalse(self.result('DOI con aviso: se conserva el enlace original y se añade el comprobado'))
+
+    def test_rechaza_comprobacion_de_fuentes_automatica(self):
+        target=self.repo/'.github/workflows/comprobar-fuentes.yml'
+        target.write_text(target.read_text(encoding='utf-8').replace('  workflow_dispatch:','  workflow_dispatch:\n  push:'),encoding='utf-8')
+        self.assertFalse(self.result('Comprobación de fuentes solo manual'))
 
     def test_rechaza_portada_que_pierde_un_enlace(self):
         target=self.repo/'atlas/recorrido/portada-sylva.html'

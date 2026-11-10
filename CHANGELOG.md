@@ -1,5 +1,28 @@
 # Registro de cambios
 
+## PB-GH-09 · Fiabilidad de las fuentes: DOI y Patrimonio Mundial · 10-11-2026
+
+Cambio aditivo: no se retira ninguna referencia.
+
+- `scripts/comprobar_fuentes.py` y flujo manual `comprobar-fuentes.yml`: consultan Crossref,
+  doi.org y las fichas de la UNESCO desde GitHub Actions (el entorno de trabajo no alcanza
+  esos servicios) y dejan el resultado en `docs/fiabilidad/INFORME_FUENTES.json` y `.md`.
+- Resultado: 248 DOI; 234 constan en Crossref, 1 resuelve en doi.org fuera de Crossref y
+  13 no existen. Otro más (10.1002/ajpa.24122) existe, pero pertenece a un artículo
+  distinto del citado. Ninguno de los 14 se usa en el recorrido ni en la entrada DEA, cuyas
+  40 citas cuadran en año y primer apellido.
+- `docs/fiabilidad/DOI_CORRESPONDENCIAS.json`: para 11 de los 13 DOI inexistentes, Crossref
+  devuelve un registro que cuadra con la referencia (apellido, año y título); en Rendu et
+  al. la fecha de Crossref es 2013 (en línea) y la cita da 2014. Quedan sin registro
+  equivalente 10.2307/1477405, 10.2478/v10307-012-0015-4 y 10.1002/ajpa.24122.
+- Consulta ligera y atlas: los cuatro DOI inexistentes que el alumnado llega a ver llevan
+  detrás un aviso con el enlace al registro comprobado; el enlace original se mantiene. Los
+  otros nueve solo figuran en comentarios del código y quedan documentados en la tabla.
+- Patrimonio Mundial (sesión 5 de la entrada DEA): los años de inscripción y ampliación de
+  los cinco sitios coinciden con las fichas de la UNESCO.
+- Límites: es una comprobación automática de existencia y de metadatos básicos; no revisa
+  que cada cita respalde lo que el texto afirma. Sigue pendiente la revisión experta.
+
 ## PB-GH-08 · Imágenes en copia local para la entrada DEA · 10-11-2026
 
 Decisiones de la titular (10-11-2026): la raíz sigue abriendo la portada 3D y las imágenes

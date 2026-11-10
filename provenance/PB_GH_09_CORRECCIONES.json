@@ -1,0 +1,57 @@
+{
+  "preparation": "PB-GH-09",
+  "date": "2026-11-10",
+  "base_commit": "7981a6e",
+  "scope": "Fiabilidad de las fuentes: comprobación en línea de los DOI y de las fichas de la UNESCO, y aviso visible junto a los DOI que fallan. No se elimina ninguna referencia.",
+  "application_logic_changed": false,
+  "release_gate": "NO_GO",
+  "new_paths": [
+    "scripts/comprobar_fuentes.py",
+    ".github/workflows/comprobar-fuentes.yml",
+    "docs/fiabilidad/INFORME_FUENTES.json",
+    "docs/fiabilidad/INFORME_FUENTES.md",
+    "docs/fiabilidad/DOI_CORRESPONDENCIAS.json",
+    "atlas/assets/js/90-guards/084-paleobot-doi-avisos.js"
+  ],
+  "corrections": [
+    {
+      "path": "src/entrada_ligera/build.py",
+      "import_sha256": "5408add2377e1f568747fbe1934985aae8a5aff05a179597893db8c7eb0cf7c1",
+      "snapshot": "docs/historial/BASE_4D320EE/src/entrada_ligera/build.py.snapshot",
+      "previous_sha256": "a538e52e512a3b5a964674eddf36437c0edd8704bbce05362370405ebad2f67c",
+      "previous_snapshot": "docs/historial/PB_GH_07/src/entrada_ligera/build.py.snapshot",
+      "corrected_sha256": "a0ba455dd022cbdf2e9890c1933c326bc96e70e5d7a6bca44d90a9e0b6f261f5",
+      "change": "Cuatro referencias cuyo DOI no existe (Harvati et al. 2019; Kivell y Schmitt 2009; Rendu et al. 2014; Richmond y Jungers 2008) se muestran con un aviso y con el enlace al registro comprobado en Crossref, tanto en la lista de referencias como donde el texto de la ficha menciona el DOI. El aviso de la referencia 10.1002/ajpa.24122 precisa que el DOI pertenece a otro artículo. Las referencias y sus enlaces originales se conservan.",
+      "reason": "La comprobación automática detectó DOI que no llevan a ninguna publicación; el alumnado que los siguiera encontraría un error.",
+      "evidence": "docs/fiabilidad/INFORME_FUENTES.json y DOI_CORRESPONDENCIAS.json (GitHub Actions, 10-11-2026): el DOI citado devuelve 404 en Crossref y no resuelve en doi.org; el registro propuesto cuadra en primer apellido, año y título.",
+      "impact": "Solo las fichas que citan esos cinco DOI en la consulta ligera; el resto de la salida generada no cambia.",
+      "return": "Restaurar el snapshot anterior y regenerar ligera/index.html, o revertir el commit."
+    },
+    {
+      "path": "ligera/index.html",
+      "import_sha256": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
+      "snapshot": "docs/historial/BASE_4D320EE/ligera/index.html.snapshot",
+      "previous_sha256": "51eb6ca2657a5408b481eb99ca9a8cebf7f1b65c24474ee13e0c5c7ab5fd6872",
+      "previous_snapshot": "docs/historial/PB_GH_07/ligera/index.html.snapshot",
+      "corrected_sha256": "eb4562622497ec6466a6b06ad33a695bb6c3369e7c92440d38db30a9e9eafa3b",
+      "change": "Regenerado desde build.py: siete avisos con el DOI comprobado (cuatro referencias, tres de ellas citadas en más de un lugar) y el aviso precisado de 10.1002/ajpa.24122.",
+      "reason": "Mismo motivo que build.py.",
+      "evidence": "scripts/construir.py --check coincide con el fichero publicado.",
+      "impact": "Solo las líneas que citan esos cinco DOI.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "2b78a2a9964959dc27214b8aba0cb326cc6353f09c2a3529ade8f29d0bf7907a",
+      "previous_snapshot": "docs/historial/PB_GH_06/atlas/index.html.snapshot",
+      "corrected_sha256": "a12fb4b84f4caf04f3dadc69c0290ec5491ffb73d17528d9484ea5aae5714688",
+      "change": "Añade la carga de assets/js/90-guards/084-paleobot-doi-avisos.js, que coloca una nota con el DOI comprobado detrás de los cuatro DOI inexistentes que el atlas muestra. No se modifica ningún otro script ni texto.",
+      "reason": "El atlas pinta las referencias desde varios módulos; un único añadido evita tocar la lógica importada.",
+      "evidence": "Chromium a 390 y 1366 px: sin errores de página; en la vista Bibliografía aparecen cinco notas visibles (cuatro DOI, uno citado dos veces); con contenido de prueba la nota no se duplica al cambiar el DOM. docs/fiabilidad/INFORME_FUENTES.json y DOI_CORRESPONDENCIAS.json (GitHub Actions, 10-11-2026): el DOI citado devuelve 404 en Crossref y no resuelve en doi.org; el registro propuesto cuadra en primer apellido, año y título.",
+      "impact": "Solo aparece texto añadido junto a esos cuatro DOI; si el módulo fallara, el atlas queda como estaba.",
+      "return": "Quitar la línea del script o restaurar el snapshot anterior."
+    }
+  ]
+}
