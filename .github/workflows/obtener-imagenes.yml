@@ -1,0 +1,38 @@
+name: Obtener copias de las imágenes verificadas
+
+# Descarga de Wikimedia Commons las imágenes del expediente visual y las guarda en img/taxones/.
+# Solo se lanza a mano (Actions → «Obtener copias de las imágenes verificadas» → Run workflow),
+# sobre la rama en la que se quieran actualizar las copias. Nunca se ejecuta por sí solo.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: obtener-imagenes-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  obtener:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Obtener el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Descargar las copias y escribir el manifiesto
+        run: python3 scripts/obtener_imagenes.py
+        continue-on-error: true
+      - name: Comprobar las copias contra el manifiesto
+        run: python3 scripts/obtener_imagenes.py --check
+      - name: Guardar las copias en la rama
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add img/taxones
+          if git diff --cached --quiet; then
+            echo "Sin cambios en img/taxones"
+          else
+            git commit -m "PB-GH-08: copias de las imágenes verificadas (descarga automática)"
+            git push origin HEAD:${{ github.ref_name }}
+          fi

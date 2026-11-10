@@ -23,6 +23,8 @@ de la ULPGC: sesiones guiadas, línea del tiempo, mapa de África, fichas, compa
 métodos, clima, glosario, repaso con autoevaluación y guía del trabajo individual, con
 cuaderno de notas local. Pensada para ordenador, tableta y teléfono, con modo proyección
 y letra ampliable. Usa los datos de `atlas/recorrido/datos.js` y no hace peticiones externas.
+Las fichas llevan imágenes alojadas en `img/taxones/` (copias de Wikimedia Commons con
+autoría y licencia; véase `img/taxones/CREDITOS.md`).
 Dirección: `…/Paleobot.-Plataforma-de-evoluci-n-humana/dea/`. Prototipo en revisión.
 
 ## Atlas v1.0

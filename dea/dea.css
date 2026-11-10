@@ -104,6 +104,15 @@ h3 { font-size: 1.0625rem; margin: 0 0 .4rem; }
 .dia ul { padding-left: 1.1rem; }
 .dia li { margin: .35rem 0; }
 .cruces { margin: .75rem 0 0; font-size: .9375rem; }
+/* Al saltar a una ficha, una sesión o un título, que no queden bajo la barra de pestañas fija. */
+.ficha, .sesion, h1, #detalle-region { scroll-margin-top: 5rem; }
+.figura { margin: .75rem 0 0; }
+.figura img { display: block; max-width: 100%; height: auto; max-height: 22rem; width: auto; margin: 0 auto; border-radius: 8px; background: var(--tierra); }
+.figura figcaption { font-size: .875rem; color: var(--texto-2); margin-top: .4rem; }
+.figura .credito { display: block; overflow-wrap: anywhere; }
+.figura.compacta img { max-height: 9rem; margin: 0; }
+.fila-comparar { margin-bottom: 1rem; }
+.fila-comparar .figura { margin: 0 0 .4rem; }
 .repaso { display: grid; gap: .75rem; }
 .pregunta-repaso { margin: 0; min-width: 0; }
 .pregunta-repaso legend { font-size: .875rem; font-weight: 600; color: var(--texto-2); padding: 0 .4rem; }

@@ -1,5 +1,27 @@
 # Registro de cambios
 
+## PB-GH-08 · Imágenes en copia local para la entrada DEA · 10-11-2026
+
+Decisiones de la titular (10-11-2026): la raíz sigue abriendo la portada 3D y las imágenes
+se alojan como copias en el sitio. Cambio aditivo.
+
+- `img/taxones/`: 47 copias (2,7 MB) de las imágenes verificadas en
+  `src/entrada_ligera/image_audit.json`, obtenidas de Wikimedia Commons como miniaturas de
+  hasta 500 px. `MANIFIESTO.json` guarda huella SHA-256, tamaño, dimensiones, autoría,
+  licencia y página de origen; `CREDITOS.md` lo presenta como tabla.
+- `scripts/obtener_imagenes.py` (descarga y comprobación) y flujo manual
+  `obtener-imagenes.yml`: el entorno de trabajo no alcanza Wikimedia, así que la descarga
+  la hizo GitHub Actions en la rama y dejó las copias en un commit propio.
+- Entrada DEA: cada ficha con imagen la muestra con un pie que dice qué es (molde, réplica,
+  dibujo, mapa o fósil), su autoría, su licencia y su fuente; el comparador muestra las dos
+  imágenes. 47 de 52 taxones tienen imagen; quedan sin ella *Anoiapithecus*,
+  *Chororapithecus*, *H. gautengensis* y dos subespecies de *H. erectus*.
+- `provenance/PB_GH_08_CORRESPONDENCIAS.json`: identificador del recorrido → clave del
+  expediente visual (primer paso de la tabla de correspondencias entre catálogos).
+- Las fichas y las sesiones abiertas por enlace ya no quedan bajo la barra de pestañas.
+- Revisión: las 47 copias se miraron en hojas de contacto y coinciden con la descripción
+  del expediente. Sigue sin haber peticiones a servicios externos en la entrada DEA.
+
 ## PB-GH-07 · Entrada DEA «África, cuna de la humanidad» (prototipo) · 09-11-2026
 
 Segunda ampliación (09-11-2026, noche), sin eliminar nada:
