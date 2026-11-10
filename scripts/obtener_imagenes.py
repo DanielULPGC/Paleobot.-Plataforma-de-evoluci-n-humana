@@ -151,7 +151,7 @@ def check() -> int:
         for field in ("source_page", "credit", "license", "license_url", "object", "alt"):
             if item.get(field) != rec.get(field) or not item.get(field):
                 problems.append(f"{key}: el campo {field} no coincide con el expediente")
-    registered = {item["file"] for item in manifest["images"].values()} | {MANIFEST.name}
+    registered = {item["file"] for item in manifest["images"].values()} | {MANIFEST.name, "CREDITOS.md"}
     extra = sorted(p.name for p in DEST.iterdir() if p.is_file() and p.name not in registered)
     if extra:
         problems.append("ficheros sin registrar: " + ", ".join(extra))

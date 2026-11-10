@@ -1,0 +1,267 @@
+{
+  "descripcion": "Correspondencia entre los identificadores del recorrido (atlas/recorrido/datos.js) y las claves del expediente visual (src/entrada_ligera/image_audit.json).",
+  "reglas": [
+    "mismo identificador",
+    "mismo nombre científico",
+    "correspondencia explícita"
+  ],
+  "correspondencias": {
+    "proconsul": {
+      "clave": "proconsul",
+      "regla": "mismo identificador",
+      "nombre": "Proconsul"
+    },
+    "morotopithecus": {
+      "clave": "morotopithecus",
+      "regla": "mismo identificador",
+      "nombre": "Morotopithecus bishopi"
+    },
+    "dryopithecus": {
+      "clave": "dryopithecus",
+      "regla": "mismo identificador",
+      "nombre": "Dryopithecus"
+    },
+    "pierolapithecus": {
+      "clave": "pierolapithecus",
+      "regla": "mismo identificador",
+      "nombre": "Pierolapithecus catalaunicus"
+    },
+    "nakalipithecus": {
+      "clave": "nakalipithecus",
+      "regla": "mismo identificador",
+      "nombre": "Nakalipithecus nakayamai"
+    },
+    "graecopithecus": {
+      "clave": "graecopithecus",
+      "regla": "mismo identificador",
+      "nombre": "Graecopithecus freybergi"
+    },
+    "sahelanthropus": {
+      "clave": "sahel",
+      "regla": "mismo nombre científico",
+      "nombre": "Sahelanthropus tchadensis"
+    },
+    "orrorin": {
+      "clave": "orrorin",
+      "regla": "mismo identificador",
+      "nombre": "Orrorin tugenensis"
+    },
+    "ardipithecus": {
+      "clave": "ramidus",
+      "regla": "mismo nombre científico",
+      "nombre": "Ardipithecus ramidus"
+    },
+    "anamensis": {
+      "clave": "anamensis",
+      "regla": "mismo identificador",
+      "nombre": "Australopithecus anamensis"
+    },
+    "afarensis": {
+      "clave": "afarensis",
+      "regla": "mismo identificador",
+      "nombre": "Australopithecus afarensis"
+    },
+    "africanus": {
+      "clave": "africanus",
+      "regla": "mismo identificador",
+      "nombre": "Australopithecus africanus"
+    },
+    "boisei": {
+      "clave": "boisei",
+      "regla": "mismo identificador",
+      "nombre": "Paranthropus boisei"
+    },
+    "robustus": {
+      "clave": "robustus",
+      "regla": "mismo identificador",
+      "nombre": "Paranthropus robustus"
+    },
+    "habilis": {
+      "clave": "habilis",
+      "regla": "mismo identificador",
+      "nombre": "Homo habilis"
+    },
+    "erectus": {
+      "clave": "erectus",
+      "regla": "mismo identificador",
+      "nombre": "Homo erectus"
+    },
+    "heidelbergensis": {
+      "clave": "heidelbergensis",
+      "regla": "mismo identificador",
+      "nombre": "Homo heidelbergensis"
+    },
+    "naledi": {
+      "clave": "naledi",
+      "regla": "mismo identificador",
+      "nombre": "Homo naledi"
+    },
+    "neanderthalensis": {
+      "clave": "neander",
+      "regla": "correspondencia explícita",
+      "nombre": "Homo neanderthalensis"
+    },
+    "floresiensis": {
+      "clave": "flores",
+      "regla": "mismo nombre científico",
+      "nombre": "Homo floresiensis"
+    },
+    "sapiens": {
+      "clave": "sapiens",
+      "regla": "mismo identificador",
+      "nombre": "Homo sapiens"
+    },
+    "kadabba": {
+      "clave": "kadabba",
+      "regla": "mismo identificador",
+      "nombre": "Ardipithecus kadabba"
+    },
+    "platyops": {
+      "clave": "kenyanthropus",
+      "regla": "mismo nombre científico",
+      "nombre": "Kenyanthropus platyops"
+    },
+    "bahrelghazali": {
+      "clave": "bahrelghazali",
+      "regla": "mismo identificador",
+      "nombre": "Australopithecus bahrelghazali"
+    },
+    "garhi": {
+      "clave": "garhi",
+      "regla": "mismo identificador",
+      "nombre": "Australopithecus garhi"
+    },
+    "sediba": {
+      "clave": "sediba",
+      "regla": "mismo identificador",
+      "nombre": "Australopithecus sediba"
+    },
+    "aethiopicus": {
+      "clave": "aethiopicus",
+      "regla": "mismo identificador",
+      "nombre": "Paranthropus aethiopicus"
+    },
+    "rudolfensis": {
+      "clave": "rudolfensis",
+      "regla": "mismo identificador",
+      "nombre": "Homo rudolfensis"
+    },
+    "ergaster": {
+      "clave": "ergaster",
+      "regla": "mismo identificador",
+      "nombre": "Homo ergaster"
+    },
+    "antecessor": {
+      "clave": "antecessor",
+      "regla": "mismo identificador",
+      "nombre": "Homo antecessor"
+    },
+    "luzonensis": {
+      "clave": "luzon",
+      "regla": "mismo nombre científico",
+      "nombre": "Homo luzonensis"
+    },
+    "longi": {
+      "clave": "longi",
+      "regla": "mismo identificador",
+      "nombre": "Homo longi"
+    },
+    "daliensis": {
+      "clave": "daliensis",
+      "regla": "mismo identificador",
+      "nombre": "Homo daliensis"
+    },
+    "juluensis": {
+      "clave": "juluensis",
+      "regla": "mismo identificador",
+      "nombre": "Homo juluensis"
+    },
+    "penghu": {
+      "clave": "penghu",
+      "regla": "mismo identificador",
+      "nombre": "Homo sp. (Penghu 1)"
+    },
+    "deyiremeda": {
+      "clave": "deyiremeda",
+      "regla": "mismo identificador",
+      "nombre": "Australopithecus deyiremeda"
+    },
+    "prometheus": {
+      "clave": "prometheus",
+      "regla": "mismo identificador",
+      "nombre": "Australopithecus prometheus"
+    },
+    "georgicus": {
+      "clave": "georgicus",
+      "regla": "mismo identificador",
+      "nombre": "Homo georgicus"
+    },
+    "rhodesiensis": {
+      "clave": "rhodesiensis",
+      "regla": "mismo identificador",
+      "nombre": "Homo rhodesiensis"
+    },
+    "bodoensis": {
+      "clave": "bodoensis",
+      "regla": "mismo identificador",
+      "nombre": "Homo bodoensis"
+    },
+    "cepranensis": {
+      "clave": "cepranensis",
+      "regla": "mismo identificador",
+      "nombre": "Homo cepranensis"
+    },
+    "helmei": {
+      "clave": "helmei",
+      "regla": "mismo identificador",
+      "nombre": "Homo helmei"
+    },
+    "idaltu": {
+      "clave": "idaltu",
+      "regla": "mismo identificador",
+      "nombre": "Homo sapiens idaltu"
+    },
+    "jebel_irhoud": {
+      "clave": "jebel_irhoud",
+      "regla": "mismo identificador",
+      "nombre": "H. sapiens (Jebel Irhoud)"
+    },
+    "omo_i": {
+      "clave": "omo_i",
+      "regla": "mismo identificador",
+      "nombre": "H. sapiens (Omo I)"
+    },
+    "denisovanos": {
+      "clave": "denisova",
+      "regla": "correspondencia explícita",
+      "nombre": "Linaje denisovano"
+    },
+    "erectus_soloensis": {
+      "clave": "soloensis",
+      "regla": "correspondencia explícita",
+      "nombre": "Homo erectus soloensis"
+    }
+  },
+  "sin_imagen": [
+    {
+      "id": "anoiapithecus",
+      "nombre": "Anoiapithecus brevirostris"
+    },
+    {
+      "id": "chororapithecus",
+      "nombre": "Chororapithecus abyssinicus"
+    },
+    {
+      "id": "gautengensis",
+      "nombre": "Homo gautengensis"
+    },
+    {
+      "id": "erectus_erectus",
+      "nombre": "Homo erectus erectus"
+    },
+    {
+      "id": "erectus_pekinensis",
+      "nombre": "Homo erectus pekinensis"
+    }
+  ]
+}

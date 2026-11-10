@@ -1,15 +1,10 @@
 name: Obtener copias de las imágenes verificadas
 
 # Descarga de Wikimedia Commons las imágenes del expediente visual y las guarda en img/taxones/.
-# Se lanza a mano; durante la preparación PB-GH-08 también se lanza al subir cambios a su rama.
+# Solo se lanza a mano (Actions → «Obtener copias de las imágenes verificadas» → Run workflow),
+# sobre la rama en la que se quieran actualizar las copias. Nunca se ejecuta por sí solo.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feat/pb-gh-08-imagenes
-    paths:
-      - scripts/obtener_imagenes.py
-      - .github/workflows/obtener-imagenes.yml
 
 permissions:
   contents: write

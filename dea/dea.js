@@ -429,6 +429,17 @@
     });
     return ul;
   }
+  var IMAGENES = window.DEA_IMAGENES || {};
+  function figura(t, compacta) {
+    var im = IMAGENES[t.id];
+    if (!im) return null;
+    var img = el('img', { src: im.src, width: String(im.w), height: String(im.h), alt: im.alt, loading: 'lazy', decoding: 'async' });
+    var pie = el('figcaption', null, [im.objeto + '. ']);
+    if (!compacta) {
+      pie.appendChild(el('span', { clase: 'credito' }, [im.credito + ' · ', el('a', { href: im.licenciaUrl, rel: 'noopener noreferrer license', texto: im.licencia }), ' · ', el('a', { href: im.fuente, rel: 'noopener noreferrer', texto: 'Wikimedia Commons' })]));
+    }
+    return el('figure', { clase: 'figura' + (compacta ? ' compacta' : '') }, [img, pie]);
+  }
   function pintarEspecies() {
     var q = document.getElementById('buscar-especie').value.trim().toLowerCase();
     var soloAfrica = document.getElementById('especies-africa').checked;
@@ -449,7 +460,7 @@
       var cruces = el('p', { clase: 'cruces' });
       if (esAfrica(t)) { cruces.appendChild(el('a', { href: '#mapa/' + t.region, texto: 'Ver en el mapa' })); cruces.appendChild(document.createTextNode(' · ')); }
       cruces.appendChild(el('a', { href: '#comparar/' + t.id, texto: 'Comparar con otra especie' }));
-      cont.appendChild(el('details', { clase: 'ficha', id: 'ficha-' + t.id }, [sum, dl, cruces]));
+      cont.appendChild(el('details', { clase: 'ficha', id: 'ficha-' + t.id }, [sum, figura(t, false), dl, cruces]));
     });
     document.getElementById('especies-resumen').textContent = lista.length === 0 ? 'Ninguna especie coincide con la búsqueda.' : lista.length + ' fichas.';
   }
@@ -493,7 +504,7 @@
     }
     var lugar = a.region === b.region ? 'Se documentan en la misma región: ' + region(a) + '.' : 'Se documentan en regiones distintas: ' + region(a) + ' y ' + region(b) + '.';
     var filas = [a, b].map(function (t) {
-      return el('div', null, [el('p', null, [el('i', { texto: t.n }), ' · ' + intervalo(t)]), pista(t, max)]);
+      return el('div', { clase: 'fila-comparar' }, [figura(t, true), el('p', null, [el('i', { texto: t.n }), ' · ' + intervalo(t)]), pista(t, max)]);
     });
     res.appendChild(el('div', { clase: 'tarjeta' }, filas.concat([
       el('div', { clase: 'eje', 'aria-hidden': 'true' }, [el('span', { texto: num(max, 2) + ' Ma' }), el('span', { texto: 'hoy' })]),

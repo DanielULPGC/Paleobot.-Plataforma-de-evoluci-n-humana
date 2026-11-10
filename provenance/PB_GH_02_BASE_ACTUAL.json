@@ -99,7 +99,8 @@
       "git_blob_sha1": "92cbf186466793cf51a30e043279f001416863d3",
       "sha256": "d4093e1be2424ea6d52b29e30751e39d1b8bb58058be7a66904faabc57787ae2",
       "retained_paths": [
-        "THIRD_PARTY_NOTICES.md"
+        "THIRD_PARTY_NOTICES.md",
+        "docs/historial/BASE_4D320EE/THIRD_PARTY_NOTICES.md.snapshot"
       ]
     },
     {

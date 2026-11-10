@@ -13,3 +13,5 @@ activos de terceros durante los verificadores locales de este repositorio.
 El flujo de GitHub descarga la acción oficial de checkout para obtener su código.
 
 - Portada Sylva (`atlas/recorrido/portada-sylva.html`, `inner-green-assets/`): @designcodeio/threeui 1.2.0, MIT © 2026 Meng To; Lexend, SIL OFL 1.1; Three.js, MIT. Avisos en `atlas/recorrido/licencias/`.
+
+- Imágenes de `img/taxones/` (47 copias): fotografías, dibujos y un mapa de Wikimedia Commons bajo licencias CC BY, CC BY-SA, CC0 o dominio público, según cada caso. La autoría, la licencia y la página de origen de cada una están en [`img/taxones/CREDITOS.md`](img/taxones/CREDITOS.md) y se muestran junto a la imagen en la entrada DEA. Son miniaturas de hasta 500 px de ancho, sin otros cambios.

@@ -112,5 +112,19 @@ class AtlasCorrections(unittest.TestCase):
         target.write_text(t,encoding='utf-8')
         self.assertFalse(self.result('Portada enlaza la entrada DEA sin perder enlaces'))
 
+    def test_rechaza_copia_de_imagen_alterada(self):
+        target=self.repo/'img/taxones/afarensis.jpg'
+        target.write_bytes(target.read_bytes()+b'x')
+        self.assertFalse(self.result('Copias de imágenes íntegras, registradas y con licencia'))
+
+    def test_rechaza_imagen_sin_registrar(self):
+        (self.repo/'img/taxones/sin-registro.jpg').write_bytes(b'\xff\xd8\xff')
+        self.assertFalse(self.result('Copias de imágenes íntegras, registradas y con licencia'))
+
+    def test_rechaza_creditos_desincronizados(self):
+        target=self.repo/'dea/imagenes.js'
+        target.write_text(target.read_text(encoding='utf-8').replace('CC BY-SA 3.0','Sin licencia',1),encoding='utf-8')
+        self.assertFalse(self.result('Imágenes y créditos de la entrada DEA sincronizados con el manifiesto'))
+
 if __name__=='__main__':
     unittest.main()
