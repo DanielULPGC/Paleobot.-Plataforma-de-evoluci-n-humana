@@ -1,5 +1,16 @@
 # Registro de cambios
 
+## PB-GH-09 · La consulta ligera usa las copias locales · 10-11-2026
+
+- `ligera/index.html` sirve sus 47 imágenes desde `img/taxones/` en lugar de pedirlas a
+  Wikimedia Commons: deja de contactar con un servicio externo y funciona con poca conexión.
+  El pie de cada imagen conserva autoría, licencia y fuente, e indica que es una miniatura.
+- `src/entrada_ligera/copias_locales.json` (generado desde el manifiesto) alimenta a
+  `build.py`; sin ese fichero el generador se comporta como antes.
+- Registro en `provenance/PB_GH_09_CORRECCIONES.json`; estados anteriores archivados.
+- Comprobado en Chromium a 390 y 1366 px: 47 de 47 imágenes cargan, 0 peticiones externas,
+  axe-core sin infracciones A/AA.
+
 ## PB-GH-08 · Imágenes en copia local para la entrada DEA · 10-11-2026
 
 Decisiones de la titular (10-11-2026): la raíz sigue abriendo la portada 3D y las imágenes

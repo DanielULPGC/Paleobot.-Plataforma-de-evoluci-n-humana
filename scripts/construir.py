@@ -13,7 +13,7 @@ def build(target='all',check=False):
         tmp=Path(temp)
         if target in ('all','light'):
             dest=tmp/'light';dest.mkdir()
-            for name in ['build.py','catalog.json','image_audit.json','estilos.css','interaccion.js']:
+            for name in ['build.py','catalog.json','image_audit.json','copias_locales.json','estilos.css','interaccion.js']:
                 shutil.copyfile(ROOT/'src/entrada_ligera'/name,dest/name)
             run=subprocess.run([sys.executable,str(dest/'build.py')],cwd=dest,capture_output=True,text=True,timeout=30)
             if run.returncode:raise RuntimeError('Generador ligero: '+run.stderr[-1500:])

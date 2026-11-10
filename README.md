@@ -48,8 +48,8 @@ La raíz del sitio (`index.html`) redirige a la portada Sylva (`atlas/recorrido/
 
 Abra `ligera/index.html` con un navegador para consultar las fichas. El contenido básico
 usa HTML nativo. Los filtros y el diagnóstico de imágenes requieren JavaScript.
-Las 47 imágenes documentadas siguen siendo remotas; hay tres fichas con recurso
-visual pendiente.
+Las 47 imágenes documentadas se sirven desde copias alojadas en `img/taxones/`; hay tres
+fichas con recurso visual pendiente.
 
 Para una comprobación HTTP de desarrollo, desde esta carpeta:
 

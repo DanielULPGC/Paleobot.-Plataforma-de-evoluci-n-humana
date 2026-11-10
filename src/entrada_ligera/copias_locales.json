@@ -1,0 +1,288 @@
+{
+  "origen": "img/taxones/MANIFIESTO.json",
+  "generado_por": "scripts/generar_imagenes_dea.cjs",
+  "copias": {
+    "aethiopicus": {
+      "src": "../img/taxones/aethiopicus.jpg",
+      "width": 500,
+      "height": 401,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "afarensis": {
+      "src": "../img/taxones/afarensis.jpg",
+      "width": 500,
+      "height": 565,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "africanus": {
+      "src": "../img/taxones/africanus.jpg",
+      "width": 500,
+      "height": 902,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "anamensis": {
+      "src": "../img/taxones/anamensis.jpg",
+      "width": 500,
+      "height": 375,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "antecessor": {
+      "src": "../img/taxones/antecessor.jpg",
+      "width": 500,
+      "height": 397,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "bahrelghazali": {
+      "src": "../img/taxones/bahrelghazali.png",
+      "width": 341,
+      "height": 341,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "bodoensis": {
+      "src": "../img/taxones/bodoensis.jpg",
+      "width": 500,
+      "height": 538,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "boisei": {
+      "src": "../img/taxones/boisei.jpg",
+      "width": 500,
+      "height": 768,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "cepranensis": {
+      "src": "../img/taxones/cepranensis.png",
+      "width": 500,
+      "height": 404,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "daliensis": {
+      "src": "../img/taxones/daliensis.jpg",
+      "width": 500,
+      "height": 480,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "denisova": {
+      "src": "../img/taxones/denisova.jpg",
+      "width": 500,
+      "height": 333,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "deyiremeda": {
+      "src": "../img/taxones/deyiremeda.png",
+      "width": 500,
+      "height": 500,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "dryopithecus": {
+      "src": "../img/taxones/dryopithecus.jpg",
+      "width": 500,
+      "height": 469,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "erectus": {
+      "src": "../img/taxones/erectus.jpg",
+      "width": 500,
+      "height": 544,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "ergaster": {
+      "src": "../img/taxones/ergaster.jpg",
+      "width": 500,
+      "height": 375,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "flores": {
+      "src": "../img/taxones/flores.jpg",
+      "width": 500,
+      "height": 667,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "garhi": {
+      "src": "../img/taxones/garhi.jpg",
+      "width": 500,
+      "height": 573,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "georgicus": {
+      "src": "../img/taxones/georgicus.jpg",
+      "width": 500,
+      "height": 500,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "graecopithecus": {
+      "src": "../img/taxones/graecopithecus.jpg",
+      "width": 500,
+      "height": 618,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "habilis": {
+      "src": "../img/taxones/habilis.jpg",
+      "width": 500,
+      "height": 500,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "heidelbergensis": {
+      "src": "../img/taxones/heidelbergensis.jpg",
+      "width": 500,
+      "height": 483,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "helmei": {
+      "src": "../img/taxones/helmei.jpg",
+      "width": 500,
+      "height": 471,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "idaltu": {
+      "src": "../img/taxones/idaltu.jpg",
+      "width": 500,
+      "height": 375,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "jebel_irhoud": {
+      "src": "../img/taxones/jebel_irhoud.jpg",
+      "width": 500,
+      "height": 532,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "juluensis": {
+      "src": "../img/taxones/juluensis.jpg",
+      "width": 500,
+      "height": 326,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "kadabba": {
+      "src": "../img/taxones/kadabba.jpg",
+      "width": 392,
+      "height": 286,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "kenyanthropus": {
+      "src": "../img/taxones/kenyanthropus.jpg",
+      "width": 500,
+      "height": 333,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "longi": {
+      "src": "../img/taxones/longi.jpg",
+      "width": 500,
+      "height": 543,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "luzon": {
+      "src": "../img/taxones/luzon.jpg",
+      "width": 500,
+      "height": 386,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "morotopithecus": {
+      "src": "../img/taxones/morotopithecus.jpg",
+      "width": 500,
+      "height": 536,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "nakalipithecus": {
+      "src": "../img/taxones/nakalipithecus.jpg",
+      "width": 500,
+      "height": 486,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "naledi": {
+      "src": "../img/taxones/naledi.jpg",
+      "width": 500,
+      "height": 751,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "neander": {
+      "src": "../img/taxones/neander.jpg",
+      "width": 500,
+      "height": 630,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "omo_i": {
+      "src": "../img/taxones/omo_i.jpg",
+      "width": 500,
+      "height": 547,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "orrorin": {
+      "src": "../img/taxones/orrorin.jpg",
+      "width": 370,
+      "height": 370,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "penghu": {
+      "src": "../img/taxones/penghu.jpg",
+      "width": 500,
+      "height": 353,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "pierolapithecus": {
+      "src": "../img/taxones/pierolapithecus.jpg",
+      "width": 500,
+      "height": 695,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "proconsul": {
+      "src": "../img/taxones/proconsul.jpg",
+      "width": 500,
+      "height": 503,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "prometheus": {
+      "src": "../img/taxones/prometheus.jpg",
+      "width": 500,
+      "height": 667,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "ramidus": {
+      "src": "../img/taxones/ramidus.jpg",
+      "width": 500,
+      "height": 556,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "rhodesiensis": {
+      "src": "../img/taxones/rhodesiensis.jpg",
+      "width": 500,
+      "height": 533,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "robustus": {
+      "src": "../img/taxones/robustus.jpg",
+      "width": 500,
+      "height": 336,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "rudolfensis": {
+      "src": "../img/taxones/rudolfensis.jpg",
+      "width": 500,
+      "height": 694,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "sahel": {
+      "src": "../img/taxones/sahel.jpg",
+      "width": 500,
+      "height": 421,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "sapiens": {
+      "src": "../img/taxones/sapiens.jpg",
+      "width": 500,
+      "height": 370,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "sediba": {
+      "src": "../img/taxones/sediba.jpg",
+      "width": 500,
+      "height": 589,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    },
+    "soloensis": {
+      "src": "../img/taxones/soloensis.jpg",
+      "width": 500,
+      "height": 371,
+      "changes": "Miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios."
+    }
+  }
+}

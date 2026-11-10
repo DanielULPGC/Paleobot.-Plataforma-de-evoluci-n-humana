@@ -2,7 +2,8 @@
 // Genera, a partir del manifiesto de copias (img/taxones/MANIFIESTO.json):
 //   - dea/imagenes.js: imagen, texto alternativo y atribución de cada taxón del recorrido;
 //   - img/taxones/CREDITOS.md: tabla legible de autoría y licencias;
-//   - provenance/PB_GH_08_CORRESPONDENCIAS.json: identificador del recorrido → clave del expediente visual.
+//   - provenance/PB_GH_08_CORRESPONDENCIAS.json: identificador del recorrido → clave del expediente visual;
+//   - src/entrada_ligera/copias_locales.json: ruta y dimensiones de cada copia para la consulta ligera.
 // Uso: node scripts/generar_imagenes_dea.cjs [--check]
 'use strict';
 const fs = require('fs');
@@ -39,7 +40,12 @@ for (const [id, c] of Object.entries(correspondencias)) {
   imagenes[id] = { src: '../img/taxones/' + m.file, w: m.width, h: m.height, alt: m.alt, objeto: m.object, credito: m.credit, licencia: m.license, licenciaUrl: m.license_url, fuente: m.source_page };
 }
 
+// Copias locales para la consulta ligera, por clave del expediente (ruta relativa a ligera/index.html).
+const copiasLigera = {};
+for (const k of Object.keys(copias).sort()) copiasLigera[k] = { src: '../img/taxones/' + copias[k].file, width: copias[k].width, height: copias[k].height, changes: copias[k].changes };
+
 const salidas = {
+  'src/entrada_ligera/copias_locales.json': JSON.stringify({ origen: 'img/taxones/MANIFIESTO.json', generado_por: 'scripts/generar_imagenes_dea.cjs', copias: copiasLigera }, null, 2) + '\n',
   'dea/imagenes.js': '/* Imágenes de las fichas de la entrada DEA. GENERADO por scripts/generar_imagenes_dea.cjs a partir de\n' +
     '   img/taxones/MANIFIESTO.json (copias de Wikimedia Commons con su autoría y licencia). No editar a mano. */\n' +
     'window.DEA_IMAGENES = ' + JSON.stringify(imagenes) + ';\n',
