@@ -1,0 +1,35 @@
+name: Comprobar las fuentes (DOI y UNESCO)
+
+# Consulta Crossref, doi.org y las fichas de la UNESCO y deja el informe en docs/fiabilidad/.
+# Solo se lanza a mano (Actions > Comprobar las fuentes > Run workflow) sobre una rama de trabajo;
+# la rama principal está protegida por revisión y el informe llega a ella mediante solicitud de cambios.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: comprobar-fuentes-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Obtener el código
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Comprobar DOI y fichas de la UNESCO
+        run: python3 scripts/comprobar_fuentes.py
+      - name: Guardar el informe en la rama
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/fiabilidad
+          if git diff --cached --quiet; then
+            echo "Sin cambios en el informe"
+          else
+            git commit -m "PB-GH-09: informe de comprobación de fuentes (generado)"
+            git push origin HEAD:${{ github.ref_name }}
+          fi

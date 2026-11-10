@@ -1,0 +1,193 @@
+{
+  "preparacion": "PB-GH-09",
+  "fecha": "2026-11-10",
+  "origen": "docs/fiabilidad/INFORME_FUENTES.json (GitHub Actions, Crossref y doi.org)",
+  "criterio": "Un DOI comprobado es el del registro de Crossref cuyo primer apellido, año y título cuadran con la referencia citada. Es una comprobación automática pendiente de revisión por una persona experta. No se retira ninguna referencia.",
+  "correspondencias": [
+    {
+      "doi_citado": "10.1016/j.epsl.2004.01.036",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "atlas"
+      ],
+      "visible_para_el_alumnado": false,
+      "doi_comprobado": "10.1016/s0012-821x(04)00003-2",
+      "primer_autor": "deMenocal",
+      "anio_crossref": 2004,
+      "titulo": "African climate change and faunal evolution during the Pliocene–Pleistocene",
+      "revista": "Earth and Planetary Science Letters"
+    },
+    {
+      "doi_citado": "10.1016/S0047-2484(98)00055-2",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "atlas"
+      ],
+      "visible_para_el_alumnado": false,
+      "doi_comprobado": "10.1002/(sici)1096-8644(1998)107:27+<93::aid-ajpa5>3.0.co;2-x",
+      "primer_autor": "Potts",
+      "anio_crossref": 1998,
+      "titulo": "Environmental hypotheses of hominin evolution",
+      "revista": "American Journal of Physical Anthropology",
+      "nota": "La cita del atlas es solo «Potts 1998», sin título: la correspondencia se apoya en autor y año, y debe confirmarla una persona."
+    },
+    {
+      "doi_citado": "10.1023/B:EDUC.0000042415.65252.f4",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "atlas"
+      ],
+      "visible_para_el_alumnado": false,
+      "doi_comprobado": "10.1023/b:edpr.0000034022.16470.f3",
+      "primer_autor": "Hmelo-Silver",
+      "anio_crossref": 2004,
+      "titulo": "Problem-Based Learning: What and How Do Students Learn?",
+      "revista": "Educational Psychology Review"
+    },
+    {
+      "doi_citado": "10.1023/B:IFPR.0000006058.97459.e3",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "atlas"
+      ],
+      "visible_para_el_alumnado": false,
+      "doi_comprobado": "10.1080/01411920410001689689",
+      "primer_autor": "Mercer",
+      "anio_crossref": 2004,
+      "titulo": "Reasoning as a scientist: ways of helping children to use language to learn science",
+      "revista": "British Educational Research Journal"
+    },
+    {
+      "doi_citado": "10.1038/35097529",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "atlas"
+      ],
+      "visible_para_el_alumnado": false,
+      "doi_comprobado": "10.1038/35084063",
+      "primer_autor": "Haile-Selassie",
+      "anio_crossref": 2001,
+      "titulo": "Late Miocene hominids from the Middle Awash, Ethiopia",
+      "revista": "Nature"
+    },
+    {
+      "doi_citado": "10.1038/s41586-019-1396-2",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "consulta ligera",
+        "atlas"
+      ],
+      "visible_para_el_alumnado": true,
+      "doi_comprobado": "10.1038/s41586-019-1376-z",
+      "primer_autor": "Harvati",
+      "anio_crossref": 2019,
+      "titulo": "Apidima Cave fossils provide earliest evidence of Homo sapiens in Eurasia",
+      "revista": "Nature"
+    },
+    {
+      "doi_citado": "10.1073/pnas.0901987106",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "consulta ligera",
+        "atlas"
+      ],
+      "visible_para_el_alumnado": true,
+      "doi_comprobado": "10.1073/pnas.0901280106",
+      "primer_autor": "Kivell",
+      "anio_crossref": 2009,
+      "titulo": "Independent evolution of knuckle-walking in African apes shows that humans did not evolve from a knuckle-walking ancestor",
+      "revista": "Proceedings of the National Academy of Sciences"
+    },
+    {
+      "doi_citado": "10.1073/pnas.1316780111",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "consulta ligera",
+        "atlas"
+      ],
+      "visible_para_el_alumnado": true,
+      "doi_comprobado": "10.1073/pnas.1316780110",
+      "primer_autor": "Rendu",
+      "anio_crossref": 2013,
+      "titulo": "Evidence supporting an intentional Neandertal burial at La Chapelle-aux-Saints",
+      "revista": "Proceedings of the National Academy of Sciences",
+      "nota": "Crossref fecha el registro en 2013 (publicación en línea); la cita da 2014 (número impreso). Título y primer apellido coinciden."
+    },
+    {
+      "doi_citado": "10.1126/science.1096393",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "atlas"
+      ],
+      "visible_para_el_alumnado": false,
+      "doi_comprobado": "10.1126/science.1103094",
+      "primer_autor": "Moyà-Solà",
+      "anio_crossref": 2004,
+      "titulo": "Pierolapithecus catalaunicus , a New Middle Miocene Great Ape from Spain",
+      "revista": "Science"
+    },
+    {
+      "doi_citado": "10.1126/science.1158207",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "consulta ligera",
+        "atlas"
+      ],
+      "visible_para_el_alumnado": true,
+      "doi_comprobado": "10.1126/science.1154197",
+      "primer_autor": "Richmond",
+      "anio_crossref": 2008,
+      "titulo": "Orrorin tugenensis Femoral Morphology and the Evolution of Hominin Bipedalism",
+      "revista": "Science"
+    },
+    {
+      "doi_citado": "10.1126/science.269.5225.826",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "atlas"
+      ],
+      "visible_para_el_alumnado": false,
+      "doi_comprobado": "10.1126/science.7638598",
+      "primer_autor": "Carbonell",
+      "anio_crossref": 1995,
+      "titulo": "Lower Pleistocene Hominids and Artifacts from Atapuerca-TD6 (Spain)",
+      "revista": "Science"
+    },
+    {
+      "doi_citado": "10.1002/ajpa.24122",
+      "resultado": "el DOI existe, pero pertenece a otro artículo",
+      "usos": [
+        "consulta ligera"
+      ],
+      "visible_para_el_alumnado": true,
+      "doi_comprobado": null,
+      "registro_del_doi_citado": {
+        "primer_autor": "Croft",
+        "anio_crossref": 2020,
+        "titulo": "Form in the context of function: Fundamentals of an energy effective striding walk, the role of the plantigrade foot and its expected size",
+        "revista": "American Journal of Physical Anthropology"
+      },
+      "nota": "La búsqueda en Crossref no devuelve ningún artículo con la autoría, el año y el título citados («Berger et al. (2020). The new Australopithecus prometheus from Sterkfontein»). La referencia se conserva y se marca."
+    },
+    {
+      "doi_citado": "10.2307/1477405",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "atlas"
+      ],
+      "visible_para_el_alumnado": false,
+      "doi_comprobado": null,
+      "nota": "Citado en un comentario del código como Anderson y Krathwohl (2001), que es un libro. Crossref no propone un registro con esa autoría y ese año."
+    },
+    {
+      "doi_citado": "10.2478/v10307-012-0015-4",
+      "resultado": "el DOI citado no existe en Crossref ni en doi.org",
+      "usos": [
+        "atlas"
+      ],
+      "visible_para_el_alumnado": false,
+      "doi_comprobado": null,
+      "nota": "Citado en un comentario del código como Wozniak (1990). Crossref propone Woźniak y Gorzelańczyk (1994), DOI 10.55782/ane-1994-1003, que es otro año: no se da por equivalente."
+    }
+  ]
+}

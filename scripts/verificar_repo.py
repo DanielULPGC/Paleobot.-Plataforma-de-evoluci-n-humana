@@ -85,7 +85,7 @@ def verify(include_syntax=True):
     # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
     # PB-GH-04 encadena una segunda ronda: la última corrección de cada ruta debe partir
     # exactamente del estado anterior, conservado en su propio snapshot.
-    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json') if (ROOT/n).is_file()]
+    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json','provenance/PB_GH_09_CORRECCIONES.json') if (ROOT/n).is_file()]
     fixes={}
     cadena_ok=True
     for ronda in rondas:
@@ -144,7 +144,22 @@ def verify(include_syntax=True):
     gen_img=subprocess.run([node,str(ROOT/'scripts/generar_imagenes_dea.cjs'),'--check'],capture_output=True,text=True,timeout=30) if node else None
     check('Imágenes y créditos de la entrada DEA sincronizados con el manifiesto',bool(gen_img) and gen_img.returncode==0,(gen_img.stdout or gen_img.stderr).strip() if gen_img else 'sin Node')
     check('Portada enlaza la entrada DEA sin perder enlaces',all(h in portada for h in ('href="../../dea/"','href="parentesco.html"','href="territorio.html"','href="ficha.html"','href="atlas.html"','href="index.html"')))
-    check('Referencia no localizada marcada y conservada','10.1002/ajpa.24122</a> <em>(Referencia no localizada' in (ROOT/'ligera/index.html').read_text(encoding='utf-8'))
+    ligera_html=(ROOT/'ligera/index.html').read_text(encoding='utf-8')
+    check('Referencia no localizada marcada y conservada','10.1002/ajpa.24122</a> <em>(Aviso: el DOI citado pertenece a otro artículo' in ligera_html)
+    # PB-GH-09: los DOI que fallan se marcan con el registro comprobado; la tabla, la consulta ligera y el atlas dicen lo mismo.
+    tabla=load('docs/fiabilidad/DOI_CORRESPONDENCIAS.json')['correspondencias']
+    visibles={c['doi_citado']:c['doi_comprobado'] for c in tabla if c['visible_para_el_alumnado'] and c['doi_comprobado']}
+    informe=load('docs/fiabilidad/INFORME_FUENTES.json')
+    candidatos={r['doi'].lower():{c['doi'].lower() for c in r.get('candidatos') or []} for r in informe['doi']}
+    check('Cada DOI comprobado procede del informe de Crossref',all(c['doi_comprobado'].lower() in candidatos.get(c['doi_citado'].lower(),set()) for c in tabla if c['doi_comprobado']))
+    check('Todos los DOI con incidencia del informe constan en la tabla',{r['doi'].lower() for r in informe['doi'] if r['estado']=='no localizado' or r.get('avisos')}<={c['doi_citado'].lower() for c in tabla})
+    build_src=(ROOT/'src/entrada_ligera/build.py').read_text(encoding='utf-8')
+    modulo=(ROOT/'atlas/assets/js/90-guards/084-paleobot-doi-avisos.js').read_text(encoding='utf-8')
+    check('DOI con aviso: mismos pares en tabla, consulta ligera y atlas',len(visibles)==4 and all(f'"{a}": "{b}"' in build_src and f"'{a}': '{b}'" in modulo for a,b in visibles.items()))
+    check('DOI con aviso: se conserva el enlace original y se añade el comprobado',all(f'href="https://doi.org/{a}"' in ligera_html and f'href="https://doi.org/{b}"' in ligera_html for a,b in visibles.items()))
+    check('Módulo de avisos cargado por el atlas','90-guards/084-paleobot-doi-avisos.js' in (ROOT/'atlas/index.html').read_text(encoding='utf-8'))
+    flujo=(ROOT/'.github/workflows/comprobar-fuentes.yml').read_text(encoding='utf-8')
+    check('Comprobación de fuentes solo manual','workflow_dispatch' in flujo and 'push:' not in flujo and 'schedule' not in flujo)
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
     check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
