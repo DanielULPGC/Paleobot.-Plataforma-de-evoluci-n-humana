@@ -16,48 +16,46 @@
   por teclado, alternativa textual, contraste alto, prefers-reduced-motion.
   Autonomía salvo tipografías. Licencia CC BY-NC 4.0 · ULPGC.
 -->
-<html lang="es">
+<html lang="es" class="pb-recorrido">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parentesco y diversidad · Atlas de paleoantropología</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/paleobot-base.css">
 <style>
-:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:12px;
+:root{--fondo:var(--papel);--fondo-alt:var(--superficie);--tinta-suave:var(--tinta-2);--radio:var(--r-contenedor);
   --c-basales:#c98a4b;--c-austra:#d8a93a;--c-paran:#7fae9a;--c-homo:#cbb488;
-  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+  --ft:var(--f-titulo);--fc:var(--f-lectura)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6}
 a{color:var(--acento)}
-.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:var(--sobre-acento);padding:var(--e-3) var(--e-4);z-index:50;font-weight:600}
 .salto:focus{left:0}
-.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
-.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:var(--e-4);padding:var(--e-4) var(--margen);background:var(--papel);border-bottom:1px solid var(--borde)}
+.volver{display:inline-flex;align-items:center;gap:var(--e-2);color:var(--tinta);text-decoration:none;font-weight:600;padding:var(--e-2) var(--e-4);border-radius:var(--r-control);border:1px solid var(--borde-control)}
 .volver:hover{border-color:var(--acento);color:var(--acento)}
-.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
 .volver svg{width:18px;height:18px}
-.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:.95rem}
-.barra nav{display:flex;gap:1.1rem}
-.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:.92rem}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:var(--t-s)}
+.barra nav{display:flex;gap:var(--e-4)}
+.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:var(--t-s)}
 
-.cabecera{max-width:1150px;margin:0 auto;padding:6vh 5vw 1vh}
-.cabecera .k{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:.8rem}
-.cabecera h1{font-family:var(--ft);font-weight:700;font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:.6rem}
+.cabecera{max-width:1150px;margin:0 auto;padding:var(--e-7) var(--margen) var(--e-2)}
+.cabecera .k{font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:var(--e-3)}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:var(--t-h1);margin-bottom:var(--e-2)}
 .cabecera p{color:var(--tinta-suave);max-width:72ch}
-.aviso{max-width:1150px;margin:1.4rem auto 0;padding:0 5vw}
-.aviso .caja{background:rgba(216,169,58,.07);border:1px solid rgba(216,169,58,.32);border-radius:var(--radio);padding:1rem 1.2rem;font-size:.92rem;color:var(--tinta-suave)}
+.aviso{max-width:1150px;margin:var(--e-5) auto 0;padding:0 var(--margen)}
+.aviso .caja{background:var(--acento-suave);border:0;border-radius:var(--radio);padding:var(--e-4) var(--e-4);font-size:var(--t-s);color:var(--tinta-suave)}
 
-.leyenda{max-width:1150px;margin:1.6rem auto 0;padding:0 5vw;display:flex;gap:1.2rem;flex-wrap:wrap}
-.leyenda span{display:inline-flex;align-items:center;gap:.45rem;font-size:.88rem;color:var(--tinta-suave)}
+.leyenda{max-width:1150px;margin:var(--e-5) auto 0;padding:0 var(--margen);display:flex;gap:var(--e-4);flex-wrap:wrap}
+.leyenda span{display:inline-flex;align-items:center;gap:var(--e-2);font-size:var(--t-s);color:var(--tinta-suave)}
 .leyenda i{width:16px;height:16px;border-radius:4px;display:inline-block}
 .leyenda .disc{width:24px;height:0;border-top:2px dashed var(--tinta-suave);border-radius:0}
 .leyenda .deb{width:16px;height:16px;border:2px dashed var(--acento);border-radius:50%}
 
-.lienzo{max-width:1150px;margin:1.4rem auto 0;padding:0 5vw}
-.lienzo svg{width:100%;height:auto;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:var(--radio)}
+.lienzo{max-width:1150px;margin:var(--e-5) auto 0;padding:0 var(--margen)}
+.lienzo svg{width:100%;height:auto;background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio)}
 .eje-l{font-size:13px;fill:var(--tinta-suave)}
 .trunk{stroke:rgba(243,239,231,.28);stroke-width:2;fill:none}
 .hip{stroke:rgba(243,239,231,.4);stroke-width:2;stroke-dasharray:7 6;fill:none}
@@ -69,23 +67,23 @@ a{color:var(--acento)}
 .nodo[aria-pressed="true"] .disco{stroke:#fff;stroke-width:3}
 .nodo.deb .disco{stroke-dasharray:4 3}
 
-.detalle{max-width:1150px;margin:2.4rem auto 0;padding:0 5vw}
-.detalle .panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.6rem 1.8rem;min-height:120px}
-.detalle .panel h2{font-family:var(--ft);font-weight:700;font-size:1.4rem;margin-bottom:.2rem}
-.detalle .panel .meta{color:var(--acento);font-weight:600;font-size:.9rem;margin-bottom:.7rem}
-.detalle .panel p{color:var(--tinta-suave);margin-bottom:.6rem}
-.detalle .panel .fuente{font-size:.82rem;color:rgba(200,210,206,.75)}
+.detalle{max-width:1150px;margin:var(--e-6) auto 0;padding:0 var(--margen)}
+.detalle .panel{background:var(--superficie);border:1px solid var(--borde);border-left:4px solid var(--acento);border-radius:var(--radio);padding:var(--e-5) var(--e-6);min-height:120px}
+.detalle .panel h2{font-family:var(--ft);font-weight:700;font-size:var(--t-xl);margin-bottom:var(--e-1)}
+.detalle .panel .meta{color:var(--acento);font-weight:600;font-size:var(--t-s);margin-bottom:var(--e-3)}
+.detalle .panel p{color:var(--tinta-suave);margin-bottom:var(--e-2)}
+.detalle .panel .fuente{font-size:var(--t-xs);color:var(--tinta-3)}
 .detalle .panel .fuente a{word-break:break-all}
 
-.relaciones{max-width:1150px;margin:3rem auto 0;padding:0 5vw}
-.relaciones h2{font-family:var(--ft);font-weight:700;font-size:1.3rem;margin-bottom:.6rem}
-.relaciones p{color:var(--tinta-suave);margin-bottom:1rem}
-.relaciones ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
-.relaciones li{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:var(--radio);padding:1rem 1.2rem;font-size:.95rem;color:var(--tinta-suave)}
+.relaciones{max-width:1150px;margin:var(--e-7) auto 0;padding:0 var(--margen)}
+.relaciones h2{font-family:var(--ft);font-weight:700;font-size:var(--t-l);margin-bottom:var(--e-2)}
+.relaciones p{color:var(--tinta-suave);margin-bottom:var(--e-4)}
+.relaciones ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--e-4)}
+.relaciones li{background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio);padding:var(--e-4) var(--e-4);font-size:var(--t-s);color:var(--tinta-suave)}
 .relaciones li strong{color:var(--tinta)}
 
-.pie{border-top:1px solid rgba(255,255,255,.1);margin-top:4rem;padding:2.4rem 5vw;color:rgba(200,210,206,.65);font-size:.82rem;line-height:1.7}
-.pie a{color:rgba(216,169,58,.85);word-break:break-all}
+.pie{border-top:1px solid var(--borde);margin-top:var(--e-8);padding:var(--e-6) var(--margen);color:var(--tinta-3);font-size:var(--t-xs);line-height:1.7}
+.pie a{color:var(--acento);word-break:break-all}
 
 @media (prefers-reduced-motion: reduce){.nodo .disco{transition:none}}
 .nodo.destacado .disco{stroke:#fff;stroke-width:3}
@@ -123,6 +121,7 @@ a{color:var(--acento)}
 <div class="leyenda" id="leyenda" aria-hidden="true"></div>
 
 <main id="lienzo" class="lienzo" aria-label="Diagrama de afinidad y diversidad del corpus paleoantropológico">
+  <p class="pb-alternativa">En texto: <a href="#relaciones">relaciones establecidas y cuestiones abiertas</a>; cada entrada, en su <a href="ficha.html">ficha</a>.</p>
   <svg id="svg" viewBox="0 0 1000 760" role="group" aria-describedby="relaciones"></svg>
 </main>
 
@@ -179,7 +178,7 @@ a{color:var(--acento)}
   const rango = (t) => `${fmt(t.desde)} a ${t.hasta === 0 ? 'presente' : fmt(t.hasta)}`;
   const citar = (t) => t.fuentes.map(id => { const f = D.fuentes[id]; if (!f) return ''; return f.doi ? `${f.cita} DOI: <a href="https://doi.org/${f.doi}" target="_blank" rel="noopener">${f.doi}</a>` : f.cita; }).filter(Boolean).join('<br>');
   function mostrar(t) {
-    const deb = t.debatido ? '<p class="fuente">Posición filogenética especialmente controvertida.</p>' : '';
+    const deb = t.debatido ? '<p class="fuente"><span class="pb-etiqueta">Debatida</span>Posición filogenética especialmente controvertida.</p>' : '';
     panel.innerHTML = `<h2><em>${t.n}</em></h2><p class="meta">${D.clados[t.c].nombre} \u00b7 ${rango(t)}</p><p>${t.nota}</p>${deb}<p class="fuente">Fuente: ${citar(t)}</p><p><a href="ficha.html?id=${t.id}">Ver ficha completa</a></p>`;
     document.querySelectorAll('.nodo').forEach(g => g.setAttribute('aria-pressed', String(g.dataset.id === t.id)));
   }

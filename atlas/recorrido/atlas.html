@@ -7,52 +7,50 @@
   DENSIDAD_CONTENIDO 5. Accesibilidad: navegación semántica, foco visible,
   enlace de salto, retorno explícito. Licencia CC BY-NC 4.0 · ULPGC.
 -->
-<html lang="es">
+<html lang="es" class="pb-recorrido">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atlas de paleoantropología · Bloques</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/paleobot-base.css">
 <style>
-:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:14px;--ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+:root{--fondo:var(--papel);--fondo-alt:var(--superficie);--tinta-suave:var(--tinta-2);--radio:var(--r-contenedor);--ft:var(--f-titulo);--fc:var(--f-lectura)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6}
 a{color:var(--acento)}
-.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:var(--sobre-acento);padding:var(--e-3) var(--e-4);z-index:50;font-weight:600}
 .salto:focus{left:0}
 
-.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
-.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:var(--e-4);padding:var(--e-4) var(--margen);background:var(--papel);border-bottom:1px solid var(--borde)}
+.volver{display:inline-flex;align-items:center;gap:var(--e-2);color:var(--tinta);text-decoration:none;font-weight:600;padding:var(--e-2) var(--e-4);border-radius:var(--r-control);border:1px solid var(--borde-control)}
 .volver:hover{border-color:var(--acento);color:var(--acento)}
-.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
 .volver svg{width:18px;height:18px;fill:currentColor}
-.barra .marca{font-weight:600;letter-spacing:.02em;color:var(--tinta-suave);font-size:.95rem}
-.barra .intro-link{color:var(--acento);text-decoration:none;font-weight:600;font-size:.95rem}
-.barra .intro-link:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.barra .marca{font-weight:600;letter-spacing:.02em;color:var(--tinta-suave);font-size:var(--t-s)}
+.barra .intro-link{color:var(--acento);text-decoration:none;font-weight:600;font-size:var(--t-s)}
+.barra .intro-link:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
 
-.cabecera{padding:8vh 5vw 2vh;max-width:1100px;margin:0 auto;text-align:center}
-.cabecera .k{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:1rem}
-.cabecera h1{font-family:var(--ft);font-weight:700;font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;margin-bottom:.8rem}
+.cabecera{padding:var(--e-8) var(--margen) var(--e-4);max-width:1100px;margin:0 auto;text-align:center}
+.cabecera .k{font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:var(--e-4)}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:var(--t-h1);line-height:1.05;margin-bottom:var(--e-3)}
 .cabecera p{color:var(--tinta-suave);max-width:62ch;margin:0 auto}
 
-.bloques{max-width:1100px;margin:0 auto;padding:4vh 5vw 10vh;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-.bloque{scroll-margin-top:80px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-top:4px solid var(--acento);border-radius:var(--radio);padding:2rem 1.8rem;display:flex;flex-direction:column}
-.bloque .n{font-weight:700;color:var(--acento);font-size:.85rem;letter-spacing:.12em;margin-bottom:.8rem}
-.bloque h2{font-family:var(--ft);font-weight:700;font-size:1.5rem;margin-bottom:.6rem}
-.bloque p{color:var(--tinta-suave);font-size:1rem;margin-bottom:1.4rem;flex:1}
-.bloque .acc{display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;font-weight:600;color:#141008;background:var(--acento);padding:.6rem 1.2rem;border-radius:var(--radio);text-decoration:none;transition:background .2s}
-.bloque .acc:hover{background:#e6bb52}
-.bloque .acc:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+.bloques{max-width:1100px;margin:0 auto;padding:var(--e-6) var(--margen) var(--e-8);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--e-5)}
+.bloque{scroll-margin-top:80px;background:var(--superficie);border:1px solid var(--borde);border-top:4px solid var(--acento);border-radius:var(--radio);padding:var(--e-6) var(--e-6);display:flex;flex-direction:column}
+.bloque .n{font-weight:700;color:var(--acento);font-size:var(--t-xs);letter-spacing:.12em;margin-bottom:var(--e-3)}
+.bloque h2{font-family:var(--ft);font-weight:700;font-size:var(--t-xl);margin-bottom:var(--e-2)}
+.bloque p{color:var(--tinta-suave);font-size:var(--t-m);margin-bottom:var(--e-5);flex:1}
+.bloque .acc{display:inline-flex;align-items:center;gap:var(--e-2);align-self:flex-start;font-weight:600;color:var(--acento);background:transparent;border:1px solid var(--acento);min-height:var(--control);padding:var(--e-2) var(--e-4);border-radius:var(--r-control);text-decoration:none;transition:background .2s}
+.bloque .acc:hover{background:var(--acento);color:var(--sobre-acento)} /* PB-GH-10: secundario (un solo punto focal por pantalla) */
+.bloque .acc:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:3px}
 .bloque[data-destacado] {border-top-color:var(--acento);background:rgba(216,169,58,.06)}
 
-.nota{max-width:1100px;margin:0 auto 8vh;padding:0 5vw}
-.nota .caja{background:rgba(255,255,255,.03);border:1px dashed rgba(216,169,58,.4);border-radius:var(--radio);padding:1.4rem 1.6rem;color:var(--tinta-suave);font-size:.95rem}
+.nota{max-width:1100px;margin:0 auto var(--e-8);padding:0 var(--margen)}
+.nota .caja{background:var(--superficie);border:1px dashed rgba(216,169,58,.4);border-radius:var(--radio);padding:var(--e-5) var(--e-5);color:var(--tinta-suave);font-size:var(--t-s)}
 
-.pie{border-top:1px solid rgba(255,255,255,.1);padding:2.4rem 5vw;text-align:center;color:rgba(200,210,206,.6);font-size:.82rem;line-height:1.7}
-.pie a{color:rgba(216,169,58,.85)}
+.pie{border-top:1px solid var(--borde);padding:var(--e-6) var(--margen);text-align:center;color:var(--tinta-3);font-size:var(--t-xs);line-height:1.7}
+.pie a{color:var(--acento)}
 
 @media (prefers-reduced-motion: no-preference){
   /* PB-GH-10: solo se ocultan para la aparición si hay JavaScript (clase .js en <html>) */

@@ -14,54 +14,52 @@
   Consume la fuente única (datos.js). Accesibilidad: HTML semántico, jerarquía
   de encabezados, foco visible, enlace de salto. Licencia CC BY-NC 4.0 · ULPGC.
 -->
-<html lang="es">
+<html lang="es" class="pb-recorrido">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Métodos y evidencia · Atlas de paleoantropología</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/paleobot-base.css">
 <style>
-:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:12px;
-  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+:root{--fondo:var(--papel);--fondo-alt:var(--superficie);--tinta-suave:var(--tinta-2);--radio:var(--r-contenedor);
+  --ft:var(--f-titulo);--fc:var(--f-lectura)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.65}
 a{color:var(--acento)}
-.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:var(--sobre-acento);padding:var(--e-3) var(--e-4);z-index:50;font-weight:600}
 .salto:focus{left:0}
-.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
-.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:var(--e-4);padding:var(--e-4) var(--margen);background:var(--papel);border-bottom:1px solid var(--borde)}
+.volver{display:inline-flex;align-items:center;gap:var(--e-2);color:var(--tinta);text-decoration:none;font-weight:600;padding:var(--e-2) var(--e-4);border-radius:var(--r-control);border:1px solid var(--borde-control)}
 .volver:hover{border-color:var(--acento);color:var(--acento)}
-.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
 .volver svg{width:18px;height:18px}
-.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:.95rem}
-.barra nav{display:flex;gap:1.1rem}
-.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:.92rem}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:var(--t-s)}
+.barra nav{display:flex;gap:var(--e-4)}
+.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:var(--t-s)}
 
-.envoltorio{max-width:980px;margin:0 auto;padding:6vh 5vw 8vh}
-.cabecera .k{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:.8rem}
-.cabecera h1{font-family:var(--ft);font-weight:700;font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:.6rem}
+.envoltorio{max-width:980px;margin:0 auto;padding:var(--e-7) var(--margen) var(--e-8)}
+.cabecera .k{font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:var(--e-3)}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:var(--t-h1);margin-bottom:var(--e-2)}
 .cabecera p{color:var(--tinta-suave);max-width:72ch}
-.aviso{margin:1.6rem 0}
-.aviso .caja{background:rgba(216,169,58,.07);border:1px solid rgba(216,169,58,.32);border-radius:var(--radio);padding:1rem 1.2rem;font-size:.92rem;color:var(--tinta-suave)}
+.aviso{margin:var(--e-5) 0}
+.aviso .caja{background:var(--acento-suave);border:0;border-radius:var(--radio);padding:var(--e-4) var(--e-4);font-size:var(--t-s);color:var(--tinta-suave)}
 
-.metodo{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.8rem 2rem;margin-top:1.6rem}
-.metodo .num{font-weight:700;color:var(--acento);font-size:.82rem;letter-spacing:.12em;margin-bottom:.5rem}
-.metodo h2{font-family:var(--ft);font-weight:700;font-size:1.5rem;margin-bottom:.2rem}
-.metodo .pregunta{font-family:var(--ft);font-style:italic;color:var(--acento);font-size:1.1rem;margin-bottom:1rem}
-.metodo h3{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave);font-weight:700;margin:1rem 0 .3rem}
+.metodo{background:var(--superficie);border:1px solid var(--borde);border-left:4px solid var(--acento);border-radius:var(--radio);padding:var(--e-6) var(--e-6);margin-top:var(--e-5)}
+.metodo .num{font-weight:700;color:var(--acento);font-size:var(--t-xs);letter-spacing:.12em;margin-bottom:var(--e-2)}
+.metodo h2{font-family:var(--ft);font-weight:700;font-size:var(--t-xl);margin-bottom:var(--e-1)}
+.metodo .pregunta{font-family:var(--ft);font-style:italic;color:var(--acento);font-size:var(--t-m);margin-bottom:var(--e-4)}
+.metodo h3{font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave);font-weight:700;margin:var(--e-4) 0 var(--e-1)}
 .metodo p{color:var(--tinta)}
 .metodo .limita{color:var(--tinta-suave)}
-.metodo .fuentes{font-size:.85rem;color:rgba(200,210,206,.8);margin-top:1rem;border-top:1px solid rgba(255,255,255,.1);padding-top:.8rem}
+.metodo .fuentes{font-size:var(--t-xs);color:var(--tinta-3);margin-top:var(--e-4);border-top:1px solid var(--borde);padding-top:var(--e-3)}
 .metodo .fuentes a{word-break:break-all}
 
-.cierre{margin-top:2.4rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:var(--radio);padding:1.4rem 1.6rem;color:var(--tinta-suave)}
+.cierre{margin-top:var(--e-6);background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio);padding:var(--e-5) var(--e-5);color:var(--tinta-suave)}
 .cierre a{font-weight:600}
 
-.pie{border-top:1px solid rgba(255,255,255,.1);margin-top:3rem;padding:2.4rem 5vw;text-align:center;color:rgba(200,210,206,.65);font-size:.82rem;line-height:1.7}
-.pie a{color:rgba(216,169,58,.85);word-break:break-all}
+.pie{border-top:1px solid var(--borde);margin-top:var(--e-7);padding:var(--e-6) var(--margen);text-align:center;color:var(--tinta-3);font-size:var(--t-xs);line-height:1.7}
+.pie a{color:var(--acento);word-break:break-all}
 /* PB-GH-10: reserva de altura para el bloque que pinta el script (CLS de carga); menor que su altura real en teléfono, tableta y escritorio */
 #metodos{min-height:100vh}
 </style>
