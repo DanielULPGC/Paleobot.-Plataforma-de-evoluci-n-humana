@@ -52,13 +52,37 @@ main :is(p, li, dd, figcaption) { max-width: var(--medida); }
 /* ---------- Cabecera y ajustes ---------- */
 .cabecera { background: var(--superficie); border-bottom: var(--linea) solid var(--borde); }
 .cabecera-interior {
-  display: flex; flex-wrap: wrap; gap: var(--e-2) var(--e-4); align-items: center; justify-content: space-between;
-  max-width: var(--ancho-pagina); margin: 0 auto; padding: var(--e-3) var(--margen-pagina);
+  position: relative; display: flex; flex-wrap: wrap; gap: var(--e-2) var(--e-3); align-items: center; justify-content: space-between;
+  max-width: var(--ancho-pagina); margin: 0 auto; padding: var(--e-2) var(--margen-pagina);
 }
+@media (min-width: 48rem) { .cabecera-interior { padding-top: var(--e-3); padding-bottom: var(--e-3); } }
 .cabecera-texto { min-width: 0; }
 .antetitulo { margin: 0; font-size: var(--t-xs); color: var(--tinta-2); letter-spacing: var(--rastreo-rotulo); }
 .marca { margin: 0; font-size: var(--t-m); }
+/* Ajustes (A−, A+, Proyectar, Imprimir).
+   Teléfono y tableta estrecha: un solo control «Ajustes» que despliega un panel flotante (única sombra permitida).
+   Desde 48 rem: los cuatro en línea como botones fantasma, separados de la marca por un divisor. */
 .ajustes { display: flex; flex-wrap: wrap; gap: var(--e-1); max-width: 100%; }
+.boton-ajustes { display: none; }
+@media (max-width: 47.99rem) {
+  .cabecera-texto { flex: 1 1 0; }
+  .antetitulo { letter-spacing: 0; }
+  .boton-ajustes { display: inline-flex; padding: var(--e-2); color: var(--tinta-2); border-color: transparent; background: transparent; }
+  .boton-ajustes::after {
+    content: ""; width: var(--e-2); height: var(--e-2); margin-top: calc(-1 * var(--e-1));
+    border-right: var(--linea-gruesa) solid currentColor; border-bottom: var(--linea-gruesa) solid currentColor; transform: rotate(45deg);
+  }
+  .boton-ajustes[aria-expanded="true"] { background: var(--hundido); color: var(--tinta); }
+  .boton-ajustes[aria-expanded="true"]::after { margin-top: var(--e-1); transform: rotate(-135deg); }
+  .ajustes {
+    display: none; position: absolute; z-index: 20; top: 100%; right: var(--margen-pagina); width: min(16rem, calc(100% - 2 * var(--margen-pagina)));
+    grid-template-columns: 1fr 1fr; gap: var(--e-2); padding: var(--e-3); margin-top: var(--e-1);
+    background: var(--superficie); border-radius: var(--r-contenedor); box-shadow: var(--sombra-flotante);
+  }
+  .ajustes.abierto { display: grid; }
+  .ajustes #boton-proyectar, .ajustes #boton-imprimir { grid-column: 1 / -1; justify-content: flex-start; }
+}
+@media (scripting: none) { .boton-ajustes { display: none; } }
 
 /* ---------- Botones: secundario (por defecto), fantasma (ajustes) y primario ---------- */
 button, .boton, .paso-seccion a {
@@ -73,9 +97,12 @@ button:active, .boton:active, .paso-seccion a:active { background: var(--hundido
 button:disabled, button:disabled:hover {
   cursor: not-allowed; background: var(--hundido); color: var(--tinta-2); border-color: var(--borde);
 }
-.boton-ajuste { border-color: transparent; background: var(--hundido); color: var(--tinta); padding: var(--e-2) var(--e-3); }
-.boton-ajuste:hover { border-color: transparent; background: var(--acento-suave); color: var(--acento); }
-.boton-ajuste[aria-pressed="true"] { background: var(--acento); color: var(--sobre-acento); }
+/* Botón fantasma: sin borde ni fondo hasta :hover; pulsado (aria-pressed) con fondo suave, nunca relleno de acento. */
+.boton-ajuste { border-color: transparent; background: transparent; color: var(--tinta-2); padding: var(--e-2) var(--e-3); }
+.boton-ajuste:hover { border-color: transparent; background: var(--hundido); color: var(--tinta); }
+.boton-ajuste[aria-pressed="true"] { background: var(--acento-suave); color: var(--acento); }
+@media (max-width: 47.99rem) { .ajustes .boton-ajuste { background: var(--hundido); color: var(--tinta); } .ajustes .boton-ajuste[aria-pressed="true"] { background: var(--acento-suave); color: var(--acento); } }
+@media (min-width: 48rem) { .ajustes { padding-left: var(--e-3); border-left: var(--linea) solid var(--borde); } }
 .boton-primario { background: var(--acento); border-color: var(--acento); color: var(--sobre-acento); font-weight: 600; }
 .boton-primario:hover { background: var(--acento-fuerte); border-color: var(--acento-fuerte); color: var(--sobre-acento); }
 .boton-primario:focus-visible { outline-offset: 3px; }
@@ -362,7 +389,7 @@ body.proyeccion .pista { height: var(--e-5); }
 
 /* ---------- Impresión ---------- */
 @media print {
-  .cabecera .ajustes, .pestanas, .salto, .filtros, .pie a, .paso-seccion, .acciones-notas, .nota textarea, .nota label, #repaso-nuevo, .resultado-repaso .boton-primario, .vacio .acciones { display: none; }
+  .cabecera .ajustes, .boton-ajustes, .pestanas, .salto, .filtros, .pie a, .paso-seccion, .acciones-notas, .nota textarea, .nota label, #repaso-nuevo, .resultado-repaso .boton-primario, .vacio .acciones { display: none; }
   .solo-impresion { display: block; }
   .nota-impresa:not(:empty) { display: block; border-left: var(--linea-gruesa) solid var(--borde); padding-left: var(--e-2); margin: var(--e-1) 0; }
   .sesion:not([open]) { display: none; }

@@ -100,6 +100,7 @@
     });
   });
   document.getElementById('boton-proyectar').addEventListener('click', function () {
+    abrirAjustes(false, false);
     ajustes.proyeccion = !ajustes.proyeccion;
     almacen.guardar(ajustes); aplicarAjustes();
     var d = document.documentElement;
@@ -108,6 +109,28 @@
       if (!ajustes.proyeccion && document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
     } catch (e) { /* pantalla completa opcional */ }
   });
+
+  /* ---------- Menú «Ajustes» (teléfono y tableta estrecha): panel flotante accesible ---------- */
+  var botonAjustes = document.getElementById('boton-ajustes'), panelAjustes = document.getElementById('panel-ajustes');
+  function abrirAjustes(abrir, devolverFoco) {
+    panelAjustes.classList.toggle('abierto', abrir);
+    botonAjustes.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+    if (!abrir && devolverFoco) botonAjustes.focus();
+  }
+  function ajustesAbiertos() { return botonAjustes.getAttribute('aria-expanded') === 'true'; }
+  botonAjustes.addEventListener('click', function () { abrirAjustes(!ajustesAbiertos(), false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && ajustesAbiertos()) { e.preventDefault(); abrirAjustes(false, true); }
+  });
+  document.addEventListener('click', function (e) {
+    if (ajustesAbiertos() && !panelAjustes.contains(e.target) && !botonAjustes.contains(e.target)) abrirAjustes(false, false);
+  });
+  // Si el foco sale del menú con el tabulador, se cierra.
+  panelAjustes.addEventListener('focusout', function (e) {
+    if (ajustesAbiertos() && e.relatedTarget && !panelAjustes.contains(e.relatedTarget) && e.relatedTarget !== botonAjustes) abrirAjustes(false, false);
+  });
+  // Al pasar a ancho de escritorio el panel deja de existir como tal: se cierra.
+  if (window.matchMedia) { var mqAncho = window.matchMedia('(min-width: 48rem)'); var alCambiar = function () { if (mqAncho.matches) abrirAjustes(false, false); }; if (mqAncho.addEventListener) mqAncho.addEventListener('change', alCambiar); }
 
   /* ---------- Navegación por secciones ---------- */
   var SECCIONES = ['inicio', 'tiempo', 'mapa', 'especies', 'comparar', 'metodos', 'clima', 'glosario', 'repaso', 'trabajo'];
@@ -742,7 +765,7 @@
   pintarClima();
   document.getElementById('buscar-termino').addEventListener('input', pintarGlosario);
   pintarGlosario();
-  document.getElementById('boton-imprimir').addEventListener('click', function () { window.print(); });
+  document.getElementById('boton-imprimir').addEventListener('click', function () { abrirAjustes(false, false); window.print(); });
   document.getElementById('nota-datos').textContent = (A.meta && A.meta.notaDatos) || '';
   pintarRepaso();
   document.getElementById('repaso-nuevo').addEventListener('click', function () { pintarRepaso(); var t = document.getElementById('t-repaso'); t.setAttribute('tabindex', '-1'); t.focus(); t.scrollIntoView({ block: 'start' }); });
