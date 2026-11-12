@@ -577,7 +577,9 @@
         svg.appendChild(svgEl('path', { d: MAPA[k], 'class': 'tierra', 'aria-hidden': 'true' }));
         if (k === 'africa') { var g = svgEl('g', { transform: 'scale(' + R.k + ') translate(' + (-R.x0) + ' ' + (-R.y0) + ')', 'aria-hidden': 'true' }); g.appendChild(svgEl('path', { d: MAPA[k], 'class': 'tierra' })); rift.appendChild(g); }
       });
-      var tc = svgEl('text', { x: '0.8', y: '13', 'aria-hidden': 'true' }); tc.textContent = 'Canarias'; svg.appendChild(tc);
+      // Rótulo de Canarias en el océano, por encima de las islas y lejos de la costa y del punto 1; una línea lo une con ellas.
+      svg.appendChild(svgEl('line', { x1: '3.6', y1: '3.7', x2: '3.6', y2: '8.4', 'class': 'guia', 'aria-hidden': 'true' }));
+      var tc = svgEl('text', { x: '0.6', y: '3', 'class': 'rotulo-mapa', 'aria-hidden': 'true' }); tc.textContent = 'Canarias'; svg.appendChild(tc);
     }
     // Recuadro del Rift señalado en el mapa general.
     svg.appendChild(svgEl('rect', { x: R.x0, y: R.y0, width: R.ancho, height: R.alto, 'class': 'marco-rift', 'aria-hidden': 'true' }));
@@ -597,10 +599,18 @@
     // Que ningún marcador quede cortado por el borde del recuadro.
     posRift.forEach(function (p) { p.x = Math.min(Math.max(p.x, 3.2), R.ancho * R.k - 3.2); p.y = Math.min(Math.max(p.y, 3.2), R.alto * R.k - 3.2); });
     separar(posRift, 5.8);
+    // Línea guía y punto de posición solo cuando la posición real queda claramente fuera del marcador (área 2,7 más
+    // el diámetro del punto); si no, el propio marcador ya señala su posición aproximada y no quedan puntos a medio tapar
+    // ni pegados a un marcador vecino. Con los datos actuales ningún marcador del recuadro se desplaza tanto.
     posRift.forEach(function (p) {
-      rift.appendChild(svgEl('line', { x1: p.rx.toFixed(2), y1: p.ry.toFixed(2), x2: p.x.toFixed(2), y2: p.y.toFixed(2), 'class': 'guia', 'aria-hidden': 'true' }));
-      rift.appendChild(svgEl('circle', { cx: p.rx.toFixed(2), cy: p.ry.toFixed(2), r: '.45', 'class': 'posicion', 'aria-hidden': 'true' }));
+      var dx = p.x - p.rx, dy = p.y - p.ry, d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 3.9) return;
+      var bx = p.x - dx / d * 2.1, by = p.y - dy / d * 2.1;
+      rift.appendChild(svgEl('line', { x1: p.rx.toFixed(2), y1: p.ry.toFixed(2), x2: bx.toFixed(2), y2: by.toFixed(2), 'class': 'guia', 'aria-hidden': 'true' }));
+      rift.appendChild(svgEl('circle', { cx: p.rx.toFixed(2), cy: p.ry.toFixed(2), r: '.6', 'class': 'posicion', 'aria-hidden': 'true' }));
     });
+    var riftDesc = document.getElementById('rift-desc');
+    if (riftDesc) riftDesc.textContent = 'Ampliación de África oriental con las regiones del Rift, que en el mapa general se superponen. Cuando un número no cabe sobre su posición aproximada, una línea lo une con ella.';
     posRift.forEach(function (p) { rift.appendChild(puntoMapa(rift, p.clave, p.x.toFixed(2), p.y.toFixed(2))); });
     // Lista agrupada por zona, con el número del mapa y el recuento alineado.
     var cont = document.getElementById('lista-regiones');

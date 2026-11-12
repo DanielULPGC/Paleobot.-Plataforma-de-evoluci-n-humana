@@ -354,9 +354,12 @@ main .linea-tiempo li { max-width: none; }
 .mapas .punto.activo .marca { fill: var(--tinta); }
 .mapas .punto.activo .numero-punto { fill: var(--papel); }
 .mapas .marco-rift { fill: none; stroke: var(--tinta-2); stroke-width: .2; stroke-dasharray: .8 .5; pointer-events: none; }
-.mapas .punto-rift, .mapas .posicion { fill: var(--acento); pointer-events: none; }
-.mapas .guia { stroke: var(--tinta-2); stroke-width: .15; pointer-events: none; }
-#mapa-svg text:not(.numero-punto) { font-size: 2.4px; fill: var(--tinta); paint-order: stroke; stroke: var(--tierra); stroke-width: .5px; font-family: var(--f-titulo); }
+.mapas .punto-rift { fill: var(--acento); pointer-events: none; }
+/* Posición real de un marcador desplazado del recuadro: punto con borde de superficie para que se lea entero, unido por la guía. */
+.mapas .posicion { fill: var(--acento); stroke: var(--superficie); stroke-width: .2; pointer-events: none; }
+.mapas .guia { stroke: var(--tinta-2); stroke-width: .2; pointer-events: none; }
+/* Rótulo del mapa (Canarias): va sobre el mar, con halo del color del mar. Tamaño en unidades del viewBox (excepción SVG documentada). */
+#mapa-svg .rotulo-mapa { font-size: 2.4px; fill: var(--tinta); paint-order: stroke; stroke: var(--mar); stroke-width: .5px; font-family: var(--f-titulo); }
 /* Lista de regiones agrupada por zona; número y recuento alineados. */
 .lista-regiones { display: grid; gap: var(--e-4) var(--e-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); }
 .lista-regiones .zona-regiones:last-child { grid-column: 1 / -1; }
@@ -380,7 +383,12 @@ main .linea-tiempo li { max-width: none; }
 /* ---------- Especies: fichas como página de manual ---------- */
 .fichas { display: grid; gap: var(--e-3); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 48rem) { .tarjetas { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
-.ficha > summary { display: flex; gap: var(--e-3); align-items: center; min-height: var(--control); }
+/* El resumen ocupa el mismo sitio abierto y cerrado; su relleno interior (compensado con margen negativo) deja aire
+   entre el texto y el anillo de foco, que así abraza el resumen entero sin rozar el nombre. */
+.ficha > summary {
+  display: flex; gap: var(--e-3); align-items: center; min-height: var(--control);
+  margin: calc(-1 * var(--e-2)); padding: var(--e-2); border-radius: var(--r-control);
+}
 .ficha > summary::after { margin-left: auto; }
 /* Resumen de ficha en dos líneas constantes: nombre; fechas y etiqueta. Así «Debatida» está siempre en el mismo sitio. */
 .ficha .cabeza-ficha { display: flex; flex-direction: column; gap: var(--e-1); min-width: 0; }
@@ -396,7 +404,8 @@ main .linea-tiempo li { max-width: none; }
   .ficha .meta-ficha .fechas { text-align: right; }
   .ficha .meta-ficha .etiqueta { justify-self: start; }
 }
-.ficha[open] > summary { margin-bottom: var(--e-3); padding-bottom: var(--e-3); border-bottom: var(--linea) solid var(--borde); }
+/* Separador al abrir: lo lleva el cuerpo, no el resumen, para que el resumen no cambie de alto ni de centrado. */
+.ficha[open] > .cuerpo-ficha { margin-top: calc(var(--e-2) + var(--e-3)); padding-top: var(--e-3); border-top: var(--linea) solid var(--borde); }
 .ficha dl { margin: 0 0 var(--e-3); }
 .ficha dt, .tarjeta dt { margin-top: var(--e-3); }
 .ficha dt:first-child, .tarjeta dt:first-child { margin-top: 0; }
