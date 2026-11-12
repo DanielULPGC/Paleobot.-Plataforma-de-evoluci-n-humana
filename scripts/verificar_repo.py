@@ -85,7 +85,7 @@ def verify(include_syntax=True):
     # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
     # PB-GH-04 encadena una segunda ronda: la última corrección de cada ruta debe partir
     # exactamente del estado anterior, conservado en su propio snapshot.
-    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json','provenance/PB_GH_09_CORRECCIONES.json') if (ROOT/n).is_file()]
+    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json','provenance/PB_GH_09_CORRECCIONES.json','provenance/PB_GH_10_CORRECCIONES.json') if (ROOT/n).is_file()]
     fixes={}
     cadena_ok=True
     for ronda in rondas:

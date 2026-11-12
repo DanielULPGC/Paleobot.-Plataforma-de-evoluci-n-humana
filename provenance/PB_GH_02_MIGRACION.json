@@ -2650,7 +2650,8 @@
       "git_blob_sha1": "6b8595000a9678756d5f13431f9ece098ec79da5",
       "sha256": "10a81869cdfdd01cc93ab05fb9601a92d850940498128acc5a3dae475c007b0e",
       "retained_paths": [
-        "src/entrada_ligera/estilos.css"
+        "src/entrada_ligera/estilos.css",
+        "docs/historial/BASE_4D320EE/src/entrada_ligera/estilos.css.snapshot"
       ]
     },
     {

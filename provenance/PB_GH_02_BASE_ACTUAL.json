@@ -1108,7 +1108,8 @@
       "git_blob_sha1": "7b7b96d04ceae12bdc0597cb0bd759c557a48e06",
       "sha256": "dfd49377212aada7281edc1394be98118461475ce1d790f5a27edec7aff42a35",
       "retained_paths": [
-        "atlas/assets/js/80-features/058-script.js"
+        "atlas/assets/js/80-features/058-script.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/058-script.js.snapshot"
       ]
     },
     {
@@ -1116,7 +1117,8 @@
       "git_blob_sha1": "d4235f9d6a42bd2c999487667a9e039200fbd878",
       "sha256": "7545cd73c4e6d5624b251761847964de784da43ef2de0bd822be20a78b601139",
       "retained_paths": [
-        "atlas/assets/js/80-features/059-script.js"
+        "atlas/assets/js/80-features/059-script.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/059-script.js.snapshot"
       ]
     },
     {
@@ -1124,7 +1126,8 @@
       "git_blob_sha1": "5f3d7a3eb4052c033902958cc6d03ca89649532b",
       "sha256": "4a1d670085c9ad7c45366c7b26e4dda06c6d41e7aad8b0e0f48a569465a36337",
       "retained_paths": [
-        "atlas/assets/js/80-features/060-script.js"
+        "atlas/assets/js/80-features/060-script.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/060-script.js.snapshot"
       ]
     },
     {
@@ -1419,7 +1422,8 @@
       "git_blob_sha1": "8e417ea8313c0d4098f325b024b5c5630b80a6ea",
       "sha256": "32726e975421953f0f409c4eab556862906c16701920211b6514d9077f1e4c4e",
       "retained_paths": [
-        "atlas/recorrido/atlas.html"
+        "atlas/recorrido/atlas.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/atlas.html.snapshot"
       ]
     },
     {
@@ -1427,7 +1431,8 @@
       "git_blob_sha1": "b9150b846b11f60967c70ed63dda9ea9c105f526",
       "sha256": "70ca3db61a2d3255410d0220ebbaa92d8acffd7f302ee39adcf7c2ee4840d545",
       "retained_paths": [
-        "atlas/recorrido/aula.html"
+        "atlas/recorrido/aula.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/aula.html.snapshot"
       ]
     },
     {
@@ -1435,7 +1440,8 @@
       "git_blob_sha1": "4b86156bee600f7dd0b166402cb696a0794c95e8",
       "sha256": "e72d108e062bada515360eea2169e7f97253b1559d0ca34ab150659d6b114276",
       "retained_paths": [
-        "atlas/recorrido/clima.html"
+        "atlas/recorrido/clima.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/clima.html.snapshot"
       ]
     },
     {
@@ -1443,7 +1449,8 @@
       "git_blob_sha1": "e5298b0ef2f12c189ba7cc02df0d3ba498481867",
       "sha256": "91bc3030fbd74ee1f3e35922975bc1e9d8618ddba583f8ee46183ba5290b6390",
       "retained_paths": [
-        "atlas/recorrido/cronologia.html"
+        "atlas/recorrido/cronologia.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/cronologia.html.snapshot"
       ]
     },
     {
@@ -1459,7 +1466,8 @@
       "git_blob_sha1": "ce11b4b45d68de65ad6dd3c9044b20b4c531158e",
       "sha256": "3e200c4c1a7956d20f6a9ef251d069ef212573acc70d3086610e954e67af1543",
       "retained_paths": [
-        "atlas/recorrido/ficha.html"
+        "atlas/recorrido/ficha.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/ficha.html.snapshot"
       ]
     },
     {
@@ -1467,7 +1475,8 @@
       "git_blob_sha1": "ddb0048614819c411d13eaf64f9fa524359ebf67",
       "sha256": "69d4ba4b67dd6330ac26c432521ee9b346552ed921da2168d091b3ce81195f8b",
       "retained_paths": [
-        "atlas/recorrido/index.html"
+        "atlas/recorrido/index.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/index.html.snapshot"
       ]
     },
     {
@@ -1507,7 +1516,8 @@
       "git_blob_sha1": "fbb57131b1d5c454fdd97ece9d6143243b5253f4",
       "sha256": "0247bf2746343074e29cb7e811c88b9ec377e5441c509dcd9599507d7f3fa36c",
       "retained_paths": [
-        "atlas/recorrido/integracion.css"
+        "atlas/recorrido/integracion.css",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/integracion.css.snapshot"
       ]
     },
     {
@@ -1515,7 +1525,8 @@
       "git_blob_sha1": "616e4599be61c24d6e3e99c75c715f34488d5f1e",
       "sha256": "502148b662bdcda9b5b26b378b07e25613fc581bdb27703fccbdc30fd6f73d49",
       "retained_paths": [
-        "atlas/recorrido/integracion.js"
+        "atlas/recorrido/integracion.js",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/integracion.js.snapshot"
       ]
     },
     {
@@ -1523,7 +1534,8 @@
       "git_blob_sha1": "9e57636c37e23f613090d143256f088e8b7d105e",
       "sha256": "a52667e4e48e81ec0fa9bb92ef5039a1281b9fcf4cad0f34309abb24a9089c1a",
       "retained_paths": [
-        "atlas/recorrido/introduccion.html"
+        "atlas/recorrido/introduccion.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/introduccion.html.snapshot"
       ]
     },
     {
@@ -1539,7 +1551,8 @@
       "git_blob_sha1": "0fe49f4c7a829ad6c80d8c56b2abbbb09895d3c1",
       "sha256": "05f4ec01ea30193a48878689209f39a2b6541e44291ad8ddc1909a1c1b8b6eeb",
       "retained_paths": [
-        "atlas/recorrido/licencias/FONT-LICENSES.md"
+        "atlas/recorrido/licencias/FONT-LICENSES.md",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/licencias/FONT-LICENSES.md.snapshot"
       ]
     },
     {
@@ -1571,7 +1584,8 @@
       "git_blob_sha1": "75ff9d0ce7ff515b20a392e84d44716e1507b477",
       "sha256": "e1e451a754b8f13a7c45271f2ede4ef6b81831ffa7422bf998bba167d7de3cf8",
       "retained_paths": [
-        "atlas/recorrido/metodos.html"
+        "atlas/recorrido/metodos.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/metodos.html.snapshot"
       ]
     },
     {
@@ -1579,7 +1593,8 @@
       "git_blob_sha1": "0088e4b449a89ca9254fe3e9436bc1413e2c99f5",
       "sha256": "d8558989c023b2a1338f0b0635d95613c63eee4a0a1cf4c65070c5969d896ebb",
       "retained_paths": [
-        "atlas/recorrido/parentesco.html"
+        "atlas/recorrido/parentesco.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/parentesco.html.snapshot"
       ]
     },
     {
@@ -1596,7 +1611,8 @@
       "git_blob_sha1": "590a66e7cdb4386c9f05ba470a6d2f392d121837",
       "sha256": "d5c58ce7aed598820483a60d4b34dd5003e425ecfc37697df50a3b98c227872b",
       "retained_paths": [
-        "atlas/recorrido/territorio.html"
+        "atlas/recorrido/territorio.html",
+        "docs/historial/BASE_4D320EE/atlas/recorrido/territorio.html.snapshot"
       ]
     },
     {
@@ -4355,7 +4371,8 @@
       "git_blob_sha1": "6b8595000a9678756d5f13431f9ece098ec79da5",
       "sha256": "10a81869cdfdd01cc93ab05fb9601a92d850940498128acc5a3dae475c007b0e",
       "retained_paths": [
-        "src/entrada_ligera/estilos.css"
+        "src/entrada_ligera/estilos.css",
+        "docs/historial/BASE_4D320EE/src/entrada_ligera/estilos.css.snapshot"
       ]
     },
     {
@@ -4373,7 +4390,8 @@
       "git_blob_sha1": "0bfeb6cadaaa2aa30d6b611ba31509c44467aa58",
       "sha256": "95df6159427941d0a1f908d392caf1173f336deef3013035da4f8637190096c0",
       "retained_paths": [
-        "src/entrada_ligera/interaccion.js"
+        "src/entrada_ligera/interaccion.js",
+        "docs/historial/BASE_4D320EE/src/entrada_ligera/interaccion.js.snapshot"
       ]
     },
     {

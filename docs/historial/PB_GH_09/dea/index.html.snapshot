@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Recurso del Diploma de Estudios Africanos (ULPGC) para estudiar los orígenes de la humanidad en África con el Atlas de paleoantropología.">
+<title>África, cuna de la humanidad · DEA</title>
+<link rel="stylesheet" href="dea.css">
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera">
+  <div class="cabecera-texto">
+    <p class="antetitulo">Diploma de Estudios Africanos · ULPGC</p>
+    <p class="marca">África, cuna de la humanidad</p>
+  </div>
+  <div class="ajustes" role="group" aria-label="Ajustes de lectura">
+    <button type="button" class="boton-ajuste" data-texto="-1" aria-label="Reducir el tamaño del texto">A−</button>
+    <button type="button" class="boton-ajuste" data-texto="1" aria-label="Aumentar el tamaño del texto">A+</button>
+    <button type="button" class="boton-ajuste" id="boton-proyectar" aria-pressed="false">Proyectar</button>
+    <button type="button" class="boton-ajuste" id="boton-imprimir">Imprimir</button>
+  </div>
+</header>
+
+<nav class="pestanas" aria-label="Secciones">
+  <a href="#inicio" data-seccion="inicio">Inicio</a>
+  <a href="#tiempo" data-seccion="tiempo">Tiempo</a>
+  <a href="#mapa" data-seccion="mapa">Mapa</a>
+  <a href="#especies" data-seccion="especies">Especies</a>
+  <a href="#comparar" data-seccion="comparar">Comparar</a>
+  <a href="#metodos" data-seccion="metodos">Métodos</a>
+  <a href="#clima" data-seccion="clima">Clima</a>
+  <a href="#glosario" data-seccion="glosario">Glosario</a>
+  <a href="#repaso" data-seccion="repaso">Repaso</a>
+  <a href="#trabajo" data-seccion="trabajo">Su trabajo</a>
+</nav>
+
+<main id="contenido" tabindex="-1">
+
+  <section id="inicio" class="seccion" data-seccion="inicio" aria-labelledby="t-inicio">
+    <h1 id="t-inicio">Los orígenes de la humanidad en África</h1>
+    <p class="entradilla">Este recurso acompaña al Diploma de Estudios Africanos de la ULPGC, sobre todo a la materia <em>Antropología africana</em> y al tema «Orígenes de la humanidad». Funciona en ordenador, tableta y teléfono, y se puede proyectar en clase.</p>
+    <ol class="como-usar">
+      <li><strong>Elija una sesión.</strong> Cada una parte de una pregunta.</li>
+      <li><strong>Siga los pasos.</strong> Los enlaces le llevan a la parte del recurso que necesita.</li>
+      <li><strong>Anote sus respuestas.</strong> Cada paso tiene un espacio para sus notas; le servirán para el trabajo individual de la materia.</li>
+    </ol>
+    <h2 id="t-sesiones">Sesiones</h2>
+    <p id="progreso-sesiones" class="resumen" aria-live="polite"></p>
+    <div id="lista-sesiones" class="sesiones"></div>
+    <div class="acciones-notas">
+      <button type="button" data-accion="descargar-notas">Descargar mis notas</button>
+      <span class="resumen" data-estado-notas aria-live="polite"></span>
+    </div>
+    <p class="nota-progreso">Sus notas y las marcas de «Sesión hecha» se guardan solo en este dispositivo: no pasan de un aparato a otro y el recurso no recoge ni envía datos personales. Descargue sus notas si quiere conservarlas.</p>
+    <h2>Secciones del recurso</h2>
+    <ul id="indice-secciones" class="indice"></ul>
+  </section>
+
+  <section id="tiempo" class="seccion" data-seccion="tiempo" aria-labelledby="t-tiempo" hidden>
+    <h1 id="t-tiempo">Línea del tiempo</h1>
+    <p class="entradilla">Cada barra muestra el intervalo aproximado en el que se documenta una especie o población. Las fechas están en millones de años (Ma) antes del presente.</p>
+    <div class="filtros" role="group" aria-label="Opciones de la línea del tiempo">
+      <label><input type="checkbox" id="tiempo-africa" checked> Solo África</label>
+      <label><input type="checkbox" id="tiempo-mioceno"> Incluir los primates más antiguos del Mioceno (hasta 23 Ma)</label>
+    </div>
+    <details class="tarjeta dia">
+      <summary>¿Cuánto es un millón de años? Imagine un solo día</summary>
+      <p>Si los últimos <span id="dia-total">7</span> millones de años se comprimieran en un día de 24 horas que empezara a medianoche:</p>
+      <ul id="lista-dia"></ul>
+      <p class="resumen">Las horas se calculan con las fechas aproximadas de este recurso.</p>
+    </details>
+    <p id="tiempo-resumen" class="resumen" aria-live="polite"></p>
+    <ol id="lista-tiempo" class="linea-tiempo"></ol>
+  </section>
+
+  <section id="mapa" class="seccion" data-seccion="mapa" aria-labelledby="t-mapa" hidden>
+    <h1 id="t-mapa">Mapa de yacimientos en África</h1>
+    <p class="entradilla">Cada punto es una región de hallazgos. Pulse un punto, o un nombre de la lista, para ver qué especies se documentan allí. Las posiciones son orientativas.</p>
+    <div class="mapa-envoltorio">
+      <svg id="mapa-svg" role="group" aria-labelledby="mapa-titulo" aria-describedby="mapa-desc"><title id="mapa-titulo">Mapa de África con las regiones de hallazgos</title><desc id="mapa-desc">Contorno de África y de Canarias con un punto por cada región de hallazgos del atlas. La lista que sigue al mapa contiene la misma información.</desc></svg>
+    </div>
+    <div id="detalle-region" class="detalle" aria-live="polite"></div>
+    <h2>Regiones</h2>
+    <ul id="lista-regiones" class="regiones"></ul>
+    <p class="fuente-mapa">Contorno: Natural Earth (dominio público). Puntos: coordenadas aproximadas del atlas.</p>
+  </section>
+
+  <section id="especies" class="seccion" data-seccion="especies" aria-labelledby="t-especies" hidden>
+    <h1 id="t-especies">Especies y poblaciones</h1>
+    <p class="entradilla">Fichas breves. «Debatida» indica que su validez o su posición son objeto de discusión científica. Cada imagen indica qué muestra (a menudo un molde o una réplica, no el fósil original), su autoría y su licencia; son miniaturas de Wikimedia Commons, sin otros cambios.</p>
+    <div class="filtros" role="group" aria-label="Filtrar especies">
+      <label class="campo">Buscar <input type="search" id="buscar-especie" autocomplete="off"></label>
+      <label><input type="checkbox" id="especies-africa" checked> Solo África</label>
+    </div>
+    <p id="especies-resumen" class="resumen" aria-live="polite"></p>
+    <div id="lista-especies" class="fichas"></div>
+  </section>
+
+  <section id="comparar" class="seccion" data-seccion="comparar" aria-labelledby="t-comparar" hidden>
+    <h1 id="t-comparar">Comparar dos especies</h1>
+    <p class="entradilla">Elija dos especies para ver si convivieron en el tiempo y dónde se documentan.</p>
+    <div class="comparador">
+      <label class="campo">Primera especie <select id="comparar-a"></select></label>
+      <label class="campo">Segunda especie <select id="comparar-b"></select></label>
+    </div>
+    <div id="resultado-comparar" class="detalle" aria-live="polite"></div>
+  </section>
+
+  <section id="metodos" class="seccion" data-seccion="metodos" aria-labelledby="t-metodos" hidden>
+    <h1 id="t-metodos">¿Cómo lo sabemos?</h1>
+    <p class="entradilla">Tres métodos con los que se estudian los restos humanos antiguos: qué preguntan, cómo funcionan, qué aportan y qué límites tienen.</p>
+    <div id="lista-metodos" class="tarjetas"></div>
+  </section>
+
+  <section id="clima" class="seccion" data-seccion="clima" aria-labelledby="t-clima" hidden>
+    <h1 id="t-clima">Paisajes y climas del origen</h1>
+    <p class="entradilla">Tres ideas sobre la relación entre el ambiente y la evolución humana.</p>
+    <div id="lista-clima" class="tarjetas"></div>
+  </section>
+
+  <section id="glosario" class="seccion" data-seccion="glosario" aria-labelledby="t-glosario" hidden>
+    <h1 id="t-glosario">Glosario</h1>
+    <p class="entradilla">Los términos del atlas, en orden alfabético. Escriba una palabra para buscarla en el término o en su definición.</p>
+    <div class="filtros"><label class="campo">Buscar término <input type="search" id="buscar-termino" autocomplete="off"></label></div>
+    <p id="glosario-resumen" class="resumen" aria-live="polite"></p>
+    <dl id="lista-glosario" class="glosario"></dl>
+  </section>
+
+  <section id="repaso" class="seccion" data-seccion="repaso" aria-labelledby="t-repaso" hidden>
+    <h1 id="t-repaso">Repaso</h1>
+    <p class="entradilla">Ocho preguntas para comprobar lo aprendido. Se generan a partir de los datos del recurso y cambian cada vez. No se guarda ni se envía ningún resultado.</p>
+    <p id="repaso-marcador" class="resumen" aria-live="polite"></p>
+    <div id="lista-repaso" class="repaso"></div>
+    <p><button type="button" id="repaso-nuevo">Nuevas preguntas</button></p>
+  </section>
+
+  <section id="trabajo" class="seccion" data-seccion="trabajo" aria-labelledby="t-trabajo" hidden>
+    <h1 id="t-trabajo">Guía para su trabajo individual</h1>
+    <p class="entradilla">Orientaciones para preparar el trabajo de la materia con este recurso. Siga siempre los criterios que le indique el profesorado al comienzo del curso: esta guía es solo orientativa.</p>
+    <h2>1. Elija una pregunta</h2>
+    <p>Un buen trabajo responde a una pregunta concreta. Puede partir de la propuesta «Para su trabajo» de cualquier sesión, por ejemplo:</p>
+    <ul>
+      <li>¿Qué nos dicen cinco especies africanas sobre seis millones de años de evolución?</li>
+      <li>¿Por qué se habla de un árbol, y no de una escalera, en la evolución humana?</li>
+      <li>¿Qué sitio del Patrimonio Mundial africano explica mejor el origen de la humanidad, y por qué?</li>
+    </ul>
+    <h2>2. Organice el texto</h2>
+    <ol>
+      <li><strong>Título</strong> claro, que anticipe la respuesta.</li>
+      <li><strong>Introducción:</strong> la pregunta y por qué le interesa.</li>
+      <li><strong>Desarrollo:</strong> datos del recurso (fechas, lugares, especies) y lo que se interpreta a partir de ellos. Indique siempre si una especie o una fecha están debatidas.</li>
+      <li><strong>Conclusión:</strong> su respuesta a la pregunta, en pocas líneas.</li>
+      <li><strong>Fuentes:</strong> todas las obras que haya utilizado.</li>
+    </ol>
+    <h2>3. Use fuentes fiables</h2>
+    <ul>
+      <li>Prefiera artículos científicos, libros especializados, museos y organismos oficiales, como la UNESCO.</li>
+      <li>Compruebe quién firma el texto, cuándo se publicó y en qué se basa.</li>
+      <li>Desconfíe de las páginas sin autor ni fecha y de las imágenes sin origen.</li>
+      <li>Las fichas de este recurso incluyen sus fuentes; puede partir de ellas.</li>
+    </ul>
+    <h2>4. Cite sus fuentes (normas APA, 7.ª edición)</h2>
+    <p>Artículo científico con DOI:</p>
+    <p class="cita">Wood, B., y Boyle, E. K. (2016). Hominin taxic diversity: Fact or fantasy? <i>American Journal of Physical Anthropology</i>, <i>159</i>(S61), S37-S78. https://doi.org/10.1002/ajpa.22902</p>
+    <p>Este recurso web:</p>
+    <p class="cita">Facultad de Ciencias de la Educación, Universidad de Las Palmas de Gran Canaria. (2026). <i>África, cuna de la humanidad</i> [Recurso web]. https://danielulpgc.github.io/Paleobot.-Plataforma-de-evoluci-n-humana/dea/</p>
+    <h2>5. Aproveche sus notas</h2>
+    <p>Lo que haya escrito en los pasos de las sesiones puede servirle de borrador.</p>
+    <div class="acciones-notas">
+      <button type="button" data-accion="descargar-notas">Descargar mis notas</button>
+      <button type="button" data-accion="borrar-notas">Borrar mis notas</button>
+      <span class="resumen" data-estado-notas aria-live="polite"></span>
+    </div>
+    <h2>6. Antes de entregar</h2>
+    <ul class="lista-comprobacion">
+      <li>¿Responde a la pregunta del título?</li>
+      <li>¿Distingue los datos de las interpretaciones?</li>
+      <li>¿Las fechas aparecen como aproximadas cuando lo son?</li>
+      <li>¿Están citadas todas las fuentes?</li>
+    </ul>
+  </section>
+
+  <nav id="paso-seccion" class="paso-seccion" aria-label="Sección anterior y siguiente"></nav>
+
+  <p id="aviso-error" class="aviso" hidden>No se han podido cargar los datos del atlas. Recargue la página.</p>
+</main>
+
+<footer class="pie">
+  <p id="nota-datos"></p>
+  <p><a href="../atlas/recorrido/index.html">Recorrido guiado del atlas</a> · <a href="../atlas/index.html">Atlas completo</a> · <a href="../ligera/index.html">Consulta ligera</a></p>
+</footer>
+
+<script src="../atlas/recorrido/datos.js"></script>
+<script src="mapa-africa.js"></script>
+<script src="glosario.js"></script>
+<script src="imagenes.js"></script>
+<script src="dea.js"></script>
+</body>
+</html>
