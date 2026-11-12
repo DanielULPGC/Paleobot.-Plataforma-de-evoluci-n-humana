@@ -145,12 +145,42 @@
     repaso: 'Preguntas para comprobar lo aprendido.',
     trabajo: 'Orientaciones para el trabajo individual.'
   };
-  function nombreSeccion(id) { var a = document.querySelector('.pestanas a[data-seccion="' + id + '"]'); return a ? a.textContent : id; }
+  function nombreSeccion(id) { var a = document.querySelector('.pestanas-pista a[data-seccion="' + id + '"]'); return a ? a.textContent : id; }
   function avisoPestanas() {
     var n = document.querySelector('.pestanas-pista');
+    var desborda = n.scrollWidth > n.clientWidth + 4;
+    document.querySelector('.pestanas').classList.toggle('desborda', desborda);
+    if (!desborda && seccionesAbiertas()) abrirSecciones(false, false);
     n.classList.toggle('hay-mas', n.scrollLeft + n.clientWidth < n.scrollWidth - 4);
     n.classList.toggle('hay-antes', n.scrollLeft > 4);
   }
+  // Deja la pestaña actual entera a la vista (con la anterior como contexto si cabe), respetando el ajuste por pestañas.
+  function verPestana(a) {
+    var n = a.parentNode, pad = parseFloat(getComputedStyle(n).paddingLeft) || 0;
+    var izq = a.getBoundingClientRect().left - n.getBoundingClientRect().left + n.scrollLeft;
+    var previa = a.previousElementSibling;
+    var objetivo = previa ? previa.getBoundingClientRect().left - n.getBoundingClientRect().left + n.scrollLeft : izq;
+    var margen = parseFloat(getComputedStyle(document.documentElement).fontSize) * 3; // ancho de la máscara (--e-7)
+    if (objetivo + n.clientWidth - margen < izq + a.offsetWidth) objetivo = izq;
+    n.scrollLeft = Math.max(0, objetivo - pad);
+  }
+  /* «Secciones»: panel con las diez secciones (teléfono, o cuando las pestañas no caben). */
+  var botonSecciones = document.getElementById('boton-secciones'), panelSecciones = document.getElementById('panel-secciones');
+  function seccionesAbiertas() { return botonSecciones.getAttribute('aria-expanded') === 'true'; }
+  function abrirSecciones(abrir, devolverFoco) {
+    panelSecciones.classList.toggle('abierto', abrir);
+    botonSecciones.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+    if (!abrir && devolverFoco) botonSecciones.focus();
+  }
+  document.querySelectorAll('.pestanas-pista a').forEach(function (a) {
+    var en = el('a', { href: a.getAttribute('href'), 'data-seccion': a.dataset.seccion, texto: a.textContent });
+    en.addEventListener('click', function () { abrirSecciones(false, false); });
+    panelSecciones.appendChild(el('li', null, [en]));
+  });
+  botonSecciones.addEventListener('click', function () { abrirSecciones(!seccionesAbiertas(), false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && seccionesAbiertas()) { e.preventDefault(); abrirSecciones(false, true); } });
+  document.addEventListener('click', function (e) { if (seccionesAbiertas() && !panelSecciones.contains(e.target) && !botonSecciones.contains(e.target)) abrirSecciones(false, false); });
+  panelSecciones.addEventListener('focusout', function (e) { if (seccionesAbiertas() && e.relatedTarget && !panelSecciones.contains(e.relatedTarget) && e.relatedTarget !== botonSecciones) abrirSecciones(false, false); });
   function pintarPasoSeccion(id) {
     var nav = document.getElementById('paso-seccion');
     nav.textContent = '';
@@ -163,11 +193,10 @@
     if (SECCIONES.indexOf(id) === -1) id = 'inicio';
     document.querySelectorAll('.seccion').forEach(function (s) { s.hidden = s.dataset.seccion !== id; });
     document.querySelectorAll('.pestanas a').forEach(function (a) {
-      if (a.dataset.seccion === id) {
-        a.setAttribute('aria-current', 'page');
-        var n = a.parentNode; n.scrollLeft = Math.max(0, a.offsetLeft - (n.clientWidth - a.offsetWidth) / 2);
-      } else a.removeAttribute('aria-current');
+      if (a.dataset.seccion === id) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
     });
+    verPestana(document.querySelector('.pestanas-pista a[data-seccion="' + id + '"]'));
     avisoPestanas();
     pintarPasoSeccion(id);
     var titulo = document.getElementById(id).querySelector('h1');
