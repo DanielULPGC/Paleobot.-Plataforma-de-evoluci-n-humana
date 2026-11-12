@@ -183,6 +183,19 @@ details > summary::-webkit-details-marker { display: none; }
 }
 .chevron-sumario[open] > summary::after, .dia[open] > summary::after, .fuentes-plegadas[open] > summary::before { transform: rotate(45deg); }
 
+/* ---------- Inicio: bloque «Continuar» (único relleno de acento de la pantalla) ---------- */
+.continuar {
+  display: grid; gap: var(--e-1); max-width: var(--medida); margin: var(--e-3) 0 var(--e-5); padding: var(--e-4);
+  background: var(--acento); color: var(--sobre-acento); border-radius: var(--r-contenedor);
+}
+@media (min-width: 48rem) { .continuar { padding: var(--e-5); } }
+.continuar p { margin: 0; }
+.continuar .continuar-rotulo { font-family: var(--f-titulo); font-size: var(--t-xs); font-weight: 600; text-transform: uppercase; letter-spacing: var(--rastreo-rotulo); }
+.continuar .continuar-titulo { font-family: var(--f-titulo); font-size: var(--t-l); font-weight: 600; line-height: var(--il-titulo); }
+.continuar .boton { justify-self: start; margin-top: var(--e-3); background: var(--superficie); color: var(--acento); border-color: var(--superficie); font-weight: 600; }
+.continuar .boton:hover { background: var(--acento-suave); border-color: var(--acento-suave); color: var(--acento-fuerte); }
+.continuar :focus-visible { outline-color: var(--sobre-acento); outline-offset: 3px; }
+
 /* ---------- Inicio: sesiones ---------- */
 .sesiones { display: grid; gap: var(--e-3); grid-template-columns: minmax(0, 1fr); }
 .sesion > summary { display: flex; gap: var(--e-3); align-items: center; min-height: var(--control); }
@@ -419,7 +432,7 @@ body.proyeccion .pista { height: var(--e-5); }
 
 /* ---------- Impresión ---------- */
 @media print {
-  .cabecera .ajustes, .boton-ajustes, .pestanas, .panel-secciones, .salto, .filtros, .pie a, .paso-seccion, .acciones-notas, .nota textarea, .nota label, #repaso-nuevo, .resultado-repaso .boton-primario, .vacio .acciones { display: none; }
+  .cabecera .ajustes, .boton-ajustes, .pestanas, .panel-secciones, .continuar, .salto, .filtros, .pie a, .paso-seccion, .acciones-notas, .nota textarea, .nota label, #repaso-nuevo, .resultado-repaso .boton-primario, .vacio .acciones { display: none; }
   .solo-impresion { display: block; }
   .nota-impresa:not(:empty) { display: block; border-left: var(--linea-gruesa) solid var(--borde); padding-left: var(--e-2); margin: var(--e-1) 0; }
   .sesion:not([open]) { display: none; }

@@ -285,7 +285,34 @@
       fuentes: [['Piltdown Man forgery (British Geological Survey)', 'https://earthwise.bgs.ac.uk/index.php/Piltdown_Man_forgery'], ['The discovery of Australopithecus and its implications (Leakey Foundation)', 'https://leakeyfoundation.org/the-discovery-of-australopithecus-and-its-implications/'], ['KNM-WT 15000, Turkana Boy (Smithsonian)', 'https://si.edu/object/knm-wt-15000a-knm-wt-15000-turkana-boy-human-fossil:nmnheducation_13109587'], ['Zeresenay Alemseged y Selam (Universidad de Chicago)', 'https://news.uchicago.edu/story/paleoanthropologist-explores-roots-evolution']],
       mas: [['../atlas/recorrido/parentesco.html', 'Parentesco del recorrido']] }
   ];
+  // Bloque «Continuar»: la sesión que toca (o «Empezar por la sesión 1», o el repaso si todas están hechas).
+  function pintarContinuar() {
+    var caja = document.getElementById('continuar');
+    var pendiente = SESIONES.filter(function (s) { return !ajustes.hechas[s.n]; })[0];
+    var empezada = SESIONES.some(function (s) { return ajustes.hechas[s.n]; }) || Object.keys(notas).some(function (k) { return (notas[k] || '').trim(); });
+    caja.textContent = '';
+    if (!pendiente) {
+      caja.appendChild(el('p', { clase: 'continuar-rotulo', texto: 'Sesiones completadas' }));
+      caja.appendChild(el('p', { clase: 'continuar-titulo', texto: 'Ha completado las ' + palabra(SESIONES.length, true).toLowerCase() + ' sesiones' }));
+      caja.appendChild(el('p', { texto: 'Compruebe lo aprendido con preguntas nuevas.' }));
+      caja.appendChild(el('a', { clase: 'boton', href: '#repaso', texto: 'Ir al repaso' }));
+    } else {
+      caja.appendChild(el('p', { clase: 'continuar-rotulo', texto: (empezada ? 'Le toca · ' : 'Para empezar · ') + 'sesión ' + pendiente.n + ' de ' + SESIONES.length }));
+      caja.appendChild(el('p', { clase: 'continuar-titulo', texto: pendiente.titulo }));
+      caja.appendChild(el('p', { texto: pendiente.pregunta }));
+      var ir = el('a', { clase: 'boton', href: '#inicio/' + pendiente.n, texto: empezada ? 'Continuar la sesión' : 'Empezar por la sesión 1' });
+      ir.addEventListener('click', function (e) {
+        e.preventDefault();
+        var d = document.getElementById('bloque-sesion-' + pendiente.n);
+        d.open = true; d.scrollIntoView({ block: 'start' });
+        var su = d.querySelector('summary'); su.focus({ preventScroll: true });
+      });
+      caja.appendChild(ir);
+    }
+    caja.hidden = false;
+  }
   function pintarProgreso() {
+    pintarContinuar();
     var hechas = SESIONES.filter(function (s) { return ajustes.hechas[s.n]; }).length;
     document.getElementById('progreso-sesiones').textContent = hechas === 0
       ? SESIONES.length + ' sesiones · ninguna hecha'
