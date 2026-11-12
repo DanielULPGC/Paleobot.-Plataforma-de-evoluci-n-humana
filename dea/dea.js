@@ -609,16 +609,17 @@
         el('div', t.geoNota ? { clase: 'ancho' } : null, [el('dt', { texto: 'Dónde' }), el('dd', { texto: region(t) + (t.geoNota ? '. ' + t.geoNota : '') })]),
         el('div', null, [el('dt', { texto: 'Grupo' }), el('dd', { texto: clado(t) })])
       ]);
-      var dl = el('dl', null, [
+      var dl = el('dl', { clase: 'texto-ficha' }, [
         el('dt', { texto: 'Qué se sabe' }), el('dd', { texto: t.nota || '' })
       ]);
       if (t.etimologia) { dl.appendChild(el('dt', { texto: 'Origen del nombre' })); dl.appendChild(el('dd', { texto: t.etimologia })); }
       dl.appendChild(el('dt', { texto: 'Fuentes' })); dl.appendChild(el('dd', null, [fuentesDe(t.fuentes)]));
+      // Enlaces cruzados: acciones secundarias al pie de la ficha.
       var cruces = el('p', { clase: 'cruces' });
-      if (esAfrica(t)) { cruces.appendChild(el('a', { href: '#mapa/' + t.region, texto: 'Ver en el mapa' })); cruces.appendChild(document.createTextNode(' · ')); }
-      cruces.appendChild(el('a', { href: '#tiempo/' + t.id, texto: 'Ver en la línea del tiempo' })); cruces.appendChild(document.createTextNode(' · '));
-      cruces.appendChild(el('a', { href: '#comparar/' + t.id, texto: 'Comparar con otra especie' }));
-      cont.appendChild(el('details', { clase: 'ficha chevron-sumario', id: 'ficha-' + t.id }, [sum, esenciales, figura(t, false), dl, cruces]));
+      if (esAfrica(t)) cruces.appendChild(el('a', { clase: 'boton', href: '#mapa/' + t.region, texto: 'Ver en el mapa' }));
+      cruces.appendChild(el('a', { clase: 'boton', href: '#tiempo/' + t.id, texto: 'Ver en la línea del tiempo' }));
+      cruces.appendChild(el('a', { clase: 'boton', href: '#comparar/' + t.id, texto: 'Comparar con otra especie' }));
+      cont.appendChild(el('details', { clase: 'ficha chevron-sumario', id: 'ficha-' + t.id }, [sum, el('div', { clase: 'cuerpo-ficha' }, [esenciales, figura(t, false), dl, cruces])]));
     });
     document.getElementById('especies-resumen').textContent = lista.length === 0 ? 'Ninguna especie coincide con la búsqueda.' : lista.length + (lista.length === 1 ? ' ficha.' : ' fichas.');
     if (!lista.length) {

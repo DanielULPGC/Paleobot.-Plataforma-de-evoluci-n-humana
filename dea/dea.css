@@ -356,7 +356,7 @@ main .linea-tiempo li { max-width: none; }
 
 /* ---------- Especies: fichas como página de manual ---------- */
 .fichas { display: grid; gap: var(--e-3); grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 48rem) { .fichas, .tarjetas { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
+@media (min-width: 48rem) { .tarjetas { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
 .ficha > summary { display: flex; gap: var(--e-3); align-items: center; min-height: var(--control); }
 .ficha > summary::after { margin-left: auto; }
 /* Resumen de ficha en dos líneas constantes: nombre; fechas y etiqueta. Así «Debatida» está siempre en el mismo sitio. */
@@ -364,6 +364,15 @@ main .linea-tiempo li { max-width: none; }
 .ficha .meta-ficha { display: flex; flex-wrap: wrap; gap: var(--e-1) var(--e-3); align-items: center; }
 .ficha .nombre-cientifico { font-style: italic; font-weight: 600; font-size: var(--t-m); }
 .ficha .fechas { color: var(--tinta-2); font-size: var(--t-s); }
+/* Fichas: una sola columna, como el índice de un manual; al abrir una, se despliega en su sitio sin dejar huecos
+   ni mover las demás. Cerradas, nombre | fechas | «Debatida» en columnas alineadas. */
+@media (min-width: 48rem) {
+  .ficha .cabeza-ficha { flex: 1 1 auto; flex-direction: row; align-items: baseline; gap: var(--e-4); }
+  .ficha .nombre-cientifico { flex: 1 1 auto; min-width: 0; }
+  .ficha .meta-ficha { flex: 0 0 auto; display: grid; grid-template-columns: 9rem 6rem; gap: var(--e-3); }
+  .ficha .meta-ficha .fechas { text-align: right; }
+  .ficha .meta-ficha .etiqueta { justify-self: start; }
+}
 .ficha[open] > summary { margin-bottom: var(--e-3); padding-bottom: var(--e-3); border-bottom: var(--linea) solid var(--borde); }
 .ficha dl { margin: 0 0 var(--e-3); }
 .ficha dt, .tarjeta dt { margin-top: var(--e-3); }
@@ -373,7 +382,19 @@ main .linea-tiempo li { max-width: none; }
 .ficha .esenciales .ancho { grid-column: 1 / -1; }
 .fuentes { list-style: none; padding: 0; font-size: var(--t-s); }
 .fuentes li { padding-left: var(--e-5); text-indent: calc(-1 * var(--e-5)); overflow-wrap: anywhere; }
-.cruces { margin: var(--e-3) 0 0; font-size: var(--t-s); }
+.cruces { display: flex; flex-wrap: wrap; gap: var(--e-2); max-width: none; margin: var(--e-4) 0 0; padding-top: var(--e-4); border-top: var(--linea) solid var(--borde); }
+.cruces .boton { font-size: var(--t-s); }
+/* Ficha abierta: página de manual. Teléfono: datos esenciales, imagen, texto. Desde 48 rem: texto (≤ 40 rem) | imagen con su pie completo. */
+@media (min-width: 48rem) {
+  .cuerpo-ficha { display: grid; grid-template-columns: minmax(0, var(--medida)) 18rem; column-gap: var(--e-6); justify-content: space-between;
+    grid-template-areas: "esenciales figura" "texto figura" "cruces cruces"; align-items: start; }
+  .cuerpo-ficha > .esenciales { grid-area: esenciales; }
+  .cuerpo-ficha > .figura { grid-area: figura; margin: 0; }
+  .cuerpo-ficha > .texto-ficha { grid-area: texto; }
+  .cuerpo-ficha > .cruces { grid-area: cruces; }
+  .cuerpo-ficha:not(:has(> .figura)) { grid-template-areas: "esenciales esenciales" "texto texto" "cruces cruces"; }
+  .cuerpo-ficha > .figura img { width: 100%; max-height: none; margin: 0; }
+}
 .figura { margin: 0 0 var(--e-3); }
 .figura img { display: block; max-width: 100%; height: auto; max-height: 14rem; width: auto; margin: 0 auto; border-radius: var(--r-control); background: var(--tierra); }
 @media (min-width: 48rem) { .figura img { max-height: 18rem; } }
@@ -482,5 +503,6 @@ body.proyeccion .pista-tiempo .barra { height: var(--e-4); }
   body { font-size: var(--t-s); }
   .seccion[hidden] { display: none; }
   .sesion, .ficha, .tarjeta { break-inside: avoid; }
+  .cruces { display: none; }
   .barra { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }
