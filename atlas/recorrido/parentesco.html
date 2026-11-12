@@ -71,7 +71,7 @@ a{color:var(--acento)}
 
 .detalle{max-width:1150px;margin:2.4rem auto 0;padding:0 5vw}
 .detalle .panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.6rem 1.8rem;min-height:120px}
-.detalle .panel h3{font-family:var(--ft);font-weight:700;font-size:1.4rem;margin-bottom:.2rem}
+.detalle .panel h2{font-family:var(--ft);font-weight:700;font-size:1.4rem;margin-bottom:.2rem}
 .detalle .panel .meta{color:var(--acento);font-weight:600;font-size:.9rem;margin-bottom:.7rem}
 .detalle .panel p{color:var(--tinta-suave);margin-bottom:.6rem}
 .detalle .panel .fuente{font-size:.82rem;color:rgba(200,210,206,.75)}
@@ -96,7 +96,7 @@ a{color:var(--acento)}
 <body>
 <a class="salto" href="#relaciones">Saltar a la descripción de relaciones</a>
 
-<div class="barra">
+<div class="barra" role="navigation" aria-label="Navegación del recorrido">
   <a class="volver" href="atlas.html" id="volver">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Volver al atlas
@@ -114,7 +114,7 @@ a{color:var(--acento)}
   <p>Las entradas del corpus se agrupan por afinidad y se distribuyen a lo largo del tiempo. El diagrama hace visible la diversidad y la coexistencia; las relaciones se muestran como hipótesis, no como certezas.</p>
 </header>
 
-<div class="aviso">
+<div class="aviso" role="region" aria-label="Advertencia epistémica">
   <div class="caja">
     <strong>Advertencia epistémica.</strong> La filogenia de los hominoideos y homininos está debatida y no existe un cladograma de consenso único. Este esquema es una simplificación pedagógica: agrupa las entradas por afinidades convencionales, señala con trazo discontinuo relaciones hipotéticas y marca con círculo discontinuo las posiciones especialmente controvertidas. No es proporcional al tiempo: dentro de cada grupo las entradas se ordenan de más antigua a más reciente con espaciado uniforme; para la cronología exacta, consulta la línea del tiempo. No debe leerse como una filogenia resuelta.
   </div>
@@ -128,14 +128,14 @@ a{color:var(--acento)}
 
 <section class="detalle" aria-live="polite">
   <div class="panel" id="panel">
-    <h3>Selecciona una entrada</h3>
+    <h2>Selecciona una entrada</h2>
     <p class="meta">Explora el diagrama</p>
     <p>Pulsa cualquier nodo (o navega con el tabulador y pulsa Intro) para ver el clado, el rango temporal y la fuente de cada táxon.</p>
   </div>
 </section>
 
-<section class="relaciones" id="relaciones">
-  <h2>Relaciones establecidas y cuestiones abiertas</h2>
+<section class="relaciones" id="relaciones" aria-labelledby="tit-relaciones">
+  <h2 id="tit-relaciones">Relaciones establecidas y cuestiones abiertas</h2>
   <p>Alternativa textual del diagrama. Distingue lo razonablemente sostenido de lo que permanece en debate.</p>
   <ul>
     <li><strong>Coexistencia.</strong> Varias especies vivieron a la vez; la evolución humana es ramificada, no lineal. Es el punto mejor sostenido y el que ordena el atlas.</li>
@@ -158,7 +158,7 @@ a{color:var(--acento)}
   'use strict';
   const D = window.AtlasPaleo;
   const panel = document.getElementById('panel');
-  if (!D) { panel.innerHTML = '<h3>Error de datos</h3><p>No se pudo cargar datos.js.</p>'; return; }
+  if (!D) { panel.innerHTML = '<h2>Error de datos</h2><p>No se pudo cargar datos.js.</p>'; return; }
 
   const SVG = 'http://www.w3.org/2000/svg';
   const svg = document.getElementById('svg');
@@ -180,7 +180,7 @@ a{color:var(--acento)}
   const citar = (t) => t.fuentes.map(id => { const f = D.fuentes[id]; if (!f) return ''; return f.doi ? `${f.cita} DOI: <a href="https://doi.org/${f.doi}" target="_blank" rel="noopener">${f.doi}</a>` : f.cita; }).filter(Boolean).join('<br>');
   function mostrar(t) {
     const deb = t.debatido ? '<p class="fuente">Posición filogenética especialmente controvertida.</p>' : '';
-    panel.innerHTML = `<h3><em>${t.n}</em></h3><p class="meta">${D.clados[t.c].nombre} \u00b7 ${rango(t)}</p><p>${t.nota}</p>${deb}<p class="fuente">Fuente: ${citar(t)}</p><p><a href="ficha.html?id=${t.id}">Ver ficha completa</a></p>`;
+    panel.innerHTML = `<h2><em>${t.n}</em></h2><p class="meta">${D.clados[t.c].nombre} \u00b7 ${rango(t)}</p><p>${t.nota}</p>${deb}<p class="fuente">Fuente: ${citar(t)}</p><p><a href="ficha.html?id=${t.id}">Ver ficha completa</a></p>`;
     document.querySelectorAll('.nodo').forEach(g => g.setAttribute('aria-pressed', String(g.dataset.id === t.id)));
   }
 
@@ -212,6 +212,8 @@ a{color:var(--acento)}
     const p = pos[t.id];
     const g = el('g', { class: 'nodo' + (t.debatido ? ' deb' : ''), tabindex: '0', role: 'button', 'aria-pressed': 'false', 'aria-label': `${t.n}. ${D.clados[t.c].nombre}. Rango aproximado ${rango(t)}.` });
     g.dataset.id = t.id;
+    // PB-GH-10: zona de pulsación transparente que abarca punto y rótulos (44 × 230 unidades, sin invadir la fila vecina)
+    g.appendChild(el('rect', { class: 'zona', x: p.x - 14, y: p.y - 20, width: 230, height: 44, fill: 'transparent' }));
     g.appendChild(el('circle', { class: 'disco', cx: p.x, cy: p.y, r: 8, fill: D.clados[t.c].color }));
     const lx = p.x + 16;
     const tx = el('text', { class: 'etq', x: lx, y: p.y - 1, 'text-anchor': 'start' }); tx.textContent = t.n.split(' ')[1] || t.n; g.appendChild(tx);

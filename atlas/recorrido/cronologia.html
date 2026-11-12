@@ -71,7 +71,7 @@ a{color:var(--acento)}
 .fila{position:relative;height:34px;margin-bottom:6px;display:flex;align-items:center}
 .fila .etq{width:180px;flex:0 0 180px;font-size:.82rem;font-style:italic;color:var(--tinta-suave);padding-right:10px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pista{position:relative;flex:1;height:100%}
-.barra-taxon{position:absolute;top:6px;height:22px;border-radius:6px;border:none;cursor:pointer;color:#141008;font-family:var(--fc);font-weight:600;font-size:.72rem;display:flex;align-items:center;padding:0 8px;overflow:hidden;white-space:nowrap;transition:filter .15s,transform .15s,outline-color .15s}
+.barra-taxon{position:absolute;top:6px;height:22px;border-radius:6px;border:none;cursor:pointer;color:#141008;font-family:var(--fc);font-weight:600;font-size:.72rem;display:flex;align-items:center;padding:0 8px;overflow:hidden;white-space:nowrap;transition:filter .15s,transform .15s}
 .barra-taxon:hover{filter:brightness(1.12)}
 .barra-taxon:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .barra-taxon[aria-pressed="true"]{outline:3px solid var(--tinta);outline-offset:2px}
@@ -106,6 +106,19 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
   .fila .etq{width:auto;flex:none;text-align:left;margin-bottom:3px}
   .pista{height:26px}
 }
+/* PB-GH-10 · piso de corrección
+   - Barras de 24 px de alto; en pantallas estrechas, sin el epíteto truncado dentro de la barra (el nombre
+     completo ya está encima y en su aria-label) y con pista de 32 px: ni la barra ni su anillo de foco
+     invaden la fila siguiente.
+   - Reserva de altura para lo que pinta el script (CLS de carga): la leyenda y la rejilla de barras. */
+.barra-taxon{top:5px;height:24px}
+.leyenda{min-height:1.6rem}
+#grupos{min-height:100vh}
+@media (max-width:720px){
+  .leyenda{min-height:3.4rem}
+  .pista{flex:none;height:32px} /* con flex:1 la pista medía 0 px en columna y la barra invadía la fila siguiente */
+  .barra-taxon{top:4px;font-size:0;padding:0}
+}
 .barra-taxon.destacado{animation:destello 1.6s ease 2}
 @keyframes destello{50%{filter:brightness(1.35)}}
 @media (prefers-reduced-motion: reduce){.barra-taxon.destacado{animation:none}}
@@ -116,7 +129,7 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
 <body>
 <a class="salto" href="#grafico">Saltar a la línea del tiempo</a>
 
-<div class="barra">
+<div class="barra" role="navigation" aria-label="Navegación del recorrido">
   <a class="volver" href="atlas.html" id="volver">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Volver al atlas
@@ -135,7 +148,7 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
   <p>Cada barra representa el rango temporal aproximado de una entrada del corpus: especies, subespecies, hominoideos de contexto, linajes o conjuntos fósiles. Al alinearlos se hace visible lo esencial: muchas formas coexistieron y la evolución humana no fue una secuencia lineal.</p>
 </header>
 
-<div class="aviso">
+<div class="aviso" role="region" aria-label="Nota sobre los datos">
   <div class="caja">
     <strong>Nota sobre los datos.</strong> Los rangos son aproximados, están redondeados en millones de años (Ma) y son revisables: dependen del yacimiento, del método de datación y de hallazgos futuros. Proceden de la compilación de Wood y Boyle (2016); las dataciones de las especies más antiguas y del genoma neandertal se anclan además a sus estudios primarios, citados al pie. No deben tomarse como valores definitivos.
   </div>
@@ -157,7 +170,7 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
   </div>
 </section>
 
-<section class="tabla-sec" id="tabla">
+<section class="tabla-sec" id="tabla" tabindex="0" role="region" aria-label="Tabla de datos (desplazable)">
   <h2>Tabla de datos</h2>
   <p>Alternativa textual completa de la línea del tiempo, con los rangos y las fuentes de cada táxon.</p>
   <table>
@@ -272,7 +285,7 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
   TAXONES.forEach(t => {
     const tr = document.createElement('tr');
     const fuente = citarFuentes(t, false).join(' ');
-    tr.innerHTML = `<td><em>${t.n}</em></td><td>${CLADOS[t.c].nombre}</td><td class="rango">${rango(t)}</td><td>${fuente}</td>`;
+    tr.innerHTML = `<td><em><a href="ficha.html?id=${t.id}">${t.n}</a></em></td><td>${CLADOS[t.c].nombre}</td><td class="rango">${rango(t)}</td><td>${fuente}</td>`;
     cuerpo.appendChild(tr);
   });
   // Resaltado por identidad: cronologia.html?taxon=<id>

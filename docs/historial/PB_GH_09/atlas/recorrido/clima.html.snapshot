@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: bloque de clima y ecología del Atlas de paleoantropología.
+  Presenta el contexto paleoambiental de la evolución humana, con la variabilidad
+  climática como marco. Diales: VARIANZA_VISUAL 4 / INTENSIDAD 1 / DENSIDAD 7.
+
+  HONESTIDAD EPISTÉMICA. La relación entre clima y evolución se presenta como
+  contexto y correlación, no como causa lineal: ningún indicador apunta a un
+  motor climático único ni a una tendencia simple, y el registro está sesgado por
+  las condiciones de conservación. Cada idea se ancla a estudios revisados por
+  pares con DOI verificado. Se mencionan otras hipótesis del debate sin transcribir
+  sus referencias primarias.
+
+  Consume la fuente única (datos.js). Accesibilidad: HTML semántico, jerarquía de
+  encabezados, foco visible, enlace de salto. Licencia CC BY-NC 4.0 · ULPGC.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clima y ecología · Atlas de paleoantropología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:12px;
+  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.65}
+a{color:var(--acento)}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto:focus{left:0}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.volver:hover{border-color:var(--acento);color:var(--acento)}
+.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver svg{width:18px;height:18px}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:.95rem}
+.barra nav{display:flex;gap:1.1rem}
+.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:.92rem}
+
+.envoltorio{max-width:980px;margin:0 auto;padding:6vh 5vw 8vh}
+.cabecera .k{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:.8rem}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:.6rem}
+.cabecera p{color:var(--tinta-suave);max-width:72ch}
+.aviso{margin:1.6rem 0}
+.aviso .caja{background:rgba(216,169,58,.07);border:1px solid rgba(216,169,58,.32);border-radius:var(--radio);padding:1rem 1.2rem;font-size:.92rem;color:var(--tinta-suave)}
+
+.idea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.6rem 1.8rem;margin-top:1.4rem}
+.idea .num{font-weight:700;color:var(--acento);font-size:.82rem;letter-spacing:.12em;margin-bottom:.5rem}
+.idea h2{font-family:var(--ft);font-weight:700;font-size:1.35rem;margin-bottom:.6rem}
+.idea p{color:var(--tinta)}
+.idea .fuentes{font-size:.85rem;color:rgba(200,210,206,.8);margin-top:1rem;border-top:1px solid rgba(255,255,255,.1);padding-top:.8rem}
+.idea .fuentes a{word-break:break-all}
+
+.cierre{margin-top:2.4rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:var(--radio);padding:1.4rem 1.6rem;color:var(--tinta-suave)}
+.cierre a{font-weight:600}
+
+.pie{border-top:1px solid rgba(255,255,255,.1);margin-top:3rem;padding:2.4rem 5vw;text-align:center;color:rgba(200,210,206,.65);font-size:.82rem;line-height:1.7}
+.pie a{color:rgba(216,169,58,.85);word-break:break-all}
+</style>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+<a class="salto" href="#ideas">Saltar al contenido</a>
+
+<div class="barra">
+  <a class="volver" href="atlas.html" id="volver">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver al atlas
+  </a>
+  <span class="marca">Clima y ecología</span>
+  <nav aria-label="Otras vistas">
+    <a href="territorio.html" id="ir-territorio">Territorio</a>
+    <a href="metodos.html">Métodos</a>
+  </nav>
+</div>
+
+<main class="envoltorio">
+  <header class="cabecera">
+    <p class="k">Bloque 03 · Clima</p>
+    <h1>En qué mundo vivieron</h1>
+    <p>El clima no es un simple telón de fondo de la evolución humana, sino uno de los factores que la contextualizan. La investigación reciente ha desplazado el foco de los paisajes fijos a la variabilidad ambiental como marco de la adaptación.</p>
+  </header>
+
+  <div class="aviso">
+    <div class="caja">
+      <strong>Nota epistemológica.</strong> La relación entre clima y evolución es de contexto y correlación, no de causa lineal. Ningún indicador apunta a un motor climático único ni a una tendencia simple, y el registro está sesgado por las condiciones de conservación. Otras hipótesis del debate, como el pulso de recambio de Vrba o la variabilidad climática pulsada de Maslin y Trauth, se mencionan sin transcribir aquí sus referencias primarias.
+    </div>
+  </div>
+
+  <section id="ideas" aria-label="Ideas clave sobre clima y evolución"></section>
+
+  <div class="cierre">
+    Este contexto se entrelaza con el resto del atlas: la concentración del registro en el <a href="territorio.html">Rift oriental de África</a> y la cautela sobre lo que se conserva, propia de la <a href="metodos.html">tafonomía</a>. Puedes ver las especies afectadas por esta variabilidad en la <a href="cronologia.html">línea del tiempo</a>.
+  </div>
+</main>
+
+<footer class="pie">
+  Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria ·
+  Contenido bajo licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
+</footer>
+
+<script src="datos.js"></script>
+<script>
+(() => {
+  'use strict';
+  const D = window.AtlasPaleo;
+  const cont = document.getElementById('ideas');
+  if (!D || !D.clima) { cont.innerHTML = '<p>No se pudo cargar datos.js.</p>'; return; }
+
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const doiHref = (d) => 'https://doi.org/' + d.replace(/</g, '%3C').replace(/>/g, '%3E');
+  const citar = (o) => o.fuentes.map(id => {
+    const f = D.fuentes[id]; if (!f) return '';
+    return f.doi ? `${esc(f.cita)} DOI: <a href="${doiHref(f.doi)}" target="_blank" rel="noopener">${esc(f.doi)}</a>` : esc(f.cita);
+  }).filter(Boolean).join('<br>');
+
+  D.clima.forEach((c, i) => {
+    const art = document.createElement('article');
+    art.className = 'idea';
+    art.id = c.id;
+    art.innerHTML = `
+      <div class="num">Idea ${String(i + 1).padStart(2, '0')}</div>
+      <h2>${esc(c.titulo)}</h2>
+      <p>${esc(c.idea)}</p>
+      <p class="fuentes">Fuente: ${citar(c)}</p>`;
+    cont.appendChild(art);
+  });
+})();
+</script>
+</body>
+</html>
