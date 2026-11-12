@@ -1,0 +1,156 @@
+/* PaleoBot · sistema base «Papel y tierra» (PB-GH-10).
+   Fuente de verdad de los tokens comunes: fuente de titulares, color (claro, oscuro, proyección e impresión),
+   escala tipográfica de 7 pasos, espaciado de 8 pasos, radios, movimiento, regla de foco y la etiqueta de
+   incertidumbre. Los estilos propios de cada superficie siguen en su hoja (p. ej. dea/dea.css).
+   Contrastes medidos (WCAG 2.x): texto ≥ 4,5:1; contornos de control y foco ≥ 3:1, en claro y en oscuro. */
+
+@font-face {
+  font-family: "Lexend";
+  src: url("fuentes/lexend-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+
+:root {
+  /* Color · claro */
+  --papel: #f7f4ee;          /* fondo de página */
+  --superficie: #ffffff;     /* fichas, tarjetas, campos */
+  --hundido: #efe9de;        /* «Para su trabajo», pistas, pies */
+  --tinta: #1f2422;          /* 14,3:1 sobre papel */
+  --tinta-2: #4a524e;        /* 7,3:1 sobre papel */
+  --tinta-3: #5f6662;        /* 5,4:1 sobre papel; 4,9:1 sobre hundido */
+  --acento: #8a3b12;         /* tierra: 7,1:1 sobre papel */
+  --acento-fuerte: #6e2e0c;  /* hover de acento */
+  --sobre-acento: #ffffff;   /* 7,7:1 sobre acento */
+  --acento-suave: #f3e3d6;   /* fondos de resalte */
+  --debatida: #6b4e00;       /* incertidumbre: 6,8:1 sobre su fondo */
+  --debatida-fondo: #fbf0cf;
+  --bien: #2f6b3a;           /* Repaso: correcto (siempre con texto) */
+  --bien-fondo: #e3efe3;
+  --mal: #a1281b;            /* Repaso: incorrecto, errores */
+  --mal-fondo: #f8e3df;
+  --borde: #d6d0c4;          /* solo separadores decorativos (1,4:1) */
+  --borde-control: #8c857a;  /* contorno de campos y botones: 3,3:1 sobre papel */
+  --foco: #0b57d0;           /* anillo de foco: 5,8:1 sobre papel */
+  /* Cartografía (mapa y pistas) */
+  --tierra: #e9dfcd;
+  --mar: #dce8ec;
+  --sombra-flotante: 0 4px 16px rgba(31, 36, 34, .12); /* solo paneles flotantes */
+
+  /* Tipografía */
+  --f-titulo: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-lectura: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --t-xs: .8125rem;   /* 13 px: rótulos, etiquetas, eje, créditos */
+  --t-s: .9375rem;    /* 15 px: resúmenes, pies, fuentes */
+  --t-m: 1.0625rem;   /* 17 px: cuerpo */
+  --t-l: 1.25rem;     /* 20 px: h3, veredictos */
+  --t-xl: 1.5rem;     /* 24 px: h2 */
+  --t-2xl: 1.875rem;  /* 30 px: h1 en teléfono */
+  --t-3xl: 2.375rem;  /* 38 px: h1 ≥ 48 rem y proyección */
+  --il-cuerpo: 1.6;
+  --il-titulo: 1.25;
+  --medida: 40rem;    /* medida de lectura */
+  --rastreo-rotulo: .04em;
+
+  /* Espaciado (8 pasos) */
+  --e-1: .25rem;  /* 4 */
+  --e-2: .5rem;   /* 8 */
+  --e-3: .75rem;  /* 12 */
+  --e-4: 1rem;    /* 16 */
+  --e-5: 1.5rem;  /* 24 */
+  --e-6: 2rem;    /* 32 */
+  --e-7: 3rem;    /* 48 */
+  --e-8: 4rem;    /* 64 */
+
+  /* Tamaños de control y trazos */
+  --control: 44px;         /* objetivo táctil principal */
+  --control-min: 24px;     /* objetivo táctil mínimo (WCAG 2.5.8) */
+  --linea: 1px;
+  --linea-gruesa: 2px;     /* chevrons, subrayado de pestaña */
+  --linea-marca: 4px;     /* barra lateral de respuestas y contenidos */
+  --foco-ancho: 3px;
+  --foco-desfase: 2px;
+
+  /* Radios */
+  --r-control: 8px;
+  --r-contenedor: 12px;
+  --r-pildora: 999px;
+
+  /* Movimiento (solo dentro de prefers-reduced-motion: no-preference) */
+  --m-rapido: 120ms;
+  --m-medio: 180ms;
+  --m-curva: cubic-bezier(.2, 0, 0, 1);
+
+  color-scheme: light dark;
+}
+
+/* Color · oscuro (se puede forzar el claro con data-tema="claro" en <html>) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --papel: #161a19;
+    --superficie: #1f2523;
+    --hundido: #262d2a;
+    --tinta: #ecebe6;
+    --tinta-2: #b9bfbb;
+    --tinta-3: #a3aaa6;
+    --acento: #f0a77c;
+    --acento-fuerte: #f7c6a6;
+    --sobre-acento: #161a19;
+    --acento-suave: #3a2a20;
+    --debatida: #f4d27a;
+    --debatida-fondo: #3a3220;
+    --bien: #8fd19e;
+    --bien-fondo: #1f3324;
+    --mal: #ff9d8f;
+    --mal-fondo: #3d2320;
+    --borde: #3a423f;
+    --borde-control: #7d8681;
+    --foco: #8ab4f8;
+    --tierra: #33392f;
+    --mar: #18262b;
+    --sombra-flotante: 0 4px 16px rgba(0, 0, 0, .5);
+  }
+}
+
+/* Proyección en el aula: contraste reforzado (lo activa cada superficie con la clase .proyeccion). */
+.proyeccion {
+  --papel: #fbf9f4;
+  --tinta: #111513;   /* 17,5:1 */
+  --tinta-2: #33403a;
+  --borde: #8c857a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]).proyeccion,
+  :root:not([data-tema="claro"]) .proyeccion { --papel: #0f1211; --tinta: #f7f6f2; --borde: #7d8681; }
+}
+
+/* Impresión: tinta negra sobre blanco, sea cual sea el tema de la pantalla. */
+@media print {
+  :root, :root:not([data-tema="claro"]), .proyeccion, :root:not([data-tema="claro"]) .proyeccion, :root:not([data-tema="claro"]).proyeccion {
+    --papel: #ffffff; --superficie: #ffffff; --hundido: #ffffff; --tinta: #000000; --tinta-2: #222222; --tinta-3: #333333;
+    --acento: #000000; --acento-suave: #ffffff; --borde: #999999; --borde-control: #999999;
+    --debatida: #000000; --debatida-fondo: #ffffff; --bien: #000000; --mal: #000000;
+  }
+}
+
+/* Foco: el mismo anillo en todas las superficies. Nunca outline:none sin sustituto. */
+:focus-visible { outline: var(--foco-ancho) solid var(--foco); outline-offset: var(--foco-desfase); }
+
+/* Etiqueta de incertidumbre: «Debatida», «Aproximado», «Pendiente de verificación», «No localizada».
+   Siempre con texto, nunca solo color. */
+.pb-etiqueta {
+  display: inline-block;
+  font-family: var(--f-titulo);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .01em;
+  padding: 0 var(--e-2);
+  border-radius: var(--r-pildora);
+  background: var(--debatida-fondo);
+  color: var(--debatida);
+  white-space: nowrap;
+}
+@media print { .pb-etiqueta { border: var(--linea) solid currentColor; } }
