@@ -262,8 +262,9 @@ input[type="checkbox"], input[type="radio"] { width: 1.25rem; height: 1.25rem; m
 .vacio p { margin: 0 0 var(--e-3); }
 .vacio .acciones { display: flex; flex-wrap: wrap; gap: var(--e-2); }
 
-/* ---------- Línea del tiempo ---------- */
-.linea-tiempo { list-style: none; padding: 0; margin: 0; }
+/* ---------- Línea del tiempo: un gráfico (rejilla por millón de años, eje fijo) que deja ver coexistencia y orden ---------- */
+.linea-tiempo { list-style: none; padding: 0; margin: 0; --col-nombres: 16rem; }
+main .linea-tiempo li { max-width: none; }
 .linea-tiempo li { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--e-1); padding: var(--e-2) 0; border-bottom: var(--linea) solid var(--borde); margin: 0; }
 .linea-tiempo .texto { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--e-2); min-width: 0; }
 .linea-tiempo a.nombre { display: inline-flex; align-items: center; min-height: var(--control-min); font-weight: 600; color: var(--tinta); text-decoration: none; }
@@ -271,16 +272,57 @@ input[type="checkbox"], input[type="radio"] { width: 1.25rem; height: 1.25rem; m
 .linea-tiempo .fechas { font-size: var(--t-s); color: var(--tinta-2); white-space: nowrap; }
 .linea-tiempo .region { font-size: var(--t-s); color: var(--tinta-2); }
 .linea-tiempo .etiqueta { align-self: center; }
+/* Celda del gráfico: rejilla vertical cada millón de años contada desde «hoy» (gradiente funcional: es la escala). */
+.pista-tiempo {
+  position: relative; min-height: var(--e-5);
+  background-image: linear-gradient(to left, var(--borde) var(--linea), transparent var(--linea));
+  background-size: var(--paso, 100%) 100%; background-repeat: repeat-x; background-position: right top;
+}
+.pista-tiempo .barra { top: 50%; height: var(--e-3); transform: translateY(-50%); }
+.linea-tiempo li.elegida { background: var(--acento-suave); }
+.linea-tiempo li.elegida .barra { outline: var(--linea-gruesa) solid var(--foco); outline-offset: var(--linea-gruesa); }
 .pista { position: relative; height: var(--e-3); background: var(--hundido); border-radius: var(--r-pildora); }
 .barra { position: absolute; top: 0; height: 100%; min-width: var(--e-2); border-radius: var(--r-pildora); background: var(--acento); }
 .barra.debatida { background: repeating-linear-gradient(45deg, var(--acento) 0 var(--e-1), var(--acento-suave) var(--e-1) var(--e-2)); box-shadow: inset 0 0 0 var(--linea) var(--acento); }
 .eje { display: flex; justify-content: space-between; font-size: var(--t-xs); color: var(--tinta-2); margin-top: var(--e-1); }
-.linea-tiempo .fila-eje { border-bottom-color: var(--borde-control); }
-@media (min-width: 40rem) {
-  .linea-tiempo li { grid-template-columns: 16rem minmax(0, 1fr); align-items: center; column-gap: var(--e-4); }
-  .linea-tiempo .texto { grid-column: 1; }
-  .linea-tiempo .pista { grid-column: 2; }
+/* Eje: pegado bajo las pestañas al desplazarse; marcas en cada millón de años (cada cinco con el Mioceno). */
+.linea-tiempo .fila-eje {
+  position: sticky; top: var(--alto-pestanas); z-index: 2; background: var(--papel);
+  border-bottom-color: var(--borde-control); font-size: var(--t-xs); color: var(--tinta-2);
 }
+.linea-tiempo .unidad-eje { font-family: var(--f-titulo); font-weight: 600; text-transform: uppercase; letter-spacing: var(--rastreo-rotulo); }
+.eje-tiempo { position: relative; min-height: var(--e-5); font-variant-numeric: tabular-nums; }
+.eje-tiempo span { position: absolute; bottom: 0; transform: translateX(-50%); white-space: nowrap; }
+.eje-tiempo span:last-child { transform: translateX(-100%); }
+@media (min-width: 40rem) {
+  .linea-tiempo li { grid-template-columns: var(--col-nombres) minmax(0, 1fr); align-items: stretch; column-gap: var(--e-4); padding: 0; }
+  .linea-tiempo .texto { grid-column: 1; align-self: center; padding: var(--e-2) 0; }
+  .linea-tiempo .pista-tiempo, .linea-tiempo .eje-tiempo { grid-column: 2; }
+  .linea-tiempo .fila-eje .unidad-eje { align-self: end; padding: var(--e-2) 0 0; }
+  .eje-tiempo { margin-top: var(--e-2); }
+}
+/* Escritorio: nombre, fechas y etiqueta en una sola línea aprovechando el ancho. */
+@media (min-width: 60rem) {
+  .linea-tiempo { --col-nombres: 24rem; }
+  .linea-tiempo .texto { flex-wrap: nowrap; }
+  .linea-tiempo a.nombre { white-space: nowrap; }
+  /* Con subgrid, la columna de nombres mide lo que el nombre más largo, igual en todas las filas. */
+  @supports (grid-template-columns: subgrid) {
+    .linea-tiempo { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--e-4); }
+    .linea-tiempo li { grid-column: 1 / -1; grid-template-columns: subgrid; }
+  }
+}
+/* Teléfono: el eje fijo ocupa una sola línea; la unidad va en la primera marca («7 Ma»). */
+@media (max-width: 39.99rem) { .linea-tiempo .unidad-eje { display: none; } }
+/* Analogía del día de 24 horas: una franja con las horas y los mismos hitos numerados que la lista. */
+.reloj-dia { position: relative; margin: var(--e-4) 0 var(--e-5); padding: var(--e-5) 0; font-size: var(--t-xs); color: var(--tinta-2); font-variant-numeric: tabular-nums; }
+.reloj-dia .franja { position: relative; height: var(--e-3); border-radius: var(--r-pildora); background: var(--hundido); }
+.reloj-dia .hito { position: absolute; top: 50%; width: var(--e-3); height: var(--e-3); border-radius: var(--r-pildora); background: var(--acento); border: var(--linea-gruesa) solid var(--superficie); transform: translate(-50%, -50%); }
+.reloj-dia .num { position: absolute; transform: translateX(-50%); font-family: var(--f-titulo); font-weight: 600; color: var(--acento); top: 0; }
+.reloj-dia .num.abajo { top: auto; bottom: 0; }
+.reloj-dia .horas { display: flex; justify-content: space-between; margin-top: var(--e-1); }
+.dia ol { padding-left: var(--e-5); }
+.dia ol li::marker { font-family: var(--f-titulo); font-weight: 600; color: var(--acento); }
 .dia { margin: 0 0 var(--e-4); padding: 0; }
 .dia > summary { display: flex; align-items: center; gap: var(--e-3); min-height: var(--control); padding: var(--e-2) var(--e-4); font-family: var(--f-titulo); font-weight: 500; }
 .dia > summary::after { margin-left: auto; }
@@ -429,6 +471,7 @@ body.proyeccion main { max-width: 80rem; }
 body.proyeccion .antetitulo, body.proyeccion .nota-progreso, body.proyeccion .pie { display: none; }
 body.proyeccion h1 { font-size: var(--t-3xl); }
 body.proyeccion .pista { height: var(--e-5); }
+body.proyeccion .pista-tiempo .barra { height: var(--e-4); }
 
 /* ---------- Impresión ---------- */
 @media print {

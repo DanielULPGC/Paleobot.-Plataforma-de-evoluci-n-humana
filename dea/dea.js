@@ -216,6 +216,7 @@
     if (!r.id) return;
     if (r.seccion === 'especies') abrirFicha(r.id);
     else if (r.seccion === 'mapa' && A.regiones[r.id]) elegirRegion(r.id);
+    else if (r.seccion === 'tiempo') resaltarEnTiempo(r.id);
     else if (r.seccion === 'comparar') { var sel = document.getElementById('comparar-a'); sel.value = r.id; if (sel.value === r.id) pintarComparar(); }
     else if (r.seccion === 'inicio') { var d = document.getElementById('bloque-sesion-' + r.id); if (d) { d.open = true; d.scrollIntoView({ block: 'start' }); } }
   }
@@ -423,6 +424,12 @@
     barra.style.left = izq + '%'; barra.style.width = ancho + '%';
     return el('div', { clase: 'pista', 'aria-hidden': 'true' }, [barra]);
   }
+  // Celda del gráfico de la línea del tiempo: la barra centrada sobre la rejilla de millones de años.
+  function pistaTiempo(t, max) {
+    var celda = pista(t, max);
+    celda.className = 'pista-tiempo';
+    return celda;
+  }
   function pintarTiempo() {
     var soloAfrica = document.getElementById('tiempo-africa').checked;
     var mioceno = document.getElementById('tiempo-mioceno').checked;
@@ -438,16 +445,39 @@
         soloAfrica ? null : el('span', { clase: 'region', 'aria-hidden': 'true', texto: region(t) }),
         t.debatido ? el('span', { clase: 'etiqueta', 'aria-hidden': 'true', texto: 'Debatida' }) : null
       ]);
-      ol.appendChild(el('li', null, [texto, pista(t, max)]));
+      ol.appendChild(el('li', { 'data-id': t.id }, [texto, pistaTiempo(t, max)]));
     });
-    var eje = el('li', { clase: 'fila-eje', 'aria-hidden': 'true' }, [el('span'), el('div', { clase: 'eje' }, [el('span', { texto: num(max, 1) + ' Ma' }), el('span', { texto: num(max / 2, 2) + ' Ma' }), el('span', { texto: 'hoy' })])]);
+    // Rejilla y eje: una línea por millón de años; rótulos cada millón (cada cinco con el Mioceno).
+    ol.style.setProperty('--paso', (100 / max) + '%');
+    var paso = max > 10 ? 5 : 1, marcas = el('div', { clase: 'eje-tiempo' });
+    for (var v = Math.floor(max / paso) * paso; v > 0; v -= paso) {
+      var m = el('span', { texto: num(v, 0) + (v === Math.floor(max / paso) * paso ? ' Ma' : '') }); m.style.left = ((max - v) / max * 100) + '%'; marcas.appendChild(m);
+    }
+    var hoy = el('span', { texto: 'hoy' }); hoy.style.left = '100%'; marcas.appendChild(hoy);
+    var eje = el('li', { clase: 'fila-eje', 'aria-hidden': 'true' }, [el('span', { clase: 'unidad-eje', texto: 'Millones de años' }), marcas]);
     ol.insertBefore(eje, ol.firstChild);
     document.getElementById('tiempo-resumen').textContent = lista.length + ' especies o poblaciones, de la más antigua a la más reciente (Ma: millones de años). Las barras rayadas y la etiqueta «Debatida» indican validez debatida.';
   }
 
+  // Al llegar desde una ficha (#tiempo/<id>): se muestra su barra resaltada, centrada y con el foco en su nombre.
+  function resaltarEnTiempo(id) {
+    var t = taxones.filter(function (x) { return x.id === id; })[0];
+    if (!t) return;
+    var cambio = false;
+    if (!esAfrica(t) && document.getElementById('tiempo-africa').checked) { document.getElementById('tiempo-africa').checked = false; cambio = true; }
+    if (t.desde > LIMITE_MIOCENO && !document.getElementById('tiempo-mioceno').checked) { document.getElementById('tiempo-mioceno').checked = true; cambio = true; }
+    if (cambio) pintarTiempo();
+    var li = document.querySelector('#lista-tiempo li[data-id="' + id + '"]');
+    if (!li) return;
+    document.querySelectorAll('#lista-tiempo li.elegida').forEach(function (n) { n.classList.remove('elegida'); });
+    li.classList.add('elegida');
+    var a = li.querySelector('a.nombre');
+    a.focus({ preventScroll: true });
+    li.scrollIntoView({ block: 'center' });
+  }
   function pintarDia() {
     var primero = taxones.filter(function (x) { return x.n === 'Sahelanthropus tchadensis'; })[0];
-    var total = primero ? primero.desde : 7, ul = document.getElementById('lista-dia');
+    var total = primero ? primero.desde : 7, ul = document.getElementById('lista-dia'), hitosDia = [];
     document.getElementById('dia-total').textContent = num(total, 1);
     function hora(ma) {
       var seg = Math.round((1 - ma / total) * 86400), h = Math.floor(seg / 3600), m = Math.floor((seg % 3600) / 60);
@@ -456,10 +486,20 @@
     [['Sahelanthropus tchadensis', 'el hominino más antiguo propuesto'], ['Australopithecus afarensis', 'la especie de «Lucy»'], ['Homo erectus', null], ['Homo sapiens', 'nuestra especie']].forEach(function (par) {
       var t = taxones.filter(function (x) { return x.n === par[0]; })[0];
       if (!t || t.desde > total) return;
+      hitosDia.push(t.desde);
       ul.appendChild(el('li', null, [el('strong', { texto: (t.desde === total ? 'A medianoche (00:00): ' : 'A las ' + hora(t.desde) + ': ') }), el('i', { texto: t.n }), (par[1] ? ', ' + par[1] : '') + ' (' + hace(t.desde) + ').']));
     });
     var segundos = Math.round(2000 / (total * 1e6) * 86400);
     ul.appendChild(el('li', null, [el('strong', { texto: 'En los últimos ' + segundos + ' segundos: ' }), 'los últimos 2000 años de historia.']));
+    // Franja del día (decorativa para lectores de pantalla: la lista dice lo mismo). Hitos numerados como la lista.
+    var posiciones = hitosDia.concat([2000 / 1e6]).map(function (ma) { return (1 - ma / total) * 100; });
+    var franja = el('div', { clase: 'franja' }), nums = [];
+    posiciones.forEach(function (x, i) {
+      var h = el('span', { clase: 'hito' }); h.style.left = x + '%'; franja.appendChild(h);
+      var n = el('span', { clase: 'num' + (i % 2 ? ' abajo' : ''), texto: String(i + 1) }); n.style.left = x + '%'; nums.push(n);
+    });
+    var horas = el('div', { clase: 'horas' }, ['00:00', '06:00', '12:00', '18:00', '24:00'].map(function (h) { return el('span', { texto: h }); }));
+    ul.parentNode.insertBefore(el('div', { clase: 'reloj-dia', 'aria-hidden': 'true' }, [franja, horas].concat(nums)), ul);
   }
 
   /* ---------- Mapa ---------- */
@@ -576,6 +616,7 @@
       dl.appendChild(el('dt', { texto: 'Fuentes' })); dl.appendChild(el('dd', null, [fuentesDe(t.fuentes)]));
       var cruces = el('p', { clase: 'cruces' });
       if (esAfrica(t)) { cruces.appendChild(el('a', { href: '#mapa/' + t.region, texto: 'Ver en el mapa' })); cruces.appendChild(document.createTextNode(' · ')); }
+      cruces.appendChild(el('a', { href: '#tiempo/' + t.id, texto: 'Ver en la línea del tiempo' })); cruces.appendChild(document.createTextNode(' · '));
       cruces.appendChild(el('a', { href: '#comparar/' + t.id, texto: 'Comparar con otra especie' }));
       cont.appendChild(el('details', { clase: 'ficha chevron-sumario', id: 'ficha-' + t.id }, [sum, esenciales, figura(t, false), dl, cruces]));
     });
