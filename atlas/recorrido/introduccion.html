@@ -376,6 +376,8 @@ body.sin-subtitulos .subtitulos{display:none}
   .escena svg{left:2%;width:96%;top:10%;height:52%}
 }
 .pie{color:var(--tinta-suave)}
+/* El pie de licencia se ocultaba siempre (.overlay.oculto ~ .pie casa con la pausa oculta): visible en póster y pausa */
+.cine.con-tarjeta .pie{opacity:1;bottom:0;padding:.5rem 1rem .75rem;background:rgba(7,19,25,.96)}
 .pie a{color:var(--acento)}
 .nota-voz{color:var(--tinta-suave)}
 .volver-video{top:12px;left:12px;min-height:44px;min-width:44px;justify-content:center}
