@@ -352,6 +352,47 @@ body.sin-subtitulos .subtitulos{display:none}
   .controles{opacity:1}
   .overlay p.desc{font-size:.92rem}
 }
+
+/* ── PB-GH-10 · piso de corrección del escenario ──
+   1) Mientras se ve una tarjeta (póster o pausa), las capas del vídeo no se
+      pintan debajo: nada de texto superpuesto.
+   2) La tarjeta oculta deja de ser visible y enfocable.
+   3) En vertical el escenario ocupa la pantalla para que la tarjeta y
+      «Comenzar» quepan; en apaisado deja hueco al enlace fijo del pie.
+   4) Textos secundarios con tinta opaca (contraste ≥ 4,5:1).               */
+.cine.con-tarjeta :is(.escenas,.subtitulos,.rotulo,.controles){visibility:hidden}
+.overlay.oculto{visibility:hidden;transition:opacity .6s ease,visibility 0s linear .6s}
+.overlay{overflow-y:auto;justify-content:safe center;padding:4.5rem 8% 4rem}
+.subtitulos{padding:0 9% max(10%, 4.75rem)}
+.rotulo{top:max(7%, 4.75rem)}
+.controles:focus-within{opacity:1}
+/* La regla original de relleno de .etq-recons quedó dentro de una @media mal cerrada: «Interpretación A» se pintaba en negro. */
+.etq-recons{fill:var(--tinta-suave)}
+/* «Volver al atlas» de la tarjeta final: misma caja que «Repetir» (le faltaban relleno y alineación) */
+#btnVolverAtlas{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2.1rem;font-size:clamp(1rem,2vw,1.2rem);text-decoration:none}
+#btnVolverAtlas:hover{border-color:var(--acento)!important}
+.etq-recons.on{fill:var(--acento)}
+@media (orientation:portrait) and (max-width:899px){
+  .escena svg{left:2%;width:96%;top:10%;height:52%}
+}
+.pie{color:var(--tinta-suave)}
+.pie a{color:var(--acento)}
+.nota-voz{color:var(--tinta-suave)}
+.volver-video{top:12px;left:12px;min-height:44px;min-width:44px;justify-content:center}
+body{height:auto;min-height:100dvh;overflow:auto;flex-direction:column}
+html{height:auto}
+@media (min-width:900px){
+  .cine{width:min(100vw, calc((100vh - 72px) * 16 / 9))}
+}
+@media (orientation:portrait){
+  .cine{width:100vw;height:100dvh;aspect-ratio:auto}
+}
+@media (orientation:portrait) and (max-width:899px){
+  body{display:block}
+}
+@media (max-width:640px){
+  .overlay .kicker{letter-spacing:.14em}
+}
 </style>
 <link rel="stylesheet" href="integracion.css">
 <script src="integracion.js" defer></script>
@@ -360,7 +401,7 @@ body.sin-subtitulos .subtitulos{display:none}
 
 <a class="salto" href="#cine">Saltar al vídeo</a>
 
-<div class="cine" id="cine" tabindex="-1">
+<main class="cine con-tarjeta" id="cine" tabindex="-1">
 
   <!-- Retorno al atlas: visible durante toda la reproducción -->
   <button class="volver-video" id="volverVideo" type="button" aria-label="Volver al atlas">
@@ -629,7 +670,7 @@ body.sin-subtitulos .subtitulos{display:none}
     Facultad de Ciencias de la Educación · ULPGC ·
     <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
   </p>
-</div>
+</main>
 
 <script>
 (() => {
@@ -810,6 +851,7 @@ body.sin-subtitulos .subtitulos{display:none}
     reproduciendo = true;
     poster.classList.add('oculto');
     pausa.classList.add('oculto');
+    cine.classList.remove('con-tarjeta');
     controles.classList.remove('oculto');
     cine.classList.add('mostrar-controles');
     setTimeout(() => cine.classList.remove('mostrar-controles'), 2500);
@@ -848,6 +890,7 @@ body.sin-subtitulos .subtitulos{display:none}
     icoPlay.innerHTML = '<path d="M8 5v14l11-7z"/>';
     controles.classList.add('oculto');
     pausa.classList.remove('oculto');
+    cine.classList.add('con-tarjeta');
     if (soporteVoz) window.speechSynthesis.cancel();
   }
 
