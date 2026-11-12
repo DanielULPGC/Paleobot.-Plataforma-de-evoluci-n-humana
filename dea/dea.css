@@ -458,6 +458,7 @@ main .unidad-comparar { margin: var(--e-1) 0 0; max-width: none; text-align: cen
 .tarjetas { display: grid; gap: var(--e-3); grid-template-columns: minmax(0, 1fr); }
 .tarjeta h2 { font-size: var(--t-l); margin: 0 0 var(--e-2); }
 .tarjeta .pregunta-metodo { font-weight: 600; }
+.tarjeta .rotulo-fuentes { margin: var(--e-3) 0 0; }
 
 /* ---------- Glosario ---------- */
 .glosario { margin: 0; }

@@ -828,7 +828,7 @@
     var cont = document.getElementById('lista-clima');
     ponerRecuento('clima', palabra((A.clima || []).length, true));
     (A.clima || []).forEach(function (c) {
-      cont.appendChild(el('article', { clase: 'tarjeta' }, [el('h2', { texto: c.titulo }), el('p', { texto: c.idea }), el('p', { clase: 'resumen', texto: 'Fuentes:' }), fuentesDe(c.fuentes)]));
+      cont.appendChild(el('article', { clase: 'tarjeta' }, [el('h2', { texto: c.titulo }), el('p', { texto: c.idea }), el('p', { clase: 'rotulo-dato rotulo-fuentes', texto: 'Fuentes' }), fuentesDe(c.fuentes)]));
     });
   }
 
