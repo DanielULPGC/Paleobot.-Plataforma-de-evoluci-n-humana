@@ -182,7 +182,7 @@ def build() -> None:
             f'<p><strong>Tipo de evidencia:</strong> {chronology_type(age)}; {e(age.get("entity_type") or "entidad no indicada")}. '
             f'<strong>Método:</strong> {e(age.get("method") or "No indicado")}. '
             f'<strong>Relación de la datación:</strong> {e(age.get("dating_relation") or "No indicada")}.</p>'
-            f'{specialist}<h4>Referencias del catálogo</h4>{bibliography(sp)}</div></details>'
+            f'{specialist}<h3>Referencias del catálogo</h3>{bibliography(sp)}</div></details>'
         )
 
     ordered = sorted(records, key=lambda sp: chronology_key(chrono[sp["id"]]), reverse=True)
@@ -202,13 +202,13 @@ def build() -> None:
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PaleoBot · Consulta ligera</title><link rel="stylesheet" href="estilos.css"></head><body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
-<header class="hero"><div class="wrap"><p class="kicker">PALEOBOT · CATÁLOGO A3 · ENTRADA LIGERA</p>
+<header class="hero"><div class="wrap"><p class="kicker">PaleoBot · Consulta ligera</p>
 <h1>Explorar el registro de la evolución humana</h1>
 <p>Consulta de 50 fichas, evidencias cronológicas, localidades y referencias del catálogo existente.</p>
 <nav aria-label="Secciones"><a href="#fichas">Fichas</a><a href="#cronologia">Cronología</a><a href="#localidades">Localidades</a><a href="#metodo">Cómo interpretar</a></nav></div></header>
 <main id="contenido" class="wrap">
-<section class="notice" aria-label="Estado de la versión">Conserva los datos del catálogo A3. Hay {len(verified)} fichas con recursos visuales documentados (fotografías, figuras, ilustraciones o mapas) y {len(records) - len(verified)} fichas con imagen pendiente de revisión; estas últimas no cargan archivos visuales. Los datos cronológicos describen evidencias publicadas; no representan automáticamente la duración de un taxón.</section>
-<section id="fichas"><div class="section-head"><h2>Fichas del catálogo</h2><p>El encabezado indica el tipo de datación; abra la ficha para leer el dato revisado, sus cautelas y la bibliografía. La consulta básica funciona sin JavaScript.</p></div>
+<section class="notice" aria-label="Estado de la versión">Conserva los datos del catálogo original de PaleoBot. Hay {len(verified)} fichas con recursos visuales documentados (fotografías, figuras, ilustraciones o mapas) y {len(records) - len(verified)} fichas con imagen pendiente de revisión; estas últimas no cargan archivos visuales. Los datos cronológicos describen evidencias publicadas; no representan automáticamente la duración de un taxón.</section>
+<section id="fichas"><div class="section-head"><h2>Fichas del catálogo</h2><p>El encabezado indica el tipo de datación; abra la ficha para leer el dato revisado, sus cautelas y la bibliografía.</p></div>
 <label class="search">Filtrar por nombre o localidad <input id="search" type="search" placeholder="Ej.: Dmanisi o Etiopía" autocomplete="off"></label>
 <p id="search-status" aria-live="polite">50 fichas disponibles.</p>
 <div id="cards">{''.join(cards)}</div></section>
@@ -229,7 +229,7 @@ def build() -> None:
 <li>Compare las afirmaciones de cada ficha con sus referencias. Un vacío del registro no demuestra ausencia biológica.</li>
 <li>Use la imagen enlazada solo tras confirmar qué representa, su autoría y las condiciones de reutilización.</li></ul>
 <p>Catálogo de procedencia: <code>catalog.json</code>, SHA-256 <code>{digest}</code>. Procedencia visual contrastada: <code>image_audit.json</code>.</p></section>
-</main><footer><div class="wrap">PaleoBot · Material experimental A3 · Integración docente pendiente de validación.</div></footer>
+</main><footer><div class="wrap">PaleoBot · Material experimental A3 · Integración docente pendiente de validación. La consulta básica funciona sin JavaScript.</div></footer>
 <script src="interaccion.js" defer></script></body></html>'''
     OUT.write_text(page, encoding="utf-8")
     css = (ROOT / "estilos.css").read_text(encoding="utf-8")

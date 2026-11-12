@@ -75,7 +75,8 @@
       if (caption && !caption.querySelector('.image-error')) {
         var warning = document.createElement('span');
         warning.className = 'image-error';
-        warning.textContent = ' No se ha podido cargar la imagen; utilice el enlace a su fuente.';
+        var cierre = /[.!?…:;]\s*$/.test(caption.textContent) ? ' ' : '. ';
+        warning.textContent = cierre + 'No se ha podido cargar la imagen; utilice el enlace a su fuente.';
         caption.appendChild(warning);
       }
       updateStatus();
