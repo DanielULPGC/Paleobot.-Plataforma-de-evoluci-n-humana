@@ -124,7 +124,7 @@
   };
   function nombreSeccion(id) { var a = document.querySelector('.pestanas a[data-seccion="' + id + '"]'); return a ? a.textContent : id; }
   function avisoPestanas() {
-    var n = document.querySelector('.pestanas');
+    var n = document.querySelector('.pestanas-pista');
     n.classList.toggle('hay-mas', n.scrollLeft + n.clientWidth < n.scrollWidth - 4);
     n.classList.toggle('hay-antes', n.scrollLeft > 4);
   }
@@ -481,8 +481,8 @@
     cont.textContent = '';
     lista.forEach(function (t) {
       var sum = el('summary', null, [el('span', { clase: 'cabeza-ficha' }, [
-        el('span', { clase: 'nombre-cientifico', texto: t.n }), el('span', { clase: 'fechas', texto: corto(t) }),
-        t.debatido ? el('span', { clase: 'etiqueta', texto: 'Debatida' }) : null
+        el('span', { clase: 'nombre-cientifico', texto: t.n }),
+        el('span', { clase: 'meta-ficha' }, [el('span', { clase: 'fechas', texto: corto(t) }), t.debatido ? el('span', { clase: 'etiqueta', texto: 'Debatida' }) : null])
       ])]);
       // Datos esenciales (Cuándo, Dónde, Grupo) en una franja; después la imagen y el resto de la ficha.
       var esenciales = el('dl', { clase: 'esenciales' }, [
@@ -746,7 +746,7 @@
   document.getElementById('nota-datos').textContent = (A.meta && A.meta.notaDatos) || '';
   pintarRepaso();
   document.getElementById('repaso-nuevo').addEventListener('click', function () { pintarRepaso(); var t = document.getElementById('t-repaso'); t.setAttribute('tabindex', '-1'); t.focus(); t.scrollIntoView({ block: 'start' }); });
-  document.querySelector('.pestanas').addEventListener('scroll', avisoPestanas, { passive: true });
+  document.querySelector('.pestanas-pista').addEventListener('scroll', avisoPestanas, { passive: true });
   window.addEventListener('resize', avisoPestanas);
   var inicio = leerHash();
   mostrar(inicio.seccion, false);
