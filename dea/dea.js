@@ -10,6 +10,7 @@
   var MAPA = window.DEA_MAPA;
   if (!A || !A.taxones) {
     document.getElementById('aviso-error').hidden = false;
+    document.documentElement.classList.add('dea-listo');
     return;
   }
 
@@ -49,12 +50,29 @@
     var f = function (v) { return v === 0 ? '0' : num(v, 3); };
     return t.desde === t.hasta ? f(t.desde) + ' Ma' : f(t.desde) + '–' + f(t.hasta) + ' Ma';
   }
+  // Recuentos en palabras para la prosa de la interfaz («Tres métodos…»); a partir de once, en cifras.
+  function palabra(n, femenino) {
+    var p = ['Ningún', 'Un', 'Dos', 'Tres', 'Cuatro', 'Cinco', 'Seis', 'Siete', 'Ocho', 'Nueve', 'Diez'];
+    if (n > 10) return num(n, 0);
+    if (n === 0) return femenino ? 'Ninguna' : 'Ningún';
+    return n === 1 && femenino ? 'Una' : p[n];
+  }
+  function ponerRecuento(clave, texto) { document.querySelectorAll('[data-recuento="' + clave + '"]').forEach(function (n) { n.textContent = texto; }); }
   function region(t) { var r = A.regiones[t.region]; return r ? r.nombre : t.region; }
   function clado(t) { var c = A.clados[t.c]; return c ? c.nombre : t.c; }
   var almacen = {
     leer: function () { try { return JSON.parse(localStorage.getItem('dea-ajustes') || '{}'); } catch (e) { return {}; } },
     guardar: function (d) { try { localStorage.setItem('dea-ajustes', JSON.stringify(d)); } catch (e) { /* sin almacenamiento: el recurso sigue funcionando */ } }
   };
+  // ¿Se puede guardar en este navegador? (navegación privada estricta o política del centro pueden impedirlo)
+  var sinAlmacen = (function () { try { localStorage.setItem('dea-prueba', '1'); localStorage.removeItem('dea-prueba'); return false; } catch (e) { return true; } })();
+  function avisoSinAlmacen() {
+    if (!sinAlmacen) return;
+    document.body.classList.add('sin-almacen');
+    document.querySelectorAll('.acciones-notas').forEach(function (zona) {
+      zona.parentNode.insertBefore(el('p', { clase: 'aviso aviso-almacen', role: 'note' }, [el('strong', { texto: 'Este navegador no permite guardar datos.' }), ' Sus notas y las marcas de «Sesión hecha» se perderán al cerrar la página: descargue sus notas antes de salir.']), zona);
+    });
+  }
   var ajustes = almacen.leer();
   ajustes.hechas = ajustes.hechas || {};
   var notas = (function () { try { return JSON.parse(localStorage.getItem('dea-notas') || '{}'); } catch (e) { return {}; } })();
@@ -218,14 +236,14 @@
   function pintarProgreso() {
     var hechas = SESIONES.filter(function (s) { return ajustes.hechas[s.n]; }).length;
     document.getElementById('progreso-sesiones').textContent = hechas === 0
-      ? 'Seis sesiones. Pulse una para abrirla.'
+      ? SESIONES.length + ' sesiones · ninguna hecha'
       : 'Ha completado ' + hechas + ' de ' + SESIONES.length + ' sesiones.';
   }
   function pintarSesiones() {
     var cont = document.getElementById('lista-sesiones');
     var primeraPendiente = SESIONES.filter(function (s) { return !ajustes.hechas[s.n]; })[0];
     SESIONES.forEach(function (s) {
-      var art = el('details', { clase: 'sesion', id: 'bloque-sesion-' + s.n });
+      var art = el('details', { clase: 'sesion chevron-sumario', id: 'bloque-sesion-' + s.n });
       if (primeraPendiente && primeraPendiente.n === s.n) art.open = true;
       var estado = el('span', { clase: 'etiqueta hecha', texto: 'Hecha' });
       estado.hidden = !ajustes.hechas[s.n];
@@ -335,14 +353,17 @@
     ol.textContent = '';
     lista.forEach(function (t) {
       var texto = el('div', { clase: 'texto' }, [
-        el('a', { clase: 'nombre', href: '#especies/' + t.id }, [el('i', { texto: t.n })]),
-        el('div', { clase: 'fechas', texto: intervalo(t) + (soloAfrica ? '' : ' · ' + region(t)) + (t.debatido ? ' · debatida' : '') })
+        // El nombre accesible del enlace lleva la frase completa (empieza por el nombre visible).
+        el('a', { clase: 'nombre', href: '#especies/' + t.id, 'aria-label': t.n + ': ' + intervalo(t).toLowerCase() + (soloAfrica ? '' : ' · ' + region(t)) + (t.debatido ? ' · debatida' : '') }, [el('i', { texto: t.n })]),
+        el('span', { clase: 'fechas', 'aria-hidden': 'true', texto: corto(t) }),
+        soloAfrica ? null : el('span', { clase: 'region', 'aria-hidden': 'true', texto: region(t) }),
+        t.debatido ? el('span', { clase: 'etiqueta', 'aria-hidden': 'true', texto: 'Debatida' }) : null
       ]);
       ol.appendChild(el('li', null, [texto, pista(t, max)]));
     });
-    var eje = el('li', { 'aria-hidden': 'true' }, [el('span'), el('div', { clase: 'eje' }, [el('span', { texto: num(max, 1) + ' Ma' }), el('span', { texto: num(max / 2, 2) + ' Ma' }), el('span', { texto: 'hoy' })])]);
+    var eje = el('li', { clase: 'fila-eje', 'aria-hidden': 'true' }, [el('span'), el('div', { clase: 'eje' }, [el('span', { texto: num(max, 1) + ' Ma' }), el('span', { texto: num(max / 2, 2) + ' Ma' }), el('span', { texto: 'hoy' })])]);
     ol.insertBefore(eje, ol.firstChild);
-    document.getElementById('tiempo-resumen').textContent = lista.length + ' especies o poblaciones, de la más antigua a la más reciente. Las barras rayadas indican validez debatida.';
+    document.getElementById('tiempo-resumen').textContent = lista.length + ' especies o poblaciones, de la más antigua a la más reciente (Ma: millones de años). Las barras rayadas y la etiqueta «Debatida» indican validez debatida.';
   }
 
   function pintarDia() {
@@ -375,6 +396,8 @@
       var tc = document.createElementNS(ns, 'text'); tc.setAttribute('x', '0.8'); tc.setAttribute('y', '13'); tc.setAttribute('aria-hidden', 'true'); tc.textContent = 'Canarias'; svg.appendChild(tc);
     }
     var lista = document.getElementById('lista-regiones');
+    var anilloFoco = document.createElementNS(ns, 'circle');
+    anilloFoco.setAttribute('r', '2.65'); anilloFoco.setAttribute('class', 'anillo-foco'); anilloFoco.setAttribute('aria-hidden', 'true'); anilloFoco.hidden = true;
     REGIONES_AFRICA.forEach(function (clave) {
       var r = A.regiones[clave]; if (!r) return;
       var n = taxones.filter(function (t) { return t.region === clave; }).length;
@@ -388,6 +411,9 @@
         var k = document.createElementNS(ns, 'circle'); k.setAttribute('cx', cx); k.setAttribute('cy', cy); k.setAttribute('r', par[1]); k.setAttribute('class', par[0]); c.appendChild(k);
       });
       c.addEventListener('click', function () { elegirRegion(clave); });
+      // Indicador de foco: anillo dibujado encima de todos los puntos (el Rift los apila).
+      c.addEventListener('focus', function () { if (!c.matches(':focus-visible')) return; anilloFoco.setAttribute('cx', cx); anilloFoco.setAttribute('cy', cy); anilloFoco.hidden = false; svg.appendChild(anilloFoco); });
+      c.addEventListener('blur', function () { anilloFoco.hidden = true; });
       c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegirRegion(clave); } });
       svg.appendChild(c);
       var b = el('button', { type: 'button', 'aria-pressed': 'false', 'data-region': clave, texto: etiqueta });
@@ -413,7 +439,7 @@
     det.textContent = '';
     var ul = el('ul');
     taxones.filter(function (t) { return t.region === clave; }).forEach(function (t) {
-      ul.appendChild(el('li', null, [el('a', { href: '#especies/' + t.id }, [el('i', { texto: t.n })]), ' · ' + corto(t) + (t.debatido ? ' · debatida' : '')]));
+      ul.appendChild(el('li', null, [el('a', { href: '#especies/' + t.id }, [el('i', { texto: t.n })]), ' · ', el('span', { clase: 'fechas', texto: corto(t) }), t.debatido ? ' ' : null, t.debatido ? el('span', { clase: 'etiqueta', texto: 'Debatida' }) : null]));
     });
     det.appendChild(el('div', { clase: 'tarjeta' }, [el('h2', { texto: r.nombre }), ul]));
   }
@@ -435,6 +461,12 @@
     if (!im) return null;
     var img = el('img', { src: im.src, width: String(im.w), height: String(im.h), alt: im.alt, loading: 'lazy', decoding: 'async' });
     var pie = el('figcaption', null, [im.objeto + '. ']);
+    // Si la imagen no carga: aviso en lugar del icono roto; el pie, con su crédito, se conserva.
+    img.addEventListener('error', function () {
+      var fig = img.parentNode; if (!fig || fig.classList.contains('sin-imagen')) return;
+      fig.classList.add('sin-imagen'); img.hidden = true;
+      fig.insertBefore(el('p', { clase: 'aviso-imagen', texto: 'Imagen no disponible en este momento. Mostraba: ' + im.alt + '.' }), img);
+    });
     if (!compacta) {
       pie.appendChild(el('span', { clase: 'credito' }, [im.credito + ' · ', el('a', { href: im.licenciaUrl, rel: 'noopener noreferrer license', texto: im.licencia }), ' · ', el('a', { href: im.fuente, rel: 'noopener noreferrer', texto: 'Wikimedia Commons' })]));
     }
@@ -443,16 +475,22 @@
   function pintarEspecies() {
     var q = document.getElementById('buscar-especie').value.trim().toLowerCase();
     var soloAfrica = document.getElementById('especies-africa').checked;
-    var lista = taxones.filter(function (t) { return (!soloAfrica || esAfrica(t)) && (!q || t.n.toLowerCase().indexOf(q) !== -1); });
+    var coincide = function (t) { return !q || t.n.toLowerCase().indexOf(q) !== -1; };
+    var lista = taxones.filter(function (t) { return (!soloAfrica || esAfrica(t)) && coincide(t); });
     var cont = document.getElementById('lista-especies');
     cont.textContent = '';
     lista.forEach(function (t) {
-      var sum = el('summary', null, [el('span', { clase: 'nombre-cientifico', texto: t.n }), el('span', { clase: 'fechas', texto: corto(t) })]);
-      if (t.debatido) sum.appendChild(el('span', { clase: 'etiqueta', texto: 'Debatida' }));
+      var sum = el('summary', null, [el('span', { clase: 'cabeza-ficha' }, [
+        el('span', { clase: 'nombre-cientifico', texto: t.n }), el('span', { clase: 'fechas', texto: corto(t) }),
+        t.debatido ? el('span', { clase: 'etiqueta', texto: 'Debatida' }) : null
+      ])]);
+      // Datos esenciales (Cuándo, Dónde, Grupo) en una franja; después la imagen y el resto de la ficha.
+      var esenciales = el('dl', { clase: 'esenciales' }, [
+        el('div', null, [el('dt', { texto: 'Cuándo' }), el('dd', { texto: intervalo(t) + ' (aproximado).' })]),
+        el('div', t.geoNota ? { clase: 'ancho' } : null, [el('dt', { texto: 'Dónde' }), el('dd', { texto: region(t) + (t.geoNota ? '. ' + t.geoNota : '') })]),
+        el('div', null, [el('dt', { texto: 'Grupo' }), el('dd', { texto: clado(t) })])
+      ]);
       var dl = el('dl', null, [
-        el('dt', { texto: 'Cuándo' }), el('dd', { texto: intervalo(t) + ' (aproximado).' }),
-        el('dt', { texto: 'Dónde' }), el('dd', { texto: region(t) + (t.geoNota ? '. ' + t.geoNota : '') }),
-        el('dt', { texto: 'Grupo' }), el('dd', { texto: clado(t) }),
         el('dt', { texto: 'Qué se sabe' }), el('dd', { texto: t.nota || '' })
       ]);
       if (t.etimologia) { dl.appendChild(el('dt', { texto: 'Origen del nombre' })); dl.appendChild(el('dd', { texto: t.etimologia })); }
@@ -460,9 +498,29 @@
       var cruces = el('p', { clase: 'cruces' });
       if (esAfrica(t)) { cruces.appendChild(el('a', { href: '#mapa/' + t.region, texto: 'Ver en el mapa' })); cruces.appendChild(document.createTextNode(' · ')); }
       cruces.appendChild(el('a', { href: '#comparar/' + t.id, texto: 'Comparar con otra especie' }));
-      cont.appendChild(el('details', { clase: 'ficha', id: 'ficha-' + t.id }, [sum, figura(t, false), dl, cruces]));
+      cont.appendChild(el('details', { clase: 'ficha chevron-sumario', id: 'ficha-' + t.id }, [sum, esenciales, figura(t, false), dl, cruces]));
     });
-    document.getElementById('especies-resumen').textContent = lista.length === 0 ? 'Ninguna especie coincide con la búsqueda.' : lista.length + ' fichas.';
+    document.getElementById('especies-resumen').textContent = lista.length === 0 ? 'Ninguna especie coincide con la búsqueda.' : lista.length + (lista.length === 1 ? ' ficha.' : ' fichas.');
+    if (!lista.length) {
+      // Estado vacío con salida: ampliar a fuera de África si allí hay coincidencias, o borrar la búsqueda.
+      var fuera = soloAfrica ? taxones.filter(function (t) { return !esAfrica(t) && coincide(t); }).length : 0;
+      var acciones = el('div', { clase: 'acciones' });
+      var buscar = document.getElementById('buscar-especie');
+      if (fuera) {
+        var ampliar = el('button', { type: 'button', texto: 'Buscar también fuera de África' });
+        ampliar.addEventListener('click', function () { document.getElementById('especies-africa').checked = false; pintarEspecies(); buscar.focus(); });
+        acciones.appendChild(ampliar);
+      }
+      if (q) {
+        var borrar = el('button', { type: 'button', texto: 'Borrar la búsqueda' });
+        borrar.addEventListener('click', function () { buscar.value = ''; pintarEspecies(); buscar.focus(); });
+        acciones.appendChild(borrar);
+      }
+      cont.appendChild(el('div', { clase: 'vacio' }, [
+        fuera ? el('p', { texto: (fuera === 1 ? 'Hay 1 coincidencia' : 'Hay ' + fuera + ' coincidencias') + ' fuera de África («Solo África» está marcado).' }) : null,
+        acciones
+      ]));
+    }
   }
   function abrirFicha(id) {
     var t = taxones.filter(function (x) { return x.id === id; })[0];
@@ -506,10 +564,11 @@
     var filas = [a, b].map(function (t) {
       return el('div', { clase: 'fila-comparar' }, [figura(t, true), el('p', null, [el('i', { texto: t.n }), ' · ' + intervalo(t)]), pista(t, max)]);
     });
-    res.appendChild(el('div', { clase: 'tarjeta' }, filas.concat([
+    res.appendChild(el('div', { clase: 'tarjeta' }, [
+      el('h2', { clase: 'veredicto', texto: frase }),
+      el('p', { texto: lugar })
+    ].concat(filas, [
       el('div', { clase: 'eje', 'aria-hidden': 'true' }, [el('span', { texto: num(max, 2) + ' Ma' }), el('span', { texto: 'hoy' })]),
-      el('p', null, [el('strong', { texto: frase })]),
-      el('p', { texto: lugar }),
       el('p', { clase: 'resumen', texto: 'Coincidir en el tiempo no significa que se encontraran: también cuentan el lugar y lo incompleto del registro. Las fechas son aproximadas.' })
     ])));
   }
@@ -517,16 +576,18 @@
   /* ---------- Métodos y clima ---------- */
   function pintarMetodos() {
     var cont = document.getElementById('lista-metodos');
+    ponerRecuento('metodos', palabra((A.metodos || []).length, false));
     (A.metodos || []).forEach(function (m) {
       cont.appendChild(el('article', { clase: 'tarjeta' }, [
         el('h2', { texto: m.nombre }),
-        el('p', null, [el('strong', { texto: m.pregunta })]),
+        el('p', { clase: 'pregunta-metodo', texto: m.pregunta }),
         el('dl', null, [el('dt', { texto: 'Cómo funciona' }), el('dd', { texto: m.como }), el('dt', { texto: 'Qué aporta' }), el('dd', { texto: m.aporta }), el('dt', { texto: 'Qué límites tiene' }), el('dd', { texto: m.limita }), el('dt', { texto: 'Fuentes' }), el('dd', null, [fuentesDe(m.fuentes)])])
       ]));
     });
   }
   function pintarClima() {
     var cont = document.getElementById('lista-clima');
+    ponerRecuento('clima', palabra((A.clima || []).length, true));
     (A.clima || []).forEach(function (c) {
       cont.appendChild(el('article', { clase: 'tarjeta' }, [el('h2', { texto: c.titulo }), el('p', { texto: c.idea }), el('p', { clase: 'resumen', texto: 'Fuentes:' }), fuentesDe(c.fuentes)]));
     });
@@ -538,6 +599,7 @@
     var q = document.getElementById('buscar-termino').value.trim().toLowerCase();
     var dl = document.getElementById('lista-glosario');
     dl.textContent = '';
+    ponerRecuento('glosario', num(datos.length, 0));
     var n = 0;
     datos.forEach(function (e) {
       if (q && e[0].toLowerCase().indexOf(q) === -1 && e[1].toLowerCase().indexOf(q) === -1) return;
@@ -545,7 +607,15 @@
       dl.appendChild(el('dd', { texto: e[1] }));
       n++;
     });
-    document.getElementById('glosario-resumen').textContent = n === 0 ? 'Ningún término coincide con la búsqueda.' : n + (n === 1 ? ' término.' : ' términos.');
+    var resumen = document.getElementById('glosario-resumen');
+    resumen.textContent = !q ? '' : n === 0 ? 'Ningún término coincide con la búsqueda.' : n + (n === 1 ? ' término coincide' : ' términos coinciden') + ' con la búsqueda.';
+    var previo = document.getElementById('glosario-vacio'); if (previo) previo.remove();
+    if (q && n === 0) {
+      var buscar = document.getElementById('buscar-termino');
+      var borrar = el('button', { type: 'button', texto: 'Borrar la búsqueda' });
+      borrar.addEventListener('click', function () { buscar.value = ''; pintarGlosario(); buscar.focus(); });
+      dl.parentNode.insertBefore(el('div', { clase: 'vacio', id: 'glosario-vacio' }, [el('div', { clase: 'acciones' }, [borrar])]), dl);
+    }
   }
 
   /* ---------- Repaso: preguntas generadas a partir de los datos del recurso ---------- */
@@ -588,18 +658,39 @@
         explica: [t.debatido ? 'Sí: su validez o su posición se discuten. ' : 'No figura como debatida. ', t.nota || ''], ficha: t.id };
     }
   ];
-  var repaso = { total: 0, respondidas: 0, aciertos: 0 };
+  var repaso = { total: 0, respondidas: 0, aciertos: 0, falladas: [] };
   function marcadorRepaso() {
     document.getElementById('repaso-marcador').textContent = repaso.respondidas === repaso.total && repaso.total
       ? 'Ha acertado ' + repaso.aciertos + ' de ' + repaso.total + '. Puede pedir preguntas nuevas.'
       : 'Respondidas: ' + repaso.respondidas + ' de ' + repaso.total + '. Aciertos: ' + repaso.aciertos + '.';
   }
+  // Al responder la última pregunta: tarjeta de resultado (punto focal) con las fichas falladas y «Nuevas preguntas».
+  function resultadoRepaso() {
+    var caja = document.getElementById('repaso-resultado'), boton = document.getElementById('repaso-nuevo');
+    caja.textContent = '';
+    caja.appendChild(el('h2', { texto: 'Ha acertado ' + repaso.aciertos + ' de ' + repaso.total }));
+    var vistas = {}, falladas = repaso.falladas.filter(function (id) { if (vistas[id]) return false; vistas[id] = true; return true; });
+    if (falladas.length) {
+      caja.appendChild(el('p', { texto: falladas.length === 1 ? 'Repase esta ficha:' : 'Repase estas fichas:' }));
+      var ul = el('ul');
+      falladas.forEach(function (id) { var t = taxones.filter(function (x) { return x.id === id; })[0]; if (t) ul.appendChild(el('li', null, [el('a', { href: '#especies/' + id }, [el('i', { texto: t.n })])])); });
+      caja.appendChild(ul);
+    } else caja.appendChild(el('p', { texto: 'Todas las respuestas son correctas.' }));
+    boton.classList.add('boton-primario');
+    caja.appendChild(boton);
+    caja.hidden = false;
+    caja.focus();
+  }
   function pintarRepaso() {
     var cont = document.getElementById('lista-repaso');
     cont.textContent = '';
+    var caja = document.getElementById('repaso-resultado'), boton = document.getElementById('repaso-nuevo');
+    caja.hidden = true; caja.textContent = '';
+    boton.classList.remove('boton-primario'); document.getElementById('repaso-acciones').appendChild(boton);
     var preguntas = [];
     barajar([0, 1, 2, 3, 0, 1, 2, 3]).forEach(function (g) { var q = GENERADORES[g](); if (q) preguntas.push(q); });
-    repaso = { total: preguntas.length, respondidas: 0, aciertos: 0 };
+    ponerRecuento('repaso', palabra(preguntas.length, true));
+    repaso = { total: preguntas.length, respondidas: 0, aciertos: 0, falladas: [] };
     preguntas.forEach(function (q, i) {
       var nombre = 'repaso-' + i;
       var campo = el('fieldset', { clase: 'tarjeta pregunta-repaso' }, [el('legend', { texto: 'Pregunta ' + (i + 1) + ' de ' + preguntas.length })]);
@@ -612,18 +703,19 @@
       var salida = el('div', { clase: 'respuesta', role: 'status' });
       boton.addEventListener('click', function () {
         var marcada = campo.querySelector('input:checked');
-        if (!marcada) { salida.textContent = 'Elija una respuesta.'; return; }
+        if (!marcada) { salida.className = 'respuesta error'; salida.textContent = 'Elija una respuesta.'; return; }
         var elegida = q.opciones[Number(marcada.value)], correcta = q.opciones.filter(function (o) { return o.bien; })[0];
         campo.querySelectorAll('input').forEach(function (n) { n.disabled = true; });
         boton.disabled = true;
-        repaso.respondidas++; if (elegida.bien) repaso.aciertos++;
+        repaso.respondidas++; if (elegida.bien) repaso.aciertos++; else repaso.falladas.push(q.ficha);
         salida.textContent = '';
         salida.className = 'respuesta ' + (elegida.bien ? 'bien' : 'mal');
-        var veredicto = el('p', null, [el('strong', { texto: elegida.bien ? '✓ Correcto. ' : '✗ No es correcto. ' })]);
+        var veredicto = el('p', null, [el('strong', { clase: 'veredicto-repaso', texto: elegida.bien ? '✓ Correcto. ' : '✗ No es correcto. ' })]);
         if (!elegida.bien) { veredicto.appendChild(document.createTextNode('La respuesta es: ')); veredicto.appendChild(typeof correcta.nodo === 'string' ? document.createTextNode(correcta.nodo) : correcta.nodo.cloneNode(true)); veredicto.appendChild(document.createTextNode('.')); }
         salida.appendChild(veredicto);
         salida.appendChild(el('p', null, q.explica.concat([' ', el('a', { href: '#especies/' + q.ficha, texto: 'Ver la ficha' }), '.'])));
         marcadorRepaso();
+        if (repaso.respondidas === repaso.total) resultadoRepaso();
       });
       campo.appendChild(boton); campo.appendChild(salida);
       cont.appendChild(campo);
@@ -633,6 +725,7 @@
 
   /* ---------- Arranque ---------- */
   aplicarAjustes();
+  avisoSinAlmacen();
   pintarSesiones();
   ['tiempo-africa', 'tiempo-mioceno'].forEach(function (id) { document.getElementById(id).addEventListener('change', pintarTiempo); });
   pintarTiempo();
@@ -652,10 +745,11 @@
   document.getElementById('boton-imprimir').addEventListener('click', function () { window.print(); });
   document.getElementById('nota-datos').textContent = (A.meta && A.meta.notaDatos) || '';
   pintarRepaso();
-  document.getElementById('repaso-nuevo').addEventListener('click', function () { pintarRepaso(); document.getElementById('t-repaso').scrollIntoView({ block: 'start' }); });
+  document.getElementById('repaso-nuevo').addEventListener('click', function () { pintarRepaso(); var t = document.getElementById('t-repaso'); t.setAttribute('tabindex', '-1'); t.focus(); t.scrollIntoView({ block: 'start' }); });
   document.querySelector('.pestanas').addEventListener('scroll', avisoPestanas, { passive: true });
   window.addEventListener('resize', avisoPestanas);
   var inicio = leerHash();
   mostrar(inicio.seccion, false);
   irADetalle(inicio);
+  document.documentElement.classList.add('dea-listo');
 })();
