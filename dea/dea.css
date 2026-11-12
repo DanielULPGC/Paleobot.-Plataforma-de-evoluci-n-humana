@@ -432,9 +432,27 @@ main .linea-tiempo li { max-width: none; }
 @media (min-width: 40rem) { .comparador { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 .veredicto { font-size: var(--t-l); margin: 0 0 var(--e-2); }
 .veredicto + p { color: var(--tinta-2); margin-bottom: var(--e-4); }
-.fila-comparar { margin-bottom: var(--e-4); }
-.fila-comparar p { margin: 0 0 var(--e-2); }
-.fila-comparar .figura { margin: 0 0 var(--e-2); }
+/* Un solo gráfico: rejilla común, dos carriles y la franja de coincidencia (fondo suave de acento) detrás. */
+.area-comparar {
+  position: relative; padding-top: var(--e-2);
+  background-image: linear-gradient(to left, var(--borde) var(--linea), transparent var(--linea));
+  background-size: var(--paso, 100%) calc(100% - var(--e-5)); background-repeat: repeat-x; background-position: right top;
+}
+.franja-coincidencia { position: absolute; top: 0; bottom: var(--e-5); background: var(--acento-suave); border-left: var(--linea) dashed var(--acento); border-right: var(--linea) dashed var(--acento); }
+.fila-grafico { position: relative; margin-bottom: var(--e-3); }
+main .fila-grafico .nombre-grafico { position: relative; display: inline-block; margin: 0 0 var(--e-1); padding-right: var(--e-2); max-width: none; background: var(--superficie); }
+.eje-tiempo span.al-borde { transform: none; }
+.nombre-grafico .fechas { font-size: var(--t-s); color: var(--tinta-2); }
+.carril { position: relative; height: var(--e-4); }
+.carril .barra { height: 100%; }
+main .unidad-comparar { margin: var(--e-1) 0 0; max-width: none; text-align: center; font-size: var(--t-xs); color: var(--tinta-2); }
+.eje-comparar { border-top: var(--linea) solid var(--borde-control); font-size: var(--t-xs); color: var(--tinta-2); }
+.leyenda-coincidencia { display: flex; align-items: center; gap: var(--e-2); margin-top: var(--e-3); }
+.leyenda-coincidencia .muestra { width: var(--e-5); height: var(--e-3); background: var(--acento-suave); border: var(--linea) dashed var(--acento); }
+.intervalos-comparar { font-size: var(--t-s); color: var(--tinta-2); padding-left: var(--e-5); }
+.miniaturas { display: grid; gap: var(--e-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); margin-top: var(--e-5); padding-top: var(--e-4); border-top: var(--linea) solid var(--borde); }
+.miniaturas .figura { margin: 0; }
+.figura.miniatura img { width: auto; height: 9rem; max-height: none; margin: 0; }
 
 /* ---------- Métodos y clima ---------- */
 .tarjetas { display: grid; gap: var(--e-3); grid-template-columns: minmax(0, 1fr); }

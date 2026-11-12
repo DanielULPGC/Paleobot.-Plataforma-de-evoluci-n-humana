@@ -706,6 +706,7 @@
 
   /* ---------- Comparar ---------- */
   function rellenarSelect(sel, porDefecto) {
+    sel.appendChild(el('option', { value: '', texto: 'Elija una especie' }));
     [['África', true], ['Fuera de África', false]].forEach(function (g) {
       var og = el('optgroup', { label: g[0] });
       taxones.filter(function (t) { return esAfrica(t) === g[1]; }).forEach(function (t) {
@@ -717,32 +718,75 @@
     });
   }
   function porNombre(n) { var t = taxones.filter(function (x) { return x.n === n; })[0]; return t ? t.id : taxones[0].id; }
+  // Paso de la rejilla del gráfico según el intervalo que se muestra.
+  function pasoEje(max) { return max <= 1 ? 0.1 : max <= 3 ? 0.5 : max <= 12 ? 1 : 5; }
+  // Un único gráfico: las dos barras sobre el mismo eje, con la franja de coincidencia sombreada.
+  function graficoComparar(lista, max, ini, fin) {
+    var area = el('div', { clase: 'area-comparar' });
+    area.style.setProperty('--paso', (pasoEje(max) / max * 100) + '%');
+    if (ini !== null && ini > fin) {
+      var f = el('div', { clase: 'franja-coincidencia' });
+      f.style.left = ((max - ini) / max * 100) + '%'; f.style.width = ((ini - fin) / max * 100) + '%';
+      area.appendChild(f);
+    }
+    lista.forEach(function (t) {
+      var barra = el('span', { clase: 'barra' + (t.debatido ? ' debatida' : '') });
+      barra.style.left = ((max - Math.min(t.desde, max)) / max * 100) + '%';
+      barra.style.width = Math.max((Math.min(t.desde, max) - t.hasta) / max * 100, 0.6) + '%';
+      area.appendChild(el('div', { clase: 'fila-grafico' }, [
+        el('p', { clase: 'nombre-grafico' }, [el('i', { texto: t.n }), ' ', el('span', { clase: 'fechas', texto: corto(t) }), t.debatido ? ' ' : null, t.debatido ? el('span', { clase: 'etiqueta', texto: 'Debatida' }) : null]),
+        el('div', { clase: 'carril', 'aria-hidden': 'true' }, [barra])
+      ]));
+    });
+    var paso = pasoEje(max), eje = el('div', { clase: 'eje-tiempo eje-comparar', 'aria-hidden': 'true' });
+    var dec = paso < 1 ? 1 : 0;
+    for (var v = Math.floor(max / paso + 1e-9) * paso; v > 1e-9; v -= paso) {
+      var m = el('span', { texto: num(+v.toFixed(2), dec) }); m.style.left = ((max - v) / max * 100) + '%';
+      if (max - v < 1e-9) m.className = 'al-borde';
+      eje.appendChild(m);
+    }
+    var hoy = el('span', { texto: 'hoy' }); hoy.style.left = '100%'; eje.appendChild(hoy);
+    area.appendChild(eje);
+    return el('div', { clase: 'grafico-comparar' }, [area, el('p', { clase: 'unidad-comparar', 'aria-hidden': 'true', texto: 'Millones de años (Ma) antes del presente' })]);
+  }
   function pintarComparar() {
     var a = taxones.filter(function (t) { return t.id === document.getElementById('comparar-a').value; })[0];
     var b = taxones.filter(function (t) { return t.id === document.getElementById('comparar-b').value; })[0];
     var res = document.getElementById('resultado-comparar');
     res.textContent = '';
-    if (!a || !b) return;
+    if (!a || !b) {
+      // Estado inicial: falta una de las dos especies.
+      res.appendChild(el('div', { clase: 'vacio' }, [el('p', { texto: !a && !b ? 'Elija dos especies para compararlas.' : 'Elija también la ' + (!a ? 'primera' : 'segunda') + ' especie.' })]));
+      return;
+    }
     var max = Math.max(a.desde, b.desde); max = max < 1 ? Math.ceil(max * 10) / 10 + 0.1 : Math.ceil(max * 1.1);
-    var frase;
-    if (a.id === b.id) frase = 'Ha elegido dos veces la misma especie.';
+    var frase, ini = null, fin = null, misma = a.id === b.id;
+    if (misma) frase = 'Ha elegido dos veces la misma especie.';
     else {
-      var ini = Math.min(a.desde, b.desde), fin = Math.max(a.hasta, b.hasta);
+      ini = Math.min(a.desde, b.desde); fin = Math.max(a.hasta, b.hasta);
       if (ini > fin) frase = 'Coincidieron en el tiempo, aproximadamente ' + (fin === 0 ? 'desde ' + hace(ini) + ' hasta hoy.' : 'entre ' + hace(ini) + ' y ' + hace(fin) + '.');
       else if (ini === fin) frase = 'Sus intervalos se tocan ' + hace(ini) + ': con las fechas actuales no puede afirmarse que convivieran.';
       else frase = 'No coincidieron en el tiempo: entre una y otra median unos ' + (fin - ini < 1 ? num(Math.round((fin - ini) * 1000) * 1000, 0) + ' años.' : num(fin - ini, 2) + ' millones de años.');
     }
-    var lugar = a.region === b.region ? 'Se documentan en la misma región: ' + region(a) + '.' : 'Se documentan en regiones distintas: ' + region(a) + ' y ' + region(b) + '.';
-    var filas = [a, b].map(function (t) {
-      return el('div', { clase: 'fila-comparar' }, [figura(t, true), el('p', null, [el('i', { texto: t.n }), ' · ' + intervalo(t)]), pista(t, max)]);
-    });
-    res.appendChild(el('div', { clase: 'tarjeta' }, [
-      el('h2', { clase: 'veredicto', texto: frase }),
-      el('p', { texto: lugar })
-    ].concat(filas, [
-      el('div', { clase: 'eje', 'aria-hidden': 'true' }, [el('span', { texto: num(max, 2) + ' Ma' }), el('span', { texto: 'hoy' })]),
-      el('p', { clase: 'resumen', texto: 'Coincidir en el tiempo no significa que se encontraran: también cuentan el lugar y lo incompleto del registro. Las fechas son aproximadas.' })
-    ])));
+    var hijos = [el('h2', { clase: 'veredicto', texto: frase })];
+    if (misma) {
+      var otra = el('button', { type: 'button', texto: 'Elegir otra segunda especie' });
+      otra.addEventListener('click', function () { document.getElementById('comparar-b').focus(); });
+      hijos.push(el('p', null, [el('i', { texto: a.n }), ' · ' + intervalo(a) + '. Se documenta en ' + region(a) + '.']));
+      hijos.push(el('p', null, [otra]));
+      hijos.push(graficoComparar([a], max, null, null));
+    } else {
+      var lugar = a.region === b.region ? 'Se documentan en la misma región: ' + region(a) + '.' : 'Se documentan en regiones distintas: ' + region(a) + ' y ' + region(b) + '.';
+      hijos.push(el('p', { clase: 'lugar-comparar', texto: lugar }));
+      hijos.push(graficoComparar([a, b], max, ini, fin));
+      if (ini > fin) hijos.push(el('p', { clase: 'leyenda leyenda-coincidencia' }, [el('span', { clase: 'muestra', 'aria-hidden': 'true' }), 'Franja sombreada: intervalo en el que coinciden.']));
+      // Frase completa de cada intervalo (la que antes acompañaba a cada barra).
+      hijos.push(el('ul', { clase: 'intervalos-comparar' }, [a, b].map(function (t) { return el('li', null, [el('i', { texto: t.n }), ' · ' + intervalo(t)]); })));
+    }
+    hijos.push(el('p', { clase: 'resumen', texto: 'Coincidir en el tiempo no significa que se encontraran: también cuentan el lugar y lo incompleto del registro. Las fechas son aproximadas.' }));
+    var figs = (misma ? [a] : [a, b]).map(function (t) { return figura(t, false); }).filter(Boolean);
+    if (figs.length) { figs.forEach(function (f) { f.classList.add('miniatura'); }); hijos.push(el('div', { clase: 'miniaturas' }, figs)); }
+    res.appendChild(el('div', { clase: 'tarjeta resultado-comparar' }, hijos));
   }
 
   /* ---------- Métodos y clima ---------- */
