@@ -81,11 +81,18 @@ a{color:var(--acento)}
   @keyframes surgir{to{opacity:1;transform:translateY(0)}}
   .scroll-cue svg{animation:latido 2.2s ease-in-out infinite}
   @keyframes latido{50%{transform:translateY(6px)}}
-  .revelar{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-  .revelar.visible{opacity:1;transform:translateY(0)}
+  /* PB-GH-10: solo se ocultan para la aparición si hay JavaScript (clase .js en <html>) */
+  .js .revelar{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .js .revelar.visible{opacity:1;transform:translateY(0)}
+}
+@media print{
+  .revelar,.aparece{opacity:1!important;transform:none!important;animation:none!important}
+  .hero{min-height:0}
+  .hero::before,.hero::after,.motivo,#motas,.scroll-cue{display:none}
 }
 @media (max-width:640px){.scroll-cue{display:none}}
 </style>
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="integracion.css">
 <script src="integracion.js" defer></script>
 </head>

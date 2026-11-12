@@ -55,10 +55,13 @@ a{color:var(--acento)}
 .pie a{color:rgba(216,169,58,.85)}
 
 @media (prefers-reduced-motion: no-preference){
-  .bloque{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
-  .bloque.visible{opacity:1;transform:translateY(0)}
+  /* PB-GH-10: solo se ocultan para la aparición si hay JavaScript (clase .js en <html>) */
+  .js .bloque{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+  .js .bloque.visible{opacity:1;transform:translateY(0)}
 }
+@media print{.bloque{opacity:1!important;transform:none!important}}
 </style>
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="integracion.css">
 <script src="integracion.js" defer></script>
 </head>

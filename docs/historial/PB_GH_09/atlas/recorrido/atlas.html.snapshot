@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: concentrador del Atlas de paleoantropología. Organiza el
+  acceso a los bloques temáticos y actúa como destino de la portada. Punto de
+  extensión: cada bloque enlaza a su vista interactiva cuando se integre el
+  atlas completo. Diales: VARIANZA_VISUAL 5 / INTENSIDAD_ANIMACION 3 /
+  DENSIDAD_CONTENIDO 5. Accesibilidad: navegación semántica, foco visible,
+  enlace de salto, retorno explícito. Licencia CC BY-NC 4.0 · ULPGC.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas de paleoantropología · Bloques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:14px;--ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6}
+a{color:var(--acento)}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto:focus{left:0}
+
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.volver:hover{border-color:var(--acento);color:var(--acento)}
+.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver svg{width:18px;height:18px;fill:currentColor}
+.barra .marca{font-weight:600;letter-spacing:.02em;color:var(--tinta-suave);font-size:.95rem}
+.barra .intro-link{color:var(--acento);text-decoration:none;font-weight:600;font-size:.95rem}
+.barra .intro-link:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+
+.cabecera{padding:8vh 5vw 2vh;max-width:1100px;margin:0 auto;text-align:center}
+.cabecera .k{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:1rem}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;margin-bottom:.8rem}
+.cabecera p{color:var(--tinta-suave);max-width:62ch;margin:0 auto}
+
+.bloques{max-width:1100px;margin:0 auto;padding:4vh 5vw 10vh;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.bloque{scroll-margin-top:80px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-top:4px solid var(--acento);border-radius:var(--radio);padding:2rem 1.8rem;display:flex;flex-direction:column}
+.bloque .n{font-weight:700;color:var(--acento);font-size:.85rem;letter-spacing:.12em;margin-bottom:.8rem}
+.bloque h2{font-family:var(--ft);font-weight:700;font-size:1.5rem;margin-bottom:.6rem}
+.bloque p{color:var(--tinta-suave);font-size:1rem;margin-bottom:1.4rem;flex:1}
+.bloque .acc{display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;font-weight:600;color:#141008;background:var(--acento);padding:.6rem 1.2rem;border-radius:var(--radio);text-decoration:none;transition:background .2s}
+.bloque .acc:hover{background:#e6bb52}
+.bloque .acc:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+.bloque[data-destacado] {border-top-color:var(--acento);background:rgba(216,169,58,.06)}
+
+.nota{max-width:1100px;margin:0 auto 8vh;padding:0 5vw}
+.nota .caja{background:rgba(255,255,255,.03);border:1px dashed rgba(216,169,58,.4);border-radius:var(--radio);padding:1.4rem 1.6rem;color:var(--tinta-suave);font-size:.95rem}
+
+.pie{border-top:1px solid rgba(255,255,255,.1);padding:2.4rem 5vw;text-align:center;color:rgba(200,210,206,.6);font-size:.82rem;line-height:1.7}
+.pie a{color:rgba(216,169,58,.85)}
+
+@media (prefers-reduced-motion: no-preference){
+  .bloque{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+  .bloque.visible{opacity:1;transform:translateY(0)}
+}
+</style>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+<a class="salto" href="#bloques">Saltar a los bloques</a>
+
+<div class="barra">
+  <a class="volver" href="index.html" id="volver">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver a la portada
+  </a>
+  <span class="marca">Atlas de paleoantropología</span>
+  <a class="intro-link" href="introduccion.html">Ver la introducción</a>
+</div>
+
+<header class="cabecera">
+  <p class="k">Recorrido por bloques</p>
+  <h1>Elige por dónde empezar</h1>
+  <p>Cada bloque reúne las herramientas para una pregunta distinta. Avanza a tu ritmo y vuelve cuando quieras.</p>
+</header>
+
+<main id="bloques" class="bloques">
+  <section class="bloque" id="cronologia">
+    <div class="n">01 · Cronología</div>
+    <h2>Cronología del corpus</h2>
+    <p>Ordena las cincuenta y dos entradas en el tiempo para reconocer apariciones, solapamientos y desapariciones. Línea del tiempo interactiva, con rangos anclados a sus fuentes.</p>
+    <a class="acc" href="cronologia.html">Abrir la línea del tiempo</a>
+  </section>
+
+  <section class="bloque" id="territorio">
+    <div class="n">02 · Territorio</div>
+    <h2>Territorio y dispersión</h2>
+    <p>Dónde vivieron y por dónde se movieron. Esquema geográfico de regiones, con África como escenario primario de la evolución humana y las salidas hacia Eurasia como fenómeno posterior.</p>
+    <a class="acc" href="territorio.html">Abrir el mapa de regiones</a>
+  </section>
+
+  <section class="bloque" id="clima">
+    <div class="n">03 · Clima</div>
+    <h2>Clima y ecología</h2>
+    <p>En qué mundo vivieron. La variabilidad ambiental como marco de la evolución humana, con sus registros y sus cautelas, anclada en estudios revisados por pares.</p>
+    <a class="acc" href="clima.html">Abrir el bloque de clima</a>
+  </section>
+
+  <section class="bloque" id="metodos" data-destacado>
+    <div class="n">04 · Métodos</div>
+    <h2>Métodos y evidencia</h2>
+    <p>Cómo lo sabemos: datación radiométrica, tafonomía y ADN antiguo, con sus aportaciones y sus límites. El segundo minuto de la introducción desarrolla precisamente este bloque.</p>
+    <a class="acc" href="metodos.html">Abrir los métodos</a>
+  </section>
+
+  <section class="bloque" id="aula">
+    <div class="n">05 · Aula</div>
+    <h2>Aula y recursos</h2>
+    <p>Enseñar y evaluar: itinerarios de uso para la docencia universitaria y la formación permanente, y una situación de aprendizaje modelo con su marco normativo verificado.</p>
+    <a class="acc" href="aula.html">Abrir el bloque de aula</a>
+  </section>
+</main>
+
+<div class="nota">
+  <div class="caja">
+    <strong>Punto de extensión.</strong> Este concentrador organiza el acceso a los bloques del atlas. Las vistas interactivas de cada bloque (línea del tiempo, mapa, cladograma) pueden enlazarse aquí cuando se integre el atlas completo, sustituyendo los accesos provisionales que hoy remiten a la introducción.
+  </div>
+</div>
+
+<footer class="pie">
+  Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria<br>
+  Contenido bajo licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
+</footer>
+
+<script>
+(() => {
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const bloques = document.querySelectorAll('.bloque');
+  if (reduce || !('IntersectionObserver' in window)) {
+    bloques.forEach(b => b.classList.add('visible'));
+  } else {
+    const obs = new IntersectionObserver((es) => {
+      es.forEach((e,i) => { if (e.isIntersecting){ const el=e.target; setTimeout(()=>el.classList.add('visible'), i*70); obs.unobserve(el);} });
+    }, { threshold:.15 });
+    bloques.forEach(b => obs.observe(b));
+  }
+  // Retorno robusto: si hay historial de navegación previo, retrocede; si no, va a la portada.
+  const volver = document.getElementById('volver');
+  volver.addEventListener('click', (ev) => {
+    if (document.referrer && new URL(document.referrer, location.href).pathname.endsWith('index.html')) {
+      ev.preventDefault(); history.back();
+    }
+  });
+})();
+</script>
+</body>
+</html>
