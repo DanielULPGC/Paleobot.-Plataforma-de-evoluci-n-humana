@@ -1,5 +1,49 @@
 # Registro de cambios
 
+## PB-GH-10 · Auditoría y rediseño de diseño de producto · 12-11-2026
+
+Ronda de diseño para el alumnado del Diploma de Estudios Africanos. No se elimina contenido
+ni función: los textos académicos (sesiones, fichas, glosario, citas, créditos y avisos) no
+cambian; lo que alteraría el modelo de navegación queda como propuesta.
+
+- Sistema común «Papel y tierra» en `assets/paleobot-base.css`: paleta clara, oscura, de
+  proyección y de impresión; 7 tamaños de letra; 8 pasos de espaciado; radios 8/12/píldora;
+  un solo anillo de foco; etiqueta única de incertidumbre. Titulares en Lexend local (copia
+  idéntica de la que ya usaba la portada, con su licencia OFL 1.1). Descripción vigente en
+  `docs/diseno/SISTEMA.md`.
+- Entrada DEA: rejilla de página común; menú «Ajustes» en el teléfono; lista «Secciones»
+  cuando no caben las diez pestañas; bloque «Continuar» con la sesión que toca; línea del
+  tiempo como gráfico con rejilla y eje fijo; fichas en una columna que se abren como página
+  de manual; mapa con puntos numerados y un recuadro ampliado del Rift; Comparar con un solo
+  gráfico y la franja de coincidencia; modo proyección con más contraste y sin las notas
+  personales a la vista; glosario por letras con índice. Aviso cuando no hay JavaScript o
+  el navegador no permite guardar notas.
+- Recorrido: la introducción ya no superpone texto bajo el póster y «Comenzar» se ve en el
+  teléfono; la portada del recorrido y la página del mapa se leen sin JavaScript y al
+  imprimir; Lexend local en lugar de Google Fonts; foco visible en todos los controles;
+  «Atlas completo» como enlace secundario que no tapa el foco; gráficos de cronología
+  legibles en el teléfono; estilos de impresión.
+- Consulta ligera: los mismos tokens que la entrada DEA (sincronía comprobada por el
+  verificador), foco visible y las 47 imágenes desde las copias locales de `img/taxones/`,
+  con crédito y licencia íntegros.
+- Portada 3D: los accesos del dock muestran su rótulo en el teléfono y la tableta (también
+  «DEA») y ya no pisan el título. La escena no cambia.
+- Atlas v1: tildes en dos etiquetas de la bibliografía, sin emoji en la interfaz y un solo
+  h1. Nada más.
+- Mediciones de cierre: axe-core sin infracciones en las diez vistas de DEA, las diez páginas
+  del recorrido y la consulta ligera, en teléfono, tableta y escritorio; sin desbordamiento a
+  320 px; ninguna petición a terceros en esas páginas. De la tabla de corrección de 40 filas,
+  35 quedan hechas, 3 parciales y 2 sin hacer (`docs/diseno/AUDITORIA_PB_GH_10.md`).
+- Verificador: 8 comprobaciones nuevas (sincronía de tokens, copia de Lexend, CSP y
+  estructura de DEA, «solo tokens» en `dea/dea.css`, sin Google Fonts, imágenes locales de
+  la ligera, acceso DEA de la portada y «no se elimina nada»), con 18 pruebas. Procedencia
+  en `provenance/PB_GH_10_CORRECCIONES.json`.
+- Límites: medido solo en Chromium con emulación de viewport y sin red de terceros. No se
+  ha comprobado la portada completa con GPU real, las fuentes reales del atlas, lectores de
+  pantalla, Firefox, Safari, dispositivos reales ni la pantalla completa del modo proyección
+  en un proyector. Siguen pendientes, entre otros, el foco del diálogo Bibliografía del atlas
+  y la inestabilidad de carga del atlas v1.
+
 ## PB-GH-09 · Fiabilidad de las fuentes: DOI y Patrimonio Mundial · 10-11-2026
 
 Cambio aditivo: no se retira ninguna referencia.

@@ -69,6 +69,8 @@ No se necesita instalar paquetes para construir o verificar el repositorio.
 | `ligera/index.html` | Entrada ligera v11 (con la corrección de carga de imágenes). |
 | `src/entrada_ligera/` | Generador, catálogo, expediente visual, estilos e interacción originales. |
 | `baselines/entrada-ligera-v9.html` | Referencia recuperada para comparación y retorno. |
+| `assets/paleobot-base.css` | Fuente de los tokens comunes (color, tipografía con Lexend local, espaciado, radios, foco, etiqueta de incertidumbre) que consumen la entrada DEA, el recorrido y la consulta ligera. |
+| `docs/diseno/` | Sistema de diseño vigente (`SISTEMA.md`), auditoría de PB-GH-10 y evidencia visual antes/después. |
 | `experimental/atlas-r98/` | Atlas piloto y fuentes, con limitaciones y defecto PB-01 abiertos. |
 | `docs/auditoria/` | Informe, 36 decisiones, inventario de 272 archivos y evidencias. |
 | `docs/incidencias/` | 36 borradores para convertir en incidencias de GitHub. |
