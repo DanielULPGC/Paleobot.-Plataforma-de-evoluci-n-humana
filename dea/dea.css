@@ -332,24 +332,47 @@ main .linea-tiempo li { max-width: none; }
 .dia > :last-child { margin-bottom: var(--e-4); }
 
 /* ---------- Mapa ---------- */
-.mapa-envoltorio { background: var(--mar); border: var(--linea) solid var(--borde); border-radius: var(--r-contenedor); padding: var(--e-2); margin-bottom: var(--e-4); }
+/* Mapa general + recuadro ampliado del Rift: mismos datos, puntos numerados como la lista. */
+.mapas { display: grid; gap: var(--e-3); grid-template-columns: minmax(0, 1fr); margin-bottom: var(--e-4); }
+@media (min-width: 48rem) { .mapas { grid-template-columns: minmax(0, 1fr) 13rem; align-items: start; } }
+.mapa-envoltorio { background: var(--mar); border: var(--linea) solid var(--borde); border-radius: var(--r-contenedor); padding: var(--e-2); }
+.recuadro-rift .rotulo-dato { margin: 0 0 var(--e-1); padding: 0 var(--e-1); }
 #mapa-svg { display: block; width: 100%; height: auto; max-height: 70vh; }
-#mapa-svg .tierra { fill: var(--tierra); stroke: var(--tinta-2); stroke-width: .12; }
-#mapa-svg .punto { cursor: pointer; outline: none; }
-#mapa-svg .punto .zona { fill: transparent; }
-#mapa-svg .punto .marca { fill: var(--acento); stroke: var(--superficie); stroke-width: .3; }
-/* Foco: anillo exterior de color de foco, dibujado encima de todos los puntos (claro: 4,8:1 sobre tierra, 5,1:1 sobre mar; oscuro: 5,6:1 y 7,4:1);
-   el punto enfocado además se agranda. Elegido: contorno de tinta. */
-#mapa-svg .anillo-foco { fill: none; stroke: var(--foco); stroke-width: .55; pointer-events: none; }
-#mapa-svg .punto:focus-visible .marca { stroke: var(--foco); stroke-width: .45; }
-#mapa-svg .punto.activo .marca { stroke: var(--tinta); stroke-width: .45; }
-#mapa-svg .punto:hover .marca { fill: var(--acento-fuerte); }
-#mapa-svg .rotulo { font-size: 2.6px; font-weight: 700; stroke: var(--superficie); stroke-width: .7px; pointer-events: none; }
-#mapa-svg text { font-size: 2.1px; fill: var(--tinta); paint-order: stroke; stroke: var(--tierra); stroke-width: .5px; font-family: var(--f-titulo); }
-.regiones { list-style: none; padding: 0; display: grid; gap: var(--e-2); grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+#mapa-rift { display: block; width: 100%; height: auto; max-height: 60vh; }
+@media (max-width: 47.99rem) { .recuadro-rift { justify-self: center; width: min(100%, 11rem); } }
+.mapas .tierra { fill: var(--tierra); stroke: var(--tinta-2); stroke-width: .12; }
+#mapa-rift .tierra { stroke-width: .05; }
+.mapas .punto { cursor: pointer; }
+/* Foco del punto: contorno de color de foco alrededor del grupo, en unidades del viewBox (se escala con el mapa).
+   Claro: 4,8:1 sobre tierra y 5,1:1 sobre mar; oscuro: 5,6:1 y 7,4:1. Los marcadores no se solapan, así que no queda tapado. */
+.mapas .punto:focus { outline: none; }
+.mapas .punto:focus-visible { outline: .45px solid var(--foco); outline-offset: .3px; }
+.mapas .punto .zona { fill: transparent; }
+.mapas .punto .marca { fill: var(--acento); stroke: var(--superficie); stroke-width: .35; }
+.mapas .numero-punto { font-family: var(--f-titulo); font-size: 2.4px; font-weight: 700; fill: var(--sobre-acento); pointer-events: none; }
+.mapas .punto:hover .marca { fill: var(--acento-fuerte); }
+.mapas .punto.activo .marca { fill: var(--tinta); }
+.mapas .punto.activo .numero-punto { fill: var(--papel); }
+.mapas .marco-rift { fill: none; stroke: var(--tinta-2); stroke-width: .2; stroke-dasharray: .8 .5; pointer-events: none; }
+.mapas .punto-rift, .mapas .posicion { fill: var(--acento); pointer-events: none; }
+.mapas .guia { stroke: var(--tinta-2); stroke-width: .15; pointer-events: none; }
+#mapa-svg text:not(.numero-punto) { font-size: 2.4px; fill: var(--tinta); paint-order: stroke; stroke: var(--tierra); stroke-width: .5px; font-family: var(--f-titulo); }
+/* Lista de regiones agrupada por zona; número y recuento alineados. */
+.lista-regiones { display: grid; gap: var(--e-4) var(--e-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); }
+.lista-regiones .zona-regiones:last-child { grid-column: 1 / -1; }
+.lista-regiones h3 { font-size: var(--t-s); color: var(--tinta-2); margin: 0 0 var(--e-2); }
+.regiones { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--e-2); grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
 .regiones li + li { margin: 0; }
-.regiones button { width: 100%; justify-content: flex-start; text-align: left; }
+.regiones button { width: 100%; justify-content: flex-start; gap: var(--e-3); text-align: left; }
+.regiones .nombre-region { flex: 1 1 auto; }
+.regiones .recuento { font-variant-numeric: tabular-nums; color: var(--tinta-2); }
 .regiones button[aria-pressed="true"] { border-color: var(--acento); background: var(--acento-suave); color: var(--acento); }
+.regiones button[aria-pressed="true"] .recuento { color: var(--acento); }
+.numero-region {
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; min-width: var(--e-5); height: var(--e-5);
+  border-radius: var(--r-pildora); background: var(--acento); color: var(--sobre-acento); font-family: var(--f-titulo); font-size: var(--t-xs); font-weight: 700;
+}
+.detalle h2 .numero-region { vertical-align: middle; }
 .detalle { margin: 0 0 var(--e-4); }
 .detalle:empty { display: none; }
 .detalle h2 { font-size: var(--t-l); margin: 0 0 var(--e-2); }
@@ -468,7 +491,7 @@ main .linea-tiempo li { max-width: none; }
   .seccion:not([hidden]) { animation: dea-aparecer var(--m-rapido) var(--m-curva); }
   details[open] > summary ~ * { animation: dea-aparecer var(--m-medio) var(--m-curva); }
   .respuesta.bien, .respuesta.mal, .resultado-repaso { animation: dea-aparecer var(--m-medio) var(--m-curva); }
-  #mapa-svg .marca { transition: fill var(--m-rapido) var(--m-curva), stroke var(--m-rapido) var(--m-curva); }
+  .mapas .marca { transition: fill var(--m-rapido) var(--m-curva), stroke var(--m-rapido) var(--m-curva); }
 }
 @keyframes dea-aparecer { from { opacity: 0; } to { opacity: 1; } }
 
@@ -483,7 +506,7 @@ main .linea-tiempo li { max-width: none; }
 @media (scripting: none) {
   .seccion[hidden]:target { display: block !important; }
   main:has(.seccion:target) #inicio { display: none; }
-  .ajustes, .acciones-notas, .paso-seccion, #t-sesiones, #progreso-sesiones, #t-indice, .filtros, .comparador, .dia, #repaso-nuevo, .mapa-envoltorio, #t-regiones, .nota-progreso { display: none; }
+  .ajustes, .acciones-notas, .paso-seccion, #t-sesiones, #progreso-sesiones, #t-indice, .filtros, .comparador, .dia, #repaso-nuevo, .mapas, #t-regiones, .nota-progreso { display: none; }
 }
 
 /* ---------- Modo proyección: más grande, menos elementos secundarios ---------- */

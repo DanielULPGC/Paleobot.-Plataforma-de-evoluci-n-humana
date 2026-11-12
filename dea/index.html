@@ -92,12 +92,18 @@
   <section id="mapa" class="seccion" data-seccion="mapa" aria-labelledby="t-mapa" hidden>
     <h1 id="t-mapa">Mapa de yacimientos en África</h1>
     <p class="entradilla">Cada punto es una región de hallazgos. Elíjala en el mapa o en la lista para ver qué especies se documentan allí. Las posiciones son orientativas.</p>
-    <div class="mapa-envoltorio">
-      <svg id="mapa-svg" role="group" aria-labelledby="mapa-titulo" aria-describedby="mapa-desc"><title id="mapa-titulo">Mapa de África con las regiones de hallazgos</title><desc id="mapa-desc">Contorno de África y de Canarias con un punto por cada región de hallazgos del atlas. La lista que sigue al mapa contiene la misma información.</desc></svg>
+    <div class="mapas">
+      <div class="mapa-envoltorio">
+        <svg id="mapa-svg" role="group" aria-labelledby="mapa-titulo" aria-describedby="mapa-desc"><title id="mapa-titulo">Mapa de África con las regiones de hallazgos</title><desc id="mapa-desc">Contorno de África y de Canarias con un punto por cada región de hallazgos del atlas. La lista que sigue al mapa contiene la misma información.</desc></svg>
+      </div>
+      <div class="mapa-envoltorio recuadro-rift">
+        <p class="rotulo-dato" id="rift-titulo">Rift oriental, ampliado</p>
+        <svg id="mapa-rift" role="group" aria-labelledby="rift-titulo" aria-describedby="rift-desc"><title>Rift oriental, ampliado</title><desc id="rift-desc">Ampliación de África oriental con las regiones del Rift, que en el mapa general se superponen. Cada número se une con una línea a su posición aproximada.</desc></svg>
+      </div>
     </div>
     <div id="detalle-region" class="detalle" aria-live="polite"></div>
     <h2 id="t-regiones">Regiones</h2>
-    <ul id="lista-regiones" class="regiones"></ul>
+    <div id="lista-regiones" class="lista-regiones"></div>
     <p class="fuente-mapa">Contorno: Natural Earth (dominio público). Puntos: coordenadas aproximadas del atlas.</p>
   </section>
 

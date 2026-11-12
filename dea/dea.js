@@ -503,64 +503,115 @@
   }
 
   /* ---------- Mapa ---------- */
-  var regionActiva = null;
+  // Presentación (no son datos del atlas): zonas, orden y numeración de las regiones, igual en el mapa y en la lista.
+  var ZONAS = [
+    ['África septentrional', ['magreb']],
+    ['África central', ['chad']],
+    ['Todo el continente', ['africa']],
+    ['África austral', ['sudafrica']],
+    ['África oriental (Rift)', ['afar', 'chorora', 'omo', 'uganda', 'tugen', 'turkana', 'nakali', 'victoria']]
+  ];
+  var RIFT = ZONAS[4][1];
+  // Recuadro ampliado del Rift: longitudes 33-42 E, latitudes 12,5 N-3,5 S, a escala ×2,5 (mismos datos que el mapa).
+  var RECUADRO = { x0: 53, y0: 25.5, ancho: 9, alto: 16, k: 2.5 };
+  var regionActiva = null, numeroDe = {};
+  var NS = 'http://www.w3.org/2000/svg';
+  function svgEl(tag, attrs) { var n = document.createElementNS(NS, tag); Object.keys(attrs || {}).forEach(function (k) { n.setAttribute(k, attrs[k]); }); return n; }
+  function nombreRegion(clave) { return A.regiones[clave].nombre; }
+  function recuento(clave) { return taxones.filter(function (t) { return t.region === clave; }).length; }
+  // Punto pulsable y numerado; el foco es el contorno del propio grupo (ver dea.css).
+  function puntoMapa(svg, clave, x, y) {
+    var n = recuento(clave), num = numeroDe[clave];
+    var etiqueta = num + '. ' + nombreRegion(clave) + ' (' + n + (n === 1 ? ' especie)' : ' especies)');
+    var g = svgEl('g', { 'class': 'punto', tabindex: '0', role: 'button', 'aria-label': etiqueta, 'aria-pressed': 'false', 'data-region': clave });
+    var tt = svgEl('title'); tt.textContent = etiqueta; g.appendChild(tt);
+    g.appendChild(svgEl('circle', { cx: x, cy: y, r: '2.7', 'class': 'zona' }));
+    g.appendChild(svgEl('circle', { cx: x, cy: y, r: '2.1', 'class': 'marca' }));
+    var t = svgEl('text', { x: x, y: y, 'class': 'numero-punto', 'text-anchor': 'middle', 'dominant-baseline': 'central', 'aria-hidden': 'true' }); t.textContent = String(num); g.appendChild(t);
+    g.addEventListener('click', function () { elegirRegion(clave, true); });
+    g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegirRegion(clave, true); } });
+    return g;
+  }
+  // Separa los marcadores del recuadro que se solaparían; una línea guía los une con su posición real.
+  function separar(pos, minimo) {
+    for (var it = 0; it < 120; it++) {
+      var movido = false;
+      for (var a = 0; a < pos.length; a++) for (var b = a + 1; b < pos.length; b++) {
+        var dx = pos[b].x - pos[a].x, dy = pos[b].y - pos[a].y, d = Math.sqrt(dx * dx + dy * dy) || 0.01;
+        if (d < minimo) { var m = (minimo - d) / 2, ux = dx / d, uy = dy / d; pos[a].x -= ux * m; pos[a].y -= uy * m; pos[b].x += ux * m; pos[b].y += uy * m; movido = true; }
+      }
+      if (!movido) break;
+    }
+  }
   function pintarMapa() {
-    var svg = document.getElementById('mapa-svg');
-    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.getElementById('mapa-svg'), rift = document.getElementById('mapa-rift');
+    var n = 0; ZONAS.forEach(function (z) { z[1].forEach(function (c) { if (A.regiones[c]) numeroDe[c] = ++n; }); });
     svg.setAttribute('viewBox', MAPA ? MAPA.viewBox : '0 0 75 76');
+    var R = RECUADRO;
+    rift.setAttribute('viewBox', '0 0 ' + (R.ancho * R.k) + ' ' + (R.alto * R.k));
     if (MAPA) {
       ['africa', 'canarias'].forEach(function (k) {
-        var p = document.createElementNS(ns, 'path'); p.setAttribute('d', MAPA[k]); p.setAttribute('class', 'tierra'); p.setAttribute('aria-hidden', 'true'); svg.appendChild(p);
+        svg.appendChild(svgEl('path', { d: MAPA[k], 'class': 'tierra', 'aria-hidden': 'true' }));
+        if (k === 'africa') { var g = svgEl('g', { transform: 'scale(' + R.k + ') translate(' + (-R.x0) + ' ' + (-R.y0) + ')', 'aria-hidden': 'true' }); g.appendChild(svgEl('path', { d: MAPA[k], 'class': 'tierra' })); rift.appendChild(g); }
       });
-      var tc = document.createElementNS(ns, 'text'); tc.setAttribute('x', '0.8'); tc.setAttribute('y', '13'); tc.setAttribute('aria-hidden', 'true'); tc.textContent = 'Canarias'; svg.appendChild(tc);
+      var tc = svgEl('text', { x: '0.8', y: '13', 'aria-hidden': 'true' }); tc.textContent = 'Canarias'; svg.appendChild(tc);
     }
-    var lista = document.getElementById('lista-regiones');
-    var anilloFoco = document.createElementNS(ns, 'circle');
-    anilloFoco.setAttribute('r', '2.65'); anilloFoco.setAttribute('class', 'anillo-foco'); anilloFoco.setAttribute('aria-hidden', 'true'); anilloFoco.hidden = true;
-    REGIONES_AFRICA.forEach(function (clave) {
-      var r = A.regiones[clave]; if (!r) return;
-      var n = taxones.filter(function (t) { return t.region === clave; }).length;
-      var etiqueta = r.nombre + ' (' + n + (n === 1 ? ' especie)' : ' especies)');
-      var cx = (r.lon + 20).toFixed(2), cy = (38 - r.lat).toFixed(2);
-      var c = document.createElementNS(ns, 'g');
-      c.setAttribute('class', 'punto'); c.setAttribute('tabindex', '0'); c.setAttribute('role', 'button'); c.setAttribute('aria-label', etiqueta); c.dataset.region = clave;
-      var tt = document.createElementNS(ns, 'title'); tt.textContent = etiqueta; c.appendChild(tt);
-      // Área táctil de al menos 24 px en un teléfono, con el punto visible en el centro.
-      [['zona', '2.7'], ['marca', '1.15']].forEach(function (par) {
-        var k = document.createElementNS(ns, 'circle'); k.setAttribute('cx', cx); k.setAttribute('cy', cy); k.setAttribute('r', par[1]); k.setAttribute('class', par[0]); c.appendChild(k);
+    // Recuadro del Rift señalado en el mapa general.
+    svg.appendChild(svgEl('rect', { x: R.x0, y: R.y0, width: R.ancho, height: R.alto, 'class': 'marco-rift', 'aria-hidden': 'true' }));
+    var posRift = [];
+    ZONAS.forEach(function (z) {
+      z[1].forEach(function (clave) {
+        var r = A.regiones[clave]; if (!r) return;
+        var x = r.lon + 20, y = 38 - r.lat;
+        if (RIFT.indexOf(clave) === -1) svg.appendChild(puntoMapa(svg, clave, x.toFixed(2), y.toFixed(2)));
+        else {
+          svg.appendChild(svgEl('circle', { cx: x.toFixed(2), cy: y.toFixed(2), r: '.7', 'class': 'punto-rift', 'aria-hidden': 'true' }));
+          posRift.push({ clave: clave, rx: (x - R.x0) * R.k, ry: (y - R.y0) * R.k, x: (x - R.x0) * R.k, y: (y - R.y0) * R.k });
+        }
       });
-      c.addEventListener('click', function () { elegirRegion(clave); });
-      // Indicador de foco: anillo dibujado encima de todos los puntos (el Rift los apila).
-      c.addEventListener('focus', function () { if (!c.matches(':focus-visible')) return; anilloFoco.setAttribute('cx', cx); anilloFoco.setAttribute('cy', cy); anilloFoco.hidden = false; svg.appendChild(anilloFoco); });
-      c.addEventListener('blur', function () { anilloFoco.hidden = true; });
-      c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); elegirRegion(clave); } });
-      svg.appendChild(c);
-      var b = el('button', { type: 'button', 'aria-pressed': 'false', 'data-region': clave, texto: etiqueta });
-      b.addEventListener('click', function () { elegirRegion(clave); });
-      lista.appendChild(el('li', null, [b]));
+    });
+    separar(posRift, 5.8);
+    // Que ningún marcador quede cortado por el borde del recuadro.
+    posRift.forEach(function (p) { p.x = Math.min(Math.max(p.x, 3.2), R.ancho * R.k - 3.2); p.y = Math.min(Math.max(p.y, 3.2), R.alto * R.k - 3.2); });
+    separar(posRift, 5.8);
+    posRift.forEach(function (p) {
+      rift.appendChild(svgEl('line', { x1: p.rx.toFixed(2), y1: p.ry.toFixed(2), x2: p.x.toFixed(2), y2: p.y.toFixed(2), 'class': 'guia', 'aria-hidden': 'true' }));
+      rift.appendChild(svgEl('circle', { cx: p.rx.toFixed(2), cy: p.ry.toFixed(2), r: '.45', 'class': 'posicion', 'aria-hidden': 'true' }));
+    });
+    posRift.forEach(function (p) { rift.appendChild(puntoMapa(rift, p.clave, p.x.toFixed(2), p.y.toFixed(2))); });
+    // Lista agrupada por zona, con el número del mapa y el recuento alineado.
+    var cont = document.getElementById('lista-regiones');
+    ZONAS.forEach(function (z) {
+      var claves = z[1].filter(function (c) { return A.regiones[c]; });
+      if (!claves.length) return;
+      var ul = el('ul', { clase: 'regiones' });
+      claves.forEach(function (clave) {
+        var k = recuento(clave);
+        var b = el('button', { type: 'button', 'aria-pressed': 'false', 'data-region': clave, 'aria-label': numeroDe[clave] + '. ' + nombreRegion(clave) + ', ' + k + (k === 1 ? ' especie' : ' especies') }, [
+          el('span', { clase: 'numero-region', texto: String(numeroDe[clave]) }),
+          el('span', { clase: 'nombre-region', texto: nombreRegion(clave) }),
+          el('span', { clase: 'recuento', texto: String(k) })
+        ]);
+        b.addEventListener('click', function () { elegirRegion(clave, true); });
+        ul.appendChild(el('li', null, [b]));
+      });
+      cont.appendChild(el('div', { clase: 'zona-regiones' }, [el('h3', { texto: z[0] }), ul]));
     });
   }
-  function elegirRegion(clave) {
+  function elegirRegion(clave, porUsuario) {
     regionActiva = clave;
-    document.querySelectorAll('#mapa-svg .punto').forEach(function (c) { c.classList.toggle('activo', c.dataset.region === clave); });
+    document.querySelectorAll('.mapas .punto').forEach(function (c) { var si = c.dataset.region === clave; c.classList.toggle('activo', si); c.setAttribute('aria-pressed', si ? 'true' : 'false'); });
     document.querySelectorAll('#lista-regiones button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.region === clave ? 'true' : 'false'); });
     var r = A.regiones[clave];
-    var svg = document.getElementById('mapa-svg'), previa = svg.querySelector('.rotulo');
-    if (previa) previa.remove();
-    var rot = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    var x = r.lon + 20, derecha = x < 45;
-    rot.setAttribute('class', 'rotulo'); rot.setAttribute('aria-hidden', 'true');
-    rot.setAttribute('x', (derecha ? x + 2 : x - 2).toFixed(2)); rot.setAttribute('y', (38 - r.lat - 2).toFixed(2));
-    rot.setAttribute('text-anchor', derecha ? 'start' : 'end');
-    rot.textContent = r.nombre.split(',')[0].split('(')[0].trim();
-    svg.appendChild(rot);
     var det = document.getElementById('detalle-region');
     det.textContent = '';
     var ul = el('ul');
     taxones.filter(function (t) { return t.region === clave; }).forEach(function (t) {
       ul.appendChild(el('li', null, [el('a', { href: '#especies/' + t.id }, [el('i', { texto: t.n })]), ' · ', el('span', { clase: 'fechas', texto: corto(t) }), t.debatido ? ' ' : null, t.debatido ? el('span', { clase: 'etiqueta', texto: 'Debatida' }) : null]));
     });
-    det.appendChild(el('div', { clase: 'tarjeta' }, [el('h2', { texto: r.nombre }), ul]));
+    det.appendChild(el('div', { clase: 'tarjeta' }, [el('h2', null, [el('span', { clase: 'numero-region', 'aria-hidden': 'true', texto: String(numeroDe[clave]) }), ' ' + r.nombre]), ul]));
+    // Que el detalle quede a la vista (en el teléfono queda debajo del mapa).
+    if (porUsuario) det.scrollIntoView({ block: 'nearest' });
   }
 
   /* ---------- Especies ---------- */
