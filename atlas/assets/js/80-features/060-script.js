@@ -323,7 +323,7 @@
                 <span style="background:${BLOOM_COLORS[nextSpec.nivelBloom]||'#1c2b3a'}">
                   Bloom ${nextSpec.nivelBloom} · ${BLOOM_LABELS[nextSpec.nivelBloom]||''}
                 </span>
-                <span>⏱ ${nextSpec.tiempoEstimado} min</span>
+                <span>${nextSpec.tiempoEstimado} min</span>
               </div>` : ''}
           </div>
           <button type="button" class="pb-ssm-goto-btn"

@@ -647,7 +647,7 @@
 
     const timeBadge = document.createElement('span');
     timeBadge.className = 'pb-banner-time';
-    timeBadge.textContent = '⏱ ' + spec.tiempoEstimado + ' min';
+    timeBadge.textContent = spec.tiempoEstimado + ' min';
 
     const closeBtn = document.createElement('button');
     closeBtn.className = 'pb-banner-close';

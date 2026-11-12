@@ -14201,8 +14201,8 @@ function abrirBiblio() {
       <div class="bib-stat"><strong>${doiRefs}</strong><span>con DOI</span></div>
       <div class="bib-stat"><strong>${recentRefs}</strong><span>desde 2023</span></div>
       <div class="bib-stat"><strong>${newDataRefs}</strong><span>2024-2026</span></div>
-      <div class="bib-stat"><strong>${thematicRefs}</strong><span>actualizacion 3 anos</span></div>
-      <div class="bib-stat"><strong>${africaRecentRefs}</strong><span>Africa 2023-2026</span></div>
+      <div class="bib-stat"><strong>${thematicRefs}</strong><span>actualización 3 años</span></div>
+      <div class="bib-stat"><strong>${africaRecentRefs}</strong><span>África 2023-2026</span></div>
       <div class="bib-stat"><strong>${cautionRefs}</strong><span>con cautela</span></div>
       <div class="bib-stat"><strong>${DB.length}</strong><span>taxones</span></div>
     `;

@@ -149,7 +149,7 @@
     bloomChip.textContent = 'Bloom ' + spec.nivelBloom + ' · ' + bloom.label;
 
     const timeChip = _el('span', 'pb-dap-chip');
-    timeChip.textContent = '⏱ ' + spec.tiempoEstimado + ' min';
+    timeChip.textContent = spec.tiempoEstimado + ' min';
 
     const odsChip = _el('span', 'pb-dap-chip');
     odsChip.textContent = spec.odsPrimario;
