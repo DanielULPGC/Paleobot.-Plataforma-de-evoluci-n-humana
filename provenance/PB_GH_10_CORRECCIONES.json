@@ -360,5 +360,18 @@
       "impact": "Entrada DEA: estructura de página y carga; contenido sin cambios.",
       "return": "Restaurar docs/historial/PB_GH_09/dea/index.html.snapshot o revertir los commits citados."
     }
-  ]
+  ],
+  "governance_paths_note": "Archivos de gobierno modificados en la ronda, sin huella de importación (no son de la base ni del atlas importado): retained_paths de los JSON de PB-GH-02, lista rondas y comprobaciones del verificador, pruebas, registro de cambios y README.",
+  "governance_paths": [
+    "provenance/PB_GH_02_BASE_ACTUAL.json",
+    "provenance/PB_GH_02_MIGRACION.json",
+    "scripts/verificar_repo.py"
+  ],
+  "contenido_protegido_note": "No se elimina nada: huellas en 693055f de los datos y de los archivos generados que la ronda no debía cambiar; el verificador exige que sigan iguales y que los textos de las seis sesiones (bloque SESIONES de docs/historial/PB_GH_09/dea/dea.js.snapshot) sigan en dea/dea.js.",
+  "contenido_protegido": {
+    "atlas/recorrido/datos.js": "aee95f81a4be76f67fc5a53e3ef90b815c79fc07987e10b04177b151630b085d",
+    "dea/glosario.js": "fa5dad052fbd48e1cf349c062e17108a7b4f19a58a785b7d05d66abf689480a2",
+    "dea/imagenes.js": "4ee4c72f54ad0acc2f92b518c723712fa34c704a9aa4e552658dff7f2646fe4c",
+    "dea/mapa-africa.js": "f2fe4a79df4f882bc19d4e72bae7db5a910088c132776d15abf2079dfc3001e2"
+  }
 }

@@ -162,6 +162,59 @@ def verify(include_syntax=True):
     check('Comprobación de fuentes solo manual','workflow_dispatch' in flujo and 'push:' not in flujo and 'schedule' not in flujo)
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
     check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
+    # PB-GH-10: sistema base «Papel y tierra» (assets/) consumido por DEA, recorrido y consulta ligera.
+    base_css=(ROOT/'assets/paleobot-base.css').read_text(encoding='utf-8') if (ROOT/'assets/paleobot-base.css').is_file() else ''
+    estilos_lig=(ROOT/'src/entrada_ligera/estilos.css').read_text(encoding='utf-8')
+    sinc=re.search(r'/\* === sincronizado con assets/paleobot-base\.css · inicio === \*/\n(.*?)\n?/\* === sincronizado con assets/paleobot-base\.css · fin === \*/',estilos_lig,re.S)
+    # Copia literal de la hoja base sin su comentario de cabecera; única diferencia admitida: la ruta de Lexend.
+    base_sin_cabecera=re.sub(r'\A/\*.*?\*/\s*','',base_css,count=1,flags=re.S).replace('url("fuentes/lexend-latin.woff2")','url("../assets/fuentes/lexend-latin.woff2")')
+    check('Tokens de la consulta ligera sincronizados con assets/paleobot-base.css',bool(base_css) and bool(sinc) and sinc.group(1).strip()==base_sin_cabecera.strip())
+    lexend=ROOT/'assets/fuentes/lexend-latin.woff2';licencia_lexend=ROOT/'assets/fuentes/LICENCIA-Lexend.md'
+    check('Lexend local idéntica al original y con su licencia',lexend.is_file() and digest(lexend)==digest(ROOT/'atlas/recorrido/inner-green-assets/lexend-latin.woff2') and licencia_lexend.is_file() and 'SIL Open Font License, Version 1.1' in licencia_lexend.read_text(encoding='utf-8') and digest(lexend) in licencia_lexend.read_text(encoding='utf-8'))
+    dea_csp=(re.search(r'http-equiv="Content-Security-Policy" content="([^"]*)"',dea_html) or [None,''])[1]
+    secciones_dea=('inicio','tiempo','mapa','especies','comparar','metodos','clima','glosario','repaso','trabajo')
+    check('Entrada DEA enlaza la hoja base, con CSP estricta, aviso sin JavaScript, diez secciones y sin estilos en línea',
+      'href="../assets/paleobot-base.css"' in dea_html and "default-src 'self'" in dea_csp and "style-src 'self'" in dea_csp and "connect-src 'none'" in dea_csp
+      and 'unsafe-inline' not in dea_csp and not re.search(r'https?:|//',dea_csp) and '<noscript>' in dea_html
+      and all(f'<section id="{s}" ' in dea_html for s in secciones_dea) and len(re.findall(r'<section id=',dea_html))==10
+      and not re.search(r'\sstyle\s*=',dea_html) and '<style' not in dea_html)
+    # dea.css solo consume tokens. Excepciones documentadas y cerradas: la escala raíz (A−/A+ y proyección)
+    # el h1 del modo proyección (L2-9: paso mayor de la escala × 1,25) y el texto de los SVG del mapa, en unidades
+    # del viewBox (2.4px), en dos selectores concretos.
+    excepciones_fs={'html':'calc(100% * var(--escala))','html.proyeccion':'calc(130% * var(--escala))','body.proyeccion h1':'calc(var(--t-3xl) * 1.25)','.mapas .numero-punto':'2.4px','#mapa-svg .rotulo-mapa':'2.4px'}
+    dea_css=re.sub(r'/\*.*?\*/','',(dea/'dea.css').read_text(encoding='utf-8'),flags=re.S)
+    tamanos_fuera=[]
+    for selector,cuerpo in re.findall(r'([^{}]+)\{([^{}]*)\}',dea_css):
+        for valor in re.findall(r'(?<![-\w])font-size\s*:\s*([^;]+)',cuerpo):
+            valor=valor.strip();sel=' '.join(selector.split())
+            if not re.fullmatch(r'var\(--t-[a-z0-9]+\)',valor) and excepciones_fs.get(sel)!=valor:tamanos_fuera.append(sel+': '+valor)
+    colores=re.findall(r'#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch)\(',dea_css)
+    check('Hoja de la entrada DEA solo con tokens de color y de tamaño de letra',not tamanos_fuera and not colores,', '.join(tamanos_fuera[:3]+colores[:3]))
+    recorrido=[ROOT/'atlas/recorrido'/f'{n}.html' for n in ('index','introduccion','cronologia','territorio','parentesco','ficha','metodos','clima','aula','atlas')]
+    paginas_fuentes=[*recorrido,ROOT/'atlas/recorrido/portada-sylva.html',ROOT/'ligera/index.html',dea/'index.html',dea/'dea.css',ROOT/'src/entrada_ligera/estilos.css',ROOT/'assets/paleobot-base.css',ROOT/'atlas/recorrido/integracion.css']
+    con_google=[str(f.relative_to(ROOT)) for f in paginas_fuentes if re.search(r'fonts\.(?:googleapis|gstatic)\.com',f.read_text(encoding='utf-8'))]
+    sin_base=[f.name for f in recorrido if 'href="../../assets/paleobot-base.css"' not in f.read_text(encoding='utf-8')]
+    check('Recorrido, DEA y consulta ligera sin Google Fonts; las diez páginas del recorrido enlazan la hoja base',not con_google and not sin_base,', '.join(con_google[:3]+sin_base[:3]))
+    manifiesto_img=load('img/taxones/MANIFIESTO.json')['images']
+    archivos_img={x['file'] for x in manifiesto_img.values()}
+    figuras=re.findall(r'<figure class=media>(.*?)</figure>',ligera_html,re.S)
+    srcs_lig=re.findall(r'<img\b[^>]*\bsrc="([^"]+)"',ligera_html)
+    malas=[s for s in srcs_lig if 'upload.wikimedia.org' in s or not s.startswith('../img/taxones/') or s.rsplit('/',1)[-1] not in archivos_img or not (ROOT/'img/taxones'/s.rsplit('/',1)[-1]).is_file()]
+    sin_credito=[f[:60] for f in figuras if '<img' in f and not ('Ficha de la imagen' in f and re.search(r'creativecommons\.org/|[Dd]ominio público',f))]
+    check('Consulta ligera con imágenes locales registradas, sin Wikimedia como origen y con crédito y licencia',len(srcs_lig)==len(good)==47 and not malas and not sin_credito and 'upload.wikimedia.org' not in ' '.join(srcs_lig),', '.join(malas[:3]+sin_credito[:2]))
+    acceso_dea=re.search(r'<a class="dock-item"[^>]*href="\.\./\.\./dea/"[^>]*aria-label="Diploma de Estudios Africanos">.*?<span>DEA</span>',portada,re.S)
+    check('Portada conserva el acceso «DEA» con su rótulo visible en pantallas estrechas',bool(acceso_dea) and '.dock-item span:not(.glyph){ display:block; }' in portada and 'data-rotulo="Recorrido"' in portada)
+    # «No se elimina nada»: datos y archivos generados intactos respecto a 693055f y textos de las seis sesiones presentes.
+    pb10=load('provenance/PB_GH_10_CORRECCIONES.json') if (ROOT/'provenance/PB_GH_10_CORRECCIONES.json').is_file() else {}
+    protegido=pb10.get('contenido_protegido',{})
+    cambiados=[p for p,s in protegido.items() if not (ROOT/p).is_file() or digest(ROOT/p)!=s]
+    snap_sesiones=ROOT/'docs/historial/PB_GH_09/dea/dea.js.snapshot'
+    textos_sesion=[]
+    if snap_sesiones.is_file():
+        previo=snap_sesiones.read_text(encoding='utf-8');i=previo.find('var SESIONES = [');j=previo.find('\n  ];',i)
+        if i!=-1 and j!=-1:textos_sesion=re.findall(r"'((?:[^'\\]|\\.)*)'",previo[i:j])
+    perdidos=[t[:40] for t in textos_sesion if "'"+t+"'" not in dea_js]
+    check('No se elimina nada: datos, glosario, imágenes y mapa intactos y textos de las seis sesiones presentes',len(protegido)==4 and not cambiados and len(textos_sesion)>=100 and not perdidos,', '.join(cambiados+perdidos[:3]))
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
     check('Referencia v9 y licencia Leaflet intactas',all(digest(ROOT/name)==baseline[name] for name in frozen))
     check('Catálogo original preservado',digest(ROOT/'src/entrada_ligera/catalog.json')==baseline['src/entrada_ligera/catalog.json'])
