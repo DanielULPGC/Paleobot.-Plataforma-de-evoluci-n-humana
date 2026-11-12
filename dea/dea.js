@@ -833,19 +833,32 @@
   }
 
   /* ---------- Glosario ---------- */
+  // Letra inicial para agrupar (sin tilde; la ñ se conserva).
+  function inicial(t) { var c = t.charAt(0).toUpperCase(); return c === 'Ñ' ? c : c.normalize('NFD').replace(/[̀-ͯ]/g, ''); }
   function pintarGlosario() {
     var datos = window.DEA_GLOSARIO || [];
     var q = document.getElementById('buscar-termino').value.trim().toLowerCase();
-    var dl = document.getElementById('lista-glosario');
-    dl.textContent = '';
+    var cont = document.getElementById('lista-glosario'), letras = document.getElementById('letras-glosario');
+    cont.textContent = ''; letras.textContent = '';
     ponerRecuento('glosario', num(datos.length, 0));
-    var n = 0;
+    var n = 0, grupos = {}, orden = [];
     datos.forEach(function (e) {
       if (q && e[0].toLowerCase().indexOf(q) === -1 && e[1].toLowerCase().indexOf(q) === -1) return;
-      dl.appendChild(el('dt', { texto: e[0].charAt(0).toUpperCase() + e[0].slice(1) }));
-      dl.appendChild(el('dd', { texto: e[1] }));
+      var l = inicial(e[0]);
+      if (!grupos[l]) { grupos[l] = el('dl'); orden.push(l); }
+      grupos[l].appendChild(el('dt', { texto: e[0].charAt(0).toUpperCase() + e[0].slice(1) }));
+      grupos[l].appendChild(el('dd', { texto: e[1] }));
       n++;
     });
+    // Glosario agrupado por letras, con un índice de letras para saltar (botones: el hash está reservado a las secciones).
+    orden.forEach(function (l) {
+      var h = el('h2', { clase: 'letra-glosario', id: 'glosario-letra-' + l, tabindex: '-1', texto: l });
+      cont.appendChild(el('section', { clase: 'grupo-glosario', 'aria-labelledby': 'glosario-letra-' + l }, [h, grupos[l]]));
+      var b = el('button', { type: 'button', 'aria-label': 'Ir a la letra ' + l, texto: l });
+      b.addEventListener('click', function () { h.scrollIntoView({ block: 'start' }); h.focus({ preventScroll: true }); });
+      letras.appendChild(b);
+    });
+    letras.hidden = orden.length < 2;
     var resumen = document.getElementById('glosario-resumen');
     resumen.textContent = !q ? '' : n === 0 ? 'Ningún término coincide con la búsqueda.' : n + (n === 1 ? ' término coincide' : ' términos coinciden') + ' con la búsqueda.';
     var previo = document.getElementById('glosario-vacio'); if (previo) previo.remove();
@@ -853,7 +866,7 @@
       var buscar = document.getElementById('buscar-termino');
       var borrar = el('button', { type: 'button', texto: 'Borrar la búsqueda' });
       borrar.addEventListener('click', function () { buscar.value = ''; pintarGlosario(); buscar.focus(); });
-      dl.parentNode.insertBefore(el('div', { clase: 'vacio', id: 'glosario-vacio' }, [el('div', { clase: 'acciones' }, [borrar])]), dl);
+      cont.parentNode.insertBefore(el('div', { clase: 'vacio', id: 'glosario-vacio' }, [el('div', { clase: 'acciones' }, [borrar])]), cont);
     }
   }
 

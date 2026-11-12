@@ -461,9 +461,16 @@ main .unidad-comparar { margin: var(--e-1) 0 0; max-width: none; text-align: cen
 
 /* ---------- Glosario ---------- */
 .glosario { margin: 0; }
+.glosario dl { margin: 0; }
 .glosario dt { font-family: var(--f-titulo); font-weight: 600; margin-top: var(--e-4); }
 .glosario dt:first-child { margin-top: 0; }
 .glosario dd { margin: var(--e-1) 0 0; }
+/* Glosario por letras: índice de letras y una letra grande como titular de cada grupo. */
+.letras { display: flex; flex-wrap: wrap; gap: var(--e-1); margin: 0 0 var(--e-5); }
+.letras button { min-width: var(--control); padding: var(--e-1); border-color: var(--borde); font-weight: 600; }
+.grupo-glosario + .grupo-glosario { margin-top: var(--e-6); }
+.letra-glosario { margin: 0 0 var(--e-3); padding-bottom: var(--e-1); color: var(--acento); border-bottom: var(--linea) solid var(--borde); scroll-margin-top: calc(var(--alto-pestanas) + var(--e-3)); }
+.letra-glosario:focus { outline: none; }
 
 /* ---------- Repaso ---------- */
 .repaso { display: grid; gap: var(--e-3); margin-bottom: var(--e-4); }
@@ -545,7 +552,7 @@ body.proyeccion #boton-proyectar:hover { border-color: var(--acento); color: var
 
 /* ---------- Impresión ---------- */
 @media print {
-  .cabecera .ajustes, .boton-ajustes, .pestanas, .panel-secciones, .continuar, .salto, .filtros, .pie a, .paso-seccion, .acciones-notas, .nota textarea, .nota label, #repaso-nuevo, .resultado-repaso .boton-primario, .vacio .acciones { display: none; }
+  .cabecera .ajustes, .boton-ajustes, .pestanas, .panel-secciones, .continuar, .letras, .salto, .filtros, .pie a, .paso-seccion, .acciones-notas, .nota textarea, .nota label, #repaso-nuevo, .resultado-repaso .boton-primario, .vacio .acciones { display: none; }
   .solo-impresion { display: block; }
   .nota-impresa:not(:empty) { display: block; border-left: var(--linea-gruesa) solid var(--borde); padding-left: var(--e-2); margin: var(--e-1) 0; }
   .sesion:not([open]) { display: none; }
