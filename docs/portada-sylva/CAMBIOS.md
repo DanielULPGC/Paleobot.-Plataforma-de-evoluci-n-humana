@@ -106,3 +106,26 @@ Hubo un falso negativo de la propia batería: T16 comparaba rótulos distinguien
 ## Nota lingüística sobre el Atlas
 
 Algunas vistas del Atlas usan «táxones». El plural normativo es «taxones», que es palabra llana terminada en *-s* y, por tanto, no lleva tilde. La portada usa «taxones».
+
+## PB-GH-10 · C-4: rótulos del dock por debajo de 900 px y título libre (12-11-2026)
+
+Cambio mínimo, solo CSS y un atributo; la escena WebGL y su código no se tocan. Snapshot previo:
+`docs/historial/PB_GH_09/atlas/recorrido/portada-sylva.html.snapshot`.
+
+- **Rótulos visibles (fila 10 de la auditoría PB-GH-10).** Por debajo de 900 px el dock solo mostraba iconos: el
+  acceso a la entrada DEA no se podía descubrir sin leer el `aria-label`. Ahora cada acceso muestra su rótulo
+  bajo el icono («Recorrido», «Parentesco», «Territorio», «Fichas», «DEA», «Entrar»), en minúscula y sin
+  espaciado. La baldosa del símbolo recibe `data-rotulo="Recorrido"`, que se pinta con `::before` porque
+  `::after` ya es el brillo especular. Por debajo de 440 px los seis accesos van en dos filas de tres.
+- **El dock ya no pisa el título (fila 11).** En teléfono el dock (abajo en 71 px) invadía el `h1` (arriba en
+  66 px). La escena (`.stage`) baja lo que crece el dock y el botón «Pausar animación» la acompaña. Medido:
+  390 px, dock hasta 145 px y título desde 161; 320 px, 143 y 159; 820 px, 110 y 138.
+- **Símbolo de la baldosa clara.** La regla de contraste posterior (`.dock-item{color:rgba(255,255,255,.66)}`)
+  pintaba también de blanco el símbolo de la baldosa «Recorrido», casi invisible sobre `#eef1e7`; recupera su
+  tinta oscura original (`#23261f`).
+- **Comprobado** con Chromium y WebGL por software (swiftshader, 120 s por carga): axe-core 4.10.2 (A/AA) sin
+  infracciones en teléfono, tableta y escritorio; recorrido de teclado por el dock con anillo visible; sin
+  desbordamiento a 320 px; sin elementos fuera de pantalla con el texto al 200 %; sin animaciones en curso con
+  movimiento reducido; ninguna petición externa. La batería `pruebas/test_portada.py` citada arriba no está en
+  el repositorio y no se ha reejecutado; si se recupera, su T16 (rótulos del dock) debe revisarse en teléfono,
+  donde ahora los rótulos se ven y no van en mayúsculas.
