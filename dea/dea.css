@@ -528,12 +528,20 @@ main .unidad-comparar { margin: var(--e-1) 0 0; max-width: none; text-align: cen
 }
 
 /* ---------- Modo proyección: más grande, menos elementos secundarios ---------- */
+/* Tokens de proyección (contraste reforzado) en assets/paleobot-base.css (.proyeccion). Letra al 130 %, contenedor
+   de página más ancho y centrado (cabecera, pestañas y contenido), h1 mayor, barras más gruesas. Se ocultan las
+   áreas «Mis notas» (siguen guardadas y vuelven al salir) y los ajustes se reducen a «Salir de la proyección». */
 html.proyeccion { font-size: calc(130% * var(--escala)); }
-body.proyeccion main { max-width: 80rem; }
-body.proyeccion .antetitulo, body.proyeccion .nota-progreso, body.proyeccion .pie { display: none; }
+body.proyeccion { --ancho-pagina: 80rem; }
+body.proyeccion .antetitulo, body.proyeccion .nota-progreso, body.proyeccion .pie, body.proyeccion .nota { display: none; }
 body.proyeccion h1 { font-size: var(--t-3xl); }
+@media (min-width: 48rem) { body.proyeccion h1 { font-size: calc(var(--t-3xl) * 1.25); } }
 body.proyeccion .pista { height: var(--e-5); }
-body.proyeccion .pista-tiempo .barra { height: var(--e-4); }
+body.proyeccion .pista-tiempo .barra, body.proyeccion .carril { height: var(--e-4); }
+body.proyeccion .ajustes [data-texto], body.proyeccion #boton-imprimir, body.proyeccion .boton-ajustes { display: none; }
+body.proyeccion .ajustes { display: flex; position: static; width: auto; padding: 0; margin: 0; border: 0; background: none; box-shadow: none; }
+body.proyeccion #boton-proyectar { border-color: var(--borde-control); background: var(--superficie); color: var(--tinta); }
+body.proyeccion #boton-proyectar:hover { border-color: var(--acento); color: var(--acento); }
 
 /* ---------- Impresión ---------- */
 @media print {

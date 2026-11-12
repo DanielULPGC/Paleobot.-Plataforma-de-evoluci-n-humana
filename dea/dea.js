@@ -91,7 +91,19 @@
     document.documentElement.style.setProperty('--escala', ESCALAS[i]);
     document.body.classList.toggle('proyeccion', !!ajustes.proyeccion);
     document.documentElement.classList.toggle('proyeccion', !!ajustes.proyeccion);
-    document.getElementById('boton-proyectar').setAttribute('aria-pressed', ajustes.proyeccion ? 'true' : 'false');
+    // En proyección el botón cambia de nombre («Salir de la proyección») en vez de marcarse como pulsado.
+    var bp = document.getElementById('boton-proyectar');
+    bp.removeAttribute('aria-pressed');
+    bp.textContent = ajustes.proyeccion ? 'Salir de la proyección' : 'Proyectar';
+  }
+  function alternarProyeccion(activar) {
+    ajustes.proyeccion = activar;
+    almacen.guardar(ajustes); aplicarAjustes();
+    var d = document.documentElement;
+    try {
+      if (activar && d.requestFullscreen && !document.fullscreenElement) d.requestFullscreen().catch(function () {});
+      if (!activar && document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
+    } catch (e) { /* pantalla completa opcional */ }
   }
   document.querySelectorAll('[data-texto]').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -101,13 +113,24 @@
   });
   document.getElementById('boton-proyectar').addEventListener('click', function () {
     abrirAjustes(false, false);
-    ajustes.proyeccion = !ajustes.proyeccion;
-    almacen.guardar(ajustes); aplicarAjustes();
-    var d = document.documentElement;
-    try {
-      if (ajustes.proyeccion && d.requestFullscreen && !document.fullscreenElement) d.requestFullscreen().catch(function () {});
-      if (!ajustes.proyeccion && document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
-    } catch (e) { /* pantalla completa opcional */ }
+    var salir = ajustes.proyeccion;
+    alternarProyeccion(!ajustes.proyeccion);
+    if (salir) focoTrasProyeccion();
+  });
+  // Escape también sale de la proyección (si no hay un panel abierto). En pantalla completa el navegador usa
+  // Escape para salir de ella: al salir de la pantalla completa se sale también de la proyección.
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' || !ajustes.proyeccion || e.defaultPrevented) return;
+    if (document.querySelector('.ajustes.abierto, .panel-secciones.abierto')) return;
+    alternarProyeccion(false); focoTrasProyeccion();
+  });
+  // Al salir, el foco vuelve a «Proyectar» o, si ese botón vuelve al menú plegado (teléfono), a «Ajustes».
+  function focoTrasProyeccion() {
+    var bp = document.getElementById('boton-proyectar');
+    (bp.offsetParent ? bp : document.getElementById('boton-ajustes')).focus();
+  }
+  document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement && ajustes.proyeccion) alternarProyeccion(false);
   });
 
   /* ---------- Menú «Ajustes» (teléfono y tableta estrecha): panel flotante accesible ---------- */
