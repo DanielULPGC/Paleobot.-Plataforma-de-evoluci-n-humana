@@ -48,6 +48,12 @@ def chronology_key(entry: dict) -> int:
     return round(max((pair[1] for pair in intervals), default=-1))
 
 
+def incierta(entry: dict) -> str:
+    """Clase de la etiqueta de incertidumbre del sistema para las cronologías sin determinar o sin tipo revisado."""
+    known = {"point_estimate", "minimum_age", "maximum_age", "closed_interval", "alternative_intervals"}
+    return ' class="pb-etiqueta"' if entry.get("kind") not in known else ""
+
+
 def chronology_type(entry: dict) -> str:
     return {
         "point_estimate": "Estimación puntual",
@@ -155,13 +161,13 @@ def build() -> None:
             caution = pending[key]
             assert safe_url(caution["reference_page"])
             figure = (
-                '<div class="media-pending"><strong>Imagen pendiente de revisión.</strong> '
+                '<div class="media-pending"><strong class="pb-etiqueta">Imagen pendiente de revisión</strong>. '
                 f'{e(caution["reason"])} '
                 f'<a href="{e(caution["reference_page"])}" target="_blank" rel="noopener noreferrer">Consultar referencia fiable</a>.</div>'
             )
         elif image:
             figure = (
-                '<div class="media-pending"><strong>Imagen pendiente de revisión.</strong> '
+                '<div class="media-pending"><strong class="pb-etiqueta">Imagen pendiente de revisión</strong>. '
                 'El catálogo incluye un enlace propuesto; aún falta comprobar identificación, autoría y permiso de uso. '
                 f'<a href="{e(source_page(image))}" target="_blank" rel="noopener noreferrer">Abrir enlace propuesto (puede no existir)</a>.</div>'
             )
@@ -176,7 +182,7 @@ def build() -> None:
         )
         cards.append(
             f'<details class="species" id="sp-{e(key)}" data-search="{e((sp["nombre"] + " " + region).casefold())}">'
-            f'<summary><strong>{e(sp["nombre"])}</strong><span>{chronology_type(age)}</span></summary>'
+            f'<summary><strong>{e(sp["nombre"])}</strong><span{incierta(age)}>{chronology_type(age)}</span></summary>'
             f'<div class=species-body>{figure}<p>{description}</p>'
             f'<p><strong>Localidad del catálogo:</strong> {e(region)}. <strong>Dato cronológico revisado:</strong> {e(age.get("display") or "Indeterminado")}.</p>'
             f'<p><strong>Tipo de evidencia:</strong> {chronology_type(age)}; {e(age.get("entity_type") or "entidad no indicada")}. '

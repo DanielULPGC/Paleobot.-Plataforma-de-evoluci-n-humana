@@ -51,3 +51,11 @@ This license becomes null and void if any of the above conditions are not met.
 ## DISCLAIMER
 
 THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.
+
+## Nota PB-GH-10 · uso de Lexend fuera de la portada
+
+Lexend se usa también en el recorrido (`atlas/recorrido/*.html`), en la entrada DEA y en la consulta ligera,
+a través de la copia byte a byte `assets/fuentes/lexend-latin.woff2` (procedencia y huella en
+`assets/fuentes/LICENCIA-Lexend.md`), con la misma licencia SIL Open Font License 1.1 citada arriba.
+El recorrido ya no carga Playfair Display ni Source Sans 3 desde Google Fonts. Las demás familias citadas
+arriba (Fragment Mono, Instrument Serif, Newsreader, Onest) no tienen archivo en el repositorio y no se usan.
