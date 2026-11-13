@@ -33,6 +33,13 @@ Cada principio tiene una prueba que se puede repetir.
   de `dea/dea.css` (comprobadas por `scripts/verificar_repo.py`): la escala raíz (`calc(100% * var(--escala))` y
   `calc(130% * var(--escala))` en proyección), el h1 de proyección (`calc(var(--t-3xl) * 1.25)`) y el texto de
   los dos SVG del mapa (`2.4px` en unidades del viewBox, en `.mapas .numero-punto` y `#mapa-svg .rotulo-mapa`).
+  Cuenta como color en bruto cualquier hexadecimal, función de color (`rgb()`, `hsl()`, `color()`…), `color-mix()`
+  con literales o color con nombre (`red`, `black`…) en cualquier propiedad, también en `border`, `outline` y
+  `background`; y como tamaño en bruto, el atajo `font:` sin un paso de la escala. Dos desfases de foco que eran
+  `3px` son ahora `calc(var(--foco-desfase) + var(--linea))`.
+- **Contraste comprobado desde la propia hoja base**: el verificador calcula las parejas de tokens (tintas y acento
+  sobre papel, superficie y hundido; estados sobre su fondo; contorno de control y foco) en claro, oscuro,
+  proyección clara y proyección oscura. Texto ≥ 4,5:1; contornos y foco ≥ 3:1.
 - **Un punto focal**: decide los empates entre dos propuestas de composición.
 - **La copia de interfaz ayuda a actuar**: se acortan rótulos y explicaciones de interfaz; toda afirmación
   informativa que se retira se reubica en la misma vista.
@@ -112,7 +119,12 @@ contorno de control 3,75:1 (sobre hundido). Ninguna pareja por debajo del mínim
 ### Proyección (clase `.proyeccion`)
 
 Claro: papel #fbf9f4, tinta #111513 (17,5:1), tinta-2 #33403a (10,31:1), borde #8c857a. Oscuro: papel #0f1211,
-tinta #f7f6f2. Mínimos medidos iguales o mejores que en claro y oscuro.
+tinta #f7f6f2, tinta-2 #cfd4d0 (12,54:1 sobre papel; 9,38:1 sobre hundido), tinta-3 #b6bcb8 (9,75:1; 7,29:1 sobre
+hundido), borde #7d8681. Regla: **todo token que `.proyeccion` redefine para el claro se redefine también en su
+bloque oscuro**; si no, el `<body>` en proyección hereda el del claro. Hasta 222dd42 el bloque oscuro no redefinía
+`--tinta-2` y el texto secundario quedaba a 1,74:1 (axe: 1-34 infracciones por vista); la verificación
+independiente lo detectó y ahora lo comprueba el verificador. Con esto, los mínimos en proyección son iguales o
+mejores que en claro y oscuro en las cuatro combinaciones.
 
 ### Impresión
 
@@ -130,11 +142,18 @@ foco #ffd166 (11,61:1 / 9,57:1). Todas las parejas medidas cumplen (tabla comple
 - Regla común: `:focus-visible { outline: var(--foco-ancho) solid var(--foco); outline-offset: var(--foco-desfase) }`
   (3 px, desfase 2 px). Nunca `outline: none` sin sustituto.
 - Dentro del bloque «Continuar» (fondo de acento) el anillo usa `--sobre-acento`.
-- Puntos del mapa: contorno del propio grupo SVG en unidades del viewBox (≥ 3:1 sobre tierra y mar en claro y
-  oscuro).
+- Puntos del mapa: anillo circular del color de foco sobre la zona del propio marcador (radio 2,7 en unidades del
+  viewBox, separado de la marca), ≥ 3:1 sobre tierra y mar en claro y oscuro; no pisa a los vecinos ni se recorta
+  en el borde del recuadro del Rift.
+- Pestañas de DEA: con el teclado, la pestaña enfocada se desplaza entera a la vista, la máscara de «hay más» se
+  retira mientras tiene el foco y el anillo va por dentro de la píldora (la pista recorta lo que sobresale).
+- Pestaña actual: fondo suave y subrayado de acento de 2 px (no solo el fondo, que en escritorio era pálido).
 - Resumen de las fichas: relleno interior compensado, de modo que el anillo abraza todo el resumen sin rozar el
   nombre; el resumen mide lo mismo abierto y cerrado.
-- Recorrido: anillo #ffd166 en enlaces, botones, `summary`, campos y elementos con `tabindex`.
+- Recorrido: anillo #ffd166 en enlaces, botones, `summary`, campos y elementos con `tabindex`. En los nodos SVG de
+  parentesco y territorio, el mismo color en el contorno del propio nodo, en píxeles de pantalla
+  (`vector-effect: non-scaling-stroke` o halo con `drop-shadow`, que conserva el trazo discontinuo de «debatida»),
+  distinto del blanco de «elegido»; los rótulos de los demás nodos se atenúan mientras uno tiene el foco.
 
 ## 8. Movimiento
 
@@ -151,15 +170,16 @@ imprimir.
 | Botón secundario (`.boton`) | DEA, ligera | reposo (borde de control), hover, foco, activo, deshabilitado |
 | Botón primario | DEA | relleno de acento; uno por pantalla como máximo |
 | Ajustes fantasma / menú «Ajustes» | DEA | ≥ 48 rem en línea sin fondo hasta hover, pulsado con fondo suave; < 48 rem menú flotante (Escape y clic fuera lo cierran y devuelven el foco) |
-| Pestañas + «Secciones» | DEA | actual con fondo suave y `aria-current`; panel «Secciones» cuando no caben |
+| Pestañas + «Secciones» | DEA | actual con fondo suave, subrayado de acento y `aria-current`; enfocada con el teclado, entera a la vista y sin máscara; panel «Secciones» cuando no caben (Escape, clic fuera y Tab o Mayús+Tab fuera lo cierran) |
 | Bloque «Continuar» | DEA, Inicio | ninguna empezada / en curso / todas hechas |
-| Ficha (`details.ficha`) | DEA, ligera | cerrada (nombre · fechas · «Debatida» en columnas alineadas desde 48 rem; dos líneas en teléfono) / abierta (texto y figura) / sin imagen / imagen que no carga |
+| Ficha (`details.ficha`) | DEA, ligera | cerrada (nombre · fechas · «Debatida» en columnas alineadas desde 48 rem; dos líneas en teléfono) / abierta (texto y figura) / sin imagen / imagen que no carga (en la ligera sin JavaScript, recuadro con el texto alternativo en lugar del icono roto) |
 | Etiqueta de incertidumbre | todas | una sola forma, siempre con texto |
 | Barra de intervalo | DEA (Tiempo, Comparar) | normal, debatida (rayado), elegida (fondo suave y foco), franja de coincidencia |
 | Punto del mapa | DEA | reposo, hover, foco, activo; recuadro del Rift con guía solo si el marcador se aleja de su posición |
 | Respuesta del repaso | DEA | correcta / incorrecta, siempre con texto |
 | Panel flotante | DEA | única superficie con sombra |
-| Enlace «Atlas completo» | recorrido | secundario; en el flujo bajo 900 px, fijo y pequeño desde 900 px |
+| Enlace «Atlas completo» | recorrido | secundario; en el flujo bajo 900 px o con la letra agrandada (> 20 px en la raíz), fijo y pequeño desde 900 px |
+| Región del mapa fuera de África | DEA (`#mapa/<región>`) | título sin número, aviso «queda fuera del mapa de África», su lista de especies y vuelta a las regiones africanas |
 
 ## 10. Qué superficie consume qué
 

@@ -15,12 +15,15 @@ cambian; lo que alteraría el modelo de navegación queda como propuesta.
   cuando no caben las diez pestañas; bloque «Continuar» con la sesión que toca; línea del
   tiempo como gráfico con rejilla y eje fijo; fichas en una columna que se abren como página
   de manual; mapa con puntos numerados y un recuadro ampliado del Rift; Comparar con un solo
-  gráfico y la franja de coincidencia; modo proyección con más contraste y sin las notas
-  personales a la vista; glosario por letras con índice. Aviso cuando no hay JavaScript o
+  gráfico y la franja de coincidencia; modo proyección con más contraste (en claro y, desde
+  las correcciones de la verificación, también en oscuro) y sin las notas personales a la
+  vista; glosario por letras con índice. Aviso cuando no hay JavaScript o
   el navegador no permite guardar notas.
 - Recorrido: la introducción ya no superpone texto bajo el póster y «Comenzar» se ve en el
   teléfono; la portada del recorrido y la página del mapa se leen sin JavaScript y al
-  imprimir; Lexend local en lugar de Google Fonts; foco visible en todos los controles;
+  imprimir; Lexend local en lugar de Google Fonts; foco visible en todos los controles
+  (en los nodos de los gráficos de parentesco y territorio, solo desde las correcciones de
+  la verificación);
   «Atlas completo» como enlace secundario que no tapa el foco; gráficos de cronología
   legibles en el teléfono; estilos de impresión.
 - Consulta ligera: los mismos tokens que la entrada DEA (sincronía comprobada por el
@@ -28,16 +31,31 @@ cambian; lo que alteraría el modelo de navegación queda como propuesta.
   con crédito y licencia íntegros.
 - Portada 3D: los accesos del dock muestran su rótulo en el teléfono y la tableta (también
   «DEA») y ya no pisan el título. La escena no cambia.
-- Atlas v1: tildes en dos etiquetas de la bibliografía, sin emoji en la interfaz y un solo
-  h1. Nada más.
+- Atlas v1: tildes en dos etiquetas de la bibliografía, sin emoji en las etiquetas de la
+  bibliografía ni en los chips de competencias, y un solo h1. Quedan emoji en la guía «Por
+  dónde empezar», fuera del alcance de la ronda.
 - Mediciones de cierre: axe-core sin infracciones en las diez vistas de DEA, las diez páginas
   del recorrido y la consulta ligera, en teléfono, tableta y escritorio; sin desbordamiento a
   320 px; ninguna petición a terceros en esas páginas. De la tabla de corrección de 40 filas,
   35 quedan hechas, 3 parciales y 2 sin hacer (`docs/diseno/AUDITORIA_PB_GH_10.md`).
-- Verificador: 8 comprobaciones nuevas (sincronía de tokens, copia de Lexend, CSP y
-  estructura de DEA, «solo tokens» en `dea/dea.css`, sin Google Fonts, imágenes locales de
-  la ligera, acceso DEA de la portada y «no se elimina nada»), con 18 pruebas. Procedencia
-  en `provenance/PB_GH_10_CORRECCIONES.json`.
+- Correcciones tras la verificación independiente (13-11-2026; 2 hallazgos altos, 8 medios y
+  10 bajos, todos resueltos o justificados en la § 1.1 de la auditoría): la proyección en
+  oscuro dejaba el texto secundario a 1,74:1 (ahora 12,5:1); la documentación de reversión
+  de los L2 era falsa para varios de ellos y se sustituye por lo comprobado (los L2 de DEA,
+  salvo L2-8 y L2-9, solo se revierten en pila); el foco de las pestañas del teléfono quedaba
+  bajo «Secciones»; vuelven tres frases informativas de Inicio; `#mapa/<región no africana>`
+  ya no muestra «undefined»; la introducción, la consulta ligera y DEA no desbordan ni tapan
+  texto con la letra al 200 % o a 320 px; la impresión del recorrido no deja texto negro
+  sobre negro; y arreglos menores de foco, menús por teclado e índice del glosario.
+- Verificador: 10 comprobaciones nuevas (sincronía de tokens, copia de Lexend, CSP y
+  estructura de DEA, «solo tokens» en `dea/dea.css` (también colores con nombre, `hsl()`,
+  `color-mix()` con literales y el atajo `font:`), sin Google Fonts, imágenes locales de la
+  ligera, acceso DEA de la portada, contraste de las parejas de tokens en los cuatro temas y
+  «no se elimina nada», que cubre también los textos de `dea/index.html`), con 27 pruebas.
+  Procedencia en `provenance/PB_GH_10_CORRECCIONES.json`.
+- Límite conocido: la consulta ligera abierta como archivo suelto, sin la carpeta `img/`,
+  no muestra imágenes (copias locales por decisión de la titular); muestra en su lugar el
+  texto alternativo y conserva crédito, licencia y enlace a la ficha de cada imagen.
 - Límites: medido solo en Chromium con emulación de viewport y sin red de terceros. No se
   ha comprobado la portada completa con GPU real, las fuentes reales del atlas, lectores de
   pantalla, Firefox, Safari, dispositivos reales ni la pantalla completa del modo proyección
