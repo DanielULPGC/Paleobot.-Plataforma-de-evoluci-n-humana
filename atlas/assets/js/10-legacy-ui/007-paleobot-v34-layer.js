@@ -121,6 +121,9 @@
     {ka:45,label:'Europa',x:560,y:165,type:'expansion',note:'Primeros sapiens europeos y contactos arcaicos.'},
     {ka:16,label:'América',x:265,y:210,type:'expansion',note:'Poblamiento americano de Homo sapiens.'}
   ];
+  // PB-GH-11 (04, fila 4): 008-…m11m20-layer.js (updateDispersalFrame) lee OUT_OF_AFRICA_EVENTS fuera de este
+  // cierre y lanzaba ReferenceError; se expone la misma constante (sin copiar los datos).
+  window.OUT_OF_AFRICA_EVENTS = OUT_OF_AFRICA_EVENTS;
 
   const PALEOECOLOGY_MATRIX = [
     {biome:'Sabana', mis:'MIS 20-16', taxa:['ergaster','erectus','habilis'], temp:'Variable, tendencia árida', rain:'Estacional', sites:'Olduvai, Turkana, Dmanisi'},
