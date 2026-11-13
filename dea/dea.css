@@ -304,6 +304,8 @@ main .linea-tiempo li { max-width: none; }
 .eje-tiempo { position: relative; min-height: var(--e-5); font-variant-numeric: tabular-nums; }
 .eje-tiempo span { position: absolute; bottom: 0; transform: translateX(-50%); white-space: nowrap; }
 .eje-tiempo span:last-child { transform: translateX(-100%); }
+/* Marca intermedia que no cabe (dea.js, con la letra grande): no se pinta; la más antigua y «hoy» siempre se ven. */
+.eje-tiempo span.sin-sitio { visibility: hidden; }
 @media (min-width: 40rem) {
   .linea-tiempo li { grid-template-columns: var(--col-nombres) minmax(0, 1fr); align-items: stretch; column-gap: var(--e-4); padding: 0; }
   .linea-tiempo .texto { grid-column: 1; align-self: center; padding: var(--e-2) 0; }

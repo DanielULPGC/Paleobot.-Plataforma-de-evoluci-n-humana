@@ -209,6 +209,9 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && seccionesAbiertas()) { e.preventDefault(); abrirSecciones(false, true); } });
   document.addEventListener('click', function (e) { if (seccionesAbiertas() && !panelSecciones.contains(e.target) && !botonSecciones.contains(e.target)) abrirSecciones(false, false); });
   panelSecciones.addEventListener('focusout', function (e) { if (seccionesAbiertas() && e.relatedTarget && !panelSecciones.contains(e.relatedTarget) && (e.relatedTarget !== botonSecciones || tabulando)) abrirSecciones(false, false); });
+  // Si el foco sale del propio botón hacia fuera del conjunto botón + panel (p. ej. Mayús+Tab con el panel abierto), se cierra.
+  botonSecciones.addEventListener('focusout', function (e) { if (seccionesAbiertas() && e.relatedTarget && !panelSecciones.contains(e.relatedTarget)) abrirSecciones(false, false); });
+  botonAjustes.addEventListener('focusout', function (e) { if (ajustesAbiertos() && e.relatedTarget && !panelAjustes.contains(e.relatedTarget)) abrirAjustes(false, false); });
   // Pestaña que recibe el foco con el teclado: entera a la vista. Mientras una pestaña tiene el foco, la pista no
   // aplica la máscara de «hay más» (clase .con-foco) y el anillo va por dentro de la píldora: nada lo recorta ni lo
   // tapa el botón «Secciones», que queda fuera de la pista.
@@ -461,6 +464,21 @@
   });
 
   /* ---------- Línea del tiempo ---------- */
+  // Eje con marcas (Tiempo y Comparar): con la letra grande no caben todas; se ocultan las intermedias que pisarían a
+  // la anterior visible o a «hoy». La más antigua y «hoy» se ven siempre. Se recalcula si cambia el tamaño (ancho o letra).
+  function marcasSinPisar(eje) {
+    var ajustar = function () {
+      var spans = eje.children; if (spans.length < 3) return;
+      var ultimo = spans[spans.length - 1].getBoundingClientRect(), prev = null, sep = 4;
+      for (var i = 0; i < spans.length - 1; i++) {
+        var s = spans[i]; s.classList.remove('sin-sitio');
+        var r = s.getBoundingClientRect();
+        if (i > 0 && ((prev && r.left < prev.right + sep) || r.right > ultimo.left - sep)) s.classList.add('sin-sitio');
+        else prev = r;
+      }
+    };
+    if (window.ResizeObserver) { var ro = new ResizeObserver(ajustar); ro.observe(eje); ro.observe(eje.lastChild); }
+  }
   function pista(t, max) {
     var izq = (max - Math.min(t.desde, max)) / max * 100;
     var ancho = Math.max((Math.min(t.desde, max) - t.hasta) / max * 100, 0.6);
@@ -498,6 +516,7 @@
       var m = el('span', { texto: num(v, 0) + (v === Math.floor(max / paso) * paso ? ' Ma' : '') }); m.style.left = ((max - v) / max * 100) + '%'; marcas.appendChild(m);
     }
     var hoy = el('span', { texto: 'hoy' }); hoy.style.left = '100%'; marcas.appendChild(hoy);
+    marcasSinPisar(marcas);
     var eje = el('li', { clase: 'fila-eje', 'aria-hidden': 'true' }, [el('span', { clase: 'unidad-eje', texto: 'Millones de años' }), marcas]);
     ol.insertBefore(eje, ol.firstChild);
     document.getElementById('tiempo-resumen').textContent = lista.length + ' especies o poblaciones, de la más antigua a la más reciente (Ma: millones de años). Las barras rayadas y la etiqueta «Debatida» indican validez debatida.';
@@ -805,6 +824,7 @@
     }
     var hoy = el('span', { texto: 'hoy' }); hoy.style.left = '100%'; eje.appendChild(hoy);
     area.appendChild(eje);
+    marcasSinPisar(eje);
     return el('div', { clase: 'grafico-comparar' }, [area, el('p', { clase: 'unidad-comparar', 'aria-hidden': 'true', texto: 'Millones de años (Ma) antes del presente' })]);
   }
   function pintarComparar() {
