@@ -78,36 +78,44 @@ la tabla.
 
 ### 1.1. Hallazgos de la verificación independiente y su estado
 
-Verificación externa del 13-11-2026 sobre 2efa4b5. Medición «antes» = la de la verificación; «después» = la propia
+Verificación externa del 13-11-2026 sobre 2efa4b5, con una segunda pasada sobre 5f46127 que confirmó 15 arreglos,
+aceptó 2 como justificados (B5 y B8), dejó 3 parciales (B3, M7 y la documentación de A2) y añadió 4 hallazgos bajos;
+los parciales y los nuevos se cierran en 78eec4a, 40d64a9 y el commit final de documentación. Medición «antes» = la de la verificación; «después» = la propia
 tras el arreglo, con los mismos scripts de la verificación (`piso_v.cjs`, axe-core 4.10.2) o con uno equivalente
 citado en el commit.
 
 | Hallazgo | Estado | Commit | Antes → después |
 |---|---|---|---|
 | A1 · Proyección + oscuro: `--tinta-2` heredada del claro | **Resuelto** | 222dd42 | axe `color-contrast` en las 10 vistas de DEA a 390 y 1366 px: 1-34 por vista → 0; `--tinta-2` 1,74:1 → 12,54:1 sobre papel. El verificador calcula ahora el contraste de las parejas de tokens en los cuatro temas |
-| A2 · Órdenes de reversión falsos | **Resuelto en la documentación** (no se reescribe la historia) | este documento, § 2.1 | Órdenes comprobados de nuevo uno a uno en un worktree aparte |
+| A2 · Órdenes de reversión falsos | **Resuelto en la documentación** (no se reescribe la historia) | este documento, § 2.1 | Órdenes comprobados de nuevo uno a uno en un worktree aparte sobre 40d64a9. La segunda pasada halló dos imprecisiones (la pila de A1 exige revertir antes los commits de gobierno posteriores; tras revertir L2-8 el verificador quedaba 81/0, no 79/2): corregidas, con el valor real medido tras seguir la huella de `dea/` |
 | M1 · Foco de pestañas bajo «Secciones» (regresión) | **Resuelto** | fb6ddb6 | Pestañas cortadas al tabular: 2 → 0 (390 px), 10 → 0 (320 px); indicador 1,99:1 → 5,8:1 |
 | M2 · Introducción a 320 px y al 200 % | **Resuelto** | 74ecf70 | Ver fila 1 |
 | M3 · Ligera al 200 % en teléfono | **Resuelto** | 5b13e47 | `scrollWidth` a 390 px: 613 → 390 (también 320 px al 200 %: 358 → 320) |
 | M4 · `#mapa/<región no africana>` con «undefined» | **Resuelto** | fb6ddb6 | `#mapa/europa`: «undefined Europa» → «Europa», aviso de región fuera del mapa, su lista y enlace de vuelta |
 | M5 · Nodos SVG sin el foco del sistema | **Resuelto** | e76da61 | Ver fila 20 |
 | M6 · Tres frases de Inicio retiradas sin reubicar | **Resuelto** | 6d7ab0f | Las tres vuelven a Inicio (entradilla y nota de privacidad) |
-| M7 · Falsos negativos del verificador | **Resuelto** | 222dd42 y 81dbc61 | Colores con nombre, `hsl()`, `color-mix()` con literales, `font:` en bruto, bordes con color en bruto, línea borrada de «Su trabajo» y contraste de tokens: 0 → 9 pruebas negativas que fallan como deben |
+| M7 · Falsos negativos del verificador | **Resuelto** | 222dd42, 81dbc61 y 40d64a9 | Colores con nombre, `hsl()`, `font:` en bruto, bordes con color en bruto, línea borrada de «Su trabajo», contraste de tokens; tras la segunda pasada, además: `color-mix()` prohibido (también entre tokens), huella de los tres archivos de `dea/`, 23 textos informativos obligatorios de `dea/dea.js` y lista cerrada de 24 ocultaciones por CSS. 15 pruebas negativas nuevas en total. Límites que subsisten: § 5 |
 | M8 · Documentación contradicha | **Resuelto** | este documento, SISTEMA y CHANGELOG | Filas, § 2, § 3, SISTEMA § 6 y CHANGELOG corregidos |
 | B1 · «Explorar el atlas» negro sobre negro al imprimir | **Resuelto** | e76da61 | Ver fila 36 |
 | B2 · «Atlas completo» fijo tapa «03 · Clima» al 200 % | **Resuelto** | e76da61 | Con la letra por encima de 20 px el enlace va en el flujo; piso de atlas.html a 1366 px al 200 %: 0 tapados |
-| B3 · Mayús+Tab deja abierto «Ajustes» | **Resuelto** | fb6ddb6 | `aria-expanded` tras Mayús+Tab: `true` → `false` (también en «Secciones»); el clic sigue alternando |
+| B3 · Mayús+Tab deja abierto «Ajustes» | **Resuelto** | fb6ddb6 y 78eec4a | Desde dentro del panel (fb6ddb6) y, tras la segunda pasada, también desde el propio botón (78eec4a): `aria-expanded` tras Mayús+Tab `true` → `false` en «Ajustes» y «Secciones»; Tab del botón al panel lo mantiene abierto; el clic sigue alternando |
 | B4 · Recuento de regiones sin unidad | **Resuelto** | fb6ddb6 y 3354b55 | «6» → «6 especies» visible; con letra al 200 % pasa bajo el nombre (`scrollWidth` 469 → 390) |
-| B5 · Intervalo completo de Tiempo ya no visible | **No procede como pérdida** (decisión del director: reubicado) | — | Visible en «Cuándo» de cada ficha y en el nombre accesible de cada barra; al imprimir Tiempo, 29 de 29 filas con nombre y rango legibles |
+| B5 · Intervalo completo de Tiempo ya no visible | **Justificado** (decisión del director: reubicado; aceptado en la segunda pasada) | — | Visible en «Cuándo» de cada ficha y en el nombre accesible de cada barra; al imprimir Tiempo, 29 de 29 filas con nombre y rango compacto legibles (la frase «Desde hace…» no se imprime en Tiempo) |
 | B6 · `#tiempo/erectus` en carga directa: foco en `body` | **Resuelto** | fb6ddb6 | Foco en el nombre en 6 de 6 cargas (el contenido se mostraba después de enfocar, oculto) |
 | B7 · Anillo del mapa cuadrado | **Resuelto** | fb6ddb6 | Ver fila 23 |
-| B8 · Ligera suelta sin imágenes | **Límite conocido, degradación mejorada** | 5b13e47 | Consecuencia de la decisión de la titular (copias locales). Sin JavaScript, recuadro con el texto alternativo en lugar del icono roto; crédito, licencia y «Ficha de la imagen» intactos |
+| B8 · Ligera suelta sin imágenes | **Justificado: límite conocido, degradación mejorada** (aceptado en la segunda pasada) | 5b13e47 | Consecuencia de la decisión de la titular (copias locales). Sin JavaScript, recuadro con el texto alternativo en lugar del icono roto; crédito, licencia y «Ficha de la imagen» intactos |
 | B9 · Atlas v1: emoji en chips y contraste del diálogo Bibliografía | **Resuelto en los chips; contraste no procede en esta ronda** | f11bf4b | Ver fila 31. Los 140 nodos del diálogo con contraste insuficiente son anteriores a la ronda y están fuera de la tabla (atlas v1 solo con piso de bajo riesgo): § 5 |
 | B10 · Dos `outline-offset: 3px` en bruto | **Resuelto** | fb6ddb6 | `calc(var(--foco-desfase) + var(--linea))` (mismo resultado, con tokens) |
 | Juicio de diseño, L1 | **Hechos** | fb6ddb6 y 8164659 | Pestaña actual con subrayado de acento; tarjetas de Métodos y Clima a su medida; índice de letras sin borde; recuadro del Rift al ancho del mapa en teléfono; fechas y «Debatida» en una línea en Tiempo. Capturas `diseno/l2/V-3…V-6_*` |
 | Juicio de diseño, L3 | **Solo propuesta** | — | Puerta DEA como punto focal de la portada y una sola familia visual en la ruta: § 4, n.os 11 y 12 |
 
-Nuevo defecto hallado al cerrar: con la letra al 200 % en el teléfono, el recuento «6 especies» ensanchaba los
+Hallazgos bajos de la segunda pasada: (1) el verificador no seguía la huella de `dea/` y (2) no veía `color-mix()` entre
+tokens ni los textos de `dea/dea.js`: resueltos en 40d64a9 (ver M7); (3) la pila de A1 en § 2.1: corregida; (4) con la
+letra al 200 % en 390 px las marcas «1» y «hoy» del eje de Tiempo se pisaban (y «0,5» y «hoy» en Comparar): resuelto en
+78eec4a, ocultando las marcas intermedias que no caben (la más antigua y «hoy» siempre visibles); marcas solapadas 1 → 0
+en cada eje. La fila 22 sigue parcial con las cifras de la tabla, confirmadas por la segunda pasada.
+
+Nuevo defecto hallado al cerrar la primera tanda: con la letra al 200 % en el teléfono, el recuento «6 especies» ensanchaba los
 botones de región y las horas del «día de 24 horas» desbordaban Tiempo (469 y 437 px en 390). Resuelto en 3354b55.
 
 ## 2. Cambios L2 (reestructuras aisladas)
@@ -117,18 +125,18 @@ reducidos en `docs/diseno/evidencia/`. **Los L2 de DEA no son independientes ent
 `dea/dea.css`, `dea/dea.js` o `dea/index.html`, y los commits posteriores (pulido, correcciones de la
 verificación) tocan las mismas líneas. La columna «Reversión» dice lo comprobado (§ 2.1).
 
-| L2 | Commit | Qué cambia | Reversión (comprobada sobre 3354b55) | Capturas |
+| L2 | Commit | Qué cambia | Reversión (comprobada sobre 40d64a9) | Capturas |
 |---|---|---|---|---|
-| L2-1 | e3e8003 | Rejilla de página común para cabecera, pestañas, contenido y pie; resumen de ficha en dos líneas | Solo en pila: los 16 commits de DEA desde 3354b55 hasta él | `L2-1_{antes,despues}_*.png`; evidencia `L2-1_rejilla_escritorio_*` |
-| L2-2 | a334a5a | Menú «Ajustes» en teléfono y ajustes fantasma en escritorio | Solo en pila: 15 commits, desde 3354b55 | `L2-2_*`; evidencia `L2-2_ajustes_telefono_*` |
-| L2-3 | 2decc31 | Lista «Secciones» visible y pestañas sin palabras cortadas | Solo en pila: 14 commits, desde 3354b55 | `L2-3_*`; evidencia `L2-3_secciones_telefono_*` |
-| L2-4 | dd4dee4 | Bloque «Continuar» como punto focal de Inicio | Solo en pila: 13 commits, desde 3354b55 | `L2-4_*`; evidencia `L2-4_continuar_telefono_*` |
-| L2-5 | 52b808b | Línea del tiempo como gráfico: rejilla, eje fijo, barra elegida | Solo en pila: 12 commits, desde 3354b55 | `L2-5_*`; evidencia `L2-5_tiempo_escritorio_*` |
-| L2-6 | b9a073c | Fichas en una columna que se abren como página de manual | Solo en pila: 11 commits, desde 3354b55 | `L2-6_*`; evidencia `L2-6_fichas_escritorio_*` |
-| L2-7 | 806e4c0 | Mapa con puntos numerados, recuadro del Rift y regiones por zona | Solo en pila: 10 commits, desde 3354b55 | `L2-7_*`; evidencia `L2-7_mapa_escritorio_*` |
-| L2-8 | 37b2ed3 | Comparar con un solo gráfico, franja de coincidencia y créditos completos | **Por sí solo** | `L2-8_*`; evidencia `L2-8_comparar_telefono_*` |
+| L2-1 | e3e8003 | Rejilla de página común para cabecera, pestañas, contenido y pie; resumen de ficha en dos líneas | Solo en pila: 17 commits, desde 78eec4a | `L2-1_{antes,despues}_*.png`; evidencia `L2-1_rejilla_escritorio_*` |
+| L2-2 | a334a5a | Menú «Ajustes» en teléfono y ajustes fantasma en escritorio | Solo en pila: 16 commits, desde 78eec4a | `L2-2_*`; evidencia `L2-2_ajustes_telefono_*` |
+| L2-3 | 2decc31 | Lista «Secciones» visible y pestañas sin palabras cortadas | Solo en pila: 15 commits, desde 78eec4a | `L2-3_*`; evidencia `L2-3_secciones_telefono_*` |
+| L2-4 | dd4dee4 | Bloque «Continuar» como punto focal de Inicio | Solo en pila: 14 commits, desde 78eec4a | `L2-4_*`; evidencia `L2-4_continuar_telefono_*` |
+| L2-5 | 52b808b | Línea del tiempo como gráfico: rejilla, eje fijo, barra elegida | Solo en pila: 13 commits, desde 78eec4a | `L2-5_*`; evidencia `L2-5_tiempo_escritorio_*` |
+| L2-6 | b9a073c | Fichas en una columna que se abren como página de manual | Solo en pila: 12 commits, desde 78eec4a | `L2-6_*`; evidencia `L2-6_fichas_escritorio_*` |
+| L2-7 | 806e4c0 | Mapa con puntos numerados, recuadro del Rift y regiones por zona | Solo en pila: 11 commits, desde 78eec4a | `L2-7_*`; evidencia `L2-7_mapa_escritorio_*` |
+| L2-8 | 37b2ed3 | Comparar con un solo gráfico, franja de coincidencia y créditos completos | Solo en pila: 10 commits, desde 78eec4a | `L2-8_*`; evidencia `L2-8_comparar_telefono_*` |
 | L2-9 | fbde9e0 | Modo proyección: ancho, contraste y una sola salida | **Por sí solo** | `L2-9_*`; evidencia `L2-9_proyeccion_escritorio_*` |
-| L2-10 | 505fc52 | Glosario agrupado por letras con índice | Solo en pila: 7 commits, desde 3354b55 | `L2-10_*`; evidencia `L2-10_glosario_telefono_*` |
+| L2-10 | 505fc52 | Glosario agrupado por letras con índice | Solo en pila: 8 commits, desde 78eec4a | `L2-10_*`; evidencia `L2-10_glosario_telefono_*` |
 
 Cambios C (fundamentos compartidos): C-1 0818e5f (recorrido con la tipografía y los fundamentos del sistema base),
 C-2 3af6df4 (consulta ligera en papel y tierra), C-3 77dbb7b (consulta ligera con copias locales), C-4 acc7f7e
@@ -136,35 +144,33 @@ C-2 3af6df4 (consulta ligera en papel y tierra), C-3 77dbb7b (consulta ligera co
 
 ### 2.1. Reversión: lo comprobado
 
-Método: para cada commit de la ronda, un worktree desacoplado en 3354b55 (en la carpeta de trabajo, fuera del
+Método: para cada commit de la ronda, un worktree desacoplado en 40d64a9 (en la carpeta de trabajo, fuera del
 repositorio), `git revert --no-commit <commit>`, comprobación de conflictos, de marcas `<<<<<<<` y de la sintaxis de
 `dea/dea.js`, y retirada del worktree. Si no revierte solo, se prueba la pila mínima: él y todos los commits
 posteriores que tocan, directa o transitivamente, sus mismos archivos, revertidos del más reciente al más antiguo.
 Lo que se afirmó antes de la verificación («independiente», «revertir antes L2-9», «requiere L2-1») era falso para
-L2-2, L2-3, L2-4, L2-5 y L2-6 y queda sustituido por esta sección.
+L2-2, L2-3, L2-4, L2-5 y L2-6 y queda sustituido por esta sección. Cada commit posterior que toca los mismos
+archivos alarga las pilas: esta sección vale para 40d64a9 y el commit final de documentación.
 
-**Revierten limpio por sí solos** (desde 3354b55): L2-8 37b2ed3, L2-9 fbde9e0, pulido 4a8cb2a, C-3 77dbb7b,
-C-4 acc7f7e, pie de licencia 31fdbbc, atlas v1 cb8dfe7 y las correcciones de código de la verificación salvo
-222dd42: 6d7ab0f, fb6ddb6, e76da61, 74ecf70, 5b13e47, f11bf4b, 8164659 y 3354b55. Comprobado de nuevo sobre el
-commit final de documentación, con el mismo resultado para todos los commits de código. Los commits de gobierno
-(procedencia, verificador y documentación: e9149ba, 0aa490b, 2efa4b5, 222dd42 y 81dbc61) solo revierten en pila
-con el commit final de documentación por delante, que sí revierte solo.
-Respecto a la verificación cambian dos: L2-10 505fc52 y el L1 de Clima 88c819a revertían solos sobre 2efa4b5 y ya
-no (8164659 y 3354b55 tocan sus líneas).
+**Revierten limpio por sí solos**: L2-9 fbde9e0, pulido 4a8cb2a, C-3 77dbb7b, C-4 acc7f7e, pie de licencia
+31fdbbc, atlas v1 cb8dfe7 y, de las correcciones de la verificación, 6d7ab0f, e76da61, 74ecf70, 5b13e47, f11bf4b,
+8164659, 3354b55, 78eec4a y 40d64a9. Respecto a lo escrito antes cambian: L2-8 37b2ed3, L2-10 505fc52, el L1 de
+Clima 88c819a y fb6ddb6, que ya no revierten solos (78eec4a, 8164659 y 3354b55 tocan sus líneas).
 
 **Solo revierten en pila inversa** (todas comprobadas sin conflicto y con `dea/dea.js` válido):
 
 | Commit | Pila, del primero al último que se revierte |
 |---|---|
-| DEA: L2-1 a L2-7, L2-10, L1 de Clima, c49cc12 y 31af692 | 3354b55 → 8164659 → fb6ddb6 → 6d7ab0f → 4a8cb2a → 88c819a → 505fc52 → fbde9e0 → 37b2ed3 → 806e4c0 → b9a073c → 52b808b → dd4dee4 → 2decc31 → a334a5a → e3e8003 (y después 31af692 → c49cc12). Cada uno se deshace revirtiendo esta secuencia hasta él (L1 de Clima: 3354b55 → 8164659 → fb6ddb6 → 4a8cb2a → 88c819a) |
+| DEA: L2-1 a L2-8, L2-10, L1 de Clima, fb6ddb6, c49cc12 y 31af692 | 78eec4a → 3354b55 → 8164659 → fb6ddb6 → 6d7ab0f → 4a8cb2a → 88c819a → 505fc52 → fbde9e0 → 37b2ed3 → 806e4c0 → b9a073c → 52b808b → dd4dee4 → 2decc31 → a334a5a → e3e8003 (y después 31af692 → c49cc12). Cada uno se deshace revirtiendo esta secuencia hasta él (L1 de Clima: 78eec4a → 3354b55 → 8164659 → fb6ddb6 → 4a8cb2a → 88c819a) |
 | C-1 0818e5f | 74ecf70 → e76da61 → 0818e5f |
 | Recorrido: 18f8c58, 4fd475a, a0d30bb, 68246c0 | 74ecf70 → e76da61 → 0818e5f → 68246c0 → a0d30bb → 4fd475a → 31fdbbc → 18f8c58, hasta el commit buscado |
-| C-2 3af6df4 y 53708ef | 81dbc61 → 5b13e47 → 222dd42 → 2efa4b5 → 0aa490b → e9149ba → 77dbb7b → 3af6df4 (→ 53708ef) |
-| A1 222dd42 | 81dbc61 → 5b13e47 → 222dd42 |
-| c0dc4c0 (hoja base) | toda la ronda en orden inverso (28 commits) |
+| A1 222dd42 | **commit final de documentación → 40d64a9 → 5f46127 → 81dbc61 → 5b13e47 → 222dd42**. Sin los commits de gobierno posteriores por delante falla (conflicto en 81dbc61, medido) |
+| C-2 3af6df4 y 53708ef | commit final de documentación → 40d64a9 → 5f46127 → 81dbc61 → 5b13e47 → 222dd42 → 2efa4b5 → 0aa490b → e9149ba → 77dbb7b → 3af6df4 (→ 53708ef) |
+| Gobierno: e9149ba, 0aa490b, 2efa4b5, 81dbc61, 5f46127 | commit final de documentación → 40d64a9 → 5f46127 → 81dbc61 → … hasta el commit buscado (el commit final de documentación revierte solo) |
+| c0dc4c0 (hoja base) | toda la ronda en orden inverso |
 
-**Parejas**: las dos que funcionaban sobre 2efa4b5 («pulido → L2-7» y «C-3 → C-2») ya no bastan sobre 3354b55
-(conflicto en 806e4c0 y en 3af6df4); tampoco «L2-9 → L2-5» ni «L2-9 → L2-2». Solo valen las pilas de la tabla.
+**Parejas**: ninguna de las documentadas antes basta («pulido → L2-7», «C-3 → C-2», «L2-9 → L2-5», «L2-9 → L2-2»:
+conflicto). Solo valen las pilas de la tabla.
 
 **Procedimiento seguro para deshacer UNA reestructura que no revierte sola** (p. ej. L2-5):
 1. En una rama nueva, revertir la pila de la tabla hasta ella incluida, del más reciente al más antiguo
@@ -176,24 +182,26 @@ no (8164659 y 3354b55 tocan sus líneas).
 4. En todos los casos: comprobar las diez vistas de DEA (sin errores de página, axe 0) antes de dar la reversión
    por buena.
 
-**Tras cualquier reversión, `scripts/verificar_repo.py` falla**, porque varias reglas están atadas al estado final:
-- revertir cualquier commit que toque archivos de código (comprobado con L2-8 37b2ed3 y con la corrección
-  74ecf70): 79 en verde y 2 en rojo, «Entradas actuales coinciden con su procedencia» y «169 archivos Atlas v1
-  conservan las huellas importadas o una corrección documentada», porque la huella corregida de
-  `provenance/PB_GH_10_CORRECCIONES.json` ya no coincide;
-- revertir la pila de C-2: 67 y 4 en rojo (se suman las de archivos de base preservados, porque la pila incluye
-  la procedencia y el verificador);
-- según la verificación (sobre 2efa4b5), revertir C-1 hace fallar además «sin Google Fonts», revertir C-2 la
-  sincronía de tokens, y revertir un L2 de DEA puede devolver a `dea/dea.css` tamaños que la lista cerrada de
-  excepciones no admite (p. ej. `#mapa-svg text: 2.1px`).
+**Tras cualquier reversión, `scripts/verificar_repo.py` falla** (medido sobre 40d64a9, ya con la huella de `dea/`):
+- L2-9 fbde9e0, solo: 82 en verde y 2 en rojo («Archivos de dea/ modificados en la ronda coinciden con su huella
+  registrada» y la lista cerrada de ocultaciones, porque desaparecen las del modo proyección).
+- L2-8 37b2ed3, con su pila de 10: 79 y 5 en rojo (huella de `dea/`, «solo tokens» por `#mapa-svg
+  text:not(.numero-punto): 2.4px`, textos de `dea/index.html` y de `dea/dea.js` que vuelven a su redacción
+  anterior, y ocultaciones).
+- 74ecf70 (introducción), solo: 83 y 1 en rojo («169 archivos Atlas v1 conservan las huellas importadas o una
+  corrección documentada»).
+- Pila de A1: 78 y 1 en rojo (la misma de Atlas v1).
+Antes de 40d64a9 el verificador no seguía la huella de `dea/`, y revertir L2-8 lo dejaba en verde (81/0, medido por
+la verificación): la afirmación anterior de esta sección, «79/2», era inexacta.
 Qué hay que actualizar entonces: `corrected_sha256`, `change`, `evidence` y `return` de cada archivo tocado en
-`provenance/PB_GH_10_CORRECCIONES.json` (y, si se revierte una corrección de dea/index.html, su lista
-`textos_interfaz_reubicados`), las excepciones de `excepciones_fs` en el verificador si cambia la hoja de DEA, la
-copia sincronizada de `src/entrada_ligera/estilos.css` si cambia la hoja base, y este documento.
+`provenance/PB_GH_10_CORRECCIONES.json` (también los de `modified_round_paths` para `dea/`), sus listas
+`textos_interfaz_reubicados` y `textos_obligatorios_dea_js` si cambian textos, `excepciones_fs` y
+`OCULTACIONES_DEA` en el verificador si cambia la hoja de DEA, la copia sincronizada de
+`src/entrada_ligera/estilos.css` si cambia la hoja base, y este documento.
 
 ## 3. Mediciones de cierre
 
-Estado final (3354b55), medido con `piso_v.cjs` de la verificación y axe-core 4.10.2 (wcag2a/aa, 21a/aa, 22aa y
+Estado final (medido sobre 3354b55 y, tras la segunda pasada, repetido en DEA sobre 40d64a9), medido con `piso_v.cjs` de la verificación y axe-core 4.10.2 (wcag2a/aa, 21a/aa, 22aa y
 best-practice), sin red de terceros:
 - **DEA**: 10 vistas × 390/820/1366 px × claro, oscuro, proyección clara y proyección oscura (120 casos): 0
   infracciones de axe, 0 desbordamientos, 0 peticiones externas, 0 errores de consola o CSP. Antes de A1, la
@@ -206,8 +214,9 @@ best-practice), sin red de terceros:
 - **Impresión del recorrido**: textos < 4,5:1 con fondos impresos 71 → 0 en las diez páginas.
 - Tamaños de letra: DEA y recorrido con los 7 pasos de la escala (más el «display» del recorrido); consulta
   ligera, 5.
-- Verificador: 81 comprobaciones en verde (10 nuevas en esta ronda: contraste de tokens y textos de
-  dea/index.html, tras la verificación); pruebas del sistema de diseño: 27 (18 + 9 negativas nuevas).
+- Verificador: 84 comprobaciones en verde (13 nuevas en esta ronda; 5 tras la verificación independiente:
+  contraste de tokens, textos de dea/index.html, textos de dea/dea.js, huella de dea/ y ocultación por CSS);
+  pruebas del sistema de diseño: 33 (18 + 15 negativas nuevas); suite completa: 68.
 
 ## 4. Propuestas L3 (no ejecutadas)
 
@@ -265,6 +274,18 @@ Cambian el modelo de navegación, quitan o reubican funciones o cambian el lengu
   (sin cambios respecto a 693055f, según la verificación) y la guía «Por dónde empezar» conserva emoji en sus
   botones y pestañas (`040-script.js`, `atlas/index.html`). No se han tocado: el atlas v1 solo recibe piso de
   bajo riesgo y `040-script.js` nunca se ha corregido (abrir su procedencia queda para una ronda del atlas).
+- **Lo que la segunda pasada de la verificación no comprobó** y esta ronda tampoco: la portada 3D (no tocada por
+  las correcciones), el atlas v1 completo, el recorrido con teclado fuera de parentesco y territorio y a 820 px,
+  lectores de pantalla, Firefox, Safari y dispositivos reales.
+- **«Durante millones de años» en la introducción en teléfono** (la segunda pasada no la vio en su muestreo cada
+  2 s): no es un defecto. Reproducida a 390 × 844 con muestreo cada 100 ms durante 7 s, con y sin movimiento
+  reducido, y a 1366: el subtítulo aparece desde el primer instante y se ve unos 4,8 s (48-49 muestras),
+  `.subtitulos` con `z-index: 8` por encima de las escenas y legible en la captura a 1,5 s. `elementFromPoint`
+  devuelve la escena porque los subtítulos tienen `pointer-events: none`, no porque queden tapados.
+- **Límites del verificador que subsisten**: la lista de ocultaciones solo ve `display:none` y `visibility:hidden`
+  en `dea/dea.css` (no `opacity`, `clip`, tamaño 0 ni posiciones fuera de pantalla, ni el atributo `hidden` que pone
+  `dea.js`); los textos obligatorios de `dea/dea.js` son una lista cerrada (un texto nuevo no queda protegido hasta
+  que se registra); los rótulos de territorio del recorrido se siguen solapando entre sí (preexistente).
 - **Foco de los nodos SVG del recorrido**: medido por muestreo de color en el contorno (24 puntos por nodo), no con
   un lector de pantalla; con el gráfico reducido en el teléfono, algunas líneas del diagrama cruzan el halo (mínimo
   0,67 del contorno con color de foco en parentesco a 390 px).

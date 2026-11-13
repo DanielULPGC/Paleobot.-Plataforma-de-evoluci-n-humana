@@ -46,12 +46,15 @@ cambian; lo que alteraría el modelo de navegación queda como propuesta.
   bajo «Secciones»; vuelven tres frases informativas de Inicio; `#mapa/<región no africana>`
   ya no muestra «undefined»; la introducción, la consulta ligera y DEA no desbordan ni tapan
   texto con la letra al 200 % o a 320 px; la impresión del recorrido no deja texto negro
-  sobre negro; y arreglos menores de foco, menús por teclado e índice del glosario.
-- Verificador: 10 comprobaciones nuevas (sincronía de tokens, copia de Lexend, CSP y
-  estructura de DEA, «solo tokens» en `dea/dea.css` (también colores con nombre, `hsl()`,
-  `color-mix()` con literales y el atajo `font:`), sin Google Fonts, imágenes locales de la
-  ligera, acceso DEA de la portada, contraste de las parejas de tokens en los cuatro temas y
-  «no se elimina nada», que cubre también los textos de `dea/index.html`), con 27 pruebas.
+  sobre negro; y arreglos menores de foco, menús por teclado (que se cierran al salir con el
+  tabulador en cualquier dirección), marcas de eje que no se pisan con la letra grande e
+  índice del glosario.
+- Verificador: 13 comprobaciones nuevas (sincronía de tokens, copia de Lexend, CSP y
+  estructura de DEA, «solo tokens» en `dea/dea.css` (también colores con nombre, `hsl()`, el
+  atajo `font:` y cualquier `color-mix()`), sin Google Fonts, imágenes locales de la ligera,
+  acceso DEA de la portada, contraste de las parejas de tokens en los cuatro temas, «no se
+  elimina nada» en datos, `dea/index.html` y textos informativos de `dea/dea.js`, huella de
+  los archivos de `dea/` y lista cerrada de ocultaciones por CSS), con 33 pruebas.
   Procedencia en `provenance/PB_GH_10_CORRECCIONES.json`.
 - Límite conocido: la consulta ligera abierta como archivo suelto, sin la carpeta `img/`,
   no muestra imágenes (copias locales por decisión de la titular); muestra en su lugar el

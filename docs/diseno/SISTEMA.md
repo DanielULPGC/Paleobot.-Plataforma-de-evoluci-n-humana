@@ -33,13 +33,25 @@ Cada principio tiene una prueba que se puede repetir.
   de `dea/dea.css` (comprobadas por `scripts/verificar_repo.py`): la escala raíz (`calc(100% * var(--escala))` y
   `calc(130% * var(--escala))` en proyección), el h1 de proyección (`calc(var(--t-3xl) * 1.25)`) y el texto de
   los dos SVG del mapa (`2.4px` en unidades del viewBox, en `.mapas .numero-punto` y `#mapa-svg .rotulo-mapa`).
-  Cuenta como color en bruto cualquier hexadecimal, función de color (`rgb()`, `hsl()`, `color()`…), `color-mix()`
-  con literales o color con nombre (`red`, `black`…) en cualquier propiedad, también en `border`, `outline` y
+  Cuenta como color en bruto cualquier hexadecimal, función de color (`rgb()`, `hsl()`, `color()`…), cualquier
+  `color-mix()` o `light-dark()` (prohibidos en `dea/dea.css` aunque mezclen tokens: crean colores sin contraste
+  medido; un color nuevo entra como token en la hoja base) o color con nombre (`red`, `black`…) en cualquier propiedad, también en `border`, `outline` y
   `background`; y como tamaño en bruto, el atajo `font:` sin un paso de la escala. Dos desfases de foco que eran
   `3px` son ahora `calc(var(--foco-desfase) + var(--linea))`.
 - **Contraste comprobado desde la propia hoja base**: el verificador calcula las parejas de tokens (tintas y acento
   sobre papel, superficie y hundido; estados sobre su fondo; contorno de control y foco) en claro, oscuro,
   proyección clara y proyección oscura. Texto ≥ 4,5:1; contornos y foco ≥ 3:1.
+- **Ocultar por CSS, solo en lista cerrada.** En `dea/dea.css`, `display: none` y `visibility: hidden` solo aparecen
+  en los 24 selectores (con su contexto `@media`) que enumera `OCULTACIONES_DEA` en `scripts/verificar_repo.py`:
+  paneles plegados («Ajustes», «Secciones»), estados vacíos (`:empty`), marcas de eje que no caben, impresión,
+  proyección, sin JavaScript (`scripting: none`) y la espera de carga. Añadir una ocultación exige añadirla a esa
+  lista con su motivo. Límite: la comprobación no ve `opacity`, `clip`, tamaño 0, posiciones fuera de pantalla ni el
+  atributo `hidden` que pone `dea.js`.
+- **Textos de interfaz protegidos.** Los bloques de texto de `dea/index.html` publicados en 693055f
+  (`textos_interfaz_reubicados`) y 23 fragmentos informativos de `dea/dea.js` (`textos_obligatorios_dea_js`:
+  rótulos de ficha y de tarjeta, avisos, estados vacíos) están registrados en
+  `provenance/PB_GH_10_CORRECCIONES.json`; el verificador exige que sigan. Los tres archivos de `dea/` deben
+  coincidir además con su huella registrada.
 - **Un punto focal**: decide los empates entre dos propuestas de composición.
 - **La copia de interfaz ayuda a actuar**: se acortan rótulos y explicaciones de interfaz; toda afirmación
   informativa que se retira se reubica en la misma vista.
