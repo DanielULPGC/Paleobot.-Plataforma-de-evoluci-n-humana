@@ -388,6 +388,18 @@ html{height:auto}
 @media (max-width:640px){
   .overlay .kicker{letter-spacing:.14em}
 }
+/* PB-GH-10 · verificación (fila 1, reservas): mientras se ve una tarjeta (póster o pausa), la tarjeta y el pie de
+   crédito van en el flujo, uno debajo del otro, y el escenario crece con ellos si no caben (letra al 200 %, 320 px):
+   nada queda bajo el pie ni recortado, y «Comenzar» se alcanza desplazando la página. Con la letra normal el
+   escenario conserva su tamaño (16:9 en apaisado, pantalla completa en vertical). El título se limita al ancho de
+   la pantalla (al 200 % «Paleoantropología» medía 557 px en 390) y, como último recurso, parte la palabra. */
+.cine.con-tarjeta{display:flex;flex-direction:column;overflow:visible}
+.cine.con-tarjeta .overlay:not(.oculto){position:relative;inset:auto;flex:1 0 auto;overflow:visible}
+.cine.con-tarjeta .pie{position:static;flex:0 0 auto}
+@media (orientation:portrait){
+  .cine.con-tarjeta{height:auto;min-height:100dvh}
+}
+.overlay h1{font-size:min(var(--t-display), 8.5vw);max-width:100%;overflow-wrap:anywhere;hyphens:auto}
 </style>
 <link rel="stylesheet" href="integracion.css">
 <script src="integracion.js" defer></script>
