@@ -1,0 +1,49 @@
+{
+ "terceros": false,
+ "ficha": "afarensis",
+ "fichaAbierta": true,
+ "ms": 10000,
+ "peticionesTrasCarga": 9,
+ "peticionesConFicha": 2926,
+ "peticionesPorSegundo": [
+  120,
+  148,
+  155,
+  167,
+  175,
+  170,
+  209,
+  193,
+  183,
+  184
+ ],
+ "urlsDistintas": 49,
+ "urlsRepetidas": 49,
+ "peorRepeticion": [
+  [
+   "cus_africanus_%28Sts_5_cast%29_at_G%C3%B6teborgs_Naturhistoriska_Museum_8945.jpg?width=900",
+   1961
+  ],
+  [
+   "https://commons.wikimedia.org/wiki/Special:FilePath/Homo_habilis-KNM_ER_1813.jpg?width=900",
+   702
+  ],
+  [
+   "ps://commons.wikimedia.org/wiki/Special:FilePath/Proconsul_heseloni_Tubingen.jpg?width=900",
+   25
+  ],
+  [
+   "/commons.wikimedia.org/wiki/Special:FilePath/Olduvai_Gorge_or_Oldupai_Gorge.jpg?width=1400",
+   17
+  ],
+  [
+   "ttps://commons.wikimedia.org/wiki/Special:FilePath/Paranthropus_boisei_skull.jpg?width=900",
+   8
+  ]
+ ],
+ "erroresConsola": 2926,
+ "excepciones": [],
+ "ejemplosConsola": [
+  "Failed to load resource: net::ERR_FAILED"
+ ]
+}

@@ -45,7 +45,8 @@ async function probarDialogo(page, nombre, abrirSel, dialogoSel, extra) {
     await btn.focus().catch(() => {});
     const opener = await foco(page);
     await btn.click({ timeout: 3000, force: !!out.disparadorOculto }).catch(async (e) => { out.clicError = String(e).split('\n')[0].slice(0, 120); await page.evaluate((s) => document.querySelector(s)?.click(), abrirSel).catch(() => {}); });
-    await page.waitForTimeout(700);
+    // Varios módulos escriben aria-hidden y mueven el foco con temporizadores: se espera a que se asiente.
+    await page.waitForTimeout(1200);
     out.abierto = await estadoDialogo(page, dialogoSel);
     out.abre = !!(out.abierto && out.abierto.visible);
     out.focoEntra = !!(out.abierto && out.abierto.focoDentro);
@@ -99,6 +100,9 @@ async function cerrarCajon(page) {
 async function medirVista(page, id) {
   return page.evaluate((id) => {
     const s = document.getElementById('view-' + id); if (!s) return null;
+    // content-visibility:auto (041-speed-guard) hace que innerText omita lo que está fuera de pantalla: para medir
+    // lo alcanzable sin depender del desplazamiento se fuerza su pintado solo durante la medida.
+    const cv = document.createElement('style'); cv.textContent = '#view-' + id + ' *{content-visibility:visible!important}'; document.head.appendChild(cv);
     const cerrados = [...s.querySelectorAll('details:not([open])')]; cerrados.forEach((d) => { d.open = true; });
     const vis = (e) => { const r = e.getBoundingClientRect(); const st = getComputedStyle(e); return r.width > 0 && r.height > 0 && st.display !== 'none' && st.visibility !== 'hidden'; };
     const ctl = [...s.querySelectorAll('button,a[href],input,select,textarea,summary,[role=button],[tabindex="0"]')].filter(vis);
@@ -110,6 +114,7 @@ async function medirVista(page, id) {
       svg: s.querySelectorAll('svg').length, canvas: s.querySelectorAll('canvas').length, imgs: s.querySelectorAll('img').length, tablas: s.querySelectorAll('table').length,
       imgsRotas: [...s.querySelectorAll('img')].filter((i) => i.complete && i.naturalWidth === 0 && vis(i)).length };
     cerrados.forEach((d) => { d.open = false; });
+    cv.remove();
     datos.pintada = datos.alto > 50 && texto > 40;
     return datos;
   }, id);

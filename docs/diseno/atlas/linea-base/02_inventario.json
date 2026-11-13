@@ -1,0 +1,2777 @@
+{
+ "fuente": "medición en Chromium (Playwright) a 1366×800 sobre c971001; ver 07_scripts",
+ "totales": {
+  "vistas": 31,
+  "dialogos": 14,
+  "accionesGlobales": 22,
+  "funcionesHumo": 35
+ },
+ "vistas": [
+  {
+   "id": "timeline",
+   "seccion": "#view-timeline",
+   "rotulo": "Cronología",
+   "bloque": "explorar",
+   "familiaMeta": "explorar",
+   "titulo": "Cronología",
+   "pregunta": "Pregunta principal: qué aparece primero y qué convive",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"timeline\"] (bloque «explorar»)",
+    "indicePortada": [
+     "Cronología"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=timeline#main-content",
+    "api": "window.switchView('timeline')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Cronología",
+    "H3: Proconsul",
+    "H3: Morotopithecus bishopi",
+    "H3: Dryopithecus",
+    "H3: Pierolapithecus catalaunicus",
+    "H3: Anoiapithecus brevirostris"
+   ],
+   "muestra": {
+    "svg": 51,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 51,
+    "caracteres": 2981,
+    "altoPx1366": 4274
+   },
+   "controlesVisibles": 54,
+   "funciones": [
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 50,
+     "ejemplos": [
+      "Proconsul 23-14 Ma ACEPTADA EVIDENCIA ME",
+      "Morotopithecus bishopi ~20 Ma ACEPTADA E",
+      "Dryopithecus 12-9 Ma ACEPTADA EVIDENCIA "
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Mapa"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "tree",
+   "seccion": "#view-tree",
+   "rotulo": null,
+   "bloque": "interpretar",
+   "familiaMeta": "interpretar",
+   "titulo": "Cladograma",
+   "pregunta": "Pregunta principal: qué ramas y agrupaciones básicas existen",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"tree\"] (bloque «interpretar»)",
+    "indicePortada": [
+     "Árbol de consenso"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=tree#main-content",
+    "api": "window.switchView('tree')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Cladograma"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 51,
+    "caracteres": 3785,
+    "altoPx1366": 3362
+   },
+   "controlesVisibles": 52,
+   "funciones": [
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Mapa"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "phylo",
+   "seccion": "#view-phylo",
+   "rotulo": null,
+   "bloque": "interpretar",
+   "familiaMeta": "interpretar",
+   "titulo": "Filogenia",
+   "pregunta": "Pregunta principal: qué hipótesis relacionales compiten",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"phylo\"] (bloque «interpretar»)",
+    "indicePortada": [
+     "Filogenia"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=phylo#main-content",
+    "api": "window.switchView('phylo')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Filogenia",
+    "H2: Cladograma filogenético ramificado",
+    "H3: Hominini basal"
+   ],
+   "muestra": {
+    "svg": 2,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 3201,
+    "altoPx1366": 1701
+   },
+   "controlesVisibles": 74,
+   "funciones": [
+    {
+     "atributo": "data-node",
+     "que": "nodo del cladograma",
+     "n": 24,
+     "ejemplos": [
+      "N1: Hominoidea tempranos, 23 Ma",
+      "N2: Postura ortógrada, 20 Ma",
+      "N3: Hominoideos euroafricanos, 12 Ma"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Mapa"
+     ]
+    }
+   ],
+   "acciones": [
+    {
+     "accion": "exportPhyloSvg",
+     "rotulo": "Descargar SVG"
+    }
+   ],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "contexto",
+   "seccion": "#view-contexto",
+   "rotulo": "Contexto",
+   "bloque": "explorar",
+   "familiaMeta": "interpretar",
+   "titulo": "Contexto",
+   "pregunta": "Pregunta principal: qué relación existe entre ambiente y evolución",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"contexto\"] (bloque «explorar»)",
+    "indicePortada": [
+     "Contexto"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=contexto#main-content",
+    "api": "window.switchView('contexto')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Contexto",
+    "H2: Línea de tiempo comparada Homo / contexto geológico"
+   ],
+   "muestra": {
+    "svg": 1,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 4275,
+    "altoPx1366": 3200
+   },
+   "controlesVisibles": 54,
+   "funciones": [
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 50,
+     "ejemplos": [
+      "Ver ficha de Proconsul",
+      "Ver ficha de Morotopithecus bishopi",
+      "Ver ficha de Dryopithecus"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 2,
+     "ejemplos": [
+      "Ir →",
+      "→ Mapa"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "clima",
+   "seccion": "#view-clima",
+   "rotulo": null,
+   "bloque": "interpretar",
+   "familiaMeta": "interpretar",
+   "titulo": "Clima PAGES2k",
+   "pregunta": "Pregunta principal: qué cambios climáticos enmarcan el registro",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"clima\"] (bloque «interpretar»)",
+    "indicePortada": [
+     "Clima"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=clima#main-content",
+    "api": "window.switchView('clima')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Clima PAGES2k",
+    "H2: 🌡 Línea de tiempo climática comparada — PAGES2k / NOAA / LR04"
+   ],
+   "muestra": {
+    "svg": 1,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 5345,
+    "altoPx1366": 3250
+   },
+   "controlesVisibles": 76,
+   "funciones": [
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 50,
+     "ejemplos": [
+      "Ver ficha de Proconsul",
+      "Ver ficha de Morotopithecus bishopi",
+      "Ver ficha de Dryopithecus"
+     ]
+    },
+    {
+     "atributo": "data-clima-tip-title",
+     "que": "información emergente del clima",
+     "n": 50,
+     "ejemplos": [
+      "Ver ficha de Proconsul",
+      "Ver ficha de Morotopithecus bishopi",
+      "Ver ficha de Dryopithecus"
+     ]
+    },
+    {
+     "atributo": "data-doi-open",
+     "que": "abrir DOI",
+     "n": 8,
+     "ejemplos": [
+      "📄 CENOGRID δ¹⁸O · Westerhold et al. 2020",
+      "📄 PAGES 2k · Consortium 2019",
+      "📄 Eventos D-O · Menviel et al. 2020"
+     ]
+    },
+    {
+     "atributo": "data-clima-scale",
+     "que": "escala temporal del clima",
+     "n": 5,
+     "ejemplos": [
+      "23 Ma — completo",
+      "5 Ma — Plio/Pleistoceno",
+      "2,6 Ma — Pleistoceno"
+     ]
+    },
+    {
+     "atributo": "data-clima-layer",
+     "que": "capa climática",
+     "n": 5,
+     "ejemplos": [
+      "🔵 δ¹⁸O LR04",
+      "🔴 Temp EPICA",
+      "🟣 MIS"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 2,
+     "ejemplos": [
+      "Ir →",
+      "→ Mapa"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "paleoecologia",
+   "seccion": "#view-paleoecologia",
+   "rotulo": "Paleoecología",
+   "bloque": "explorar",
+   "familiaMeta": "interpretar",
+   "titulo": "Paleoecología",
+   "pregunta": "Pregunta principal: qué biomas ocuparon los taxones en cada período MIS",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"paleoecologia\"] (bloque «explorar»)",
+    "indicePortada": [
+     "Paleoecología"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=paleoecologia#main-content",
+    "api": "window.switchView('paleoecologia')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Paleoecología",
+    "H3: Paleoecología integrada por bioma y período"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 3581,
+    "altoPx1366": 1450
+   },
+   "controlesVisibles": 136,
+   "funciones": [
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 96,
+     "ejemplos": [
+      "Homo ergaster",
+      "Homo erectus",
+      "H. heidelbergensis"
+     ]
+    },
+    {
+     "atributo": "data-m19-cell",
+     "que": "celda bioma × periodo",
+     "n": 37,
+     "ejemplos": [
+      "clima",
+      "clima",
+      "clima"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 2,
+     "ejemplos": [
+      "Ir →",
+      "→ Mapa"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "continentes",
+   "seccion": "#view-continentes",
+   "rotulo": "Continentes",
+   "bloque": "explorar",
+   "familiaMeta": "explorar",
+   "titulo": "Continentes",
+   "pregunta": "Pregunta principal: cómo cambia la hominización por áreas",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"continentes\"] (bloque «explorar»)",
+    "indicePortada": [
+     "Continentes"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=continentes#main-content",
+    "api": "window.switchView('continentes')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Continentes",
+    "H2: Proceso de hominización por continentes",
+    "H3: África",
+    "H3: ",
+    "H3: ",
+    "H3: "
+   ],
+   "muestra": {
+    "svg": 2,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 4224,
+    "altoPx1366": 6328
+   },
+   "controlesVisibles": 57,
+   "funciones": [
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 54,
+     "ejemplos": [
+      "Proconsul 23-14 Ma · Kenia",
+      "Morotopithecus bishopi ~20 Ma · Uganda",
+      "Dryopithecus 12-9 Ma · África y Europa ↔"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 2,
+     "ejemplos": [
+      "Ir →",
+      "→ Mapa"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "africa",
+   "seccion": "#view-africa",
+   "rotulo": "África",
+   "bloque": "explorar",
+   "familiaMeta": "explorar",
+   "titulo": "África",
+   "pregunta": "Pregunta principal: qué concentra el registro africano y por qué",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"africa\"] (bloque «explorar»)",
+    "indicePortada": [
+     "África"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=africa#main-content",
+    "api": "window.switchView('africa')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: África",
+    "H3: África: archivo principal de la hominización",
+    "H3: Rutas didácticas de lectura del registro africano",
+    "H4: Del bosque al bipedismo",
+    "H4: Diversidad australopitecina",
+    "H4: Primer Homo y cultura material"
+   ],
+   "muestra": {
+    "svg": 1,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 23095,
+    "altoPx1366": 13352
+   },
+   "controlesVisibles": 116,
+   "funciones": [
+    {
+     "atributo": "data-africa-region",
+     "que": "elegir región africana",
+     "n": 52,
+     "ejemplos": [
+      "1. hominoideos tempranos · 5",
+      "2. África fuera del Rift · 2",
+      "3. secuencia larga · 8"
+     ]
+    },
+    {
+     "atributo": "data-africa-question-region",
+     "que": "pregunta por región",
+     "n": 16,
+     "ejemplos": [
+      "Abrir primera region",
+      "Abrir primera region",
+      "Abrir primera region"
+     ]
+    },
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 8,
+     "ejemplos": [
+      "Ardipithecus kadabba",
+      "Ardipithecus ramidus",
+      "Au. deyiremeda"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 2,
+     "ejemplos": [
+      "Ir →",
+      "→ Mapa"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "america",
+   "seccion": "#view-america",
+   "rotulo": "América",
+   "bloque": "explorar",
+   "familiaMeta": "explorar",
+   "titulo": "América",
+   "pregunta": "Pregunta principal: cuándo y cómo llegó Homo sapiens a América",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"america\"] (bloque «explorar»)",
+    "indicePortada": [
+     "América"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=america#main-content",
+    "api": "window.switchView('america')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: América",
+    "H2: América: cuándo llegó Homo sapiens y qué evidencia lo sostiene",
+    "H3: Rutas de entrada y expansión",
+    "H4: Beringia y entrada norte",
+    "H4: Ruta costera del Pacífico",
+    "H4: Corredor interior libre de hielo"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 5037,
+    "altoPx1366": 3550
+   },
+   "controlesVisibles": 16,
+   "funciones": [
+    {
+     "atributo": "data-america-site",
+     "que": "elegir yacimiento americano",
+     "n": 5,
+     "ejemplos": []
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 3,
+     "ejemplos": [
+      "Ir →",
+      "Ir →",
+      "→ Mapa"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "asia",
+   "seccion": "#view-asia",
+   "rotulo": "Asia",
+   "bloque": "explorar",
+   "familiaMeta": "explorar",
+   "titulo": "Asia",
+   "pregunta": "Pregunta principal: cómo se diversificó Homo en Asia",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"asia\"] (bloque «explorar»)",
+    "indicePortada": [
+     "Asia"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=asia#main-content",
+    "api": "window.switchView('asia')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Asia",
+    "H2: Asia: corredores, persistencias arcaicas y diversidad insular",
+    "H3: Problemas de dispersión asiática",
+    "H4: Salida temprana por el corredor caucásico",
+    "H4: Persistencia de Homo erectus en Asia oriental e insular",
+    "H4: Mosaico chino del Pleistoceno medio"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 6657,
+    "altoPx1366": 4155
+   },
+   "controlesVisibles": 21,
+   "funciones": [
+    {
+     "atributo": "data-asia-case",
+     "que": "caso asiático",
+     "n": 5,
+     "ejemplos": []
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 3,
+     "ejemplos": [
+      "Ir →",
+      "Ir →",
+      "→ Mapa"
+     ]
+    },
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 2,
+     "ejemplos": []
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "europe",
+   "seccion": "#view-europe",
+   "rotulo": "Europa",
+   "bloque": "explorar",
+   "familiaMeta": "explorar",
+   "titulo": "Europa",
+   "pregunta": "Pregunta principal: qué aporta Europa sin caer en narrativas de origen",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"europe\"] (bloque «explorar»)",
+    "indicePortada": [
+     "Europa"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=europe#main-content",
+    "api": "window.switchView('europe')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Europa",
+    "H2: Europa: Atapuerca, neandertales y contacto con Homo sapiens",
+    "H3: Problemas europeos que sí merecen aula",
+    "H4: Hominoideos miocenos europeos",
+    "H4: Puerta caucásica hacia Eurasia",
+    "H4: Atapuerca y el poblamiento temprano occidental"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 7526,
+    "altoPx1366": 4264
+   },
+   "controlesVisibles": 19,
+   "funciones": [
+    {
+     "atributo": "data-europe-case",
+     "que": "caso europeo",
+     "n": 5,
+     "ejemplos": [
+      "Hominoideos miocenos mediterráneos Penín",
+      "Dmanisi como bisagra afroeurasiática Geo",
+      "Atapuerca: TE7 y Gran Dolina Sima del El"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 3,
+     "ejemplos": [
+      "Ir →",
+      "Ir →",
+      "→ Mapa"
+     ]
+    },
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 1,
+     "ejemplos": []
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "map",
+   "seccion": "#view-map",
+   "rotulo": "Mapa",
+   "bloque": "explorar",
+   "familiaMeta": "explorar",
+   "titulo": "Mapa",
+   "pregunta": "Pregunta principal: dónde se documenta cada taxón",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"map\"] (bloque «explorar»)",
+    "indicePortada": [
+     "Mapa"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=map#main-content",
+    "api": "window.switchView('map')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Mapa",
+    "H2: Atlas geográfico de yacimientos",
+    "H3: Convierte el mapa en una hipótesis, no en una lista de puntos.",
+    "H3: Protocolo de análisis en tres pasos",
+    "H3: Proconsul",
+    "H3: Lentes regionales sincronizadas"
+   ],
+   "muestra": {
+    "svg": 19,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 5,
+    "caracteres": 9078,
+    "altoPx1366": 3581
+   },
+   "controlesVisibles": 75,
+   "funciones": [
+    {
+     "atributo": "data-map-select",
+     "que": "elegir taxón en el mapa",
+     "n": 50,
+     "ejemplos": [
+      "Proconsul 23-14 Ma Kenia · 0.4°S, 34.2°E",
+      "Morotopithecus bishopi ~20 Ma Uganda · 2",
+      "Dryopithecus 12-9 Ma África y Europa · 4"
+     ]
+    },
+    {
+     "atributo": "data-map-lens",
+     "que": "lente regional del mapa",
+     "n": 5,
+     "ejemplos": [
+      "Todos los focos 50",
+      "África oriental 20",
+      "África austral 8"
+     ]
+    },
+    {
+     "atributo": "data-v34-fauna",
+     "que": "fauna asociada",
+     "n": 5,
+     "ejemplos": [
+      "Olduvai Gorge",
+      "Dmanisi",
+      "Atapuerca TD6 / Sima"
+     ]
+    },
+    {
+     "atributo": "data-map-layer",
+     "que": "capa del mapa",
+     "n": 4,
+     "ejemplos": [
+      "Topo",
+      "Satélite",
+      "Relieve"
+     ]
+    },
+    {
+     "atributo": "data-map-zoom",
+     "que": "zoom del mapa",
+     "n": 4,
+     "ejemplos": [
+      "Alejar mapa",
+      "Restablecer vista del mapa",
+      "Acercar mapa"
+     ]
+    },
+    {
+     "atributo": "data-map-toggle",
+     "que": "mostrar/ocultar en el mapa",
+     "n": 2,
+     "ejemplos": [
+      "🌾 Paleoambiente",
+      "Dispersión"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Tafonomía"
+     ]
+    },
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 1,
+     "ejemplos": [
+      "Abrir ficha"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "yacimientos",
+   "seccion": "#view-yacimientos",
+   "rotulo": "Yacimientos",
+   "bloque": "explorar",
+   "familiaMeta": "explorar",
+   "titulo": "Yacimientos",
+   "pregunta": "Pregunta principal: qué se halló, dónde y con qué datación",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"yacimientos\"] (bloque «explorar»)",
+    "indicePortada": [
+     "Yacimientos"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=yacimientos#main-content",
+    "api": "window.switchView('yacimientos')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Yacimientos",
+    "H2: Fichas de yacimiento",
+    "H3: ",
+    "H3: ",
+    "H3: ",
+    "H3: "
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 11004,
+    "altoPx1366": 7233
+   },
+   "controlesVisibles": 56,
+   "funciones": [
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 52,
+     "ejemplos": [
+      "Graecopithecus freybergi",
+      "Sahelanthropus tchadensis",
+      "Orrorin tugenensis"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 3,
+     "ejemplos": [
+      "Ir →",
+      "Ir →",
+      "→ Tafonomía"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "debates",
+   "seccion": "#view-debates",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": "investigar",
+   "titulo": "Debate activo",
+   "pregunta": "Pregunta principal: qué controversias siguen abiertas",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"debates\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Debates"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=debates#main-content",
+    "api": "window.switchView('debates')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Debate activo",
+    "H2: Modo debate activo",
+    "H3: Posición filogenética de Homo naledi",
+    "H3: ¿Es válida la especie Homo bodoensis?",
+    "H3: Origen de Homo sapiens: poblacion unica o red africana estructurada",
+    "H3: Primer poblamiento de Europa occidental"
+   ],
+   "muestra": {
+    "svg": 10,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 9024,
+    "altoPx1366": 2801
+   },
+   "controlesVisibles": 13,
+   "funciones": [
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 2,
+     "ejemplos": [
+      "Ir →",
+      "→ Tafonomía"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "socratico",
+   "seccion": "#view-socratico",
+   "rotulo": null,
+   "bloque": "aprender",
+   "familiaMeta": "aprender",
+   "titulo": "Debate socrático",
+   "pregunta": "Pregunta principal: cómo se defiende y se somete a escrutinio una hipótesis científica con evidencia",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"socratico\"] (bloque «aprender»)",
+    "indicePortada": [
+     "Socrático"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=socratico#main-content",
+    "api": "window.switchView('socratico')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Debate socrático",
+    "H2: Debate socrático guiado",
+    "H3: Posición filogenética de Homo naledi",
+    "H3: ¿Es válida la especie Homo bodoensis?",
+    "H3: Origen de Homo sapiens: poblacion unica o red africana estructurada",
+    "H3: Primer poblamiento de Europa occidental"
+   ],
+   "muestra": {
+    "svg": 10,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 9503,
+    "altoPx1366": 2984
+   },
+   "controlesVisibles": 24,
+   "funciones": [
+    {
+     "atributo": "data-soc-open",
+     "que": "abrir debate socrático",
+     "n": 12,
+     "ejemplos": [
+      "Defender A →",
+      "Defender B →",
+      "Defender A →"
+     ]
+    },
+    {
+     "atributo": "data-soc-thesis",
+     "que": "elegir tesis",
+     "n": 12,
+     "ejemplos": [
+      "Defender A →",
+      "Defender B →",
+      "Defender A →"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Tafonomía"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "estratigrafia",
+   "seccion": "#view-estratigrafia",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": "investigar",
+   "titulo": "Estratigrafía",
+   "pregunta": "Pregunta principal: qué orden temporal revelan las capas y qué método data cada una",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"estratigrafia\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Estratigrafía"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=estratigrafia#main-content",
+    "api": "window.switchView('estratigrafia')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Estratigrafía",
+    "H2: Laboratorio de estratigrafía"
+   ],
+   "muestra": {
+    "svg": 1,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 2543,
+    "altoPx1366": 1516
+   },
+   "controlesVisibles": 14,
+   "funciones": [
+    {
+     "atributo": "data-strat-site",
+     "que": "elegir yacimiento estratigráfico",
+     "n": 8,
+     "ejemplos": [
+      "Atapuerca TD6",
+      "Olduvai Gorge",
+      "Laetoli"
+     ]
+    },
+    {
+     "atributo": "data-strat-layer",
+     "que": "elegir capa",
+     "n": 5,
+     "ejemplos": [
+      "Capa TD10, ~300 Ka",
+      "Capa TD8, ~500 Ka",
+      "Capa TD6 ★, ~850 Ka [DEBATIDO] — cronolo"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 2,
+     "ejemplos": [
+      "Ir →",
+      "→ Tafonomía"
+     ]
+    },
+    {
+     "atributo": "data-strat-toggle-inference",
+     "que": "mostrar inferencia",
+     "n": 1,
+     "ejemplos": [
+      "🔒 Modo inferencia"
+     ]
+    },
+    {
+     "atributo": "data-strat-toggle-compare",
+     "que": "comparar yacimientos",
+     "n": 1,
+     "ejemplos": [
+      "📊 Comparar yacimientos"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "tafonomia",
+   "seccion": "#view-tafonomia",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": "investigar",
+   "titulo": "Tafonomía",
+   "pregunta": "Pregunta principal: por qué el registro fósil tiene la forma que tiene y qué sesgos distorsionan las inferencias",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"tafonomia\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Tafonomía"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=tafonomia#main-content",
+    "api": "window.switchView('tafonomia')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Tafonomía",
+    "H2: Simulador de sesgo tafonómico",
+    "H4: Interpretación del registro"
+   ],
+   "muestra": {
+    "svg": 1,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 3528,
+    "altoPx1366": 1935
+   },
+   "controlesVisibles": 21,
+   "funciones": [
+    {
+     "atributo": "data-tapho-region",
+     "que": "región anatómica",
+     "n": 12,
+     "ejemplos": [
+      "Cráneo: 6% de probabilidad de superviven",
+      "Mandíbula: 9% de probabilidad de supervi",
+      "Vértebras: 2% de probabilidad de supervi"
+     ]
+    },
+    {
+     "atributo": "data-tapho-var",
+     "que": "variable tafonómica",
+     "n": 5,
+     "ejemplos": [
+      "60",
+      "35",
+      "50"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Datación"
+     ]
+    },
+    {
+     "atributo": "data-tapho-species",
+     "que": "taxón tafonómico",
+     "n": 1,
+     "ejemplos": [
+      "Proconsul Morotopithecus bishopi Dryopit"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [
+    "tapho-species-sel",
+    "tapho-sediment",
+    "tapho-acidity",
+    "tapho-scavenging",
+    "tapho-hydraulic",
+    "tapho-time"
+   ],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "introgresion",
+   "seccion": "#view-introgresion",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": "investigar",
+   "titulo": "Introgresión",
+   "pregunta": "Pregunta principal: qué linajes se mezclaron, en qué proporción y qué rasgos adaptativos transfirieron",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"introgresion\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Introgresión"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=introgresion#main-content",
+    "api": "window.switchView('introgresion')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Introgresión",
+    "H2: Mapa de introgresión arcaica"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 6,
+    "caracteres": 2748,
+    "altoPx1366": 1584
+   },
+   "controlesVisibles": 9,
+   "funciones": [
+    {
+     "atributo": "data-introg-event",
+     "que": "evento de introgresión",
+     "n": 5,
+     "ejemplos": [
+      "Neandertales y humanos modernos Registro",
+      "Denisova y Oceanía ADN antiguo y poblaci",
+      "Adaptación en altura Meseta tibetana com"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 3,
+     "ejemplos": [
+      "Ir →",
+      "Ir →",
+      "→ Datación"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "genomica",
+   "seccion": "#view-genomica",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": "investigar",
+   "titulo": "Paleogenómica",
+   "pregunta": "Pregunta principal: qué aporta el ADN antiguo a la filogenia",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"genomica\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Paleogenómica"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=genomica#main-content",
+    "api": "window.switchView('genomica')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Paleogenómica",
+    "H2: Paleogenómica: ADN antiguo y genómica comparada",
+    "H3: Cómo leer la evidencia paleogenómica",
+    "H3: H. neanderthalensis",
+    "H3: Linaje denisovano",
+    "H3: Homo sapiens"
+   ],
+   "muestra": {
+    "svg": 5,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 5051,
+    "altoPx1366": 2962
+   },
+   "controlesVisibles": 8,
+   "funciones": [
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 2,
+     "ejemplos": [
+      "Ir →",
+      "→ Datación"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "paleoproteomica",
+   "seccion": "#view-paleoproteomica",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": null,
+   "titulo": "H2: Paleoproteómica: proteínas antiguas más allá del ADN",
+   "pregunta": null,
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"paleoproteomica\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Paleoproteómica NUEVO"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=paleoproteomica#main-content",
+    "api": "window.switchView('paleoproteomica')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Paleoproteómica: proteínas antiguas más allá del ADN",
+    "H3: 1 · En qué se diferencia del ADN antiguo",
+    "H3: 2 · Hasta dónde llega cada técnica en el tiempo",
+    "H3: 3 · Casos que cambiaron el mapa",
+    "H3: 4 · Qué se puede inferir y qué no"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 0,
+    "caracteres": 3871,
+    "altoPx1366": 1973
+   },
+   "controlesVisibles": 4,
+   "funciones": [
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 4,
+     "ejemplos": [
+      "Abrir ficha →",
+      "Abrir ficha →DEBATIDO",
+      "Abrir ficha →"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "holotipos",
+   "seccion": "#view-holotipos",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": "investigar",
+   "titulo": "Holotipos",
+   "pregunta": "Pregunta principal: qué ejemplares sostienen cada nombre",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"holotipos\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Holotipos"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=holotipos#main-content",
+    "api": "window.switchView('holotipos')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Holotipos",
+    "H2: Galería de holotipos y especímenes guía",
+    "H3: ",
+    "H3: ",
+    "H3: ",
+    "H3: "
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 51,
+    "caracteres": 6611,
+    "altoPx1366": 4640
+   },
+   "controlesVisibles": 53,
+   "funciones": [
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 2,
+     "ejemplos": [
+      "Ir →",
+      "→ Datación"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "coexistencias",
+   "seccion": "#view-coexistencias",
+   "rotulo": null,
+   "bloque": "interpretar",
+   "familiaMeta": "interpretar",
+   "titulo": "Coexistencias",
+   "pregunta": "Pregunta principal: cuántas especies convivieron a la vez",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"coexistencias\"] (bloque «interpretar»)",
+    "indicePortada": [
+     "Coexistencias"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=coexistencias#main-content",
+    "api": "window.switchView('coexistencias')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Coexistencias",
+    "H2: Vista de coexistencias temporales"
+   ],
+   "muestra": {
+    "svg": 1,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 5024,
+    "altoPx1366": 2687
+   },
+   "controlesVisibles": 10,
+   "funciones": [
+    {
+     "atributo": "data-coex-filter",
+     "que": "filtro de coexistencia",
+     "n": 5,
+     "ejemplos": [
+      "Todos (84)",
+      "Competencia (40)",
+      "Partición (35)"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Datación"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "revisiones",
+   "seccion": "#view-revisiones",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": "investigar",
+   "titulo": "Revisiones",
+   "pregunta": "Pregunta principal: cómo cambia la taxonomía con el tiempo",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"revisiones\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Revisiones"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=revisiones#main-content",
+    "api": "window.switchView('revisiones')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Revisiones",
+    "H2: Historial de revisiones taxonómicas",
+    "H3: Proconsul",
+    "H3: Morotopithecus bishopi",
+    "H3: Dryopithecus",
+    "H3: Pierolapithecus catalaunicus"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 9812,
+    "altoPx1366": 4930
+   },
+   "controlesVisibles": 2,
+   "funciones": [
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Datación"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "dispersal",
+   "seccion": "#view-dispersal",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": "aprender",
+   "titulo": "Simulador",
+   "pregunta": "Pregunta principal: cómo se expanden los linajes en el espacio",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"dispersal\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Dispersión"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=dispersal#main-content",
+    "api": "window.switchView('dispersal')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Simulador",
+    "H2: Simulador de dispersión Out of Africa"
+   ],
+   "muestra": {
+    "svg": 1,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 1502,
+    "altoPx1366": 1313
+   },
+   "controlesVisibles": 8,
+   "funciones": [
+    {
+     "atributo": "data-v34-dispersal-speed",
+     "que": "velocidad del simulador",
+     "n": 3,
+     "ejemplos": [
+      "×1",
+      "×2",
+      "×4"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Datación"
+     ]
+    },
+    {
+     "atributo": "data-dispersal-play",
+     "que": "reproducir dispersión",
+     "n": 1,
+     "ejemplos": [
+      "Reproducir"
+     ]
+    },
+    {
+     "atributo": "data-dispersal-time",
+     "que": "tiempo del simulador",
+     "n": 1,
+     "ejemplos": [
+      "315"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [
+    "Tiempo en ka"
+   ],
+   "humo": {
+    "ok": false,
+    "via": "chip",
+    "excepciones": [
+     "ReferenceError: OUT_OF_AFRICA_EVENTS is not defined",
+     "ReferenceError: OUT_OF_AFRICA_EVENTS is not defined"
+    ]
+   }
+  },
+  {
+   "id": "constructor",
+   "seccion": "#view-constructor",
+   "rotulo": null,
+   "bloque": "interpretar",
+   "familiaMeta": "aprender",
+   "titulo": "Constructor",
+   "pregunta": "Pregunta principal: cómo se construye una hipótesis filogenética",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"constructor\"] (bloque «interpretar»)",
+    "indicePortada": [
+     "Constructor NUEVO"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=constructor#main-content",
+    "api": "window.switchView('constructor')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Constructor",
+    "H2: Constructor de árboles filogenéticos",
+    "H3: Cómo se construye una hipótesis filogenética",
+    "H3: Árbol filogenético de referencia",
+    "H4: Lectura comparativa",
+    "H3: ESPECIES"
+   ],
+   "muestra": {
+    "svg": 8,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 5283,
+    "altoPx1366": 2455
+   },
+   "controlesVisibles": 67,
+   "funciones": [
+    {
+     "atributo": "data-builder-species",
+     "que": "añadir especie al constructor",
+     "n": 36,
+     "ejemplos": [
+      "Proconsul 23-14 Ma",
+      "M. bishopi ~20 Ma",
+      "Dryopithecus 12-9 Ma"
+     ]
+    },
+    {
+     "atributo": "data-builder-reference-node",
+     "que": "nodo de referencia",
+     "n": 18,
+     "ejemplos": [
+      "Añadir Proconsul al lienzo",
+      "Añadir Dryopithecus al lienzo",
+      "Añadir Sahelanthropus tchadensis al lien"
+     ]
+    },
+    {
+     "atributo": "data-builder-action",
+     "que": "acción del constructor",
+     "n": 6,
+     "ejemplos": [
+      "Comparar ahora",
+      "Modo conectar",
+      "Deshacer arista"
+     ]
+    },
+    {
+     "atributo": "data-builder-model",
+     "que": "cargar modelo",
+     "n": 2,
+     "ejemplos": [
+      "Consenso Wood & Boyle 2016",
+      "Cargar referencia"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Datación"
+     ]
+    },
+    {
+     "atributo": "data-builder-search",
+     "que": "filtrar especies del constructor",
+     "n": 1,
+     "ejemplos": [
+      "Filtrar especies del constructor filogen"
+     ]
+    }
+   ],
+   "acciones": [
+    {
+     "accion": "exportBuilderSvg",
+     "rotulo": "Exportar SVG"
+    }
+   ],
+   "entradas": [
+    "Filtrar especies del constructor filogenético"
+   ],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "datacion",
+   "seccion": "#view-datacion",
+   "rotulo": null,
+   "bloque": "investigar",
+   "familiaMeta": "investigar",
+   "titulo": "Datación",
+   "pregunta": "Pregunta principal: qué método sirve para cada problema cronológico",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"datacion\"] (bloque «investigar»)",
+    "indicePortada": [
+     "Datación"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=datacion#main-content",
+    "api": "window.switchView('datacion')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Datación",
+    "H2: Laboratorio de datación virtual",
+    "H3: Yacimiento",
+    "H3: Elige un método"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 1973,
+    "altoPx1366": 1066
+   },
+   "controlesVisibles": 8,
+   "funciones": [
+    {
+     "atributo": "data-dating-method",
+     "que": "elegir método de datación",
+     "n": 5,
+     "ejemplos": [
+      "14C",
+      "Ar-Ar",
+      "ESR"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Biogeografía"
+     ]
+    },
+    {
+     "atributo": "data-dating-site",
+     "que": "elegir yacimiento de datación",
+     "n": 1,
+     "ejemplos": [
+      "Olduvai Gorge Hadar Atapuerca Gran Dolin"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [
+    "Seleccionar yacimiento para práctica de datación"
+   ],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "primatologia",
+   "seccion": "#view-primatologia",
+   "rotulo": null,
+   "bloque": "interpretar",
+   "familiaMeta": "investigar",
+   "titulo": "Primatología",
+   "pregunta": "Pregunta principal: qué enseñan los grandes simios vivos sin convertirlos en ancestros directos",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"primatologia\"] (bloque «interpretar»)",
+    "indicePortada": [
+     "Primatología"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=primatologia#main-content",
+    "api": "window.switchView('primatologia')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Primatología",
+    "H2: Grandes simios vivos como modelos parciales, no como ancestros",
+    "H3: Modelos comparativos principales",
+    "H3: Chimpance comun",
+    "H3: Bonobo",
+    "H3: Gorila"
+   ],
+   "muestra": {
+    "svg": 5,
+    "canvas": 0,
+    "tablas": 1,
+    "imagenes": 1,
+    "caracteres": 10817,
+    "altoPx1366": 3580
+   },
+   "controlesVisibles": 22,
+   "funciones": [
+    {
+     "atributo": "data-primate-choice",
+     "que": "elegir primate",
+     "n": 12,
+     "ejemplos": [
+      "Aceptable",
+      "Con cautela",
+      "Abusiva"
+     ]
+    },
+    {
+     "atributo": "data-teaching-export",
+     "que": "descargar plantilla/exportación",
+     "n": 2,
+     "ejemplos": [
+      "Descargar plantilla de comparación",
+      "Cuaderno de observación"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Biogeografía"
+     ]
+    }
+   ],
+   "acciones": [
+    {
+     "accion": "abrirBiblio",
+     "rotulo": "Ver bibliografía"
+    }
+   ],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "aula",
+   "seccion": "#view-aula",
+   "rotulo": null,
+   "bloque": "aprender",
+   "familiaMeta": "aprender",
+   "titulo": "Centro docente",
+   "pregunta": "Pregunta principal: qué materiales, datos y productos se pueden construir",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"aula\"] (bloque «aprender»)",
+    "indicePortada": [
+     "Aula"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=aula#main-content",
+    "api": "window.switchView('aula')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Centro docente",
+    "H2: Materiales, banco de datos y rutas de investigación",
+    "H3: 🏫 Generador de Situaciones de Aprendizaje",
+    "H3: Generador de Situaciones de Aprendizaje",
+    "H3: ",
+    "H3: "
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 5,
+    "imagenes": 1,
+    "caracteres": 52601,
+    "altoPx1366": 13892
+   },
+   "controlesVisibles": 118,
+   "funciones": [
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 50,
+     "ejemplos": [
+      "Proconsul",
+      "Morotopithecus bishopi",
+      "Dryopithecus"
+     ]
+    },
+    {
+     "atributo": "data-view",
+     "que": "ir a otra vista",
+     "n": 42,
+     "ejemplos": [
+      "Ir al módulo África",
+      "Revisiones",
+      "Debate activo"
+     ]
+    },
+    {
+     "atributo": "data-teaching-export",
+     "que": "descargar plantilla/exportación",
+     "n": 10,
+     "ejemplos": [
+      "Exportar banco de datos CSV",
+      "Exportar guía docente TXT",
+      "Descargar plantilla TXT"
+     ]
+    },
+    {
+     "atributo": "data-sa-param",
+     "que": "parámetro de situación de aprendizaje",
+     "n": 5,
+     "ejemplos": [
+      "4.º ESO — Biología y Geología 1.º Bachil",
+      "— Taxón general del nivel — Proconsul (2",
+      "CCL — Competencia en comunicación lingüí"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Banco de recursos"
+     ]
+    },
+    {
+     "atributo": "data-sa-generate",
+     "que": "generar situación de aprendizaje",
+     "n": 1,
+     "ejemplos": [
+      "🏫 Generar SA"
+     ]
+    },
+    {
+     "atributo": "data-sa-export",
+     "que": "exportar situación de aprendizaje TXT",
+     "n": 1,
+     "ejemplos": [
+      "↓ Exportar TXT"
+     ]
+    }
+   ],
+   "acciones": [
+    {
+     "accion": "runSelfAudit",
+     "rotulo": "Ejecutar diagnóstico técnico"
+    },
+    {
+     "accion": "abrirBiblio",
+     "rotulo": "Bibliografía"
+    }
+   ],
+   "entradas": [
+    "sa-nivel",
+    "sa-taxon",
+    "sa-cc",
+    "sa-dur",
+    "sa-prod"
+   ],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "recursos",
+   "seccion": "#view-recursos",
+   "rotulo": null,
+   "bloque": "aprender",
+   "familiaMeta": "aprender",
+   "titulo": "Banco de recursos",
+   "pregunta": "Pregunta principal: qué recurso usar para cada producto de aula",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"recursos\"] (bloque «aprender»)",
+    "indicePortada": [
+     "Recursos"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=recursos#main-content",
+    "api": "window.switchView('recursos')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Banco de recursos",
+    "H2: Banco de recursos",
+    "H3: Nutcracker Man: lecturas atribuidas",
+    "H4: Nutcracker Man",
+    "H4: Archivo de fósiles",
+    "H4: Archivo de yacimientos"
+   ],
+   "muestra": {
+    "svg": 0,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 13514,
+    "altoPx1366": 6716
+   },
+   "controlesVisibles": 92,
+   "funciones": [
+    {
+     "atributo": "data-pbnm-external",
+     "que": "enlace externo (Nutcracker)",
+     "n": 42,
+     "ejemplos": [
+      "Abrir lectura",
+      "Abrir lectura",
+      "Abrir lectura"
+     ]
+    },
+    {
+     "atributo": "data-view",
+     "que": "ir a otra vista",
+     "n": 10,
+     "ejemplos": [
+      "Abrir recurso",
+      "Abrir recurso",
+      "Abrir recurso"
+     ]
+    },
+    {
+     "atributo": "data-copy-link",
+     "que": "copiar enlace",
+     "n": 8,
+     "ejemplos": [
+      "copiar",
+      "copiar",
+      "copiar"
+     ]
+    },
+    {
+     "atributo": "data-resource-link-filter",
+     "que": "filtro de recursos",
+     "n": 7,
+     "ejemplos": [
+      "Todos",
+      "3D",
+      "Primatología"
+     ]
+    },
+    {
+     "atributo": "data-pbnm-view",
+     "que": "vista del archivo Nutcracker",
+     "n": 5,
+     "ejemplos": [
+      "Cronologia",
+      "Clima",
+      "Mapa"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Itinerarios"
+     ]
+    },
+    {
+     "atributo": "data-pbnm-search",
+     "que": "buscar en el archivo Nutcracker",
+     "n": 1,
+     "ejemplos": []
+    }
+   ],
+   "acciones": [
+    {
+     "accion": "abrirBiblio",
+     "rotulo": "Abrir recurso"
+    },
+    {
+     "accion": "exportToCSV",
+     "rotulo": "Abrir recurso"
+    },
+    {
+     "accion": "startExam",
+     "rotulo": "Abrir recurso"
+    }
+   ],
+   "entradas": [
+    ""
+   ],
+   "humo": {
+    "ok": false,
+    "via": "chip",
+    "excepciones": [
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')",
+     "TypeError: Cannot read properties of null (reading 'classList')"
+    ]
+   }
+  },
+  {
+   "id": "itinerarios",
+   "seccion": "#view-itinerarios",
+   "rotulo": null,
+   "bloque": "aprender",
+   "familiaMeta": "aprender",
+   "titulo": "Itinerarios",
+   "pregunta": "Pregunta principal: por dónde conviene empezar a enseñar",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"itinerarios\"] (bloque «aprender»)",
+    "indicePortada": [
+     "Itinerarios"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=itinerarios#main-content",
+    "api": "window.switchView('itinerarios')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Itinerarios",
+    "H2: Itinerarios filogenéticos guiados",
+    "H3: Itinerarios didácticos por perfil",
+    "H4: Educación Primaria",
+    "H4: Futuro docente",
+    "H4: Profesorado universitario"
+   ],
+   "muestra": {
+    "svg": 1,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 1,
+    "caracteres": 2581,
+    "altoPx1366": 1549
+   },
+   "controlesVisibles": 13,
+   "funciones": [
+    {
+     "atributo": "data-view",
+     "que": "ir a otra vista",
+     "n": 7,
+     "ejemplos": [
+      "Cronología",
+      "Mapa",
+      "Centro docente"
+     ]
+    },
+    {
+     "atributo": "data-itinerary-select",
+     "que": "elegir itinerario",
+     "n": 3,
+     "ejemplos": [
+      "ITINERARIO I — 10 PARADAS Del bosque a l",
+      "ITINERARIO II — 8 PARADAS La explosión d",
+      "ITINERARIO III — 3 PARADAS Los robustos:"
+     ]
+    },
+    {
+     "atributo": "data-target-view",
+     "que": "siguiente vista recomendada",
+     "n": 1,
+     "ejemplos": [
+      "→ Biogeografía"
+     ]
+    }
+   ],
+   "acciones": [
+    {
+     "accion": "openGlossary",
+     "rotulo": "Glosario"
+    }
+   ],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  },
+  {
+   "id": "biogeo",
+   "seccion": "#view-biogeo",
+   "rotulo": "Biogeografía",
+   "bloque": "explorar",
+   "familiaMeta": "interpretar",
+   "titulo": "Biogeografía",
+   "pregunta": "Pregunta principal: cómo se distribuyen los hallazgos en el tiempo",
+   "comoSeLlega": {
+    "chipBloque": "#pbV50Blocks [data-pb-v50-view=\"biogeo\"] (bloque «explorar»)",
+    "indicePortada": [
+     "Biogeografía"
+    ],
+    "enlaceProfundo": "atlas/index.html?view=biogeo#main-content",
+    "api": "window.switchView('biogeo')"
+   },
+   "niveles": [],
+   "encabezados": [
+    "H2: Biogeografía",
+    "H2: Cronología de los primeros homininos según una base biogeográfica"
+   ],
+   "muestra": {
+    "svg": 1,
+    "canvas": 0,
+    "tablas": 0,
+    "imagenes": 29,
+    "caracteres": 5703,
+    "altoPx1366": 3161
+   },
+   "controlesVisibles": 66,
+   "funciones": [
+    {
+     "atributo": "data-open-species",
+     "que": "abrir ficha de especie",
+     "n": 65,
+     "ejemplos": [
+      "Homo habilis",
+      "Homo rudolfensis",
+      "Homo ergaster"
+     ]
+    }
+   ],
+   "acciones": [],
+   "entradas": [],
+   "humo": {
+    "ok": true,
+    "via": "chip",
+    "excepciones": null
+   }
+  }
+ ],
+ "global": {
+  "portada": {
+   "selector": "#pb-hub",
+   "funciones": [
+    "5 bloques (data-hub-block) que abren su lista de herramientas (#pb-hub-tools-grid) con «← Volver a los bloques»",
+    "Índice completo del atlas (#pb-landing-index-grid, 32 accesos)",
+    "Laboratorio de observación (3 evidencias → filogenia, tafonomía, introgresión)",
+    "Elige la profundidad: Recorrido esencial (enlace a recorrido/) / Laboratorio completo",
+    "Procedencia y licencias de las imágenes de portada (details)",
+    "Barra «Ir directamente al atlas interactivo» (#pb-skip-intro-bar) y «o entrar directamente…» (#pb-hub-skip)",
+    "Enlace de salto «Saltar al contenido principal»"
+   ],
+   "humo": {
+    "portada.bloque": true,
+    "portada.indice": true,
+    "entrar": true
+   }
+  },
+  "barraBloques": {
+   "selector": "#pbV50Blocks",
+   "funciones": [
+    "4 pestañas de bloque (role=tab, data-pb-v50-block)",
+    "chips de vista por bloque (31 vistas)",
+    "Bibliografía",
+    "Glosario",
+    "Exportar (CSV de especies visibles)",
+    "Diagnóstico (runSelfAudit)"
+   ],
+   "chipsPorBloque": {
+    "explorar": [
+     "timeline",
+     "map",
+     "continentes",
+     "africa",
+     "asia",
+     "europe",
+     "america",
+     "yacimientos",
+     "biogeo",
+     "contexto",
+     "paleoecologia"
+    ],
+    "interpretar": [
+     "tree",
+     "phylo",
+     "clima",
+     "coexistencias",
+     "primatologia",
+     "constructor"
+    ],
+    "investigar": [
+     "revisiones",
+     "genomica",
+     "paleoproteomica",
+     "datacion",
+     "debates",
+     "estratigrafia",
+     "tafonomia",
+     "introgresion",
+     "holotipos",
+     "dispersal"
+    ],
+    "aprender": [
+     "aula",
+     "recursos",
+     "itinerarios",
+     "socratico"
+    ]
+   }
+  },
+  "consultaYFiltros": {
+   "selector": ".v36-workspace-shell (barra «Consulta y filtros»)",
+   "funciones": [
+    "Buscar (#searchInput; atajo «/»; filtra el catálogo y el contador)",
+    "Modo clase (activateClassMode; conmuta class-mode-active, cambia a nivel básico y a Centro docente)",
+    "Limpiar filtros (resetGlobalFilters)",
+    "Filtros avanzados (despliega clado: Todos/Basales/Australopithecus/Paranthropus/Homo y filtro temporal con dos deslizadores y 3 preajustes)",
+    "Nivel de complejidad (#nivelEducativo: Doctorado/Universitario/Básico)",
+    "Orientación de la vista actual (#viewOrientation: rango, título, familia, pregunta)",
+    "Resumen de filtros activos (#activeFilterSummary, aria-live)",
+    "Volver atrás (data-back-action; historial de 40 vistas)"
+   ]
+  },
+  "cajonHerramientas": {
+   "selector": "#pb-mobile-tools-toggle → #pb-floating-tools + #pb-a11y-toolbar-root",
+   "funciones": [
+    "Síntesis de sesión",
+    "Modo presentación",
+    "Autoevaluación (examen clásico, 10 preguntas, exportar progreso .txt)",
+    "Glosario",
+    "Matriz de caracteres",
+    "Comparador",
+    "Gráfico de encefalización (estadísticas)",
+    "Bibliografía",
+    "Exportar CSV de especies visibles",
+    "Imprimir ficha o vista actual",
+    "Guía del alumnado",
+    "Simulación de daltonismo: Normal/Deut./Prot./Achr.",
+    "Contraste alto",
+    "A−/A+ (tamaño de letra, 100 % visible)",
+    "Restablecer accesibilidad (↺)",
+    "Buscar (búsqueda global)"
+   ],
+   "aparece": "solo tras entrar al área de trabajo (body.pb-workspace-entered)"
+  },
+  "otros": [
+   "Volver arriba (.scroll-top-btn)",
+   "Insignia «PaleoBot» (#pb-v55-badge)",
+   "Información emergente del clima (#climaTooltip) y del glosario (#glossFloatTip)",
+   "Hoja de impresión académica (#academicPrintSheet)",
+   "Filtros SVG de daltonismo (#pb-colorblind-filters)"
+  ],
+  "ocultosEnElDOM": [
+   ".main-cover.paleobot-cover-v45 (portada v45 con nav y 6 módulos)",
+   ".v35-block-portal-shell",
+   "#pbV50Hero",
+   ".header (portada antigua con buscador #landingSearchInput)",
+   ".v34-pro-dashboard",
+   ".atlas-workbench",
+   ".design-entry-panel",
+   ".visual-use-guide",
+   ".quick-start-panel",
+   ".learning-compass",
+   ".persona-guide-panel",
+   ".paleogenomics-entry-panel",
+   ".complexity-guide",
+   "#deaWelcome (bienvenida DEA con objetivos, rúbrica e «Empezar aquí (Itinerario I — DEA)»)",
+   ".toolbar antigua (nav-objective-strip, nav-family-strip, view-switch con 31 botones .view-btn, filtros de clado, filtro temporal)"
+  ]
+ },
+ "dialogos": [
+  {
+   "funcion": "ficha",
+   "ok": true,
+   "focoEntra": true,
+   "tabulacionesFuera25": 0,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "titulo": "Au. afarensis",
+    "pestanas": [
+     "General",
+     "Anatomía",
+     "Ecología",
+     "Paleogenómica",
+     "Investigación"
+    ],
+    "imgs": 14,
+    "imgsRotas": 13,
+    "leaflet": true,
+    "botones": [
+     "Volver atrás",
+     "Especie anterior",
+     "Especie siguiente",
+     "✕",
+     "Abrir ficha comparada",
+     "Imprimir ficha",
+     "¿Qué no sabemos aún?",
+     "PDF académico",
+     "Ver en atlas global",
+     "Guardar"
+    ]
+   }
+  },
+  {
+   "funcion": "ficha.pestanas",
+   "ok": true,
+   "focoEntra": null,
+   "tabulacionesFuera25": null,
+   "escapeCierra": null,
+   "focoVuelve": null,
+   "extra": null
+  },
+  {
+   "funcion": "comparar",
+   "ok": true,
+   "focoEntra": true,
+   "tabulacionesFuera25": 15,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "contador": "3 / 6 seleccionadas",
+    "resultado": {
+     "canvas": 1,
+     "tablas": 1,
+     "texto": 5322
+    }
+   }
+  },
+  {
+   "funcion": "bibliografia",
+   "ok": true,
+   "focoEntra": false,
+   "tabulacionesFuera25": 25,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "refs": 223,
+    "doi": 226,
+    "filtros": 7
+   }
+  },
+  {
+   "funcion": "glosario",
+   "ok": true,
+   "focoEntra": false,
+   "tabulacionesFuera25": 11,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "tarjetas": 8
+   }
+  },
+  {
+   "funcion": "examen",
+   "ok": true,
+   "focoEntra": false,
+   "tabulacionesFuera25": 21,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "opciones": 4,
+    "tras": "PREGUNTA 2/10 · CCEC ¿Qué tecnología o cultura aparece en la ficha de Homo rudolfensis? 10:00 Olduvayense MSA Hueso Ning"
+   }
+  },
+  {
+   "funcion": "matriz",
+   "ok": true,
+   "focoEntra": false,
+   "tabulacionesFuera25": 0,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "filas": 51
+   }
+  },
+  {
+   "funcion": "estadisticas",
+   "ok": true,
+   "focoEntra": false,
+   "tabulacionesFuera25": 17,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "canvas": 1,
+    "svg": 5
+   }
+  },
+  {
+   "funcion": "sintesis",
+   "ok": true,
+   "focoEntra": true,
+   "tabulacionesFuera25": 0,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": null
+  },
+  {
+   "funcion": "guia",
+   "ok": true,
+   "focoEntra": true,
+   "tabulacionesFuera25": 13,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "pestanas": [
+     "🚀\nPor dónde empezar",
+     "🗂️\nLas vistas",
+     "🔬\nPreguntas científicas",
+     "📚\nGlosario esencial",
+     "✅\nCriterios de evaluación"
+    ]
+   }
+  },
+  {
+   "funcion": "busqueda.global",
+   "ok": true,
+   "focoEntra": true,
+   "tabulacionesFuera25": 22,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "resultados": 3
+   }
+  },
+  {
+   "funcion": "presentacion",
+   "ok": true,
+   "focoEntra": false,
+   "tabulacionesFuera25": 9,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": {
+    "avanzaConFlecha": true
+   }
+  },
+  {
+   "funcion": "socratico",
+   "ok": true,
+   "focoEntra": true,
+   "tabulacionesFuera25": 0,
+   "escapeCierra": true,
+   "focoVuelve": false,
+   "extra": null
+  },
+  {
+   "funcion": "paleolab",
+   "ok": true,
+   "focoEntra": true,
+   "tabulacionesFuera25": 0,
+   "escapeCierra": true,
+   "focoVuelve": true,
+   "extra": {
+    "botones": 65
+   }
+  }
+ ],
+ "selectoresDialogo": {
+  "ficha": "#detailView",
+  "comparar": "#compareModal",
+  "bibliografia": "#biblioModal",
+  "glosario": "#glossaryModal",
+  "examen": "#examModal",
+  "matriz": "#matrixModal",
+  "estadisticas": "#statsModal",
+  "sintesis": "#sessionSynthesisModal",
+  "guia": "#studentGuideModal",
+  "busqueda.global": "#globalSearchModal",
+  "presentacion": "#presOverlay (+ #presMapModal «Ampliar mapa»)",
+  "socratico": "#socraticOverlay",
+  "paleolab": "#splDialog (PaleoLab 50: comparador, modos, filtros, búsqueda, zoom, ficha completa, visor 3D)",
+  "otros": [
+   "#lightbox",
+   "#researchGapModal («¿Qué no sabemos aún?»)",
+   "#pbV50MapModal",
+   "#matrixModal"
+  ]
+ },
+ "atajos": [
+  "«/» enfoca el buscador",
+  "Escape cierra diálogos",
+  "Flechas en pestañas de la ficha",
+  "Flecha derecha avanza en presentación",
+  "Tab/Mayús+Tab"
+ ],
+ "exportaciones": [
+  "CSV de especies visibles (paleobot_AAAA-MM-DD.csv)",
+  "SVG de filogenia (paleobot-cladograma-AAAAMMDD.svg)",
+  "SVG del constructor",
+  "TXT de situación de aprendizaje",
+  "10 plantillas TXT/CSV del Centro docente (data-teaching-export)",
+  "Progreso del examen (.txt)",
+  "Imprimir ficha (window.print + #academicPrintSheet)",
+  "Exportar presentación/ficha/académica (v47: data-v47-export*)"
+ ],
+ "funcionesHumo": {
+  "portada.bloque": {
+   "error": "TimeoutError: page.click: Timeout 3000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.pb-hub-ca",
+   "ok": true
+  },
+  "portada.indice": {
+   "ok": true
+  },
+  "entrar": {
+   "ok": true
+  },
+  "bloques": {
+   "ok": true
+  },
+  "buscador.barra": {
+   "resultado": {
+    "modalBusqueda": false,
+    "itemsCronologiaVisibles": 0,
+    "contador": "8 / 50 registros",
+    "resumen": "Filtros activosbúsqueda: afarensis8 de 50 registros visibles."
+   },
+   "ok": false
+  },
+  "filtros.clado": {
+   "antes": 50,
+   "homo": 26,
+   "homo2Ma": 3,
+   "trasLimpiar": 50,
+   "ok": true
+  },
+  "nivel": {
+   "universitario": 11,
+   "basico": 11,
+   "doctorado": 11,
+   "ok": true
+  },
+  "ficha": {
+   "ok": true
+  },
+  "ficha.pestanas": {
+   "ok": true
+  },
+  "comparar": {
+   "ok": true
+  },
+  "bibliografia": {
+   "ok": true
+  },
+  "glosario": {
+   "ok": true
+  },
+  "examen": {
+   "ok": true
+  },
+  "matriz": {
+   "ok": true
+  },
+  "estadisticas": {
+   "ok": true
+  },
+  "sintesis": {
+   "ok": true
+  },
+  "guia": {
+   "ok": true
+  },
+  "busqueda.global": {
+   "ok": true
+  },
+  "presentacion": {
+   "ok": true
+  },
+  "exportar.csv": {
+   "archivo": "paleobot_2026-11-13.csv",
+   "ok": true
+  },
+  "exportar.svg.filogenia": {
+   "archivo": "paleobot-cladograma-20261113.svg",
+   "error": "TimeoutError: page.click: Timeout 3000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#view-phyl",
+   "ok": true
+  },
+  "imprimir": {
+   "ok": false,
+   "error": "TimeoutError: elementHandle.click: Timeout 4000ms exceeded.\nCall log:\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is vis"
+  },
+  "diagnostico": {
+   "error": "TimeoutError: page.click: Timeout 3000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#pbV50Bloc",
+   "ok": false
+  },
+  "accesibilidad": {
+   "ok": false,
+   "error": "TimeoutError: elementHandle.click: Timeout 4000ms exceeded.\nCall log:\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is vis"
+  },
+  "modo.clase": {
+   "error": "TimeoutError: elementHandle.click: Timeout 4000ms exceeded.\nCall log:\n\u001b[2m  - attempting click actio",
+   "estado": {
+    "body": [
+     "class-mode-active"
+    ],
+    "html": "pb-v74-font-100",
+    "vista": "view-aula",
+    "nivel": "basico"
+   },
+   "ok": true
+  },
+  "volver": {
+   "ok": true
+  },
+  "mapa.yacimiento": {
+   "error": "TimeoutError: elementHandle.click: Timeout 4000ms exceeded.\nCall log:\n\u001b[2m  - attempting click actio",
+   "ok": true
+  },
+  "socratico": {
+   "ok": true
+  },
+  "paleolab": {
+   "ok": true
+  },
+  "itinerario": {
+   "ok": true
+  },
+  "aula.sa": {
+   "error": "TimeoutError: elementHandle.click: Timeout 4000ms exceeded.\nCall log:\n\u001b[2m  - attempting click actio",
+   "ok": true
+  },
+  "simulador": {
+   "excepciones": [],
+   "excepcionesPlay": [],
+   "ok": true
+  },
+  "datacion": {
+   "ok": true
+  },
+  "constructor": {
+   "ok": false,
+   "error": "TimeoutError: elementHandle.scrollIntoViewIfNeeded: Timeout 4000ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - ele"
+  },
+  "tafonomia": {
+   "ok": true
+  }
+ },
+ "enlacesProfundos": "atlas/index.html?view=<id>#main-content (077-integrated-route-bridge)"
+}

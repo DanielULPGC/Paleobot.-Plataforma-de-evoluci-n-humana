@@ -136,7 +136,7 @@ async function main() {
       // Mutaciones del DOM en reposo (3 s) tras entrar: guardas que repintan (informativo).
       r.mutacionesReposo3s = await page.evaluate(() => new Promise((ok) => { let n = 0; const m = new MutationObserver((l) => { n += l.length; }); m.observe(document.documentElement, { childList: true, subtree: true, attributes: true }); setTimeout(() => { m.disconnect(); ok(n); }, 3000); }));
       for (const v of P.VISTAS) {
-        try { const x = await P.irVistaUI(page, v, false); await P.barrerVista(page, v); x.datos = await P.medirVista(page, v); res.vistas[v] = x; } catch (e) { res.vistas[v] = { vista: v, ok: false, error: String(e).split('\n')[0].slice(0, 200) }; }
+        try { const x = await P.irVistaUI(page, v, false); await P.barrerVista(page, v); await page.waitForTimeout(600); x.datos = await P.medirVista(page, v); res.vistas[v] = x; } catch (e) { res.vistas[v] = { vista: v, ok: false, error: String(e).split('\n')[0].slice(0, 200) }; }
       }
       r.localesFallidas = [...new Set(red.localesFallidas)];
       return r;

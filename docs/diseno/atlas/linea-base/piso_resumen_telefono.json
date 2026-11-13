@@ -1,0 +1,528 @@
+{
+ "fuente": "scratchpad/atlas11/piso/piso_telefono.json (recorrido.cjs sobre c971001, terceros simulados)",
+ "cargaMs": 1966,
+ "listoMs": 2457,
+ "clsCarga": 2.122,
+ "peso": {
+  "recursos": 151,
+  "kB": 7151
+ },
+ "navegacion": {
+  "menor24": 0,
+  "menor44": 15,
+  "controles": 19,
+  "emoji": 0,
+  "desbordaX": false
+ },
+ "vistas": {
+  "timeline": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 13,
+   "colores": 13,
+   "menor24": 0,
+   "menor44": 0,
+   "controles": 51,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {},
+   "excepciones": null
+  },
+  "tree": {
+   "cls": 0.085,
+   "desbordaX": false,
+   "tamanosLetra": 19,
+   "colores": 15,
+   "menor24": 0,
+   "menor44": 2,
+   "controles": 52,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 51
+   },
+   "excepciones": null
+  },
+  "phylo": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 23,
+   "colores": 10,
+   "menor24": 70,
+   "menor44": 73,
+   "controles": 73,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "nested-interactive": 1
+   },
+   "excepciones": null
+  },
+  "contexto": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 22,
+   "colores": 9,
+   "menor24": 50,
+   "menor44": 53,
+   "controles": 53,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 1,
+    "nested-interactive": 1
+   },
+   "excepciones": null
+  },
+  "clima": {
+   "cls": 0.085,
+   "desbordaX": false,
+   "tamanosLetra": 23,
+   "colores": 10,
+   "menor24": 50,
+   "menor44": 68,
+   "controles": 75,
+   "emoji": 14,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 19,
+    "nested-interactive": 1
+   },
+   "excepciones": null
+  },
+  "paleoecologia": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 17,
+   "colores": 9,
+   "menor24": 73,
+   "menor44": 136,
+   "controles": 136,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "target-size": 73
+   },
+   "excepciones": null
+  },
+  "continentes": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 20,
+   "colores": 13,
+   "menor24": 0,
+   "menor44": 3,
+   "controles": 57,
+   "emoji": 1,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 53
+   },
+   "excepciones": null
+  },
+  "africa": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 31,
+   "colores": 12,
+   "menor24": 8,
+   "menor44": 65,
+   "controles": 115,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "aria-allowed-role": 6,
+    "color-contrast": 84,
+    "nested-interactive": 6
+   },
+   "excepciones": null
+  },
+  "america": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 20,
+   "colores": 15,
+   "menor24": 7,
+   "menor44": 11,
+   "controles": 16,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 20
+   },
+   "excepciones": null
+  },
+  "asia": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 20,
+   "colores": 15,
+   "menor24": 10,
+   "menor44": 16,
+   "controles": 21,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 36
+   },
+   "excepciones": null
+  },
+  "europe": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 20,
+   "colores": 15,
+   "menor24": 9,
+   "menor44": 14,
+   "controles": 19,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 33
+   },
+   "excepciones": null
+  },
+  "map": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 29,
+   "colores": 15,
+   "menor24": 0,
+   "menor44": 21,
+   "controles": 75,
+   "emoji": 1,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 45
+   },
+   "excepciones": null
+  },
+  "yacimientos": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 19,
+   "colores": 10,
+   "menor24": 0,
+   "menor44": 56,
+   "controles": 56,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 53
+   },
+   "excepciones": null
+  },
+  "debates": {
+   "cls": 0.085,
+   "desbordaX": false,
+   "tamanosLetra": 20,
+   "colores": 13,
+   "menor24": 10,
+   "menor44": 13,
+   "controles": 13,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 24
+   },
+   "excepciones": null
+  },
+  "socratico": {
+   "cls": 0.487,
+   "desbordaX": false,
+   "tamanosLetra": 22,
+   "colores": 13,
+   "menor24": 10,
+   "menor44": 24,
+   "controles": 24,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 26
+   },
+   "excepciones": null
+  },
+  "estratigrafia": {
+   "cls": 0.256,
+   "desbordaX": false,
+   "tamanosLetra": 22,
+   "colores": 9,
+   "menor24": 0,
+   "menor44": 3,
+   "controles": 14,
+   "emoji": 2,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 3,
+    "nested-interactive": 1
+   },
+   "excepciones": null
+  },
+  "tafonomia": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 24,
+   "colores": 9,
+   "menor24": 16,
+   "menor44": 20,
+   "controles": 21,
+   "emoji": 0,
+   "saltosEncabezado": 1,
+   "axe": {
+    "color-contrast": 38,
+    "heading-order": 1,
+    "link-in-text-block": 1
+   },
+   "excepciones": null
+  },
+  "introgresion": {
+   "cls": 0.253,
+   "desbordaX": false,
+   "tamanosLetra": 18,
+   "colores": 11,
+   "menor24": 0,
+   "menor44": 4,
+   "controles": 9,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "aria-required-children": 1,
+    "color-contrast": 7
+   },
+   "excepciones": null
+  },
+  "genomica": {
+   "cls": 0.207,
+   "desbordaX": false,
+   "tamanosLetra": 27,
+   "colores": 14,
+   "menor24": 0,
+   "menor44": 3,
+   "controles": 7,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 13
+   },
+   "excepciones": null
+  },
+  "paleoproteomica": {
+   "cls": 0.04,
+   "desbordaX": false,
+   "tamanosLetra": 15,
+   "colores": 13,
+   "menor24": 0,
+   "menor44": 4,
+   "controles": 4,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 12
+   },
+   "excepciones": null
+  },
+  "holotipos": {
+   "cls": 0.063,
+   "desbordaX": false,
+   "tamanosLetra": 19,
+   "colores": 9,
+   "menor24": 0,
+   "menor44": 53,
+   "controles": 53,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 151
+   },
+   "excepciones": null
+  },
+  "coexistencias": {
+   "cls": 0.306,
+   "desbordaX": false,
+   "tamanosLetra": 21,
+   "colores": 15,
+   "menor24": 1,
+   "menor44": 3,
+   "controles": 8,
+   "emoji": 52,
+   "saltosEncabezado": 0,
+   "axe": {
+    "aria-prohibited-attr": 230,
+    "color-contrast": 37,
+    "scrollable-region-focusable": 1
+   },
+   "excepciones": null
+  },
+  "revisiones": {
+   "cls": 0.31,
+   "desbordaX": false,
+   "tamanosLetra": 17,
+   "colores": 10,
+   "menor24": 0,
+   "menor44": 2,
+   "controles": 2,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 2
+   },
+   "excepciones": null
+  },
+  "dispersal": {
+   "cls": 0.153,
+   "desbordaX": false,
+   "tamanosLetra": 18,
+   "colores": 9,
+   "menor24": 1,
+   "menor44": 7,
+   "controles": 7,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 1
+   },
+   "excepciones": [
+    "ReferenceError: OUT_OF_AFRICA_EVENTS is not defined",
+    "ReferenceError: OUT_OF_AFRICA_EVENTS is not defined",
+    "ReferenceError: OUT_OF_AFRICA_EVENTS is not defined"
+   ]
+  },
+  "constructor": {
+   "cls": 0.086,
+   "desbordaX": false,
+   "tamanosLetra": 28,
+   "colores": 13,
+   "menor24": 18,
+   "menor44": 30,
+   "controles": 66,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 53,
+    "landmark-complementary-is-top-level": 1,
+    "landmark-unique": 1,
+    "nested-interactive": 1,
+    "scrollable-region-focusable": 3
+   },
+   "excepciones": null
+  },
+  "datacion": {
+   "cls": 0.532,
+   "desbordaX": false,
+   "tamanosLetra": 17,
+   "colores": 9,
+   "menor24": 0,
+   "menor44": 7,
+   "controles": 8,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 4
+   },
+   "excepciones": null
+  },
+  "primatologia": {
+   "cls": 0.173,
+   "desbordaX": false,
+   "tamanosLetra": 23,
+   "colores": 17,
+   "menor24": 5,
+   "menor44": 22,
+   "controles": 22,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 8,
+    "scrollable-region-focusable": 1
+   },
+   "excepciones": null
+  },
+  "aula": {
+   "cls": 0.224,
+   "desbordaX": false,
+   "tamanosLetra": 36,
+   "colores": 21,
+   "menor24": 25,
+   "menor44": 118,
+   "controles": 118,
+   "emoji": 14,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 12,
+    "scrollable-region-focusable": 4
+   },
+   "excepciones": null
+  },
+  "recursos": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 24,
+   "colores": 19,
+   "menor24": 8,
+   "menor44": 83,
+   "controles": 92,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 26,
+    "target-size": 8
+   },
+   "excepciones": [
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')"
+   ]
+  },
+  "itinerarios": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 20,
+   "colores": 12,
+   "menor24": 0,
+   "menor44": 10,
+   "controles": 13,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 5
+   },
+   "excepciones": null
+  },
+  "biogeo": {
+   "cls": 0.145,
+   "desbordaX": false,
+   "tamanosLetra": 25,
+   "colores": 12,
+   "menor24": 34,
+   "menor44": 36,
+   "controles": 66,
+   "emoji": 80,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 84,
+    "target-size": 34
+   },
+   "excepciones": null
+  }
+ }
+}

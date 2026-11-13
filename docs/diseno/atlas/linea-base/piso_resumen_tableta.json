@@ -1,0 +1,520 @@
+{
+ "fuente": "scratchpad/atlas11/piso/piso_tableta.json (recorrido.cjs sobre c971001, terceros simulados)",
+ "cargaMs": 1335,
+ "listoMs": 1893,
+ "clsCarga": 2.237,
+ "peso": {
+  "recursos": 153,
+  "kB": 7255
+ },
+ "navegacion": {
+  "menor24": 0,
+  "menor44": 15,
+  "controles": 19,
+  "emoji": 0,
+  "desbordaX": false
+ },
+ "vistas": {
+  "timeline": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 14,
+   "colores": 13,
+   "menor24": 0,
+   "menor44": 1,
+   "controles": 51,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {},
+   "excepciones": null
+  },
+  "tree": {
+   "cls": 0.316,
+   "desbordaX": false,
+   "tamanosLetra": 19,
+   "colores": 15,
+   "menor24": 0,
+   "menor44": 2,
+   "controles": 52,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 51
+   },
+   "excepciones": null
+  },
+  "phylo": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 23,
+   "colores": 10,
+   "menor24": 70,
+   "menor44": 73,
+   "controles": 73,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "nested-interactive": 1
+   },
+   "excepciones": null
+  },
+  "contexto": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 22,
+   "colores": 9,
+   "menor24": 50,
+   "menor44": 53,
+   "controles": 53,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 1,
+    "nested-interactive": 1
+   },
+   "excepciones": null
+  },
+  "clima": {
+   "cls": 0.989,
+   "desbordaX": false,
+   "tamanosLetra": 23,
+   "colores": 10,
+   "menor24": 50,
+   "menor44": 69,
+   "controles": 75,
+   "emoji": 14,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 19,
+    "nested-interactive": 1
+   },
+   "excepciones": null
+  },
+  "paleoecologia": {
+   "cls": 0.188,
+   "desbordaX": false,
+   "tamanosLetra": 17,
+   "colores": 9,
+   "menor24": 73,
+   "menor44": 136,
+   "controles": 136,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "target-size": 73
+   },
+   "excepciones": null
+  },
+  "continentes": {
+   "cls": 0,
+   "desbordaX": false,
+   "tamanosLetra": 20,
+   "colores": 13,
+   "menor24": 0,
+   "menor44": 3,
+   "controles": 57,
+   "emoji": 3,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 86
+   },
+   "excepciones": null
+  },
+  "africa": {
+   "cls": 0.706,
+   "desbordaX": false,
+   "tamanosLetra": 30,
+   "colores": 12,
+   "menor24": 0,
+   "menor44": 64,
+   "controles": 115,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "aria-allowed-role": 6,
+    "color-contrast": 84,
+    "nested-interactive": 6
+   },
+   "excepciones": null
+  },
+  "america": {
+   "cls": 0.594,
+   "desbordaX": false,
+   "tamanosLetra": 21,
+   "colores": 15,
+   "menor24": 7,
+   "menor44": 11,
+   "controles": 16,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 20
+   },
+   "excepciones": null
+  },
+  "asia": {
+   "cls": 0.177,
+   "desbordaX": false,
+   "tamanosLetra": 21,
+   "colores": 15,
+   "menor24": 10,
+   "menor44": 16,
+   "controles": 21,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 37
+   },
+   "excepciones": null
+  },
+  "europe": {
+   "cls": 0.353,
+   "desbordaX": false,
+   "tamanosLetra": 21,
+   "colores": 15,
+   "menor24": 9,
+   "menor44": 14,
+   "controles": 19,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 35
+   },
+   "excepciones": null
+  },
+  "map": {
+   "cls": 0.53,
+   "desbordaX": false,
+   "tamanosLetra": 29,
+   "colores": 15,
+   "menor24": 0,
+   "menor44": 21,
+   "controles": 75,
+   "emoji": 1,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 45
+   },
+   "excepciones": null
+  },
+  "yacimientos": {
+   "cls": 0.42,
+   "desbordaX": false,
+   "tamanosLetra": 19,
+   "colores": 10,
+   "menor24": 0,
+   "menor44": 56,
+   "controles": 56,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 55
+   },
+   "excepciones": null
+  },
+  "debates": {
+   "cls": 2.904,
+   "desbordaX": false,
+   "tamanosLetra": 20,
+   "colores": 13,
+   "menor24": 10,
+   "menor44": 13,
+   "controles": 13,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 50
+   },
+   "excepciones": null
+  },
+  "socratico": {
+   "cls": 2.347,
+   "desbordaX": false,
+   "tamanosLetra": 22,
+   "colores": 13,
+   "menor24": 10,
+   "menor44": 24,
+   "controles": 24,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 50
+   },
+   "excepciones": null
+  },
+  "estratigrafia": {
+   "cls": 2.275,
+   "desbordaX": false,
+   "tamanosLetra": 22,
+   "colores": 9,
+   "menor24": 0,
+   "menor44": 3,
+   "controles": 14,
+   "emoji": 2,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 3,
+    "nested-interactive": 1
+   },
+   "excepciones": null
+  },
+  "tafonomia": {
+   "cls": 0.367,
+   "desbordaX": false,
+   "tamanosLetra": 24,
+   "colores": 9,
+   "menor24": 16,
+   "menor44": 20,
+   "controles": 21,
+   "emoji": 0,
+   "saltosEncabezado": 1,
+   "axe": {
+    "color-contrast": 38,
+    "heading-order": 1,
+    "link-in-text-block": 1
+   },
+   "excepciones": null
+  },
+  "introgresion": {
+   "cls": 0.584,
+   "desbordaX": false,
+   "tamanosLetra": 18,
+   "colores": 11,
+   "menor24": 0,
+   "menor44": 4,
+   "controles": 9,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "aria-required-children": 1,
+    "color-contrast": 7
+   },
+   "excepciones": null
+  },
+  "genomica": {
+   "cls": 0.734,
+   "desbordaX": false,
+   "tamanosLetra": 26,
+   "colores": 14,
+   "menor24": 0,
+   "menor44": 7,
+   "controles": 7,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 9
+   },
+   "excepciones": null
+  },
+  "paleoproteomica": {
+   "cls": 0.734,
+   "desbordaX": false,
+   "tamanosLetra": 15,
+   "colores": 13,
+   "menor24": 0,
+   "menor44": 4,
+   "controles": 4,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 12
+   },
+   "excepciones": null
+  },
+  "holotipos": {
+   "cls": 0.39,
+   "desbordaX": false,
+   "tamanosLetra": 19,
+   "colores": 9,
+   "menor24": 0,
+   "menor44": 53,
+   "controles": 53,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 151
+   },
+   "excepciones": null
+  },
+  "coexistencias": {
+   "cls": 1.217,
+   "desbordaX": false,
+   "tamanosLetra": 21,
+   "colores": 15,
+   "menor24": 1,
+   "menor44": 3,
+   "controles": 8,
+   "emoji": 52,
+   "saltosEncabezado": 0,
+   "axe": {
+    "aria-prohibited-attr": 230,
+    "color-contrast": 37,
+    "scrollable-region-focusable": 1
+   },
+   "excepciones": null
+  },
+  "revisiones": {
+   "cls": 2.19,
+   "desbordaX": false,
+   "tamanosLetra": 17,
+   "colores": 10,
+   "menor24": 0,
+   "menor44": 2,
+   "controles": 2,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 2
+   },
+   "excepciones": null
+  },
+  "dispersal": {
+   "cls": 1.318,
+   "desbordaX": false,
+   "tamanosLetra": 18,
+   "colores": 9,
+   "menor24": 1,
+   "menor44": 7,
+   "controles": 7,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 1
+   },
+   "excepciones": [
+    "ReferenceError: OUT_OF_AFRICA_EVENTS is not defined",
+    "ReferenceError: OUT_OF_AFRICA_EVENTS is not defined"
+   ]
+  },
+  "constructor": {
+   "cls": 2.055,
+   "desbordaX": false,
+   "tamanosLetra": 28,
+   "colores": 13,
+   "menor24": 18,
+   "menor44": 30,
+   "controles": 66,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 52,
+    "landmark-complementary-is-top-level": 1,
+    "landmark-unique": 1,
+    "nested-interactive": 1,
+    "scrollable-region-focusable": 2
+   },
+   "excepciones": null
+  },
+  "datacion": {
+   "cls": 1.868,
+   "desbordaX": false,
+   "tamanosLetra": 17,
+   "colores": 9,
+   "menor24": 0,
+   "menor44": 7,
+   "controles": 8,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 4
+   },
+   "excepciones": null
+  },
+  "primatologia": {
+   "cls": 1.871,
+   "desbordaX": false,
+   "tamanosLetra": 23,
+   "colores": 17,
+   "menor24": 5,
+   "menor44": 22,
+   "controles": 22,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 8,
+    "scrollable-region-focusable": 1
+   },
+   "excepciones": null
+  },
+  "aula": {
+   "cls": 3.374,
+   "desbordaX": false,
+   "tamanosLetra": 35,
+   "colores": 21,
+   "menor24": 25,
+   "menor44": 118,
+   "controles": 118,
+   "emoji": 14,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 12,
+    "scrollable-region-focusable": 4
+   },
+   "excepciones": null
+  },
+  "recursos": {
+   "cls": 0.952,
+   "desbordaX": false,
+   "tamanosLetra": 25,
+   "colores": 19,
+   "menor24": 8,
+   "menor44": 83,
+   "controles": 92,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 28,
+    "target-size": 8
+   },
+   "excepciones": [
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')",
+    "TypeError: Cannot read properties of null (reading 'classList')"
+   ]
+  },
+  "itinerarios": {
+   "cls": 0.737,
+   "desbordaX": false,
+   "tamanosLetra": 19,
+   "colores": 12,
+   "menor24": 0,
+   "menor44": 10,
+   "controles": 13,
+   "emoji": 0,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 5
+   },
+   "excepciones": null
+  },
+  "biogeo": {
+   "cls": 1.411,
+   "desbordaX": false,
+   "tamanosLetra": 25,
+   "colores": 12,
+   "menor24": 34,
+   "menor44": 36,
+   "controles": 66,
+   "emoji": 80,
+   "saltosEncabezado": 0,
+   "axe": {
+    "color-contrast": 84,
+    "target-size": 34
+   },
+   "excepciones": null
+  }
+ }
+}

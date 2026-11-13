@@ -1,0 +1,9 @@
+{
+ "descripcion": "Claves de humo.cjs que cambian entre dos ejecuciones seguidas sin cambios sobre c971001 (escritorio, terceros simulados, --paralelo 2), en dos pares de ejecuciones del 2026-11-13 (con el arnés inicial y con el corregido), con el mismo conjunto de claves en ambos. Causa: varios módulos escriben aria-hidden y mueven el foco de estos diálogos con temporizadores sin coordinarse (notas/04, fila 3: 002-script.js:15720/15757/15874/15884, 009-v35, 011-v37, 024-v50, 014-v40); el resultado depende de qué temporizador gana. Se espera que el gestor de diálogos de la T3 las vuelva deterministas; entonces deben salir de esta lista.",
+ "claves": [
+  "función bibliografia: focoEntra",
+  "función bibliografia: sin aria-hidden al abrir",
+  "función examen: focoEntra",
+  "función sintesis: sin aria-hidden al abrir"
+ ]
+}
