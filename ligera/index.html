@@ -215,6 +215,16 @@ main > section { margin: var(--e-5) 0; scroll-margin-top: var(--e-4); }
   color: var(--tinta); background: var(--superficie); border: var(--linea) solid var(--borde-control); border-radius: var(--r-control);
 }
 .search input:focus-visible { border-color: var(--acento); }
+/* Con la letra al 200 % en el teléfono el campo no debe imponer su ancho intrínseco (desbordaba hasta 613 px en 390). */
+.search { min-width: 0; }
+.search input { width: 100%; min-width: 0; box-sizing: border-box; }
+/* En esta hoja, las etiquetas de incertidumbre pueden partirse en dos líneas: con la letra grande «Cronología no
+   determinada» no cabía en una (la regla común del bloque sincronizado las deja en una sola). */
+.pb-etiqueta { white-space: normal; }
+/* Palabras largas (nombres científicos, DOI) a letra grande: se parten antes que desbordar la pantalla. */
+main { overflow-wrap: break-word; }
+.timeline li > * { min-width: 0; overflow-wrap: anywhere; }
+summary > * { min-width: 0; overflow-wrap: anywhere; }
 #search-status { color: var(--tinta-2); font-size: var(--t-s); }
 
 /* ---------- Fichas (details), con la misma forma que las fichas de DEA ---------- */
@@ -243,6 +253,17 @@ details > summary::-webkit-details-marker { display: none; }
 .species-body .media { float: right; width: min(16rem, 45%); margin: 0 0 var(--e-4) var(--e-4); }
 .species-body .media img { display: block; width: 100%; height: auto; border-radius: var(--r-control); background: var(--hundido); }
 .species-body .media img[hidden] { display: none; }
+/* Imagen que no carga y sin JavaScript (p. ej. la consulta abierta como archivo suelto, sin la carpeta img/ junto a
+   ella): en lugar del icono de imagen rota, un recuadro discreto con su texto alternativo. El crédito, la licencia y
+   el enlace «Ficha de la imagen» siguen debajo, en el pie. Los navegadores solo pintan ::after en imágenes que no
+   han cargado; con la imagen cargada no se ve. Con JavaScript, interaccion.js la oculta y avisa en el pie. */
+.species-body .media img { position: relative; }
+.species-body .media img::after {
+  content: "Imagen no disponible en esta copia: " attr(alt) ".";
+  position: absolute; inset: 0; display: flex; align-items: center; padding: var(--e-3);
+  background: var(--hundido); color: var(--tinta-2); border-radius: var(--r-control);
+  font-family: var(--f-lectura); font-size: var(--t-xs); line-height: 1.4;
+}
 .media figcaption { margin-top: var(--e-2); font-size: var(--t-xs); color: var(--tinta-3); }
 .media-pending { margin: 0 0 var(--e-4); padding: var(--e-3) var(--e-4); background: var(--hundido); border-radius: var(--r-control); max-width: var(--medida); }
 .media-pending .pb-etiqueta { margin-right: var(--e-2); }
@@ -287,7 +308,7 @@ details > summary::-webkit-details-marker { display: none; }
 footer { padding: var(--e-4) 0; background: var(--hundido); color: var(--tinta-2); font-size: var(--t-s); }
 
 @media (max-width: 43.75rem) {
-  .timeline li { grid-template-columns: 1fr; gap: var(--e-1); }
+  .timeline li { grid-template-columns: minmax(0, 1fr); gap: var(--e-1); }
   .species-body .media { float: none; width: 100%; max-width: 22rem; margin: 0 0 var(--e-4); }
 }
 @media (prefers-reduced-motion: no-preference) {
