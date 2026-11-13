@@ -277,6 +277,8 @@ main .linea-tiempo li { max-width: none; }
 .linea-tiempo .texto { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--e-2); min-width: 0; }
 .linea-tiempo a.nombre { display: inline-flex; align-items: center; min-height: var(--control-min); font-weight: 600; color: var(--tinta); text-decoration: none; }
 .linea-tiempo a.nombre:hover { color: var(--acento); text-decoration: underline; }
+/* Teléfono: el nombre en su línea y debajo, siempre juntos, fechas, región y «Debatida»: todas las filas con el mismo ritmo. */
+@media (max-width: 39.99rem) { .linea-tiempo a.nombre { flex-basis: 100%; } }
 .linea-tiempo .fechas { font-size: var(--t-s); color: var(--tinta-2); white-space: nowrap; }
 .linea-tiempo .region { font-size: var(--t-s); color: var(--tinta-2); }
 .linea-tiempo .etiqueta { align-self: center; }
@@ -347,7 +349,9 @@ main .linea-tiempo li { max-width: none; }
 .recuadro-rift .rotulo-dato { margin: 0 0 var(--e-1); padding: 0 var(--e-1); }
 #mapa-svg { display: block; width: 100%; height: auto; max-height: 70vh; }
 #mapa-rift { display: block; width: 100%; height: auto; max-height: 60vh; }
-@media (max-width: 47.99rem) { .recuadro-rift { justify-self: center; width: min(100%, 11rem); } }
+/* Teléfono: el recuadro del Rift ocupa el ancho del mapa general (antes 11 rem centrados, con un gran vacío al lado);
+   el dibujo se centra en él y sus números crecen en proporción. */
+@media (max-width: 47.99rem) { #mapa-rift { max-height: min(60vh, 28rem); } }
 .mapas .tierra { fill: var(--tierra); stroke: var(--tinta-2); stroke-width: .12; }
 #mapa-rift .tierra { stroke-width: .05; }
 .mapas .punto { cursor: pointer; }
@@ -477,6 +481,8 @@ main .unidad-comparar { margin: var(--e-1) 0 0; max-width: none; text-align: cen
 .tarjeta h2 { font-size: var(--t-l); margin: 0 0 var(--e-2); }
 .tarjeta .pregunta-metodo { font-weight: 600; }
 .tarjeta .rotulo-fuentes { margin: var(--e-3) 0 0; }
+/* La tarjeta mide lo que su texto (medida de lectura más su relleno): en escritorio no queda media tarjeta vacía. */
+.tarjetas .tarjeta { max-width: calc(var(--medida) + 2 * var(--e-5)); }
 
 /* ---------- Glosario ---------- */
 .glosario { margin: 0; }
@@ -486,7 +492,10 @@ main .unidad-comparar { margin: var(--e-1) 0 0; max-width: none; text-align: cen
 .glosario dd { margin: var(--e-1) 0 0; }
 /* Glosario por letras: índice de letras y una letra grande como titular de cada grupo. */
 .letras { display: flex; flex-wrap: wrap; gap: var(--e-1); margin: 0 0 var(--e-5); }
-.letras button { min-width: var(--control); padding: var(--e-1); border-color: var(--borde); font-weight: 600; }
+/* Índice de letras ligero: botones sin borde ni relleno (solo la letra en acento), para que no compita con el título. */
+.letras { gap: 0; }
+.letras button { min-width: var(--control); padding: var(--e-1); border-color: transparent; background: transparent; color: var(--acento); font-weight: 600; }
+.letras button:hover { border-color: var(--borde-control); background: var(--superficie); }
 .grupo-glosario + .grupo-glosario { margin-top: var(--e-6); }
 .letra-glosario { margin: 0 0 var(--e-3); padding-bottom: var(--e-1); color: var(--acento); border-bottom: var(--linea) solid var(--borde); scroll-margin-top: calc(var(--alto-pestanas) + var(--e-3)); }
 .letra-glosario:focus { outline: none; }
