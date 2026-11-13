@@ -1,0 +1,22 @@
+/* =====================================================================================================
+   atlas-sistema.css · hoja final del sistema del atlas interactivo (PB-GH-11)
+   -----------------------------------------------------------------------------------------------------
+   Columna vertebral ADITIVA (DIRECCION_ATLAS § 1): se enlaza la ÚLTIMA en atlas/index.html (?v=pbgh11) y
+   corrige por las clases EXISTENTES, sin renombrar ni borrar ninguna clase, id, data-* ni regla de las hojas
+   importadas. La ampliará la T2 (puente de variables a «Papel y tierra», tipografía, foco, modos, impresión,
+   componentes base). Mientras assets/paleobot-base.css no esté enlazada en el atlas, cada token lleva como
+   respaldo el valor CLARO de esa hoja base.
+   Capas (en este orden):
+     0 · Arreglos de piso puntuales (filas de notas/04_tabla_correccion_atlas.md)
+   ===================================================================================================== */
+
+/* -- 0 · Arreglos de piso ---------------------------------------------------------------------------- */
+
+/* 04, fila 2 · Autoevaluación (#examModal): el botón principal «Comenzar clásico» quedaba invisible
+   (texto #172436 sobre #1c2b3a = 1,08:1) porque 10-legacy-ui/020-…readable-ui.css fuerza
+   color:#172436!important en todo botón de .modal-content. Especificidad (0,4,1) > (0,3,2) de esa regla.
+   Acento tierra con texto blanco: 7,7:1. Los botones .linked (secundarios) conservan su aspecto. */
+body.pb-v50-unified .modal-content .exam-btn:not(.linked) {
+  background: var(--acento, #8a3b12) !important;
+  color: var(--sobre-acento, #ffffff) !important;
+}
