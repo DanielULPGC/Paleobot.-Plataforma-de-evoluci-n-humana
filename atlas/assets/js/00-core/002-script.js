@@ -7048,8 +7048,10 @@ function renderResourceThumb(item) {
   if (!item.domain) {
     return `<span class="resource-link-thumb fallback" aria-hidden="true">${escapeHtmlText(rawLetter)}</span>`;
   }
-  const favicon = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(item.domain)}&sz=64`;
-  return `<span class="resource-link-thumb" aria-hidden="true"><img src="${escapeHtmlAttr(favicon)}" data-letter="${escapeHtmlAttr(rawLetter)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="var p=this.parentElement;p.classList.add('fallback');p.textContent=this.getAttribute('data-letter')||'';"></span>`;
+  // PB-GH-11 (04, fila 10): sin favicons de Google (la CSP los bloqueaba siempre, el onerror en línea lanzaba
+  // TypeError y la petición filtraba los dominios a un tercero): icono local por tipo de recurso.
+  const tipo = { '3D': '3d', 'Primatología': 'primatologia', 'Tecnología': 'tecnologia', 'Investigación': 'investigacion', 'Divulgación': 'divulgacion', 'Perspectiva crítica': 'perspectiva-critica' }[item.kind] || 'enlace';
+  return `<span class="resource-link-thumb" aria-hidden="true"><img src="assets/media/95-sistema/recursos/${tipo}.svg" data-letter="${escapeHtmlAttr(rawLetter)}" alt="" width="40" height="40"></span>`;
 }
 
 function renderResourceLinksSection() {
