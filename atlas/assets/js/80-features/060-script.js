@@ -286,7 +286,6 @@
             const cm = COMP_META[c] || { emoji:'📌', full: c };
             return `<div class="pb-ssm-comp-item" role="listitem"
                          title="${_esc(cm.full)}">
-              <span class="pb-ssm-comp-emoji" aria-hidden="true">${cm.emoji}</span>
               <span class="pb-ssm-comp-code">${_esc(c)}</span>
               <span class="pb-ssm-comp-full">${_esc(cm.full)}</span>
             </div>`;
