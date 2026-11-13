@@ -217,7 +217,9 @@ def verify(include_syntax=True):
         for valor in re.findall(r'(?<![-\w])font-size\s*:\s*([^;]+)',cuerpo):
             valor=valor.strip();sel=' '.join(selector.split())
             if not re.fullmatch(r'var\(--t-[a-z0-9]+\)',valor) and excepciones_fs.get(sel)!=valor:tamanos_fuera.append(sel+': '+valor)
-    colores=re.findall(r'#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\(',dea_css)
+    colores=re.findall(r'#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color|color-mix|light-dark)\(',dea_css)
+    # color-mix() y light-dark() quedan prohibidos en dea/dea.css (hoy no se usan): mezclar tokens crea colores fuera del
+    # sistema, sin contraste medido. Un color nuevo se añade como token en assets/paleobot-base.css.
     # Colores con nombre en cualquier propiedad (color: red, border: 1px solid black, color-mix(in srgb, white 20%, …)…)
     # y atajo font: con un tamaño en bruto. Las palabras admitidas no son colores (transparent, currentColor…).
     nombres_color=set('aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen canvas canvastext linktext visitedtext activetext buttonface buttontext buttonborder field fieldtext highlight highlighttext mark marktext graytext accentcolor accentcolortext'.split())
@@ -275,6 +277,62 @@ def verify(include_syntax=True):
     referencia_ok=bool(previo_index) and snap_index.is_file() and digest(snap_index)==previo_index[0].get('previous_sha256') and len(bloques_previos)>=60
     check('No se elimina nada: datos, glosario, imágenes y mapa intactos y textos de las seis sesiones presentes',len(protegido)==4 and not cambiados and len(textos_sesion)>=100 and not perdidos,', '.join(cambiados+perdidos[:3]))
     check('No se elimina nada: textos de dea/index.html publicados en 693055f presentes o reubicados con sus fragmentos',referencia_ok and not sin_texto,', '.join(sin_texto[:3]) or ('' if referencia_ok else 'sin referencia de 693055f'))
+    # Textos informativos de interfaz que viven en dea/dea.js (rótulos de ficha y de tarjeta, avisos, estados vacíos):
+    # lista cerrada de fragmentos obligatorios registrada en la procedencia (textos_obligatorios_dea_js).
+    obligatorios_js=pb10.get('textos_obligatorios_dea_js',[])
+    faltan_js=[x[:40] for x in obligatorios_js if x not in dea_js]
+    check('No se elimina nada: textos informativos de dea/dea.js registrados en la procedencia presentes',len(obligatorios_js)>=20 and not faltan_js,', '.join(faltan_js[:3]))
+    # Los archivos de dea/ (nacidos en PB-GH-07) no tienen huella de importación: su estado final es el corrected_sha256
+    # de modified_round_paths. Cualquier cambio no registrado en ellos (o una reversión) se detecta aquí.
+    huellas_dea=[x for x in pb10.get('modified_round_paths',[]) if x.get('path','').startswith('dea/')]
+    dea_distintos=[x['path'] for x in huellas_dea if not (ROOT/x['path']).is_file() or digest(ROOT/x['path'])!=x.get('corrected_sha256')]
+    check('Archivos de dea/ modificados en la ronda coinciden con su huella registrada',len(huellas_dea)==3 and not dea_distintos,', '.join(dea_distintos))
+    # Ocultación por CSS en dea/dea.css: display:none y visibility:hidden solo en una lista cerrada de selectores
+    # legítimos (paneles plegados, estados vacíos, impresión, proyección, sin JavaScript, carga). Se compara el selector
+    # junto con su contexto @media/@supports. Límite: no ve ocultaciones por otros medios (opacity, clip, tamaño 0,
+    # posición fuera de pantalla) ni las que haga dea.js con el atributo hidden.
+    def reglas_css(css,contexto=''):
+        out=[];i=0
+        while i<len(css):
+            j=css.find('{',i)
+            if j==-1:break
+            cab=' '.join(css[i:j].split());prof=1;k=j+1
+            while prof and k<len(css):
+                prof+=1 if css[k]=='{' else -1 if css[k]=='}' else 0;k+=1
+            cuerpo=css[j+1:k-1]
+            if cab.startswith('@'):out+=reglas_css(cuerpo,(contexto+' '+cab).strip())
+            else:out.append((contexto,cab,cuerpo))
+            i=k
+        return out
+    ocultan=sorted({(ctx+' | ' if ctx else '')+sel for ctx,sel,cuerpo in reglas_css(dea_css) if re.search(r'(?<![-\w])(?:display\s*:\s*none|visibility\s*:\s*hidden)',cuerpo)})
+    OCULTACIONES_DEA={
+      '.boton-ajustes',
+      '.boton-secciones, .panel-secciones',
+      '.detalle:empty',
+      '.eje-tiempo span.sin-sitio',
+      '.nota-impresa',
+      '.pie:has(#nota-datos:empty) #t-datos',
+      '.respuesta:empty',
+      '.resumen:empty',
+      '.solo-impresion',
+      '@media (max-width: 39.99rem) | .linea-tiempo .unidad-eje',
+      '@media (max-width: 47.99rem) | .ajustes',
+      '@media (scripting: enabled) | html:not(.dea-listo) :is(main, .pie)',
+      '@media (scripting: none) | .ajustes, .acciones-notas, .paso-seccion, #t-sesiones, #progreso-sesiones, #t-indice, .filtros, .comparador, .dia, #repaso-nuevo, .mapas, #t-regiones, .nota-progreso',
+      '@media (scripting: none) | .boton-ajustes',
+      '@media (scripting: none) | .boton-secciones, .panel-secciones',
+      '@media (scripting: none) | main:has(.seccion:target) #inicio',
+      '@media print | .cabecera .ajustes, .boton-ajustes, .pestanas, .panel-secciones, .continuar, .letras, .salto, .filtros, .pie a, .paso-seccion, .acciones-notas, .nota textarea, .nota label, #repaso-nuevo, .resultado-repaso .boton-primario, .vacio .acciones',
+      '@media print | .cruces',
+      '@media print | .seccion[hidden]',
+      '@media print | .sesion:not([open])',
+      '[hidden]',
+      'body.proyeccion .ajustes [data-texto], body.proyeccion #boton-imprimir, body.proyeccion .boton-ajustes',
+      'body.proyeccion .antetitulo, body.proyeccion .nota-progreso, body.proyeccion .pie, body.proyeccion .nota',
+      'details > summary::-webkit-details-marker',
+    }
+    no_previstas=[o for o in ocultan if o not in OCULTACIONES_DEA]
+    check('Hoja de la entrada DEA sin ocultaciones fuera de la lista cerrada de selectores legítimos',len(ocultan)>=20 and not no_previstas,', '.join(no_previstas[:3]))
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
     check('Referencia v9 y licencia Leaflet intactas',all(digest(ROOT/name)==baseline[name] for name in frozen))
     check('Catálogo original preservado',digest(ROOT/'src/entrada_ligera/catalog.json')==baseline['src/entrada_ligera/catalog.json'])

@@ -13,7 +13,10 @@ PORTADA='Portada conserva el acceso «DEA» con su rótulo visible en pantallas 
 NADA='No se elimina nada: datos, glosario, imágenes y mapa intactos y textos de las seis sesiones presentes'
 CONTRASTE='Parejas de tokens de assets/paleobot-base.css con contraste suficiente en claro, oscuro y proyección'
 NADA_DEA='No se elimina nada: textos de dea/index.html publicados en 693055f presentes o reubicados con sus fragmentos'
-NUEVAS=(TOKENS,LEXEND,DEA,DEA_CSS,FUENTES,LIGERA,PORTADA,NADA,CONTRASTE,NADA_DEA)
+NADA_JS='No se elimina nada: textos informativos de dea/dea.js registrados en la procedencia presentes'
+HUELLA_DEA='Archivos de dea/ modificados en la ronda coinciden con su huella registrada'
+OCULTA='Hoja de la entrada DEA sin ocultaciones fuera de la lista cerrada de selectores legítimos'
+NUEVAS=(TOKENS,LEXEND,DEA,DEA_CSS,FUENTES,LIGERA,PORTADA,NADA,CONTRASTE,NADA_DEA,NADA_JS,HUELLA_DEA,OCULTA)
 
 def module(name,path):
     spec=importlib.util.spec_from_file_location(name,path)
@@ -150,5 +153,30 @@ class DisenoPBGH10(unittest.TestCase):
     def test_rechaza_frase_reubicada_que_se_pierde(self):
         self.editar('dea/index.html',' no pasan de un aparato a otro y','')
         self.assertFalse(self.result(NADA_DEA))
+
+    # Segunda pasada de la verificación independiente.
+    def test_rechaza_color_mix_aunque_sea_entre_tokens(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { color: color-mix(in srgb, var(--tinta) 40%, var(--papel));')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_rotulo_de_ficha_cambiado_en_dea_js(self):
+        self.editar('dea/dea.js',"el('dt', { texto: 'Qué se sabe' })","el('dt', { texto: 'Resumen' })")
+        self.assertFalse(self.result(NADA_JS))
+
+    def test_rechaza_aviso_de_comparar_alterado(self):
+        self.editar('dea/dea.js','Coincidir en el tiempo no significa que se encontraran','Coincidir en el tiempo significa que se encontraron')
+        self.assertFalse(self.result(NADA_JS))
+
+    def test_rechaza_cambio_no_registrado_en_dea(self):
+        f=self.repo/'dea/dea.css';f.write_text(f.read_text(encoding='utf-8')+'\n',encoding='utf-8')
+        self.assertFalse(self.result(HUELLA_DEA))
+
+    def test_rechaza_ocultacion_no_prevista_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { display: none; color: var(--tinta-2);')
+        self.assertFalse(self.result(OCULTA))
+
+    def test_rechaza_ocultacion_legitima_sacada_de_su_contexto(self):
+        self.editar('dea/dea.css','.cruces { display: none; }','.cruces { color: inherit; }\n}\n.cruces { display: none; }\n@media print {')
+        self.assertFalse(self.result(OCULTA))
 
 if __name__=='__main__':unittest.main()
