@@ -5,6 +5,7 @@ from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 import csv, hashlib, json, re, shutil, subprocess, sys, tempfile
+import html as html_mod
 from urllib.parse import unquote, urlsplit
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -216,8 +217,20 @@ def verify(include_syntax=True):
         for valor in re.findall(r'(?<![-\w])font-size\s*:\s*([^;]+)',cuerpo):
             valor=valor.strip();sel=' '.join(selector.split())
             if not re.fullmatch(r'var\(--t-[a-z0-9]+\)',valor) and excepciones_fs.get(sel)!=valor:tamanos_fuera.append(sel+': '+valor)
-    colores=re.findall(r'#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch)\(',dea_css)
-    check('Hoja de la entrada DEA solo con tokens de color y de tamaño de letra',not tamanos_fuera and not colores,', '.join(tamanos_fuera[:3]+colores[:3]))
+    colores=re.findall(r'#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\(',dea_css)
+    # Colores con nombre en cualquier propiedad (color: red, border: 1px solid black, color-mix(in srgb, white 20%, …)…)
+    # y atajo font: con un tamaño en bruto. Las palabras admitidas no son colores (transparent, currentColor…).
+    nombres_color=set('aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen canvas canvastext linktext visitedtext activetext buttonface buttontext buttonborder field fieldtext highlight highlighttext mark marktext graytext accentcolor accentcolortext'.split())
+    con_nombre=[]
+    for selector,cuerpo in re.findall(r'([^{}]+)\{([^{}]*)\}',dea_css):
+        for prop,valor in re.findall(r'(?:^|;)\s*([-a-z]+)\s*:\s*([^;]+)',cuerpo):
+            if prop.startswith('--'):continue
+            limpio=re.sub(r'var\(--[\w-]+\)','',valor)
+            palabras={w.lower() for w in re.findall(r'(?<![-\w])[A-Za-z]+(?![-\w(])',limpio)}
+            if palabras&nombres_color:con_nombre.append(' '.join(selector.split())+' '+prop+': '+valor.strip())
+            if prop=='font' and valor.strip() not in ('inherit','initial','unset','revert') and not re.search(r'var\(--t-[a-z0-9]+\)',valor):
+                con_nombre.append(' '.join(selector.split())+' font: '+valor.strip())
+    check('Hoja de la entrada DEA solo con tokens de color y de tamaño de letra',not tamanos_fuera and not colores and not con_nombre,', '.join(tamanos_fuera[:3]+colores[:3]+con_nombre[:3]))
     recorrido=[ROOT/'atlas/recorrido'/f'{n}.html' for n in ('index','introduccion','cronologia','territorio','parentesco','ficha','metodos','clima','aula','atlas')]
     paginas_fuentes=[*recorrido,ROOT/'atlas/recorrido/portada-sylva.html',ROOT/'ligera/index.html',dea/'index.html',dea/'dea.css',ROOT/'src/entrada_ligera/estilos.css',ROOT/'assets/paleobot-base.css',ROOT/'atlas/recorrido/integracion.css']
     con_google=[str(f.relative_to(ROOT)) for f in paginas_fuentes if re.search(r'fonts\.(?:googleapis|gstatic)\.com',f.read_text(encoding='utf-8'))]
@@ -242,7 +255,26 @@ def verify(include_syntax=True):
         previo=snap_sesiones.read_text(encoding='utf-8');i=previo.find('var SESIONES = [');j=previo.find('\n  ];',i)
         if i!=-1 and j!=-1:textos_sesion=re.findall(r"'((?:[^'\\]|\\.)*)'",previo[i:j])
     perdidos=[t[:40] for t in textos_sesion if "'"+t+"'" not in dea_js]
+    # Textos de dea/index.html (guía «Su trabajo», entradillas, leyendas, rótulos): cada bloque de texto del <main> publicado
+    # en 693055f (su snapshot, con la huella anotada en modified_round_paths) sigue en dea/index.html o en dea/dea.js; si su
+    # redacción de interfaz cambió, está en textos_interfaz_reubicados con los fragmentos informativos que deben seguir.
+    def plano(s):return ' '.join(html_mod.unescape(re.sub(r'<[^>]+>',' ',s)).split()).lower()
+    def bloques_main(s):
+        s=re.sub(r'<(script|style)\b.*?</\1>','',s,flags=re.S);m=re.search(r'<main\b.*?</main>',s,re.S)
+        return [plano(c) for _,c in re.findall(r'<(p|li|h[1-6]|dt|dd|td|th|figcaption|label|summary|legend|caption)\b[^>]*>(.*?)</\1>',m.group(0) if m else '',re.S) if not re.search(r'<(p|li|ul|ol|div|h[1-6])\b',c) and len(plano(c))>2]
+    snap_index=ROOT/'docs/historial/PB_GH_09/dea/index.html.snapshot'
+    previo_index=[x for x in pb10.get('modified_round_paths',[]) if x.get('path')=='dea/index.html']
+    reubicados={plano(k):v for k,v in pb10.get('textos_interfaz_reubicados',{}).items()}
+    actual_dea=plano(re.sub(r'<(script|style)\b.*?</\1>','',dea_html,flags=re.S))+' '+plano(dea_js)
+    bloques_previos=bloques_main(snap_index.read_text(encoding='utf-8')) if snap_index.is_file() else []
+    sin_texto=[]
+    for b_ in bloques_previos:
+        if b_ in actual_dea:continue
+        frag=reubicados.get(b_)
+        if not frag or [x for x in frag if plano(x) not in actual_dea]:sin_texto.append(b_[:40])
+    referencia_ok=bool(previo_index) and snap_index.is_file() and digest(snap_index)==previo_index[0].get('previous_sha256') and len(bloques_previos)>=60
     check('No se elimina nada: datos, glosario, imágenes y mapa intactos y textos de las seis sesiones presentes',len(protegido)==4 and not cambiados and len(textos_sesion)>=100 and not perdidos,', '.join(cambiados+perdidos[:3]))
+    check('No se elimina nada: textos de dea/index.html publicados en 693055f presentes o reubicados con sus fragmentos',referencia_ok and not sin_texto,', '.join(sin_texto[:3]) or ('' if referencia_ok else 'sin referencia de 693055f'))
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
     check('Referencia v9 y licencia Leaflet intactas',all(digest(ROOT/name)==baseline[name] for name in frozen))
     check('Catálogo original preservado',digest(ROOT/'src/entrada_ligera/catalog.json')==baseline['src/entrada_ligera/catalog.json'])

@@ -12,7 +12,8 @@ LIGERA='Consulta ligera con imágenes locales registradas, sin Wikimedia como or
 PORTADA='Portada conserva el acceso «DEA» con su rótulo visible en pantallas estrechas'
 NADA='No se elimina nada: datos, glosario, imágenes y mapa intactos y textos de las seis sesiones presentes'
 CONTRASTE='Parejas de tokens de assets/paleobot-base.css con contraste suficiente en claro, oscuro y proyección'
-NUEVAS=(TOKENS,LEXEND,DEA,DEA_CSS,FUENTES,LIGERA,PORTADA,NADA,CONTRASTE)
+NADA_DEA='No se elimina nada: textos de dea/index.html publicados en 693055f presentes o reubicados con sus fragmentos'
+NUEVAS=(TOKENS,LEXEND,DEA,DEA_CSS,FUENTES,LIGERA,PORTADA,NADA,CONTRASTE,NADA_DEA)
 
 def module(name,path):
     spec=importlib.util.spec_from_file_location(name,path)
@@ -120,5 +121,34 @@ class DisenoPBGH10(unittest.TestCase):
     def test_rechaza_foco_sin_contraste_en_oscuro(self):
         self.editar('assets/paleobot-base.css','--foco: #8ab4f8;','--foco: #2a2f2d;')
         self.assertFalse(self.result(CONTRASTE))
+
+    # Falsos negativos de la verificación independiente (M7): cada forma de color o tamaño en bruto se rechaza.
+    def test_rechaza_color_con_nombre_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { color: red;')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_hsl_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { color: hsl(20 50% 30%);')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_color_mix_con_literal_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { color: color-mix(in srgb, var(--tinta-2), white 20%);')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_borde_con_color_en_bruto_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { border: 1px solid black; color: var(--tinta-2);')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_atajo_font_con_tamano_en_bruto(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { font: 11px serif; color: var(--tinta-2);')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_linea_borrada_de_la_guia_su_trabajo(self):
+        self.editar('dea/index.html','      <li>¿Por qué se habla de un árbol, y no de una escalera, en la evolución humana?</li>\n','')
+        self.assertFalse(self.result(NADA_DEA))
+
+    def test_rechaza_frase_reubicada_que_se_pierde(self):
+        self.editar('dea/index.html',' no pasan de un aparato a otro y','')
+        self.assertFalse(self.result(NADA_DEA))
 
 if __name__=='__main__':unittest.main()

@@ -407,5 +407,57 @@
     "dea/glosario.js": "fa5dad052fbd48e1cf349c062e17108a7b4f19a58a785b7d05d66abf689480a2",
     "dea/imagenes.js": "4ee4c72f54ad0acc2f92b518c723712fa34c704a9aa4e552658dff7f2646fe4c",
     "dea/mapa-africa.js": "f2fe4a79df4f882bc19d4e72bae7db5a910088c132776d15abf2079dfc3001e2"
+  },
+  "textos_interfaz_reubicados_note": "Bloques de texto del <main> de dea/index.html en 693055f cuya redacción de interfaz cambió (DIRECCION §8: se reubica, no se pierde). Para cada uno, los fragmentos informativos que deben seguir visibles en dea/index.html o en dea/dea.js; el verificador lo comprueba contra docs/historial/PB_GH_09/dea/index.html.snapshot.",
+  "textos_interfaz_reubicados": {
+    "Este recurso acompaña al Diploma de Estudios Africanos de la ULPGC, sobre todo a la materia Antropología africana y al tema «Orígenes de la humanidad». Funciona en ordenador, tableta y teléfono, y se puede proyectar en clase.": [
+      "Diploma de Estudios Africanos",
+      "Antropología africana",
+      "«Orígenes de la humanidad»",
+      "funciona en ordenador, tableta y teléfono",
+      "se puede proyectar en clase"
+    ],
+    "Elija una sesión. Cada una parte de una pregunta.": [
+      "Elija una sesión",
+      "cada una parte de una pregunta"
+    ],
+    "Siga los pasos. Los enlaces le llevan a la parte del recurso que necesita.": [
+      "siga sus pasos",
+      "enlaces le llevan a la parte del recurso que necesita"
+    ],
+    "Anote sus respuestas. Cada paso tiene un espacio para sus notas; le servirán para el trabajo individual de la materia.": [
+      "anote",
+      "cada paso tiene un espacio para sus notas",
+      "trabajo individual de la materia"
+    ],
+    "Sus notas y las marcas de «Sesión hecha» se guardan solo en este dispositivo: no pasan de un aparato a otro y el recurso no recoge ni envía datos personales. Descargue sus notas si quiere conservarlas.": [
+      "Sus notas y las marcas de «Sesión hecha» se guardan solo en este dispositivo",
+      "no pasan de un aparato a otro",
+      "el recurso no recoge ni envía datos personales",
+      "Descargue sus notas"
+    ],
+    "Cada punto es una región de hallazgos. Pulse un punto, o un nombre de la lista, para ver qué especies se documentan allí. Las posiciones son orientativas.": [
+      "Cada punto es una región de hallazgos",
+      "en el mapa o en la lista para ver qué especies se documentan allí",
+      "Las posiciones son orientativas"
+    ],
+    "Fichas breves. «Debatida» indica que su validez o su posición son objeto de discusión científica. Cada imagen indica qué muestra (a menudo un molde o una réplica, no el fósil original), su autoría y su licencia; son miniaturas de Wikimedia Commons, sin otros cambios.": [
+      "ficha breve",
+      "indica que su validez o su posición son objeto de discusión científica",
+      "Cada imagen indica qué muestra (a menudo un molde o una réplica, no el fósil original), su autoría y su licencia; son miniaturas de Wikimedia Commons, sin otros cambios."
+    ],
+    "Los términos del atlas, en orden alfabético. Escriba una palabra para buscarla en el término o en su definición.": [
+      "términos del atlas, en orden alfabético",
+      "Buscar en los términos y en sus definiciones"
+    ],
+    "Buscar término": [
+      "Buscar en los términos"
+    ],
+    "Ocho preguntas para comprobar lo aprendido. Se generan a partir de los datos del recurso y cambian cada vez. No se guarda ni se envía ningún resultado.": [
+      "preguntas para comprobar lo aprendido",
+      "con los datos del recurso",
+      "cambian cada vez",
+      "no se guarda ni se envía"
+    ]
   }
 }
