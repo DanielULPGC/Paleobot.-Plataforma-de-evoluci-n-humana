@@ -9,7 +9,8 @@
 // --comparar lista PÉRDIDAS (vista que deja de pintarse o de activarse, encabezado que desaparece, función o
 // elemento de función que deja de responder, diálogo que deja de abrir o empeora en foco/Escape/aria-hidden,
 // recurso local que deja de cargar), MEJORAS (lo inverso) y OTRAS diferencias; sale con código 1 si hay pérdidas.
-// Los campos listados en --inestables (claves exactas del informe) se separan como «inestable» y no cuentan.
+// Los campos listados en --inestables ({claves: [exactas], patrones: [expresiones regulares]}) se separan como
+// «inestable» y no cuentan.
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -39,7 +40,10 @@ function firma(R) {
 
 function comparar(a, b, opts = {}) {
   const A = JSON.parse(fs.readFileSync(a, 'utf8')); const B = JSON.parse(fs.readFileSync(b, 'utf8'));
-  const inest = new Set(opts.inestables ? JSON.parse(fs.readFileSync(opts.inestables, 'utf8')).claves || [] : []);
+  const datosInest = opts.inestables ? JSON.parse(fs.readFileSync(opts.inestables, 'utf8')) : {};
+  const clavesInest = new Set(datosInest.claves || []);
+  const patrones = (datosInest.patrones || []).map((p) => new RegExp(p));
+  const inest = { has: (k) => clavesInest.has(k) || patrones.some((r) => r.test(k)) };
   const fa = firma(A); const fb = firma(B);
   const perdidas = []; const mejoras = []; const otras = []; const inestables = [];
   const claves = [...new Set([...Object.keys(fa), ...Object.keys(fb)])].sort();

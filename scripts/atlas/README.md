@@ -66,7 +66,7 @@ Opciones: `--paralelo N` (contextos simultáneos; 2 por defecto), `--solo f1,f2`
   función o elemento de función (`items`) que deja de responder; diálogo que deja de abrir o empeora en foco que
   entra, Escape, foco que vuelve o `aria-hidden` al abrir; recurso local que empieza a fallar (4xx/5xx).
 - **Mejoras**: lo inverso. **Otras**: diferencias neutras (encabezado nuevo, más texto o controles).
-- **Inestables**: claves listadas en el archivo `--inestables` (`{"claves": [...]}`), medidas como no
+- **Inestables**: claves listadas en el archivo `--inestables` (`{"claves": [...], "patrones": [expresiones regulares]}`), medidas como no
   deterministas en dos ejecuciones seguidas sin cambios; se informan aparte y no cuentan como pérdida.
 - `inventarioAusente`: encabezados de `02_inventario.json` que no aparecen en B (y si ya faltaban en A).
 

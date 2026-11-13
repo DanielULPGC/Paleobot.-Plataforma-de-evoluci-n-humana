@@ -5,5 +5,9 @@
   "función bibliografia: sin aria-hidden al abrir",
   "función examen: focoEntra",
   "función sintesis: sin aria-hidden al abrir"
- ]
+ ],
+ "patrones": [
+  "^vista dispersal: encabezado «Out of Africa por MIS "
+ ],
+ "patrones_nota": "Encabezado del simulador que muestra el estadio isotópico del fotograma en curso: cambia con la animación (aparece desde que el simulador funciona, T1)."
 }
