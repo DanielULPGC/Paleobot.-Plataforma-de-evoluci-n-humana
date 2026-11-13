@@ -126,7 +126,10 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-tema="claro"]).proyeccion,
-  :root:not([data-tema="claro"]) .proyeccion { --papel: #0f1211; --tinta: #f7f6f2; --borde: #7d8681; }
+  :root:not([data-tema="claro"]) .proyeccion {
+    /* Toda tinta que .proyeccion (claro) redefine se redefine aquí: si no, el oscuro heredaría la del claro. */
+    --papel: #0f1211; --tinta: #f7f6f2; --tinta-2: #cfd4d0; --tinta-3: #b6bcb8; --borde: #7d8681;
+  }
 }
 
 /* Impresión: tinta negra sobre blanco, sea cual sea el tema de la pantalla. */

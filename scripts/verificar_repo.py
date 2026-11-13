@@ -169,6 +169,34 @@ def verify(include_syntax=True):
     # Copia literal de la hoja base sin su comentario de cabecera; única diferencia admitida: la ruta de Lexend.
     base_sin_cabecera=re.sub(r'\A/\*.*?\*/\s*','',base_css,count=1,flags=re.S).replace('url("fuentes/lexend-latin.woff2")','url("../assets/fuentes/lexend-latin.woff2")')
     check('Tokens de la consulta ligera sincronizados con assets/paleobot-base.css',bool(base_css) and bool(sinc) and sinc.group(1).strip()==base_sin_cabecera.strip())
+    # Contraste de las parejas de tokens calculado desde la propia hoja base, en los cuatro temas (claro, oscuro,
+    # proyección clara y proyección oscura): texto ≥ 4,5:1; contornos de control y foco ≥ 3:1. El tema de proyección
+    # oscura se compone como lo hereda <body>: claro, oscuro, .proyeccion y su bloque oscuro, en ese orden.
+    def tokens_de(cuerpo):return dict(re.findall(r'(--[\w-]+)\s*:\s*(#[0-9a-fA-F]{6})\b',cuerpo or ''))
+    def bloque(patron):
+        m=re.search(patron,base_sin_coment,re.S);return m.group(1) if m else ''
+    def luminancia(h):
+        c=[int(h[i:i+2],16)/255 for i in (1,3,5)];c=[x/12.92 if x<=.04045 else ((x+.055)/1.055)**2.4 for x in c]
+        return .2126*c[0]+.7152*c[1]+.0722*c[2]
+    def razon(a,b):
+        a,b=luminancia(a),luminancia(b);return (max(a,b)+.05)/(min(a,b)+.05)
+    base_sin_coment=re.sub(r'/\*.*?\*/','',base_css,flags=re.S)
+    t_claro=tokens_de(bloque(r'(?<![\w-]):root\s*\{([^}]*)\}'))
+    t_oscuro=tokens_de(bloque(r'@media \(prefers-color-scheme: dark\)\s*\{\s*:root:not\(\[data-tema="claro"\]\)\s*\{([^}]*)\}'))
+    t_proy=tokens_de(bloque(r'(?:^|\n)\.proyeccion\s*\{([^}]*)\}'))
+    t_proy_osc=tokens_de(bloque(r'\.proyeccion\s*\{([^}]*)\}\s*\}'))
+    temas={'claro':t_claro,'oscuro':{**t_claro,**t_oscuro},'proyección clara':{**t_claro,**t_proy},'proyección oscura':{**t_claro,**t_oscuro,**t_proy,**t_proy_osc}}
+    fondos=('--papel','--superficie','--hundido')
+    parejas=[(t,f,4.5) for t in ('--tinta','--tinta-2','--tinta-3','--acento') for f in fondos]
+    parejas+=[('--acento','--acento-suave',4.5),('--tinta','--acento-suave',4.5),('--sobre-acento','--acento',4.5),('--debatida','--debatida-fondo',4.5),('--bien','--bien-fondo',4.5),('--mal','--mal-fondo',4.5),('--bien','--papel',4.5),('--mal','--papel',4.5)]
+    parejas+=[(c,f,3) for c in ('--borde-control','--foco') for f in fondos]
+    bajos=[]
+    for nombre_tema,valores in temas.items():
+        for a,b,minimo in parejas:
+            if a not in valores or b not in valores:bajos.append(f'{nombre_tema}: falta {a if a not in valores else b}');continue
+            r=razon(valores[a],valores[b])
+            if r<minimo:bajos.append(f'{nombre_tema}: {a}/{b} {r:.2f}:1')
+    check('Parejas de tokens de assets/paleobot-base.css con contraste suficiente en claro, oscuro y proyección',bool(t_claro) and bool(t_oscuro) and bool(t_proy) and bool(t_proy_osc) and not bajos,', '.join(bajos[:3]))
     lexend=ROOT/'assets/fuentes/lexend-latin.woff2';licencia_lexend=ROOT/'assets/fuentes/LICENCIA-Lexend.md'
     check('Lexend local idéntica al original y con su licencia',lexend.is_file() and digest(lexend)==digest(ROOT/'atlas/recorrido/inner-green-assets/lexend-latin.woff2') and licencia_lexend.is_file() and 'SIL Open Font License, Version 1.1' in licencia_lexend.read_text(encoding='utf-8') and digest(lexend) in licencia_lexend.read_text(encoding='utf-8'))
     dea_csp=(re.search(r'http-equiv="Content-Security-Policy" content="([^"]*)"',dea_html) or [None,''])[1]

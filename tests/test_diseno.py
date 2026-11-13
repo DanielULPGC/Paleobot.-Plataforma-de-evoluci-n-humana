@@ -11,7 +11,8 @@ FUENTES='Recorrido, DEA y consulta ligera sin Google Fonts; las diez páginas de
 LIGERA='Consulta ligera con imágenes locales registradas, sin Wikimedia como origen y con crédito y licencia'
 PORTADA='Portada conserva el acceso «DEA» con su rótulo visible en pantallas estrechas'
 NADA='No se elimina nada: datos, glosario, imágenes y mapa intactos y textos de las seis sesiones presentes'
-NUEVAS=(TOKENS,LEXEND,DEA,DEA_CSS,FUENTES,LIGERA,PORTADA,NADA)
+CONTRASTE='Parejas de tokens de assets/paleobot-base.css con contraste suficiente en claro, oscuro y proyección'
+NUEVAS=(TOKENS,LEXEND,DEA,DEA_CSS,FUENTES,LIGERA,PORTADA,NADA,CONTRASTE)
 
 def module(name,path):
     spec=importlib.util.spec_from_file_location(name,path)
@@ -110,5 +111,14 @@ class DisenoPBGH10(unittest.TestCase):
     def test_rechaza_texto_de_sesion_perdido(self):
         self.editar('dea/dea.js',"titulo: 'Paisajes y climas del origen'","titulo: 'Paisajes del origen'")
         self.assertFalse(self.result(NADA))
+
+    def test_rechaza_proyeccion_oscura_que_hereda_tinta_clara(self):
+        # A1 de la verificación independiente: el bloque oscuro de .proyeccion no redefinía --tinta-2.
+        self.editar('assets/paleobot-base.css','--tinta-2: #cfd4d0; ','')
+        self.assertFalse(self.result(CONTRASTE))
+
+    def test_rechaza_foco_sin_contraste_en_oscuro(self):
+        self.editar('assets/paleobot-base.css','--foco: #8ab4f8;','--foco: #2a2f2d;')
+        self.assertFalse(self.result(CONTRASTE))
 
 if __name__=='__main__':unittest.main()
