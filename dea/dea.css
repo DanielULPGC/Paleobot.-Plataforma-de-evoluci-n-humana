@@ -105,7 +105,7 @@ button:disabled, button:disabled:hover {
 @media (min-width: 48rem) { .ajustes { padding-left: var(--e-3); border-left: var(--linea) solid var(--borde); } }
 .boton-primario { background: var(--acento); border-color: var(--acento); color: var(--sobre-acento); font-weight: 600; }
 .boton-primario:hover { background: var(--acento-fuerte); border-color: var(--acento-fuerte); color: var(--sobre-acento); }
-.boton-primario:focus-visible { outline-offset: 3px; }
+.boton-primario:focus-visible { outline-offset: calc(var(--foco-desfase) + var(--linea)); }
 
 /* ---------- Pestañas ---------- */
 .pestanas { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; background: var(--papel); border-bottom: var(--linea) solid var(--borde); }
@@ -152,11 +152,19 @@ button:disabled, button:disabled:hover {
 .pestanas a:hover { color: var(--tinta); text-decoration: underline; text-decoration-thickness: var(--linea-gruesa); text-decoration-color: var(--borde-control); text-underline-offset: .35em; }
 /* Pestaña actual: fondo suave y texto de acento (6,2:1), no relleno: el único relleno de acento de la pantalla queda
    para su punto focal (p. ej. «Continuar la sesión»). */
-.pestanas a[aria-current="page"] { background: var(--acento-suave); color: var(--acento); font-weight: 600; text-decoration: none; }
+.pestanas a[aria-current="page"] {
+  background: var(--acento-suave); color: var(--acento); font-weight: 600;
+  /* Además del fondo suave, un subrayado de acento: la sección actual se distingue también en pantallas pálidas. */
+  text-decoration: underline; text-decoration-thickness: var(--linea-gruesa); text-decoration-color: var(--acento); text-underline-offset: .35em;
+}
 /* Aviso de que hay más secciones a un lado u otro cuando no caben en la pantalla (gradiente funcional). */
 .pestanas-pista.hay-mas { -webkit-mask-image: linear-gradient(to right, var(--tinta) calc(100% - var(--e-7)), transparent); mask-image: linear-gradient(to right, var(--tinta) calc(100% - var(--e-7)), transparent); }
 .pestanas-pista.hay-antes { -webkit-mask-image: linear-gradient(to left, var(--tinta) calc(100% - var(--e-7)), transparent); mask-image: linear-gradient(to left, var(--tinta) calc(100% - var(--e-7)), transparent); }
 .pestanas-pista.hay-mas.hay-antes { -webkit-mask-image: linear-gradient(to right, transparent, var(--tinta) var(--e-7), var(--tinta) calc(100% - var(--e-7)), transparent); mask-image: linear-gradient(to right, transparent, var(--tinta) var(--e-7), var(--tinta) calc(100% - var(--e-7)), transparent); }
+/* Con una pestaña enfocada por teclado (dea.js) la máscara se retira y el anillo va por dentro de la píldora, para que la
+   pestaña enfocada se vea entera y con su indicador completo (5,8:1) aunque la pista recorte por los lados. */
+.pestanas-pista.con-foco { -webkit-mask-image: none; mask-image: none; }
+.pestanas-pista a:focus-visible { outline-offset: calc(-1 * var(--foco-ancho)); }
 
 /* ---------- Página ---------- */
 main { overflow-wrap: break-word; max-width: var(--ancho-pagina); margin: 0 auto; padding: var(--e-4) var(--margen-pagina) var(--e-6); }
@@ -194,7 +202,7 @@ details > summary::-webkit-details-marker { display: none; }
 .continuar .continuar-titulo { font-family: var(--f-titulo); font-size: var(--t-l); font-weight: 600; line-height: var(--il-titulo); }
 .continuar .boton { justify-self: start; margin-top: var(--e-3); background: var(--superficie); color: var(--acento); border-color: var(--superficie); font-weight: 600; }
 .continuar .boton:hover { background: var(--acento-suave); border-color: var(--acento-suave); color: var(--acento-fuerte); }
-.continuar :focus-visible { outline-color: var(--sobre-acento); outline-offset: 3px; }
+.continuar :focus-visible { outline-color: var(--sobre-acento); outline-offset: calc(var(--foco-desfase) + var(--linea)); }
 
 /* ---------- Inicio: sesiones ---------- */
 .sesiones { display: grid; gap: var(--e-3); grid-template-columns: minmax(0, 1fr); }
@@ -343,11 +351,12 @@ main .linea-tiempo li { max-width: none; }
 .mapas .tierra { fill: var(--tierra); stroke: var(--tinta-2); stroke-width: .12; }
 #mapa-rift .tierra { stroke-width: .05; }
 .mapas .punto { cursor: pointer; }
-/* Foco del punto: contorno de color de foco alrededor del grupo, en unidades del viewBox (se escala con el mapa).
-   Claro: 4,8:1 sobre tierra y 5,1:1 sobre mar; oscuro: 5,6:1 y 7,4:1. Los marcadores no se solapan, así que no queda tapado. */
+/* Foco del punto: anillo circular del color de foco sobre la zona del propio marcador (r 2,7, en unidades del viewBox),
+   separado de la marca por un hueco: abraza el número sin pisar a los vecinos (separados 5,8) ni recortarse en el borde
+   del recuadro (los marcadores quedan a 3,2 del borde). Claro: 4,8:1 sobre tierra y 5,1:1 sobre mar; oscuro: 5,6:1 y 7,4:1. */
 .mapas .punto:focus { outline: none; }
-.mapas .punto:focus-visible { outline: .45px solid var(--foco); outline-offset: .3px; }
 .mapas .punto .zona { fill: transparent; }
+.mapas .punto:focus-visible .zona { stroke: var(--foco); stroke-width: .45; }
 .mapas .punto .marca { fill: var(--acento); stroke: var(--superficie); stroke-width: .35; }
 .mapas .numero-punto { font-family: var(--f-titulo); font-size: 2.4px; font-weight: 700; fill: var(--sobre-acento); pointer-events: none; }
 .mapas .punto:hover .marca { fill: var(--acento-fuerte); }

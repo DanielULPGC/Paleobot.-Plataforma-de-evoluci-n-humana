@@ -148,9 +148,14 @@
   document.addEventListener('click', function (e) {
     if (ajustesAbiertos() && !panelAjustes.contains(e.target) && !botonAjustes.contains(e.target)) abrirAjustes(false, false);
   });
-  // Si el foco sale del menú con el tabulador, se cierra.
+  // Si el foco sale del menú con el tabulador, hacia delante o hacia atrás (Mayús+Tab vuelve al botón), se cierra.
+  // Con el ratón, el clic en el propio botón ya alterna el menú: por eso el botón solo cierra cuando se tabula.
+  var tabulando = false;
+  document.addEventListener('keydown', function (e) { if (e.key === 'Tab') tabulando = true; }, true);
+  document.addEventListener('mousedown', function () { tabulando = false; }, true);
+  document.addEventListener('keyup', function (e) { if (e.key === 'Tab') tabulando = false; }, true);
   panelAjustes.addEventListener('focusout', function (e) {
-    if (ajustesAbiertos() && e.relatedTarget && !panelAjustes.contains(e.relatedTarget) && e.relatedTarget !== botonAjustes) abrirAjustes(false, false);
+    if (ajustesAbiertos() && e.relatedTarget && !panelAjustes.contains(e.relatedTarget) && (e.relatedTarget !== botonAjustes || tabulando)) abrirAjustes(false, false);
   });
   // Al pasar a ancho de escritorio el panel deja de existir como tal: se cierra.
   if (window.matchMedia) { var mqAncho = window.matchMedia('(min-width: 48rem)'); var alCambiar = function () { if (mqAncho.matches) abrirAjustes(false, false); }; if (mqAncho.addEventListener) mqAncho.addEventListener('change', alCambiar); }
@@ -203,7 +208,23 @@
   botonSecciones.addEventListener('click', function () { abrirSecciones(!seccionesAbiertas(), false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && seccionesAbiertas()) { e.preventDefault(); abrirSecciones(false, true); } });
   document.addEventListener('click', function (e) { if (seccionesAbiertas() && !panelSecciones.contains(e.target) && !botonSecciones.contains(e.target)) abrirSecciones(false, false); });
-  panelSecciones.addEventListener('focusout', function (e) { if (seccionesAbiertas() && e.relatedTarget && !panelSecciones.contains(e.relatedTarget) && e.relatedTarget !== botonSecciones) abrirSecciones(false, false); });
+  panelSecciones.addEventListener('focusout', function (e) { if (seccionesAbiertas() && e.relatedTarget && !panelSecciones.contains(e.relatedTarget) && (e.relatedTarget !== botonSecciones || tabulando)) abrirSecciones(false, false); });
+  // Pestaña que recibe el foco con el teclado: entera a la vista. Mientras una pestaña tiene el foco, la pista no
+  // aplica la máscara de «hay más» (clase .con-foco) y el anillo va por dentro de la píldora: nada lo recorta ni lo
+  // tapa el botón «Secciones», que queda fuera de la pista.
+  function pestanaALaVista(a) {
+    var n = a.parentNode, base = n.getBoundingClientRect().left;
+    var izq = a.getBoundingClientRect().left - base, dch = izq + a.offsetWidth, margen = 2;
+    n.classList.add('con-foco');
+    n.style.scrollSnapType = 'none';
+    if (izq < margen) n.scrollLeft += izq - margen;
+    else if (dch > n.clientWidth - margen) n.scrollLeft += dch - n.clientWidth + margen;
+    avisoPestanas();
+  }
+  document.querySelectorAll('.pestanas-pista a').forEach(function (a) {
+    a.addEventListener('focus', function () { if (tabulando) pestanaALaVista(a); });
+    a.addEventListener('blur', function () { a.parentNode.classList.remove('con-foco'); a.parentNode.style.scrollSnapType = ''; });
+  });
   function pintarPasoSeccion(id) {
     var nav = document.getElementById('paso-seccion');
     nav.textContent = '';
@@ -623,7 +644,7 @@
         var b = el('button', { type: 'button', 'aria-pressed': 'false', 'data-region': clave, 'aria-label': numeroDe[clave] + '. ' + nombreRegion(clave) + ', ' + k + (k === 1 ? ' especie' : ' especies') }, [
           el('span', { clase: 'numero-region', texto: String(numeroDe[clave]) }),
           el('span', { clase: 'nombre-region', texto: nombreRegion(clave) }),
-          el('span', { clase: 'recuento', texto: String(k) })
+          el('span', { clase: 'recuento', texto: k + (k === 1 ? ' especie' : ' especies') })
         ]);
         b.addEventListener('click', function () { elegirRegion(clave, true); });
         ul.appendChild(el('li', null, [b]));
@@ -638,11 +659,15 @@
     var r = A.regiones[clave];
     var det = document.getElementById('detalle-region');
     det.textContent = '';
+    // Regiones del atlas fuera de África (#mapa/europa…): no tienen número ni punto en este mapa; se dice así.
+    var enMapa = numeroDe[clave] !== undefined;
     var ul = el('ul');
     taxones.filter(function (t) { return t.region === clave; }).forEach(function (t) {
       ul.appendChild(el('li', null, [el('a', { href: '#especies/' + t.id }, [el('i', { texto: t.n })]), ' · ', el('span', { clase: 'fechas', texto: corto(t) }), t.debatido ? ' ' : null, t.debatido ? el('span', { clase: 'etiqueta', texto: 'Debatida' }) : null]));
     });
-    det.appendChild(el('div', { clase: 'tarjeta' }, [el('h2', null, [el('span', { clase: 'numero-region', 'aria-hidden': 'true', texto: String(numeroDe[clave]) }), ' ' + r.nombre]), ul]));
+    var titulo = enMapa ? el('h2', null, [el('span', { clase: 'numero-region', 'aria-hidden': 'true', texto: String(numeroDe[clave]) }), ' ' + r.nombre]) : el('h2', { texto: r.nombre });
+    var fuera = enMapa ? null : el('p', { clase: 'resumen' }, ['Esta región queda fuera del mapa de África, por eso no tiene número ni punto. ', el('a', { href: '#mapa', texto: 'Volver a las regiones africanas' })]);
+    det.appendChild(el('div', { clase: 'tarjeta' }, [titulo, fuera, ul.childNodes.length ? ul : el('p', { clase: 'resumen', texto: 'No hay fichas de esta región en el recurso.' })]));
     // Que el detalle quede a la vista (en el teléfono queda debajo del mapa).
     if (porUsuario) det.scrollIntoView({ block: 'nearest' });
   }
@@ -1012,6 +1037,7 @@
   window.addEventListener('resize', avisoPestanas);
   var inicio = leerHash();
   mostrar(inicio.seccion, false);
-  irADetalle(inicio);
+  // Primero se muestra el contenido (oculto hasta aquí para evitar saltos de carga): un elemento oculto no recibe el foco.
   document.documentElement.classList.add('dea-listo');
+  irADetalle(inicio);
 })();
