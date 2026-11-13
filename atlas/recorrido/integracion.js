@@ -22,4 +22,10 @@
   nav.appendChild(link);
   document.body.appendChild(nav);
   document.body.classList.add('pb-recorrido-esencial');
+  // Letra agrandada (más de 20 px en la raíz): el enlace «Atlas completo» deja de ser fijo (integracion.css).
+  const raiz=document.documentElement;
+  const medirLetra=()=>raiz.classList.toggle('pb-letra-grande',parseFloat(getComputedStyle(raiz).fontSize)>20);
+  medirLetra();
+  if(window.MutationObserver) new MutationObserver(medirLetra).observe(raiz,{attributes:true,attributeFilter:['style']});
+  window.addEventListener('resize',medirLetra);
 })();

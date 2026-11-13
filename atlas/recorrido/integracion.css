@@ -78,17 +78,28 @@ html,body { max-width:100%; overflow-x:hidden; }
 }
 .pb-lab-link:hover { background:var(--superficie); color:var(--acento-fuerte); }
 .pb-lab-link span:last-child { font-size:var(--t-m); }
+/* Con la letra agrandada (ajuste del navegador o zoom de texto: clase .pb-letra-grande de integracion.js) el enlace
+   se queda en el flujo, al final, como en el teléfono: fijo y agrandado taparía el contenido. */
 @media(min-width:900px){
-  html { scroll-padding-bottom:88px; }
-  body { padding-bottom:72px; }
-  .pb-lab-nav { margin:0; }
-  .pb-lab-link { position:fixed; right:16px; bottom:16px; z-index:1000; }
+  html:not(.pb-letra-grande) { scroll-padding-bottom:88px; }
+  html:not(.pb-letra-grande) body { padding-bottom:72px; }
+  html:not(.pb-letra-grande) .pb-lab-nav { margin:0; }
+  html:not(.pb-letra-grande) .pb-lab-link { position:fixed; right:16px; bottom:16px; z-index:1000; }
 }
 /* Foco visible y uniforme en todo el recorrido (oro claro, ≥ 8:1 sobre los fondos oscuros) */
 :where(a,button,summary,input,select,textarea,[tabindex]):focus-visible {
   outline:var(--foco-ancho) solid var(--foco);
   outline-offset:var(--foco-desfase);
 }
+/* PB-GH-10 · Foco de los nodos SVG (parentesco y territorio): contorno del propio nodo con el color de foco (en píxeles
+   de pantalla, no en unidades del gráfico, para que no adelgace cuando el gráfico se reduce en el teléfono), distinto
+   del blanco de «elegido» y «destacado». Mientras un nodo tiene el foco, los rótulos de los demás se atenúan para que
+   ninguno tape su indicador (en territorio algunos rótulos se superponen a marcadores vecinos). */
+svg g.region:focus-visible .punto { stroke:var(--foco); stroke-width:4px; vector-effect:non-scaling-stroke; }
+/* En parentesco el trazo del disco codifica «debatida» (discontinuo): se conserva y el foco es un halo continuo alrededor. */
+svg g.nodo:focus-visible .disco { filter:drop-shadow(3px 0 0 var(--foco)) drop-shadow(-3px 0 0 var(--foco)) drop-shadow(0 3px 0 var(--foco)) drop-shadow(0 -3px 0 var(--foco)); }
+svg g.region:focus-visible .aro { opacity:1; stroke:var(--foco); stroke-width:3px; vector-effect:non-scaling-stroke; }
+svg:has(g[tabindex]:focus-visible) g[tabindex]:not(:focus-visible) :is(.etq,.rlbl,text) { opacity:.3; }
 
 @media(max-width:720px){
   .barra {
@@ -98,6 +109,8 @@ html,body { max-width:100%; overflow-x:hidden; }
   }
   /* En teléfono la barra no es fija (no resta pantalla al contenido) y el nombre de la vista cabe junto a «Volver» */
   .barra { position:static !important; }
+  /* Fila 21: todo control de la barra con 44 px de alto en el teléfono (p. ej. «Ver la introducción» de atlas.html). */
+  .barra .intro-link { display:inline-flex; align-items:center; min-height:var(--control); }
   .barra .marca {
     flex:1 1 0;
     text-align:right;
@@ -167,6 +180,12 @@ html,body { max-width:100%; overflow-x:hidden; }
   .pb-lab-nav, .barra nav, .salto { display:none !important; }
   a { color:#000 !important; text-decoration:underline; }
   * { box-shadow:none !important; text-shadow:none !important; }
+  /* Con la tinta forzada a negro, ningún control puede conservar un relleno oscuro o de acento (B1: «Explorar el atlas»). */
+  .btn-primario, .btn { background:#fff !important; border:1px solid #000 !important; }
+  /* Mismo caso en el pie de crédito de la introducción (fondo casi negro) y en los rótulos SVG claros (ejes, rangos):
+     si el navegador imprime los fondos, la tinta negra no puede quedar sobre oscuro ni un rótulo claro sobre blanco. */
+  .pie { background:#fff !important; }
+  svg text { fill:#000 !important; }
 }
 
 /* PB-GH-10 · Aviso de tabla desplazable (solo en pantallas estrechas) */
