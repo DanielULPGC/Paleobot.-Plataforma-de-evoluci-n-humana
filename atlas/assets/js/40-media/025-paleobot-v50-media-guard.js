@@ -76,6 +76,20 @@
     return realByClade[safeSp.clado] || realByClade.homo;
   }
 
+  // PB-GH-11 (04, fila 1): respaldo LOCAL tras un fallo de carga. Antes, repairImage asignaba fallbackSvg(),
+  // una URL REMOTA por clado; si esa URL tampoco cargaba (aula sin Wikimedia), el escuchador de 'error' volvía a
+  // forzar la reparación con la misma URL: bucle de ~70-100 peticiones/s. Ahora el respaldo es un SVG data: neutro
+  // con el texto alternativo (no hace peticiones, no puede fallar) y se aplica una sola vez por imagen.
+  function respaldoLocal(img, sp) {
+    const nombre = text(sp?.nombre || img.getAttribute('alt'), 'Imagen');
+    const esc = (v) => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">'
+      + '<rect width="800" height="600" fill="#f4f1ea"/><rect x="24" y="24" width="752" height="552" fill="none" stroke="#9a8f7c" stroke-width="3" stroke-dasharray="14 10"/>'
+      + '<text x="400" y="285" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#3d382f">' + esc(nombre.slice(0, 48)) + '</text>'
+      + '<text x="400" y="340" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#5c554a">Imagen no disponible sin conexión con la fuente</text></svg>';
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+
   function normalizeSpeciesImages() {
     let repaired = 0;
     speciesList().forEach(sp => {
@@ -105,17 +119,20 @@
     const mediaMode = img.dataset.imageError || '';
     const relevant = force || mediaMode || img.classList.contains('species-header-image') || img.classList.contains('sp-img-thumb') || img.classList.contains('visual-evidence-img') || img.classList.contains('academic-img') || img.classList.contains('itin-card-img');
     if (!relevant) return false;
+    // PB-GH-11: tope duro, un solo respaldo por imagen aunque se fuerce (marca propia: 066 borra data-v50-…).
+    if (img.dataset.pbRespaldoAplicado === '1') return false;
     if (img.dataset.v50FallbackApplied === '1' && !force) return false;
     const current = img.currentSrc || img.getAttribute('src') || '';
     if (!force && !isBadMediaUrl(current) && img.naturalWidth !== 0) return false;
     const sp = speciesFromImage(img);
     img.dataset.v50FallbackApplied = '1';
+    img.dataset.pbRespaldoAplicado = '1';
     img.classList.add('pb-v50-media-fallback-img');
     img.style.display = '';
     img.style.opacity = '';
     img.style.visibility = '';
     img.alt = img.alt || `Lamina visual provisional de ${text(sp?.nombre, 'taxon')}`;
-    img.src = fallbackSvg(sp, img.classList.contains('sp-img-thumb'));
+    img.src = respaldoLocal(img, sp);
     cleanLegacyPlaceholder(img);
     return true;
   }
