@@ -330,7 +330,7 @@ main .linea-tiempo li { max-width: none; }
 .reloj-dia .hito { position: absolute; top: 50%; width: var(--e-3); height: var(--e-3); border-radius: var(--r-pildora); background: var(--acento); border: var(--linea-gruesa) solid var(--superficie); transform: translate(-50%, -50%); }
 .reloj-dia .num { position: absolute; transform: translateX(-50%); font-family: var(--f-titulo); font-weight: 600; color: var(--acento); top: 0; }
 .reloj-dia .num.abajo { top: auto; bottom: 0; }
-.reloj-dia .horas { display: flex; justify-content: space-between; margin-top: var(--e-1); }
+.reloj-dia .horas { display: flex; flex-wrap: wrap; gap: 0 var(--e-2); justify-content: space-between; margin-top: var(--e-1); } /* con la letra al 200 % las horas pasan de línea antes que desbordar */
 .dia ol { padding-left: var(--e-5); }
 .dia ol li::marker { font-family: var(--f-titulo); font-weight: 600; color: var(--acento); }
 .dia { margin: 0 0 var(--e-4); padding: 0; }
@@ -380,7 +380,10 @@ main .linea-tiempo li { max-width: none; }
 .regiones { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--e-2); grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
 .regiones li + li { margin: 0; }
 .regiones button { width: 100%; justify-content: flex-start; gap: var(--e-3); text-align: left; }
-.regiones .nombre-region { flex: 1 1 auto; }
+/* Con la letra grande, el recuento («6 especies») pasa bajo el nombre antes que desbordar el botón. */
+.regiones button { flex-wrap: wrap; }
+.regiones .nombre-region { flex: 1 1 8rem; min-width: 0; }
+.regiones .recuento { white-space: nowrap; }
 .regiones .recuento { font-variant-numeric: tabular-nums; color: var(--tinta-2); }
 .regiones button[aria-pressed="true"] { border-color: var(--acento); background: var(--acento-suave); color: var(--acento); }
 .regiones button[aria-pressed="true"] .recuento { color: var(--acento); }
