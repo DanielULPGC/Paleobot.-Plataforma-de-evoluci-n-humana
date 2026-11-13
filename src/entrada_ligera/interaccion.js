@@ -38,7 +38,9 @@
 
   var imageStatus = document.getElementById('image-status');
   var imageSecurity = document.getElementById('image-security');
-  var images = Array.from(document.querySelectorAll('.species img[data-src]'));
+  // Imágenes de las fichas: copias locales (src con loading=lazy, se cargan al abrir la ficha, también sin JavaScript)
+  // o, si una ficha no tuviera copia local, la imagen remota en data-src que se pide al abrirla.
+  var images = Array.from(document.querySelectorAll('.species img'));
   var policyBlocks = 0;
   function updateStatus() {
     if (!imageStatus) return;
@@ -57,12 +59,7 @@
       (policyBlocks === 1 ? ' bloqueo de imagen ' : ' bloqueos de imágenes ') +
       'por una política de seguridad. Los enlaces a las fuentes permanecen disponibles.';
   });
-  function loadImage(img) {
-    if (!img || img.dataset.pbState) return;
-    var url = img.getAttribute('data-src');
-    if (!url) return;
-    img.dataset.pbState = 'loading';
-    updateStatus();
+  function watch(img) {
     img.addEventListener('load', function () {
       img.hidden = false;
       img.dataset.pbState = 'ok';
@@ -75,25 +72,39 @@
       if (caption && !caption.querySelector('.image-error')) {
         var warning = document.createElement('span');
         warning.className = 'image-error';
-        warning.textContent = ' No se ha podido cargar la imagen; utilice el enlace a su fuente.';
+        var cierre = /[.!?…:;]\s*$/.test(caption.textContent) ? ' ' : '. ';
+        warning.textContent = cierre + 'No se ha podido cargar la imagen; utilice el enlace a su fuente.';
         caption.appendChild(warning);
       }
       updateStatus();
     }, {once:true});
+  }
+  function loadImage(img) {
+    if (!img || img.dataset.pbState) return;
+    var url = img.getAttribute('data-src');
+    if (!url && !img.getAttribute('src')) return;
+    img.dataset.pbState = 'loading';
+    updateStatus();
+    if (!url) {
+      if (img.complete) { img.dispatchEvent(new Event(img.naturalWidth ? 'load' : 'error')); return; }
+      img.loading = 'eager';
+      return;
+    }
     img.loading = 'eager';
     img.src = url;
     img.removeAttribute('data-src');
   }
+  images.forEach(watch);
   cards.forEach(function (card) {
     card.addEventListener('toggle', function () {
-      if (card.open) loadImage(card.querySelector('img[data-src]'));
+      if (card.open) loadImage(card.querySelector('.species-body img'));
     });
   });
   var probe = document.getElementById('probe-images');
   if (probe) probe.addEventListener('click', function () {
     ['sp-proconsul', 'sp-bahrelghazali', 'sp-juluensis'].forEach(function (id) {
       var card = document.getElementById(id);
-      if (card) loadImage(card.querySelector('img[data-src]'));
+      if (card) loadImage(card.querySelector('.species-body img'));
     });
     updateStatus();
   });

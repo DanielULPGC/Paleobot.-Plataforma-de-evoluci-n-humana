@@ -149,7 +149,7 @@
     bloomChip.textContent = 'Bloom ' + spec.nivelBloom + ' · ' + bloom.label;
 
     const timeChip = _el('span', 'pb-dap-chip');
-    timeChip.textContent = '⏱ ' + spec.tiempoEstimado + ' min';
+    timeChip.textContent = spec.tiempoEstimado + ' min';
 
     const odsChip = _el('span', 'pb-dap-chip');
     odsChip.textContent = spec.odsPrimario;
@@ -233,7 +233,7 @@
       const chip = _el('span', 'pb-dap-comp-chip');
       chip.setAttribute('title', ci.full);
       chip.setAttribute('aria-label', ci.full);
-      chip.textContent = ci.emoji + ' ' + code;
+      chip.textContent = code; // PB-GH-10: sin emoji en la interfaz; el nombre completo sigue en title y aria-label
       compRow.appendChild(chip);
     });
     compBlock.appendChild(compRow);

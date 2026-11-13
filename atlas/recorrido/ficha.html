@@ -12,73 +12,73 @@
   Accesibilidad: HTML semántico, foco visible, enlace de salto. Licencia CC
   BY-NC 4.0 · ULPGC.
 -->
-<html lang="es">
+<html lang="es" class="pb-recorrido">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fichas del corpus · Atlas de paleoantropología</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/paleobot-base.css">
 <style>
-:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:12px;
+:root{--fondo:var(--papel);--fondo-alt:var(--superficie);--tinta-suave:var(--tinta-2);--radio:var(--r-contenedor);
   --c-basales:#c98a4b;--c-austra:#d8a93a;--c-paran:#7fae9a;--c-homo:#cbb488;
-  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+  --ft:var(--f-titulo);--fc:var(--f-lectura)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.65}
 a{color:var(--acento)}
-.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:var(--sobre-acento);padding:var(--e-3) var(--e-4);z-index:50;font-weight:600}
 .salto:focus{left:0}
-.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
-.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:var(--e-4);padding:var(--e-4) var(--margen);background:var(--papel);border-bottom:1px solid var(--borde)}
+.volver{display:inline-flex;align-items:center;gap:var(--e-2);color:var(--tinta);text-decoration:none;font-weight:600;padding:var(--e-2) var(--e-4);border-radius:var(--r-control);border:1px solid var(--borde-control)}
 .volver:hover{border-color:var(--acento);color:var(--acento)}
-.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
 .volver svg{width:18px;height:18px}
-.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:.95rem}
-.barra nav{display:flex;gap:1.1rem}
-.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:.92rem}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:var(--t-s)}
+.barra nav{display:flex;gap:var(--e-4)}
+.barra nav a{color:var(--acento);text-decoration:none;font-weight:600;font-size:var(--t-s)}
 
-.envoltorio{max-width:920px;margin:0 auto;padding:6vh 5vw 8vh}
+.envoltorio{max-width:920px;margin:0 auto;padding:var(--e-7) var(--margen) var(--e-8)}
 
 /* Ficha */
-.cabecera-f{border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:1.4rem;margin-bottom:1.8rem}
-.badge{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.06em;color:#141008;padding:.2rem .7rem;border-radius:99px;margin-bottom:1rem}
-.cabecera-f h1{font-family:var(--ft);font-weight:700;font-size:clamp(2rem,6vw,3.4rem);line-height:1.02}
-.cabecera-f .binomial{font-family:var(--ft);font-style:italic;color:var(--tinta-suave);font-size:clamp(1rem,2.5vw,1.4rem);margin-top:.2rem}
-.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-bottom:1.8rem}
-.campo{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.1rem 1.3rem}
-.campo h2{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acento);font-weight:700;margin-bottom:.4rem}
-.campo p{color:var(--tinta);font-size:1rem}
-.campo p.sub{color:var(--tinta-suave);font-size:.88rem;margin-top:.3rem}
-.bloque-texto{margin-bottom:1.6rem}
-.bloque-texto h2{font-family:var(--ft);font-weight:700;font-size:1.2rem;margin-bottom:.4rem}
+.cabecera-f{border-bottom:1px solid var(--borde);padding-bottom:var(--e-5);margin-bottom:var(--e-6)}
+.badge{display:inline-block;font-size:var(--t-xs);font-weight:700;letter-spacing:.06em;color:var(--sobre-acento);padding:var(--e-1) var(--e-3);border-radius:var(--r-pildora);margin-bottom:var(--e-4)}
+.cabecera-f h1{font-family:var(--ft);font-weight:700;font-size:var(--t-h1);line-height:1.02}
+.cabecera-f .binomial{font-family:var(--ft);font-style:italic;color:var(--tinta-suave);font-size:var(--t-l);margin-top:var(--e-1)}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--e-4);margin-bottom:var(--e-6)}
+.campo{background:var(--superficie);border:1px solid var(--borde);border-left:4px solid var(--acento);border-radius:var(--radio);padding:var(--e-4) var(--e-5)}
+.campo h2{font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--acento);font-weight:700;margin-bottom:var(--e-2)}
+.campo p{color:var(--tinta);font-size:var(--t-m)}
+.campo p.sub{color:var(--tinta-suave);font-size:var(--t-s);margin-top:var(--e-1)}
+.bloque-texto{margin-bottom:var(--e-5)}
+.bloque-texto h2{font-family:var(--ft);font-weight:700;font-size:var(--t-l);margin-bottom:var(--e-2)}
 .bloque-texto p{color:var(--tinta-suave)}
-.fuentes{font-size:.85rem;color:rgba(200,210,206,.8)}
+.fuentes{font-size:var(--t-xs);color:var(--tinta-3)}
 .fuentes a{word-break:break-all}
-.enlaces-vistas{display:flex;gap:.8rem;flex-wrap:wrap;margin:1.6rem 0}
-.enlaces-vistas a{display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:1px solid rgba(243,239,231,.3);color:var(--tinta);text-decoration:none;font-weight:600;padding:.6rem 1.1rem;border-radius:var(--radio);font-size:.92rem}
+.enlaces-vistas{display:flex;gap:var(--e-3);flex-wrap:wrap;margin:var(--e-5) 0}
+.enlaces-vistas a{display:inline-flex;align-items:center;gap:var(--e-2);background:transparent;border:1px solid var(--borde-control);color:var(--tinta);text-decoration:none;font-weight:600;padding:var(--e-2) var(--e-4);border-radius:var(--r-control);font-size:var(--t-s)}
 .enlaces-vistas a:hover{border-color:var(--acento);color:var(--acento)}
-.paginacion{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid rgba(255,255,255,.12);padding-top:1.4rem;margin-top:2rem}
+.paginacion{display:flex;justify-content:space-between;gap:var(--e-4);border-top:1px solid var(--borde);padding-top:var(--e-5);margin-top:var(--e-6)}
 .paginacion a{text-decoration:none;color:var(--tinta);font-weight:600;max-width:45%}
 .paginacion a:hover{color:var(--acento)}
-.paginacion .et{display:block;font-size:.75rem;color:var(--tinta-suave);text-transform:uppercase;letter-spacing:.08em}
+.paginacion .et{display:block;font-size:var(--t-xs);color:var(--tinta-suave);text-transform:uppercase;letter-spacing:.08em}
 
 /* Índice */
-.indice h1{font-family:var(--ft);font-weight:700;font-size:clamp(1.9rem,5vw,3rem);margin-bottom:.4rem}
-.sinlista{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:.5rem 1.4rem;margin-top:.6rem}
-.sinlista li{color:var(--tinta-suave);font-size:.92rem;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.indice .intro{color:var(--tinta-suave);max-width:60ch;margin-bottom:2.4rem}
-.grupo-idx{margin-bottom:2rem}
-.grupo-idx h2{font-family:var(--ft);font-weight:700;font-size:1.2rem;margin-bottom:.8rem}
-.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.9rem}
-.tarjeta{display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1rem 1.1rem;text-decoration:none;color:inherit;transition:transform .15s,background .2s}
+.indice h1{font-family:var(--ft);font-weight:700;font-size:var(--t-h1);margin-bottom:var(--e-2)}
+.sinlista{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--e-2) var(--e-5);margin-top:var(--e-2)}
+.sinlista li{color:var(--tinta-suave);font-size:var(--t-s);padding:var(--e-1) 0;border-bottom:1px solid var(--borde)}
+.indice .intro{color:var(--tinta-suave);max-width:60ch;margin-bottom:var(--e-6)}
+.grupo-idx{margin-bottom:var(--e-6)}
+.grupo-idx h2{font-family:var(--ft);font-weight:700;font-size:var(--t-l);margin-bottom:var(--e-3)}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--e-4)}
+.tarjeta{display:block;background:var(--superficie);border:1px solid var(--borde);border-left:4px solid var(--acento);border-radius:var(--radio);padding:var(--e-4) var(--e-4);text-decoration:none;color:inherit;transition:transform .15s,background .2s}
 .tarjeta:hover{transform:translateY(-2px);background:rgba(255,255,255,.07)}
-.tarjeta:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
-.tarjeta .nom{font-family:var(--ft);font-style:italic;font-weight:700;font-size:1.02rem}
-.tarjeta .rg{color:var(--tinta-suave);font-size:.85rem;margin-top:.2rem}
+.tarjeta:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:3px}
+.tarjeta .nom{font-family:var(--ft);font-style:italic;font-weight:700;font-size:var(--t-m)}
+.tarjeta .rg{color:var(--tinta-suave);font-size:var(--t-xs);margin-top:var(--e-1)}
 
-.pie{border-top:1px solid rgba(255,255,255,.1);margin-top:3rem;padding:2.4rem 5vw;text-align:center;color:rgba(200,210,206,.65);font-size:.82rem;line-height:1.7}
-.pie a{color:rgba(216,169,58,.85);word-break:break-all}
+.pie{border-top:1px solid var(--borde);margin-top:var(--e-7);padding:var(--e-6) var(--margen);text-align:center;color:var(--tinta-3);font-size:var(--t-xs);line-height:1.7}
+.pie a{color:var(--acento);word-break:break-all}
+/* PB-GH-10: reserva de altura para el contenido que pinta el script (CLS de carga); menor que una ficha suelta en cualquier pantalla */
+#contenido{min-height:80vh}
 </style>
 <link rel="stylesheet" href="integracion.css">
 <script src="integracion.js" defer></script>
@@ -86,7 +86,7 @@ a{color:var(--acento)}
 <body>
 <a class="salto" href="#contenido">Saltar al contenido</a>
 
-<div class="barra">
+<div class="barra" role="navigation" aria-label="Navegación del recorrido">
   <a class="volver" href="atlas.html" id="volver">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Volver al atlas
@@ -133,7 +133,7 @@ a{color:var(--acento)}
     main.innerHTML = `
       <article class="ficha">
         <div class="cabecera-f">
-          <span class="badge" style="background:${cl.color}">${cl.nombre}</span>
+          <span class="badge" style="background:${cl.color}">${cl.nombre}</span>${t.debatido ? ' <span class="pb-etiqueta">Debatida</span>' : ''}
           <h1>${esc(epiteto)}</h1>
           <div class="binomial">${esc(t.n)}</div>
         </div>

@@ -1,67 +1,199 @@
 html,body { max-width:100%; overflow-x:hidden; }
-body { padding-bottom:72px; }
+/* PB-GH-10 · Recorrido sobre el sistema base «Papel y tierra» (../../assets/paleobot-base.css).
+   La hoja base aporta Lexend local, escala tipográfica, espaciado, radios, foco y la etiqueta .pb-etiqueta.
+   Aquí solo se redefinen los COLORES del modo oscuro propio del recorrido (fondo petróleo, tinta clara, oro como acento)
+   y unos alias de escala. Contrastes medidos (WCAG 2.x): texto ≥ 4,5:1; contornos de control y foco ≥ 3:1.
+   :root.pb-recorrido pesa (0,2,0) y se carga después de la base: gana también a su modo oscuro por prefers-color-scheme.
+   En impresión no se aplica (solo @media screen) y rigen los tokens de impresión de la base. */
+@media screen {
+  :root.pb-recorrido {
+    --papel: #0d2028;          /* petróleo */
+    --superficie: #16303c;
+    --hundido: #12292f;
+    --tinta: #f3efe7;          /* 14,6:1 sobre papel; 12,0:1 sobre superficie */
+    --tinta-2: #c8d2ce;        /* 10,8:1 / 8,9:1 */
+    --tinta-3: #a3b3ad;        /* 7,7:1 / 6,3:1 (pies, créditos) */
+    --acento: #d8a93a;         /* oro: 7,7:1 / 6,3:1 */
+    --acento-fuerte: #e6bb52;  /* hover: 9,2:1 */
+    --sobre-acento: #141008;   /* 8,7:1 sobre el oro */
+    --acento-suave: #2b2a1d;   /* cajas de aviso: tinta 12,6:1, oro 6,7:1 */
+    --debatida: #f4d27a;       /* etiqueta de incertidumbre: 8,7:1 sobre su fondo */
+    --debatida-fondo: #3a3220;
+    --bien: #8fd19e;
+    --mal: #ff9d8f;
+    --borde: #2a414b;          /* solo separadores decorativos */
+    --borde-control: #6f8a94;  /* contorno de controles: 4,6:1 / 3,8:1 */
+    --foco: #ffd166;           /* anillo de foco: 11,6:1 / 9,6:1 */
+    --sombra-flotante: 0 4px 16px rgba(0, 0, 0, .5);
+    color-scheme: dark;
+  }
+}
+/* Alias de escala (todos son pasos de la base, salvo un único tamaño «display» para los héroes) */
+:root.pb-recorrido {
+  --margen: var(--e-4);           /* margen lateral de página: 16 px en teléfono */
+  --t-h1: var(--t-2xl);           /* título de página: igual que DEA */
+  --t-h2-portada: var(--t-xl);
+  --t-lema: var(--t-l);
+  --t-entrada: var(--t-m);
+  --t-display: var(--t-2xl);      /* en teléfono el título de la portada es un h1 más: «paleoantropología» en Lexend no cabe mayor */
+}
+@media (min-width: 48rem) {
+  :root.pb-recorrido {
+    --margen: var(--e-5);
+    --t-h1: var(--t-3xl);
+    --t-h2-portada: var(--t-2xl);
+    --t-lema: var(--t-xl);
+    --t-entrada: var(--t-l);
+    --t-display: 3.5rem;          /* tamaño «display» 1 (56 px): portada y póster de la introducción */
+  }
+}
+@media (min-width: 80rem) {
+  :root.pb-recorrido { --t-display: 4.5rem; } /* tamaño «display» 2 (72 px), solo en pantallas anchas */
+}
+.pb-recorrido body { font-size: var(--t-m); line-height: var(--il-cuerpo); }
+.pb-recorrido :is(h1, h2, h3) { font-family: var(--f-titulo); font-weight: 600; line-height: var(--il-titulo); letter-spacing: 0; overflow-wrap: break-word; }
+.pb-recorrido :is(.btn, .volver, .barra nav a, .barra .marca, .pb-lab-link, .k, .kicker, .num, .ir) { font-family: var(--f-titulo); }
+/* La barra superior: fondo plano (sin vidrio esmerilado) */
+.pb-recorrido .barra { background: var(--papel); backdrop-filter: none; }
+
+/* PB-GH-10 · Enlace al atlas completo: estilo secundario (borde oro, sin sombra).
+   Bajo 900 px va al final de la página, en el flujo, y no tapa nada;
+   desde 900 px queda pequeño y fijo en la esquina, con reserva para que no tape el foco. */
+.pb-lab-nav { margin:var(--e-6) var(--margen) var(--e-5); }
 .pb-lab-link {
-  position:fixed;
-  right:16px;
-  bottom:16px;
-  z-index:1000;
   display:inline-flex;
   align-items:center;
   gap:9px;
-  min-height:44px;
-  padding:10px 14px;
-  border:1px solid rgba(255,255,255,.22);
-  border-radius:8px;
-  background:#efb83f;
-  color:#102027;
-  box-shadow:0 10px 30px rgba(0,0,0,.24);
-  font:700 .88rem/1.2 system-ui,sans-serif;
+  min-height:var(--control);
+  padding:var(--e-2) var(--e-4);
+  border:1px solid var(--acento);
+  border-radius:var(--r-control);
+  background:var(--papel);
+  color:var(--acento);
+  font-family:var(--f-titulo);
+  font-weight:600;
+  font-size:var(--t-s);
+  line-height:1.2;
   text-decoration:none;
 }
-.pb-lab-link:hover,.pb-lab-link:focus-visible {
-  background:#ffd16b;
-  outline:3px solid #fff;
-  outline-offset:2px;
+.pb-lab-link:hover { background:var(--superficie); color:var(--acento-fuerte); }
+.pb-lab-link span:last-child { font-size:var(--t-m); }
+/* Con la letra agrandada (ajuste del navegador o zoom de texto: clase .pb-letra-grande de integracion.js) el enlace
+   se queda en el flujo, al final, como en el teléfono: fijo y agrandado taparía el contenido. */
+@media(min-width:900px){
+  html:not(.pb-letra-grande) { scroll-padding-bottom:88px; }
+  html:not(.pb-letra-grande) body { padding-bottom:72px; }
+  html:not(.pb-letra-grande) .pb-lab-nav { margin:0; }
+  html:not(.pb-letra-grande) .pb-lab-link { position:fixed; right:16px; bottom:16px; z-index:1000; }
 }
-.pb-lab-link span:last-child { font-size:1.1rem; }
-@media(max-width:560px){
-  .pb-lab-link{left:10px;right:10px;bottom:10px;justify-content:center}
+/* Foco visible y uniforme en todo el recorrido (oro claro, ≥ 8:1 sobre los fondos oscuros) */
+:where(a,button,summary,input,select,textarea,[tabindex]):focus-visible {
+  outline:var(--foco-ancho) solid var(--foco);
+  outline-offset:var(--foco-desfase);
 }
+/* PB-GH-10 · Foco de los nodos SVG (parentesco y territorio): contorno del propio nodo con el color de foco (en píxeles
+   de pantalla, no en unidades del gráfico, para que no adelgace cuando el gráfico se reduce en el teléfono), distinto
+   del blanco de «elegido» y «destacado». Mientras un nodo tiene el foco, los rótulos de los demás se atenúan para que
+   ninguno tape su indicador (en territorio algunos rótulos se superponen a marcadores vecinos). */
+svg g.region:focus-visible .punto { stroke:var(--foco); stroke-width:4px; vector-effect:non-scaling-stroke; }
+/* En parentesco el trazo del disco codifica «debatida» (discontinuo): se conserva y el foco es un halo continuo alrededor. */
+svg g.nodo:focus-visible .disco { filter:drop-shadow(3px 0 0 var(--foco)) drop-shadow(-3px 0 0 var(--foco)) drop-shadow(0 3px 0 var(--foco)) drop-shadow(0 -3px 0 var(--foco)); }
+svg g.region:focus-visible .aro { opacity:1; stroke:var(--foco); stroke-width:3px; vector-effect:non-scaling-stroke; }
+svg:has(g[tabindex]:focus-visible) g[tabindex]:not(:focus-visible) :is(.etq,.rlbl,text) { opacity:.3; }
 
 @media(max-width:720px){
   .barra {
     flex-wrap:wrap !important;
     align-items:center !important;
-    padding:.7rem 4vw !important;
+    padding:var(--e-2) var(--margen) !important;
   }
+  /* En teléfono la barra no es fija (no resta pantalla al contenido) y el nombre de la vista cabe junto a «Volver» */
+  .barra { position:static !important; }
+  /* Fila 21: todo control de la barra con 44 px de alto en el teléfono (p. ej. «Ver la introducción» de atlas.html). */
+  .barra .intro-link { display:inline-flex; align-items:center; min-height:var(--control); }
   .barra .marca {
+    flex:1 1 0;
+    text-align:right;
+    font-size:var(--t-xs) !important;
     min-width:0;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+    line-height:1.3;
   }
+  .barra nav a {
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
+  }
+  /* Los enlaces pasan a la línea siguiente en vez de cortarse por la derecha («Ver la introducción») */
   .barra nav,
   .barra nav[style] {
     order:3;
     width:100%;
     display:flex !important;
-    gap:1rem !important;
-    padding-top:.55rem;
-    overflow-x:auto;
-    white-space:nowrap;
-    scrollbar-width:thin;
+    flex-wrap:wrap;
+    gap:0 var(--e-4) !important;
+    font-size:var(--t-s);
+    padding-top:var(--e-1);
   }
   .grafico,.lienzo,.envoltorio,.tabla-sec {
     min-width:0;
     max-width:100%;
   }
-  .tabla-sec {
+  /* Tabla ancha: solo la tabla se desplaza en horizontal, y se nota. La primera columna queda fija,
+     el borde derecho se marca con trazo discontinuo y un aviso lo dice. */
+  .pb-tabla-desplazable {
     overflow-x:auto;
   }
-  .tabla-sec table {
-    min-width:560px;
+  .pb-tabla-desplazable:has(th:nth-child(4)) {
+    border-right:2px dashed var(--borde-control); /* la tabla de cuatro columnas sigue fuera del recuadro */
   }
+  .pb-tabla-desplazable table:has(th:nth-child(4)) {
+    min-width:50rem; /* tabla de cuatro columnas: filas más bajas, la columna de fuentes no queda estrujada */
+  }
+  .pb-tabla-desplazable :is(th,td):first-child {
+    position:sticky;
+    left:0;
+    background:var(--papel);
+    box-shadow:1px 0 0 var(--borde);
+  }
+  .tabla-sec .pb-desliza { display:block; }
   .lienzo svg {
     max-width:100%;
   }
 }
+
+/* PB-GH-10 · Movimiento reducido: sin desplazamiento suave */
+@media (prefers-reduced-motion:reduce){
+  html { scroll-behavior:auto !important; }
+}
+
+/* PB-GH-10 · Impresión: papel blanco, tinta negra, sin el enlace fijo ni la navegación */
+@media print{
+  :root {
+    --fondo:#fff; --fondo-alt:#fff; --letterbox:#fff;
+    --tinta:#000; --tinta-suave:#222; --acento:#a8781c;
+  }
+  /* Las páginas fijan muchos colores claros en bruto (rgba sobre fondo oscuro): en papel, toda la tinta en negro.
+     El acento queda como tono medio para fondos, bordes y trazos (texto negro encima: 5,4:1). */
+  *, *::before, *::after { color:#000 !important; }
+  html, body { background:#fff !important; color:#000 !important; }
+  body { padding-bottom:0 !important; }
+  .pb-lab-nav, .barra nav, .salto { display:none !important; }
+  a { color:#000 !important; text-decoration:underline; }
+  * { box-shadow:none !important; text-shadow:none !important; }
+  /* Con la tinta forzada a negro, ningún control puede conservar un relleno oscuro o de acento (B1: «Explorar el atlas»). */
+  .btn-primario, .btn { background:#fff !important; border:1px solid #000 !important; }
+  /* Mismo caso en el pie de crédito de la introducción (fondo casi negro) y en los rótulos SVG claros (ejes, rangos):
+     si el navegador imprime los fondos, la tinta negra no puede quedar sobre oscuro ni un rótulo claro sobre blanco. */
+  .pie { background:#fff !important; }
+  svg text { fill:#000 !important; }
+}
+
+/* PB-GH-10 · Aviso de tabla desplazable (solo en pantallas estrechas) */
+.pb-desliza { display:none; font-size:var(--t-xs); color:var(--tinta-2); margin:0 0 var(--e-2); }
+
+/* PB-GH-10 · Acceso a la alternativa textual, junto al gráfico (fila 22: en teléfono los objetivos del gráfico son pequeños) */
+.pb-alternativa { margin:0 0 var(--e-4); font-size:var(--t-s); color:var(--tinta-2); }
+.pb-alternativa a { display:inline-flex; align-items:center; min-height:var(--control-min); font-weight:600; color:var(--acento); }
+
+/* PB-GH-10 · Etiqueta de incertidumbre del sistema (variante oscura por tokens) junto al texto que la explica */
+.pb-recorrido .pb-etiqueta { margin-right:var(--e-2); vertical-align:.1em; }

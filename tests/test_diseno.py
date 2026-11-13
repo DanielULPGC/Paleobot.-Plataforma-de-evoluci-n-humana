@@ -1,0 +1,182 @@
+"""PB-GH-10: el verificador protege el sistema base, la entrada DEA, el recorrido, la consulta ligera y el contenido."""
+from pathlib import Path
+import importlib.util, shutil, tempfile, unittest
+
+ROOT=Path(__file__).resolve().parents[1]
+TOKENS='Tokens de la consulta ligera sincronizados con assets/paleobot-base.css'
+LEXEND='Lexend local idéntica al original y con su licencia'
+DEA='Entrada DEA enlaza la hoja base, con CSP estricta, aviso sin JavaScript, diez secciones y sin estilos en línea'
+DEA_CSS='Hoja de la entrada DEA solo con tokens de color y de tamaño de letra'
+FUENTES='Recorrido, DEA y consulta ligera sin Google Fonts; las diez páginas del recorrido enlazan la hoja base'
+LIGERA='Consulta ligera con imágenes locales registradas, sin Wikimedia como origen y con crédito y licencia'
+PORTADA='Portada conserva el acceso «DEA» con su rótulo visible en pantallas estrechas'
+NADA='No se elimina nada: datos, glosario, imágenes y mapa intactos y textos de las seis sesiones presentes'
+CONTRASTE='Parejas de tokens de assets/paleobot-base.css con contraste suficiente en claro, oscuro y proyección'
+NADA_DEA='No se elimina nada: textos de dea/index.html publicados en 693055f presentes o reubicados con sus fragmentos'
+NADA_JS='No se elimina nada: textos informativos de dea/dea.js registrados en la procedencia presentes'
+HUELLA_DEA='Archivos de dea/ modificados en la ronda coinciden con su huella registrada'
+OCULTA='Hoja de la entrada DEA sin ocultaciones fuera de la lista cerrada de selectores legítimos'
+NUEVAS=(TOKENS,LEXEND,DEA,DEA_CSS,FUENTES,LIGERA,PORTADA,NADA,CONTRASTE,NADA_DEA,NADA_JS,HUELLA_DEA,OCULTA)
+
+def module(name,path):
+    spec=importlib.util.spec_from_file_location(name,path)
+    result=importlib.util.module_from_spec(spec);spec.loader.exec_module(result)
+    return result
+
+class DisenoPBGH10(unittest.TestCase):
+    def setUp(self):
+        self.temp=tempfile.TemporaryDirectory(prefix='paleobot-pbgh10-')
+        self.repo=Path(self.temp.name)/'paleobot'
+        shutil.copytree(ROOT,self.repo,ignore=shutil.ignore_patterns('.git','local-results','dist','__pycache__'))
+        self.verifier=module('paleobot_verifier_pbgh10',self.repo/'scripts/verificar_repo.py')
+        self.verifier.ROOT=self.repo
+
+    def tearDown(self):self.temp.cleanup()
+
+    def checks(self):
+        self.verifier.CHECKS=[]
+        return {x['name']:x['pass'] for x in self.verifier.verify(include_syntax=False)['checks']}
+
+    def result(self,name):return self.checks()[name]
+
+    def editar(self,ruta,antes,despues):
+        f=self.repo/ruta;t=f.read_text(encoding='utf-8')
+        self.assertIn(antes,t,ruta)
+        f.write_text(t.replace(antes,despues,1),encoding='utf-8')
+
+    def test_comprobaciones_nuevas_pasan(self):
+        resultado=self.checks()
+        for nombre in NUEVAS:self.assertTrue(resultado[nombre],nombre)
+
+    def test_rechaza_token_desincronizado(self):
+        self.editar('src/entrada_ligera/estilos.css','--acento: #8a3b12;','--acento: #8a3b13;')
+        self.assertFalse(self.result(TOKENS))
+
+    def test_rechaza_lexend_alterada(self):
+        f=self.repo/'assets/fuentes/lexend-latin.woff2';f.write_bytes(f.read_bytes()+b'\0')
+        self.assertFalse(self.result(LEXEND))
+
+    def test_rechaza_lexend_sin_licencia(self):
+        (self.repo/'assets/fuentes/LICENCIA-Lexend.md').unlink()
+        self.assertFalse(self.result(LEXEND))
+
+    def test_rechaza_csp_con_unsafe_inline(self):
+        self.editar('dea/index.html',"style-src 'self';","style-src 'self' 'unsafe-inline';")
+        self.assertFalse(self.result(DEA))
+
+    def test_rechaza_estilo_en_linea_en_dea(self):
+        self.editar('dea/index.html','<section id="mapa" ','<section style="color:red" id="mapa" ')
+        self.assertFalse(self.result(DEA))
+
+    def test_rechaza_dea_sin_noscript_ni_hoja_base(self):
+        self.editar('dea/index.html','<noscript>','<div>')
+        self.assertFalse(self.result(DEA))
+
+    def test_rechaza_color_en_bruto_en_dea_css(self):
+        self.editar('dea/dea.css','.mapas .guia { stroke: var(--tinta-2);','.mapas .guia { stroke: #4a524e;')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_tamano_de_letra_fuera_de_escala(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2); font-size: var(--t-s); }','.ficha .fechas { color: var(--tinta-2); font-size: 14px; }')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_excepcion_svg_en_otro_selector(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2); font-size: var(--t-s); }','.ficha .fechas { color: var(--tinta-2); font-size: 2.4px; }')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_google_fonts_en_el_recorrido(self):
+        self.editar('atlas/recorrido/clima.html','</head>','<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend">\n</head>')
+        self.assertFalse(self.result(FUENTES))
+
+    def test_rechaza_pagina_del_recorrido_sin_hoja_base(self):
+        self.editar('atlas/recorrido/aula.html','href="../../assets/paleobot-base.css"','href="../../assets/otra.css"')
+        self.assertFalse(self.result(FUENTES))
+
+    def test_rechaza_imagen_remota_en_la_ligera(self):
+        self.editar('ligera/index.html','src="../img/taxones/proconsul.jpg"','src="https://upload.wikimedia.org/wikipedia/commons/x/proconsul.jpg"')
+        self.assertFalse(self.result(LIGERA))
+
+    def test_rechaza_imagen_local_inexistente(self):
+        (self.repo/'img/taxones/proconsul.jpg').unlink()
+        self.assertFalse(self.result(LIGERA))
+
+    def test_rechaza_imagen_sin_licencia_en_la_ligera(self):
+        self.editar('ligera/index.html','<a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>. Sin modificaciones locales. Copia guardada en este sitio: miniatura de hasta 500 px de ancho servida por Wikimedia Commons; sin otros cambios.</figcaption></figure><p>Proconsul','Sin modificaciones locales.</figcaption></figure><p>Proconsul')
+        self.assertFalse(self.result(LIGERA))
+
+    def test_rechaza_portada_sin_acceso_dea(self):
+        self.editar('atlas/recorrido/portada-sylva.html','<span>DEA</span>','<span></span>')
+        self.assertFalse(self.result(PORTADA))
+
+    def test_rechaza_cambio_en_los_datos_del_recorrido(self):
+        f=self.repo/'atlas/recorrido/datos.js';f.write_text(f.read_text(encoding='utf-8')+'\n',encoding='utf-8')
+        self.assertFalse(self.result(NADA))
+
+    def test_rechaza_texto_de_sesion_perdido(self):
+        self.editar('dea/dea.js',"titulo: 'Paisajes y climas del origen'","titulo: 'Paisajes del origen'")
+        self.assertFalse(self.result(NADA))
+
+    def test_rechaza_proyeccion_oscura_que_hereda_tinta_clara(self):
+        # A1 de la verificación independiente: el bloque oscuro de .proyeccion no redefinía --tinta-2.
+        self.editar('assets/paleobot-base.css','--tinta-2: #cfd4d0; ','')
+        self.assertFalse(self.result(CONTRASTE))
+
+    def test_rechaza_foco_sin_contraste_en_oscuro(self):
+        self.editar('assets/paleobot-base.css','--foco: #8ab4f8;','--foco: #2a2f2d;')
+        self.assertFalse(self.result(CONTRASTE))
+
+    # Falsos negativos de la verificación independiente (M7): cada forma de color o tamaño en bruto se rechaza.
+    def test_rechaza_color_con_nombre_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { color: red;')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_hsl_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { color: hsl(20 50% 30%);')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_color_mix_con_literal_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { color: color-mix(in srgb, var(--tinta-2), white 20%);')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_borde_con_color_en_bruto_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { border: 1px solid black; color: var(--tinta-2);')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_atajo_font_con_tamano_en_bruto(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { font: 11px serif; color: var(--tinta-2);')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_linea_borrada_de_la_guia_su_trabajo(self):
+        self.editar('dea/index.html','      <li>¿Por qué se habla de un árbol, y no de una escalera, en la evolución humana?</li>\n','')
+        self.assertFalse(self.result(NADA_DEA))
+
+    def test_rechaza_frase_reubicada_que_se_pierde(self):
+        self.editar('dea/index.html',' no pasan de un aparato a otro y','')
+        self.assertFalse(self.result(NADA_DEA))
+
+    # Segunda pasada de la verificación independiente.
+    def test_rechaza_color_mix_aunque_sea_entre_tokens(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { color: color-mix(in srgb, var(--tinta) 40%, var(--papel));')
+        self.assertFalse(self.result(DEA_CSS))
+
+    def test_rechaza_rotulo_de_ficha_cambiado_en_dea_js(self):
+        self.editar('dea/dea.js',"el('dt', { texto: 'Qué se sabe' })","el('dt', { texto: 'Resumen' })")
+        self.assertFalse(self.result(NADA_JS))
+
+    def test_rechaza_aviso_de_comparar_alterado(self):
+        self.editar('dea/dea.js','Coincidir en el tiempo no significa que se encontraran','Coincidir en el tiempo significa que se encontraron')
+        self.assertFalse(self.result(NADA_JS))
+
+    def test_rechaza_cambio_no_registrado_en_dea(self):
+        f=self.repo/'dea/dea.css';f.write_text(f.read_text(encoding='utf-8')+'\n',encoding='utf-8')
+        self.assertFalse(self.result(HUELLA_DEA))
+
+    def test_rechaza_ocultacion_no_prevista_en_dea_css(self):
+        self.editar('dea/dea.css','.ficha .fechas { color: var(--tinta-2);','.ficha .fechas { display: none; color: var(--tinta-2);')
+        self.assertFalse(self.result(OCULTA))
+
+    def test_rechaza_ocultacion_legitima_sacada_de_su_contexto(self):
+        self.editar('dea/dea.css','.cruces { display: none; }','.cruces { color: inherit; }\n}\n.cruces { display: none; }\n@media print {')
+        self.assertFalse(self.result(OCULTA))
+
+if __name__=='__main__':unittest.main()

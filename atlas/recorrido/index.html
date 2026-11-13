@@ -9,83 +9,77 @@
   Accesibilidad: prefers-reduced-motion, contraste AAA, foco visible, enlace de
   salto. Autonomía: fichero único. Licencia CC BY-NC 4.0 · ULPGC.
 -->
-<html lang="es">
+<html lang="es" class="pb-recorrido">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atlas de paleoantropología</title>
 <meta name="description" content="Atlas educativo de paleoantropología de la Facultad de Ciencias de la Educación de la ULPGC: cronología de especies, territorio, clima, métodos y recursos de aula.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/paleobot-base.css">
 <style>
 :root{
-  --fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;
-  --acento:#d8a93a;--radio:14px;
-  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif;
+  --fondo:var(--papel);--fondo-alt:var(--superficie);--tinta-suave:var(--tinta-2);--radio:var(--r-contenedor);
+  --ft:var(--f-titulo);--fc:var(--f-lectura);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6;overflow-x:hidden}
 a{color:var(--acento)}
-.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;border-radius:0 0 var(--radio) 0;z-index:50;font-weight:600}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:var(--sobre-acento);padding:var(--e-3) var(--e-4);border-radius:0 0 var(--r-control) 0;z-index:50;font-weight:600}
 .salto:focus{left:0}
 
-.hero{position:relative;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6vh 8vw;overflow:hidden;isolation:isolate}
-.hero::before{content:'';position:absolute;inset:-20%;z-index:-3;
-  background:radial-gradient(40% 50% at 28% 30%,rgba(107,58,30,.55),transparent 70%),radial-gradient(45% 55% at 74% 68%,rgba(22,48,60,.9),transparent 72%),linear-gradient(160deg,#0c1c24 0%,#10242d 55%,#16150f 100%)}
-.hero::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(4,10,14,.6) 100%)}
+.hero{position:relative;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--e-7) var(--margen);overflow:hidden;isolation:isolate}
+/* PB-GH-10: sin degradados ni viñeta decorativos (línea base: un fondo plano; el motivo del árbol se conserva) */
+.hero::before,.hero::after{content:none}
 .motivo{position:absolute;inset:0;z-index:-2;display:flex;align-items:center;justify-content:center;opacity:.16;pointer-events:none}
 .motivo svg{width:min(76vw,900px);height:auto;overflow:visible}
 .rama{fill:none;stroke:var(--acento);stroke-width:2.4;stroke-linecap:round}
-#motas{position:absolute;inset:0;z-index:-1;pointer-events:none}
+#motas{display:none} /* PB-GH-10: partículas decorativas retiradas (movimiento sin función) */
 
-.kicker{font-size:clamp(.72rem,1.5vw,.95rem);letter-spacing:.26em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:1.4rem}
-.hero h1{font-family:var(--ft);font-weight:700;font-size:clamp(2.6rem,9vw,6rem);line-height:1;margin-bottom:1rem}
-.lema{font-family:var(--ft);font-style:italic;font-weight:500;font-size:clamp(1.1rem,3vw,1.9rem);color:var(--acento);margin-bottom:1.6rem}
-.entrada{max-width:56ch;font-size:clamp(1rem,1.9vw,1.2rem);color:var(--tinta-suave);margin-bottom:2.4rem}
-.acciones{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-.btn{font-family:var(--fc);font-weight:600;font-size:clamp(.95rem,1.8vw,1.1rem);padding:.85rem 2rem;border-radius:var(--radio);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.6rem;border:1px solid transparent;transition:transform .12s,background .2s,border-color .2s,color .2s}
+.kicker{font-size:var(--t-xs);letter-spacing:.26em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:var(--e-5)}
+.hero h1{font-family:var(--ft);font-weight:700;font-size:var(--t-display);line-height:1;margin-bottom:var(--e-4)}
+.lema{font-family:var(--ft);font-style:italic;font-weight:500;font-size:var(--t-lema);color:var(--acento);margin-bottom:var(--e-5)}
+.entrada{max-width:56ch;font-size:var(--t-entrada);color:var(--tinta-suave);margin-bottom:var(--e-6)}
+.acciones{display:flex;gap:var(--e-4);flex-wrap:wrap;justify-content:center}
+.btn{font-family:var(--fc);font-weight:600;font-size:var(--t-m);padding:var(--e-3) var(--e-6);border-radius:var(--r-control);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:var(--e-2);border:1px solid transparent;transition:transform .12s,background .2s,border-color .2s,color .2s}
 .btn:active{transform:translateY(1px)}
-.btn:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
-.btn-primario{background:var(--acento);color:#141008}
+.btn:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:3px}
+.btn-primario{background:var(--acento);color:var(--sobre-acento)}
 .btn-primario:hover{background:#e6bb52}
-.btn-secundario{background:transparent;color:var(--tinta);border-color:rgba(243,239,231,.3)}
+.btn-secundario{background:transparent;color:var(--tinta);border-color:var(--borde-control)}
 .btn-secundario:hover{border-color:var(--acento);color:var(--acento)}
-.scroll-cue{position:absolute;bottom:3.2vh;left:50%;transform:translateX(-50%);color:var(--tinta-suave);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;text-decoration:none}
+.scroll-cue{position:absolute;bottom:3.2vh;left:50%;transform:translateX(-50%);color:var(--tinta-suave);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:var(--e-2);text-decoration:none}
 .scroll-cue svg{width:22px;height:22px;stroke:var(--acento);fill:none;stroke-width:2}
 
-.secciones{padding:12vh 8vw;max-width:1100px;margin:0 auto}
-.secciones h2{font-family:var(--ft);font-weight:700;font-size:clamp(1.6rem,4vw,2.6rem);text-align:center;margin-bottom:.6rem}
-.secciones .intro{text-align:center;color:var(--tinta-suave);max-width:60ch;margin:0 auto 3.4rem}
-.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
-.tarjeta{display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.8rem 1.6rem;text-decoration:none;color:inherit;transition:transform .15s,background .2s,border-color .2s}
-.tarjeta:hover{transform:translateY(-3px);background:rgba(255,255,255,.07)}
-.tarjeta:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
-.tarjeta .num{color:var(--acento);font-weight:700;font-size:.85rem;letter-spacing:.1em;margin-bottom:.7rem}
-.tarjeta h3{font-family:var(--ft);font-weight:700;font-size:1.3rem;margin-bottom:.5rem}
-.tarjeta p{color:var(--tinta-suave);font-size:.98rem}
-.tarjeta .ir{margin-top:1rem;color:var(--acento);font-weight:600;font-size:.9rem}
+.secciones{padding:var(--e-8) var(--margen);max-width:1100px;margin:0 auto}
+.secciones h2{font-family:var(--ft);font-weight:700;font-size:var(--t-h2-portada);text-align:center;margin-bottom:var(--e-2)}
+.secciones .intro{text-align:center;color:var(--tinta-suave);max-width:60ch;margin:0 auto var(--e-7)}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--e-5)}
+.tarjeta{display:block;background:var(--superficie);border:1px solid var(--borde);border-left:4px solid var(--acento);border-radius:var(--radio);padding:var(--e-6) var(--e-5);text-decoration:none;color:inherit;transition:transform .15s,background .2s,border-color .2s}
+.tarjeta:hover{background:rgba(255,255,255,.07)}
+.tarjeta:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:3px}
+.tarjeta .num{color:var(--acento);font-weight:700;font-size:var(--t-xs);letter-spacing:.1em;margin-bottom:var(--e-3)}
+.tarjeta h3{font-family:var(--ft);font-weight:700;font-size:var(--t-l);margin-bottom:var(--e-2)}
+.tarjeta p{color:var(--tinta-suave);font-size:var(--t-s)}
+.tarjeta .ir{margin-top:var(--e-4);color:var(--acento);font-weight:600;font-size:var(--t-s)}
 
-.pie{border-top:1px solid rgba(255,255,255,.1);padding:2.4rem 8vw;text-align:center;color:rgba(200,210,206,.6);font-size:.82rem;line-height:1.7}
-.pie a{color:rgba(216,169,58,.85)}
+.pie{border-top:1px solid var(--borde);padding:var(--e-6) var(--margen);text-align:center;color:var(--tinta-3);font-size:var(--t-xs);line-height:1.7}
+.pie a{color:var(--acento)}
 
+/* PB-GH-10: sin apariciones al desplazarse ni latidos; solo el trazado del árbol, que muestra el motivo */
 @media (prefers-reduced-motion: no-preference){
-  .hero::before{animation:deriva 34s ease-in-out infinite alternate}
-  @keyframes deriva{from{transform:translate3d(-2%,-1%,0) scale(1.02)}to{transform:translate3d(2%,2%,0) scale(1.08)}}
   .rama{stroke-dasharray:1;stroke-dashoffset:1;animation:trazar 3s ease forwards}
   .rama.r2{animation-delay:.5s}.rama.r3{animation-delay:1s}.rama.r4{animation-delay:1.5s}.rama.r5{animation-delay:2s}.rama.r6{animation-delay:2.5s}
   @keyframes trazar{to{stroke-dashoffset:0}}
-  .aparece{opacity:0;transform:translateY(16px);animation:surgir .9s ease forwards}
-  .aparece.d1{animation-delay:.15s}.aparece.d2{animation-delay:.35s}.aparece.d3{animation-delay:.55s}.aparece.d4{animation-delay:.8s}
-  @keyframes surgir{to{opacity:1;transform:translateY(0)}}
-  .scroll-cue svg{animation:latido 2.2s ease-in-out infinite}
-  @keyframes latido{50%{transform:translateY(6px)}}
-  .revelar{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-  .revelar.visible{opacity:1;transform:translateY(0)}
+}
+@media print{
+  .revelar,.aparece{opacity:1!important;transform:none!important;animation:none!important}
+  .hero{min-height:0}
+  .hero::before,.hero::after,.motivo,#motas,.scroll-cue{display:none}
 }
 @media (max-width:640px){.scroll-cue{display:none}}
 </style>
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="integracion.css">
 <script src="integracion.js" defer></script>
 </head>
@@ -161,7 +155,7 @@ a{color:var(--acento)}
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const canvas = document.getElementById('motas');
-  if (canvas && !reduce) {
+  if (canvas && !reduce && getComputedStyle(canvas).display !== 'none') {
     const ctx = canvas.getContext('2d');
     let w,h,motas=[],raf=null,activo=true; const N=34;
     const dim=()=>{w=canvas.width=canvas.offsetWidth;h=canvas.height=canvas.offsetHeight;};

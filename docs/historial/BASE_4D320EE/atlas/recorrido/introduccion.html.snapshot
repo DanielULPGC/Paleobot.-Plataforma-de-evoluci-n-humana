@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: recurso audiovisual introductorio (vídeo animado en HTML)
+  para alumnado universitario de la FCEDU y formación permanente (Diploma de
+  Estudios Africanos), tono académico-cinemático, orientado a abrir una unidad
+  de paleoantropología. Diales: VARIANZA_VISUAL 6 / INTENSIDAD_ANIMACION 6
+  (función narrativa) / DENSIDAD_CONTENIDO 3.
+
+  Arquitectura: fichero único autónomo (justificación: la pieza está pensada
+  como artefacto portátil, embebible en un aula virtual o reproducible en local
+  sin dependencias externas ni conexión). No usa CDN ni servicios remotos.
+
+  Narración: síntesis de voz del navegador (Web Speech API) en castellano,
+  con subtítulos sincronizados SIEMPRE disponibles. Si el sistema carece de voz
+  en español, la pieza funciona igualmente como vídeo subtitulado.
+
+  Fundamentación científica (referencias con DOI verificado en fuente primaria):
+  · Diversidad táxica y patrón arbustivo, no escalera lineal:
+    Wood y Boyle (2016), Am. J. Phys. Anthropol. 159(S61), S37-S78.
+    https://doi.org/10.1002/ajpa.22902
+  · Datación radiométrica (K-Ar y 40Ar/39Ar) en paleoantropología:
+    Deino, Renne y Swisher (1998), Evolutionary Anthropology 6(2), 63-75.
+    https://doi.org/10.1002/(SICI)1520-6505(1998)6:2<63::AID-EVAN4>3.0.CO;2-X
+  · Tafonomía: discriminación entre conducta humana y procesos naturales:
+    Blasco (2022), Scientific Reports 12, 7355.
+    https://doi.org/10.1038/s41598-022-10473-9
+  · Paleogenómica e introgresión (ADN antiguo):
+    Green et al. (2010), Science 328(5979), 710-722.
+    https://doi.org/10.1126/science.1188021
+-->
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paleoantropología · Una introducción a la materia</title>
+<!-- Tipografías (con conexión). Sin conexión, el recurso degrada a serif/sans del sistema. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ───────────────────────────────────────────────────────────────────────
+   DIALES: VARIANZA_VISUAL 6 · INTENSIDAD_ANIMACION 6 · DENSIDAD_CONTENIDO 3
+   Sistema de diseño (acento único: oro cálido). Sin negro puro.
+   ─────────────────────────────────────────────────────────────────────── */
+:root{
+  --fondo:#0d2028;          /* verde-petróleo muy oscuro */
+  --fondo-alt:#16303c;
+  --letterbox:#071319;      /* casi negro cálido, no #000 */
+  --tinta:#f3efe7;          /* marfil cálido */
+  --tinta-suave:#c8d2ce;
+  --acento:#d8a93a;         /* oro, acento único */
+  --acento-tenue:rgba(216,169,58,.16);
+  --radio:14px;
+  --fuente-titulo:'Playfair Display', Georgia, 'Times New Roman', serif;
+  --fuente-cuerpo:'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--letterbox);
+  color:var(--tinta);
+  font-family:var(--fuente-cuerpo);
+  min-height:100dvh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* Escenario cinematográfico con barras (letterbox) */
+.cine{
+  position:relative;
+  width:min(100vw, 177.78vh);   /* 16:9 */
+  aspect-ratio:16/9;
+  background:var(--fondo);
+  overflow:hidden;
+  box-shadow:0 0 80px rgba(0,0,0,.6);
+}
+
+/* Capa de escenas */
+.escenas{position:absolute;inset:0}
+.escena{
+  position:absolute;inset:0;
+  opacity:0;
+  transition:opacity .9s ease;
+  will-change:opacity;
+}
+.escena.activa{opacity:1}
+/* La ilustración se confina a la zona superior del encuadre; la banda inferior
+   queda reservada en exclusiva para los subtítulos, de modo que la imagen y el
+   texto no compiten por el mismo espacio. */
+.escena svg{
+  position:absolute;top:5%;left:8%;
+  width:84%;height:58%;overflow:visible;
+}
+/* Halo cálido de baja intensidad para dar profundidad a la ilustración,
+   coherente con el acento único (oro), sin gradiente decorativo genérico. */
+.escena.activa::before{
+  content:'';position:absolute;top:4%;left:50%;
+  width:56%;height:56%;transform:translateX(-50%);
+  background:radial-gradient(ellipse at center, rgba(216,169,58,.07), transparent 72%);
+  pointer-events:none;z-index:0;
+}
+
+/* Viñeta y grano sutiles */
+.vineta{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 42%, transparent 52%, rgba(4,10,14,.55) 100%);
+  z-index:5;
+}
+.grano{position:absolute;inset:0;pointer-events:none;opacity:.05;z-index:6;mix-blend-mode:overlay}
+
+/* Subtítulos */
+/* Subtítulos: banda inferior reservada (no invade la zona de la ilustración,
+   que termina hacia el 63 % de la altura). El velo de degradado asegura
+   contraste y separa visualmente el texto de la imagen. */
+.subtitulos{
+  position:absolute;left:0;right:0;bottom:0;height:34%;
+  z-index:8;
+  display:flex;align-items:flex-end;justify-content:center;
+  padding:0 9% 10%;
+  pointer-events:none;
+  background:linear-gradient(0deg, rgba(7,19,25,.92) 0%, rgba(7,19,25,.5) 55%, transparent 100%);
+}
+.subtitulos p{
+  font-size:clamp(1.05rem, 2.4vw, 1.85rem);
+  line-height:1.42;
+  text-align:center;
+  max-width:38ch;
+  color:var(--tinta);
+  text-shadow:0 2px 12px rgba(0,0,0,.7);
+  opacity:0;
+  transition:opacity .45s ease;
+  letter-spacing:.005em;
+}
+.subtitulos p.visible{opacity:1}
+body.sin-subtitulos .subtitulos{display:none}
+
+/* Marca temporal de escena (nombre en lenguaje llano, esquina) */
+.rotulo{
+  position:absolute;top:7%;left:7%;z-index:8;
+  font-size:clamp(.7rem,1.3vw,1rem);
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--acento);
+  opacity:0;transition:opacity .6s ease;
+  font-weight:600;
+}
+.rotulo.visible{opacity:.9}
+
+/* ── Poster (antes de reproducir) y Pausa (al terminar) ── */
+.overlay{
+  position:absolute;inset:0;z-index:12;
+  background:linear-gradient(180deg, rgba(7,19,25,.72), rgba(7,19,25,.9));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:6% 8%;
+  transition:opacity .6s ease;
+}
+.overlay.oculto{opacity:0;pointer-events:none}
+.overlay .kicker{
+  font-size:clamp(.72rem,1.4vw,1rem);
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acento);font-weight:600;margin-bottom:1.1rem;
+}
+.overlay h1{
+  font-family:var(--fuente-titulo);
+  font-weight:700;
+  font-size:clamp(2rem,6vw,4.4rem);
+  line-height:1.02;
+  letter-spacing:.01em;
+  margin-bottom:.9rem;
+}
+.overlay .sub{
+  font-family:var(--fuente-titulo);
+  font-style:italic;font-weight:500;
+  font-size:clamp(1rem,2.6vw,1.7rem);
+  color:var(--acento);
+  margin-bottom:1.6rem;
+}
+.overlay p.desc{
+  max-width:52ch;
+  font-size:clamp(.9rem,1.7vw,1.12rem);
+  color:var(--tinta-suave);
+  line-height:1.55;margin-bottom:2rem;
+}
+
+/* Botones */
+.btn{
+  font-family:var(--fuente-cuerpo);
+  font-weight:600;
+  cursor:pointer;
+  border-radius:var(--radio);
+  border:1px solid transparent;
+  transition:transform .12s ease, background .2s ease, border-color .2s ease;
+}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.btn-primario{
+  background:var(--acento);color:var(--letterbox);
+  font-size:clamp(1rem,2vw,1.2rem);
+  padding:.85rem 2.1rem;
+  display:inline-flex;align-items:center;gap:.6rem;
+}
+.btn-primario:hover{background:#e6bb52}
+
+/* Barra de controles inferior */
+.controles{
+  position:absolute;left:0;right:0;bottom:0;z-index:10;
+  display:flex;align-items:center;gap:.9rem;
+  padding:.8rem 1.2rem;
+  background:linear-gradient(0deg, rgba(7,19,25,.85), transparent);
+  opacity:0;transition:opacity .3s ease;
+}
+.cine:hover .controles, .cine.mostrar-controles .controles{opacity:1}
+.controles.oculto{display:none}
+.ctrl{
+  background:rgba(243,239,231,.08);
+  color:var(--tinta);
+  border:1px solid rgba(243,239,231,.16);
+  width:2.6rem;height:2.6rem;
+  border-radius:10px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:1rem;
+}
+.ctrl:hover{background:rgba(243,239,231,.16)}
+.ctrl svg{width:1.15rem;height:1.15rem;fill:currentColor}
+.ctrl[aria-pressed="false"]{opacity:.5}
+
+.progreso{
+  flex:1;height:6px;border-radius:99px;
+  background:rgba(243,239,231,.14);
+  position:relative;overflow:hidden;cursor:pointer;
+}
+.progreso .relleno{
+  position:absolute;left:0;top:0;bottom:0;width:0%;
+  background:var(--acento);border-radius:99px;
+}
+.tiempo{
+  font-variant-numeric:tabular-nums;
+  font-size:.85rem;color:var(--tinta-suave);
+  min-width:5.4ch;text-align:right;
+}
+
+/* Pie con licencia (solo en overlays, no durante la reproducción) */
+.pie{
+  position:absolute;bottom:1rem;left:0;right:0;z-index:12;
+  text-align:center;font-size:.72rem;color:rgba(200,210,206,.55);
+  padding:0 1rem;line-height:1.5;
+}
+.pie a{color:rgba(216,169,58,.8)}
+.overlay.oculto ~ .pie{opacity:0;transition:opacity .4s ease}
+
+.nota-voz{
+  font-size:.78rem;color:rgba(200,210,206,.6);
+  margin-top:1.2rem;max-width:44ch;line-height:1.5;
+}
+
+/* ── Animaciones de escena (respetan prefers-reduced-motion) ── */
+@media (prefers-reduced-motion: no-preference){
+  /* Escena 1: trazado de las ramas + aparición de figuras */
+  .rama{stroke-dasharray:1;stroke-dashoffset:1;}
+  .escena.activa .rama{animation:trazar 2.4s ease forwards}
+  .escena.activa .rama.r2{animation-delay:.5s}
+  .escena.activa .rama.r3{animation-delay:1s}
+  .escena.activa .rama.r4{animation-delay:1.5s}
+  .escena.activa .rama.r5{animation-delay:2s}
+  .escena.activa .rama.r6{animation-delay:2.5s}
+  @keyframes trazar{to{stroke-dashoffset:0}}
+  .figura{opacity:0;transform-box:fill-box;transform-origin:center bottom}
+  .escena.activa .figura{animation:brotar .9s ease forwards}
+  .escena.activa .figura.f2{animation-delay:1.4s}
+  .escena.activa .figura.f3{animation-delay:1.9s}
+  .escena.activa .figura.f4{animation-delay:2.4s}
+  .escena.activa .figura.f5{animation-delay:2.9s}
+  .escena.activa .figura.f6{animation-delay:3.4s}
+  @keyframes brotar{from{opacity:0;transform:translateY(8px) scale(.7)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+  /* Escena 4: amanecer del Rift (sol asciende, cámara sube) */
+  .escena.activa .sol{animation:amanecer 16s linear forwards}
+  @keyframes amanecer{from{transform:translateY(90px)}to{transform:translateY(-30px)}}
+  .escena.activa .paisaje{animation:camara 16s ease-out forwards}
+  @keyframes camara{from{transform:translateY(26px)}to{transform:translateY(-10px)}}
+  .escena.activa .cielo{animation:calentar 16s ease-in forwards}
+  @keyframes calentar{from{opacity:.35}to{opacity:1}}
+
+  /* Escena 5: enfoque de la cuadrícula de excavación */
+  .foco-anillo{opacity:0;transform-box:fill-box;transform-origin:center}
+  .escena.activa .foco-anillo{animation:enfocar 2.4s ease forwards 1s}
+  @keyframes enfocar{from{opacity:0;transform:scale(1.6)}to{opacity:.95;transform:scale(1)}}
+
+  /* Escena 6: descenso por los estratos */
+  .escena.activa .escala-tiempo{animation:descender 15s ease forwards}
+  @keyframes descender{from{transform:translateY(-26px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .escena.activa .reloj{animation:latir 3.4s ease-in-out infinite}
+  @keyframes latir{50%{opacity:.55}}
+
+  /* Escena 7: realce secuencial de las marcas */
+  .marca{opacity:0}
+  .escena.activa .marca{animation:realce .7s ease forwards}
+  .escena.activa .marca.m2{animation-delay:1.3s}
+  .escena.activa .marca.m3{animation-delay:2.6s}
+  .escena.activa .marca.m4{animation-delay:3.9s}
+  @keyframes realce{from{opacity:0}to{opacity:1}}
+
+  /* Escena 8: trazado y convergencia de la hélice */
+  .hebra{stroke-dasharray:1;stroke-dashoffset:1}
+  .escena.activa .hebra{animation:trazar 3s ease forwards}
+  .escena.activa .hebra.h2{animation-delay:.5s}
+
+  .grano{animation:parpadeo 1.2s steps(2) infinite}
+  @keyframes parpadeo{50%{opacity:.03}}
+}
+@media (prefers-reduced-motion: reduce){
+  .escena{transition:opacity .01s}
+  .rama{stroke-dashoffset:0!important}
+  .figura{opacity:1!important}
+}
+
+/* Fósiles de la escena 2 (cross-fade controlado por JS) */
+.fosil{opacity:0;transition:opacity .8s ease}
+.fosil.activo{opacity:1}
+
+/* Reconstrucciones de la escena 3 */
+.reconstruccion{opacity:0;transition:opacity .9s ease}
+.reconstruccion.activa{opacity:1}
+.etq-recons{
+  font-family:var(--fuente-cuerpo);font-weight:600;
+}
+/* Retorno: visible durante toda la reproducción del vídeo */
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:60;font-weight:600;text-decoration:none;border-radius:0 0 10px 0}
+.salto:focus{left:0}
+#cine:focus{outline:none}.volver-video{
+  position:absolute;top:16px;left:16px;z-index:14;
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:rgba(7,19,25,.6);color:var(--tinta);
+  border:1px solid rgba(243,239,231,.22);border-radius:10px;
+  padding:.5rem .9rem;font-family:var(--fuente-cuerpo);font-weight:600;font-size:.9rem;
+  cursor:pointer;backdrop-filter:blur(6px);
+  transition:background .2s,border-color .2s,color .2s;
+}
+.volver-video:hover{background:rgba(7,19,25,.85);border-color:var(--acento);color:var(--acento)}
+.volver-video:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver-video svg{width:18px;height:18px;fill:none}
+@media (max-width:640px){.volver-video span{display:none}
+  fill:var(--tinta-suave);
+}
+.etq-recons.on{fill:var(--acento)}
+
+/* Responsive: en móvil, controles siempre visibles */
+@media (max-width:768px){
+  .controles{opacity:1}
+  .overlay p.desc{font-size:.92rem}
+}
+</style>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+
+<a class="salto" href="#cine">Saltar al vídeo</a>
+
+<div class="cine" id="cine" tabindex="-1">
+
+  <!-- Retorno al atlas: visible durante toda la reproducción -->
+  <button class="volver-video" id="volverVideo" type="button" aria-label="Volver al atlas">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Volver</span>
+  </button>
+
+
+  <!-- Capa de escenas -->
+  <div class="escenas" id="escenas">
+
+    <!-- ESCENA 1 · El árbol arbustivo (0:00–0:12) -->
+    <div class="escena" data-escena="0" role="img"
+         aria-label="Un árbol ramificado y arbustivo que emerge de la penumbra; varias ramas divergentes terminan en pequeñas figuras humanas que caminan, evocando especies humanas coetáneas.">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <!-- ramas divergentes desde una base común: patrón arbustivo, no escalera -->
+        <g fill="none" stroke="var(--acento)" stroke-width="3" stroke-linecap="round" opacity="0.9">
+          <path class="rama r1" pathLength="1" d="M500,560 C500,470 500,430 500,380"/>
+          <path class="rama r2" pathLength="1" d="M500,430 C450,380 400,350 360,300"/>
+          <path class="rama r3" pathLength="1" d="M500,430 C560,380 620,360 670,300"/>
+          <path class="rama r4" pathLength="1" d="M500,380 C500,320 500,300 500,250"/>
+          <path class="rama r5" pathLength="1" d="M360,300 C330,260 300,240 270,200"/>
+          <path class="rama r6" pathLength="1" d="M670,300 C710,260 740,235 780,195"/>
+        </g>
+        <!-- figuras homininas en los extremos (siluetas sencillas, bípedas) -->
+        <g fill="var(--tinta)">
+          <g class="figura f1" transform="translate(500,232)"><circle cx="0" cy="0" r="7"/><rect x="-3" y="6" width="6" height="16" rx="3"/><path d="M-3,20 L-7,34 M3,20 L7,34" stroke="var(--tinta)" stroke-width="3" stroke-linecap="round"/></g>
+          <g class="figura f2" transform="translate(270,184)"><circle cx="0" cy="0" r="7"/><rect x="-3" y="6" width="6" height="16" rx="3"/><path d="M-3,20 L-7,34 M3,20 L7,34" stroke="var(--tinta)" stroke-width="3" stroke-linecap="round"/></g>
+          <g class="figura f3" transform="translate(780,178)"><circle cx="0" cy="0" r="7"/><rect x="-3" y="6" width="6" height="16" rx="3"/><path d="M-3,20 L-7,34 M3,20 L7,34" stroke="var(--tinta)" stroke-width="3" stroke-linecap="round"/></g>
+          <g class="figura f4" transform="translate(360,282)"><circle cx="0" cy="0" r="6"/><rect x="-2.5" y="5" width="5" height="14" rx="2.5"/><path d="M-2.5,18 L-6,30 M2.5,18 L6,30" stroke="var(--tinta)" stroke-width="2.6" stroke-linecap="round"/></g>
+          <g class="figura f5" transform="translate(670,282)"><circle cx="0" cy="0" r="6"/><rect x="-2.5" y="5" width="5" height="14" rx="2.5"/><path d="M-2.5,18 L-6,30 M2.5,18 L6,30" stroke="var(--tinta)" stroke-width="2.6" stroke-linecap="round"/></g>
+        </g>
+        <!-- base / raíz común -->
+        <path d="M470,566 Q500,548 530,566" fill="none" stroke="var(--acento)" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+      </svg>
+    </div>
+
+    <!-- ESCENA 2 · Los vestigios (0:12–0:26) -->
+    <div class="escena" data-escena="1" role="img"
+         aria-label="Cuatro vestigios que se suceden: una mandíbula, un molar, una huella bípeda y un bifaz de piedra tallada.">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <g fill="none" stroke="var(--tinta)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <!-- mandíbula -->
+          <g class="fosil" data-fosil="0">
+            <path d="M330,250 Q500,200 670,250 Q690,330 630,380 Q500,420 370,380 Q310,330 330,250 Z"/>
+            <g stroke-width="3">
+              <line x1="400" y1="252" x2="400" y2="272"/><line x1="440" y1="244" x2="440" y2="266"/>
+              <line x1="480" y1="240" x2="480" y2="262"/><line x1="520" y1="240" x2="520" y2="262"/>
+              <line x1="560" y1="244" x2="560" y2="266"/><line x1="600" y1="252" x2="600" y2="272"/>
+            </g>
+          </g>
+          <!-- molar -->
+          <g class="fosil" data-fosil="1">
+            <path d="M430,240 Q500,205 570,240 Q600,285 580,330 L560,330 L565,400 Q560,430 545,430 Q535,430 532,395 L528,340 L520,340 L516,400 Q512,432 500,432 Q488,432 484,400 L480,340 L472,340 L468,395 Q465,430 455,430 Q440,430 435,400 L440,330 L420,330 Q400,285 430,240 Z"/>
+            <path d="M462,262 Q500,248 538,262" stroke-width="3"/>
+          </g>
+          <!-- huella bípeda -->
+          <g class="fosil" data-fosil="2">
+            <path d="M500,230 Q560,235 560,320 Q560,380 520,395 Q500,400 480,395 Q440,380 440,320 Q440,235 500,230 Z"/>
+            <ellipse cx="500" cy="360" rx="42" ry="30" fill="var(--tinta)" opacity=".12" stroke="none"/>
+            <g fill="var(--tinta)" stroke="none">
+              <circle cx="470" cy="222" r="9"/><circle cx="490" cy="214" r="8"/>
+              <circle cx="510" cy="214" r="8"/><circle cx="528" cy="220" r="7"/><circle cx="544" cy="230" r="6"/>
+            </g>
+          </g>
+          <!-- bifaz -->
+          <g class="fosil" data-fosil="3">
+            <path d="M500,205 Q590,300 560,400 Q530,440 500,445 Q470,440 440,400 Q410,300 500,205 Z"/>
+            <g stroke-width="2.4" opacity=".8">
+              <path d="M500,225 Q545,300 528,385"/><path d="M500,225 Q455,300 472,385"/>
+              <path d="M470,260 L500,275 M530,260 L500,275 M460,320 L500,335 M540,320 L500,335"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ESCENA 3 · La hipótesis revisable (0:26–0:42) -->
+    <div class="escena" data-escena="2" role="img"
+         aria-label="Un mismo cráneo mostrado en dos reconstrucciones distintas que se alternan, para representar que la evidencia se interpreta y las hipótesis se revisan.">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <!-- Reconstrucción A -->
+        <g class="reconstruccion" data-recons="0" fill="none" stroke="var(--tinta)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M360,300 Q360,190 500,180 Q640,190 650,300 Q655,360 610,385 L600,430 Q560,455 520,448 L515,410 L470,410 L465,448 Q430,452 405,430 L400,385 Q360,360 360,300 Z"/>
+          <path d="M600,300 Q640,305 650,335"/>
+          <circle cx="560" cy="300" r="14" fill="var(--tinta)" stroke="none" opacity=".85"/>
+          <path d="M470,410 L470,360 Q500,345 530,360 L530,410"/>
+        </g>
+        <!-- Reconstrucción B (variante interpretativa, en oro y discontinua) -->
+        <g class="reconstruccion" data-recons="1" fill="none" stroke="var(--acento)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 7">
+          <path d="M355,315 Q350,185 500,172 Q655,182 662,305 Q668,368 618,392 L604,442 Q560,466 516,456 L512,414 L468,414 L462,456 Q424,458 400,434 L392,392 Q352,366 355,315 Z"/>
+          <path d="M604,305 Q648,312 660,346"/>
+          <circle cx="566" cy="304" r="15" fill="var(--acento)" stroke="none" opacity=".85"/>
+          <path d="M468,414 L468,356 Q500,338 534,356 L534,414"/>
+        </g>
+        <!-- etiquetas -->
+        <text class="etq-recons" data-etq="0" x="250" y="500" font-size="26">Interpretación A</text>
+        <text class="etq-recons" data-etq="1" x="600" y="500" font-size="26">Interpretación B</text>
+      </svg>
+    </div>
+
+    <!-- ESCENA 4 · El amanecer del Rift (0:42–0:60) -->
+    <div class="escena" data-escena="3" role="img"
+         aria-label="Un paisaje amplio del valle del Rift al amanecer, con capas de colinas en silueta y un sol que asciende, evocando el punto de partida del viaje.">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2a1c10"/>
+            <stop offset=".55" stop-color="#6b3a1e"/>
+            <stop offset="1" stop-color="#c9853a"/>
+          </linearGradient>
+          <clipPath id="marco"><rect x="0" y="0" width="1000" height="600"/></clipPath>
+        </defs>
+        <g clip-path="url(#marco)">
+          <rect class="cielo" x="0" y="0" width="1000" height="600" fill="url(#cielo)"/>
+          <g class="paisaje">
+            <circle class="sol" cx="500" cy="360" r="70" fill="#f2c66b"/>
+            <path d="M0,430 Q250,380 500,420 Q750,455 1000,410 L1000,600 L0,600 Z" fill="#3a2a1c" opacity=".9"/>
+            <path d="M0,480 Q300,440 560,478 Q780,505 1000,470 L1000,600 L0,600 Z" fill="#241811" opacity=".95"/>
+            <path d="M0,530 Q260,505 520,528 Q760,548 1000,522 L1000,600 L0,600 Z" fill="#140d09"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ESCENA 5 · El método (1:00-1:16) -->
+    <div class="escena" data-escena="4" role="img"
+         aria-label="Una cuadrícula de excavación vista desde arriba, con fragmentos dispuestos con orden metódico y un anillo que enfoca uno de ellos.">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <g stroke="var(--tinta)" stroke-width="1.6" opacity=".45" fill="none">
+          <path d="M300,180 H700 M300,260 H700 M300,340 H700 M300,420 H700 M300,180 V420 M380,180 V420 M460,180 V420 M540,180 V420 M620,180 V420 M700,180 V420"/>
+        </g>
+        <g fill="var(--tinta)" opacity=".85" stroke="none">
+          <path d="M410,300 q14,-8 26,2 q8,12 -4,20 q-16,6 -24,-6 q-6,-10 2,-16 Z"/>
+          <path d="M560,235 q10,-4 16,4 q4,10 -6,14 q-12,2 -14,-8 q0,-8 4,-10 Z"/>
+          <ellipse cx="640" cy="372" rx="14" ry="9"/>
+          <path d="M334,392 q12,-6 20,2 q6,10 -6,14 q-12,2 -16,-8 Z"/>
+        </g>
+        <circle class="foco-anillo" cx="423" cy="312" r="46" fill="none" stroke="var(--acento)" stroke-width="3"/>
+      </svg>
+    </div>
+
+    <!-- ESCENA 6 · El tiempo (1:16-1:34) -->
+    <div class="escena" data-escena="5" role="img"
+         aria-label="Un corte estratigráfico de capas volcánicas y sedimentarias, junto a una escala temporal en millones de años y un reloj radiométrico, que representa cómo se fechan las capas donde yacen los fósiles.">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <g>
+          <rect x="250" y="150" width="360" height="58" fill="#3a2a1c" opacity=".85"/>
+          <rect x="250" y="208" width="360" height="44" fill="#5a3b22" opacity=".8"/>
+          <rect x="250" y="252" width="360" height="70" fill="#2a1e14" opacity=".9"/>
+          <rect x="250" y="322" width="360" height="40" fill="#6b4a28" opacity=".75"/>
+          <rect x="250" y="362" width="360" height="88" fill="#241811" opacity=".95"/>
+          <path d="M400,300 q30,-14 54,4 q10,16 -8,26 q-34,10 -48,-8 q-8,-14 2,-22 Z" fill="var(--tinta)" opacity=".9"/>
+        </g>
+        <g class="escala-tiempo" stroke="var(--acento)" stroke-width="2">
+          <line x1="650" y1="150" x2="650" y2="450"/>
+          <line x1="642" y1="180" x2="658" y2="180"/><text x="672" y="186" font-size="20" fill="var(--acento)" stroke="none">0,5 Ma</text>
+          <line x1="642" y1="270" x2="658" y2="270"/><text x="672" y="276" font-size="20" fill="var(--acento)" stroke="none">1,5 Ma</text>
+          <line x1="642" y1="360" x2="658" y2="360"/><text x="672" y="366" font-size="20" fill="var(--acento)" stroke="none">2,5 Ma</text>
+          <line x1="642" y1="440" x2="658" y2="440"/><text x="672" y="446" font-size="20" fill="var(--acento)" stroke="none">3,5 Ma</text>
+        </g>
+        <g class="reloj" transform="translate(340,112)">
+          <circle r="30" fill="none" stroke="var(--tinta)" stroke-width="3"/>
+          <line x1="0" y1="0" x2="0" y2="-20" stroke="var(--acento)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="0" y1="0" x2="14" y2="6" stroke="var(--acento)" stroke-width="3" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- ESCENA 7 · El contexto (1:34-1:50) -->
+    <div class="escena" data-escena="6" role="img"
+         aria-label="Un hueso en su matriz de sedimento con marcas resaltadas: unas de origen biológico, en oro, y otras posteriores al enterramiento, discontinuas, para mostrar cómo la tafonomía separa la señal del organismo del ruido del azar.">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <rect x="210" y="222" width="580" height="196" rx="18" fill="#241811" opacity=".5"/>
+        <g fill="none" stroke="var(--tinta)" stroke-width="4" stroke-linejoin="round">
+          <path d="M330,300 q-26,-30 6,-40 q26,-6 30,18 q40,-6 120,0 q160,-2 190,4 q30,-24 46,4 q14,26 -14,34 q10,26 -18,34 q-24,4 -30,-16 q-150,8 -300,0 q-30,20 -48,-6 q-12,-22 20,-32 Z"/>
+        </g>
+        <g class="marca m1" stroke="var(--acento)" stroke-width="3" stroke-linecap="round"><line x1="470" y1="292" x2="486" y2="312"/><line x1="488" y1="290" x2="504" y2="310"/></g>
+        <g class="marca m2" stroke="var(--acento)" stroke-width="3" stroke-linecap="round"><line x1="562" y1="294" x2="578" y2="314"/></g>
+        <g class="marca m3" stroke="var(--tinta)" stroke-width="2.5" stroke-dasharray="6 5" fill="none"><path d="M402,300 q20,10 40,-2"/></g>
+        <g class="marca m4" stroke="var(--tinta)" stroke-width="2.5" stroke-dasharray="6 5" fill="none"><path d="M640,300 q18,-10 36,4"/></g>
+        <text x="300" y="474" font-size="20" fill="var(--acento)">Señal biológica</text>
+        <text x="596" y="474" font-size="20" fill="var(--tinta-suave)">Ruido del azar</text>
+      </svg>
+    </div>
+
+    <!-- ESCENA 8 · Los genes (1:50-2:00) -->
+    <div class="escena" data-escena="7" role="img"
+         aria-label="Una doble hélice de ADN estilizada que se entrelaza entre dos siluetas de cráneos distintos, evocando cómo el ADN antiguo revela encuentros entre especies.">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+        <g fill="none" stroke="var(--tinta)" stroke-width="3" opacity=".6">
+          <path d="M232,252 q-42,0 -46,46 q-2,34 30,46 l4,26 q22,10 40,0 l2,-20 q32,-10 30,-52 q-2,-48 -60,-46 Z"/>
+          <path d="M768,252 q42,0 46,46 q2,34 -30,46 l-4,26 q-22,10 -40,0 l-2,-20 q-32,-10 -30,-52 q2,-48 60,-46 Z"/>
+        </g>
+        <g stroke="var(--tinta-suave)" stroke-width="2" opacity=".7">
+          <line x1="404" y1="214" x2="596" y2="214"/>
+          <line x1="470" y1="272" x2="530" y2="272"/>
+          <line x1="470" y1="332" x2="530" y2="332"/>
+          <line x1="404" y1="390" x2="596" y2="390"/>
+        </g>
+        <g fill="none" stroke-width="5" stroke-linecap="round">
+          <path class="hebra h1" pathLength="1" stroke="var(--acento)" d="M360,180 C520,240 480,360 640,420"/>
+          <path class="hebra h2" pathLength="1" stroke="var(--tinta)" d="M640,180 C480,240 520,360 360,420"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="rotulo" id="rotulo" aria-hidden="true"></div>
+  <div class="vineta" aria-hidden="true"></div>
+  <svg class="grano" aria-hidden="true"><filter id="ruido"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter><rect width="100%" height="100%" filter="url(#ruido)"/></svg>
+
+  <!-- Subtítulos (siempre disponibles, aria-live para lectores de pantalla) -->
+  <div class="subtitulos" aria-live="polite" aria-atomic="true">
+    <p id="subtitulo"></p>
+  </div>
+
+  <!-- Poster inicial -->
+  <div class="overlay" id="poster">
+    <div class="kicker">Recurso educativo · Paleoantropología</div>
+    <h1>Paleoantropología</h1>
+    <div class="sub">Una introducción a la materia</div>
+    <p class="desc">Dos minutos para situar la disciplina: qué estudia, con qué evidencia trabaja, por qué sus respuestas son hipótesis abiertas a revisión y con qué métodos se obtiene ese conocimiento.</p>
+    <button type="button" class="btn btn-primario" id="btnComenzar" aria-label="Comenzar la reproducción del vídeo introductorio">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      Comenzar
+    </button>
+    <p class="nota-voz">La narración utiliza la voz del sistema de tu dispositivo. Si no hubiera voz en español disponible, la pieza funciona igualmente como vídeo subtitulado.</p>
+  </div>
+
+  <!-- Tarjeta de pausa (al terminar el minuto) -->
+  <div class="overlay oculto" id="pausa">
+    <div class="kicker">Fin del segundo minuto</div>
+    <h2 style="font-family:var(--fuente-titulo,serif);font-weight:700;font-size:clamp(1.6rem,4.5vw,3rem);margin-bottom:1rem">Del método al escenario</h2>
+    <p class="desc">Ya sabemos qué estudia la paleoantropología y con qué métodos infiere: el tiempo, el contexto y los genes. El recorrido continúa por el lugar donde casi todo comenzó: África, y la dimensión territorial del origen humano.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+      <button type="button" class="btn btn-primario" id="btnRepetir" aria-label="Volver a reproducir desde el principio">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+        Repetir
+      </button>
+      <a class="btn" id="btnVolverAtlas" href="atlas.html" style="background:transparent;color:var(--tinta);border:1px solid rgba(243,239,231,.3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Volver al atlas
+      </a>
+    </div>
+  </div>
+
+  <!-- Controles de reproducción -->
+  <div class="controles oculto" id="controles">
+    <button type="button" class="ctrl" id="btnPlay" aria-label="Reproducir o pausar">
+      <svg id="icoPlay" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <div class="progreso" id="progreso" role="slider" aria-label="Progreso del vídeo" aria-valuemin="0" aria-valuemax="120" aria-valuenow="0" tabindex="0">
+      <div class="relleno" id="relleno"></div>
+    </div>
+    <span class="tiempo" id="tiempo">0:00 / 2:00</span>
+    <button type="button" class="ctrl" id="btnVoz" aria-label="Activar o desactivar la narración por voz" aria-pressed="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+    </button>
+    <button type="button" class="ctrl" id="btnCC" aria-label="Mostrar u ocultar subtítulos" aria-pressed="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM9 11H7.5v-.5h-2v3h2V13H9v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H16v1a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1z"/></svg>
+    </button>
+  </div>
+
+  <p class="pie" id="pie">
+    Facultad de Ciencias de la Educación · ULPGC ·
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
+  </p>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  const DURACION = 120000; // 2 minutos
+
+  // Ventanas de escena (ms)
+  const ESCENAS = [
+    { fin: 12000,  rotulo: 'Un árbol, no una escalera' },
+    { fin: 26000,  rotulo: 'Los vestigios' },
+    { fin: 42000,  rotulo: 'La hipótesis' },
+    { fin: 60000,  rotulo: 'El punto de partida' },
+    { fin: 76000,  rotulo: 'El método' },
+    { fin: 94000,  rotulo: 'El tiempo' },
+    { fin: 110000, rotulo: 'El contexto' },
+    { fin: 120000, rotulo: 'Los genes' }
+  ];
+
+  // Subtítulos (sin guiones largos; puntuación RAE)
+  const SUBS = [
+    { t0:0,     t1:5000,  txt:'Durante millones de años, muchas especies humanas caminaron sobre la Tierra.' },
+    { t0:5000,  t1:12000, txt:'No una tras otra, en fila, sino a la vez: ramas distintas de un mismo árbol.' },
+    { t0:12000, t1:18500, txt:'La paleoantropología es la ciencia que estudia ese árbol.' },
+    { t0:18500, t1:26000, txt:'Reconstruye nuestro pasado a partir de huesos, dientes, huellas y herramientas de piedra.' },
+    { t0:26000, t1:34000, txt:'Por eso no ofrece un relato cerrado, sino hipótesis que se revisan.' },
+    { t0:34000, t1:42000, txt:'Cada hallazgo puede confirmar lo que creíamos saber, o hacernos repensarlo por completo.' },
+    { t0:42000, t1:50500, txt:'¿Quiénes fueron aquellas especies? ¿Dónde vivieron y por qué desaparecieron todas menos una?' },
+    { t0:50500, t1:60000, txt:'¿Y cómo lo sabemos? Estas son las preguntas con las que empieza el viaje.' },
+    { t0:60000, t1:68000, txt:'¿Cómo se sabe todo esto a partir de unos pocos restos? La respuesta está en el método.' },
+    { t0:68000, t1:76000, txt:'La paleoantropología no adivina: infiere, con disciplina, a partir de indicios.' },
+    { t0:76000, t1:85000, txt:'Primero, el tiempo. Ciertas rocas volcánicas funcionan como relojes:' },
+    { t0:85000, t1:94000, txt:'fechan las capas donde yacen los fósiles, a veces con millones de años de antigüedad.' },
+    { t0:94000, t1:102000, txt:'Después, el contexto. La tafonomía estudia qué le ocurrió a cada resto,' },
+    { t0:102000, t1:110000, txt:'para separar lo que nos dice del organismo de lo que solo refleja el azar.' },
+    { t0:110000, t1:115000, txt:'Y hoy, además, los genes.' },
+    { t0:115000, t1:120000, txt:'El ADN antiguo revela encuentros que los huesos, por sí solos, jamás habrían contado.' }
+  ];
+
+  // Narración por escena (bloques completos), disparada al inicio de cada escena
+  const NARRACION = [
+    { t:0,     txt:'Durante millones de años, muchas especies humanas caminaron sobre la Tierra. No una tras otra, en fila, sino a la vez: ramas distintas de un mismo árbol.' },
+    { t:12000, txt:'La paleoantropología es la ciencia que estudia ese árbol. Reconstruye nuestro pasado más profundo a partir de huesos, dientes, huellas y herramientas de piedra que el tiempo, casi siempre, ha dispersado o destruido.' },
+    { t:26000, txt:'Por eso no ofrece un relato cerrado, sino hipótesis que se revisan. Cada hallazgo puede confirmar lo que creíamos saber, o obligarnos a repensarlo por completo.' },
+    { t:42000, txt:'¿Quiénes fueron aquellas especies? ¿Dónde vivieron y por qué desaparecieron todas menos una? ¿Y cómo lo sabemos? Estas son las preguntas con las que empieza el viaje.' },
+    { t:60000, txt:'¿Cómo se sabe todo esto a partir de unos pocos restos? La respuesta está en el método. La paleoantropología no adivina: infiere, con disciplina, a partir de indicios.' },
+    { t:76000, txt:'Primero, el tiempo. Ciertas rocas volcánicas funcionan como relojes: la desintegración de sus átomos permite fechar las capas donde yacen los fósiles, a veces con millones de años de antigüedad.' },
+    { t:94000, txt:'Después, el contexto. La tafonomía estudia qué le ocurrió a cada resto desde la muerte hasta el hallazgo, para separar lo que nos dice del organismo de lo que solo refleja el azar.' },
+    { t:110000, txt:'Y hoy, además, los genes. El ADN antiguo revela encuentros entre especies que los huesos, por sí solos, jamás habrían contado.' }
+  ];
+
+  // ── Estado ──
+  let reproduciendo = false;
+  let base = 0;            // marca de tiempo de inicio (performance.now)
+  let acumulado = 0;       // ms transcurridos al pausar
+  let raf = null;
+  let vozActiva = true;
+  let subsActivos = true;
+  const habladas = new Set();
+
+  // ── Referencias DOM ──
+  const cine = document.getElementById('cine');
+  const escenasEl = [...document.querySelectorAll('.escena')];
+  const subtituloEl = document.getElementById('subtitulo');
+  const rotuloEl = document.getElementById('rotulo');
+  const poster = document.getElementById('poster');
+  const pausa = document.getElementById('pausa');
+  const controles = document.getElementById('controles');
+  const pie = document.getElementById('pie');
+  const relleno = document.getElementById('relleno');
+  const progreso = document.getElementById('progreso');
+  const tiempoEl = document.getElementById('tiempo');
+  const icoPlay = document.getElementById('icoPlay');
+  const btnVoz = document.getElementById('btnVoz');
+  const btnCC = document.getElementById('btnCC');
+
+  const soporteVoz = 'speechSynthesis' in window;
+
+  // ── Selección de voz en español ──
+  let voz = null;
+  function elegirVoz(){
+    if (!soporteVoz) return null;
+    const vs = window.speechSynthesis.getVoices();
+    if (!vs.length) return null;
+    voz = vs.find(v => /^es-ES/i.test(v.lang))
+       || vs.find(v => /^es/i.test(v.lang))
+       || null;
+    return voz;
+  }
+  if (soporteVoz){
+    elegirVoz();
+    window.speechSynthesis.onvoiceschanged = elegirVoz;
+  }
+
+  function hablar(txt){
+    if (!soporteVoz || !vozActiva) return;
+    const u = new SpeechSynthesisUtterance(txt);
+    if (!voz) elegirVoz();
+    if (voz) u.voice = voz;
+    u.lang = (voz && voz.lang) || 'es-ES';
+    u.rate = 0.96;
+    u.pitch = 1.0;
+    window.speechSynthesis.speak(u);
+  }
+
+  function fmt(ms){
+    const s = Math.max(0, Math.min(120, Math.floor(ms/1000)));
+    const m = Math.floor(s/60);
+    const r = s % 60;
+    return m + ':' + String(r).padStart(2,'0');
+  }
+
+  // ── Render por fotograma ──
+  function render(t){
+    // progreso
+    const pct = Math.min(100, (t/DURACION)*100);
+    relleno.style.width = pct + '%';
+    tiempoEl.textContent = fmt(t) + ' / 2:00';
+    progreso.setAttribute('aria-valuenow', Math.floor(t/1000));
+
+    // escena activa
+    let idx = ESCENAS.findIndex(e => t < e.fin);
+    if (idx === -1) idx = ESCENAS.length - 1;
+    escenasEl.forEach((el,i) => el.classList.toggle('activa', i === idx));
+
+    // rótulo de escena
+    rotuloEl.textContent = ESCENAS[idx].rotulo;
+    rotuloEl.classList.add('visible');
+
+    // escena 2: cross-fade de los cuatro vestigios
+    if (idx === 1){
+      const q = Math.min(3, Math.floor((t - 12000) / 3500));
+      document.querySelectorAll('[data-fosil]').forEach(f =>
+        f.classList.toggle('activo', +f.dataset.fosil === q));
+    }
+    // escena 3: alternancia de reconstrucciones
+    if (idx === 2){
+      const b = Math.floor((t - 26000) / 4000) % 2; // 0,1,0,1
+      document.querySelectorAll('[data-recons]').forEach(r =>
+        r.classList.toggle('activa', +r.dataset.recons === b));
+      document.querySelectorAll('[data-etq]').forEach(e =>
+        e.classList.toggle('on', +e.dataset.etq === b));
+    }
+
+    // subtítulo activo
+    const s = SUBS.find(s => t >= s.t0 && t < s.t1);
+    const texto = s ? s.txt : '';
+    if (subtituloEl.textContent !== texto){
+      subtituloEl.classList.remove('visible');
+      subtituloEl.textContent = texto;
+      if (texto) requestAnimationFrame(() => subtituloEl.classList.add('visible'));
+    } else if (texto){
+      subtituloEl.classList.add('visible');
+    }
+
+    // narración por escena
+    NARRACION.forEach((n,i) => {
+      if (t >= n.t && !habladas.has(i)){
+        habladas.add(i);
+        hablar(n.txt);
+      }
+    });
+  }
+
+  function bucle(){
+    const t = acumulado + (performance.now() - base);
+    if (t >= DURACION){
+      render(DURACION);
+      finalizar();
+      return;
+    }
+    render(t);
+    raf = requestAnimationFrame(bucle);
+  }
+
+  function reproducir(){
+    if (reproduciendo) return;
+    reproduciendo = true;
+    poster.classList.add('oculto');
+    pausa.classList.add('oculto');
+    controles.classList.remove('oculto');
+    cine.classList.add('mostrar-controles');
+    setTimeout(() => cine.classList.remove('mostrar-controles'), 2500);
+    icoPlay.innerHTML = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+    base = performance.now();
+    // reanudar voz pendiente
+    if (soporteVoz && vozActiva) window.speechSynthesis.resume();
+    raf = requestAnimationFrame(bucle);
+  }
+
+  function pausar(){
+    if (!reproduciendo) return;
+    reproduciendo = false;
+    acumulado += performance.now() - base;
+    cancelAnimationFrame(raf);
+    icoPlay.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    if (soporteVoz) window.speechSynthesis.pause();
+  }
+
+  function alternar(){ reproduciendo ? pausar() : reproducir(); }
+
+  function reiniciar(){
+    cancelAnimationFrame(raf);
+    if (soporteVoz) window.speechSynthesis.cancel();
+    reproduciendo = false;
+    acumulado = 0;
+    habladas.clear();
+    render(0);
+    reproducir();
+  }
+
+  function finalizar(){
+    reproduciendo = false;
+    cancelAnimationFrame(raf);
+    acumulado = 0;
+    icoPlay.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    controles.classList.add('oculto');
+    pausa.classList.remove('oculto');
+    if (soporteVoz) window.speechSynthesis.cancel();
+  }
+
+  // ── Eventos ──
+  document.getElementById('btnComenzar').addEventListener('click', () => { habladas.clear(); acumulado = 0; render(0); reproducir(); });
+  document.getElementById('btnRepetir').addEventListener('click', reiniciar);
+  document.getElementById('btnPlay').addEventListener('click', alternar);
+
+  btnVoz.addEventListener('click', () => {
+    vozActiva = !vozActiva;
+    btnVoz.setAttribute('aria-pressed', String(vozActiva));
+    if (!vozActiva && soporteVoz) window.speechSynthesis.cancel();
+  });
+  if (!soporteVoz){
+    vozActiva = false;
+    btnVoz.setAttribute('aria-pressed','false');
+    btnVoz.disabled = true;
+    btnVoz.title = 'Este navegador no ofrece síntesis de voz; la pieza continúa subtitulada.';
+  }
+
+  btnCC.addEventListener('click', () => {
+    subsActivos = !subsActivos;
+    btnCC.setAttribute('aria-pressed', String(subsActivos));
+    document.body.classList.toggle('sin-subtitulos', !subsActivos);
+  });
+
+  // Barra de progreso: buscar posición
+  function buscar(ev){
+    const r = progreso.getBoundingClientRect();
+    const x = (ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left;
+    const t = Math.max(0, Math.min(DURACION, (x / r.width) * DURACION));
+    if (soporteVoz) window.speechSynthesis.cancel();
+    habladas.clear();
+    // marcar como habladas las narraciones anteriores al punto buscado
+    NARRACION.forEach((n,i) => { if (t > n.t) habladas.add(i); });
+    acumulado = t;
+    if (reproduciendo){ base = performance.now(); }
+    render(t);
+    if (!reproduciendo && t < DURACION) { /* permanece en pausa en la nueva posición */ }
+  }
+  progreso.addEventListener('click', buscar);
+  progreso.addEventListener('keydown', (e) => {
+    let t = acumulado;
+    if (e.key === 'ArrowRight') t = Math.min(DURACION, t + 5000);
+    else if (e.key === 'ArrowLeft') t = Math.max(0, t - 5000);
+    else return;
+    e.preventDefault();
+    if (soporteVoz) window.speechSynthesis.cancel();
+    habladas.clear();
+    NARRACION.forEach((n,i) => { if (t > n.t) habladas.add(i); });
+    acumulado = t;
+    if (reproduciendo) base = performance.now();
+    render(t);
+  });
+
+  // Teclado global: barra espaciadora = reproducir/pausar
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && !poster.classList.contains('oculto') === false){
+      if (document.activeElement === progreso) return;
+      e.preventDefault();
+      if (poster.classList.contains('oculto')) alternar();
+      else { habladas.clear(); render(0); reproducir(); }
+    }
+  });
+
+  // Estado inicial
+  render(0);
+  document.body.classList.remove('sin-subtitulos');
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+  const volver = document.getElementById('volverVideo');
+  if (!volver) return;
+  const irAtras = (ev) => {
+    try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (_) {}
+    let previo = false;
+    try {
+      if (document.referrer) {
+        const p = new URL(document.referrer, location.href).pathname;
+        previo = p.endsWith('atlas.html') || p.endsWith('index.html');
+      }
+    } catch (_) {}
+    if (previo && history.length > 1) { history.back(); }
+    else { location.href = 'atlas.html'; }
+    if (ev) ev.preventDefault();
+  };
+  volver.addEventListener('click', irAtras);
+})();
+</script>
+</body>
+</html>

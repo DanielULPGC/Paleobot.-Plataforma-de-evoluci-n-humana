@@ -286,7 +286,6 @@
             const cm = COMP_META[c] || { emoji:'📌', full: c };
             return `<div class="pb-ssm-comp-item" role="listitem"
                          title="${_esc(cm.full)}">
-              <span class="pb-ssm-comp-emoji" aria-hidden="true">${cm.emoji}</span>
               <span class="pb-ssm-comp-code">${_esc(c)}</span>
               <span class="pb-ssm-comp-full">${_esc(cm.full)}</span>
             </div>`;
@@ -323,7 +322,7 @@
                 <span style="background:${BLOOM_COLORS[nextSpec.nivelBloom]||'#1c2b3a'}">
                   Bloom ${nextSpec.nivelBloom} · ${BLOOM_LABELS[nextSpec.nivelBloom]||''}
                 </span>
-                <span>⏱ ${nextSpec.tiempoEstimado} min</span>
+                <span>${nextSpec.tiempoEstimado} min</span>
               </div>` : ''}
           </div>
           <button type="button" class="pb-ssm-goto-btn"

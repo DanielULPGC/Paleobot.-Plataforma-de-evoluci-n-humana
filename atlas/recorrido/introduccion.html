@@ -29,31 +29,24 @@
     https://doi.org/10.1126/science.1188021
 -->
 
-<html lang="es">
+<html lang="es" class="pb-recorrido">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Paleoantropología · Una introducción a la materia</title>
 <!-- Tipografías (con conexión). Sin conexión, el recurso degrada a serif/sans del sistema. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/paleobot-base.css">
 <style>
 /* ───────────────────────────────────────────────────────────────────────
    DIALES: VARIANZA_VISUAL 6 · INTENSIDAD_ANIMACION 6 · DENSIDAD_CONTENIDO 3
    Sistema de diseño (acento único: oro cálido). Sin negro puro.
    ─────────────────────────────────────────────────────────────────────── */
 :root{
-  --fondo:#0d2028;          /* verde-petróleo muy oscuro */
-  --fondo-alt:#16303c;
-  --letterbox:#071319;      /* casi negro cálido, no #000 */
-  --tinta:#f3efe7;          /* marfil cálido */
-  --tinta-suave:#c8d2ce;
-  --acento:#d8a93a;         /* oro, acento único */
-  --acento-tenue:rgba(216,169,58,.16);
-  --radio:14px;
-  --fuente-titulo:'Playfair Display', Georgia, 'Times New Roman', serif;
-  --fuente-cuerpo:'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
+  --fondo:var(--papel);--fondo-alt:var(--superficie);--letterbox:#071319;      /* casi negro cálido, no #000 */
+  --tinta-suave:var(--tinta-2);--acento-tenue:rgba(216,169,58,.16);
+  --radio:var(--r-contenedor);
+  --fuente-titulo:var(--f-titulo);
+  --fuente-cuerpo:var(--f-lectura);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -159,14 +152,14 @@ body.sin-subtitulos .subtitulos{display:none}
 }
 .overlay.oculto{opacity:0;pointer-events:none}
 .overlay .kicker{
-  font-size:clamp(.72rem,1.4vw,1rem);
+  font-size:var(--t-xs);
   letter-spacing:.24em;text-transform:uppercase;
   color:var(--acento);font-weight:600;margin-bottom:1.1rem;
 }
 .overlay h1{
   font-family:var(--fuente-titulo);
   font-weight:700;
-  font-size:clamp(2rem,6vw,4.4rem);
+  font-size:var(--t-display);
   line-height:1.02;
   letter-spacing:.01em;
   margin-bottom:.9rem;
@@ -174,13 +167,13 @@ body.sin-subtitulos .subtitulos{display:none}
 .overlay .sub{
   font-family:var(--fuente-titulo);
   font-style:italic;font-weight:500;
-  font-size:clamp(1rem,2.6vw,1.7rem);
+  font-size:var(--t-lema);
   color:var(--acento);
   margin-bottom:1.6rem;
 }
 .overlay p.desc{
   max-width:52ch;
-  font-size:clamp(.9rem,1.7vw,1.12rem);
+  font-size:var(--t-m);
   color:var(--tinta-suave);
   line-height:1.55;margin-bottom:2rem;
 }
@@ -195,10 +188,10 @@ body.sin-subtitulos .subtitulos{display:none}
   transition:transform .12s ease, background .2s ease, border-color .2s ease;
 }
 .btn:active{transform:translateY(1px) scale(.99)}
-.btn:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.btn:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
 .btn-primario{
   background:var(--acento);color:var(--letterbox);
-  font-size:clamp(1rem,2vw,1.2rem);
+  font-size:var(--t-m);
   padding:.85rem 2.1rem;
   display:inline-flex;align-items:center;gap:.6rem;
 }
@@ -217,42 +210,42 @@ body.sin-subtitulos .subtitulos{display:none}
 .ctrl{
   background:rgba(243,239,231,.08);
   color:var(--tinta);
-  border:1px solid rgba(243,239,231,.16);
+  border:1px solid var(--borde-control);
   width:2.6rem;height:2.6rem;
-  border-radius:10px;
+  border-radius:var(--r-control);
   display:inline-flex;align-items:center;justify-content:center;
-  font-size:1rem;
+  font-size:var(--t-m);
 }
 .ctrl:hover{background:rgba(243,239,231,.16)}
 .ctrl svg{width:1.15rem;height:1.15rem;fill:currentColor}
 .ctrl[aria-pressed="false"]{opacity:.5}
 
 .progreso{
-  flex:1;height:6px;border-radius:99px;
+  flex:1;height:6px;border-radius:var(--r-pildora);
   background:rgba(243,239,231,.14);
   position:relative;overflow:hidden;cursor:pointer;
 }
 .progreso .relleno{
   position:absolute;left:0;top:0;bottom:0;width:0%;
-  background:var(--acento);border-radius:99px;
+  background:var(--acento);border-radius:var(--r-pildora);
 }
 .tiempo{
   font-variant-numeric:tabular-nums;
-  font-size:.85rem;color:var(--tinta-suave);
+  font-size:var(--t-xs);color:var(--tinta-suave);
   min-width:5.4ch;text-align:right;
 }
 
 /* Pie con licencia (solo en overlays, no durante la reproducción) */
 .pie{
   position:absolute;bottom:1rem;left:0;right:0;z-index:12;
-  text-align:center;font-size:.72rem;color:rgba(200,210,206,.55);
+  text-align:center;font-size:var(--t-xs);color:var(--tinta-3);
   padding:0 1rem;line-height:1.5;
 }
-.pie a{color:rgba(216,169,58,.8)}
+.pie a{color:var(--acento)}
 .overlay.oculto ~ .pie{opacity:0;transition:opacity .4s ease}
 
 .nota-voz{
-  font-size:.78rem;color:rgba(200,210,206,.6);
+  font-size:var(--t-xs);color:var(--tinta-3);
   margin-top:1.2rem;max-width:44ch;line-height:1.5;
 }
 
@@ -328,19 +321,19 @@ body.sin-subtitulos .subtitulos{display:none}
   font-family:var(--fuente-cuerpo);font-weight:600;
 }
 /* Retorno: visible durante toda la reproducción del vídeo */
-.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:60;font-weight:600;text-decoration:none;border-radius:0 0 10px 0}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:var(--sobre-acento);padding:.7rem 1.1rem;z-index:60;font-weight:600;text-decoration:none;border-radius:0 0 var(--r-control) 0}
 .salto:focus{left:0}
 #cine:focus{outline:none}.volver-video{
   position:absolute;top:16px;left:16px;z-index:14;
   display:inline-flex;align-items:center;gap:.45rem;
-  background:rgba(7,19,25,.6);color:var(--tinta);
-  border:1px solid rgba(243,239,231,.22);border-radius:10px;
-  padding:.5rem .9rem;font-family:var(--fuente-cuerpo);font-weight:600;font-size:.9rem;
-  cursor:pointer;backdrop-filter:blur(6px);
+  background:var(--papel);color:var(--tinta);
+  border:1px solid var(--borde-control);border-radius:var(--r-control);
+  padding:.5rem .9rem;font-family:var(--fuente-cuerpo);font-weight:600;font-size:var(--t-s);
+  cursor:pointer;
   transition:background .2s,border-color .2s,color .2s;
 }
 .volver-video:hover{background:rgba(7,19,25,.85);border-color:var(--acento);color:var(--acento)}
-.volver-video:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver-video:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
 .volver-video svg{width:18px;height:18px;fill:none}
 @media (max-width:640px){.volver-video span{display:none}
   fill:var(--tinta-suave);
@@ -350,8 +343,63 @@ body.sin-subtitulos .subtitulos{display:none}
 /* Responsive: en móvil, controles siempre visibles */
 @media (max-width:768px){
   .controles{opacity:1}
-  .overlay p.desc{font-size:.92rem}
+  .overlay p.desc{font-size:var(--t-s)}
 }
+
+/* ── PB-GH-10 · piso de corrección del escenario ──
+   1) Mientras se ve una tarjeta (póster o pausa), las capas del vídeo no se
+      pintan debajo: nada de texto superpuesto.
+   2) La tarjeta oculta deja de ser visible y enfocable.
+   3) En vertical el escenario ocupa la pantalla para que la tarjeta y
+      «Comenzar» quepan; en apaisado deja hueco al enlace fijo del pie.
+   4) Textos secundarios con tinta opaca (contraste ≥ 4,5:1).               */
+.cine.con-tarjeta :is(.escenas,.subtitulos,.rotulo,.controles){visibility:hidden}
+.overlay.oculto{visibility:hidden;transition:opacity .6s ease,visibility 0s linear .6s}
+.overlay{overflow-y:auto;justify-content:safe center;padding:4.5rem 8% 4rem}
+.subtitulos{padding:0 9% max(10%, 4.75rem)}
+.rotulo{top:max(7%, 4.75rem)}
+.controles:focus-within{opacity:1}
+/* La regla original de relleno de .etq-recons quedó dentro de una @media mal cerrada: «Interpretación A» se pintaba en negro. */
+.etq-recons{fill:var(--tinta-suave)}
+/* «Volver al atlas» de la tarjeta final: misma caja que «Repetir» (le faltaban relleno y alineación) */
+#btnVolverAtlas{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2.1rem;font-size:var(--t-m);text-decoration:none}
+#btnVolverAtlas:hover{border-color:var(--acento)!important}
+.etq-recons.on{fill:var(--acento)}
+@media (orientation:portrait) and (max-width:899px){
+  .escena svg{left:2%;width:96%;top:10%;height:52%}
+}
+.pie{color:var(--tinta-suave)}
+/* El pie de licencia se ocultaba siempre (.overlay.oculto ~ .pie casa con la pausa oculta): visible en póster y pausa */
+.cine.con-tarjeta .pie{opacity:1;bottom:0;padding:.5rem 1rem .75rem;background:rgba(7,19,25,.96)}
+.pie a{color:var(--acento)}
+.nota-voz{color:var(--tinta-suave)}
+.volver-video{top:12px;left:12px;min-height:44px;min-width:44px;justify-content:center}
+body{height:auto;min-height:100dvh;overflow:auto;flex-direction:column}
+html{height:auto}
+@media (min-width:900px){
+  .cine{width:min(100vw, calc((100vh - 72px) * 16 / 9))}
+}
+@media (orientation:portrait){
+  .cine{width:100vw;height:100dvh;aspect-ratio:auto}
+}
+@media (orientation:portrait) and (max-width:899px){
+  body{display:block}
+}
+@media (max-width:640px){
+  .overlay .kicker{letter-spacing:.14em}
+}
+/* PB-GH-10 · verificación (fila 1, reservas): mientras se ve una tarjeta (póster o pausa), la tarjeta y el pie de
+   crédito van en el flujo, uno debajo del otro, y el escenario crece con ellos si no caben (letra al 200 %, 320 px):
+   nada queda bajo el pie ni recortado, y «Comenzar» se alcanza desplazando la página. Con la letra normal el
+   escenario conserva su tamaño (16:9 en apaisado, pantalla completa en vertical). El título se limita al ancho de
+   la pantalla (al 200 % «Paleoantropología» medía 557 px en 390) y, como último recurso, parte la palabra. */
+.cine.con-tarjeta{display:flex;flex-direction:column;overflow:visible}
+.cine.con-tarjeta .overlay:not(.oculto){position:relative;inset:auto;flex:1 0 auto;overflow:visible}
+.cine.con-tarjeta .pie{position:static;flex:0 0 auto}
+@media (orientation:portrait){
+  .cine.con-tarjeta{height:auto;min-height:100dvh}
+}
+.overlay h1{font-size:min(var(--t-display), 8.5vw);max-width:100%;overflow-wrap:anywhere;hyphens:auto}
 </style>
 <link rel="stylesheet" href="integracion.css">
 <script src="integracion.js" defer></script>
@@ -360,7 +408,7 @@ body.sin-subtitulos .subtitulos{display:none}
 
 <a class="salto" href="#cine">Saltar al vídeo</a>
 
-<div class="cine" id="cine" tabindex="-1">
+<main class="cine con-tarjeta" id="cine" tabindex="-1">
 
   <!-- Retorno al atlas: visible durante toda la reproducción -->
   <button class="volver-video" id="volverVideo" type="button" aria-label="Volver al atlas">
@@ -594,7 +642,7 @@ body.sin-subtitulos .subtitulos{display:none}
   <!-- Tarjeta de pausa (al terminar el minuto) -->
   <div class="overlay oculto" id="pausa">
     <div class="kicker">Fin del segundo minuto</div>
-    <h2 style="font-family:var(--fuente-titulo,serif);font-weight:700;font-size:clamp(1.6rem,4.5vw,3rem);margin-bottom:1rem">Del método al escenario</h2>
+    <h2 style="font-family:var(--fuente-titulo,serif);font-weight:700;font-size:var(--t-h1);margin-bottom:1rem">Del método al escenario</h2>
     <p class="desc">Ya sabemos qué estudia la paleoantropología y con qué métodos infiere: el tiempo, el contexto y los genes. El recorrido continúa por el lugar donde casi todo comenzó: África, y la dimensión territorial del origen humano.</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
       <button type="button" class="btn btn-primario" id="btnRepetir" aria-label="Volver a reproducir desde el principio">
@@ -629,7 +677,7 @@ body.sin-subtitulos .subtitulos{display:none}
     Facultad de Ciencias de la Educación · ULPGC ·
     <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
   </p>
-</div>
+</main>
 
 <script>
 (() => {
@@ -810,6 +858,7 @@ body.sin-subtitulos .subtitulos{display:none}
     reproduciendo = true;
     poster.classList.add('oculto');
     pausa.classList.add('oculto');
+    cine.classList.remove('con-tarjeta');
     controles.classList.remove('oculto');
     cine.classList.add('mostrar-controles');
     setTimeout(() => cine.classList.remove('mostrar-controles'), 2500);
@@ -848,6 +897,7 @@ body.sin-subtitulos .subtitulos{display:none}
     icoPlay.innerHTML = '<path d="M8 5v14l11-7z"/>';
     controles.classList.add('oculto');
     pausa.classList.remove('oculto');
+    cine.classList.add('con-tarjeta');
     if (soporteVoz) window.speechSynthesis.cancel();
   }
 

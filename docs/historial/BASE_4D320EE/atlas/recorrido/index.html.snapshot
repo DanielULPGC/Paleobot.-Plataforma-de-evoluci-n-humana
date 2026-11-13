@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: portada (hero) del Atlas de paleoantropología. Umbral del
+  recurso; conduce al concentrador del atlas y al recurso audiovisual.
+  Diales: VARIANZA_VISUAL 6 / INTENSIDAD_ANIMACION 5 / DENSIDAD_CONTENIDO 3.
+  Movimiento subordinado a la función (principio de coherencia; Mayer y Moreno,
+  2003, https://doi.org/10.1207/S15326985EP3801_6). Motivo significativo: árbol
+  arbustivo, no escalera (Wood y Boyle, 2016, https://doi.org/10.1002/ajpa.22902).
+  Accesibilidad: prefers-reduced-motion, contraste AAA, foco visible, enlace de
+  salto. Autonomía: fichero único. Licencia CC BY-NC 4.0 · ULPGC.
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas de paleoantropología</title>
+<meta name="description" content="Atlas educativo de paleoantropología de la Facultad de Ciencias de la Educación de la ULPGC: cronología de especies, territorio, clima, métodos y recursos de aula.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;
+  --acento:#d8a93a;--radio:14px;
+  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6;overflow-x:hidden}
+a{color:var(--acento)}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;border-radius:0 0 var(--radio) 0;z-index:50;font-weight:600}
+.salto:focus{left:0}
+
+.hero{position:relative;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6vh 8vw;overflow:hidden;isolation:isolate}
+.hero::before{content:'';position:absolute;inset:-20%;z-index:-3;
+  background:radial-gradient(40% 50% at 28% 30%,rgba(107,58,30,.55),transparent 70%),radial-gradient(45% 55% at 74% 68%,rgba(22,48,60,.9),transparent 72%),linear-gradient(160deg,#0c1c24 0%,#10242d 55%,#16150f 100%)}
+.hero::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(4,10,14,.6) 100%)}
+.motivo{position:absolute;inset:0;z-index:-2;display:flex;align-items:center;justify-content:center;opacity:.16;pointer-events:none}
+.motivo svg{width:min(76vw,900px);height:auto;overflow:visible}
+.rama{fill:none;stroke:var(--acento);stroke-width:2.4;stroke-linecap:round}
+#motas{position:absolute;inset:0;z-index:-1;pointer-events:none}
+
+.kicker{font-size:clamp(.72rem,1.5vw,.95rem);letter-spacing:.26em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:1.4rem}
+.hero h1{font-family:var(--ft);font-weight:700;font-size:clamp(2.6rem,9vw,6rem);line-height:1;margin-bottom:1rem}
+.lema{font-family:var(--ft);font-style:italic;font-weight:500;font-size:clamp(1.1rem,3vw,1.9rem);color:var(--acento);margin-bottom:1.6rem}
+.entrada{max-width:56ch;font-size:clamp(1rem,1.9vw,1.2rem);color:var(--tinta-suave);margin-bottom:2.4rem}
+.acciones{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn{font-family:var(--fc);font-weight:600;font-size:clamp(.95rem,1.8vw,1.1rem);padding:.85rem 2rem;border-radius:var(--radio);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.6rem;border:1px solid transparent;transition:transform .12s,background .2s,border-color .2s,color .2s}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+.btn-primario{background:var(--acento);color:#141008}
+.btn-primario:hover{background:#e6bb52}
+.btn-secundario{background:transparent;color:var(--tinta);border-color:rgba(243,239,231,.3)}
+.btn-secundario:hover{border-color:var(--acento);color:var(--acento)}
+.scroll-cue{position:absolute;bottom:3.2vh;left:50%;transform:translateX(-50%);color:var(--tinta-suave);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;text-decoration:none}
+.scroll-cue svg{width:22px;height:22px;stroke:var(--acento);fill:none;stroke-width:2}
+
+.secciones{padding:12vh 8vw;max-width:1100px;margin:0 auto}
+.secciones h2{font-family:var(--ft);font-weight:700;font-size:clamp(1.6rem,4vw,2.6rem);text-align:center;margin-bottom:.6rem}
+.secciones .intro{text-align:center;color:var(--tinta-suave);max-width:60ch;margin:0 auto 3.4rem}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.tarjeta{display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.8rem 1.6rem;text-decoration:none;color:inherit;transition:transform .15s,background .2s,border-color .2s}
+.tarjeta:hover{transform:translateY(-3px);background:rgba(255,255,255,.07)}
+.tarjeta:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+.tarjeta .num{color:var(--acento);font-weight:700;font-size:.85rem;letter-spacing:.1em;margin-bottom:.7rem}
+.tarjeta h3{font-family:var(--ft);font-weight:700;font-size:1.3rem;margin-bottom:.5rem}
+.tarjeta p{color:var(--tinta-suave);font-size:.98rem}
+.tarjeta .ir{margin-top:1rem;color:var(--acento);font-weight:600;font-size:.9rem}
+
+.pie{border-top:1px solid rgba(255,255,255,.1);padding:2.4rem 8vw;text-align:center;color:rgba(200,210,206,.6);font-size:.82rem;line-height:1.7}
+.pie a{color:rgba(216,169,58,.85)}
+
+@media (prefers-reduced-motion: no-preference){
+  .hero::before{animation:deriva 34s ease-in-out infinite alternate}
+  @keyframes deriva{from{transform:translate3d(-2%,-1%,0) scale(1.02)}to{transform:translate3d(2%,2%,0) scale(1.08)}}
+  .rama{stroke-dasharray:1;stroke-dashoffset:1;animation:trazar 3s ease forwards}
+  .rama.r2{animation-delay:.5s}.rama.r3{animation-delay:1s}.rama.r4{animation-delay:1.5s}.rama.r5{animation-delay:2s}.rama.r6{animation-delay:2.5s}
+  @keyframes trazar{to{stroke-dashoffset:0}}
+  .aparece{opacity:0;transform:translateY(16px);animation:surgir .9s ease forwards}
+  .aparece.d1{animation-delay:.15s}.aparece.d2{animation-delay:.35s}.aparece.d3{animation-delay:.55s}.aparece.d4{animation-delay:.8s}
+  @keyframes surgir{to{opacity:1;transform:translateY(0)}}
+  .scroll-cue svg{animation:latido 2.2s ease-in-out infinite}
+  @keyframes latido{50%{transform:translateY(6px)}}
+  .revelar{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .revelar.visible{opacity:1;transform:translateY(0)}
+}
+@media (max-width:640px){.scroll-cue{display:none}}
+</style>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+<a class="salto" href="#secciones">Saltar al contenido</a>
+
+<header class="hero">
+  <div class="motivo" aria-hidden="true">
+    <svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+      <path class="rama r1" pathLength="1" d="M500,560 C500,470 500,430 500,380"/>
+      <path class="rama r2" pathLength="1" d="M500,430 C450,380 400,350 360,300"/>
+      <path class="rama r3" pathLength="1" d="M500,430 C560,380 620,360 670,300"/>
+      <path class="rama r4" pathLength="1" d="M500,380 C500,320 500,300 500,250"/>
+      <path class="rama r5" pathLength="1" d="M360,300 C330,260 300,240 270,200"/>
+      <path class="rama r6" pathLength="1" d="M670,300 C710,260 740,235 780,195"/>
+    </svg>
+  </div>
+  <canvas id="motas" aria-hidden="true"></canvas>
+
+  <p class="kicker aparece d1">Recurso educativo · Facultad de Ciencias de la Educación · ULPGC</p>
+  <h1 class="aparece d2">Atlas de paleoantropología</h1>
+  <p class="lema aparece d2">Un árbol, no una escalera</p>
+  <p class="entrada aparece d3">Un recorrido por las especies humanas que nos precedieron: quiénes fueron, dónde vivieron y cómo lo sabemos. Evidencia trazable, pensada para explorar con calma y a tu ritmo.</p>
+  <nav class="acciones aparece d4" aria-label="Accesos principales">
+    <a class="btn btn-primario" href="atlas.html" id="ir-atlas">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z"/></svg>
+      Explorar el atlas
+    </a>
+    <a class="btn btn-secundario" href="introduccion.html" id="ir-intro">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      Ver la introducción
+    </a>
+  </nav>
+
+  <a class="scroll-cue" href="#secciones" aria-label="Desplazarse a las secciones del atlas">
+    Secciones
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</header>
+
+<main id="secciones">
+  <section class="secciones" aria-labelledby="tit-sec">
+    <h2 id="tit-sec" class="revelar">Explora el atlas por bloques</h2>
+    <p class="intro revelar">La paleoantropología no ofrece un relato cerrado, sino hipótesis que se revisan. Elige un bloque para empezar el recorrido.</p>
+    <div class="rejilla">
+      <a class="tarjeta revelar" href="atlas.html#cronologia">
+        <div class="num">01</div><h3>Cronología del corpus</h3>
+        <p>Cincuenta y dos entradas en el tiempo: línea temporal, esquema de afinidades y fichas trazables.</p>
+        <div class="ir">Entrar al bloque &rsaquo;</div>
+      </a>
+      <a class="tarjeta revelar" href="atlas.html#territorio">
+        <div class="num">02</div><h3>Territorio y dispersión</h3>
+        <p>Dónde vivieron: mapa, yacimientos y salida de África como escenario primario.</p>
+        <div class="ir">Entrar al bloque &rsaquo;</div>
+      </a>
+      <a class="tarjeta revelar" href="atlas.html#metodos">
+        <div class="num">03</div><h3>Métodos y evidencia</h3>
+        <p>Cómo lo sabemos: datación, tafonomía y ADN antiguo. Rigor e incertidumbre.</p>
+        <div class="ir">Entrar al bloque &rsaquo;</div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria<br>
+  Contenido bajo licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
+</footer>
+
+<script>
+(() => {
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const canvas = document.getElementById('motas');
+  if (canvas && !reduce) {
+    const ctx = canvas.getContext('2d');
+    let w,h,motas=[],raf=null,activo=true; const N=34;
+    const dim=()=>{w=canvas.width=canvas.offsetWidth;h=canvas.height=canvas.offsetHeight;};
+    const crear=()=>{motas=Array.from({length:N},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.6+.4,vy:-(Math.random()*.22+.05),vx:(Math.random()-.5)*.12,a:Math.random()*.4+.15}));};
+    const dib=()=>{ctx.clearRect(0,0,w,h);for(const m of motas){m.y+=m.vy;m.x+=m.vx;if(m.y<-5){m.y=h+5;m.x=Math.random()*w;}if(m.x<-5)m.x=w+5;else if(m.x>w+5)m.x=-5;ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,Math.PI*2);ctx.fillStyle=`rgba(216,169,58,${m.a})`;ctx.fill();}if(activo)raf=requestAnimationFrame(dib);};
+    const init=()=>{dim();crear();activo=true;if(raf)cancelAnimationFrame(raf);dib();};
+    window.addEventListener('resize',()=>{dim();crear();});
+    document.addEventListener('visibilitychange',()=>{if(document.hidden){activo=false;if(raf)cancelAnimationFrame(raf);}else{activo=true;dib();}});
+    init();
+  }
+
+  const rev=document.querySelectorAll('.revelar');
+  if(reduce||!('IntersectionObserver' in window)){rev.forEach(el=>el.classList.add('visible'));}
+  else{const obs=new IntersectionObserver((es)=>{es.forEach((e,i)=>{if(e.isIntersecting){const el=e.target;setTimeout(()=>el.classList.add('visible'),i*90);obs.unobserve(el);}});},{threshold:.2});rev.forEach(el=>obs.observe(el));}
+})();
+</script>
+</body>
+</html>

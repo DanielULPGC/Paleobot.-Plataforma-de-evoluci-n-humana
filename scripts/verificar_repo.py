@@ -5,6 +5,7 @@ from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 import csv, hashlib, json, re, shutil, subprocess, sys, tempfile
+import html as html_mod
 from urllib.parse import unquote, urlsplit
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -85,7 +86,7 @@ def verify(include_syntax=True):
     # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
     # PB-GH-04 encadena una segunda ronda: la última corrección de cada ruta debe partir
     # exactamente del estado anterior, conservado en su propio snapshot.
-    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json','provenance/PB_GH_09_CORRECCIONES.json') if (ROOT/n).is_file()]
+    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json','provenance/PB_GH_09_CORRECCIONES.json','provenance/PB_GH_10_CORRECCIONES.json') if (ROOT/n).is_file()]
     fixes={}
     cadena_ok=True
     for ronda in rondas:
@@ -162,6 +163,176 @@ def verify(include_syntax=True):
     check('Comprobación de fuentes solo manual','workflow_dispatch' in flujo and 'push:' not in flujo and 'schedule' not in flujo)
     check('Atlas v1 no carga la imagen sin permiso de reutilización','B44_02.jpg' not in atlas_text)
     check('Atlas v1 sin la cita ICS no localizada','epiiugs/2023/023025' not in atlas_text)
+    # PB-GH-10: sistema base «Papel y tierra» (assets/) consumido por DEA, recorrido y consulta ligera.
+    base_css=(ROOT/'assets/paleobot-base.css').read_text(encoding='utf-8') if (ROOT/'assets/paleobot-base.css').is_file() else ''
+    estilos_lig=(ROOT/'src/entrada_ligera/estilos.css').read_text(encoding='utf-8')
+    sinc=re.search(r'/\* === sincronizado con assets/paleobot-base\.css · inicio === \*/\n(.*?)\n?/\* === sincronizado con assets/paleobot-base\.css · fin === \*/',estilos_lig,re.S)
+    # Copia literal de la hoja base sin su comentario de cabecera; única diferencia admitida: la ruta de Lexend.
+    base_sin_cabecera=re.sub(r'\A/\*.*?\*/\s*','',base_css,count=1,flags=re.S).replace('url("fuentes/lexend-latin.woff2")','url("../assets/fuentes/lexend-latin.woff2")')
+    check('Tokens de la consulta ligera sincronizados con assets/paleobot-base.css',bool(base_css) and bool(sinc) and sinc.group(1).strip()==base_sin_cabecera.strip())
+    # Contraste de las parejas de tokens calculado desde la propia hoja base, en los cuatro temas (claro, oscuro,
+    # proyección clara y proyección oscura): texto ≥ 4,5:1; contornos de control y foco ≥ 3:1. El tema de proyección
+    # oscura se compone como lo hereda <body>: claro, oscuro, .proyeccion y su bloque oscuro, en ese orden.
+    def tokens_de(cuerpo):return dict(re.findall(r'(--[\w-]+)\s*:\s*(#[0-9a-fA-F]{6})\b',cuerpo or ''))
+    def bloque(patron):
+        m=re.search(patron,base_sin_coment,re.S);return m.group(1) if m else ''
+    def luminancia(h):
+        c=[int(h[i:i+2],16)/255 for i in (1,3,5)];c=[x/12.92 if x<=.04045 else ((x+.055)/1.055)**2.4 for x in c]
+        return .2126*c[0]+.7152*c[1]+.0722*c[2]
+    def razon(a,b):
+        a,b=luminancia(a),luminancia(b);return (max(a,b)+.05)/(min(a,b)+.05)
+    base_sin_coment=re.sub(r'/\*.*?\*/','',base_css,flags=re.S)
+    t_claro=tokens_de(bloque(r'(?<![\w-]):root\s*\{([^}]*)\}'))
+    t_oscuro=tokens_de(bloque(r'@media \(prefers-color-scheme: dark\)\s*\{\s*:root:not\(\[data-tema="claro"\]\)\s*\{([^}]*)\}'))
+    t_proy=tokens_de(bloque(r'(?:^|\n)\.proyeccion\s*\{([^}]*)\}'))
+    t_proy_osc=tokens_de(bloque(r'\.proyeccion\s*\{([^}]*)\}\s*\}'))
+    temas={'claro':t_claro,'oscuro':{**t_claro,**t_oscuro},'proyección clara':{**t_claro,**t_proy},'proyección oscura':{**t_claro,**t_oscuro,**t_proy,**t_proy_osc}}
+    fondos=('--papel','--superficie','--hundido')
+    parejas=[(t,f,4.5) for t in ('--tinta','--tinta-2','--tinta-3','--acento') for f in fondos]
+    parejas+=[('--acento','--acento-suave',4.5),('--tinta','--acento-suave',4.5),('--sobre-acento','--acento',4.5),('--debatida','--debatida-fondo',4.5),('--bien','--bien-fondo',4.5),('--mal','--mal-fondo',4.5),('--bien','--papel',4.5),('--mal','--papel',4.5)]
+    parejas+=[(c,f,3) for c in ('--borde-control','--foco') for f in fondos]
+    bajos=[]
+    for nombre_tema,valores in temas.items():
+        for a,b,minimo in parejas:
+            if a not in valores or b not in valores:bajos.append(f'{nombre_tema}: falta {a if a not in valores else b}');continue
+            r=razon(valores[a],valores[b])
+            if r<minimo:bajos.append(f'{nombre_tema}: {a}/{b} {r:.2f}:1')
+    check('Parejas de tokens de assets/paleobot-base.css con contraste suficiente en claro, oscuro y proyección',bool(t_claro) and bool(t_oscuro) and bool(t_proy) and bool(t_proy_osc) and not bajos,', '.join(bajos[:3]))
+    lexend=ROOT/'assets/fuentes/lexend-latin.woff2';licencia_lexend=ROOT/'assets/fuentes/LICENCIA-Lexend.md'
+    check('Lexend local idéntica al original y con su licencia',lexend.is_file() and digest(lexend)==digest(ROOT/'atlas/recorrido/inner-green-assets/lexend-latin.woff2') and licencia_lexend.is_file() and 'SIL Open Font License, Version 1.1' in licencia_lexend.read_text(encoding='utf-8') and digest(lexend) in licencia_lexend.read_text(encoding='utf-8'))
+    dea_csp=(re.search(r'http-equiv="Content-Security-Policy" content="([^"]*)"',dea_html) or [None,''])[1]
+    secciones_dea=('inicio','tiempo','mapa','especies','comparar','metodos','clima','glosario','repaso','trabajo')
+    check('Entrada DEA enlaza la hoja base, con CSP estricta, aviso sin JavaScript, diez secciones y sin estilos en línea',
+      'href="../assets/paleobot-base.css"' in dea_html and "default-src 'self'" in dea_csp and "style-src 'self'" in dea_csp and "connect-src 'none'" in dea_csp
+      and 'unsafe-inline' not in dea_csp and not re.search(r'https?:|//',dea_csp) and '<noscript>' in dea_html
+      and all(f'<section id="{s}" ' in dea_html for s in secciones_dea) and len(re.findall(r'<section id=',dea_html))==10
+      and not re.search(r'\sstyle\s*=',dea_html) and '<style' not in dea_html)
+    # dea.css solo consume tokens. Excepciones documentadas y cerradas: la escala raíz (A−/A+ y proyección)
+    # el h1 del modo proyección (L2-9: paso mayor de la escala × 1,25) y el texto de los SVG del mapa, en unidades
+    # del viewBox (2.4px), en dos selectores concretos.
+    excepciones_fs={'html':'calc(100% * var(--escala))','html.proyeccion':'calc(130% * var(--escala))','body.proyeccion h1':'calc(var(--t-3xl) * 1.25)','.mapas .numero-punto':'2.4px','#mapa-svg .rotulo-mapa':'2.4px'}
+    dea_css=re.sub(r'/\*.*?\*/','',(dea/'dea.css').read_text(encoding='utf-8'),flags=re.S)
+    tamanos_fuera=[]
+    for selector,cuerpo in re.findall(r'([^{}]+)\{([^{}]*)\}',dea_css):
+        for valor in re.findall(r'(?<![-\w])font-size\s*:\s*([^;]+)',cuerpo):
+            valor=valor.strip();sel=' '.join(selector.split())
+            if not re.fullmatch(r'var\(--t-[a-z0-9]+\)',valor) and excepciones_fs.get(sel)!=valor:tamanos_fuera.append(sel+': '+valor)
+    colores=re.findall(r'#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color|color-mix|light-dark)\(',dea_css)
+    # color-mix() y light-dark() quedan prohibidos en dea/dea.css (hoy no se usan): mezclar tokens crea colores fuera del
+    # sistema, sin contraste medido. Un color nuevo se añade como token en assets/paleobot-base.css.
+    # Colores con nombre en cualquier propiedad (color: red, border: 1px solid black, color-mix(in srgb, white 20%, …)…)
+    # y atajo font: con un tamaño en bruto. Las palabras admitidas no son colores (transparent, currentColor…).
+    nombres_color=set('aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen canvas canvastext linktext visitedtext activetext buttonface buttontext buttonborder field fieldtext highlight highlighttext mark marktext graytext accentcolor accentcolortext'.split())
+    con_nombre=[]
+    for selector,cuerpo in re.findall(r'([^{}]+)\{([^{}]*)\}',dea_css):
+        for prop,valor in re.findall(r'(?:^|;)\s*([-a-z]+)\s*:\s*([^;]+)',cuerpo):
+            if prop.startswith('--'):continue
+            limpio=re.sub(r'var\(--[\w-]+\)','',valor)
+            palabras={w.lower() for w in re.findall(r'(?<![-\w])[A-Za-z]+(?![-\w(])',limpio)}
+            if palabras&nombres_color:con_nombre.append(' '.join(selector.split())+' '+prop+': '+valor.strip())
+            if prop=='font' and valor.strip() not in ('inherit','initial','unset','revert') and not re.search(r'var\(--t-[a-z0-9]+\)',valor):
+                con_nombre.append(' '.join(selector.split())+' font: '+valor.strip())
+    check('Hoja de la entrada DEA solo con tokens de color y de tamaño de letra',not tamanos_fuera and not colores and not con_nombre,', '.join(tamanos_fuera[:3]+colores[:3]+con_nombre[:3]))
+    recorrido=[ROOT/'atlas/recorrido'/f'{n}.html' for n in ('index','introduccion','cronologia','territorio','parentesco','ficha','metodos','clima','aula','atlas')]
+    paginas_fuentes=[*recorrido,ROOT/'atlas/recorrido/portada-sylva.html',ROOT/'ligera/index.html',dea/'index.html',dea/'dea.css',ROOT/'src/entrada_ligera/estilos.css',ROOT/'assets/paleobot-base.css',ROOT/'atlas/recorrido/integracion.css']
+    con_google=[str(f.relative_to(ROOT)) for f in paginas_fuentes if re.search(r'fonts\.(?:googleapis|gstatic)\.com',f.read_text(encoding='utf-8'))]
+    sin_base=[f.name for f in recorrido if 'href="../../assets/paleobot-base.css"' not in f.read_text(encoding='utf-8')]
+    check('Recorrido, DEA y consulta ligera sin Google Fonts; las diez páginas del recorrido enlazan la hoja base',not con_google and not sin_base,', '.join(con_google[:3]+sin_base[:3]))
+    manifiesto_img=load('img/taxones/MANIFIESTO.json')['images']
+    archivos_img={x['file'] for x in manifiesto_img.values()}
+    figuras=re.findall(r'<figure class=media>(.*?)</figure>',ligera_html,re.S)
+    srcs_lig=re.findall(r'<img\b[^>]*\bsrc="([^"]+)"',ligera_html)
+    malas=[s for s in srcs_lig if 'upload.wikimedia.org' in s or not s.startswith('../img/taxones/') or s.rsplit('/',1)[-1] not in archivos_img or not (ROOT/'img/taxones'/s.rsplit('/',1)[-1]).is_file()]
+    sin_credito=[f[:60] for f in figuras if '<img' in f and not ('Ficha de la imagen' in f and re.search(r'creativecommons\.org/|[Dd]ominio público',f))]
+    check('Consulta ligera con imágenes locales registradas, sin Wikimedia como origen y con crédito y licencia',len(srcs_lig)==len(good)==47 and not malas and not sin_credito and 'upload.wikimedia.org' not in ' '.join(srcs_lig),', '.join(malas[:3]+sin_credito[:2]))
+    acceso_dea=re.search(r'<a class="dock-item"[^>]*href="\.\./\.\./dea/"[^>]*aria-label="Diploma de Estudios Africanos">.*?<span>DEA</span>',portada,re.S)
+    check('Portada conserva el acceso «DEA» con su rótulo visible en pantallas estrechas',bool(acceso_dea) and '.dock-item span:not(.glyph){ display:block; }' in portada and 'data-rotulo="Recorrido"' in portada)
+    # «No se elimina nada»: datos y archivos generados intactos respecto a 693055f y textos de las seis sesiones presentes.
+    pb10=load('provenance/PB_GH_10_CORRECCIONES.json') if (ROOT/'provenance/PB_GH_10_CORRECCIONES.json').is_file() else {}
+    protegido=pb10.get('contenido_protegido',{})
+    cambiados=[p for p,s in protegido.items() if not (ROOT/p).is_file() or digest(ROOT/p)!=s]
+    snap_sesiones=ROOT/'docs/historial/PB_GH_09/dea/dea.js.snapshot'
+    textos_sesion=[]
+    if snap_sesiones.is_file():
+        previo=snap_sesiones.read_text(encoding='utf-8');i=previo.find('var SESIONES = [');j=previo.find('\n  ];',i)
+        if i!=-1 and j!=-1:textos_sesion=re.findall(r"'((?:[^'\\]|\\.)*)'",previo[i:j])
+    perdidos=[t[:40] for t in textos_sesion if "'"+t+"'" not in dea_js]
+    # Textos de dea/index.html (guía «Su trabajo», entradillas, leyendas, rótulos): cada bloque de texto del <main> publicado
+    # en 693055f (su snapshot, con la huella anotada en modified_round_paths) sigue en dea/index.html o en dea/dea.js; si su
+    # redacción de interfaz cambió, está en textos_interfaz_reubicados con los fragmentos informativos que deben seguir.
+    def plano(s):return ' '.join(html_mod.unescape(re.sub(r'<[^>]+>',' ',s)).split()).lower()
+    def bloques_main(s):
+        s=re.sub(r'<(script|style)\b.*?</\1>','',s,flags=re.S);m=re.search(r'<main\b.*?</main>',s,re.S)
+        return [plano(c) for _,c in re.findall(r'<(p|li|h[1-6]|dt|dd|td|th|figcaption|label|summary|legend|caption)\b[^>]*>(.*?)</\1>',m.group(0) if m else '',re.S) if not re.search(r'<(p|li|ul|ol|div|h[1-6])\b',c) and len(plano(c))>2]
+    snap_index=ROOT/'docs/historial/PB_GH_09/dea/index.html.snapshot'
+    previo_index=[x for x in pb10.get('modified_round_paths',[]) if x.get('path')=='dea/index.html']
+    reubicados={plano(k):v for k,v in pb10.get('textos_interfaz_reubicados',{}).items()}
+    actual_dea=plano(re.sub(r'<(script|style)\b.*?</\1>','',dea_html,flags=re.S))+' '+plano(dea_js)
+    bloques_previos=bloques_main(snap_index.read_text(encoding='utf-8')) if snap_index.is_file() else []
+    sin_texto=[]
+    for b_ in bloques_previos:
+        if b_ in actual_dea:continue
+        frag=reubicados.get(b_)
+        if not frag or [x for x in frag if plano(x) not in actual_dea]:sin_texto.append(b_[:40])
+    referencia_ok=bool(previo_index) and snap_index.is_file() and digest(snap_index)==previo_index[0].get('previous_sha256') and len(bloques_previos)>=60
+    check('No se elimina nada: datos, glosario, imágenes y mapa intactos y textos de las seis sesiones presentes',len(protegido)==4 and not cambiados and len(textos_sesion)>=100 and not perdidos,', '.join(cambiados+perdidos[:3]))
+    check('No se elimina nada: textos de dea/index.html publicados en 693055f presentes o reubicados con sus fragmentos',referencia_ok and not sin_texto,', '.join(sin_texto[:3]) or ('' if referencia_ok else 'sin referencia de 693055f'))
+    # Textos informativos de interfaz que viven en dea/dea.js (rótulos de ficha y de tarjeta, avisos, estados vacíos):
+    # lista cerrada de fragmentos obligatorios registrada en la procedencia (textos_obligatorios_dea_js).
+    obligatorios_js=pb10.get('textos_obligatorios_dea_js',[])
+    faltan_js=[x[:40] for x in obligatorios_js if x not in dea_js]
+    check('No se elimina nada: textos informativos de dea/dea.js registrados en la procedencia presentes',len(obligatorios_js)>=20 and not faltan_js,', '.join(faltan_js[:3]))
+    # Los archivos de dea/ (nacidos en PB-GH-07) no tienen huella de importación: su estado final es el corrected_sha256
+    # de modified_round_paths. Cualquier cambio no registrado en ellos (o una reversión) se detecta aquí.
+    huellas_dea=[x for x in pb10.get('modified_round_paths',[]) if x.get('path','').startswith('dea/')]
+    dea_distintos=[x['path'] for x in huellas_dea if not (ROOT/x['path']).is_file() or digest(ROOT/x['path'])!=x.get('corrected_sha256')]
+    check('Archivos de dea/ modificados en la ronda coinciden con su huella registrada',len(huellas_dea)==3 and not dea_distintos,', '.join(dea_distintos))
+    # Ocultación por CSS en dea/dea.css: display:none y visibility:hidden solo en una lista cerrada de selectores
+    # legítimos (paneles plegados, estados vacíos, impresión, proyección, sin JavaScript, carga). Se compara el selector
+    # junto con su contexto @media/@supports. Límite: no ve ocultaciones por otros medios (opacity, clip, tamaño 0,
+    # posición fuera de pantalla) ni las que haga dea.js con el atributo hidden.
+    def reglas_css(css,contexto=''):
+        out=[];i=0
+        while i<len(css):
+            j=css.find('{',i)
+            if j==-1:break
+            cab=' '.join(css[i:j].split());prof=1;k=j+1
+            while prof and k<len(css):
+                prof+=1 if css[k]=='{' else -1 if css[k]=='}' else 0;k+=1
+            cuerpo=css[j+1:k-1]
+            if cab.startswith('@'):out+=reglas_css(cuerpo,(contexto+' '+cab).strip())
+            else:out.append((contexto,cab,cuerpo))
+            i=k
+        return out
+    ocultan=sorted({(ctx+' | ' if ctx else '')+sel for ctx,sel,cuerpo in reglas_css(dea_css) if re.search(r'(?<![-\w])(?:display\s*:\s*none|visibility\s*:\s*hidden)',cuerpo)})
+    OCULTACIONES_DEA={
+      '.boton-ajustes',
+      '.boton-secciones, .panel-secciones',
+      '.detalle:empty',
+      '.eje-tiempo span.sin-sitio',
+      '.nota-impresa',
+      '.pie:has(#nota-datos:empty) #t-datos',
+      '.respuesta:empty',
+      '.resumen:empty',
+      '.solo-impresion',
+      '@media (max-width: 39.99rem) | .linea-tiempo .unidad-eje',
+      '@media (max-width: 47.99rem) | .ajustes',
+      '@media (scripting: enabled) | html:not(.dea-listo) :is(main, .pie)',
+      '@media (scripting: none) | .ajustes, .acciones-notas, .paso-seccion, #t-sesiones, #progreso-sesiones, #t-indice, .filtros, .comparador, .dia, #repaso-nuevo, .mapas, #t-regiones, .nota-progreso',
+      '@media (scripting: none) | .boton-ajustes',
+      '@media (scripting: none) | .boton-secciones, .panel-secciones',
+      '@media (scripting: none) | main:has(.seccion:target) #inicio',
+      '@media print | .cabecera .ajustes, .boton-ajustes, .pestanas, .panel-secciones, .continuar, .letras, .salto, .filtros, .pie a, .paso-seccion, .acciones-notas, .nota textarea, .nota label, #repaso-nuevo, .resultado-repaso .boton-primario, .vacio .acciones',
+      '@media print | .cruces',
+      '@media print | .seccion[hidden]',
+      '@media print | .sesion:not([open])',
+      '[hidden]',
+      'body.proyeccion .ajustes [data-texto], body.proyeccion #boton-imprimir, body.proyeccion .boton-ajustes',
+      'body.proyeccion .antetitulo, body.proyeccion .nota-progreso, body.proyeccion .pie, body.proyeccion .nota',
+      'details > summary::-webkit-details-marker',
+    }
+    no_previstas=[o for o in ocultan if o not in OCULTACIONES_DEA]
+    check('Hoja de la entrada DEA sin ocultaciones fuera de la lista cerrada de selectores legítimos',len(ocultan)>=20 and not no_previstas,', '.join(no_previstas[:3]))
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
     check('Referencia v9 y licencia Leaflet intactas',all(digest(ROOT/name)==baseline[name] for name in frozen))
     check('Catálogo original preservado',digest(ROOT/'src/entrada_ligera/catalog.json')==baseline['src/entrada_ligera/catalog.json'])

@@ -22,82 +22,80 @@
   alternativa textual completa; respeta prefers-reduced-motion; contraste alto.
   Autonomía: fichero único. Licencia CC BY-NC 4.0 · ULPGC.
 -->
-<html lang="es">
+<html lang="es" class="pb-recorrido">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cronología del corpus · Atlas de paleoantropología</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/paleobot-base.css">
 <style>
-:root{--fondo:#0d2028;--fondo-alt:#16303c;--tinta:#f3efe7;--tinta-suave:#c8d2ce;--acento:#d8a93a;--radio:12px;
+:root{--fondo:var(--papel);--fondo-alt:var(--superficie);--tinta-suave:var(--tinta-2);--radio:var(--r-contenedor);
   --c-basales:#c98a4b;--c-austra:#d8a93a;--c-paran:#7fae9a;--c-homo:#cbb488;
-  --ft:'Playfair Display',Georgia,serif;--fc:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+  --ft:var(--f-titulo);--fc:var(--f-lectura)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6}
 a{color:var(--acento)}
-.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:#141008;padding:.7rem 1.1rem;z-index:50;font-weight:600}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:var(--sobre-acento);padding:var(--e-3) var(--e-4);z-index:50;font-weight:600}
 .salto:focus{left:0}
 
-.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 5vw;background:rgba(13,32,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
-.volver{display:inline-flex;align-items:center;gap:.5rem;color:var(--tinta);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:var(--radio);border:1px solid rgba(243,239,231,.2)}
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:var(--e-4);padding:var(--e-4) var(--margen);background:var(--papel);border-bottom:1px solid var(--borde)}
+.volver{display:inline-flex;align-items:center;gap:var(--e-2);color:var(--tinta);text-decoration:none;font-weight:600;padding:var(--e-2) var(--e-4);border-radius:var(--r-control);border:1px solid var(--borde-control)}
 .volver:hover{border-color:var(--acento);color:var(--acento)}
-.volver:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+.volver:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
 .volver svg{width:18px;height:18px}
-.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:.95rem}
-.barra .intro-link{color:var(--acento);text-decoration:none;font-weight:600;font-size:.95rem}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:var(--t-s)}
+.barra .intro-link{color:var(--acento);text-decoration:none;font-weight:600;font-size:var(--t-s)}
 
-.cabecera{max-width:1150px;margin:0 auto;padding:6vh 5vw 1vh}
-.cabecera .k{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:.8rem}
-.cabecera h1{font-family:var(--ft);font-weight:700;font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:.6rem}
+.cabecera{max-width:1150px;margin:0 auto;padding:var(--e-7) var(--margen) var(--e-2)}
+.cabecera .k{font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:var(--e-3)}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:var(--t-h1);margin-bottom:var(--e-2)}
 .cabecera p{color:var(--tinta-suave);max-width:70ch}
-.aviso{max-width:1150px;margin:1.4rem auto 0;padding:0 5vw}
-.aviso .caja{background:rgba(216,169,58,.07);border:1px solid rgba(216,169,58,.32);border-radius:var(--radio);padding:1rem 1.2rem;font-size:.9rem;color:var(--tinta-suave)}
+.aviso{max-width:1150px;margin:var(--e-5) auto 0;padding:0 var(--margen)}
+.aviso .caja{background:var(--acento-suave);border:0;border-radius:var(--radio);padding:var(--e-4) var(--e-4);font-size:var(--t-s);color:var(--tinta-suave)}
 
-.leyenda{max-width:1150px;margin:2rem auto 0;padding:0 5vw;display:flex;gap:1.2rem;flex-wrap:wrap}
-.leyenda span{display:inline-flex;align-items:center;gap:.45rem;font-size:.9rem;color:var(--tinta-suave)}
+.leyenda{max-width:1150px;margin:var(--e-6) auto 0;padding:0 var(--margen);display:flex;gap:var(--e-4);flex-wrap:wrap}
+.leyenda span{display:inline-flex;align-items:center;gap:var(--e-2);font-size:var(--t-s);color:var(--tinta-suave)}
 .leyenda i{width:16px;height:16px;border-radius:4px;display:inline-block}
 
-.grafico{max-width:1150px;margin:1.4rem auto 0;padding:0 5vw}
+.grafico{max-width:1150px;margin:var(--e-5) auto 0;padding:0 var(--margen)}
 .eje{position:relative;height:26px;margin-left:180px;border-bottom:1px solid rgba(243,239,231,.25)}
-.eje .tick{position:absolute;top:0;transform:translateX(-50%);font-size:.78rem;color:var(--tinta-suave)}
+.eje .tick{position:absolute;top:0;transform:translateX(-50%);font-size:var(--t-xs);color:var(--tinta-suave)}
 .eje .tick::after{content:'';position:absolute;left:50%;top:20px;width:1px;height:6px;background:rgba(243,239,231,.25)}
-.eje-titulo{margin-left:180px;font-size:.8rem;color:var(--tinta-suave);margin-top:.3rem;letter-spacing:.04em}
+.eje-titulo{margin-left:180px;font-size:var(--t-xs);color:var(--tinta-suave);margin-top:var(--e-1);letter-spacing:.04em}
 
-.grupo{margin-top:1.6rem}
-.grupo h2{font-family:var(--ft);font-weight:700;font-size:1.05rem;color:var(--tinta);margin-bottom:.5rem;padding-left:2px}
+.grupo{margin-top:var(--e-5)}
+.grupo h2{font-family:var(--ft);font-weight:700;font-size:var(--t-m);color:var(--tinta);margin-bottom:var(--e-2);padding-left:2px}
 .fila{position:relative;height:34px;margin-bottom:6px;display:flex;align-items:center}
-.fila .etq{width:180px;flex:0 0 180px;font-size:.82rem;font-style:italic;color:var(--tinta-suave);padding-right:10px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fila .etq{width:180px;flex:0 0 180px;font-size:var(--t-xs);font-style:italic;color:var(--tinta-suave);padding-right:10px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pista{position:relative;flex:1;height:100%}
-.barra-taxon{position:absolute;top:6px;height:22px;border-radius:6px;border:none;cursor:pointer;color:#141008;font-family:var(--fc);font-weight:600;font-size:.72rem;display:flex;align-items:center;padding:0 8px;overflow:hidden;white-space:nowrap;transition:filter .15s,transform .15s,outline-color .15s}
+.barra-taxon{position:absolute;top:6px;height:22px;border-radius:var(--r-control);border:none;cursor:pointer;color:var(--sobre-acento);font-family:var(--fc);font-weight:600;font-size:var(--t-xs);display:flex;align-items:center;padding:0 8px;overflow:hidden;white-space:nowrap;transition:filter .15s,transform .15s}
 .barra-taxon:hover{filter:brightness(1.12)}
-.barra-taxon:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.barra-taxon:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
 .barra-taxon[aria-pressed="true"]{outline:3px solid var(--tinta);outline-offset:2px}
 
-.detalle{max-width:1150px;margin:2.4rem auto 0;padding:0 5vw}
-.detalle .panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--acento);border-radius:var(--radio);padding:1.6rem 1.8rem;min-height:120px}
-.detalle .panel h3{font-family:var(--ft);font-weight:700;font-size:1.4rem;margin-bottom:.2rem}
-.detalle .panel .meta{color:var(--acento);font-weight:600;font-size:.9rem;margin-bottom:.7rem}
-.detalle .panel p{color:var(--tinta-suave);margin-bottom:.6rem}
-.detalle .panel .fuente{font-size:.82rem;color:rgba(200,210,206,.75)}
+.detalle{max-width:1150px;margin:var(--e-6) auto 0;padding:0 var(--margen)}
+.detalle .panel{background:var(--superficie);border:1px solid var(--borde);border-left:4px solid var(--acento);border-radius:var(--radio);padding:var(--e-5) var(--e-6);min-height:120px}
+.detalle .panel h3{font-family:var(--ft);font-weight:700;font-size:var(--t-xl);margin-bottom:var(--e-1)}
+.detalle .panel .meta{color:var(--acento);font-weight:600;font-size:var(--t-s);margin-bottom:var(--e-3)}
+.detalle .panel p{color:var(--tinta-suave);margin-bottom:var(--e-2)}
+.detalle .panel .fuente{font-size:var(--t-xs);color:var(--tinta-3)}
 .detalle .panel .fuente a{word-break:break-all}
 
-.tabla-sec{max-width:1150px;margin:3rem auto 0;padding:0 5vw}
-.tabla-sec h2{font-family:var(--ft);font-weight:700;font-size:1.3rem;margin-bottom:.3rem}
-.tabla-sec p{color:var(--tinta-suave);font-size:.9rem;margin-bottom:1rem}
-table{width:100%;border-collapse:collapse;font-size:.9rem}
-caption{text-align:left;color:var(--tinta-suave);font-size:.85rem;margin-bottom:.6rem}
-th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.tabla-sec{max-width:1150px;margin:var(--e-7) auto 0;padding:0 var(--margen)}
+.tabla-sec h2{font-family:var(--ft);font-weight:700;font-size:var(--t-l);margin-bottom:var(--e-1)}
+.tabla-sec p{color:var(--tinta-suave);font-size:var(--t-s);margin-bottom:var(--e-4)}
+table{width:100%;border-collapse:collapse;font-size:var(--t-s)}
+caption{text-align:left;color:var(--tinta-suave);font-size:var(--t-xs);margin-bottom:var(--e-2)}
+th,td{text-align:left;padding:var(--e-2) var(--e-3);border-bottom:1px solid var(--borde)}
 th{color:var(--acento);font-weight:600}
 td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
 
-.pie{border-top:1px solid rgba(255,255,255,.1);margin-top:4rem;padding:2.4rem 5vw;color:rgba(200,210,206,.65);font-size:.82rem;line-height:1.7}
-.pie a{color:rgba(216,169,58,.85);word-break:break-all}
-.pie h3{color:var(--tinta-suave);font-size:.9rem;margin-bottom:.5rem}
-.pie ul{list-style:none;margin-bottom:1rem}
-.pie li{margin-bottom:.35rem}
+.pie{border-top:1px solid var(--borde);margin-top:var(--e-8);padding:var(--e-6) var(--margen);color:var(--tinta-3);font-size:var(--t-xs);line-height:1.7}
+.pie a{color:var(--acento);word-break:break-all}
+.pie h3{color:var(--tinta-suave);font-size:var(--t-s);margin-bottom:var(--e-2)}
+.pie ul{list-style:none;margin-bottom:var(--e-4)}
+.pie li{margin-bottom:var(--e-1)}
 
 @media (prefers-reduced-motion: reduce){.barra-taxon{transition:none}}
 @media (max-width:720px){
@@ -105,6 +103,19 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
   .fila{flex-direction:column;align-items:stretch;height:auto;margin-bottom:14px}
   .fila .etq{width:auto;flex:none;text-align:left;margin-bottom:3px}
   .pista{height:26px}
+}
+/* PB-GH-10 · piso de corrección
+   - Barras de 24 px de alto; en pantallas estrechas, sin el epíteto truncado dentro de la barra (el nombre
+     completo ya está encima y en su aria-label) y con pista de 32 px: ni la barra ni su anillo de foco
+     invaden la fila siguiente.
+   - Reserva de altura para lo que pinta el script (CLS de carga): la leyenda y la rejilla de barras. */
+.barra-taxon{top:5px;height:24px}
+.leyenda{min-height:1.6rem}
+#grupos{min-height:100vh}
+@media (max-width:720px){
+  .leyenda{min-height:3.4rem}
+  .pista{flex:none;height:32px} /* con flex:1 la pista medía 0 px en columna y la barra invadía la fila siguiente */
+  .barra-taxon{top:4px;font-size:0;padding:0}
 }
 .barra-taxon.destacado{animation:destello 1.6s ease 2}
 @keyframes destello{50%{filter:brightness(1.35)}}
@@ -116,7 +127,7 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
 <body>
 <a class="salto" href="#grafico">Saltar a la línea del tiempo</a>
 
-<div class="barra">
+<div class="barra" role="navigation" aria-label="Navegación del recorrido">
   <a class="volver" href="atlas.html" id="volver">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Volver al atlas
@@ -135,7 +146,7 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
   <p>Cada barra representa el rango temporal aproximado de una entrada del corpus: especies, subespecies, hominoideos de contexto, linajes o conjuntos fósiles. Al alinearlos se hace visible lo esencial: muchas formas coexistieron y la evolución humana no fue una secuencia lineal.</p>
 </header>
 
-<div class="aviso">
+<div class="aviso" role="region" aria-label="Nota sobre los datos">
   <div class="caja">
     <strong>Nota sobre los datos.</strong> Los rangos son aproximados, están redondeados en millones de años (Ma) y son revisables: dependen del yacimiento, del método de datación y de hallazgos futuros. Proceden de la compilación de Wood y Boyle (2016); las dataciones de las especies más antiguas y del genoma neandertal se anclan además a sus estudios primarios, citados al pie. No deben tomarse como valores definitivos.
   </div>
@@ -144,6 +155,7 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
 <div class="leyenda" id="leyenda" aria-hidden="true"></div>
 
 <main id="grafico" class="grafico" aria-label="Línea del tiempo del corpus paleoantropológico">
+  <p class="pb-alternativa">Los mismos datos, en texto: <a href="#tabla">tabla de rangos y fuentes</a>.</p>
   <div class="eje" id="eje"></div>
   <div class="eje-titulo">Millones de años antes del presente (Ma)</div>
   <div id="grupos"></div>
@@ -157,14 +169,17 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
   </div>
 </section>
 
-<section class="tabla-sec" id="tabla">
-  <h2>Tabla de datos</h2>
+<section class="tabla-sec" id="tabla" aria-labelledby="tit-tabla">
+  <h2 id="tit-tabla">Tabla de datos</h2>
   <p>Alternativa textual completa de la línea del tiempo, con los rangos y las fuentes de cada táxon.</p>
+  <p class="pb-desliza">La tabla continúa hacia la derecha: deslícela en horizontal.</p>
+  <div class="pb-tabla-desplazable" tabindex="0" role="region" aria-label="Tabla de datos (desplazable)">
   <table>
     <caption>Entradas taxonómicas y paleopoblacionales con su rango temporal aproximado (Ma). Fuentes: síntesis y estudios primarios citados.</caption>
     <thead><tr><th scope="col">Táxon</th><th scope="col">Clado</th><th scope="col">Rango aproximado (Ma)</th><th scope="col">Fuente</th></tr></thead>
     <tbody id="cuerpo-tabla"></tbody>
   </table>
+  </div>
 </section>
 
 <footer class="pie">
@@ -272,7 +287,7 @@ td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
   TAXONES.forEach(t => {
     const tr = document.createElement('tr');
     const fuente = citarFuentes(t, false).join(' ');
-    tr.innerHTML = `<td><em>${t.n}</em></td><td>${CLADOS[t.c].nombre}</td><td class="rango">${rango(t)}</td><td>${fuente}</td>`;
+    tr.innerHTML = `<td><em><a href="ficha.html?id=${t.id}">${t.n}</a></em></td><td>${CLADOS[t.c].nombre}</td><td class="rango">${rango(t)}</td><td>${fuente}</td>`;
     cuerpo.appendChild(tr);
   });
   // Resaltado por identidad: cronologia.html?taxon=<id>
