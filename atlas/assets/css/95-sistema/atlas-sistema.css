@@ -303,6 +303,16 @@ html body :is(.v34-paleo-cell [data-open-species], .v34-paleo-cell button) {
 /* 320 px: el escenario del mapa medía 500 px fijos y las tarjetas de fuentes de África 325-339 px. */
 html body .map-stage { width: 100%; max-width: 100%; box-sizing: border-box; min-width: 0; }
 html body .africa-source-card { min-width: 0; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; }
+/* Su rejilla (001: repeat(auto-fit, minmax(280px, 1fr))) imponía 280 px a una columna de 230 px a 320: mínimo acotado al ancho. */
+html body .africa-sources { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+
+/* Filogenia en teléfono: el pie del cladograma (.phylo-footer, 826 px dentro de una franja con desplazamiento
+   horizontal) ponía «Descargar SVG» en su propia línea, a la izquierda y a la vista. Con la pila de sistema los
+   textos son más estrechos y el botón subía a la primera línea, en x = 663 px: fuera de la pantalla de 390 px
+   (el humo lo detectó: «exportar.svg.filogenia» dejaba de responder). Se le devuelve su línea. */
+@media (max-width: 47.99rem) {
+  html body .phylo-footer > [data-action="exportPhyloSvg"] { flex-basis: 100%; }
+}
 
 /* -- 9 · Componentes base (por las clases existentes) -------------------------------------------------
    Sin gradientes decorativos, vidrio ni sombras de adorno. Barra, diálogos, cabeceras de vista y rutas
