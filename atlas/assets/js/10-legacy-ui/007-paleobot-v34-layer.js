@@ -422,8 +422,8 @@
     const sp = (typeof presSpecies !== 'undefined' && presSpecies[presIndex]) || currentSpecies || DB[0];
     const refs = (sp.experto?.referencias || []).slice(0,4);
     const terms = ['capacidad craneal','prognatismo','datacion absoluta','filogenia'].map(t=>`<li><strong>${t}</strong>: ${escapeHtmlText(getGlossaryDefinition(t))}</li>`).join('');
-    const html = `<!doctype html><html><head><meta charset="utf-8"><title>${escapeHtmlText(sp.nombre)} · ficha presentación</title><link rel="stylesheet" href="assets/css/00-core/003-style.css"></head><body><section class="page"><h1>${escapeHtmlText(sp.nombre)}</h1><div class="hero"><img src="${getSpeciesImage(sp)}" alt="${escapeHtmlAttr(sp.nombre)}"><div><p>${escapeHtmlText(sp.descripcion||'')}</p><p class="kpi">${escapeHtmlText(sp.anos)}</p><p class="kpi">${escapeHtmlText(sp.ubicacion)}</p><p class="kpi">${sp.cc||'s/d'} cc</p></div></div></section><section><h2>Glosario y debate</h2><ul>${terms}</ul><h3>Preguntas</h3><ol><li>¿Qué evidencia sostiene la clasificación?</li><li>¿Qué parte de la ficha es inferencia y cuál dato directo?</li><li>¿Qué comparación anatómica sería más informativa?</li></ol><h3>Referencias DOI</h3><ul class="refs">${refs.map(r=>`<li>${escapeHtmlText(r.a||'Referencia')} (${escapeHtmlText(String(r.y||''))}). ${r.d?escapeHtmlText(r.d):'sin DOI cargado'}</li>`).join('')}</ul></section><script>print();<\/script></body></html>`;
-    const w = window.open('', '_blank'); if (w) { w.document.write(html); w.document.close(); }
+    const html = `<!doctype html><html><head><meta charset="utf-8"><title>${escapeHtmlText(sp.nombre)} · ficha presentación</title><link rel="stylesheet" href="assets/css/00-core/003-style.css"></head><body><section class="page"><h1>${escapeHtmlText(sp.nombre)}</h1><div class="hero"><img src="${getSpeciesImage(sp)}" alt="${escapeHtmlAttr(sp.nombre)}"><div><p>${escapeHtmlText(sp.descripcion||'')}</p><p class="kpi">${escapeHtmlText(sp.anos)}</p><p class="kpi">${escapeHtmlText(sp.ubicacion)}</p><p class="kpi">${sp.cc||'s/d'} cc</p></div></div></section><section><h2>Glosario y debate</h2><ul>${terms}</ul><h3>Preguntas</h3><ol><li>¿Qué evidencia sostiene la clasificación?</li><li>¿Qué parte de la ficha es inferencia y cuál dato directo?</li><li>¿Qué comparación anatómica sería más informativa?</li></ol><h3>Referencias DOI</h3><ul class="refs">${refs.map(r=>`<li>${escapeHtmlText(r.a||'Referencia')} (${escapeHtmlText(String(r.y||''))}). ${r.d?escapeHtmlText(r.d):'sin DOI cargado'}</li>`).join('')}</ul></section></body></html>`;
+    const w = window.open('', '_blank'); if (w) { w.document.write(html); w.document.close(); /* PB-GH-11: print() desde la ventana que abre (sin <script> en línea; CSP sin unsafe-inline) */ w.print(); }
   }
 
   const _buildSelfAuditReport = buildSelfAuditReport;
@@ -470,8 +470,9 @@
     const pct = v34Exam.items.length ? Math.round(v34Exam.score/v34Exam.items.length*100) : 0;
     const rows = v34Exam.answers.map((a,i)=>`<tr><td>${i+1}</td><td>${a.comp}</td><td>${a.ok?'Correcta':'Incorrecta'}</td></tr>`).join('');
     const w = window.open('', '_blank'); if (!w) return;
-    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Resultado PaleoBot</title><link rel="stylesheet" href="assets/css/00-core/004-style.css"></head><body><h1>Ficha de evaluación PaleoBot</h1><p>Resultado: <strong>${pct}%</strong> (${v34Exam.score}/${v34Exam.items.length})</p><table><thead><tr><th>#</th><th>Competencia</th><th>Resultado</th></tr></thead><tbody>${rows}</tbody></table><script>print();<\/script></body></html>`);
+    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Resultado PaleoBot</title><link rel="stylesheet" href="assets/css/00-core/004-style.css"></head><body><h1>Ficha de evaluación PaleoBot</h1><p>Resultado: <strong>${pct}%</strong> (${v34Exam.score}/${v34Exam.items.length})</p><table><thead><tr><th>#</th><th>Competencia</th><th>Resultado</th></tr></thead><tbody>${rows}</tbody></table></body></html>`);
     w.document.close();
+    /* PB-GH-11: print() desde la ventana que abre (sin <script> en línea; CSP sin unsafe-inline) */ w.print();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', installV34Shell);

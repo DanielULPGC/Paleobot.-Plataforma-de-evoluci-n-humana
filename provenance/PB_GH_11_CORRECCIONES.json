@@ -48,13 +48,27 @@
     "scripts/atlas/resumir_piso.py",
     "scripts/atlas/tormenta.cjs",
     "scripts/atlas/variantes.cjs",
-    "scripts/generar_imagenes_atlas.cjs"
+    "scripts/generar_imagenes_atlas.cjs",
+    "atlas/assets/vendor/leaflet/leaflet.js",
+    "atlas/assets/vendor/leaflet/leaflet.css",
+    "atlas/assets/vendor/leaflet/LICENSE",
+    "atlas/assets/vendor/leaflet/PROCEDENCIA.md",
+    "atlas/assets/vendor/leaflet/images/layers.png",
+    "atlas/assets/vendor/leaflet/images/layers-2x.png",
+    "atlas/assets/vendor/leaflet/images/marker-icon.png",
+    "atlas/assets/vendor/leaflet/images/marker-icon-2x.png",
+    "atlas/assets/vendor/leaflet/images/marker-shadow.png",
+    "atlas/assets/js/95-sistema/en-linea-salto-atlas.js",
+    "atlas/assets/js/95-sistema/en-linea-rutas-integradas.js",
+    "atlas/assets/js/95-sistema/en-linea-hub-bloques.js",
+    "atlas/assets/js/95-sistema/respaldo-portada.js"
   ],
   "governance_paths_note": "Archivos de gobierno modificados en la ronda, sin huella de importación: retained_paths de PB_GH_02_BASE_ACTUAL.json (snapshots originales de 025 y 044) y lista rondas del verificador.",
   "governance_paths": [
     "provenance/PB_GH_02_BASE_ACTUAL.json",
     "scripts/verificar_repo.py"
   ],
+  "new_paths_note": "Archivos nuevos de la ronda (sin huella de importación). atlas/assets/css/95-sistema/atlas-sistema.css y scripts/atlas/* nacieron en la T1 y se amplían en la T2.",
   "corrections": [
     {
       "path": "atlas/assets/js/40-media/025-paleobot-v50-media-guard.js",
@@ -75,12 +89,12 @@
       "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
       "previous_sha256": "ffa837db43c7b4895e81459f253cc643df9256d34d106274116d2d57f587464a",
       "previous_snapshot": "docs/historial/PB_GH_10/atlas/index.html.snapshot",
-      "corrected_sha256": "e4ab80322526b40626a95d4a67f8e6e39113b31708cbde62b73a368f6aeeb4cf",
-      "change": "T1: enlaza al final del <body>, con ?v=pbgh11, los recursos nuevos de assets/js/95-sistema/ (imagenes-tope.js, imagenes-locales-datos.js, imagenes-locales.js) y assets/css/95-sistema/atlas-sistema.css.",
-      "reason": "Filas 1, 2 y 9 de la tabla de corrección; DIRECCION_ATLAS § 1 (columna vertebral aditiva enlazada la última).",
-      "evidence": "Commits a37bd31, a71b353 y 47e5228: líneas añadidas antes de </body>; humo --comparar con 0 pérdidas en las cuatro condiciones. Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6).",
-      "impact": "Carga cuatro recursos locales nuevos tras los importados.",
-      "return": "Quitar esas líneas o restaurar docs/historial/PB_GH_10/atlas/index.html.snapshot."
+      "corrected_sha256": "309115c783380bee0774b063e0f7fb067d1248f472b72992fe5d4d74606d6b45",
+      "change": "T1: enlaza al final del <body>, con ?v=pbgh11, los recursos nuevos de assets/js/95-sistema/ (imagenes-tope.js, imagenes-locales-datos.js, imagenes-locales.js) y assets/css/95-sistema/atlas-sistema.css. T2: enlaza ../assets/paleobot-base.css (?v=pbgh11) antes de las hojas del atlas; retira Google Fonts (preconnect y hoja; Lexend local por la hoja base); Leaflet desde assets/vendor/leaflet/ con SRI sha384 en lugar de cdnjs; los tres <script> en línea pasan sin cambios a assets/js/95-sistema/en-linea-{salto-atlas,rutas-integradas,hub-bloques}.js, cargados síncronos en la misma posición; los dos onerror en línea de las imágenes de portada pasan a data-pb-respaldo + 95-sistema/respaldo-portada.js; la CSP se estrecha: script-src 'self' (sin 'unsafe-inline' ni cdnjs), style-src sin fonts.googleapis.com ni cdnjs, font-src 'self'.",
+      "reason": "Filas 1, 2 y 9 de la tabla de corrección; DIRECCION_ATLAS § 1 (columna vertebral aditiva enlazada la última). T2: filas 29 y 30 de la tabla de corrección y DIRECCION_ATLAS § 2.1, § 4 (Lexend local, Leaflet alojado, CSP solo se estrecha).",
+      "evidence": "Commits a37bd31, a71b353 y 47e5228: líneas añadidas antes de </body>; humo --comparar con 0 pérdidas en las cuatro condiciones. Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6). T2 (informe T2.md): humo con recuento de violaciones de CSP (securitypolicyviolation, también en ventanas emergentes): 0 de script-src en las cuatro condiciones; las únicas violaciones son img-src de teselas de OpenTopoMap en minimapa.capas, preexistentes (la CSP ya no las admitía). 0 peticiones a fonts.googleapis.com, fonts.gstatic.com y cdnjs; minimapa con Leaflet local.",
+      "impact": "Carga cuatro recursos locales nuevos tras los importados. T2: el atlas no pide fuentes ni Leaflet a terceros y no admite scripts en línea; aspecto con la hoja base y el puente de atlas-sistema.css.",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/index.html.snapshot o revertir los commits de la T1 y la T2 que lo tocan (a37bd31, a71b353, 47e5228 y el commit de terceros y CSP de la T2)."
     },
     {
       "path": "atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
@@ -88,12 +102,12 @@
       "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot",
       "previous_sha256": "bcdb8b0063db4fcf1db730597006a88c1d9e9ba48361f22fe1856cfad734a2f8",
       "previous_snapshot": "docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot",
-      "corrected_sha256": "633a1b810b5192eed6ada41d50ba69c507b5288ee6c16d2cf14818341f8b6572",
-      "change": "Una línea: window.OUT_OF_AFRICA_EVENTS = OUT_OF_AFRICA_EVENTS (expone la constante que ya declaraba, sin copiar datos).",
-      "reason": "Fila 4 de la tabla de corrección: el simulador de dispersión no funcionaba (ReferenceError en 008-…m11m20-layer.js:144).",
-      "evidence": "Commit 6a27784. Vista dispersal sin excepciones; «Reproducir» anima de 306 a 281 ka en 2,5 s (captura t1_simulador_escritorio.png). Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6).",
-      "impact": "El simulador responde; 008 no se toca.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot o revertir 6a27784."
+      "corrected_sha256": "c2c83b0f08cc2867ba9d07b595b7b0493054d99674280eb1b530206314f5371a",
+      "change": "Una línea: window.OUT_OF_AFRICA_EVENTS = OUT_OF_AFRICA_EVENTS (expone la constante que ya declaraba, sin copiar datos). T2: las dos ventanas de exportación (exportPresentationTaxon, exportV34ExamResult) ya no escriben <script>print()</script>: llaman a w.print() desde la ventana que las abre, tras document.close().",
+      "reason": "Fila 4 de la tabla de corrección: el simulador de dispersión no funcionaba (ReferenceError en 008-…m11m20-layer.js:144). T2: fila 30 (CSP sin 'unsafe-inline' en script-src); una ventana abierta con window.open('') hereda la CSP del atlas y bloqueaba el script en línea.",
+      "evidence": "Commit 6a27784. Vista dispersal sin excepciones; «Reproducir» anima de 306 a 281 ka en 2,5 s (captura t1_simulador_escritorio.png). Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6). T2: prueba popups.cjs: antes, «Executing inline script violates … script-src 'self'» en la ventana del examen; después, 0 violaciones en las ventanas de examen, presentación y m13.",
+      "impact": "El simulador responde; 008 no se toca. T2: la impresión automática de esas dos ventanas se conserva sin script en línea.",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot o revertir 6a27784 y el commit de terceros y CSP de la T2."
     },
     {
       "path": "atlas/assets/js/00-core/002-script.js",
@@ -120,6 +134,32 @@
       "evidence": "Commit 410df3e. Registro del servidor: antes un 404 por carga, después ninguno. Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6).",
       "impact": "Sin petición fallida en cada carga; si algún día se aloja sw.js basta con la bandera.",
       "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/80-features/044-script.js.snapshot o revertir 410df3e."
+    },
+    {
+      "path": "atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js",
+      "import_sha256": "cb419e5be37ef4faf0c7076c7e2cb896fe8c238595f724244afb8015a208f06c",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js.snapshot",
+      "previous_sha256": "05b6a98e25617dc3545d1458e2cbaaf262602867b80163fbca982c1356c93ecb",
+      "previous_snapshot": "docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js.snapshot",
+      "corrected_sha256": "0e3e6cd52284cf273085ccfbe8214dd1fcb898dcfa889af97796dcc799a3f0e9",
+      "change": "La ventana «Resultado examen offline» ([data-m13-export]) ya no escribe <script>print();<\\/script>: llama a w.print() tras document.close(). Nada más cambia.",
+      "reason": "Fila 30 (CSP sin 'unsafe-inline' en script-src): la ventana hereda la CSP del atlas. Además la plantilla escribía «<\\/script>» (barra escapada dos veces), así que el script quedaba sin cerrar y el print() nunca se ejecutaba en la línea base.",
+      "evidence": "Prueba popups.cjs de la T2 (ventana m13: 0 violaciones de CSP); node --check; humo sin pérdidas (informe T2.md).",
+      "impact": "La exportación abre la ventana como antes y ahora sí lanza el diálogo de impresión, que era la intención del código.",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js.snapshot o revertir el commit de terceros y CSP de la T2."
+    },
+    {
+      "path": "atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js",
+      "import_sha256": "c1381b1950f91c03c853d0742a035458af076073aba4a51de53a2c948c4de071",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js.snapshot",
+      "previous_sha256": "c1381b1950f91c03c853d0742a035458af076073aba4a51de53a2c948c4de071",
+      "previous_snapshot": "docs/historial/PB_GH_10/atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js.snapshot",
+      "corrected_sha256": "2570cc39bad015be1227dbb9a2f5e467e6aea11afeeaa2ee8365c6a70d04995c",
+      "change": "exportFicha ya no escribe <script>setTimeout(()=>print(),120)<\\/script> en la ventana: tras document.close(), la ventana que abre llama a w.print() a los 120 ms. Nada más cambia.",
+      "reason": "Fila 30 (CSP sin 'unsafe-inline' en script-src). Como en 008, la plantilla escribía «<\\/script>» y el script nunca se ejecutaba.",
+      "evidence": "node --check; humo sin pérdidas (informe T2.md). En las pruebas de la T2 los botones de la ficha (exportSpeciesPrintSheet, exportAcademicPDF) los atiende antes otro módulo, así que esta ruta no se vio ejecutarse; el cambio se limita a la plantilla.",
+      "impact": "Exportaciones de ficha de 021 sin script en línea; si se usan, ahora lanzan la impresión.",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js.snapshot o revertir el commit de terceros y CSP de la T2."
     }
   ]
 }

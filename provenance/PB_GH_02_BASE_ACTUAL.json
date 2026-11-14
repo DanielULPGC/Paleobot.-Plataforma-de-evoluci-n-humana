@@ -1194,7 +1194,8 @@
       "git_blob_sha1": "9d905c5f7f7a144126f081e95b7ae9664f1ec51b",
       "sha256": "c1381b1950f91c03c853d0742a035458af076073aba4a51de53a2c948c4de071",
       "retained_paths": [
-        "atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js"
+        "atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js.snapshot"
       ]
     },
     {
