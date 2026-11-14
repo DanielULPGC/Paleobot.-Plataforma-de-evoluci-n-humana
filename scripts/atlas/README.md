@@ -10,8 +10,11 @@ publicado ni de `scripts/verificar_repo.py` (necesita un navegador).
 - Un servidor estático propio que sirva la **raíz del repositorio**, en un puerto libre:
   `python3 -m http.server 8991 --directory <repo>` (en segundo plano; guarde el PID y párelo con `kill <PID>`).
 - Opcional, para simular la red de terceros que muchas aulas no alcanzan (no se guardan en el repositorio):
-  `npm install --prefix local-results/atlas-terceros leaflet@1.9.4 @fontsource/playfair-display@5.3.0 @fontsource/source-sans-3@5.3.1 @fontsource/jetbrains-mono@5.3.0`
-  (`local-results/` está fuera de git). Sin ellos, use `--sin-terceros`.
+  `npm install --prefix local-results/atlas-terceros @fontsource/playfair-display@5.3.0 @fontsource/source-sans-3@5.3.1 @fontsource/jetbrains-mono@5.3.0`
+  (`local-results/` está fuera de git). Sin ellos, use `--sin-terceros`. Desde la T2 el atlas sirve Leaflet desde
+  `atlas/assets/vendor/leaflet/` y no pide Google Fonts: esos paquetes solo hacen falta para medir versiones
+  anteriores (p. ej. la línea base sobre `c971001`), que aún los piden a cdnjs y a Google; para ellas instale también
+  `leaflet@1.9.4`.
 - Opcional, solo para `recorrido.cjs`: axe-core (p. ej. `axe-core@4.10.2`), indicado con `PB_AXE`.
 
 ## Parámetros (variables de entorno, con su valor por defecto)
@@ -20,10 +23,10 @@ publicado ni de `scripts/verificar_repo.py` (necesita un navegador).
 |---|---|---|
 | `PB_BASE` | URL del servidor que sirve la raíz del repositorio (también `--base`) | `http://localhost:8991` |
 | `PB_REPO` | raíz del repositorio (manifiesto de imágenes) | dos carpetas por encima de `scripts/atlas/` |
-| `PB_TERCEROS` | `node_modules` con `leaflet@1.9.4` y `@fontsource/*` | `<repo>/local-results/atlas-terceros/node_modules` |
+| `PB_TERCEROS` | `node_modules` con `@fontsource/*` (y `leaflet@1.9.4` solo para medir versiones anteriores a la T2) | `<repo>/local-results/atlas-terceros/node_modules` |
 | `PB_AXE` | ruta de `axe.min.js` | `require.resolve('axe-core/axe.min.js')` si existe |
 
-Simulación de terceros (`arnes.cjs`): Leaflet 1.9.4 desde npm (el SRI de `index.html` es el del minificado de
+Simulación de terceros (`arnes.cjs`; desde la T2 solo afecta a versiones anteriores en Leaflet y fuentes): Leaflet 1.9.4 desde npm (el SRI de `index.html` es el del minificado de
 cdnjs, así que el arnés quita `integrity` solo de esas dos etiquetas en la respuesta), Google Fonts desde
 `@fontsource`, imágenes de Wikimedia desde `img/taxones/` cuando el nombre de archivo de Commons coincide con
 `MANIFIESTO.json`. Las teselas (OSM, ArcGIS, OpenTopoMap, maps.wikimedia) **no se simulan**: se abortan y se
@@ -66,6 +69,9 @@ Opciones: `--paralelo N` (contextos simultáneos; 2 por defecto), `--solo f1,f2`
   función o elemento de función (`items`) que deja de responder; diálogo que deja de abrir o empeora en foco que
   entra, Escape, foco que vuelve o `aria-hidden` al abrir; recurso local que empieza a fallar (4xx/5xx).
 - **Mejoras**: lo inverso. **Otras**: diferencias neutras (encabezado nuevo, más texto o controles).
+- **Violaciones de CSP** (desde la T2): cada tarea cuenta los eventos `securitypolicyviolation`, también en las
+  ventanas que abre el atlas (exportaciones), en `violacionesCSP` y `cspMuestras`; el total va en `resumen`. No
+  cuentan como pérdida en `--comparar`: se revisan aparte.
 - **Inestables**: claves listadas en el archivo `--inestables` (`{"claves": [...], "patrones": [expresiones regulares]}`), medidas como no
   deterministas en dos ejecuciones seguidas sin cambios; se informan aparte y no cuentan como pérdida.
 - `inventarioAusente`: encabezados de `02_inventario.json` que no aparecen en B (y si ya faltaban en A).

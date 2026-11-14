@@ -94,6 +94,12 @@ function comparar(a, b, opts = {}) {
 async function tarea(browser, nombre, fn, o) {
   const t0 = Date.now();
   const { page, red, ctx } = await abrir(browser, { base: o.base, vp: o.vp, terceros: o.terceros, bypassCSP: false, timeout: 4000 });
+  // PB-GH-11 (T2): violaciones de CSP, también en ventanas que abra el atlas (exportaciones, impresión).
+  // Cada evento securitypolicyviolation se anota en la consola con el prefijo «PB-CSP».
+  const csp = [];
+  const vigilarCsp = (p) => p.on('console', (m) => { const t = m.text(); if (t.startsWith('PB-CSP ')) csp.push(t.slice(0, 200)); });
+  vigilarCsp(page); ctx.on('page', vigilarCsp);
+  await ctx.addInitScript(() => document.addEventListener('securitypolicyviolation', (e) => console.error('PB-CSP ' + e.effectiveDirective + ' ' + (e.blockedURI || 'inline') + ' ' + (e.sourceFile || '') + ':' + (e.lineNumber || 0))));
   let r;
   try {
     await page.goto(o.base + '/atlas/index.html', { waitUntil: 'load' });
@@ -103,6 +109,8 @@ async function tarea(browser, nombre, fn, o) {
   r.ms = Date.now() - t0;
   r.excepcionesPagina = [...new Set(page._consola.filter((c) => c.tipo === 'pageerror').map((c) => c.texto.slice(0, 140)))];
   r.erroresConsola = page._consola.filter((c) => c.tipo === 'error').length;
+  r.violacionesCSP = csp.length;
+  r.cspMuestras = [...new Set(csp)].slice(0, 8);
   r.peticionesExternas = red.externas.length;
   r.localesFallidas = [...new Set(red.localesFallidas)];
   await ctx.close().catch(() => {});
@@ -163,7 +171,8 @@ async function main() {
   const fallidas = new Set([...(res.vistasMeta?.localesFallidas || []), ...Object.values(res.funciones).flatMap((f) => f.localesFallidas || [])]);
   res.red = { localesFallidas: [...fallidas].sort(), externasTotales: Object.values(res.funciones).reduce((s, f) => s + (f.peticionesExternas || 0), 0) + (res.vistasMeta?.peticionesExternas || 0) };
   res.duracionMs = Date.now() - t0;
-  res.resumen = { vistasOk: Object.values(res.vistas).filter((v) => v.ok).length, vistas: Object.keys(res.vistas).length, funcionesOk: Object.values(res.funciones).filter((v) => v.ok).length, funciones: Object.keys(res.funciones).length };
+  res.violacionesCSP = Object.values(res.funciones).reduce((s, f) => s + (f.violacionesCSP || 0), 0) + (res.vistasMeta?.violacionesCSP || 0);
+  res.resumen = { violacionesCSP: res.violacionesCSP, vistasOk: Object.values(res.vistas).filter((v) => v.ok).length, vistas: Object.keys(res.vistas).length, funcionesOk: Object.values(res.funciones).filter((v) => v.ok).length, funciones: Object.keys(res.funciones).length };
   fs.mkdirSync(path.dirname(path.resolve(salida)), { recursive: true });
   fs.writeFileSync(salida, JSON.stringify(res, null, 1));
   console.log(JSON.stringify({ ...res.resumen, duracionS: Math.round(res.duracionMs / 1000) }));

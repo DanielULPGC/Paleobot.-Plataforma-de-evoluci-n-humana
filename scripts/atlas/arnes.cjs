@@ -66,7 +66,9 @@ function cssFuentes() {
 }
 
 function comprobarTerceros() {
-  const falta = ['leaflet/dist/leaflet.js', '@fontsource/source-sans-3', '@fontsource/playfair-display', '@fontsource/jetbrains-mono']
+  // PB-GH-11 (T2): el atlas sirve Leaflet desde atlas/assets/vendor/leaflet/ y ya no pide Google Fonts; las rutas
+  // de cdnjs y fonts.* siguen aquí solo para medir versiones anteriores (p. ej. la línea base sobre c971001).
+  const falta = ['@fontsource/source-sans-3', '@fontsource/playfair-display', '@fontsource/jetbrains-mono']
     .filter((p) => !fs.existsSync(path.join(TERCEROS, p)));
   if (falta.length) {
     throw new Error(`Faltan recursos de terceros en ${TERCEROS} (${falta.join(', ')}). Instálelos (véase scripts/atlas/README.md) ` +
