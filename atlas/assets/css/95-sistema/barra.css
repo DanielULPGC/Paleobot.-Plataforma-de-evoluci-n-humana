@@ -312,8 +312,15 @@
     border-radius: var(--r-contenedor) var(--r-contenedor) 0 0;
     padding: var(--e-3) var(--e-4) calc(var(--e-4) + env(safe-area-inset-bottom, 0px));
   }
-  :root:root body #pbV50Blocks .pb-barra-panel > .pb-v50-tabs { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; grid-column: 1 !important; grid-row: auto; }
-  :root:root body #pbV50Blocks .pb-barra-panel > #pbV50BlockPanel { grid-template-columns: 5.5rem minmax(0, 1fr) !important; gap: var(--e-3) !important; grid-column: 1 !important; grid-row: auto; }
+  /* Dos columnas mientras quepan 9 rem por pestaña; con el texto al 200 % pasa a una (sin recortar rótulos). */
+  :root:root body #pbV50Blocks .pb-barra-panel > .pb-v50-tabs { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)) !important; grid-column: 1 !important; grid-row: auto; }
+  /* Miniatura a la izquierda mientras el texto quepa; con el texto ampliado (≥ 150 %), una sola columna. */
+  :root:root body #pbV50Blocks .pb-barra-panel > #pbV50BlockPanel { grid-template-columns: repeat(auto-fit, minmax(min(100%, 5.5rem), 1fr)) !important; gap: var(--e-3) !important; grid-column: 1 !important; grid-row: auto; }
+  :root:root body #pbV50Blocks .pb-barra-panel > #pbV50BlockPanel > .pb-v50-cover { max-width: 8rem; }
+  :root:root body #pbV50Blocks .pb-barra-panel > #pbV50BlockPanel > .pb-v50-block-copy { grid-column: span 3; min-width: 0; }
+  :root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-module { white-space: normal; max-width: 100%; text-align: left; }
+  :root:root body #pbV50Blocks .pb-barra-panel { overflow-x: hidden; }
+  :root:root body #pbV50Blocks .pb-barra-panel .pb-v50-tab :is(strong, span) { overflow-wrap: break-word; hyphens: auto; }
   :root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-module { min-height: var(--control); }
 }
 @media (max-width: 22rem) {
