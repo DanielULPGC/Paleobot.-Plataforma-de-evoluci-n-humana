@@ -72,6 +72,13 @@ function comparar(a, b, opts = {}) {
     if (w.datos.texto < v.datos.texto * 0.97) (inest.has(kt) ? inestables : perdidas).push(`${kt}: ${v.datos.texto} → ${w.datos.texto} car.`);
     else if (w.datos.texto > v.datos.texto * 1.03) otras.push(`${kt}: ${v.datos.texto} → ${w.datos.texto} car.`);
     if (w.datos.controles < v.datos.controles) (inest.has(kc) ? inestables : perdidas).push(`${kc}: ${v.datos.controles} → ${w.datos.controles}`);
+    // PB-GH-11 (T3): texto alcanzable de la cabecera de vista (hero + tarjeta de Bloom). Solo si ambos lo
+    // midieron (la línea base de la T1 no lo tiene: se compara la ejecución «antes» de la T3 con la «después»).
+    if (typeof v.datos.textoCabecera === 'number' && typeof w.datos.textoCabecera === 'number') {
+      const kh = `vista ${k}: texto de la cabecera`;
+      if (w.datos.textoCabecera < v.datos.textoCabecera) (inest.has(kh) ? inestables : perdidas).push(`${kh}: ${v.datos.textoCabecera} → ${w.datos.textoCabecera} car.`);
+      else if (w.datos.textoCabecera > v.datos.textoCabecera) otras.push(`${kh}: ${v.datos.textoCabecera} → ${w.datos.textoCabecera} car.`);
+    }
     else if (w.datos.controles > v.datos.controles) otras.push(`${kc}: ${v.datos.controles} → ${w.datos.controles}`);
   }
   // Contrato del inventario: encabezados de 02_inventario.json presentes en A y ausentes en B (ya contados
@@ -147,6 +154,11 @@ async function main() {
       r.entrar = await P.entrar(page);
       // Mutaciones del DOM en reposo (3 s) tras entrar: guardas que repintan (informativo).
       r.mutacionesReposo3s = await page.evaluate(() => new Promise((ok) => { let n = 0; const m = new MutationObserver((l) => { n += l.length; }); m.observe(document.documentElement, { childList: true, subtree: true, attributes: true }); setTimeout(() => { m.disconnect(); ok(n); }, 3000); }));
+      // PB-GH-11 (T3): reposo de verdad (sin ficha ni diálogos abiertos): tras 6 s quieto, mutaciones del DOM
+      // por segundo durante 5 s. Debe ser 0 (guardas o componentes que repintan en bucle).
+      await page.waitForTimeout(6000);
+      r.reposo = await page.evaluate(() => new Promise((ok) => { let n = 0; const t = {}; const m = new MutationObserver((l) => { n += l.length; l.forEach((x) => { const k = (x.target.id || String(x.target.className || x.target.nodeName)).slice(0, 40) + ':' + x.type + ':' + (x.attributeName || ''); t[k] = (t[k] || 0) + 1; }); }); m.observe(document.documentElement, { childList: true, subtree: true, attributes: true, characterData: true }); setTimeout(() => { m.disconnect(); ok({ mutaciones5s: n, porSegundo: n / 5, principales: Object.entries(t).sort((a, b) => b[1] - a[1]).slice(0, 5) }); }, 5000); }));
+      r.barra = await page.evaluate(() => { const b = document.getElementById('pbV50Blocks'); return b ? { alto: Math.round(b.getBoundingClientRect().height) } : null; });
       for (const v of P.VISTAS) {
         try { const x = await P.irVistaUI(page, v, false); await P.barrerVista(page, v); await page.waitForTimeout(600); x.datos = await P.medirVista(page, v); res.vistas[v] = x; } catch (e) { res.vistas[v] = { vista: v, ok: false, error: String(e).split('\n')[0].slice(0, 200) }; }
       }

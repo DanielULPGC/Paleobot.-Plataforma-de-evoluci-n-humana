@@ -33,6 +33,18 @@ async function visible(page, sel) {
   const h = await page.$(sel); if (!h) return false; try { return await h.isVisible(); } catch (e) { return false; }
 }
 
+// PB-GH-11 (T3): desde la barra de trabajo (L2), las pestañas de familia, los chips de vista y, en teléfono,
+// las herramientas rápidas viven en el panel «Vistas» (#pbBarraPanel), cerrado por defecto. Si el control
+// pedido no está a la vista y existe el botón «Vistas», se abre el panel como lo haría el alumnado. En
+// versiones anteriores (sin el botón) no hace nada: el humo sigue midiendo la línea base igual que antes.
+async function asegurarVistas(page, sel) {
+  if (sel && (await visible(page, sel))) return false;
+  const b = await page.$('#pbBarraVistasBoton');
+  if (!b || !(await b.isVisible().catch(() => false))) return false;
+  if ((await b.getAttribute('aria-expanded')) !== 'true') { await b.click().catch(() => {}); await page.waitForTimeout(300); }
+  return true;
+}
+
 // Abre un diálogo con un clic real y mide foco, trampa de Tab, Escape y retorno del foco.
 // abrirSel: selector del disparador; dialogoSel: selector del diálogo.
 async function probarDialogo(page, nombre, abrirSel, dialogoSel, extra) {
@@ -110,7 +122,11 @@ async function medirVista(page, id) {
     const norm = (t) => t.replace(/\s+/g, ' ').trim().slice(0, 90);
     const enc = [...new Set([...s.querySelectorAll('h2,h3,h4')].filter((h) => h.getClientRects().length > 0 && getComputedStyle(h).visibility !== 'hidden').map((h) => norm(h.textContent)).filter(Boolean))];
     const texto = s.innerText.replace(/\s+/g, ' ').trim().length;
-    const datos = { alto: Math.round(r.height), controles: ctl.length, texto, encabezados: enc,
+    // PB-GH-11 (T3): texto alcanzable de la cabecera de vista (hero + tarjeta de Bloom .pb-dap), con los
+    // <details> abiertos. Se compara antes/después de la T3 (la línea base de la T1 no lo tiene).
+    const cab = [...s.querySelectorAll('.view-hero, .pb-dap')].filter((e) => !e.parentElement.closest('.view-hero, .pb-dap'));
+    const textoCabecera = cab.reduce((n, e) => n + e.innerText.replace(/\s+/g, ' ').trim().length, 0);
+    const datos = { alto: Math.round(r.height), controles: ctl.length, texto, textoCabecera, encabezados: enc,
       svg: s.querySelectorAll('svg').length, canvas: s.querySelectorAll('canvas').length, imgs: s.querySelectorAll('img').length, tablas: s.querySelectorAll('table').length,
       imgsRotas: [...s.querySelectorAll('img')].filter((i) => i.complete && i.naturalWidth === 0 && vis(i)).length };
     cerrados.forEach((d) => { d.open = false; });
@@ -124,6 +140,7 @@ async function medirVista(page, id) {
 async function irVistaUI(page, id, conMedida = true) {
   const out = { vista: id, via: '' };
   const chip = `#pbV50Blocks [data-pb-v50-view="${id}"]`;
+  await asegurarVistas(page, chip);
   if (!(await visible(page, chip))) {
     for (const blq of ['explorar', 'interpretar', 'investigar', 'aprender']) {
       const tab = await page.$(`#pbV50Blocks [data-pb-v50-block="${blq}"]`);
@@ -209,6 +226,7 @@ const FUNCIONES = {
     const out = { paso: 'bloques', chips: {} };
     await page.evaluate(() => document.getElementById('main-content')?.scrollIntoView());
     for (const blq of ['explorar', 'interpretar', 'investigar', 'aprender']) {
+      await asegurarVistas(page, `#pbV50Blocks [data-pb-v50-block="${blq}"]`);
       await page.click(`#pbV50Blocks [data-pb-v50-block="${blq}"]`, { timeout: 3000 }).catch(() => {});
       await page.waitForTimeout(300);
       out.chips[blq] = await page.$$eval('#pbV50Blocks [data-pb-v50-view]', (b) => b.filter((x) => x.getBoundingClientRect().width > 0).map((x) => x.dataset.pbV50View));
@@ -216,6 +234,80 @@ const FUNCIONES = {
     out.totalVistasEnChips = new Set(Object.values(out.chips).flat()).size;
     out.items = Object.fromEntries(VISTAS.map((v) => [v, Object.values(out.chips).some((l) => l.includes(v))]));
     out.ok = Object.values(out.chips).every((v) => v.length > 0);
+    return out;
+  },
+  // PB-GH-11 (T3): los 31 accesos desde la navegación (panel «Vistas» si existe; si no, la barra de bloques
+  // como en la línea base), con ratón: cada chip se pulsa y su vista debe activarse. Mide además el alto de
+  // la barra y si queda fija arriba al desplazarse.
+  async 'barra.vistas'(page) {
+    // items sin prototipo: una vista se llama «constructor» y {}.constructor es una función (verdadero).
+    const out = { paso: 'barra.vistas', items: Object.create(null) };
+    await page.evaluate(() => document.getElementById('main-content')?.scrollIntoView());
+    await page.waitForTimeout(300);
+    out.barra = await page.evaluate(async () => {
+      const b = document.getElementById('pbV50Blocks'); if (!b) return null;
+      const alto = Math.round(b.getBoundingClientRect().height);
+      window.scrollBy(0, 2500); await new Promise((r) => setTimeout(r, 250));
+      const top = Math.round(b.getBoundingClientRect().top);
+      return { alto, topTrasDesplazar: top, fija: top === 0 };
+    });
+    for (const blq of ['explorar', 'interpretar', 'investigar', 'aprender']) {
+      const tab = `#pbV50Blocks [data-pb-v50-block="${blq}"]`;
+      await asegurarVistas(page, tab);
+      await page.click(tab, { timeout: 3000 }).catch(() => {});
+      await page.waitForTimeout(350);
+      const chips = await page.$$eval('#pbV50Blocks [data-pb-v50-view]', (b) => b.filter((x) => x.getBoundingClientRect().width > 0).map((x) => x.dataset.pbV50View));
+      for (const v of chips) {
+        if (out.items[v]) continue;
+        const sel = `#pbV50Blocks [data-pb-v50-view="${v}"]`;
+        await asegurarVistas(page, sel);
+        if (!(await visible(page, sel))) { await asegurarVistas(page, tab); await page.click(tab, { timeout: 3000 }).catch(() => {}); await page.waitForTimeout(300); }
+        await page.click(sel, { timeout: 3000 }).catch(() => page.evaluate((s) => document.querySelector(s)?.click(), sel));
+        await page.waitForTimeout(450);
+        out.items[v] = await page.evaluate((v) => !!document.getElementById('view-' + v)?.classList.contains('active'), v);
+      }
+    }
+    // Segunda pasada para las vistas que no aparecieron en la primera lectura de chips (repintados tardíos).
+    for (const v of VISTAS.filter((x) => !out.items[x])) {
+      const sel = `#pbV50Blocks [data-pb-v50-view="${v}"]`;
+      for (const blq of ['explorar', 'interpretar', 'investigar', 'aprender']) {
+        const tab = `#pbV50Blocks [data-pb-v50-block="${blq}"]`;
+        await asegurarVistas(page, tab);
+        await page.click(tab, { timeout: 3000 }).catch(() => {});
+        await page.waitForTimeout(700);
+        if (await visible(page, sel)) break;
+      }
+      if (await visible(page, sel)) {
+        await page.click(sel, { timeout: 3000 }).catch(() => page.evaluate((s) => document.querySelector(s)?.click(), sel));
+        await page.waitForTimeout(600);
+        out.items[v] = await page.evaluate((v) => !!document.getElementById('view-' + v)?.classList.contains('active'), v);
+      } else out.items[v] = false;
+    }
+    out.alcanzables = Object.values(out.items).filter(Boolean).length;
+    out.ok = out.alcanzables === VISTAS.length;
+    return out;
+  },
+  // PB-GH-11 (T3): elegir vista con el teclado (Intro en la pestaña de familia y en el chip): ¿dónde queda el
+  // foco? Debe quedar en el chip de la vista elegida (fila 6), no en <body>; y la vista se anuncia
+  // (aria-current="page"). En la línea base el foco caía en <body>.
+  async 'navegacion.teclado'(page) {
+    const out = { paso: 'navegacion.teclado', items: {}, focos: {} };
+    const destinos = { map: 'explorar', tree: 'interpretar', datacion: 'investigar', aula: 'aprender' };
+    await page.evaluate(() => document.getElementById('main-content')?.scrollIntoView());
+    for (const [v, blq] of Object.entries(destinos)) {
+      const boton = await page.$('#pbBarraVistasBoton');
+      if (boton && (await boton.getAttribute('aria-expanded')) !== 'true') { await boton.focus(); await page.keyboard.press('Enter'); await page.waitForTimeout(300); }
+      await page.focus(`#pbV50Blocks [data-pb-v50-block="${blq}"]`).catch(() => {});
+      await page.keyboard.press('Enter'); await page.waitForTimeout(600);
+      await page.focus(`#pbV50Blocks [data-pb-v50-view="${v}"]`).catch(() => {});
+      await page.keyboard.press('Enter'); await page.waitForTimeout(900);
+      const r = await page.evaluate((v) => { const a = document.activeElement; return { foco: (a.dataset && a.dataset.pbV50View) || a.tagName.toLowerCase(), actual: a.getAttribute && a.getAttribute('aria-current'), activa: !!document.getElementById('view-' + v)?.classList.contains('active') }; }, v);
+      out.focos[v] = r;
+      out.items[v + ' · foco en el chip'] = r.foco === v;
+      out.items[v + ' · aria-current'] = r.actual === 'page';
+      out.items[v + ' · vista activa'] = r.activa;
+    }
+    out.ok = Object.entries(out.items).filter(([k]) => k.endsWith('vista activa')).every(([, b]) => b);
     return out;
   },
   async 'buscador.barra'(page) {
@@ -259,6 +351,7 @@ const FUNCIONES = {
   },
   async 'nivel'(page) {
     const out = { paso: 'nivel' };
+    await asegurarVistas(page, '#pbV50Blocks [data-pb-v50-view]');
     const n = () => page.$$eval('#pbV50Blocks [data-pb-v50-view]', (b) => b.filter((x) => x.getBoundingClientRect().width > 0).length);
     out.universitario = await n();
     let err = null;
@@ -340,6 +433,7 @@ const FUNCIONES = {
   },
   async 'bibliografia'(page) {
     await page.evaluate(() => document.getElementById('main-content')?.scrollIntoView());
+    await asegurarVistas(page, '#pbV50Blocks [data-pb-v50-action="abrirBiblio"]');
     return probarDialogo(page, 'bibliografia', '#pbV50Blocks [data-pb-v50-action="abrirBiblio"]', '#biblioModal', async (p) => p.evaluate(() => {
       const m = document.getElementById('biblioModal');
       return { doi: m.querySelectorAll('a[href*="doi.org"]').length };
@@ -347,6 +441,7 @@ const FUNCIONES = {
   },
   async 'glosario'(page) {
     await page.evaluate(() => document.getElementById('main-content')?.scrollIntoView());
+    await asegurarVistas(page, '#pbV50Blocks [data-pb-v50-action="openGlossary"]');
     return probarDialogo(page, 'glosario', '#pbV50Blocks [data-pb-v50-action="openGlossary"]', '#glossaryModal', async (p) => {
       const inp = await p.$('#glossaryModal input');
       if (inp) { await inp.type('bipedismo', { delay: 10 }).catch(() => {}); await p.waitForTimeout(500); }
@@ -428,6 +523,7 @@ const FUNCIONES = {
   async 'exportar.csv'(page) {
     const out = { paso: 'exportar.csv' };
     await page.evaluate(() => document.getElementById('main-content')?.scrollIntoView());
+    await asegurarVistas(page, '#pbV50Blocks [data-pb-v50-action="exportToCSV"]');
     out.archivo = await descarga(page, () => page.click('#pbV50Blocks [data-pb-v50-action="exportToCSV"]', { timeout: 3000 }).catch((e) => { out.error = String(e).split('\n')[0].slice(0, 100); }));
     out.ok = !!out.archivo; return out;
   },
@@ -503,6 +599,7 @@ const FUNCIONES = {
     // Hoy (línea base) solo produce algo visible dentro de Centro docente (04, fila 19).
     const out = { paso: 'diagnostico' };
     await page.evaluate(() => document.getElementById('main-content')?.scrollIntoView());
+    await asegurarVistas(page, '#pbV50Blocks [data-pb-v50-action="runSelfAudit"]');
     await page.click('#pbV50Blocks [data-pb-v50-action="runSelfAudit"]', { timeout: 3000 }).catch((e) => { out.error = String(e).split('\n')[0].slice(0, 100); });
     await page.waitForTimeout(800);
     out.informeVisible = await page.evaluate(() => { const r = document.getElementById('teachingAuditReport'); return !!r && r.getBoundingClientRect().width > 0 && r.innerText.trim().length > 20; });
@@ -671,4 +768,4 @@ async function enlacesProfundos(page, base, listo) {
   return out;
 }
 
-module.exports = { VISTAS, FUNCIONES, irVistaUI, medirVista, barrerVista, entrar, abrirCajon, cerrarCajon, estadoDialogo, probarDialogo, foco, abrirFicha, descarga, enlacesProfundos };
+module.exports = { VISTAS, FUNCIONES, asegurarVistas, irVistaUI, medirVista, barrerVista, entrar, abrirCajon, cerrarCajon, estadoDialogo, probarDialogo, foco, abrirFicha, descarga, enlacesProfundos };

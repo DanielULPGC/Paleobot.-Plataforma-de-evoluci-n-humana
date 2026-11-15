@@ -78,3 +78,19 @@ Opciones: `--paralelo N` (contextos simultáneos; 2 por defecto), `--solo f1,f2`
 
 Determinismo: dos ejecuciones seguidas sin cambios deben dar `perdidas`, `mejoras` y `otras` vacías. La línea base
 y su prueba de determinismo están en `docs/diseno/atlas/linea-base/`.
+
+## Medidas añadidas en la T3 (diálogos y navegación)
+
+- `barra.vistas` (función): los 31 accesos desde la navegación con ratón (panel «Vistas» si existe; si no, la
+  barra de bloques como en la línea base), alto de `#pbV50Blocks` y si queda fija arriba al desplazarse.
+- `navegacion.teclado` (función): Intro en la pestaña de familia y en el chip de cuatro vistas; dónde queda el
+  foco (debe ser el chip, no `<body>`) y `aria-current="page"`.
+- `vistasMeta.reposo`: tras 6 s quieto, mutaciones del DOM durante 5 s (debe ser 0) y sus principales
+  orígenes; `vistasMeta.barra.alto`.
+- `datos.textoCabecera` por vista: texto alcanzable del hero y de la tarjeta de Bloom (`.pb-dap`) con los
+  `<details>` abiertos. `--comparar` lo compara solo si A y B lo tienen (la línea base de la T1 no): menos
+  caracteres en B cuenta como pérdida.
+- `asegurarVistas(page, sel)` (en `pasos.cjs`): si un control de la barra no está a la vista y existe el
+  botón «Vistas», abre el panel como lo haría el alumnado. Sin ese botón (línea base) no hace nada.
+Las funciones nuevas no existen en la línea base: en `--comparar` aparecen como «otras» (no son pérdidas). La
+línea base no se reescribe.
