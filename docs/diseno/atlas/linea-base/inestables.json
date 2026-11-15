@@ -1,13 +1,17 @@
 {
  "descripcion": "Claves de humo.cjs que cambian entre dos ejecuciones seguidas sin cambios sobre c971001 (escritorio, terceros simulados, --paralelo 2), en dos pares de ejecuciones del 2026-11-13 (con el arnés inicial y con el corregido), con el mismo conjunto de claves en ambos. Causa: varios módulos escriben aria-hidden y mueven el foco de estos diálogos con temporizadores sin coordinarse (notas/04, fila 3: 002-script.js:15720/15757/15874/15884, 009-v35, 011-v37, 024-v50, 014-v40); el resultado depende de qué temporizador gana. Se espera que el gestor de diálogos de la T3 las vuelva deterministas; entonces deben salir de esta lista.",
- "claves": [
-  "función bibliografia: focoEntra",
-  "función bibliografia: sin aria-hidden al abrir",
-  "función examen: focoEntra",
-  "función sintesis: sin aria-hidden al abrir"
- ],
+ "claves": [],
  "patrones": [
   "^vista dispersal: encabezado «Out of Africa por MIS "
  ],
- "patrones_nota": "Encabezado del simulador que muestra el estadio isotópico del fotograma en curso: cambia con la animación (aparece desde que el simulador funciona, T1)."
+ "patrones_nota": "Encabezado del simulador que muestra el estadio isotópico del fotograma en curso: cambia con la animación (aparece desde que el simulador funciona, T1).",
+ "retiradas_T3": {
+  "claves": [
+   "función bibliografia: focoEntra",
+   "función bibliografia: sin aria-hidden al abrir",
+   "función examen: focoEntra",
+   "función sintesis: sin aria-hidden al abrir"
+  ],
+  "motivo": "El gestor de diálogos de la T3 (95-sistema/dialogos.js) fija aria-hidden, foco que entra y foco que vuelve. Medido sobre el HEAD de la T3: dos ejecuciones seguidas de humo --solo bibliografia,examen,sintesis (escritorio, terceros simulados, --paralelo 2) con focoEntra true, sin aria-hidden al abrir y focoVuelve true en las tres, y el humo completo en las cuatro condiciones con esas claves en true. En la comparación con la línea base pasan a figurar como mejoras (false → true en c971001)."
+ }
 }
