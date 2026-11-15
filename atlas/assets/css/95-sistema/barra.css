@@ -1,0 +1,327 @@
+/* =====================================================================================================
+   95-sistema/barra.css · barra de trabajo del atlas (PB-GH-11, tanda T3, L2; fila 12; 06 § 3-B)
+   -----------------------------------------------------------------------------------------------------
+   Franja fija de 56 px como máximo en los tres anchos, subtema «pizarra» (tokens --pizarra* de
+   atlas-sistema.css, capa 2; la barra en papel claro es L3 y no se hace), con el panel «Vistas» que
+   reubica barra.js. Mismas 4 familias, mismas 31 vistas, mismos rótulos: nada se oculta; la portada del
+   bloque (.pb-v50-cover) pasa a miniatura con su pie DEBAJO de la imagen (antes, superpuesto con un
+   degradado de lectura: se retira ese ::after decorativo, no la imagen ni el pie).
+   Contrastes (atlas-sistema.css, capa 2): --sobre-pizarra 14,71:1 sobre --pizarra y 11,80:1 sobre
+   --pizarra-3; --sobre-pizarra-2 9,39:1 / 7,53:1; activo: --pizarra sobre --pizarra-acento 8,80:1; foco:
+   --foco-pizarra (capa 5). «Contraste» y «Modo clase» no cambian los tokens de pizarra (siguen ≥ 7:1).
+   Fija con position: sticky. Para que funcione, body deja de ser contenedor de desplazamiento:
+   overflow-x pasa de hidden a clip (recorta igual, sin crear contenedor de desplazamiento) y overflow-y a
+   visible, salvo con un modal o la presentación abiertos (sus módulos bloquean el desplazamiento de body).
+   Revertir: quitar este archivo y barra.js de atlas/index.html.
+   ===================================================================================================== */
+
+/* 0 · Desplazamiento: sticky necesita que body no sea contenedor de desplazamiento. */
+:root:root body.pb-v50-unified:not(.modal-open):not(.pres-active) { overflow-x: clip !important; overflow-y: visible !important; }
+/* Todo desplazamiento hasta un elemento (anclas, scrollIntoView, foco con Tab) lo deja bajo la franja, no tapado. */
+:root:root { scroll-padding-top: calc(3.5rem + var(--e-2)); }
+
+/* 1 · La barra: franja fija */
+:root:root body #pbV50Blocks.pb-barra {
+  position: sticky !important;
+  top: 0;
+  z-index: 1100;
+  display: block !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+  margin: 0 0 var(--e-4) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: var(--r-control) !important;
+  background: var(--pizarra) !important;
+  color: var(--sobre-pizarra);
+  box-shadow: none !important;
+}
+:root:root body #pbV50Blocks.pb-barra > .pb-barra-franja {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  height: 3.5rem;            /* 56 px */
+  max-height: 3.5rem;
+  padding: 0 var(--e-3);
+  overflow: hidden;
+}
+
+/* 1.1 · Insignia «PaleoBot» reubicada (era flotante, abajo a la izquierda, con estilo en línea). */
+:root:root body #pbV50Blocks .pb-barra-franja > #pb-v55-badge {
+  position: static !important;
+  inset: auto !important;
+  z-index: auto !important;
+  flex: none;
+  padding: 0 var(--e-1) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--sobre-pizarra) !important;
+  opacity: 1 !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-s) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  pointer-events: none;
+}
+
+/* 1.2 · Botón «Vistas» con la ubicación actual */
+:root:root body #pbV50Blocks .pb-barra-vistas {
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  min-height: var(--control);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  padding: 0 var(--e-4) 0 var(--e-3);
+  border: var(--linea) solid var(--pizarra-borde-control);
+  border-radius: var(--r-pildora);
+  background: var(--pizarra-3);
+  color: var(--sobre-pizarra);
+  font-family: var(--f-titulo);
+  font-size: var(--t-s);
+  line-height: 1.2;
+  cursor: pointer;
+  text-align: left;
+}
+:root:root body #pbV50Blocks .pb-barra-vistas-rotulo { font-weight: 600; flex: none; }
+:root:root body #pbV50Blocks .pb-barra-vistas-rotulo::after {
+  content: "";
+  display: inline-block;
+  width: .45em; height: .45em;
+  margin: 0 0 .2em .5em;
+  border-right: var(--linea-gruesa) solid currentColor;
+  border-bottom: var(--linea-gruesa) solid currentColor;
+  transform: rotate(45deg);
+}
+:root:root body #pbV50Blocks .pb-barra-vistas[aria-expanded="true"] .pb-barra-vistas-rotulo::after { transform: rotate(-135deg); margin-bottom: -.1em; }
+:root:root body #pbV50Blocks .pb-barra-donde {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--sobre-pizarra-2);
+  font-weight: 400;
+}
+:root:root body #pbV50Blocks .pb-barra-vistas:hover { border-color: var(--sobre-pizarra-2); }
+:root:root body #pbV50Blocks .pb-barra-vistas[aria-expanded="true"] { background: var(--pizarra-acento); border-color: var(--pizarra-acento); color: var(--pizarra); }
+:root:root body #pbV50Blocks .pb-barra-vistas[aria-expanded="true"] .pb-barra-donde { color: var(--pizarra); }
+
+/* 1.3 · Herramientas rápidas (mismos botones de 024) en la franja, a la derecha, desde 48 rem. */
+:root:root body #pbV50Blocks .pb-barra-franja > .pb-v50-quick-tools {
+  margin-left: auto !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: var(--e-2) !important;
+  justify-content: flex-end !important;
+  align-items: center;
+  flex: none;
+}
+:root:root body #pbV50Blocks .pb-v50-quick-tools .pb-v50-tool {
+  min-height: 2.5rem;
+  padding: 0 var(--e-3) !important;
+  border: var(--linea) solid var(--pizarra-borde-control) !important;
+  border-radius: var(--r-pildora) !important;
+  background: transparent !important;
+  color: var(--sobre-pizarra) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 500 !important;
+  white-space: nowrap;
+}
+:root:root body #pbV50Blocks .pb-v50-quick-tools .pb-v50-tool.primary {
+  background: var(--pizarra-3) !important;
+  border-color: var(--sobre-pizarra-2) !important;
+}
+:root:root body #pbV50Blocks .pb-v50-quick-tools .pb-v50-tool:hover { border-color: var(--sobre-pizarra) !important; }
+
+/* Con el panel abierto, la barra pasa por encima de los botones flotantes (z 4590-4900), que tapaban la hoja
+   inferior en teléfono; sigue por debajo de los diálogos (6000). */
+:root:root body #pbV50Blocks.pb-barra.pb-barra-abierta { z-index: 5000; }
+
+/* 2 · Panel «Vistas»: desplegable bajo la franja (escritorio y tableta) */
+:root:root body #pbV50Blocks .pb-barra-panel[hidden] { display: none !important; }
+:root:root body #pbV50Blocks .pb-barra-panel {
+  box-sizing: border-box;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  max-height: calc(100dvh - 3.5rem - var(--e-4));
+  overflow: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+  gap: var(--e-4);
+  padding: var(--e-4);
+  border: var(--linea) solid var(--pizarra-borde);
+  border-top: 0;
+  border-radius: 0 0 var(--r-contenedor) var(--r-contenedor);
+  background: var(--pizarra-2);
+  color: var(--sobre-pizarra);
+  box-shadow: var(--sombra-flotante);
+}
+:root:root body #pbV50Blocks .pb-barra-panel-cabecera {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-3);
+}
+:root:root body #pbV50Blocks .pb-barra-panel-titulo {
+  margin: 0;
+  font-family: var(--f-titulo);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  letter-spacing: var(--rastreo-rotulo);
+  color: var(--sobre-pizarra-2);
+}
+:root:root body #pbV50Blocks .pb-barra-cerrar {
+  min-height: var(--control);
+  padding: 0 var(--e-4);
+  border: var(--linea) solid var(--pizarra-borde-control);
+  border-radius: var(--r-pildora);
+  background: transparent;
+  color: var(--sobre-pizarra);
+  font-family: var(--f-titulo);
+  font-size: var(--t-s);
+  cursor: pointer;
+}
+
+/* 2.1 · Familias (las 4 pestañas de 024, con sus tres rótulos: número, nombre y resumen) */
+:root:root body #pbV50Blocks .pb-barra-panel > .pb-v50-tabs {
+  display: flex !important;
+  flex-direction: column;
+  gap: var(--e-2) !important;
+  grid-template-columns: none !important;
+  grid-column: 1 !important;
+  grid-row: 2;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+:root:root body #pbV50Blocks .pb-barra-panel .pb-v50-tab {
+  box-sizing: border-box;
+  min-height: var(--control);
+  padding: var(--e-2) var(--e-3) !important;
+  border: var(--linea) solid var(--pizarra-borde) !important;
+  border-radius: var(--r-control) !important;
+  background: var(--pizarra-3) !important;
+  color: var(--sobre-pizarra) !important;
+  text-align: left;
+  box-shadow: none !important;
+}
+:root:root body #pbV50Blocks .pb-barra-panel .pb-v50-tab b { color: var(--sobre-pizarra-2) !important; font-family: var(--f-titulo) !important; font-size: var(--t-xs) !important; letter-spacing: var(--rastreo-rotulo) !important; margin: 0 0 2px !important; }
+:root:root body #pbV50Blocks .pb-barra-panel .pb-v50-tab strong { font-family: var(--f-titulo) !important; font-size: var(--t-s) !important; font-weight: 600 !important; }
+:root:root body #pbV50Blocks .pb-barra-panel .pb-v50-tab span { color: var(--sobre-pizarra-2) !important; font-size: var(--t-xs) !important; margin-top: 2px !important; }
+:root:root body #pbV50Blocks .pb-barra-panel .pb-v50-tab.active {
+  background: var(--pizarra-acento) !important;
+  border-color: var(--pizarra-acento) !important;
+  color: var(--pizarra) !important;
+}
+:root:root body #pbV50Blocks .pb-barra-panel .pb-v50-tab.active :is(b, span) { color: var(--pizarra) !important; }
+
+/* 2.2 · Bloque activo: miniatura de portada con su pie debajo, título, resumen y chips de vista */
+:root:root body #pbV50Blocks .pb-barra-panel > #pbV50BlockPanel {
+  display: grid !important;
+  grid-template-columns: 8rem minmax(0, 1fr) !important;
+  grid-column: 2 !important;   /* 017 lo extiende a todo el ancho (1 / -1) */
+  grid-row: 2;
+  align-items: start;
+  gap: var(--e-4) !important;
+  margin: 0 !important;
+  min-width: 0;
+}
+:root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-cover {
+  min-height: 0 !important;
+  margin: 0 !important;
+  border: var(--linea) solid var(--pizarra-borde) !important;
+  border-radius: var(--r-control) !important;
+  background: var(--pizarra) !important;
+  overflow: hidden;
+}
+:root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-cover::after { content: none !important; }
+:root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-cover img { display: block; width: 100% !important; height: auto !important; aspect-ratio: 4 / 3; object-fit: cover; filter: none !important; }
+:root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-cover figcaption {
+  position: static !important;
+  padding: var(--e-2) !important;
+  color: var(--sobre-pizarra-2) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+}
+:root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-block-copy h2 {
+  margin: 0 0 var(--e-1) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-l) !important;
+  line-height: var(--il-titulo) !important;
+  color: var(--sobre-pizarra) !important;
+}
+:root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-block-copy p {
+  margin: 0 0 var(--e-3) !important;
+  font-size: var(--t-s) !important;
+  line-height: 1.45 !important;
+  color: var(--sobre-pizarra-2) !important;
+  max-width: var(--medida);
+}
+:root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-module-grid { display: flex !important; flex-wrap: wrap !important; gap: var(--e-2) !important; }
+:root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-module {
+  min-height: 2.5rem;
+  padding: 0 var(--e-3) !important;
+  border: var(--linea) solid var(--pizarra-borde-control) !important;
+  border-radius: var(--r-pildora) !important;
+  background: var(--pizarra-3) !important;
+  color: var(--sobre-pizarra) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-s) !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+:root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-module:is(.active, [aria-current="page"]) {
+  background: var(--pizarra-acento) !important;
+  border-color: var(--pizarra-acento) !important;
+  color: var(--pizarra) !important;
+  font-weight: 600 !important;
+}
+
+/* 2.3 · Herramientas rápidas dentro del panel (solo teléfono; barra.js las mueve aquí) */
+:root:root body #pbV50Blocks .pb-barra-panel-herramientas { grid-column: 1 / -1; }
+:root:root body #pbV50Blocks .pb-barra-panel-herramientas:empty { display: none; }
+:root:root body #pbV50Blocks .pb-barra-panel-herramientas > .pb-v50-quick-tools { display: flex !important; flex-wrap: wrap !important; gap: var(--e-2) !important; justify-content: flex-start !important; }
+:root:root body #pbV50Blocks .pb-barra-panel-herramientas .pb-v50-tool { min-height: var(--control); }
+
+/* 3 · Teléfono: franja con insignia y «Vistas»; el panel es una hoja inferior */
+@media (max-width: 47.99rem) {
+  :root:root body #pbV50Blocks.pb-barra { border-radius: 0 !important; }
+  :root:root body #pbV50Blocks .pb-barra-vistas { flex: 1 1 auto; }
+  :root:root body #pbV50Blocks .pb-barra-panel {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1200;
+    max-height: 85dvh;
+    grid-template-columns: minmax(0, 1fr);
+    border: var(--linea) solid var(--pizarra-borde);
+    border-bottom: 0;
+    border-radius: var(--r-contenedor) var(--r-contenedor) 0 0;
+    padding: var(--e-3) var(--e-4) calc(var(--e-4) + env(safe-area-inset-bottom, 0px));
+  }
+  :root:root body #pbV50Blocks .pb-barra-panel > .pb-v50-tabs { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; grid-column: 1 !important; grid-row: auto; }
+  :root:root body #pbV50Blocks .pb-barra-panel > #pbV50BlockPanel { grid-template-columns: 5.5rem minmax(0, 1fr) !important; gap: var(--e-3) !important; grid-column: 1 !important; grid-row: auto; }
+  :root:root body #pbV50Blocks #pbV50BlockPanel .pb-v50-module { min-height: var(--control); }
+}
+@media (max-width: 22rem) {
+  :root:root body #pbV50Blocks .pb-barra-panel > .pb-v50-tabs { grid-template-columns: minmax(0, 1fr) !important; }
+  :root:root body #pbV50Blocks .pb-barra-panel > #pbV50BlockPanel { grid-template-columns: minmax(0, 1fr) !important; }
+}
+
+/* 4 · Impresión: la barra y su panel no se imprimen (cromado de navegación). */
+@media print {
+  :root:root body :is(#pbV50Blocks, .pb-barra-franja, .pb-barra-panel) { display: none !important; }
+}
