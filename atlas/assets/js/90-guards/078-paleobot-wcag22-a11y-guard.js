@@ -141,7 +141,9 @@
       return text(nodeEl).length > 0;
     });
     if (!visibleText && el.querySelector('svg,img,.ico')) {
-      el.classList.add('pb-a11y-icon-only');
+      /* PB-GH-11 (T3): classList.add escribe el atributo aunque la clase ya esté; este mismo observador
+         (attributeFilter 'class') volvía a lanzar patch() cada 80 ms en reposo (≈ 240 mutaciones/s). */
+      if (!el.classList.contains('pb-a11y-icon-only')) el.classList.add('pb-a11y-icon-only');
     }
   }
 

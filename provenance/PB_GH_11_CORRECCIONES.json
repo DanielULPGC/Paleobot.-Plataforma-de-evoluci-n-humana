@@ -2,9 +2,9 @@
   "preparation": "PB-GH-11",
   "date": "2026-11-14",
   "base_commit": "c971001",
-  "scope": "Atlas interactivo v1 (atlas/index.html y atlas/assets/) para el alumnado del Diploma de Estudios Africanos: red de seguridad (scripts/atlas/), bloqueantes (T1) y fundamentos del sistema «Papel y tierra» en el atlas (T2: hoja base enlazada, puente de tokens, tipografía local, foco, contraste, modos, Leaflet alojado, CSP de scripts). No se elimina contenido, función ni vista; lo que cambia el modelo de navegación queda como propuesta (L3). La procedencia se lleva tanda a tanda.",
+  "scope": "Atlas interactivo v1 (atlas/index.html y atlas/assets/) para el alumnado del Diploma de Estudios Africanos: red de seguridad (scripts/atlas/), bloqueantes (T1) y fundamentos del sistema «Papel y tierra» en el atlas (T2: hoja base enlazada, puente de tokens, tipografía local, foco, contraste, modos, Leaflet alojado, CSP de scripts; T3: diálogos, foco y navegación). No se elimina contenido, función ni vista; lo que cambia el modelo de navegación queda como propuesta (L3). La procedencia se lleva tanda a tanda.",
   "application_logic_changed": true,
-  "application_logic_note": "Cambia lógica de presentación y de recursos, no de datos: respaldo local de imágenes y un solo respaldo por imagen (025), imagen principal desde img/taxones (envoltura de getSpeciesMedia), constante del simulador expuesta (007), icono local del banco de recursos (002), registro del service worker condicionado (044), scripts en línea movidos a archivos y Leaflet servido desde atlas/assets/vendor/. Ningún dato académico ni texto de ficha cambia.",
+  "application_logic_note": "Cambia lógica de presentación y de recursos, no de datos: respaldo local de imágenes y un solo respaldo por imagen (025), imagen principal desde img/taxones (envoltura de getSpeciesMedia), constante del simulador expuesta (007), icono local del banco de recursos (002), registro del service worker condicionado (044), scripts en línea movidos a archivos y Leaflet servido desde atlas/assets/vendor/. Ningún dato académico ni texto de ficha cambia. T3: gestor de diálogos aditivo (95-sistema/dialogos.js), foco tras elegir vista y enlace de salto (navegacion.js); Escape cierra un diálogo cada vez (016, 018, 002) y 078 deja de repintar clases en bucle.",
   "release_gate": "NO_GO",
   "new_paths": [
     "atlas/assets/css/95-sistema/atlas-sistema.css",
@@ -61,7 +61,10 @@
     "atlas/assets/js/95-sistema/en-linea-salto-atlas.js",
     "atlas/assets/js/95-sistema/en-linea-rutas-integradas.js",
     "atlas/assets/js/95-sistema/en-linea-hub-bloques.js",
-    "atlas/assets/js/95-sistema/respaldo-portada.js"
+    "atlas/assets/js/95-sistema/respaldo-portada.js",
+    "atlas/assets/js/95-sistema/dialogos.js",
+    "atlas/assets/css/95-sistema/dialogos.css",
+    "atlas/assets/js/95-sistema/navegacion.js"
   ],
   "governance_paths_note": "Archivos de gobierno modificados en la ronda, sin huella de importación: retained_paths de PB_GH_02_BASE_ACTUAL.json (snapshots originales de 025 y 044) y lista rondas del verificador.",
   "governance_paths": [
@@ -89,12 +92,12 @@
       "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
       "previous_sha256": "ffa837db43c7b4895e81459f253cc643df9256d34d106274116d2d57f587464a",
       "previous_snapshot": "docs/historial/PB_GH_10/atlas/index.html.snapshot",
-      "corrected_sha256": "309115c783380bee0774b063e0f7fb067d1248f472b72992fe5d4d74606d6b45",
-      "change": "T1: enlaza al final del <body>, con ?v=pbgh11, los recursos nuevos de assets/js/95-sistema/ (imagenes-tope.js, imagenes-locales-datos.js, imagenes-locales.js) y assets/css/95-sistema/atlas-sistema.css. T2: enlaza ../assets/paleobot-base.css (?v=pbgh11) antes de las hojas del atlas; retira Google Fonts (preconnect y hoja; Lexend local por la hoja base); Leaflet desde assets/vendor/leaflet/ con SRI sha384 en lugar de cdnjs; los tres <script> en línea pasan sin cambios a assets/js/95-sistema/en-linea-{salto-atlas,rutas-integradas,hub-bloques}.js, cargados síncronos en la misma posición; los dos onerror en línea de las imágenes de portada pasan a data-pb-respaldo + 95-sistema/respaldo-portada.js; la CSP se estrecha: script-src 'self' (sin 'unsafe-inline' ni cdnjs), style-src sin fonts.googleapis.com ni cdnjs, font-src 'self'.",
-      "reason": "Filas 1, 2 y 9 de la tabla de corrección; DIRECCION_ATLAS § 1 (columna vertebral aditiva enlazada la última). T2: filas 29 y 30 de la tabla de corrección y DIRECCION_ATLAS § 2.1, § 4 (Lexend local, Leaflet alojado, CSP solo se estrecha).",
-      "evidence": "Commits a37bd31, a71b353 y 47e5228: líneas añadidas antes de </body>; humo --comparar con 0 pérdidas en las cuatro condiciones. Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6). T2 (informe T2.md): humo con recuento de violaciones de CSP (securitypolicyviolation, también en ventanas emergentes): 0 de script-src en las cuatro condiciones; las únicas violaciones son img-src de teselas de OpenTopoMap en minimapa.capas, preexistentes (la CSP ya no las admitía). 0 peticiones a fonts.googleapis.com, fonts.gstatic.com y cdnjs; minimapa con Leaflet local.",
-      "impact": "Carga cuatro recursos locales nuevos tras los importados. T2: el atlas no pide fuentes ni Leaflet a terceros y no admite scripts en línea; aspecto con la hoja base y el puente de atlas-sistema.css.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/index.html.snapshot o revertir los commits de la T1 y la T2 que lo tocan (a37bd31, a71b353, 47e5228 y el commit de terceros y CSP de la T2)."
+      "corrected_sha256": "f06bab430daba8d7153ccd705cc92952b03c040febb607215629fef2f937bdee",
+      "change": "T1: enlaza al final del <body>, con ?v=pbgh11, los recursos nuevos de assets/js/95-sistema/ (imagenes-tope.js, imagenes-locales-datos.js, imagenes-locales.js) y assets/css/95-sistema/atlas-sistema.css. T2: enlaza ../assets/paleobot-base.css (?v=pbgh11) antes de las hojas del atlas; retira Google Fonts (preconnect y hoja; Lexend local por la hoja base); Leaflet desde assets/vendor/leaflet/ con SRI sha384 en lugar de cdnjs; los tres <script> en línea pasan sin cambios a assets/js/95-sistema/en-linea-{salto-atlas,rutas-integradas,hub-bloques}.js, cargados síncronos en la misma posición; los dos onerror en línea de las imágenes de portada pasan a data-pb-respaldo + 95-sistema/respaldo-portada.js; la CSP se estrecha: script-src 'self' (sin 'unsafe-inline' ni cdnjs), style-src sin fonts.googleapis.com ni cdnjs, font-src 'self'. T3 (L1): enlaza al final, con ?v=pbgh11, 95-sistema/dialogos.js (gestor de diálogos), 95-sistema/dialogos.css y 95-sistema/navegacion.js.",
+      "reason": "Filas 1, 2 y 9 de la tabla de corrección; DIRECCION_ATLAS § 1 (columna vertebral aditiva enlazada la última). T2: filas 29 y 30 de la tabla de corrección y DIRECCION_ATLAS § 2.1, § 4 (Lexend local, Leaflet alojado, CSP solo se estrecha). T3: filas 3, 5, 6, 11 y 17 de la tabla de corrección (DIRECCION_ATLAS § 6.3).",
+      "evidence": "Commits a37bd31, a71b353 y 47e5228: líneas añadidas antes de </body>; humo --comparar con 0 pérdidas en las cuatro condiciones. Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6). T2 (informe T2.md): humo con recuento de violaciones de CSP (securitypolicyviolation, también en ventanas emergentes): 0 de script-src en las cuatro condiciones; las únicas violaciones son img-src de teselas de OpenTopoMap en minimapa.capas, preexistentes (la CSP ya no las admitía). 0 peticiones a fonts.googleapis.com, fonts.gstatic.com y cdnjs; minimapa con Leaflet local. T3 (informe T3.md): humo de diálogos con focoEntra, focoVuelve y sin aria-hidden en los 16 diálogos medidos y tabFuera 0; foco en el chip tras elegir vista con el teclado; humo --comparar sin pérdidas en las cuatro condiciones.",
+      "impact": "Carga cuatro recursos locales nuevos tras los importados. T2: el atlas no pide fuentes ni Leaflet a terceros y no admite scripts en línea; aspecto con la hoja base y el puente de atlas-sistema.css. T3: tres recursos locales más; el comportamiento de foco y la semántica de los diálogos cambian (no su contenido).",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/index.html.snapshot o revertir los commits de la T1 y la T2 que lo tocan (a37bd31, a71b353, 47e5228 y el commit de terceros y CSP de la T2). T3: quitar esas líneas o revertir el commit de diálogos y foco de la T3."
     },
     {
       "path": "atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
@@ -115,12 +118,12 @@
       "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/002-script.js.snapshot",
       "previous_sha256": "f77c872cbbef9075d0f8bfe5499c3bc20458325a1d54085827f2525c46506e81",
       "previous_snapshot": "docs/historial/PB_GH_10/atlas/assets/js/00-core/002-script.js.snapshot",
-      "corrected_sha256": "34f46dca942c6e70b1ae0424e2035cffe3d0453cbde6feb9e925f0b12538d496",
-      "change": "renderResourceThumb usa pictogramas locales por tipo (assets/media/95-sistema/recursos/<tipo>.svg) con width/height, sin favicons de google.com/s2 ni onerror en línea.",
-      "reason": "Fila 10 de la tabla de corrección: favicons de Google bloqueados por la CSP (16 TypeError por visita a Recursos) y filtración de la lista de dominios a un tercero.",
-      "evidence": "Commit 78751c0. 8/8 iconos cargan, 0 peticiones a Google, 0 excepciones (captura t1_recursos_iconos.png). Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6).",
-      "impact": "Miniaturas del Banco de recursos locales; sin manejadores en línea generados.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/00-core/002-script.js.snapshot o revertir 78751c0."
+      "corrected_sha256": "502f49a58450329ee3e66983c3eef379afd3dc514c868cbeaffb5e5abe0fa6d4",
+      "change": "renderResourceThumb usa pictogramas locales por tipo (assets/media/95-sistema/recursos/<tipo>.svg) con width/height, sin favicons de google.com/s2 ni onerror en línea. T3: el escuchador de teclado de bindUIEnhancements ya no llama a closeActiveUI() si otro módulo ya atendió ese Escape (event.defaultPrevented).",
+      "reason": "Fila 10 de la tabla de corrección: favicons de Google bloqueados por la CSP (16 TypeError por visita a Recursos) y filtración de la lista de dominios a un tercero. T3, fila 5: con «¿Qué no sabemos aún?» abierto sobre la ficha, un solo Escape cerraba las dos capas (020 cerraba el modal en captura y closeActiveUI cerraba después la ficha), y el foco no podía volver al disparador.",
+      "evidence": "Commit 78751c0. 8/8 iconos cargan, 0 peticiones a Google, 0 excepciones (captura t1_recursos_iconos.png). Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6). T3: traza de DOMTokenList.remove (closeDetailPanel ← closeActiveUI ← keydown, 002:9738); tras el cambio, Escape cierra solo el modal, la ficha sigue abierta y el foco vuelve a «¿Qué no sabemos aún?» (humo ficha.lagunas focoVuelve true).",
+      "impact": "Miniaturas del Banco de recursos locales; sin manejadores en línea generados. T3: Escape cierra un diálogo cada vez. Si nadie atendió el Escape, closeActiveUI actúa como antes.",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/00-core/002-script.js.snapshot o revertir 78751c0. T3: quitar «|| e.defaultPrevented» de esa línea (o revertir el commit de diálogos de la T3)."
     },
     {
       "path": "atlas/assets/js/80-features/044-script.js",
@@ -160,6 +163,45 @@
       "evidence": "node --check; humo sin pérdidas (informe T2.md). En las pruebas de la T2 los botones de la ficha (exportSpeciesPrintSheet, exportAcademicPDF) los atiende antes otro módulo, así que esta ruta no se vio ejecutarse; el cambio se limita a la plantilla.",
       "impact": "Exportaciones de ficha de 021 sin script en línea; si se usan, ahora lanzan la impresión.",
       "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js.snapshot o revertir el commit de terceros y CSP de la T2."
+    },
+    {
+      "path": "atlas/assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js",
+      "import_sha256": "936e1e62235ec4a4f2fbcaf1c2d8a2bf376d6e066fb4dd1404b9664b4ea85ee5",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js.snapshot",
+      "previous_sha256": "936e1e62235ec4a4f2fbcaf1c2d8a2bf376d6e066fb4dd1404b9664b4ea85ee5",
+      "previous_snapshot": "docs/historial/PB_GH_10/atlas/assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js.snapshot",
+      "corrected_sha256": "3f229358fcc5cc6a10b8490bdcf1ff184b872d7afe33418a852a223cc1c31576",
+      "change": "El cierre de la ficha con Escape no actúa si hay otro diálogo abierto encima (imagen ampliada, modal, presentación, socrático, mapa v50 o PaleoLab).",
+      "reason": "Fila 5 (T3): con la imagen ampliada (lightbox) sobre la ficha, un Escape cerraba las dos capas; el foco no podía volver al disparador.",
+      "evidence": "T3: sonda de Escape anidado (lightbox y lagunas sobre la ficha): antes ficha y lightbox se cierran a la vez y el foco cae en <body>; después solo se cierra el de arriba y el foco vuelve (humo lightbox y ficha.lagunas focoVuelve true).",
+      "impact": "Escape cierra un diálogo cada vez; la ficha sola se sigue cerrando con Escape igual que antes.",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js.snapshot o revertir el commit de diálogos de la T3."
+    },
+    {
+      "path": "atlas/assets/js/90-guards/018-paleobot-v44-presentation-controls-guard.js",
+      "import_sha256": "537341ccb57ce055ff4901874e7fb867513b712cb353cf704ea76b01369c613b",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/90-guards/018-paleobot-v44-presentation-controls-guard.js.snapshot",
+      "previous_sha256": "537341ccb57ce055ff4901874e7fb867513b712cb353cf704ea76b01369c613b",
+      "previous_snapshot": "docs/historial/PB_GH_10/atlas/assets/js/90-guards/018-paleobot-v44-presentation-controls-guard.js.snapshot",
+      "corrected_sha256": "38883ad9bee4b83eab2bf6b7e96fe87158f1f8d36b8aace56d5639a60ea30ebd",
+      "change": "Con el mapa ampliado de la presentación abierto (#presMapModal.active), su escuchador de Escape no cierra toda la presentación: deja que presKeyHandler (002) cierre solo el mapa.",
+      "reason": "Fila 5 (T3): Escape en «Ampliar mapa» cerraba también la presentación (stopImmediatePropagation en captura) y el foco no volvía a la miniatura del mapa.",
+      "evidence": "T3: humo presentacion.ampliarMapa: focoVuelve false → true (foco en div.pres-map-mini); presentacion sigue cerrándose con Escape (cierraConEscape true).",
+      "impact": "Escape cierra primero el mapa ampliado y, con otra pulsación, la presentación.",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/018-paleobot-v44-presentation-controls-guard.js.snapshot o revertir el commit de diálogos de la T3."
+    },
+    {
+      "path": "atlas/assets/js/90-guards/078-paleobot-wcag22-a11y-guard.js",
+      "import_sha256": "730ded64f8b45b05485fa8220c4380c3fc531d5f83974f309677b8240233e679",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/90-guards/078-paleobot-wcag22-a11y-guard.js.snapshot",
+      "previous_sha256": "730ded64f8b45b05485fa8220c4380c3fc531d5f83974f309677b8240233e679",
+      "previous_snapshot": "docs/historial/PB_GH_10/atlas/assets/js/90-guards/078-paleobot-wcag22-a11y-guard.js.snapshot",
+      "corrected_sha256": "b88ab2e6601df5e5b863b50bee630d1f9bd2ec940b33ff2ce705c1d4f9c546dc",
+      "change": "markIconOnly solo añade la clase pb-a11y-icon-only si el botón no la tiene ya.",
+      "reason": "T3 (mutaciones en reposo): classList.add escribe el atributo class aunque la clase ya esté; el observador del propio módulo (attributeFilter class) volvía a ejecutar patch() cada 80 ms sin fin.",
+      "evidence": "T3: MutationObserver en reposo 5 s tras entrar al área de trabajo (escritorio): 1 218 mutaciones (≈ 243/s; clases de botones flotantes y de zoom del mapa) antes; 0 después.",
+      "impact": "Mismo resultado de clases; el módulo deja de repintar atributos en bucle (menos trabajo en el hilo principal).",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/078-paleobot-wcag22-a11y-guard.js.snapshot o revertir el commit de diálogos de la T3."
     }
   ]
 }

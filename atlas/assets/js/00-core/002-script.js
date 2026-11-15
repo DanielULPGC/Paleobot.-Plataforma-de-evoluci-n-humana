@@ -9734,7 +9734,9 @@ function bindUIEnhancements() {
             }
             return;
         }
-        if (e.key !== 'Escape') return;
+        // PB-GH-11 (T3): si otro módulo ya atendió este Escape (cerró un modal y llamó a preventDefault), no se
+        // cierra además la capa de debajo (la ficha): Escape cierra solo el diálogo de arriba.
+        if (e.key !== 'Escape' || e.defaultPrevented) return;
         if (closeActiveUI()) e.preventDefault();
     });
 }

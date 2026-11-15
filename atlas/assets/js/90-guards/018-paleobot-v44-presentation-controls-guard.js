@@ -101,6 +101,9 @@
     document.addEventListener('keydown', function(e){
       if (!isOpen()) return;
       if (e.key === 'Escape') {
+        /* PB-GH-11 (T3): con el mapa ampliado abierto, Escape cierra solo el mapa (presKeyHandler de 002);
+           la presentación se cierra con el siguiente Escape. */
+        if (document.getElementById('presMapModal')?.classList.contains('active')) return;
         e.preventDefault();
         e.stopImmediatePropagation();
         closeOverlayOnly();
