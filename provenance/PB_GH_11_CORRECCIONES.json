@@ -64,7 +64,9 @@
     "atlas/assets/js/95-sistema/respaldo-portada.js",
     "atlas/assets/js/95-sistema/dialogos.js",
     "atlas/assets/css/95-sistema/dialogos.css",
-    "atlas/assets/js/95-sistema/navegacion.js"
+    "atlas/assets/js/95-sistema/navegacion.js",
+    "atlas/assets/js/95-sistema/dialogo-unico.js",
+    "atlas/assets/css/95-sistema/dialogo-unico.css"
   ],
   "governance_paths_note": "Archivos de gobierno modificados en la ronda, sin huella de importación: retained_paths de PB_GH_02_BASE_ACTUAL.json (snapshots originales de 025 y 044) y lista rondas del verificador.",
   "governance_paths": [
@@ -92,12 +94,12 @@
       "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
       "previous_sha256": "ffa837db43c7b4895e81459f253cc643df9256d34d106274116d2d57f587464a",
       "previous_snapshot": "docs/historial/PB_GH_10/atlas/index.html.snapshot",
-      "corrected_sha256": "f06bab430daba8d7153ccd705cc92952b03c040febb607215629fef2f937bdee",
-      "change": "T1: enlaza al final del <body>, con ?v=pbgh11, los recursos nuevos de assets/js/95-sistema/ (imagenes-tope.js, imagenes-locales-datos.js, imagenes-locales.js) y assets/css/95-sistema/atlas-sistema.css. T2: enlaza ../assets/paleobot-base.css (?v=pbgh11) antes de las hojas del atlas; retira Google Fonts (preconnect y hoja; Lexend local por la hoja base); Leaflet desde assets/vendor/leaflet/ con SRI sha384 en lugar de cdnjs; los tres <script> en línea pasan sin cambios a assets/js/95-sistema/en-linea-{salto-atlas,rutas-integradas,hub-bloques}.js, cargados síncronos en la misma posición; los dos onerror en línea de las imágenes de portada pasan a data-pb-respaldo + 95-sistema/respaldo-portada.js; la CSP se estrecha: script-src 'self' (sin 'unsafe-inline' ni cdnjs), style-src sin fonts.googleapis.com ni cdnjs, font-src 'self'. T3 (L1): enlaza al final, con ?v=pbgh11, 95-sistema/dialogos.js (gestor de diálogos), 95-sistema/dialogos.css y 95-sistema/navegacion.js.",
+      "corrected_sha256": "14eb25b1a8a66bf7955403a7d110efc86c07ea31262b26a9790e57c0cf336da5",
+      "change": "T1: enlaza al final del <body>, con ?v=pbgh11, los recursos nuevos de assets/js/95-sistema/ (imagenes-tope.js, imagenes-locales-datos.js, imagenes-locales.js) y assets/css/95-sistema/atlas-sistema.css. T2: enlaza ../assets/paleobot-base.css (?v=pbgh11) antes de las hojas del atlas; retira Google Fonts (preconnect y hoja; Lexend local por la hoja base); Leaflet desde assets/vendor/leaflet/ con SRI sha384 en lugar de cdnjs; los tres <script> en línea pasan sin cambios a assets/js/95-sistema/en-linea-{salto-atlas,rutas-integradas,hub-bloques}.js, cargados síncronos en la misma posición; los dos onerror en línea de las imágenes de portada pasan a data-pb-respaldo + 95-sistema/respaldo-portada.js; la CSP se estrecha: script-src 'self' (sin 'unsafe-inline' ni cdnjs), style-src sin fonts.googleapis.com ni cdnjs, font-src 'self'. T3 (L1): enlaza al final, con ?v=pbgh11, 95-sistema/dialogos.js (gestor de diálogos), 95-sistema/dialogos.css y 95-sistema/navegacion.js. T3 (L2, diálogo único): enlaza 95-sistema/dialogo-unico.js y dialogo-unico.css.",
       "reason": "Filas 1, 2 y 9 de la tabla de corrección; DIRECCION_ATLAS § 1 (columna vertebral aditiva enlazada la última). T2: filas 29 y 30 de la tabla de corrección y DIRECCION_ATLAS § 2.1, § 4 (Lexend local, Leaflet alojado, CSP solo se estrecha). T3: filas 3, 5, 6, 11 y 17 de la tabla de corrección (DIRECCION_ATLAS § 6.3).",
       "evidence": "Commits a37bd31, a71b353 y 47e5228: líneas añadidas antes de </body>; humo --comparar con 0 pérdidas en las cuatro condiciones. Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6). T2 (informe T2.md): humo con recuento de violaciones de CSP (securitypolicyviolation, también en ventanas emergentes): 0 de script-src en las cuatro condiciones; las únicas violaciones son img-src de teselas de OpenTopoMap en minimapa.capas, preexistentes (la CSP ya no las admitía). 0 peticiones a fonts.googleapis.com, fonts.gstatic.com y cdnjs; minimapa con Leaflet local. T3 (informe T3.md): humo de diálogos con focoEntra, focoVuelve y sin aria-hidden en los 16 diálogos medidos y tabFuera 0; foco en el chip tras elegir vista con el teclado; humo --comparar sin pérdidas en las cuatro condiciones.",
       "impact": "Carga cuatro recursos locales nuevos tras los importados. T2: el atlas no pide fuentes ni Leaflet a terceros y no admite scripts en línea; aspecto con la hoja base y el puente de atlas-sistema.css. T3: tres recursos locales más; el comportamiento de foco y la semántica de los diálogos cambian (no su contenido).",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/index.html.snapshot o revertir los commits de la T1 y la T2 que lo tocan (a37bd31, a71b353, 47e5228 y el commit de terceros y CSP de la T2). T3: quitar esas líneas o revertir el commit de diálogos y foco de la T3."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/index.html.snapshot o revertir los commits de la T1 y la T2 que lo tocan (a37bd31, a71b353, 47e5228 y el commit de terceros y CSP de la T2). T3: quitar esas líneas o revertir el commit de diálogos y foco de la T3. T3 (L2): revertir el commit «diálogo único» (quita esas dos líneas y los dos archivos)."
     },
     {
       "path": "atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js",

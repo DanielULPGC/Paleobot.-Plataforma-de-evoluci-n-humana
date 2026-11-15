@@ -12,12 +12,13 @@
    propio: «Cerrar bibliografía», «Cerrar glosario»…). Las dos hacen lo mismo (cerrar) y compiten en la
    cabecera. Se conserva visible «✕»; «← Volver» sigue en el DOM (078 lo usa como destino preferente de foco
    y le pone nombre; ningún módulo depende de que se pinte) pero no se pinta. Lista explícita en el informe
-   T3 («ocultado: duplicado de función»). El relleno superior que reservaba su hueco (58-72 px) vuelve al
+   T3 («ocultado: duplicado de función»). Vale también cuando dialogo-unico.js (L2) mueve el «✕» a la
+   cabecera común (por eso :has() busca en todo .modal-content). El relleno superior que reservaba su hueco (58-72 px) vuelve al
    relleno normal. */
-:root:root body .modal-content.has-modal-back:has(> .close-modal, > .sg-header > .close-modal) > .modal-back-btn {
+:root:root body .modal-content.has-modal-back:has(.close-modal) > .modal-back-btn {
   display: none !important;
 }
-:root:root body.pb-v50-unified .modal-content.has-modal-back:has(> .close-modal, > .sg-header > .close-modal) {
+:root:root body.pb-v50-unified .modal-content.has-modal-back:has(.close-modal) {
   padding-top: var(--e-5) !important;
 }
 

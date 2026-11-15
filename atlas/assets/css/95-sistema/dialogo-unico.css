@@ -1,0 +1,165 @@
+/* =====================================================================================================
+   95-sistema/dialogo-unico.css · «diálogo único» (PB-GH-11, tanda T3, L2; estrategia 06 § 3-A)
+   -----------------------------------------------------------------------------------------------------
+   Un mismo aspecto para los diálogos .modal-overlay que dialogo-unico.js marca con .pb-dlg:
+     · lámina centrada de 56 rem como máximo en escritorio y tableta; pantalla completa en teléfono;
+     · cabecera fija (.pb-dlg-cabecera: título + un botón «Cerrar», el «✕» existente) y cuerpo con
+       desplazamiento propio (la propia lámina);
+     · velo sin desenfoque (sin vidrio), un borde, sombra solo de panel flotante, tokens de la hoja base
+       (heredan «Contraste» y «Modo clase»).
+   Pie: no se fija ninguno. La única acción principal clara («Comenzar clásico» de la Autoevaluación) queda a
+   la vista sin desplazar en los tres anchos; fijarla exigiría reordenar el marcado del examen (049, 002).
+   Lo que se pliega, mueve u oculta: nada se oculta aquí. El título y el «✕» se MUEVEN a la cabecera; el
+   glifo «✕» se sustituye visualmente por el rótulo «Cerrar» (su nombre accesible no cambia: «Cerrar
+   bibliografía», «Cerrar glosario»…; el rótulo visible está contenido en él, WCAG 2.5.3).
+   Gana a 053 («body.pb-v50-unified .modal-content … !important», 0,2,1) y a 020 con (0,4,1) + !important.
+   Revertir: quitar este archivo y dialogo-unico.js de atlas/index.html.
+   ===================================================================================================== */
+
+/* 1 · Velo y lámina */
+:root:root body .modal-overlay.pb-dlg.active:is([id], #_) {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: var(--e-5) !important;
+  background: rgba(31, 36, 34, .56) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+/* :is([id], #_) da especificidad de id (1,…) para ganar a las anchuras propias por id de 001 y 052
+   (#compareModal, #glossaryModal…); coincide por [id] (todos los .pb-dlg lo tienen). */
+:root:root body .modal-overlay.pb-dlg:is([id], #_) > .modal-content.pb-dlg-lamina {
+  box-sizing: border-box !important;
+  width: min(56rem, 100%) !important;
+  max-width: 56rem !important;
+  max-height: calc(100dvh - 2 * var(--e-5)) !important;
+  margin: 0 !important;
+  padding: 0 var(--e-5) var(--e-5) !important;
+  overflow: auto !important;
+  overscroll-behavior: contain;
+  border: var(--linea) solid var(--borde) !important;
+  border-radius: var(--r-contenedor) !important;
+  background: var(--superficie) !important;
+  color: var(--tinta) !important;
+  box-shadow: var(--sombra-flotante) !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* 2 · Cabecera fija: título a la izquierda, «Cerrar» a la derecha. Sticky dentro de la lámina. */
+:root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-3);
+  margin: 0 calc(-1 * var(--e-5)) var(--e-4);
+  padding: var(--e-3) var(--e-5);
+  background: var(--superficie);
+  border-bottom: var(--linea) solid var(--borde);
+}
+:root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > :is(h2, h3) {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xl) !important;
+  font-weight: 600 !important;
+  line-height: var(--il-titulo) !important;
+  letter-spacing: 0 !important;
+  white-space: normal !important;
+  text-indent: 0 !important;
+  color: var(--tinta) !important;
+  background: none !important;
+  text-align: left !important;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+:root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > .close-modal {
+  position: static !important;
+  flex: none;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: var(--control) !important;
+  height: auto !important;
+  min-height: var(--control) !important;
+  margin: 0 !important;
+  padding: 0 var(--e-4) !important;
+  border: var(--linea) solid var(--borde-control) !important;
+  border-radius: var(--r-pildora) !important;
+  background: var(--superficie) !important;
+  color: var(--tinta) !important;
+  font-size: 0 !important;          /* el glifo «✕» del marcado no se pinta… */
+  line-height: 1 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  cursor: pointer;
+}
+:root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > .close-modal::before {
+  content: "Cerrar";                 /* …en su lugar, el rótulo (su nombre accesible ya empieza por «Cerrar») */
+  font-family: var(--f-titulo);
+  font-size: var(--t-s);
+  font-weight: 500;
+  line-height: 1;
+}
+:root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > .close-modal:hover {
+  background: var(--hundido) !important;
+  border-color: var(--tinta-2) !important;
+}
+
+/* 3 · Cuerpo: primeros bloques sin el margen superior que dejaba el antiguo hueco del título. */
+:root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera + * { margin-top: 0 !important; }
+
+/* 4 · Guía del alumnado: su cabecera petróleo (.sg-header, ya sin título ni «✕») pasa a papel con su rótulo
+   y su entradilla; las pestañas quedan debajo. */
+:root:root body #studentGuideModal.pb-dlg .sg-header {
+  margin: 0 calc(-1 * var(--e-5)) 0 !important;
+  padding: 0 var(--e-5) var(--e-4) !important;
+  background: var(--superficie) !important;
+  color: var(--tinta) !important;
+  border-radius: 0 !important;
+}
+:root:root body #studentGuideModal.pb-dlg .sg-header p { color: var(--tinta-2) !important; opacity: 1 !important; max-width: var(--medida) !important; }
+:root:root body #studentGuideModal.pb-dlg .sg-header .sg-version-badge {
+  color: var(--tinta-2) !important;
+  background: var(--hundido) !important;
+  border-color: var(--borde) !important;
+  font-family: var(--f-titulo) !important;
+  letter-spacing: 0 !important;
+}
+:root:root body #studentGuideModal.pb-dlg .sg-tabs { margin: 0 calc(-1 * var(--e-5)) !important; padding: 0 var(--e-5) !important; }
+
+/* 5 · Teléfono: pantalla completa, sin bordes ni radios; la cabecera queda fija arriba. */
+@media (max-width: 47.99rem) {
+  :root:root body .modal-overlay.pb-dlg.active:is([id], #_) { padding: 0 !important; align-items: stretch !important; }
+  :root:root body .modal-overlay.pb-dlg:is([id], #_) > .modal-content.pb-dlg-lamina {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: 0 var(--e-4) var(--e-5) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera { margin: 0 calc(-1 * var(--e-4)) var(--e-4); padding: var(--e-2) var(--e-4); }
+  :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > :is(h2, h3) { font-size: var(--t-l) !important; }
+  :root:root body #studentGuideModal.pb-dlg .sg-header { margin: 0 calc(-1 * var(--e-4)) !important; padding: 0 var(--e-4) var(--e-4) !important; }
+  :root:root body #studentGuideModal.pb-dlg .sg-tabs { margin: 0 calc(-1 * var(--e-4)) !important; padding: 0 var(--e-4) !important; }
+}
+
+/* 6 · Impresión: la lámina se imprime entera, sin velo ni cabecera fija. */
+@media print {
+  :root:root body .modal-overlay.pb-dlg.active:is([id], #_) { position: static !important; background: none !important; padding: 0 !important; }
+  :root:root body .modal-overlay.pb-dlg > .modal-content.pb-dlg-lamina { max-height: none !important; overflow: visible !important; border: 0 !important; }
+  :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera { position: static; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:root body .modal-overlay.pb-dlg, :root:root body .modal-overlay.pb-dlg > .modal-content { transition: none !important; animation: none !important; }
+}
