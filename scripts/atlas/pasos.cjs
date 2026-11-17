@@ -45,6 +45,17 @@ async function asegurarVistas(page, sel) {
   return true;
 }
 
+// PB-GH-11 (T4): la franja «Consulta y filtros» (L2) pliega en teléfono y tableta «Modo clase», «Limpiar
+// filtros», «Filtros avanzados» y el nivel bajo «Más opciones» (#pbConsultaMas). Si el control pedido no está
+// a la vista y existe ese botón, se despliega como lo haría el alumnado. Sin el botón (línea base), nada.
+async function asegurarConsulta(page, sel) {
+  if (sel && (await visible(page, sel))) return false;
+  const b = await page.$('#pbConsultaMas');
+  if (!b || !(await b.isVisible().catch(() => false))) return false;
+  if ((await b.getAttribute('aria-expanded')) !== 'true') { await b.click().catch(() => {}); await page.waitForTimeout(250); }
+  return true;
+}
+
 // Abre un diálogo con un clic real y mide foco, trampa de Tab, Escape y retorno del foco.
 // abrirSel: selector del disparador; dialogoSel: selector del diálogo.
 async function probarDialogo(page, nombre, abrirSel, dialogoSel, extra) {
@@ -336,6 +347,7 @@ const FUNCIONES = {
     const contar = () => page.evaluate(() => [...document.querySelectorAll('#view-timeline [data-open-species]')].filter((e) => e.getBoundingClientRect().width > 0).length);
     await irVistaUI(page, 'timeline', false);
     out.antes = await contar();
+    await asegurarConsulta(page, '[data-pb-v50-filter-toggle]');
     const tog = await page.$('[data-pb-v50-filter-toggle]');
     if (tog && (await tog.isVisible())) { await tog.click().catch(() => {}); await page.waitForTimeout(400); }
     const chip = await page.$('[data-clade-filter="homo"]');
@@ -351,6 +363,7 @@ const FUNCIONES = {
   },
   async 'nivel'(page) {
     const out = { paso: 'nivel' };
+    await asegurarConsulta(page, '#nivelEducativo');
     await asegurarVistas(page, '#pbV50Blocks [data-pb-v50-view]');
     const n = () => page.$$eval('#pbV50Blocks [data-pb-v50-view]', (b) => b.filter((x) => x.getBoundingClientRect().width > 0).length);
     out.universitario = await n();
@@ -645,6 +658,7 @@ const FUNCIONES = {
   },
   async 'modo.clase'(page) {
     const out = { paso: 'modo.clase' };
+    await asegurarConsulta(page, '.v36-workspace-shell [data-action="activateClassMode"]');
     const b = await page.$('.v36-workspace-shell [data-action="activateClassMode"]');
     out.visible = b ? await b.isVisible() : false;
     if (b) { await b.click({ force: !out.visible }).catch((e) => { out.error = String(e).split('\n')[0].slice(0, 100); }); await page.waitForTimeout(700); }
@@ -751,6 +765,106 @@ const FUNCIONES = {
     if (s) { await s.scrollIntoViewIfNeeded().catch(() => {}); await s.focus().catch(() => {}); const v0 = await s.inputValue().catch(() => ''); await page.keyboard.press('ArrowRight'); await page.keyboard.press('ArrowRight'); await page.waitForTimeout(300); out.valor = await s.inputValue().catch(() => ''); out.items = { deslizador: out.valor !== v0 }; }
     out.ok = !!s; return out;
   },
+
+  // ---------- PB-GH-11 (T4): rutas principales ----------
+  // Elegir Cronología, Mapa y África desde «Vistas» con el ratón, como el alumnado: ¿dónde quedan la barra, el
+  // título de la vista y el primer dato (tarjeta, mapa)? Items: barra arriba, título en el primer tercio de la
+  // pantalla y primer dato dentro del primer pantallazo. Las cifras van en «medidas» (informativas).
+  async 'vista.posicion'(page) {
+    const out = { paso: 'vista.posicion', items: Object.create(null), medidas: Object.create(null) };
+    await entrar(page);
+    const datoSel = { timeline: '#timelineList [data-open-species]', map: '#mapContainer', africa: '.africa-map-svg' };
+    for (const v of ['timeline', 'map', 'africa']) {
+      const chip = `#pbV50Blocks [data-pb-v50-view="${v}"]`;
+      await asegurarVistas(page, chip);
+      if (!(await visible(page, chip))) { await page.click('#pbV50Blocks [data-pb-v50-block="explorar"]', { timeout: 2000 }).catch(() => {}); await page.waitForTimeout(350); }
+      await page.click(chip, { timeout: 2500 }).catch(() => page.evaluate((s) => document.querySelector(s)?.click(), chip));
+      await page.waitForTimeout(1800);
+      const m = await page.evaluate(([v, sel]) => {
+        const s = document.getElementById('view-' + v);
+        const t = s && s.querySelector('.view-hero-title-row h2, .view-hero h2');
+        const d = [...document.querySelectorAll('#view-' + v + ' ' + sel)].find((e) => e.getBoundingClientRect().width > 40);
+        const b = document.getElementById('pbV50Blocks');
+        const top = (e) => (e ? Math.round(e.getBoundingClientRect().top) : null);
+        return { alto: innerHeight, barra: top(b), titulo: top(t), dato: top(d), activa: !!(s && s.classList.contains('active')) };
+      }, [v, datoSel[v]]);
+      out.medidas[v] = m;
+      out.items[v + ' · barra arriba'] = m.barra === 0;
+      out.items[v + ' · título en el primer tercio'] = m.titulo !== null && m.titulo >= 0 && m.titulo < m.alto / 3;
+      out.items[v + ' · primer dato en el primer pantallazo'] = m.dato !== null && m.dato >= 0 && m.dato < m.alto;
+    }
+    out.ok = Object.keys(out.medidas).every((v) => out.medidas[v].activa);
+    return out;
+  },
+  // Fondo local de costas del mapa (fila 8): trazado presente y puntos de control (un marcador conocido en
+  // tierra y dos puntos de mar), con la geometría pintada (isPointInFill), sin depender de la red.
+  async 'mapa.costas'(page) {
+    const out = { paso: 'mapa.costas', items: Object.create(null) };
+    await page.evaluate(() => { try { window.switchView('map'); } catch (e) {} });
+    await page.waitForTimeout(1200);
+    const r = await page.evaluate(() => {
+      const p = document.querySelector('#mapSvg > .pb-costas path');
+      if (!p) return { trazados: 0 };
+      const P = (lon, lat) => p.isPointInFill(new DOMPoint(((lon + 180) / 360) * 1000, ((90 - lat) / 180) * 500));
+      const dot = document.querySelector('.map-node[data-id="georgicus"] .map-dot-core');
+      return { trazados: document.querySelectorAll('#mapSvg > .pb-costas path').length, anillos: +(document.querySelector('#mapSvg > .pb-costas')?.dataset.pbCostas || 0),
+        dmanisi: P(44.2, 41.33), olduvai: P(35.35, -2.99), golfoGuinea: P(0, 0), pacifico: P(-150, 0),
+        marcadorGeorgicus: dot ? p.isPointInFill(new DOMPoint(+dot.getAttribute('cx'), +dot.getAttribute('cy'))) : null };
+    });
+    out.medidas = r;
+    out.items = Object.assign(Object.create(null), { 'trazado de costas': r.trazados > 0, 'Dmanisi en tierra': !!r.dmanisi, 'Olduvai en tierra': !!r.olduvai,
+      'golfo de Guinea en el mar': r.golfoGuinea === false, 'Pacífico en el mar': r.pacifico === false, 'marcador de georgicus en tierra': !!r.marcadorGeorgicus });
+    out.ok = r.trazados > 0;
+    return out;
+  },
+  // Intro en el buscador de la franja (fila 18): una coincidencia abre la ficha; varias, la búsqueda global con
+  // el término y título visible.
+  async 'buscador.intro'(page) {
+    const out = { paso: 'buscador.intro', items: Object.create(null) };
+    await entrar(page);
+    const escribir = async (t) => {
+      await page.evaluate(() => { const i = document.getElementById('searchInput'); i.value = ''; i.scrollIntoView({ block: 'center' }); });
+      await page.click('#searchInput', { timeout: 2500 }).catch(() => page.focus('#searchInput'));
+      await page.keyboard.type(t, { delay: 10 }); await page.keyboard.press('Enter'); await page.waitForTimeout(1300);
+    };
+    await escribir('afarensis');
+    const r1 = await page.evaluate(() => ({ ficha: !!document.getElementById('detailView')?.classList.contains('active'), titulo: document.getElementById('detailViewTitle')?.textContent || '' }));
+    await page.keyboard.press('Escape'); await page.waitForTimeout(600);
+    await escribir('homo');
+    const r2 = await page.evaluate(() => { const m = document.getElementById('globalSearchModal'); const lb = m && document.getElementById(m.getAttribute('aria-labelledby') || ''); return { modal: !!(m && m.classList.contains('active')), termino: document.getElementById('gsInput')?.value || '', resultados: document.querySelectorAll('#gs-listbox .gs-result').length, titulo: lb ? lb.textContent.trim() : '', tituloVisible: !!(lb && lb.getBoundingClientRect().width > 0 && lb.tagName === 'H2') }; });
+    await page.keyboard.press('Escape'); await page.waitForTimeout(500);
+    out.medidas = { r1, r2 };
+    out.items = Object.assign(Object.create(null), { 'una coincidencia abre la ficha': r1.ficha && /afarensis/i.test(r1.titulo), 'varias abren la búsqueda global': r2.modal, 'con el término escrito': r2.termino === 'homo' && r2.resultados > 1, 'búsqueda global con título visible': r2.tituloVisible });
+    out.ok = r1.ficha || r2.modal;
+    return out;
+  },
+  // Ficha como página de manual: cabecera (nombre, intervalo, estado), imagen principal local cargada,
+  // minimapa con alternativa textual (nombre accesible y párrafo con coordenadas) y anchura del panel.
+  async 'ficha.manual'(page) {
+    const out = { paso: 'ficha.manual', items: Object.create(null) };
+    const abierta = await abrirFicha(page, 'afarensis');
+    await page.waitForTimeout(800);
+    const r = await page.evaluate(() => {
+      const d = document.getElementById('detailView');
+      const img = d.querySelector('#pane-gen .species-header-image');
+      const mapa = d.querySelector('.detail-leaflet-map');
+      const alt = mapa && document.getElementById(mapa.getAttribute('aria-describedby') || '');
+      return { ancho: Math.round(d.getBoundingClientRect().width), vw: innerWidth,
+        titulo: (document.getElementById('detailViewTitle')?.textContent || '').trim(),
+        intervalo: !!d.querySelector('.panel-header-meta .sp-tag'), estado: (d.querySelector('.panel-header-meta .badge-estado')?.textContent || '').trim(),
+        acciones: ['.panel-back-btn', '#panelPrev', '#panelNavCounter', '#panelNext', '.panel-close'].every((s) => { const e = d.querySelector(s); return e && e.getBoundingClientRect().width > 0; }),
+        imgLocal: !!img && /\/img\/taxones\//.test(img.currentSrc || img.src), imgCargada: !!img && img.naturalWidth > 0,
+        imagenPrimero: !!img && d.querySelector('#pane-gen').firstElementChild === img.closest('.species-media-figure'),
+        mapaNombre: mapa ? mapa.getAttribute('aria-label') || '' : '', mapaAlt: alt ? alt.textContent : '' };
+    });
+    out.medidas = r;
+    out.items = Object.assign(Object.create(null), { 'abre': !!abierta, 'cabecera con nombre, intervalo y estado': !!r.titulo && r.intervalo && !!r.estado, 'volver, ‹ n/50 › y cerrar visibles': r.acciones,
+      'imagen principal local': r.imgLocal && r.imgCargada, 'minimapa con alternativa textual': /\d/.test(r.mapaAlt) && /Minimapa/.test(r.mapaNombre),
+      'panel lateral en escritorio o pantalla completa en teléfono': r.vw >= 1024 ? r.ancho <= 52 * 16 + 1 : r.ancho === r.vw });
+    await page.keyboard.press('Escape');
+    out.ok = !!abierta;
+    return out;
+  },
 };
 
 // Enlace profundo ?view=<id>#main-content de las 31 vistas (lo usa el recorrido). Recibe una función que abre
@@ -768,4 +882,4 @@ async function enlacesProfundos(page, base, listo) {
   return out;
 }
 
-module.exports = { VISTAS, FUNCIONES, asegurarVistas, irVistaUI, medirVista, barrerVista, entrar, abrirCajon, cerrarCajon, estadoDialogo, probarDialogo, foco, abrirFicha, descarga, enlacesProfundos };
+module.exports = { VISTAS, FUNCIONES, asegurarVistas, asegurarConsulta, irVistaUI, medirVista, barrerVista, entrar, abrirCajon, cerrarCajon, estadoDialogo, probarDialogo, foco, abrirFicha, descarga, enlacesProfundos };

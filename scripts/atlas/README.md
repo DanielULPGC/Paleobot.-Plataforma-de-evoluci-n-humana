@@ -94,3 +94,19 @@ y su prueba de determinismo están en `docs/diseno/atlas/linea-base/`.
   botón «Vistas», abre el panel como lo haría el alumnado. Sin ese botón (línea base) no hace nada.
 Las funciones nuevas no existen en la línea base: en `--comparar` aparecen como «otras» (no son pérdidas). La
 línea base no se reescribe.
+
+## Medidas añadidas en la T4 (rutas principales)
+
+- `vista.posicion` (función): entra, elige Cronología, Mapa y África desde «Vistas» con el ratón y mide la
+  posición de la barra, del título de la vista y del primer dato (tarjeta, mapa) en «medidas». Items: barra
+  arriba, título en el primer tercio de la pantalla y primer dato dentro del primer pantallazo.
+- `mapa.costas` (función): fondo local de costas del mapa (número de trazados y de anillos) y puntos de control
+  con la geometría pintada (`isPointInFill`): Dmanisi y Olduvai en tierra, golfo de Guinea y Pacífico en el mar,
+  marcador de *georgicus* en tierra. Pensada para `--sin-terceros`.
+- `buscador.intro` (función): Intro en `#searchInput` con una coincidencia («afarensis» abre la ficha) y con
+  varias («homo» abre la búsqueda global con el término y su título visible).
+- `ficha.manual` (función): cabecera (nombre, intervalo, estado), «Volver atrás», «‹ n/50 ›» y cerrar visibles,
+  imagen principal local cargada y primera en «General», minimapa con alternativa textual y anchura del panel
+  (≤ 52 rem en escritorio; pantalla completa en teléfono).
+Como en la T3, no existen en la línea base: en `--comparar` salen como «otras». Los `items` usan
+`Object.create(null)` (una clave «constructor» daría falsos positivos con `{}`). La línea base no se reescribe.
