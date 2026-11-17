@@ -9354,7 +9354,7 @@ const BIO_LEYENDA = [
     ]
   },
   {
-    grupo: "Géneros anteriores", color: "#c07800", bg: "#fdf3e0",
+    grupo: "Géneros anteriores", color: "#8f5900", bg: "#fdf3e0", // PB-GH-11 (T4): #c07800 → #8f5900 (mismo tono; texto blanco 5,84:1)
     especies: [
       { nombre: "Ardipithecus ramidus",     id: "ramidus" },
       { nombre: "Ardipithecus kadabba",     id: "kadabba" },
