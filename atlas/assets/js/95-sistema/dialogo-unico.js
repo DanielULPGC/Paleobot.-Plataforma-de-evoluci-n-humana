@@ -10,7 +10,8 @@
    diálogo se abre (por si un módulo repintó su contenido). No escucha en captura; solo observa la clase de
    los .modal-overlay y escribe nodos dentro de .modal-content (no lo observa), así que no hay bucles.
    Quedan fuera, con su propia maquetación: la ficha (T4), la presentación, el socrático, PaleoLab, la imagen
-   ampliada, el mapa v50 y la búsqueda global (paleta sin título visible); el gestor de diálogos sí los cubre.
+   ampliada y el mapa v50; el gestor de diálogos sí los cubre. T4: la búsqueda global entra en el diálogo único
+   (buscador.js le da título visible y lleva su «✕ Cerrar» del pie a la cabecera).
    Revertir: quitar este archivo y dialogo-unico.css de atlas/index.html.
    ===================================================================================================== */
 (function () {
@@ -46,14 +47,13 @@
   function todos() {
     var l = document.querySelectorAll('.modal-overlay');
     for (var i = 0; i < l.length; i++) {
-      if (l[i].id === 'globalSearchModal') continue;
       estructurar(l[i]);
     }
   }
   var obs = new MutationObserver(function (rs) {
     rs.forEach(function (r) {
       var o = r.target;
-      if (o.classList.contains('active') && o.id !== 'globalSearchModal') estructurar(o);
+      if (o.classList.contains('active')) estructurar(o);
     });
   });
   function iniciar() {

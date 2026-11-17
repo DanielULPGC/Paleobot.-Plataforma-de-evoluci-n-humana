@@ -1,0 +1,17 @@
+/* =====================================================================================================
+   95-sistema/buscador.css · búsqueda global dentro del «diálogo único» (PB-GH-11, T4; fila 18). Ver buscador.js.
+   Lámina más estrecha (40 rem) que el resto de diálogos: es una paleta de búsqueda. El h2 nuevo y el «Cerrar»
+   (su botón «✕ Cerrar» del pie, reubicado) los pinta dialogo-unico.css. En teléfono, a pantalla completa, la
+   lista de resultados deja de tener su tope de 340 px (la lámina ya se desplaza sola).
+   Revertir: quitar este archivo y buscador.js de atlas/index.html.
+   ===================================================================================================== */
+:root:root body #globalSearchModal.modal-overlay.pb-dlg:is([id], #_) > .modal-content.pb-dlg-lamina {
+  width: min(40rem, 100%) !important;
+  max-width: 40rem !important;
+}
+#globalSearchModal.pb-dlg .modal-content > div:not(.pb-dlg-cabecera) { padding-left: 0 !important; padding-right: 0 !important; }
+#globalSearchModal.pb-dlg #gs-help { color: var(--tinta-2) !important; font-size: var(--t-xs) !important; }
+@media (max-width: 47.99rem) {
+  :root:root body #globalSearchModal.modal-overlay.pb-dlg:is([id], #_) > .modal-content.pb-dlg-lamina { width: 100% !important; max-width: 100% !important; }
+  #globalSearchModal.pb-dlg #gs-listbox { max-height: none !important; }
+}
