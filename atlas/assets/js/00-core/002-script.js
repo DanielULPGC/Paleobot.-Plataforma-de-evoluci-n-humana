@@ -15194,7 +15194,7 @@ function setMapLensFocus(lensId) {
     const preferredPool = mapActiveLensId ? visibleSpecies.filter(sp => speciesMatchesLens(sp, mapActiveLensId)) : visibleSpecies;
     const preferred = preferredPool.find(sp => sp.id === mapSelectionId)?.id || preferredPool[0]?.id || null;
     if (preferred) {
-        selectMapSpecies(preferred);
+        selectMapSpecies(preferred, true);
     } else {
         mapSelectionId = null;
         refreshMapFocusVisuals(visibleSpecies);
@@ -15345,11 +15345,12 @@ function renderMapLensGrid(visibleSpecies) {
     }).join('');
 }
 
-function selectMapSpecies(id) {
+function selectMapSpecies(id, keepLens) {
     const sp = DB_INDEX[id];
     if (!sp || !SITES[id]) return;
     mapSelectionId = id;
-    mapActiveLensId = getLensIdForSpecies(sp);
+    // PB-GH-11 (T4): al elegir una lente (también «Todos los focos») se preselecciona un yacimiento sin cambiar la lente elegida.
+    if (!keepLens) mapActiveLensId = getLensIdForSpecies(sp);
     document.querySelectorAll('.map-node').forEach(node => {
         node.classList.toggle('is-selected', node.dataset.id === id);
     });
@@ -15617,7 +15618,7 @@ function updateMapDots() {
     const preferred = focusedSpecies.find(sp => sp.id === mapSelectionId)?.id ||
         (currentSpecies && focusedSpecies.some(sp => sp.id === currentSpecies.id) ? currentSpecies.id : (focusedSpecies[0]?.id || null));
     if (preferred) {
-        selectMapSpecies(preferred);
+        selectMapSpecies(preferred, true); // PB-GH-11 (T4): el repintado conserva la lente elegida
     } else {
         mapSelectionId = null;
         refreshMapFocusVisuals(visibleSpecies);
