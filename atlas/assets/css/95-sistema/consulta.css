@@ -54,7 +54,7 @@
   flex: 1 1 0 !important;
   display: flex !important;
   flex-direction: row !important;
-  flex-wrap: nowrap !important;
+  flex-wrap: wrap !important;          /* una fila en escritorio; con texto grande, más filas en vez de salirse */
   align-items: center !important;
   justify-content: flex-start !important;
   width: auto !important;
