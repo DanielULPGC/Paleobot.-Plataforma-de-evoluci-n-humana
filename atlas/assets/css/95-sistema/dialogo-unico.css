@@ -112,6 +112,13 @@
   border-color: var(--tinta-2) !important;
 }
 
+/* PB-GH-11 (T4): con el texto al 200 % en teléfono, título y «Cerrar» no caben en una fila y el título se
+   partía sílaba a sílaba (8 líneas en el Comparador). La cabecera admite dos filas: el título ocupa la suya
+   cuando no le quedan 12 rem al lado de «Cerrar». */
+:root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera { flex-wrap: wrap; }
+:root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > :is(h2, h3) { flex: 1 1 12rem; hyphens: manual; }
+:root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > .close-modal { margin-left: auto !important; }
+
 /* 3 · Cuerpo: primeros bloques sin el margen superior que dejaba el antiguo hueco del título. */
 :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera + * { margin-top: 0 !important; }
 

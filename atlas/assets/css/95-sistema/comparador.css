@@ -1,0 +1,97 @@
+/* =====================================================================================================
+   95-sistema/comparador.css · Comparador (PB-GH-11, tanda T4, L2). Ver comparador.js.
+   Defecto que corrige (medido): la lámina del diálogo es flex en columna y #compareResult (overflow:auto) se
+   encogía a 80 px de alto: los resultados quedaban en un recuadro diminuto con su propia barra. Ahora el
+   resultado ocupa su alto y es la lámina la que se desplaza.
+   · Selección 2-6 clara: contador «n / 6 seleccionadas» como dato, chips eliminables del sistema.
+   · Tabla de rasgos: recuadro con desplazamiento propio (horizontal y vertical, máximo 70 % de la pantalla),
+     cabecera y primera columna fijas; nunca desplazamiento horizontal de la página.
+   · Rejillas de texto: columnas que caben (mínimo 14 rem o el ancho disponible).
+   · Estado vacío (.cmp-status-msg: «Selecciona entre 2 y 6 taxones…»): recuadro sobre papel, legible.
+   Revertir: quitar este archivo y comparador.js de atlas/index.html.
+   ===================================================================================================== */
+:root:root body #compareModal #compareResult {
+  flex: none !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+:root:root body #compareModal .modal-content.pb-dlg-lamina > * { flex-shrink: 0 !important; }
+
+/* Guía plegada */
+#compareModal details.pb-cmp-guia { margin: 0 0 var(--e-4); border: var(--linea) solid var(--borde); border-radius: var(--r-contenedor); background: var(--superficie); }
+#compareModal details.pb-cmp-guia > summary {
+  display: flex; align-items: center; gap: var(--e-2);
+  min-height: var(--control); padding: 0 var(--e-4);
+  cursor: pointer; list-style: none;
+  font-family: var(--f-titulo); font-size: var(--t-s); font-weight: 600; color: var(--acento);
+}
+#compareModal details.pb-cmp-guia > summary::-webkit-details-marker { display: none; }
+#compareModal details.pb-cmp-guia > summary::before {
+  content: ""; width: .5rem; height: .5rem;
+  border-right: var(--linea-gruesa) solid currentColor; border-bottom: var(--linea-gruesa) solid currentColor;
+  transform: rotate(-45deg);
+}
+#compareModal details.pb-cmp-guia[open] > summary::before { transform: rotate(45deg); }
+:root:root body #compareModal details.pb-cmp-guia > .cmp-method-guide { margin: 0 !important; border: 0 !important; border-top: var(--linea) solid var(--borde) !important; border-radius: 0 0 var(--r-contenedor) var(--r-contenedor) !important; background: none !important; box-shadow: none !important; }
+
+/* Selección */
+:root:root body #compareModal #cmpCountLabel {
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-s) !important;
+  font-weight: 600 !important;
+  color: var(--tinta) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tabla con desplazamiento propio y cabecera fija */
+#compareModal .pb-cmp-tabla {
+  max-width: 100%;
+  max-height: min(70vh, 40rem);
+  overflow: auto;
+  margin: 0 0 var(--e-5);
+  border: var(--linea) solid var(--borde);
+  border-radius: var(--r-control);
+  background: var(--superficie);
+  overscroll-behavior: contain;
+}
+:root:root body #compareModal .pb-cmp-tabla > table { margin: 0 !important; min-width: 100%; border-collapse: separate !important; border-spacing: 0 !important; }
+:root:root body #compareModal .pb-cmp-tabla thead th {
+  position: sticky; top: 0; z-index: 2;
+  background: var(--hundido) !important;
+  color: var(--tinta) !important;
+  border-bottom: var(--linea) solid var(--borde) !important;
+}
+:root:root body #compareModal .pb-cmp-tabla :is(tbody td:first-child, thead th:first-child) {
+  position: sticky; left: 0; z-index: 1;
+  background: var(--superficie) !important;
+  border-right: var(--linea) solid var(--borde) !important;
+  font-weight: 600 !important;
+}
+:root:root body #compareModal .pb-cmp-tabla thead th:first-child { z-index: 3; background: var(--hundido) !important; }
+:root:root body #compareModal .pb-cmp-tabla :is(th, td) { padding: var(--e-2) var(--e-3) !important; font-size: var(--t-s) !important; vertical-align: top; }
+
+/* Rejillas que caben */
+:root:root body #compareModal #compareResult :is(.cmp-text-grid-n, .cmp-headers-n, .cmp-visual-grid-n, .cmp-clado-n-grid) {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)) !important;
+}
+:root:root body #compareModal #compareResult :is(.cmp-text-grid-n, .cmp-headers-n, .cmp-visual-grid-n, .cmp-clado-n-grid) > * { min-width: 0 !important; }
+
+/* Estado vacío */
+:root:root body #compareModal .cmp-status-msg {
+  padding: var(--e-5) !important;
+  border: var(--linea) dashed var(--borde-control) !important;
+  border-radius: var(--r-contenedor) !important;
+  background: var(--superficie) !important;
+  color: var(--tinta-2) !important;
+  font-size: var(--t-m) !important;
+  line-height: var(--il-cuerpo) !important;
+  text-align: left !important;
+}
+:root:root body #compareModal .cmp-status-msg strong { display: block; margin-bottom: var(--e-1); color: var(--tinta) !important; font-family: var(--f-titulo); }
+
+/* 320 px y texto al 200 %: la cabecera del selector («Añadir especie», «n / 6 seleccionadas», «Limpiar»)
+   pasa a varias líneas y los nombres en cursiva de las tarjetas cladísticas cortan palabra si no caben. */
+:root:root body #compareModal .cmp-picker-header { display: flex !important; flex-wrap: wrap !important; gap: var(--e-2) !important; }
+:root:root body #compareModal .cmp-clado-n-card :is(em, i) { overflow-wrap: anywhere; }
