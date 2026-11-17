@@ -37,6 +37,17 @@
   var envuelta = function (sp) {
     var media = original.apply(this, arguments);
     var copia = sp && sp.id ? datos[sp.id] : null;
+    // PB-GH-11 (T4): imagen principal remota y sin copia local (anoiapithecus, gautengensis): el pie dice lo que
+    // se sabe (se carga de Wikimedia Commons; ni la imagen ni su licencia están verificadas en este repositorio)
+    // y conserva, rotulada, la licencia que declara la ficha. No se inventa crédito ni licencia.
+    if (!copia && media && /^https?:/i.test(String(media.url || '')) && !media.pbRemotaSinCopia) {
+      var r = {};
+      for (var q in media) if (Object.prototype.hasOwnProperty.call(media, q)) r[q] = media[q];
+      r.pbRemotaSinCopia = true;
+      r.fuente = (media.fuente || 'fuente remota') + ' (imagen remota; este repositorio no guarda copia)';
+      r.licencia = 'no verificada en este repositorio' + (media.licencia ? ' (la ficha declara ' + media.licencia + ')' : '');
+      return r;
+    }
     if (!copia || !media) return media;
     var url = absoluta(copia.src);
     var igual = mismaObra(media, copia);
@@ -60,5 +71,19 @@
   envuelta.__pbGh11Local = true;
   envuelta.__pbGh11Original = original;
   window.getSpeciesMedia = envuelta;
+
+  // PB-GH-11 (T4): distintivo de licencia del pie para esas imágenes remotas sin copia (antes «Imagen abierta
+  // trazable», que este repositorio no ha comprobado). getMediaLicenseProfile es global en 002.
+  var perfil = window.getMediaLicenseProfile;
+  if (typeof perfil === 'function' && !perfil.__pbGh11) {
+    var perfilEnvuelto = function (media) {
+      if (media && media.pbRemotaSinCopia) {
+        return { level: 'caution', label: 'Imagen remota sin copia local', title: 'Se carga desde Wikimedia Commons cuando hay conexión; ni la imagen ni su licencia se han verificado en este repositorio.' };
+      }
+      return perfil.apply(this, arguments);
+    };
+    perfilEnvuelto.__pbGh11 = true;
+    window.getMediaLicenseProfile = perfilEnvuelto;
+  }
   document.documentElement.dataset.pbImagenesLocales = String(Object.keys(datos).length);
 })();
