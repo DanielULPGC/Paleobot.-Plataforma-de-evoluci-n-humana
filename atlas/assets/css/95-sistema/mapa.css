@@ -128,3 +128,18 @@
   :root:root body #view-africa details.pb-africa-pautas { margin: var(--e-3) 0 !important; }
   :root:root body #view-africa .africa-map-head { padding-bottom: var(--e-2) !important; }
 }
+
+/* Tarjeta de selección del mapa: sus etiquetas .pt-badge (clado e intervalo) usan los colores claros pensados
+   para el tooltip oscuro de Filogenia (#ffcc77 sobre ocre al 35 %, ≈ 1,4:1 en la tarjeta clara). Dentro de la
+   tarjeta pasan a texto de tinta sobre --hundido, con el color del clado como borde izquierdo. */
+:root:root body #mapSelectionCard .pt-badge {
+  background: var(--hundido) !important;
+  color: var(--tinta) !important;
+  border: var(--linea) solid var(--borde) !important;
+  border-left: var(--linea-marca) solid var(--borde-control) !important;
+  text-shadow: none !important;
+}
+:root:root body #mapSelectionCard .pt-badge-basal { border-left-color: var(--c-basal) !important; }
+:root:root body #mapSelectionCard .pt-badge-australo { border-left-color: var(--c-australo) !important; }
+:root:root body #mapSelectionCard .pt-badge-paran { border-left-color: var(--c-paran) !important; }
+:root:root body #mapSelectionCard .pt-badge-homo { border-left-color: var(--c-homo) !important; }
