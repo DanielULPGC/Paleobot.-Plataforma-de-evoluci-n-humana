@@ -1,0 +1,130 @@
+/* =====================================================================================================
+   95-sistema/mapa.css · Mapa y África (PB-GH-11, tanda T4, L2). Ver mapa.js.
+   · Controles en grupos con rótulo visible («Fondo», «Capas», «Zoom», «Foco regional»), botones del sistema
+     (44 px; pulsado = --acento-suave). Sin emoji nuevos; el «🌾» del rótulo «Paleoambiente» es contenido del
+     marcado y lo trata la T5 (fila 34).
+   · Pautas de lectura plegadas («Cómo moverse por el mapa», «Cómo leer este módulo»).
+   · Alternativa textual visible bajo cada mapa; estado vacío sobre el mapa cuando la lista está vacía.
+   · Teléfono (< 48 rem): en Mapa, .map-controls y .map-shell se abren (display: contents) para que el orden
+     visual sea título → mapa → controles → foco regional → lista; en África, #africaDashboard se abre igual y el
+     bloque del mapa sube justo después de la cabecera. Es un orden VISUAL (order): en el DOM, los controles
+     siguen antes que el mapa (orden de tabulación coherente con el de escritorio).
+   Revertir: quitar este archivo y mapa.js de atlas/index.html.
+   ===================================================================================================== */
+/* Grupos de controles */
+#view-map .pb-mapa-rotulo,
+#view-map #mapRegionGuide::before {
+  align-self: center;
+  margin-right: var(--e-1);
+  font-family: var(--f-titulo);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  color: var(--tinta-2);
+  white-space: nowrap;
+}
+#view-map #mapRegionGuide::before { content: "Foco regional"; }
+:root:root body #view-map :is(#mapLayerSwitch, .pb-mapa-capas, .map-zoom-controls) {
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: var(--e-1) !important;
+  padding: var(--e-1) var(--e-2) !important;
+  border: var(--linea) solid var(--borde) !important;
+  border-radius: var(--r-control) !important;
+  background: var(--superficie) !important;
+  box-shadow: none !important;
+}
+:root:root body #view-map :is(.map-layer-btn, .map-toggle, .map-zoom-btn, .pb-v50-map-expand, .map-region-pill) {
+  min-height: var(--control) !important;
+  min-width: var(--control) !important;
+  padding: 0 var(--e-3) !important;
+  border: var(--linea) solid var(--borde-control) !important;
+  border-radius: var(--r-control) !important;
+  background: var(--superficie) !important;
+  color: var(--tinta) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-s) !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+:root:root body #view-map :is(.map-layer-btn, .map-toggle, .map-region-pill):is(.active, [aria-pressed="true"]) {
+  background: var(--acento-suave) !important;
+  border-color: var(--acento) !important;
+  color: var(--acento-fuerte) !important;
+}
+:root:root body #view-map .map-region-pill .map-region-pill-count { background: var(--hundido) !important; color: var(--tinta-2) !important; }
+:root:root body #view-map .map-zoom-readout { color: var(--tinta-2) !important; font-variant-numeric: tabular-nums; }
+:root:root body #view-map #mapRegionGuide { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: var(--e-2) !important; margin: var(--e-3) 0 !important; }
+
+/* Pautas plegadas */
+:is(#view-map, #view-africa) details:is(.pb-mapa-pautas, .pb-africa-pautas) {
+  margin: var(--e-4) 0;
+  border: var(--linea) solid var(--borde);
+  border-radius: var(--r-contenedor);
+  background: var(--superficie);
+}
+:is(#view-map, #view-africa) details:is(.pb-mapa-pautas, .pb-africa-pautas) > summary {
+  display: flex; align-items: center; gap: var(--e-2);
+  min-height: var(--control); padding: 0 var(--e-4);
+  cursor: pointer; list-style: none;
+  font-family: var(--f-titulo); font-size: var(--t-s); font-weight: 600; color: var(--acento);
+}
+:is(#view-map, #view-africa) details:is(.pb-mapa-pautas, .pb-africa-pautas) > summary::-webkit-details-marker { display: none; }
+:is(#view-map, #view-africa) details:is(.pb-mapa-pautas, .pb-africa-pautas) > summary::before {
+  content: ""; width: .5rem; height: .5rem;
+  border-right: var(--linea-gruesa) solid currentColor; border-bottom: var(--linea-gruesa) solid currentColor;
+  transform: rotate(-45deg);
+}
+:is(#view-map, #view-africa) details:is(.pb-mapa-pautas, .pb-africa-pautas)[open] > summary::before { transform: rotate(45deg); }
+:is(#view-map, #view-africa) details:is(.pb-mapa-pautas, .pb-africa-pautas) > :not(summary) { margin: 0 var(--e-4) var(--e-4) !important; }
+
+/* Alternativa textual */
+.pb-mapa-alt, .pb-africa-alt {
+  margin: var(--e-2) 0 0;
+  color: var(--tinta-2);
+  font-size: var(--t-s);
+  line-height: var(--il-cuerpo);
+  max-width: var(--medida);
+}
+/* Estado vacío: si la lista dice que no hay yacimientos visibles, el mapa lo dice también. */
+#view-map .map-shell:has(#mapSiteList > .map-selection-empty) #mapContainer::after {
+  content: "Ningún yacimiento cumple los filtros actuales. Use «Limpiar filtros» en la franja de consulta.";
+  position: absolute; inset: auto var(--e-3) var(--e-3) var(--e-3);
+  padding: var(--e-2) var(--e-3);
+  border: var(--linea) solid var(--borde-control);
+  border-radius: var(--r-control);
+  background: var(--superficie);
+  color: var(--tinta);
+  font-size: var(--t-s);
+}
+
+/* Teléfono: el mapa en el primer pantallazo (orden visual). */
+@media (max-width: 47.99rem) {
+  :root:root body #view-map > .map-outer { display: flex !important; flex-direction: column !important; }
+  :root:root body #view-map > .map-outer > :is(.map-controls, .map-shell) { display: contents !important; }
+  :root:root body #view-map > .map-outer .map-controls-left { order: 1; }
+  :root:root body #view-map > .map-outer .map-stage { order: 2; min-width: 0; }
+  :root:root body #view-map > .map-outer .map-controls-right { order: 3; margin-top: var(--e-3) !important; }
+  :root:root body #view-map > .map-outer > #mapRegionGuide { order: 4; }
+  :root:root body #view-map > .map-outer .map-sidepanel { order: 5; margin-top: var(--e-3) !important; }
+  :root:root body #view-map > .map-outer > :is(.pb-mapa-pautas, #mapLearningLab, .map-lens-wrap) { order: 6; }
+  :root:root body #view-map .map-controls-left p { margin-bottom: var(--e-2) !important; }
+
+  :root:root body #view-africa > .africa-outer { display: flex !important; flex-direction: column !important; }
+  :root:root body #view-africa #africaDashboard { display: contents !important; }
+  :root:root body #view-africa #africaDashboard > .africa-layout { order: -2; }
+  :root:root body #view-africa > .africa-outer > .africa-hero { order: -1; }
+}
+
+/* África en escritorio y tableta: cabecera del módulo más compacta (cifras en una fila) para que el mapa
+   asome en el primer pantallazo sin mover la presentación del módulo. */
+@media (min-width: 48rem) {
+  :root:root body #view-africa .africa-hero { gap: var(--e-3) !important; margin-bottom: var(--e-3) !important; }
+  :root:root body #view-africa .africa-intro { padding: var(--e-4) var(--e-5) !important; }
+  :root:root body #view-africa .africa-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: var(--e-2) !important; }
+  :root:root body #view-africa .africa-kpi { padding: var(--e-2) var(--e-3) !important; min-height: 0 !important; }
+  :root:root body #view-africa .africa-kpi strong { font-size: var(--t-l) !important; line-height: 1.2 !important; }
+  :root:root body #view-africa .africa-kpi span { font-size: var(--t-xs) !important; letter-spacing: 0 !important; text-transform: none !important; }
+  :root:root body #view-africa details.pb-africa-pautas { margin: var(--e-3) 0 !important; }
+  :root:root body #view-africa .africa-map-head { padding-bottom: var(--e-2) !important; }
+}
