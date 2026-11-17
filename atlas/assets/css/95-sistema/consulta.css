@@ -188,7 +188,4 @@
   :root:root body .toolbar.pb-consulta.pb-consulta-abierta .controls select { max-width: none !important; }
   :root:root body .toolbar.pb-consulta.pb-consulta-abierta .controls select { width: 100% !important; }
 }
-@media (max-width: 47.99rem) {
-  :root:root body .toolbar.pb-consulta .search-box .search-kbd { display: none !important; } /* atajo «/» sin teclado físico; el campo sigue igual */
-}
 @media print { :root:root body .toolbar.pb-consulta { display: none !important; } }
