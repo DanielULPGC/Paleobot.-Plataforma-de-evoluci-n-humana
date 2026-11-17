@@ -1,0 +1,316 @@
+/* =====================================================================================================
+   95-sistema/ficha.css · ficha de especie como página de manual (PB-GH-11, tanda T4, L2; notas/05 § 9)
+   -----------------------------------------------------------------------------------------------------
+   #detailView.pb-ficha (la clase la pone ficha.js; la apertura sigue dependiendo de .active):
+     · escritorio (≥ 64 rem): panel lateral de unos 40 rem (clamp 40-52 rem) con velo sobre el resto de la página,
+       en lugar de ocupar los 1 366 px de ancho;
+     · tableta y teléfono: pantalla completa (como antes), con la cabecera más compacta: en teléfono las
+       acciones («Volver atrás», «‹ n/50 ›», «Cerrar») van primero, en una fila; nombre e intervalo debajo.
+     · cabecera de manual: nombre (cursiva de nomenclatura, Lexend), intervalo, estado de consenso con el aspecto
+       .pb-etiqueta (aplicado en la T2 a .badge-estado; aquí solo se alinea), ubicación y descubrimiento como
+       datos neutros (el amarillo queda reservado a la incertidumbre); acciones con botones del sistema de 44 px.
+     · imagen principal sobre papel (antes, marco petróleo con degradado), contenida y con su crédito debajo;
+       pestañas del sistema (subrayado de acento); minimapa con su alternativa textual.
+   Se conservan «Volver atrás», «‹ n/50 ›» y cerrar (el «✕» se rotula «Cerrar», como en el diálogo único; su
+   nombre accesible, «Cerrar», no cambia). Nada se oculta. Gana a 009/010/011 («#detailView.detail-panel.active»
+   con !important) con :root:root body + .pb-ficha. Revertir: quitar este archivo y ficha.js de atlas/index.html.
+   ===================================================================================================== */
+:root:root body #detailView.detail-panel.active.pb-ficha {
+  z-index: 2600 !important;
+  background: var(--papel) !important;
+  color: var(--tinta) !important;
+}
+/* Con la ficha abierta, el resto de la página es inerte (dialogos.js): los dos botones flotantes («↑» y
+   «Herramientas») no se pueden usar y tapaban el texto de la ficha. Se dejan de pintar mientras está abierta
+   (visibility; vuelven al cerrarla). Mismo criterio que 020 con .fab-group. */
+body:has(> #detailView.detail-panel.active.pb-ficha) :is(.scroll-top-btn, #pb-mobile-tools-toggle) { visibility: hidden !important; }
+@media (min-width: 64rem) {
+  :root:root body #detailView.detail-panel.active.pb-ficha {
+    inset: 0 0 0 auto !important;
+    left: auto !important;
+    right: 0 !important;
+    width: clamp(40rem, 46vw, 52rem) !important;
+    max-width: 100vw !important;
+    border-left: var(--linea) solid var(--borde) !important;
+    box-shadow: var(--sombra-flotante) !important;
+  }
+  body:has(> #detailView.detail-panel.active.pb-ficha)::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 2590;
+    background: rgba(31, 36, 34, .48);
+    pointer-events: none;
+  }
+}
+
+/* Cabecera */
+:root:root body #detailView.pb-ficha.active .panel-header {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  gap: var(--e-3) var(--e-4) !important;
+  padding: var(--e-4) var(--e-5) var(--e-3) !important;
+  background: var(--superficie) !important;
+  border-bottom: var(--linea) solid var(--borde) !important;
+  box-shadow: none !important;
+}
+:root:root body #detailView.pb-ficha.active .panel-header-text { flex: 1 1 18rem !important; min-width: 0 !important; }
+:root:root body #detailView.pb-ficha.active #detailViewTitle {
+  margin: 0 0 var(--e-2) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xl) !important;
+  font-weight: 600 !important;
+  font-style: italic !important;
+  line-height: var(--il-titulo) !important;
+  letter-spacing: 0 !important;
+  color: var(--tinta) !important;
+  overflow-wrap: anywhere;
+}
+:root:root body #detailView.pb-ficha.active .panel-header-meta {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: var(--e-1) var(--e-2) !important;
+  margin: 0 !important;
+}
+:root:root body #detailView.pb-ficha.active .panel-header-meta .sp-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: var(--e-1) !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 var(--e-2) !important;
+  border: var(--linea) solid var(--borde) !important;
+  border-radius: var(--r-pildora) !important;
+  background: var(--hundido) !important;
+  color: var(--tinta-2) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  box-shadow: none !important;
+}
+:root:root body #detailView.pb-ficha.active .panel-header-meta .sp-tag:first-child { color: var(--tinta) !important; font-weight: 600 !important; font-variant-numeric: tabular-nums; }
+:root:root body #detailView.pb-ficha.active .panel-header-meta .discovery-tag svg { color: var(--tinta-3) !important; }
+:root:root body #detailView.pb-ficha.active .panel-header-meta .badge-estado { margin: 0 !important; }
+
+/* Acciones */
+:root:root body #detailView.pb-ficha.active .panel-actions {
+  flex: none !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: var(--e-2) !important;
+  min-width: 0 !important;
+  width: auto !important;
+}
+:root:root body #detailView.pb-ficha.active .panel-actions :is(.panel-back-btn, .panel-nav-btn, .panel-close) {
+  flex: none !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: var(--e-1) !important;
+  min-width: var(--control) !important;
+  min-height: var(--control) !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 var(--e-3) !important;
+  border: var(--linea) solid var(--borde-control) !important;
+  border-radius: var(--r-control) !important;
+  background: var(--superficie) !important;
+  color: var(--tinta) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-s) !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+:root:root body #detailView.pb-ficha.active .panel-actions .panel-nav-btn { padding: 0 !important; }
+:root:root body #detailView.pb-ficha.active .panel-actions :is(.panel-back-btn, .panel-nav-btn, .panel-close):hover { background: var(--hundido) !important; border-color: var(--tinta-2) !important; }
+:root:root body #detailView.pb-ficha.active .panel-actions .panel-nav-counter {
+  min-width: 3.25rem !important;
+  text-align: center !important;
+  color: var(--tinta-2) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-variant-numeric: tabular-nums;
+}
+:root:root body #detailView.pb-ficha.active .panel-actions .panel-close { font-size: 0 !important; padding: 0 var(--e-4) !important; }
+:root:root body #detailView.pb-ficha.active .panel-actions .panel-close::before {
+  content: "Cerrar";
+  font-family: var(--f-titulo);
+  font-size: var(--t-s);
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* Pestañas */
+:root:root body #detailView.pb-ficha.active .tabs-container {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 var(--e-5) !important;
+  background: var(--superficie) !important;
+  border-bottom: var(--linea) solid var(--borde) !important;
+}
+:root:root body #detailView.pb-ficha.active .tabs-list { min-height: 0 !important; gap: var(--e-1) !important; }
+:root:root body #detailView.pb-ficha.active .tab-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: var(--control) !important;
+  margin: 0 !important;
+  padding: 0 var(--e-3) !important;
+  border: 0 !important;
+  border-bottom: var(--linea-gruesa) solid transparent !important;
+  border-radius: 0 !important;
+  background: none !important;
+  color: var(--tinta-2) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-s) !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+:root:root body #detailView.pb-ficha.active .tab-item:is(.active, [aria-selected="true"]) {
+  border-bottom-color: var(--acento) !important;
+  color: var(--tinta) !important;
+  font-weight: 600 !important;
+}
+:root:root body #detailView.pb-ficha.active .tab-item::after { display: none !important; }
+
+/* Contenido: medida de lectura dentro del panel */
+:root:root body #detailView.pb-ficha.active .panel-content {
+  max-width: none !important;
+  padding: var(--e-5) var(--e-5) var(--e-7) !important;
+}
+
+/* Imagen principal */
+:root:root body #detailView.pb-ficha.active .species-media-figure {
+  margin: 0 0 var(--e-5) !important;
+  border: var(--linea) solid var(--borde) !important;
+  border-radius: var(--r-contenedor) !important;
+  background: var(--superficie) !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+:root:root body #detailView.pb-ficha.active .species-media-frame {
+  background: var(--hundido) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  min-height: 0 !important;
+}
+:root:root body #detailView.pb-ficha.active .species-media-frame::before,
+:root:root body #detailView.pb-ficha.active .species-media-frame::after { background: none !important; }
+:root:root body #detailView.pb-ficha.active .species-header-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: 22rem !important;
+  object-fit: contain !important;
+  background: var(--hundido) !important;
+  border-radius: 0 !important;
+}
+:root:root body #detailView.pb-ficha.active .species-media-badge {
+  background: var(--superficie) !important;
+  border: var(--linea) solid var(--borde) !important;
+  color: var(--tinta-2) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  box-shadow: none !important;
+}
+:root:root body #detailView.pb-ficha.active .species-media-caption {
+  margin: 0 !important;
+  padding: var(--e-3) var(--e-4) var(--e-4) !important;
+  border: 0 !important;
+  border-top: var(--linea) solid var(--borde) !important;
+  border-radius: 0 !important;
+  background: var(--superficie) !important;
+}
+
+/* Cabeceras de bloque con distintivo («3 recursos», «A-E-R-C»…): pueden pasar a dos líneas en vez de
+   salirse del panel a 320 px o con el texto al 200 %. */
+:root:root body #detailView.pb-ficha.active :is(.visual-evidence-head, .argument-scaffold-head, .misconception-head, .leveled-inquiry-head, .critical-guide-head) { flex-wrap: wrap !important; min-width: 0 !important; }
+:root:root body #detailView.pb-ficha.active :is(.visual-evidence-head, .argument-scaffold-head, .misconception-head, .leveled-inquiry-head, .critical-guide-head) > * { min-width: 0 !important; max-width: 100% !important; }
+
+:root:root body #detailView.pb-ficha.active .evidence-interpretation-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)) !important; }
+:root:root body #detailView.pb-ficha.active .panel-content :is(a, small, code, .doi-link) { overflow-wrap: anywhere; }
+
+/* Minimapa y su alternativa textual */
+:root:root body #detailView.pb-ficha.active .pb-ficha-mapa-alt {
+  margin: 0 !important;
+  padding: var(--e-2) var(--e-4) !important;
+  border-top: var(--linea) solid var(--borde) !important;
+  background: var(--superficie) !important;
+  color: var(--tinta-2) !important;
+  font-size: var(--t-s) !important;
+  line-height: var(--il-cuerpo) !important;
+}
+
+/* Teléfono: la ficha entera se desplaza (no solo el contenido): solo quedan fijas la fila de acciones
+   («Volver atrás», «‹ n/50 ›», «Cerrar») y, debajo, las pestañas. Nombre y datos de cabecera se desplazan con
+   el texto. Antes la cabecera fija ocupaba 260 px (y 630 px con el texto al 200 %). La altura de la fila de
+   acciones la mide ficha.js (--pb-ficha-acciones) para colocar las pestañas justo debajo. */
+@media (max-width: 47.99rem) {
+  :root:root body #detailView.detail-panel.active.pb-ficha {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+  }
+  :root:root body #detailView.pb-ficha.active .panel-header { display: contents !important; }
+  :root:root body #detailView.pb-ficha.active .panel-actions {
+    order: 0 !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 6 !important;
+    flex: none !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: var(--e-1) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: var(--e-2) var(--e-4) !important;
+    background: var(--superficie) !important;
+    border-bottom: var(--linea) solid var(--borde) !important;
+  }
+  :root:root body #detailView.pb-ficha.active .panel-actions .panel-back-btn { margin-right: auto !important; }
+  :root:root body #detailView.pb-ficha.active .panel-actions :is(.panel-back-btn, .panel-close) { padding: 0 var(--e-2) !important; }
+  :root:root body #detailView.pb-ficha.active .panel-actions .panel-nav-counter { min-width: 2.75rem !important; }
+  :root:root body #detailView.pb-ficha.active .panel-header-text {
+    order: 1 !important;
+    flex: none !important;
+    padding: var(--e-3) var(--e-4) !important;
+    background: var(--superficie) !important;
+  }
+  :root:root body #detailView.pb-ficha.active #detailViewTitle { font-size: var(--t-l) !important; margin-bottom: var(--e-1) !important; }
+  :root:root body #detailView.pb-ficha.active .tabs-container {
+    order: 2 !important;
+    position: sticky !important;
+    top: var(--pb-ficha-acciones, 3.8rem) !important;
+    z-index: 5 !important;
+    flex: none !important;
+    padding: 0 var(--e-2) !important;
+  }
+  :root:root body #detailView.pb-ficha.active .panel-content {
+    order: 3 !important;
+    flex: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: var(--e-4) var(--e-4) var(--e-7) !important;
+  }
+}
+@media print {
+  body:has(> #detailView.detail-panel.active.pb-ficha)::after { display: none !important; }
+}
