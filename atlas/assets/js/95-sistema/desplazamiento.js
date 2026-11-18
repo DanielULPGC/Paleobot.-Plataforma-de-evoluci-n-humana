@@ -5,7 +5,7 @@
    la barra a 112-122 px del borde y un resto de la portada a la vista (escritorio): varios módulos
    importados lanzan sus propios desplazamientos suaves (main, #pbV50Blocks, la sección) y ninguno deja la
    vista arriba. Ahora, cuando la persona elige una vista (con puntero o teclado: hubo pointerdown o keydown
-   en el último segundo y medio), se espera a que esos desplazamientos terminen y se coloca la página de
+   en el último segundo y medio, o el panel «Vistas» estaba abierto), se espera a que esos desplazamientos terminen y se coloca la página de
    modo que la barra fija quede pegada arriba, la franja «Consulta y filtros» justo debajo y, a continuación,
    el título de la vista. No mueve el foco (lo gestiona navegacion.js): solo window.scrollTo.
    No actúa: si no hubo gesto reciente (switchView llamado por código), si hay un diálogo abierto, o si la
@@ -57,8 +57,14 @@
     }
     pendiente = { t: setTimeout(mirar, 220) };
   }
+  // PB-GH-11 (T4, corrección tras la verificación del director): el pointerdown y el click de los chips de
+  // «Vistas» los detienen módulos importados en captura sobre window, así que no llegan aquí; si la persona
+  // tardaba 1,5 s o más en elegir, el único gesto visto era el que abrió el panel y no se colocaba nada. Ahora
+  // también cuenta como elección que el panel «Vistas» siga abierto al cambiar de vista (barra.js lo cierra
+  // 80 ms después). switchView llamado por código, con el panel cerrado y sin gesto reciente, sigue sin actuar.
+  function panelAbierto() { var p = document.getElementById('pbBarraPanel'); return !!(p && !p.hidden); }
   function trasCambio() {
-    if (Date.now() - gesto > 1500) return;      // solo si la persona eligió la vista
+    if (Date.now() - gesto > 1500 && !panelAbierto()) return;      // solo si la persona eligió la vista
     cancelar();
     esperar(Date.now());
   }

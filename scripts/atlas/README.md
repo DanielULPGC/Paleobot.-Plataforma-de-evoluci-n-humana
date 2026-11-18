@@ -97,7 +97,8 @@ línea base no se reescribe.
 
 ## Medidas añadidas en la T4 (rutas principales)
 
-- `vista.posicion` (función): entra, elige Cronología, Mapa y África desde «Vistas» con el ratón y mide la
+- `vista.posicion` (función): entra, elige Cronología, Mapa y África desde «Vistas» con el ratón, tras 2,5 s con
+  el panel abierto (como quien lo lee; así se detectó un fallo que las pulsaciones inmediatas no veían), y mide la
   posición de la barra, del título de la vista y del primer dato (tarjeta, mapa) en «medidas». Items: barra
   arriba, título en el primer tercio de la pantalla y primer dato dentro del primer pantallazo.
 - `mapa.costas` (función): fondo local de costas del mapa (número de trazados y de anillos) y puntos de control

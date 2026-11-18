@@ -767,7 +767,8 @@ const FUNCIONES = {
   },
 
   // ---------- PB-GH-11 (T4): rutas principales ----------
-  // Elegir Cronología, Mapa y África desde «Vistas» con el ratón, como el alumnado: ¿dónde quedan la barra, el
+  // Elegir Cronología, Mapa y África desde «Vistas» con el ratón, como el alumnado (con 2,5 s de lectura del
+  // panel antes de pulsar): ¿dónde quedan la barra, el
   // título de la vista y el primer dato (tarjeta, mapa)? Items: barra arriba, título en el primer tercio de la
   // pantalla y primer dato dentro del primer pantallazo. Las cifras van en «medidas» (informativas).
   async 'vista.posicion'(page) {
@@ -778,6 +779,9 @@ const FUNCIONES = {
       const chip = `#pbV50Blocks [data-pb-v50-view="${v}"]`;
       await asegurarVistas(page, chip);
       if (!(await visible(page, chip))) { await page.click('#pbV50Blocks [data-pb-v50-block="explorar"]', { timeout: 2000 }).catch(() => {}); await page.waitForTimeout(350); }
+      // Espera realista (verificación de la T4): quien lee el panel tarda en elegir; con 2,5 s el gesto que abrió
+      // el panel ya no cuenta y se prueba que la vista se coloca por la elección misma.
+      await page.waitForTimeout(2500);
       await page.click(chip, { timeout: 2500 }).catch(() => page.evaluate((s) => document.querySelector(s)?.click(), chip));
       await page.waitForTimeout(1800);
       const m = await page.evaluate(([v, sel]) => {
