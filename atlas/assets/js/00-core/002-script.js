@@ -13564,6 +13564,9 @@ function renderSelfAuditReport(report = buildSelfAuditReport()) {
 function runSelfAudit() {
   const report = buildSelfAuditReport();
   const host = document.getElementById('teachingAuditReport');
+  // PB-GH-11 (T5, fila 19): fuera de Centro docente el informe se pintaba en un contenedor oculto (o, sin él,
+  // en un alert). Si no está a la vista, 95-sistema/diagnostico.js abre Centro docente y lo muestra.
+  if (!(host && host.getClientRects().length) && window.PBDiagnostico && window.PBDiagnostico.mostrar(report, renderSelfAuditReport)) return;
   if (host) {
     host.innerHTML = renderSelfAuditReport(report);
     host.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

@@ -15,7 +15,7 @@
 (function () {
   'use strict';
   if (window.PBDesplazamiento) return;
-  var gesto = 0, propio = 0, pendiente = null;
+  var gesto = 0, propio = 0, pendiente = null, omitido = 0;
   var TECLAS = /^(PageUp|PageDown|Home|End|ArrowUp|ArrowDown| )$/;
 
   document.addEventListener('pointerdown', function () { gesto = Date.now(); }, { passive: true });
@@ -64,10 +64,12 @@
   // 80 ms después). switchView llamado por código, con el panel cerrado y sin gesto reciente, sigue sin actuar.
   function panelAbierto() { var p = document.getElementById('pbBarraPanel'); return !!(p && !p.hidden); }
   function trasCambio() {
+    if (Date.now() - omitido < 2000) { omitido = 0; return; }   // T5: quien abre la vista la coloca (diagnóstico)
     if (Date.now() - gesto > 1500 && !panelAbierto()) return;      // solo si la persona eligió la vista
     cancelar();
     esperar(Date.now());
   }
   ['paleobot:viewchange', 'paleobot:v50-viewchange'].forEach(function (n) { document.addEventListener(n, trasCambio); });
-  window.PBDesplazamiento = { destino: destino, colocar: colocar, ultimo: function () { return propio; } };
+  window.PBDesplazamiento = { destino: destino, colocar: colocar, ultimo: function () { return propio; },
+    omitir: function () { omitido = Date.now(); cancelar(); } };
 })();

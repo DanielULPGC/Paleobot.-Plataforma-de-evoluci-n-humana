@@ -900,7 +900,8 @@
       "git_blob_sha1": "0224d743e900be5b7c06f2073d63be54e79e10e1",
       "sha256": "53f38a2608a0a19c80ab737acade4adfbf5bd56aefd9bd5a2c088e6ef5fd5e8b",
       "retained_paths": [
-        "atlas/assets/js/20-navigation/077-paleobot-integrated-route-bridge.js"
+        "atlas/assets/js/20-navigation/077-paleobot-integrated-route-bridge.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/20-navigation/077-paleobot-integrated-route-bridge.js.snapshot"
       ]
     },
     {
@@ -1030,7 +1031,8 @@
       "git_blob_sha1": "515ef42c42a56846f205b0b9115e0bbcbc059f10",
       "sha256": "a635c904d839231e5234e814fd799c36a2c23b862b34ac114d8d778d6d51f44d",
       "retained_paths": [
-        "atlas/assets/js/70-export/063-paleobot-v66-svg-export.js"
+        "atlas/assets/js/70-export/063-paleobot-v66-svg-export.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/70-export/063-paleobot-v66-svg-export.js.snapshot"
       ]
     },
     {
