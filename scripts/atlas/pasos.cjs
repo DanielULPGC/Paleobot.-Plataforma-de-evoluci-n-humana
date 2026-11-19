@@ -967,13 +967,28 @@ const FUNCIONES = {
 // Enlace profundo ?view=<id>#main-content de las 31 vistas (lo usa el recorrido). Recibe una función que abre
 // una página nueva; cada vista se comprueba con almacenamiento local vacío (sin «última vista» recordada).
 async function enlacesProfundos(page, base, listo) {
-  const out = { paso: 'enlaces.profundos', items: {} };
+  const out = { paso: 'enlaces.profundos', items: Object.create(null) };
   await page.context().addInitScript(() => { try { localStorage.clear(); sessionStorage.clear(); } catch (e) {} });
   for (const v of VISTAS) {
     await page.goto(`${base}/atlas/index.html?view=${v}#main-content`, { waitUntil: 'load' }).catch(() => {});
     await listo(page, 5000);
     await page.waitForTimeout(500);
     out.items[v] = await page.evaluate((v) => !!document.getElementById('view-' + v)?.classList.contains('active'), v);
+  }
+  // PB-GH-11 (T5, corrección tras la verificación del director): activar la vista no basta; tras la carga
+  // (4,5 s) el espacio de trabajo debe estar entrado, la barra arriba y el título de la vista a la vista
+  // (entre 0 y 260 px del borde), con y sin el ancla #main-content (la forma de atlas/recorrido/integracion.js).
+  out.posicion = {};
+  for (const v of ['timeline', 'africa', 'biogeo', 'constructor']) {
+    for (const h of ['', '#main-content']) {
+      await page.goto(`${base}/atlas/index.html?view=${v}${h}`, { waitUntil: 'load' }).catch(() => {});
+      await listo(page, 5000);
+      await page.waitForTimeout(4500);
+      const r = await page.evaluate((v) => { const s = document.getElementById('view-' + v); const t = s && s.querySelector('.view-hero-title-row h2, .view-hero h2, h2'); const b = document.getElementById('pbV50Blocks');
+        return { activa: !!(s && s.classList.contains('active')), entrado: document.body.classList.contains('pb-workspace-entered'), barra: b ? Math.round(b.getBoundingClientRect().top) : null, titulo: t ? Math.round(t.getBoundingClientRect().top) : null }; }, v);
+      out.posicion[v + h] = r;
+      out.items[`posición ${v}${h ? ' con #main-content' : ''}: título a la vista bajo la barra`] = r.activa && r.entrado && r.barra !== null && Math.abs(r.barra) <= 2 && r.titulo >= 0 && r.titulo <= 260;
+    }
   }
   out.ok = Object.values(out.items).every(Boolean);
   return out;

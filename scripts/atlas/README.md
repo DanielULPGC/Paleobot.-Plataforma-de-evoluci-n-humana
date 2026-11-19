@@ -126,6 +126,9 @@ Como en la T3, no existen en la línea base: en `--comparar` salen como «otras�
   más saltaban en la línea base (fila 13); `hadRecentInput` excluido, como `recorrido.cjs`.
 - `diagnostico` y `enlaces.profundos` ya existían: desde la T5 responden (informe visible fuera de Centro
   docente; `?view=` en las 31 vistas).
+- `enlaces.profundos` (endurecida tras la verificación del director): además de activar las 31 vistas, en
+  Cronología, África, Biogeografía y Constructor, con y sin `#main-content`, exige 4,5 s después de la carga el
+  espacio de trabajo entrado, la barra arriba (±2 px) y el título de la vista entre 0 y 260 px del borde.
 - `--comparar`: los encabezados se comparan sin pictogramas decorativos y por sus 80 primeros caracteres (igual
   en A, B y el inventario), porque la fila 34 retira el emoji de rótulos como «🌡 Línea de tiempo…».
 Como las de la T3 y la T4, no existen en la línea base y en `--comparar` salen como «otras». `items` con
