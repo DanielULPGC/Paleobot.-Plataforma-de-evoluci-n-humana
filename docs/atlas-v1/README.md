@@ -71,6 +71,11 @@ Hallazgos de la auditoría de integración (24-10-2026), sin corregir porque la 
 | IMS | `imsmanifest.xml` correcto en integridad (168 archivos, todos presentes) pero mínimo: sin `schema`/`schemaversion` ni metadatos. |
 | Pruebas pendientes | Navegador real distinto de Chromium, lector de pantalla, revisión disciplinar de las fichas. |
 
+Nota posterior (PB-GH-11, rama local sin publicar; la tabla anterior es la de la auditoría de 24-10-2026 y no se
+edita): la CSP del atlas ya no admite scripts en línea (`script-src 'self'`) pero conserva `'unsafe-inline'` en
+`style-src`; el atlas ya no contacta con Google Fonts ni con cdnjs (Leaflet alojado); siguen las imágenes de
+Wikimedia sin copia local, las teselas y el relieve del mapa. Detalle en `docs/diseno/AUDITORIA_PB_GH_11.md`.
+
 ## 6. Procedencia
 
 Huellas y origen en [`provenance/ATLAS_V1_IMPORT.json`](../../provenance/ATLAS_V1_IMPORT.json). Las diferencias de `atlas/` respecto al ZIP recibido están documentadas en `provenance/PB_GH_0*_CORRECCIONES.json`, con los originales archivados en `docs/historial/`; el ZIP no se incluye en el árbol (`.gitignore`). El recurso se publica como sitio web; no se distribuye como paquete para Moodle.

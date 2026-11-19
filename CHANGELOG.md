@@ -1,5 +1,53 @@
 # Registro de cambios
 
+## PB-GH-11 · Atlas interactivo: auditoría y rediseño · 13-19/11/2026
+
+Ronda sobre `atlas/index.html` y `atlas/assets/` para el alumnado del Diploma de Estudios
+Africanos, en la rama local `feat/pb-gh-11-atlas` (sin publicar; puerta en NO_GO). No se
+elimina contenido, función ni vista: lo nuevo vive en `atlas/assets/{css,js}/95-sistema/`,
+enlazado al final, y reubica o pliega lo existente; lo que cambiaría el modelo de
+navegación queda como propuesta. Informe clasificado por impacto, con la tabla de corrección
+(34 filas de partida y 28 hallazgos posteriores), evidencia y decisiones pendientes:
+`docs/diseno/AUDITORIA_PB_GH_11.md`.
+
+- Bloqueantes: sin red de Wikimedia, abrir una ficha ya no dispara un bucle de 120-209
+  peticiones de imagen por segundo (respaldo local y un solo intento por imagen); el botón
+  «Comenzar clásico» de la autoevaluación se ve (1,08:1 → 7,7:1); los diálogos dejan de
+  abrirse con `aria-hidden="true"`.
+- Navegación y lectura: barra de trabajo fija de 56 px (antes 950 px en el teléfono) con un
+  panel «Vistas» que muestra las mismas 4 familias y 31 vistas; cabecera de vista con título
+  y pregunta guía, y el resto plegado en «Cómo usar esta vista»; franja «Consulta y filtros»
+  compacta; al elegir una vista, su título queda a 156-186 px del borde (antes 423-935 px).
+  Ficha como página de manual, Cronología, Mapa y África, Comparador, Bibliografía y Glosario
+  y vistas de gráficos reorganizados sin cambiar su contenido.
+- Foco y accesibilidad: cada diálogo recibe el foco, lo retiene y lo devuelve; un solo anillo
+  de foco azul (≥ 5,1:1); contraste de texto sin infracciones axe en las 31 vistas; regiones
+  desplazables con foco; sin anidamiento interactivo; rótulos sin emoji (el texto se conserva);
+  aviso y alternativas sin JavaScript; sin saltos de maquetación al cargar (CLS de carga 0,99-1,67 →
+  0-0,05), a costa de un primer pintado unos 0,5 s más tardío en servidor local.
+- Sin terceros de fuentes ni de scripts: Lexend local por `assets/paleobot-base.css` (el
+  atlas ya consume el sistema «Papel y tierra»), Leaflet 1.9.4 alojado en
+  `atlas/assets/vendor/leaflet/` con su procedencia, imagen principal de 47 taxones desde
+  `img/taxones/` y fondo local de costas (Natural Earth, dominio público) para el mapa. CSP con
+  `script-src 'self'`; `style-src` conserva `'unsafe-inline'` (propuesta).
+- Funciones que fallaban desde la importación y ahora responden: simulador de dispersión,
+  Banco de recursos, Diagnóstico, exportar SVG del constructor, lente «Todos los focos» y los
+  enlaces `?view=` (31 vistas, y llevan a la vista, no a la portada).
+- Red de seguridad: arnés del atlas en `scripts/atlas/` (humo comparable, tormenta de
+  peticiones, recorrido, estados) y línea base de `c971001` en `docs/diseno/atlas/linea-base/`;
+  cada tanda cerró con 0 pérdidas en escritorio y teléfono, con y sin terceros simulados.
+- Verificador: 7 comprobaciones nuevas (enlaces de `95-sistema` y `carga-fin.css` último;
+  CSP del atlas sin relajar; `95-sistema` sin manejadores en línea, `eval`, escuchas en
+  captura ni hosts nuevos; lista blanca de `?view=`; imágenes locales y costas generadas),
+  más la procedencia de los archivos de gobierno, con 21 pruebas. Procedencia en
+  `provenance/PB_GH_11_CORRECCIONES.json`; `docs/diseno/SISTEMA.md` ampliado al atlas.
+- Pendiente de la titular: capa «Topográfico» fuera de la CSP, QR de la ficha académica, MIS 8
+  ausente en el simulador, mapa de África esquemático, nivel por defecto, lente inicial del
+  mapa y la licencia de Leaflet, que la documentación describe como MIT y es BSD de 2 cláusulas.
+- Límites: medido en Chromium sin red de Wikimedia, teselas ni ArcGIS; sin lector de pantalla,
+  Firefox, Safari ni dispositivos reales; solo modo claro; en 21 taxones la copia local es otra
+  fotografía que la que citaba la ficha. PB-01 sigue reproduciéndose.
+
 ## PB-GH-10 · Auditoría y rediseño de diseño de producto · 12-11-2026
 
 Ronda de diseño para el alumnado del Diploma de Estudios Africanos. No se elimina contenido
