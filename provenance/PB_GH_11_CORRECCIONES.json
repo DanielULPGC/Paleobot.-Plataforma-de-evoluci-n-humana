@@ -103,7 +103,16 @@
     "atlas/assets/js/95-sistema/graficos.js",
     "atlas/assets/css/95-sistema/graficos.css",
     "atlas/assets/js/95-sistema/enlace-vista.js",
-    "tests/test_atlas_pbgh11.py"
+    "tests/test_atlas_pbgh11.py",
+    "docs/diseno/AUDITORIA_PB_GH_11.md",
+    "docs/diseno/atlas/evidencia/PB_GH_11/01_cronologia_telefono.jpg",
+    "docs/diseno/atlas/evidencia/PB_GH_11/02_elegir_vista_telefono.jpg",
+    "docs/diseno/atlas/evidencia/PB_GH_11/03_ficha_telefono.jpg",
+    "docs/diseno/atlas/evidencia/PB_GH_11/04_mapa_escritorio.jpg",
+    "docs/diseno/atlas/evidencia/PB_GH_11/05_autoevaluacion_escritorio.jpg",
+    "docs/diseno/atlas/evidencia/PB_GH_11/06_bibliografia_telefono.jpg",
+    "docs/diseno/atlas/evidencia/PB_GH_11/07_grafico_clima_telefono.jpg",
+    "docs/diseno/atlas/evidencia/PB_GH_11/08_enlace_view_telefono.jpg"
   ],
   "governance_paths_note": "Archivos de gobierno y documentación preexistentes modificados en la ronda, sin huella de importación propia. governance_changes guarda, para cada uno, su estado anterior (copia byte a byte de c971001 en docs/historial/PB_GH_10/), la huella al cierre de la T6 (informativa: rondas posteriores pueden cambiarlos) y motivo, evidencia, impacto y retorno; el verificador comprueba el estado anterior archivado y los cinco campos.",
   "governance_paths": [
@@ -124,9 +133,9 @@
       "corrected_sha256_al_cierre_T6": "968cd7b9eb4dfb16aa087c7d9eb4afdb8bf4d4efd6b3ecf8459e1031f74db4b1",
       "change": "T2: la lista rondas incluye PB_GH_11_CORRECCIONES.json. T6: siete comprobaciones nuevas (comprobaciones_atlas_pbgh11): enlaces de 95-sistema tras los importados con ?v=pbgh11 y carga-fin.css como último <link>; CSP de atlas/index.html idéntica a la vigente; 95-sistema sin manejadores en línea, eval, new Function, escuchas en captura ni hosts nuevos (los en-linea-*.js conservan sus escuchas originales solo si siguen siendo literalmente el script del snapshot de index.html); lista blanca de ?view= igual a las 31 secciones y guarda de enlace-vista.js; generar_imagenes_atlas.cjs --check y generar_costas_atlas.cjs --check; estado anterior archivado de los archivos de gobierno de la ronda.",
       "reason": "DIRECCION_ATLAS § 6, punto 6 (T6): proteger con comprobaciones estáticas lo que la ronda construyó (columna vertebral aditiva, CSP que no se relaja, sin terceros nuevos, enlaces profundos, datos generados).",
-      "evidence": "Las siete pasan sobre el HEAD de la T6 y cada una falla con un caso preparado en tests/test_atlas_pbgh11.py (21 pruebas). verificar_repo.py: 84 → 91 comprobaciones en verde (informe T6). Commits: 711a3d4.",
+      "evidence": "Las siete pasan sobre el HEAD de la T6 y cada una falla con un caso preparado en tests/test_atlas_pbgh11.py (21 pruebas). verificar_repo.py: 84 → 91 comprobaciones en verde (informe T6). Commits: 711a3d4, a20334b.",
       "impact": "Más comprobaciones en cada ejecución (dos procesos de Node de menos de 0,1 s); ninguna comprobación anterior cambia.",
-      "return": "Restaurar docs/historial/PB_GH_10/scripts/verificar_repo.py.snapshot (estado de c971001) o revertir los commits que lo tocan. (711a3d4)"
+      "return": "Restaurar docs/historial/PB_GH_10/scripts/verificar_repo.py.snapshot (estado de c971001) o revertir los commits que lo tocan. (a20334b 711a3d4)"
     },
     {
       "path": "provenance/PB_GH_02_BASE_ACTUAL.json",
@@ -143,56 +152,56 @@
       "path": "CHANGELOG.md",
       "previous_sha256": "9eb725534706b75397c86632523149a1e0b5265c26c72fd3bfbdcbad6fc1371e",
       "previous_snapshot": "docs/historial/PB_GH_10/CHANGELOG.md.snapshot",
-      "corrected_sha256_al_cierre_T6": "9eb725534706b75397c86632523149a1e0b5265c26c72fd3bfbdcbad6fc1371e",
+      "corrected_sha256_al_cierre_T6": "5771c0265cd749e279b20bdf801e6cfe9257a66675f9bfb00175ab9065c3b492",
       "change": "Entrada «PB-GH-11 · Atlas interactivo» con lo hecho, lo medido, lo pendiente y los límites.",
       "reason": "DIRECCION_ATLAS § 6, punto 6.",
-      "evidence": "Cifras tomadas de los informes T1-T5 y de las ejecuciones de cierre de la T6 (informe T6).",
+      "evidence": "Cifras tomadas de los informes T1-T5 y de las ejecuciones de cierre de la T6 (informe T6). Commits: 233aea6.",
       "impact": "Documentación.",
-      "return": "Restaurar docs/historial/PB_GH_10/CHANGELOG.md.snapshot o revertir el commit de la T6 que lo toca."
+      "return": "Restaurar docs/historial/PB_GH_10/CHANGELOG.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6)"
     },
     {
       "path": "README.md",
       "previous_sha256": "07d51867bae3e4b0fd28c8fcc585d95f0e41a4413ca062703fcc4a51dc69b178",
       "previous_snapshot": "docs/historial/PB_GH_10/README.md.snapshot",
-      "corrected_sha256_al_cierre_T6": "07d51867bae3e4b0fd28c8fcc585d95f0e41a4413ca062703fcc4a51dc69b178",
+      "corrected_sha256_al_cierre_T6": "bcaa07016a60f762580304ab0c9221aba27c8fcb8053ccb3e766d04883e3f4c0",
       "change": "Sección «Atlas v1.0»: mención mínima de PB-GH-11 (sin terceros de fuentes ni scripts, CSP de scripts estricta, lo no probado) y corrección de «tal como se recibió» por la referencia a la procedencia de las correcciones.",
       "reason": "DIRECCION_ATLAS § 6, punto 6; el README decía que el atlas se conservaba «tal como se recibió» y que su CSP era más laxa en scripts.",
-      "evidence": "informes T2 (CSP, Leaflet, fuentes) y T5; docs/diseno/AUDITORIA_PB_GH_11.md.",
+      "evidence": "informes T2 (CSP, Leaflet, fuentes) y T5; docs/diseno/AUDITORIA_PB_GH_11.md. Commits: 233aea6.",
       "impact": "Documentación.",
-      "return": "Restaurar docs/historial/PB_GH_10/README.md.snapshot o revertir el commit de la T6 que lo toca."
+      "return": "Restaurar docs/historial/PB_GH_10/README.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6)"
     },
     {
       "path": "docs/diseno/SISTEMA.md",
       "previous_sha256": "4cbb6ef127fc0891c5217eeba8a2d43a085b8c6cb25ecc9528916c89891ac899",
       "previous_snapshot": "docs/historial/PB_GH_10/docs/diseno/SISTEMA.md.snapshot",
-      "corrected_sha256_al_cierre_T6": "4cbb6ef127fc0891c5217eeba8a2d43a085b8c6cb25ecc9528916c89891ac899",
+      "corrected_sha256_al_cierre_T6": "678d5fecbbae33262d377127fea8d956035183f6870b79e49eb8111941b919dd",
       "change": "Ampliado para el atlas: subtema «pizarra», tokens de dato y escala (7 + 2, mínimo 12 px, paso denso en tablas), componentes de 95-sistema, reglas de foco y desplazamiento, sin terceros, «solo modo claro» como pendiente; cada regla cita la vista que la desencadenó.",
       "reason": "Instrucción de la titular (revisar los documentos del sistema citando la página concreta) y DIRECCION_ATLAS § 2 y § 6.",
-      "evidence": "Informes T1-T5 (vistas y medidas citadas en cada fila de la § 11).",
+      "evidence": "Informes T1-T5 (vistas y medidas citadas en cada fila de la § 11). Commits: 133eece.",
       "impact": "Documentación.",
-      "return": "Restaurar docs/historial/PB_GH_10/docs/diseno/SISTEMA.md.snapshot o revertir el commit de la T6 que lo toca."
+      "return": "Restaurar docs/historial/PB_GH_10/docs/diseno/SISTEMA.md.snapshot o revertir el commit de la T6 que lo toca. (133eece)"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
       "previous_sha256": "d5847d58129bb8ee4b7afce9ffd654352f2d5481a7b3a06fe323611bc31435d9",
       "previous_snapshot": "docs/historial/PB_GH_10/THIRD_PARTY_NOTICES.md.snapshot",
-      "corrected_sha256_al_cierre_T6": "d5847d58129bb8ee4b7afce9ffd654352f2d5481a7b3a06fe323611bc31435d9",
+      "corrected_sha256_al_cierre_T6": "5fdcd1d51f514acc329f4bf748a8d59d9276638b86a27cfc4f12ec387f9b7e80",
       "change": "Fila del atlas al día (Leaflet alojado en atlas/assets/vendor/leaflet/, sin Google Fonts ni cdnjs) y fila nueva de los datos de Natural Earth (world-atlas@2.0.2). Se anota, sin cambiar la fila anterior, que el LICENSE de Leaflet 1.9.4 es BSD de 2 cláusulas.",
       "reason": "La ronda cambió lo que el atlas carga de terceros (T2, T4).",
-      "evidence": "atlas/assets/vendor/leaflet/LICENSE y PROCEDENCIA.md; cabecera de scripts/generar_costas_atlas.cjs.",
+      "evidence": "atlas/assets/vendor/leaflet/LICENSE y PROCEDENCIA.md; cabecera de scripts/generar_costas_atlas.cjs. Commits: 233aea6.",
       "impact": "Documentación de terceros; no se adopta licencia global.",
-      "return": "Restaurar docs/historial/PB_GH_10/THIRD_PARTY_NOTICES.md.snapshot o revertir el commit de la T6 que lo toca."
+      "return": "Restaurar docs/historial/PB_GH_10/THIRD_PARTY_NOTICES.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6)"
     },
     {
       "path": "docs/atlas-v1/README.md",
       "previous_sha256": "c01727be4dee9b5b4ed68aaad69ff6a31b9fce5c65a2f53af403b044f37247c4",
       "previous_snapshot": "docs/historial/PB_GH_10/docs/atlas-v1/README.md.snapshot",
-      "corrected_sha256_al_cierre_T6": "c01727be4dee9b5b4ed68aaad69ff6a31b9fce5c65a2f53af403b044f37247c4",
+      "corrected_sha256_al_cierre_T6": "99553e5107f8e41d16f50db81dc0e99eddc55711778aedbc16f9c21c240b551e",
       "change": "Nota añadida bajo la tabla de límites de la auditoría de integración (24-10-2026), que no se edita: estado de seguridad y privacidad tras PB-GH-11.",
       "reason": "La tabla describía la CSP de scripts con unsafe-inline y las peticiones a Google Fonts y cdnjs, que la ronda retiró.",
-      "evidence": "informe T2 § 2.",
+      "evidence": "informe T2 § 2. Commits: 233aea6.",
       "impact": "Documentación.",
-      "return": "Restaurar docs/historial/PB_GH_10/docs/atlas-v1/README.md.snapshot o revertir el commit de la T6 que lo toca."
+      "return": "Restaurar docs/historial/PB_GH_10/docs/atlas-v1/README.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6)"
     }
   ],
   "corrections": [
