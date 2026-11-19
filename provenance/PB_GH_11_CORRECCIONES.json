@@ -2,9 +2,9 @@
   "preparation": "PB-GH-11",
   "date": "2026-11-19",
   "base_commit": "c971001",
-  "scope": "Atlas interactivo v1 (atlas/index.html y atlas/assets/) para el alumnado del Diploma de Estudios Africanos: red de seguridad (scripts/atlas/), bloqueantes (T1) y fundamentos del sistema «Papel y tierra» en el atlas (T2: hoja base enlazada, puente de tokens, tipografía local, foco, contraste, modos, Leaflet alojado, CSP de scripts; T3: diálogos, foco y navegación). No se elimina contenido, función ni vista; lo que cambia el modelo de navegación queda como propuesta (L3). La procedencia se lleva tanda a tanda; T4: rutas principales (fondo local de costas, buscador, lente del mapa, contraste y pies de imagen; L2 de ficha, franja «Consulta y filtros», desplazamiento al elegir vista, cronología, mapa y África, comparador); T5: resto de vistas y teléfono (funciones rotas desde la línea base: diagnóstico, SVG del constructor y enlaces ?view=; regiones desplazables, anidamiento interactivo, flotantes, cajón con rótulos, CLS, sin JavaScript, nivel, encabezados, pictogramas; L2 de Bibliografía y Glosario y de vistas de gráficos).",
+  "scope": "Atlas interactivo v1 (atlas/index.html y atlas/assets/) para el alumnado del Diploma de Estudios Africanos: red de seguridad (scripts/atlas/), bloqueantes (T1) y fundamentos del sistema «Papel y tierra» en el atlas (T2: hoja base enlazada, puente de tokens, tipografía local, foco, contraste, modos, Leaflet alojado, CSP de scripts; T3: diálogos, foco y navegación). No se elimina contenido, función ni vista; lo que cambia el modelo de navegación queda como propuesta (L3). La procedencia se lleva tanda a tanda; T4: rutas principales (fondo local de costas, buscador, lente del mapa, contraste y pies de imagen; L2 de ficha, franja «Consulta y filtros», desplazamiento al elegir vista, cronología, mapa y África, comparador); T5: resto de vistas y teléfono (funciones rotas desde la línea base: diagnóstico, SVG del constructor y enlaces ?view=; regiones desplazables, anidamiento interactivo, flotantes, cajón con rótulos, CLS, sin JavaScript, nivel, encabezados, pictogramas; L2 de Bibliografía y Glosario y de vistas de gráficos). T6: cierre (procedencia completa, siete comprobaciones nuevas del verificador con sus pruebas, SISTEMA.md ampliado, informe de la ronda clasificado por impacto con evidencia, CHANGELOG, README y avisos de terceros); sin cambios en el código de la aplicación.",
   "application_logic_changed": true,
-  "application_logic_note": "Cambia lógica de presentación y de recursos, no de datos: respaldo local de imágenes y un solo respaldo por imagen (025), imagen principal desde img/taxones (envoltura de getSpeciesMedia), constante del simulador expuesta (007), icono local del banco de recursos (002), registro del service worker condicionado (044), scripts en línea movidos a archivos y Leaflet servido desde atlas/assets/vendor/. Ningún dato académico ni texto de ficha cambia. T3: gestor de diálogos aditivo (95-sistema/dialogos.js), foco tras elegir vista y enlace de salto (navegacion.js); Escape cierra un diálogo cada vez (016, 018, 002) y 078 deja de repintar clases en bucle. T3 (L2): diálogo único, barra de trabajo y cabecera de vista reubican nodos existentes (dialogo-unico.js, barra.js, cabecera.js); la tarjeta de Bloom ya no se retira sola a los 14 s mientras está plegada en «Cómo usar esta vista». T4: fondo local de costas bajo el relieve remoto y las teselas (95-sistema/costas.js, datos generados de Natural Earth); Intro en el buscador de la franja (95-sistema/buscador.js). T5: «Diagnóstico» abre Centro docente y muestra el informe (95-sistema/diagnostico.js); ?view= admite las 31 vistas por lista blanca; el SVG del constructor se exporta.",
+  "application_logic_note": "Cambia lógica de presentación y de recursos, no de datos: respaldo local de imágenes y un solo respaldo por imagen (025), imagen principal desde img/taxones (envoltura de getSpeciesMedia), constante del simulador expuesta (007), icono local del banco de recursos (002), registro del service worker condicionado (044), scripts en línea movidos a archivos y Leaflet servido desde atlas/assets/vendor/. Ningún dato académico ni texto de ficha cambia. T3: gestor de diálogos aditivo (95-sistema/dialogos.js), foco tras elegir vista y enlace de salto (navegacion.js); Escape cierra un diálogo cada vez (016, 018, 002) y 078 deja de repintar clases en bucle. T3 (L2): diálogo único, barra de trabajo y cabecera de vista reubican nodos existentes (dialogo-unico.js, barra.js, cabecera.js); la tarjeta de Bloom ya no se retira sola a los 14 s mientras está plegada en «Cómo usar esta vista». T4: fondo local de costas bajo el relieve remoto y las teselas (95-sistema/costas.js, datos generados de Natural Earth); Intro en el buscador de la franja (95-sistema/buscador.js). T5: «Diagnóstico» abre Centro docente y muestra el informe (95-sistema/diagnostico.js); ?view= admite las 31 vistas por lista blanca; el SVG del constructor se exporta. T5 (corrección tras la verificación del director): ?view=<id> deja la página en la vista y no en la portada (95-sistema/enlace-vista.js). T6: ningún cambio de aplicación.",
   "release_gate": "NO_GO",
   "new_paths": [
     "atlas/assets/css/95-sistema/atlas-sistema.css",
@@ -102,14 +102,99 @@
     "atlas/assets/css/95-sistema/consulta-manual.css",
     "atlas/assets/js/95-sistema/graficos.js",
     "atlas/assets/css/95-sistema/graficos.css",
-    "atlas/assets/js/95-sistema/enlace-vista.js"
+    "atlas/assets/js/95-sistema/enlace-vista.js",
+    "tests/test_atlas_pbgh11.py"
   ],
-  "governance_paths_note": "Archivos de gobierno modificados en la ronda, sin huella de importación: retained_paths de PB_GH_02_BASE_ACTUAL.json (snapshots originales de 025 y 044) y lista rondas del verificador.",
+  "governance_paths_note": "Archivos de gobierno y documentación preexistentes modificados en la ronda, sin huella de importación propia. governance_changes guarda, para cada uno, su estado anterior (copia byte a byte de c971001 en docs/historial/PB_GH_10/), la huella al cierre de la T6 (informativa: rondas posteriores pueden cambiarlos) y motivo, evidencia, impacto y retorno; el verificador comprueba el estado anterior archivado y los cinco campos.",
   "governance_paths": [
+    "scripts/verificar_repo.py",
     "provenance/PB_GH_02_BASE_ACTUAL.json",
-    "scripts/verificar_repo.py"
+    "CHANGELOG.md",
+    "README.md",
+    "docs/diseno/SISTEMA.md",
+    "THIRD_PARTY_NOTICES.md",
+    "docs/atlas-v1/README.md"
   ],
-  "new_paths_note": "Archivos nuevos de la ronda (sin huella de importación). atlas/assets/css/95-sistema/atlas-sistema.css y scripts/atlas/* nacieron en la T1 y se amplían en la T2. T4: scripts/generar_costas_atlas.cjs genera atlas/assets/js/95-sistema/costas-datos.js (Natural Earth 1:110m, dominio público, vía world-atlas@2.0.2; procedencia e integridad en la cabecera del script). T5: archivos nuevos en atlas/assets/{js,css}/95-sistema/, enlazados los últimos con ?v=pbgh11.",
+  "new_paths_note": "Archivos nuevos de la ronda (sin huella de importación). atlas/assets/css/95-sistema/atlas-sistema.css y scripts/atlas/* nacieron en la T1 y se amplían en la T2. T4: scripts/generar_costas_atlas.cjs genera atlas/assets/js/95-sistema/costas-datos.js (Natural Earth 1:110m, dominio público, vía world-atlas@2.0.2; procedencia e integridad en la cabecera del script). T5: archivos nuevos en atlas/assets/{js,css}/95-sistema/, enlazados los últimos con ?v=pbgh11. T6: pruebas de las comprobaciones nuevas del verificador (tests/test_atlas_pbgh11.py), informe de la ronda (docs/diseno/AUDITORIA_PB_GH_11.md) y su evidencia visual reducida (docs/diseno/atlas/evidencia/PB_GH_11/).",
+  "governance_changes": [
+    {
+      "path": "scripts/verificar_repo.py",
+      "previous_sha256": "d001a8f03859a7ea18d293184546059d1383f747f4d16ce365332ab6eb97e8f0",
+      "previous_snapshot": "docs/historial/PB_GH_10/scripts/verificar_repo.py.snapshot",
+      "corrected_sha256_al_cierre_T6": "968cd7b9eb4dfb16aa087c7d9eb4afdb8bf4d4efd6b3ecf8459e1031f74db4b1",
+      "change": "T2: la lista rondas incluye PB_GH_11_CORRECCIONES.json. T6: siete comprobaciones nuevas (comprobaciones_atlas_pbgh11): enlaces de 95-sistema tras los importados con ?v=pbgh11 y carga-fin.css como último <link>; CSP de atlas/index.html idéntica a la vigente; 95-sistema sin manejadores en línea, eval, new Function, escuchas en captura ni hosts nuevos (los en-linea-*.js conservan sus escuchas originales solo si siguen siendo literalmente el script del snapshot de index.html); lista blanca de ?view= igual a las 31 secciones y guarda de enlace-vista.js; generar_imagenes_atlas.cjs --check y generar_costas_atlas.cjs --check; estado anterior archivado de los archivos de gobierno de la ronda.",
+      "reason": "DIRECCION_ATLAS § 6, punto 6 (T6): proteger con comprobaciones estáticas lo que la ronda construyó (columna vertebral aditiva, CSP que no se relaja, sin terceros nuevos, enlaces profundos, datos generados).",
+      "evidence": "Las siete pasan sobre el HEAD de la T6 y cada una falla con un caso preparado en tests/test_atlas_pbgh11.py (21 pruebas). verificar_repo.py: 84 → 91 comprobaciones en verde (informe T6). Commits: 711a3d4.",
+      "impact": "Más comprobaciones en cada ejecución (dos procesos de Node de menos de 0,1 s); ninguna comprobación anterior cambia.",
+      "return": "Restaurar docs/historial/PB_GH_10/scripts/verificar_repo.py.snapshot (estado de c971001) o revertir los commits que lo tocan. (711a3d4)"
+    },
+    {
+      "path": "provenance/PB_GH_02_BASE_ACTUAL.json",
+      "previous_sha256": "bf3c9831a3fa1f841269e7fc5187cbeb37fc6097d212ae9d3b7ae9db3c904e83",
+      "previous_snapshot": "docs/historial/PB_GH_10/provenance/PB_GH_02_BASE_ACTUAL.json.snapshot",
+      "corrected_sha256_al_cierre_T6": "0cad0a78dea8474c0b9a525386a429d5373e9d4d1c9c925a229618803a17de56",
+      "change": "retained_paths de los archivos del atlas corregidos por primera vez en la ronda (025, 044, 021, 016, 018, 078, 063, 077, 057 y 069): se añade su snapshot original en docs/historial/BASE_4D320EE/.",
+      "reason": "Sin ese alta, «Archivos de la base de trabajo preservados» fallaba al corregir archivos que nunca se habían corregido (T1 § 8: 82/84).",
+      "evidence": "verificar_repo.py 84/84 desde la T2; snapshots con la huella importada (procedencia.py lo comprueba al generar). Commits: 711a3d4, 60b1c8e, e2bb595, 1a1b568, aef9ec4, 95197c8.",
+      "impact": "Solo gobierno: ninguna huella anterior cambia; se añaden rutas de conservación.",
+      "return": "Restaurar docs/historial/PB_GH_10/provenance/PB_GH_02_BASE_ACTUAL.json.snapshot (y entonces retirar las correcciones de esos archivos) o revertir los commits que lo tocan. (95197c8 aef9ec4 1a1b568 e2bb595 60b1c8e 711a3d4)"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "previous_sha256": "9eb725534706b75397c86632523149a1e0b5265c26c72fd3bfbdcbad6fc1371e",
+      "previous_snapshot": "docs/historial/PB_GH_10/CHANGELOG.md.snapshot",
+      "corrected_sha256_al_cierre_T6": "9eb725534706b75397c86632523149a1e0b5265c26c72fd3bfbdcbad6fc1371e",
+      "change": "Entrada «PB-GH-11 · Atlas interactivo» con lo hecho, lo medido, lo pendiente y los límites.",
+      "reason": "DIRECCION_ATLAS § 6, punto 6.",
+      "evidence": "Cifras tomadas de los informes T1-T5 y de las ejecuciones de cierre de la T6 (informe T6).",
+      "impact": "Documentación.",
+      "return": "Restaurar docs/historial/PB_GH_10/CHANGELOG.md.snapshot o revertir el commit de la T6 que lo toca."
+    },
+    {
+      "path": "README.md",
+      "previous_sha256": "07d51867bae3e4b0fd28c8fcc585d95f0e41a4413ca062703fcc4a51dc69b178",
+      "previous_snapshot": "docs/historial/PB_GH_10/README.md.snapshot",
+      "corrected_sha256_al_cierre_T6": "07d51867bae3e4b0fd28c8fcc585d95f0e41a4413ca062703fcc4a51dc69b178",
+      "change": "Sección «Atlas v1.0»: mención mínima de PB-GH-11 (sin terceros de fuentes ni scripts, CSP de scripts estricta, lo no probado) y corrección de «tal como se recibió» por la referencia a la procedencia de las correcciones.",
+      "reason": "DIRECCION_ATLAS § 6, punto 6; el README decía que el atlas se conservaba «tal como se recibió» y que su CSP era más laxa en scripts.",
+      "evidence": "informes T2 (CSP, Leaflet, fuentes) y T5; docs/diseno/AUDITORIA_PB_GH_11.md.",
+      "impact": "Documentación.",
+      "return": "Restaurar docs/historial/PB_GH_10/README.md.snapshot o revertir el commit de la T6 que lo toca."
+    },
+    {
+      "path": "docs/diseno/SISTEMA.md",
+      "previous_sha256": "4cbb6ef127fc0891c5217eeba8a2d43a085b8c6cb25ecc9528916c89891ac899",
+      "previous_snapshot": "docs/historial/PB_GH_10/docs/diseno/SISTEMA.md.snapshot",
+      "corrected_sha256_al_cierre_T6": "4cbb6ef127fc0891c5217eeba8a2d43a085b8c6cb25ecc9528916c89891ac899",
+      "change": "Ampliado para el atlas: subtema «pizarra», tokens de dato y escala (7 + 2, mínimo 12 px, paso denso en tablas), componentes de 95-sistema, reglas de foco y desplazamiento, sin terceros, «solo modo claro» como pendiente; cada regla cita la vista que la desencadenó.",
+      "reason": "Instrucción de la titular (revisar los documentos del sistema citando la página concreta) y DIRECCION_ATLAS § 2 y § 6.",
+      "evidence": "Informes T1-T5 (vistas y medidas citadas en cada fila de la § 11).",
+      "impact": "Documentación.",
+      "return": "Restaurar docs/historial/PB_GH_10/docs/diseno/SISTEMA.md.snapshot o revertir el commit de la T6 que lo toca."
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "previous_sha256": "d5847d58129bb8ee4b7afce9ffd654352f2d5481a7b3a06fe323611bc31435d9",
+      "previous_snapshot": "docs/historial/PB_GH_10/THIRD_PARTY_NOTICES.md.snapshot",
+      "corrected_sha256_al_cierre_T6": "d5847d58129bb8ee4b7afce9ffd654352f2d5481a7b3a06fe323611bc31435d9",
+      "change": "Fila del atlas al día (Leaflet alojado en atlas/assets/vendor/leaflet/, sin Google Fonts ni cdnjs) y fila nueva de los datos de Natural Earth (world-atlas@2.0.2). Se anota, sin cambiar la fila anterior, que el LICENSE de Leaflet 1.9.4 es BSD de 2 cláusulas.",
+      "reason": "La ronda cambió lo que el atlas carga de terceros (T2, T4).",
+      "evidence": "atlas/assets/vendor/leaflet/LICENSE y PROCEDENCIA.md; cabecera de scripts/generar_costas_atlas.cjs.",
+      "impact": "Documentación de terceros; no se adopta licencia global.",
+      "return": "Restaurar docs/historial/PB_GH_10/THIRD_PARTY_NOTICES.md.snapshot o revertir el commit de la T6 que lo toca."
+    },
+    {
+      "path": "docs/atlas-v1/README.md",
+      "previous_sha256": "c01727be4dee9b5b4ed68aaad69ff6a31b9fce5c65a2f53af403b044f37247c4",
+      "previous_snapshot": "docs/historial/PB_GH_10/docs/atlas-v1/README.md.snapshot",
+      "corrected_sha256_al_cierre_T6": "c01727be4dee9b5b4ed68aaad69ff6a31b9fce5c65a2f53af403b044f37247c4",
+      "change": "Nota añadida bajo la tabla de límites de la auditoría de integración (24-10-2026), que no se edita: estado de seguridad y privacidad tras PB-GH-11.",
+      "reason": "La tabla describía la CSP de scripts con unsafe-inline y las peticiones a Google Fonts y cdnjs, que la ronda retiró.",
+      "evidence": "informe T2 § 2.",
+      "impact": "Documentación.",
+      "return": "Restaurar docs/historial/PB_GH_10/docs/atlas-v1/README.md.snapshot o revertir el commit de la T6 que lo toca."
+    }
+  ],
   "corrections": [
     {
       "path": "atlas/assets/js/40-media/025-paleobot-v50-media-guard.js",
@@ -122,7 +207,7 @@
       "reason": "Fila 1 de la tabla de corrección del atlas (bloqueante): bucle infinito de peticiones de imagen al abrir una ficha sin acceso a Wikimedia.",
       "evidence": "Commit a37bd31. Pila instrumentada: 1 528 de 1 551 asignaciones de src en 6 s salen de repairImage desde la línea 135 (escuchador de error). tormenta.cjs (10 s, ficha abierta): 120-209 pet./s y 2 926 errores sin terceros → 0 pet./s en reposo y 0 reintentos por imagen. Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6).",
       "impact": "Imágenes que no cargan muestran un recuadro local con su texto en lugar de reintentar; el resto del módulo no cambia.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/40-media/025-paleobot-v50-media-guard.js.snapshot o revertir a37bd31."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/40-media/025-paleobot-v50-media-guard.js.snapshot o revertir a37bd31. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: a37bd31. Para deshacerlos todos: git revert a37bd31 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/index.html",
@@ -135,7 +220,7 @@
       "reason": "Filas 1, 2 y 9 de la tabla de corrección; DIRECCION_ATLAS § 1 (columna vertebral aditiva enlazada la última). T2: filas 29 y 30 de la tabla de corrección y DIRECCION_ATLAS § 2.1, § 4 (Lexend local, Leaflet alojado, CSP solo se estrecha). T3: filas 3, 5, 6, 11 y 17 de la tabla de corrección (DIRECCION_ATLAS § 6.3). T4: fila 8 de la tabla de corrección (mapa sin teselas) y DIRECCION_ATLAS § 4 (fondo vectorial local, solo datos). Fila 18 (Intro en #searchInput no hacía nada; búsqueda global sin título visible). Contraste por literales que el puente de tokens no alcanza (T2 § 6). Hallazgo 1 de la verificación del director de la T3: el bloque oscuro «Consulta y filtros» separaba la barra del título de la vista. Hallazgo 2 de la verificación del director de la T3 (la página se detenía con la barra a 112 px y un resto de la portada). Ficha como página de manual (notas/05 § 9). Cronología: un único código visual de incertidumbre y primera tarjeta en el primer pantallazo (estrategia 06 § 3-E). Mapa y África: el mapa primero, controles agrupados con nombre, alternativa textual, estado vacío (estrategia 06 § 3-F). Comparador: resultados legibles en teléfono sin desplazamiento horizontal de la página (estrategia 06 § 3-G). T5: fila 19 de la tabla de corrección («Diagnóstico» no producía nada visible fuera de Centro docente). T5: filas 15, 26, 28 y 33 (regiones desplazables sin foco, anidamiento interactivo, encabezados). T5: filas 22 y 23 (botones flotantes que tapaban texto; cajón de 11 botones de solo icono y 11 colores). T5: fila 34 (emoji de interfaz en rótulos, botones, pestañas y píldoras). T5: fila 13 (CLS de carga): las hojas 051-053 y 95-sistema se enlazan al final de <body> y la portada se pintaba antes sin ellas (héroe de 2 560 px; un solo cambio de 0,92 a los 840 ms). T5: fila 24 (sin JavaScript: sin <noscript>, controles inertes y dos h1 visibles). T5: fila 20 (al cargar, body[data-complexity]=\"doctorado\" y todo el contenido visible, mientras el selector mostraba «Universitario»). T5: estrategia 06 § 3-H (Bibliografía y Glosario como páginas de consulta de manual). T5: estrategia 06 § 3-I y fila 26 (gráficos anchos sin aviso ni lectura alternativa en teléfono). T5: el enlace profundo ?view=<id> (y ?view=<id>#main-content, la forma de atlas/recorrido/integracion.js) activaba la vista pero dejaba al alumnado en la portada (preexistente desde c971001; tras ampliar ?view= a 31 vistas, afectaba a todas).",
       "evidence": "Commits a37bd31, a71b353 y 47e5228: líneas añadidas antes de </body>; humo --comparar con 0 pérdidas en las cuatro condiciones. Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6). T2 (informe T2.md): humo con recuento de violaciones de CSP (securitypolicyviolation, también en ventanas emergentes): 0 de script-src en las cuatro condiciones; las únicas violaciones son img-src de teselas de OpenTopoMap en minimapa.capas, preexistentes (la CSP ya no las admitía). 0 peticiones a fonts.googleapis.com, fonts.gstatic.com y cdnjs; minimapa con Leaflet local. T3 (informe T3.md): humo de diálogos con focoEntra, focoVuelve y sin aria-hidden en los 16 diálogos medidos y tabFuera 0; foco en el chip tras elegir vista con el teclado; humo --comparar sin pérdidas en las cuatro condiciones. T4: sin terceros, #mapSvg con 1 trazado de costas (129 anillos); isPointInFill: Olduvai, Dmanisi y Atapuerca en tierra; golfo de Guinea, Atlántico y Pacífico en el mar; marcadores de georgicus, afarensis, neander, sapiens y erectus en tierra. Buscador: «afarensis» + Intro abre la ficha; «homo» + Intro abre la búsqueda global con el término y 18 resultados; «zzzz», la búsqueda con «Sin resultados»; Escape devuelve el foco a #searchInput (escritorio y teléfono). axe color-contrast en las 31 vistas (sin terceros, 390/820/1366 px): 16 → 0 nodos por anchura (Paleoproteómica 12 → 0; Biogeografía 4 → 0). Franja: alto 198 → 61 px (escritorio) y 369 → 91 px (teléfono) con «Más opciones» plegado; distancia barra → título tras elegir vista desde «Vistas»: 307 → 172 px (escritorio) y 550 → 192 px (teléfono). Tras elegir Cronología, Mapa o África desde «Vistas» con ratón: barra a 0 px y título a 176 px (teléfono, 320 px), 186 px (tableta), 156 px (escritorio); 353 y 244 px con el texto al 200 %. Antes: barra a 385/116 px y título a 935/423 px (teléfono/escritorio). El foco sigue donde lo deja navegacion.js. Ficha: panel de 640 px a la derecha en escritorio (antes 1 366 px); pantalla completa en teléfono; 0 desbordes en 320 px y en escritorio y teléfono al 200 %; humo ficha, ficha.pestanas, lightbox, ficha.lagunas, minimapa.capas y volver = true (escritorio y teléfono, sin terceros). Cronología tras elegirla desde «Vistas»: primera tarjeta a 603 px en teléfono (alto 844; antes 1 621 px) y a 499 px en escritorio (alto 768; antes 886 px). Mapa tras elegirlo desde «Vistas»: mapa a 626 px en teléfono (antes 3 599), 811 px en tableta (antes 2 532) y 611 px en escritorio (antes 1 512); África: mapa a 622 px en teléfono (antes 14 468), 958 px en tableta (antes 9 673) y 769 px en escritorio (antes 4 699). humo (teléfono, sin terceros): mapa.yacimiento, mapa.lentes, mapa.costas y vista.posicion = true. Comparador (preset «Homo temprano», teléfono): #compareResult pasaba de un recuadro de 80-166 px con barra propia a su altura completa (lámina 892 → 7 591 px desplazables); tabla de 640-830 px dentro de su recuadro con cabecera y primera columna fijas; desplazamiento horizontal de la página 0 en 320, 390, 820 y 1 366 px. T5: humo «diagnostico» true en escritorio sin terceros (antes false desde la línea base). T5: axe en las 31 vistas a 390 px: nested-interactive 11 → 0, aria-prohibited-attr 230 → 0, scrollable-region-focusable 9 → 0. T5: capturas flot_* (390, 820 y 1366 px): ningún botón flotante sobre el contenido; humo de las funciones que usan el cajón (accesibilidad, daltonismo, imprimir, exportar, diálogos) true en teléfono y escritorio. T5: inventario de pictogramas (emoji_inv.cjs, escritorio, sin terceros): clima 14, continentes 9, mapa 1, estratigrafía 2, coexistencias 52, aula 13, biogeografía 80, cajón 2, Guía 35, Bibliografía 151, examen 1 → solo quedan las 8 flechas «↔» de Continentes (glifo admitido). T5: CLS de carga (cls.cjs, mismo método que recorrido.cjs, terceros simulados): escritorio 0,985 → 0,000; tableta → 0,001; teléfono → 0,050. Primer pintado con contenido (390 px, servidor local): 64-120 ms → 584-652 ms. T5: sin JavaScript (sinjs.cjs, 320, 390 y 1366 px): h1 visibles 2 → 1; aviso con los dos enlaces visible arriba. Con JavaScript, sin cambios (1 h1). T5 (nivel.cjs): antes body doctorado / selector universitario; después doctorado / doctorado. Se sincroniza el selector con el estado real y no al revés: aplicar «universitario» al iniciar ocultaría .expert-only y vistas (contenido hoy visible). T5: índice de 62 grupos (Bibliografía) y de 23 letras (Glosario) operativos (indices.cjs, 390 y 1366 px: el destino queda a la vista con el foco en su título); 0 elementos fuera de la lámina a 320 px y al 200 % (antes, al 200 %, 801 en Bibliografía); humo bibliografia y glosario: foco entra, Escape, foco vuelve, Tab 0 fuera. T5: capturas antes/T5/b2 y despues/T5/b2 (Clima, Contexto, Coexistencias, Primatología, Filogenia; 390, 820, 1366, 320 y 200 %); la ayuda y «Ver el gráfico entero» solo aparecen si el gráfico es más ancho que su caja. T5 (deep_med.cjs, 4 vistas × con y sin ancla × 390/820/1366): antes 0/24 (scrollY 0-21, título a 4 292-7 674 px; sin ancla, espacio de trabajo sin entrar); después 24/24 (barra a 0 px, título a 176/186/156 px). Causa: el scrollIntoView de 077 es animado (scroll-behavior:smooth) y el repintado posterior a la carga lo interrumpe a 0-2 px (deep_traza.cjs).",
       "impact": "Carga cuatro recursos locales nuevos tras los importados. T2: el atlas no pide fuentes ni Leaflet a terceros y no admite scripts en línea; aspecto con la hoja base y el puente de atlas-sistema.css. T3: tres recursos locales más; el comportamiento de foco y la semántica de los diálogos cambian (no su contenido). T4: el mapa grande, las lentes y el minimapa muestran costas sin red de terceros; con red, el relieve remoto las tapa. Intro en el buscador abre la ficha o la búsqueda global; la búsqueda global usa la lámina y la cabecera del diálogo único. Rótulos de fecha y referencias de Paleoproteómica legibles (≥ 4,9:1); mismo tono. En escritorio, una fila; en teléfono, buscador y «Más opciones»; el resto, desplegable. Al elegir vista, la vista queda arriba bajo la barra y la franja de consulta. Ficha lateral con velo en escritorio; imagen local primero; minimapa con alternativa textual; en teléfono solo acciones y pestañas fijas. Leyenda metodológica plegada en «Qué significan las etiquetas»; ámbar solo para lo incierto. Lentes, capas, fondo y zoom en grupos con rótulo; pautas de lectura plegadas; párrafo de alternativa textual bajo cada mapa. Resultados del comparador visibles y desplazables; guía plegada en «Cómo leer el comparador». T5: un recurso local más. T5: los contenedores anchos se alcanzan y desplazan con el teclado; los SVG se anuncian como grupo con nombre. T5: el cajón se abre bajo la franja con rótulos visibles iguales a su aria-label y un solo color. T5: los rótulos se leen sin pictograma; en las etiquetas de Biogeografía el pictograma se sustituye por «Edad: », «Lugar: » o «Nota: ». T5: la página aparece ya con su forma final; el primer pintado se retrasa hasta que llega la última hoja (con respaldo a los 4 s). T5: sin JavaScript se ofrece la consulta ligera y la entrada DEA; la segunda portada (.main-cover) queda oculta como con JavaScript. T5: el selector dice la verdad sobre lo que se ve; no cambia ninguna vista ni contenido. T5: índice plegable por bloques; referencias en lista con sangría francesa y DOI en su línea; glosario como diccionario con índice alfabético. Ningún texto cambia. T5: cabecera de gráfico, «Ver el gráfico entero» y «Leer como tabla» (Contexto y Coexistencias) con los mismos datos y filtros. T5: el enlace abre la vista con el espacio de trabajo entrado, la barra arriba y el título a la vista.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/index.html.snapshot o revertir los commits de la T1 y la T2 que lo tocan (a37bd31, a71b353, 47e5228 y el commit de terceros y CSP de la T2). T3: quitar esas líneas o revertir el commit de diálogos y foco de la T3. T3 (L2): revertir el commit «diálogo único» (quita esas dos líneas y los dos archivos). T3 (L2): revertir el commit «barra de trabajo». T3 (L2): revertir el commit «cabecera de vista». T4: quitar las líneas añadidas o revertir los commits de la T4. T5: quitar las líneas añadidas o revertir los commits de la T5. T5: devolver role=\"img\" a los dos SVG y quitar las líneas añadidas. T5: quitar esas dos líneas o revertir su commit. T5: quitar esa línea o revertir su commit. T5: quitar los dos <link> de carga. T5: quitar los dos <noscript>. T5: devolver «selected» a la opción «universitario». T5: revertir el commit L2 de Bibliografía y Glosario. T5: revertir el commit L2 de las vistas de gráficos. T5: quitar esa línea."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/index.html.snapshot o revertir los commits de la T1 y la T2 que lo tocan (a37bd31, a71b353, 47e5228 y el commit de terceros y CSP de la T2). T3: quitar esas líneas o revertir el commit de diálogos y foco de la T3. T3 (L2): revertir el commit «diálogo único» (quita esas dos líneas y los dos archivos). T3 (L2): revertir el commit «barra de trabajo». T3 (L2): revertir el commit «cabecera de vista». T4: quitar las líneas añadidas o revertir los commits de la T4. T5: quitar las líneas añadidas o revertir los commits de la T5. T5: devolver role=\"img\" a los dos SVG y quitar las líneas añadidas. T5: quitar esas dos líneas o revertir su commit. T5: quitar esa línea o revertir su commit. T5: quitar los dos <link> de carga. T5: quitar los dos <noscript>. T5: devolver «selected» a la opción «universitario». T5: revertir el commit L2 de Bibliografía y Glosario. T5: revertir el commit L2 de las vistas de gráficos. T5: quitar esa línea. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: a37bd31, a71b353, 47e5228, 60b1c8e, e2bb595, 4b7fe93, 71f8198, e949737, da288a9, 6f6e6c0, eb922b3, 89ced69, ff45575, 01a615b, eccaa85, c7c503c, 0e6a361, 1a1b568, aef9ec4, d6e4b01, d9222a1, 257f4a7, 2052dbd, adf225e, 0a5a60a, 1270f73, fa7b614. Para deshacerlos todos: git revert fa7b614 1270f73 0a5a60a adf225e 2052dbd 257f4a7 d9222a1 d6e4b01 aef9ec4 1a1b568 0e6a361 c7c503c eccaa85 01a615b ff45575 89ced69 eb922b3 6f6e6c0 da288a9 e949737 71f8198 4b7fe93 e2bb595 60b1c8e 47e5228 a71b353 a37bd31 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
@@ -148,7 +233,7 @@
       "reason": "Fila 4 de la tabla de corrección: el simulador de dispersión no funcionaba (ReferenceError en 008-…m11m20-layer.js:144). T2: fila 30 (CSP sin 'unsafe-inline' en script-src); una ventana abierta con window.open('') hereda la CSP del atlas y bloqueaba el script en línea.",
       "evidence": "Commit 6a27784. Vista dispersal sin excepciones; «Reproducir» anima de 306 a 281 ka en 2,5 s (captura t1_simulador_escritorio.png). Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6). T2: prueba popups.cjs: antes, «Executing inline script violates … script-src 'self'» en la ventana del examen; después, 0 violaciones en las ventanas de examen, presentación y m13.",
       "impact": "El simulador responde; 008 no se toca. T2: la impresión automática de esas dos ventanas se conserva sin script en línea.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot o revertir 6a27784 y el commit de terceros y CSP de la T2."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot o revertir 6a27784 y el commit de terceros y CSP de la T2. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: 6a27784, 60b1c8e. Para deshacerlos todos: git revert 60b1c8e 6a27784 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/00-core/002-script.js",
@@ -161,7 +246,7 @@
       "reason": "Fila 10 de la tabla de corrección: favicons de Google bloqueados por la CSP (16 TypeError por visita a Recursos) y filtración de la lista de dominios a un tercero. T3, fila 5: con «¿Qué no sabemos aún?» abierto sobre la ficha, un solo Escape cerraba las dos capas (020 cerraba el modal en captura y closeActiveUI cerraba después la ficha), y el foco no podía volver al disparador. T4: la lente «Todos los focos» del mapa no quedaba pulsada (humo mapa.lentes · all = false desde la línea base): setMapLensFocus('all') dejaba la lente en null y, acto seguido, selectMapSpecies(preferido) la cambiaba a la del primer yacimiento. Contraste: texto blanco sobre #c07800 = 3,54:1 en la cabecera del grupo. T5: fila 19 (el informe se pintaba en un contenedor oculto o en un alert). T5: filas 15, 28 y 33 (axe aria-prohibited-attr 230, nested-interactive 11, aria-allowed-role 6, aria-required-children 1, heading-order 1, landmark-unique 1, landmark-complementary-is-top-level 1). T5: rótulos del radar cortados («Simbolismo», «Tecnología», «Arborealismo», «Bipedismo»; T4 § 7).",
       "evidence": "Commit 78751c0. 8/8 iconos cargan, 0 peticiones a Google, 0 excepciones (captura t1_recursos_iconos.png). Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6). T3: traza de DOMTokenList.remove (closeDetailPanel ← closeActiveUI ← keydown, 002:9738); tras el cambio, Escape cierra solo el modal, la ficha sigue abierta y el foco vuelve a «¿Qué no sabemos aún?» (humo ficha.lagunas focoVuelve true). T4: humo --solo mapa.lentes (escritorio, sin terceros): all, east_africa, south_africa, mediterranean y asia_pacific = true (antes all = false). axe color-contrast en Biogeografía: 4 → 0 nodos (con contraste.css). T5: humo «diagnostico» false → true (escritorio, sin terceros). T5: axe en las 31 vistas a 390 px: esas reglas pasan a 0 (cifras de 820 y 1366 px en el informe T5). T5: capturas antes/T5/radar y despues/T5/radar (390 y 1366 px): los seis rótulos enteros.",
       "impact": "Miniaturas del Banco de recursos locales; sin manejadores en línea generados. T3: Escape cierra un diálogo cada vez. Si nadie atendió el Escape, closeActiveUI actúa como antes. T4: «Todos los focos» queda pulsado y el mapa muestra todos los marcadores sin atenuar; al abrir el mapa por primera vez la lente activa es «Todos los focos» (antes, la del primer yacimiento preseleccionado). Elegir un marcador sigue cambiando la lente a la suya. La cabecera del grupo pasa a 5,84:1; el borde y el fondo del grupo derivan del mismo color. T5: desde cualquier vista, «Diagnóstico» abre Centro docente con el informe a la vista y enfocado; dentro de Centro docente, igual que antes. T5: mismos textos y mismas acciones; cambia la semántica (rol, elemento, nivel de encabezado). La tarjeta de África sigue enfocable y se activa con Intro. T5: mismo radar y mismos datos; rótulos legibles.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/00-core/002-script.js.snapshot o revertir 78751c0. T3: quitar «|| e.defaultPrevented» de esa línea (o revertir el commit de diálogos de la T3). T4: quitar el parámetro keepLens y los dos argumentos true (líneas comentadas «PB-GH-11 (T4)»). Devolver «#c07800» en la línea comentada. T5: quitar la línea comentada PB-GH-11 (T5) de runSelfAudit. T5: deshacer los cambios de plantilla comentados PB-GH-11 (T5). T5: quitar las tres líneas comentadas en drawRadar."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/00-core/002-script.js.snapshot o revertir 78751c0. T3: quitar «|| e.defaultPrevented» de esa línea (o revertir el commit de diálogos de la T3). T4: quitar el parámetro keepLens y los dos argumentos true (líneas comentadas «PB-GH-11 (T4)»). Devolver «#c07800» en la línea comentada. T5: quitar la línea comentada PB-GH-11 (T5) de runSelfAudit. T5: deshacer los cambios de plantilla comentados PB-GH-11 (T5). T5: quitar las tres líneas comentadas en drawRadar. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: 78751c0, e2bb595, c45c7ef, eb922b3, 1a1b568, aef9ec4, 95197c8. Para deshacerlos todos: git revert 95197c8 aef9ec4 1a1b568 eb922b3 c45c7ef e2bb595 78751c0 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/80-features/044-script.js",
@@ -174,7 +259,7 @@
       "reason": "Fila 31 de la tabla de corrección: GET /atlas/sw.js 404 en cada carga.",
       "evidence": "Commit 410df3e. Registro del servidor: antes un 404 por carga, después ninguno. Informe T1 (scratchpad atlas11/notas/informes/T1.md § 3-4, 6).",
       "impact": "Sin petición fallida en cada carga; si algún día se aloja sw.js basta con la bandera.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/80-features/044-script.js.snapshot o revertir 410df3e."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/80-features/044-script.js.snapshot o revertir 410df3e. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: 410df3e. Para deshacerlos todos: git revert 410df3e (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js",
@@ -187,7 +272,7 @@
       "reason": "Fila 30 (CSP sin 'unsafe-inline' en script-src): la ventana hereda la CSP del atlas. Además la plantilla escribía «<\\/script>» (barra escapada dos veces), así que el script quedaba sin cerrar y el print() nunca se ejecutaba en la línea base.",
       "evidence": "Prueba popups.cjs de la T2 (ventana m13: 0 violaciones de CSP); node --check; humo sin pérdidas (informe T2.md).",
       "impact": "La exportación abre la ventana como antes y ahora sí lanza el diálogo de impresión, que era la intención del código.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js.snapshot o revertir el commit de terceros y CSP de la T2."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/008-paleobot-v34-m11m20-layer.js.snapshot o revertir el commit de terceros y CSP de la T2. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: 60b1c8e. Para deshacerlos todos: git revert 60b1c8e (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js",
@@ -200,7 +285,7 @@
       "reason": "Fila 30 (CSP sin 'unsafe-inline' en script-src). Como en 008, la plantilla escribía «<\\/script>» y el script nunca se ejecutaba.",
       "evidence": "node --check; humo sin pérdidas (informe T2.md). En las pruebas de la T2 los botones de la ficha (exportSpeciesPrintSheet, exportAcademicPDF) los atiende antes otro módulo, así que esta ruta no se vio ejecutarse; el cambio se limita a la plantilla.",
       "impact": "Exportaciones de ficha de 021 sin script en línea; si se usan, ahora lanzan la impresión.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js.snapshot o revertir el commit de terceros y CSP de la T2."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/021-paleobot-v47-special-button-repair.js.snapshot o revertir el commit de terceros y CSP de la T2. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: 60b1c8e. Para deshacerlos todos: git revert 60b1c8e (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js",
@@ -213,7 +298,7 @@
       "reason": "Fila 5 (T3): con la imagen ampliada (lightbox) sobre la ficha, un Escape cerraba las dos capas; el foco no podía volver al disparador.",
       "evidence": "T3: sonda de Escape anidado (lightbox y lagunas sobre la ficha): antes ficha y lightbox se cierran a la vez y el foco cae en <body>; después solo se cierra el de arriba y el foco vuelve (humo lightbox y ficha.lagunas focoVuelve true).",
       "impact": "Escape cierra un diálogo cada vez; la ficha sola se sigue cerrando con Escape igual que antes.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js.snapshot o revertir el commit de diálogos de la T3."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/20-navigation/016-paleobot-v42-detail-view-guard.js.snapshot o revertir el commit de diálogos de la T3. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: e2bb595. Para deshacerlos todos: git revert e2bb595 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/90-guards/018-paleobot-v44-presentation-controls-guard.js",
@@ -226,7 +311,7 @@
       "reason": "Fila 5 (T3): Escape en «Ampliar mapa» cerraba también la presentación (stopImmediatePropagation en captura) y el foco no volvía a la miniatura del mapa.",
       "evidence": "T3: humo presentacion.ampliarMapa: focoVuelve false → true (foco en div.pres-map-mini); presentacion sigue cerrándose con Escape (cierraConEscape true).",
       "impact": "Escape cierra primero el mapa ampliado y, con otra pulsación, la presentación.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/018-paleobot-v44-presentation-controls-guard.js.snapshot o revertir el commit de diálogos de la T3."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/018-paleobot-v44-presentation-controls-guard.js.snapshot o revertir el commit de diálogos de la T3. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: e2bb595. Para deshacerlos todos: git revert e2bb595 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/90-guards/078-paleobot-wcag22-a11y-guard.js",
@@ -239,7 +324,7 @@
       "reason": "T3 (mutaciones en reposo): classList.add escribe el atributo class aunque la clase ya esté; el observador del propio módulo (attributeFilter class) volvía a ejecutar patch() cada 80 ms sin fin.",
       "evidence": "T3: MutationObserver en reposo 5 s tras entrar al área de trabajo (escritorio): 1 218 mutaciones (≈ 243/s; clases de botones flotantes y de zoom del mapa) antes; 0 después.",
       "impact": "Mismo resultado de clases; el módulo deja de repintar atributos en bucle (menos trabajo en el hilo principal).",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/078-paleobot-wcag22-a11y-guard.js.snapshot o revertir el commit de diálogos de la T3."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/90-guards/078-paleobot-wcag22-a11y-guard.js.snapshot o revertir el commit de diálogos de la T3. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: e2bb595. Para deshacerlos todos: git revert e2bb595 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/70-export/063-paleobot-v66-svg-export.js",
@@ -252,7 +337,7 @@
       "reason": "Función rota desde la línea base (humo «exportar.svg.constructor» false; T1 § 11.7): ReferenceError «Cannot access 'warn' before initialization» porque window.treeBuilderState es undefined.",
       "evidence": "T5: humo «exportar.svg.constructor» false → true (descarga paleobot-arbol-hipotesis-AAAAMMDD.svg); node --check sin errores.",
       "impact": "Exportar SVG del constructor funciona; el contenido del SVG no cambia.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/70-export/063-paleobot-v66-svg-export.js.snapshot."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/70-export/063-paleobot-v66-svg-export.js.snapshot. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: 1a1b568. Para deshacerlos todos: git revert 1a1b568 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/20-navigation/077-paleobot-integrated-route-bridge.js",
@@ -265,7 +350,7 @@
       "reason": "Función rota desde la línea base (humo «enlaces.profundos» false: solo 7 de 31 vistas abrían por enlace).",
       "evidence": "T5: humo «enlaces.profundos» 31/31 (antes 7/31); cualquier otro valor se ignora como antes (lista literal, sin expresiones).",
       "impact": "Un enlace ?view=<id> abre cualquiera de las 31 vistas.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/20-navigation/077-paleobot-integrated-route-bridge.js.snapshot."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/20-navigation/077-paleobot-integrated-route-bridge.js.snapshot. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: 1a1b568. Para deshacerlos todos: git revert 1a1b568 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js",
@@ -278,7 +363,7 @@
       "reason": "Teclado (T5 § 12): con el foco en una tarjeta de pregunta de África o en «Abrir region relacionada», Tab abría la región y preventDefault dejaba el foco en <body>: no se podía salir con el teclado.",
       "evidence": "T5 (sonda africa_tab.cjs, escritorio): antes, Tab desde la tarjeta y desde el botón → foco en <body>; después → foco en el siguiente control (.africa-route-step).",
       "impact": "Tab recorre la tarjeta; Intro y espacio siguen abriendo la región.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js.snapshot."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js.snapshot. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: aef9ec4. Para deshacerlos todos: git revert aef9ec4 (o restaurar el snapshot citado)."
     },
     {
       "path": "atlas/assets/js/30-search/069-paleobot-v86-global-search-final.js",
@@ -291,7 +376,7 @@
       "reason": "T5 § 12 y T4 § 7: rótulos sin tilde en la lista de resultados (ortografía RAE).",
       "evidence": "T5: la búsqueda compara con norm() (NFD sin diacríticos), así que los resultados no cambian; humo buscador.barra y busqueda.global sin pérdidas (ver informe T5).",
       "impact": "Solo el texto de los rótulos.",
-      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/30-search/069-paleobot-v86-global-search-final.js.snapshot."
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/30-search/069-paleobot-v86-global-search-final.js.snapshot. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: 95197c8. Para deshacerlos todos: git revert 95197c8 (o restaurar el snapshot citado)."
     }
   ]
 }
