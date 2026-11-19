@@ -9,7 +9,8 @@
    2 · La vista activa se anuncia: aria-current="page" en su chip (además del aria-pressed que ya pone 031).
    3 · Fila 17. El enlace de salto («Saltar al contenido principal», href="#main-content", que usan otros
        módulos) conserva su destino y su efecto, y después lleva el foco a la navegación del atlas: el botón
-       «Vistas» de la barra (si existe, L2) o la pestaña del bloque activo. Así no se salta la barra.
+       «Vistas» de la barra (si existe, L2) o la pestaña del bloque activo. Así no se salta la barra. Desde la
+       T7 (hallazgo T7-02) lo hace sin desplazar y deja la franja arriba con PBDesplazamiento.colocar().
    Escuchas en fase de burbuja; un observador de hijos directos de #pbV50BlockPanel (no de atributos): las
    escrituras de este archivo (aria-current, foco) no lo disparan. Sin temporizadores en reposo.
    ===================================================================================================== */
@@ -77,7 +78,11 @@
     setTimeout(function () {
       var destino = document.getElementById('pbBarraVistasBoton');
       if (!destino || !destino.getClientRects().length) destino = document.querySelector('#pbV50Blocks [data-pb-v50-block][aria-selected="true"]') || document.querySelector('#pbV50Blocks [data-pb-v50-block]');
-      if (destino) { try { destino.focus(); } catch (err) {} }
+      // PB-GH-11 (T7-02): sin preventScroll, enfocar el botón de la franja desplazaba la página 388-426 px hacia
+      // arriba y dejaba a la vista un resto de la portada. Ahora el foco va al mismo sitio sin desplazar y la
+      // página se coloca como al elegir una vista: franja arriba y, bajo ella, la consulta y la vista.
+      if (destino) { try { destino.focus({ preventScroll: true }); } catch (err) {} }
+      if (window.PBDesplazamiento && window.PBDesplazamiento.colocar) window.PBDesplazamiento.colocar();
     }, 0);
   });
 
