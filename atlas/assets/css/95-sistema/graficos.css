@@ -1,0 +1,48 @@
+/* =====================================================================================================
+   95-sistema/graficos.css · vistas de gráficos (PB-GH-11, tanda T5, L2). Acompaña a graficos.js.
+   Cabecera de gráfico sobre papel, ayuda de lectura, «Ver el gráfico entero» (el mismo SVG ajustado al
+   ancho de su caja) y tabla alternativa con cabecera y primera columna fijas en su propia caja desplazable.
+   Matriz de primates: primera columna fija para no perder el rasgo al desplazar. Solo tokens.
+   Revertir: quitar el <link> (y graficos.js).
+   ===================================================================================================== */
+:root:root body .pb-graf-cabecera {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-1) var(--e-3);
+  margin: var(--e-3) 0 var(--e-2);
+}
+:root:root body .pb-graf-titulo { flex: 1 1 14rem; margin: 0; font-family: var(--f-titulo); font-size: var(--t-m); font-weight: 600; color: var(--tinta); }
+:root:root body .pb-graf-ayuda { flex: 1 1 100%; order: 3; margin: 0; max-width: var(--medida); font-size: var(--t-s); color: var(--tinta-2); line-height: 1.45; }
+:root:root body .pb-graf-ayuda[hidden], :root:root body .pb-graf-entero[hidden] { display: none; }
+:root:root body .pb-graf-entero {
+  min-height: var(--control); padding: 0 var(--e-4);
+  border: var(--linea) solid var(--borde-control); border-radius: var(--r-pildora);
+  background: var(--superficie); color: var(--tinta);
+  font-family: var(--f-titulo); font-size: var(--t-xs); font-weight: 500; cursor: pointer;
+}
+:root:root body .pb-graf-entero[aria-pressed="true"] { background: var(--acento-suave); border-color: var(--acento); color: var(--acento-fuerte); }
+/* «Ver entero»: el SVG ocupa el ancho de su caja con su proporción (viewBox); la caja deja de desplazarse. */
+:root:root body .pb-graf-ajustado { overflow-x: hidden !important; }
+:root:root body .pb-graf-ajustado > svg,
+:root:root body svg.pb-graf-ajustado,
+:root:root body .pb-graf-ajustado .phylo-cladogram-svg { width: 100% !important; max-width: 100% !important; min-width: 0 !important; height: auto !important; }
+
+/* Tabla alternativa */
+:root:root body details.pb-graf-tabla { margin: var(--e-2) 0 var(--e-4); border-top: var(--linea) solid var(--borde); border-bottom: var(--linea) solid var(--borde); }
+:root:root body details.pb-graf-tabla > summary {
+  display: flex; align-items: center; min-height: var(--control); cursor: pointer;
+  font-family: var(--f-titulo); font-size: var(--t-s); font-weight: 600; color: var(--tinta);
+}
+:root:root body .pb-graf-tabla-caja { max-height: 28rem; overflow: auto; margin: 0 0 var(--e-3); border: var(--linea) solid var(--borde); border-radius: var(--r-control); background: var(--superficie); }
+:root:root body .pb-graf-tabla-datos { width: 100%; border-collapse: collapse; font-size: var(--t-s); color: var(--tinta); }
+:root:root body .pb-graf-tabla-datos caption { caption-side: top; padding: var(--e-2) var(--e-3); text-align: left; font-size: var(--t-xs); color: var(--tinta-2); }
+:root:root body .pb-graf-tabla-datos :is(th, td) { padding: var(--e-1) var(--e-3); border-top: var(--linea) solid var(--borde); text-align: left; vertical-align: top; font-variant-numeric: tabular-nums; }
+:root:root body .pb-graf-tabla-datos thead th { position: sticky; top: 0; z-index: 2; background: var(--hundido); font-family: var(--f-titulo); font-size: var(--t-xs); font-weight: 600; }
+:root:root body .pb-graf-tabla-datos tbody th { position: sticky; left: 0; z-index: 1; background: var(--superficie); font-weight: 400; }
+:root:root body .pb-graf-taxon {
+  min-height: var(--control-min); padding: 0; border: 0; background: none;
+  color: var(--acento); font: inherit; font-style: italic; text-align: left; text-decoration: underline; text-underline-offset: 2px; cursor: pointer;
+}
+:root:root body .pb-graf-vacio { margin: var(--e-2) 0 var(--e-3); color: var(--tinta-2); font-size: var(--t-s); }
+
+/* Matriz de primates: rasgo (primera columna) fijo al desplazar en horizontal. */
+:root:root body .primate-matrix-wrap table.primate-matrix tbody tr > :first-child { position: sticky; left: 0; z-index: 1; background: var(--superficie); box-shadow: inset -1px 0 0 var(--borde); }
+:root:root body .primate-matrix-wrap table.primate-matrix thead tr > :first-child { position: sticky; left: 0; z-index: 2; }
