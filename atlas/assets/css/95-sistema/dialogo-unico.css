@@ -118,6 +118,11 @@
 :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera { flex-wrap: wrap; }
 :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > :is(h2, h3) { flex: 1 1 12rem; hyphens: manual; }
 :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > .close-modal { margin-left: auto !important; }
+/* PB-GH-11 (T5): a 320 px «Paleoantropológico» no cabía junto a «Cerrar» y se partía sin guion
+   («Paleoantropológic|o»). Por debajo de 22,5 rem el título pasa a --t-m (17 px). */
+@media (max-width: 22.5rem) {
+  :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > :is(h2, h3) { font-size: var(--t-m) !important; }
+}
 
 /* 3 · Cuerpo: primeros bloques sin el margen superior que dejaba el antiguo hueco del título. */
 :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera + * { margin-top: 0 !important; }
@@ -155,7 +160,7 @@
     box-shadow: none !important;
   }
   :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera { margin: 0 calc(-1 * var(--e-4)) var(--e-4); padding: var(--e-2) var(--e-4); }
-  :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > :is(h2, h3) { font-size: var(--t-l) !important; }
+  :root:root body .pb-dlg:is([id], #_) > .pb-dlg-lamina > .pb-dlg-cabecera > :is(h2, h3) { font-size: var(--t-m) !important; }
   :root:root body #studentGuideModal.pb-dlg .sg-header { margin: 0 calc(-1 * var(--e-4)) !important; padding: 0 var(--e-4) var(--e-4) !important; }
   :root:root body #studentGuideModal.pb-dlg .sg-tabs { margin: 0 calc(-1 * var(--e-4)) !important; padding: 0 var(--e-4) !important; }
 }
