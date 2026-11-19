@@ -55,9 +55,13 @@
         t.className = 'pb-herramientas-titulo';
         t.textContent = 'Herramientas';
         panel.appendChild(t);
-        document.body.appendChild(panel);
       }
     }
+    // En el orden de tabulación, justo después de la barra (el conmutador es su último control): Tab desde
+    // «Herramientas» entra en el cajón. Su posición en pantalla la da herramientas.css (fijo bajo la franja).
+    var barra = document.getElementById('pbV50Blocks');
+    if (barra && barra.nextElementSibling !== panel) barra.insertAdjacentElement('afterend', panel);
+    else if (!barra && panel.parentElement !== document.body) document.body.appendChild(panel);
     if (cajon && cajon.parentElement !== panel) panel.appendChild(cajon);
     if (a11y && a11y.parentElement !== panel) panel.appendChild(a11y);
     if (cajon) cajon.querySelectorAll('button').forEach(function (b) {
@@ -72,6 +76,15 @@
   })();
   ['paleobot:viewchange', 'paleobot:v55-viewchange'].forEach(function (n) {
     document.addEventListener(n, function () { setTimeout(colocar, 200); });
+  });
+  // Escape con el foco en el cajón o en su conmutador lo cierra y devuelve el foco a «Herramientas» (071 no lo
+  // hacía). Escucha en burbuja; cede si hay un diálogo abierto (lo cierra dialogos.js).
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' || e.defaultPrevented || !document.body.classList.contains('pb-mobile-tools-open')) return;
+    if (!(e.target && e.target.closest && e.target.closest('#pbHerramientasPanel, #pb-mobile-tools-toggle'))) return;
+    if (document.querySelector('.modal-overlay.active, .detail-panel.active, dialog[open]')) return;
+    var api = window.PaleoBotV88FloatingMenuFinal;
+    if (api && api.setMobileTools) { e.preventDefault(); api.setMobileTools(false, { focus: true }); }
   });
   window.PBHerramientas = { colocar: colocar };
 })();
