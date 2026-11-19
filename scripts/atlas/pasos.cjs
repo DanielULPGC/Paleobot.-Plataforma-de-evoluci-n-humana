@@ -869,6 +869,99 @@ const FUNCIONES = {
     out.ok = !!abierta;
     return out;
   },
+
+  // ---------- PB-GH-11 (T5): medidas de la tanda (no existen en la línea base: salen como «otras») ----------
+  // Regiones desplazables: en las vistas de gráficos y tablas anchas, todo contenedor que se desplaza recibe
+  // foco (tabindex=0) y nombre; en Clima, con el contenedor enfocado, la flecha derecha lo desplaza.
+  async 'regiones.foco'(page) {
+    const out = { paso: 'regiones.foco', medidas: {} };
+    out.items = Object.create(null);
+    for (const v of ['clima', 'contexto', 'coexistencias', 'primatologia', 'aula', 'constructor', 'paleoecologia']) {
+      await irVistaUI(page, v, false); await barrerVista(page, v); await page.waitForTimeout(1500);
+      const r = await page.evaluate((v) => {
+        const s = document.getElementById('view-' + v);
+        const desp = [...s.querySelectorAll('*')].filter((e) => { const c = getComputedStyle(e); return e.getClientRects().length && ((/(auto|scroll)/.test(c.overflowX) && e.scrollWidth > e.clientWidth + 2) || (/(auto|scroll)/.test(c.overflowY) && e.scrollHeight > e.clientHeight + 2)); });
+        const sinFoco = desp.filter((e) => e.getAttribute('tabindex') !== '0' && !e.querySelector('a[href],button,input,select,textarea,[tabindex="0"]'));
+        const sinNombre = desp.filter((e) => e.getAttribute('tabindex') === '0' && !(e.getAttribute('aria-label') || e.getAttribute('aria-labelledby')));
+        return { desplazables: desp.length, sinFoco: sinFoco.length, sinNombre: sinNombre.length };
+      }, v);
+      out.medidas[v] = r; out.items[v + ': regiones con foco y nombre'] = r.sinFoco === 0 && r.sinNombre === 0;
+    }
+    await irVistaUI(page, 'clima', false); await page.waitForTimeout(1200);
+    const ok = await page.evaluate(() => { const c = document.getElementById('climaScroll'); if (!c || c.scrollWidth <= c.clientWidth + 2) return null; c.scrollLeft = 0; c.focus(); return document.activeElement === c; });
+    if (ok !== null) {
+      for (let k = 0; k < 6; k++) await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(400);
+      out.medidas.climaScrollLeft = await page.evaluate(() => document.getElementById('climaScroll').scrollLeft);
+      out.items['clima: flecha derecha desplaza el gráfico enfocado'] = !!ok && out.medidas.climaScrollLeft > 0;
+    }
+    out.ok = Object.values(out.items).every(Boolean); return out;
+  },
+  // Elementos fijos (salvo la barra, sus paneles y los diálogos) que tapan texto: tres posiciones por vista y
+  // la Bibliografía abierta. Debe ser 0 (fila 22).
+  async 'flotantes.tapan'(page) {
+    const out = { paso: 'flotantes.tapan', medidas: {} };
+    out.items = Object.create(null);
+    const contar = (raizSel) => page.evaluate((raizSel) => {
+      const vis = (e) => { const r = e.getBoundingClientRect(); const s = getComputedStyle(e); return r.width > 0 && r.height > 0 && s.display !== 'none' && s.visibility !== 'hidden' && parseFloat(s.opacity) > 0.05; };
+      const raiz = document.querySelector(raizSel); if (!raiz) return -1;
+      const fijos = [...document.querySelectorAll('body *')].filter((e) => getComputedStyle(e).position === 'fixed' && vis(e) && !e.contains(raiz) && !raiz.contains(e))
+        .filter((e) => !e.closest('#pbV50Blocks, #pbBarraPanel, #pbHerramientasPanel, .modal-overlay, .detail-panel, .pres-overlay, .socratic-overlay, .lightbox, dialog, #pb-floating-status, .skip-link'));
+      let n = 0; const w = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT);
+      for (let t = w.nextNode(); t; t = w.nextNode()) {
+        if (!t.textContent.trim() || !t.parentElement || !vis(t.parentElement)) continue;
+        const rg = document.createRange(); rg.selectNodeContents(t);
+        for (const q of rg.getClientRects()) for (const f of fijos) { const fr = f.getBoundingClientRect(); if (q.left < fr.right - 1 && q.right > fr.left + 1 && q.top < fr.bottom - 1 && q.bottom > fr.top + 1) n++; }
+      }
+      return n;
+    }, raizSel);
+    for (const v of ['timeline', 'phylo', 'paleoecologia', 'tafonomia', 'paleoproteomica', 'continentes']) {
+      await irVistaUI(page, v, false); await page.waitForTimeout(800);
+      let n = 0;
+      for (const f of [0.1, 0.5, 0.9]) {
+        await page.evaluate(([v, f]) => { const s = document.getElementById('view-' + v); const r = s.getBoundingClientRect(); window.scrollTo(0, r.top + scrollY + Math.max(0, r.height - innerHeight) * f); }, [v, f]);
+        await page.waitForTimeout(300); n += Math.max(0, await contar('#view-' + v));
+      }
+      out.medidas[v] = n; out.items[v + ': ningún fijo tapa texto'] = n === 0;
+    }
+    await page.evaluate(() => document.querySelector('[data-action="abrirBiblio"]')?.click()); await page.waitForTimeout(1400);
+    out.medidas.bibliografia = await contar('#biblioModal .modal-content');
+    out.items['bibliografía: ningún fijo tapa texto'] = out.medidas.bibliografia === 0;
+    await page.keyboard.press('Escape');
+    out.ok = Object.values(out.items).every(Boolean); return out;
+  },
+  // Sin JavaScript (fila 24): un solo h1 visible y el aviso con enlaces a la consulta ligera y a DEA.
+  async 'sinjs'(page) {
+    const out = { paso: 'sinjs' };
+    const base = new URL(page.url()).origin;
+    const ctx = await page.context().browser().newContext({ javaScriptEnabled: false, viewport: page.viewportSize() });
+    await ctx.route(/^https?:\/\/(?!localhost|127\.0\.0\.1)/, (r) => r.abort());
+    const p = await ctx.newPage();
+    await p.goto(base + '/atlas/index.html', { waitUntil: 'load' }).catch(() => {}); await p.waitForTimeout(600);
+    out.medidas = await p.evaluate(() => ({
+      h1: [...document.querySelectorAll('h1')].filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(e).visibility !== 'hidden'; }).length,
+      enlaces: [...document.querySelectorAll('.pb-sin-js a')].map((a) => a.getAttribute('href')),
+      bodyVisible: getComputedStyle(document.body).visibility === 'visible' }));
+    await ctx.close();
+    out.items = Object.assign(Object.create(null), { 'un solo h1 visible': out.medidas.h1 === 1, 'enlace a la consulta ligera': out.medidas.enlaces.includes('../ligera/index.html'),
+      'enlace a la entrada DEA': out.medidas.enlaces.includes('../dea/'), 'página visible sin JavaScript': out.medidas.bodyVisible });
+    out.ok = Object.values(out.items).every(Boolean); return out;
+  },
+  // CLS (fila 13), mismo criterio que recorrido.cjs (hadRecentInput excluido): carga (entradas almacenadas
+  // desde el inicio) y cambio a las vistas que más saltaban en la línea base.
+  async 'cls'(page) {
+    const out = { paso: 'cls', medidas: {} };
+    out.items = Object.create(null);
+    out.medidas.carga = await page.evaluate(() => new Promise((ok) => { let s = 0; const o = new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) s += e.value; }); o.observe({ type: 'layout-shift', buffered: true }); setTimeout(() => { o.disconnect(); ok(+s.toFixed(3)); }, 300); }));
+    out.items['carga < 0,1'] = out.medidas.carga < 0.1;
+    for (const v of ['aula', 'debates', 'socratico', 'estratigrafia', 'revisiones', 'constructor', 'datacion', 'primatologia', 'coexistencias', 'africa', 'tree']) {
+      await page.evaluate(() => { window.__clsT5 = 0; window.__clsT5o?.disconnect(); window.__clsT5o = new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__clsT5 += e.value; }); window.__clsT5o.observe({ type: 'layout-shift', buffered: false }); });
+      await irVistaUI(page, v, false); await page.waitForTimeout(600);
+      const c = await page.evaluate(() => +(window.__clsT5 || 0).toFixed(3));
+      out.medidas[v] = c; out.items[v + ' < 0,1'] = c < 0.1;
+    }
+    out.ok = Object.values(out.items).every(Boolean); return out;
+  },
 };
 
 // Enlace profundo ?view=<id>#main-content de las 31 vistas (lo usa el recorrido). Recibe una función que abre

@@ -111,3 +111,22 @@ línea base no se reescribe.
   (≤ 52 rem en escritorio; pantalla completa en teléfono).
 Como en la T3, no existen en la línea base: en `--comparar` salen como «otras». Los `items` usan
 `Object.create(null)` (una clave «constructor» daría falsos positivos con `{}`). La línea base no se reescribe.
+
+## Medidas añadidas en la T5 (resto de vistas y teléfono)
+
+- `regiones.foco` (función): en Clima, Contexto, Coexistencias, Primatología, Centro docente, Constructor y
+  Paleoecología, todo contenedor que se desplaza tiene foco (tabindex=0, o un control dentro) y nombre; en Clima,
+  con el gráfico enfocado, la flecha derecha lo desplaza (filas 15 y 26).
+- `flotantes.tapan` (función): número de trozos de texto bajo elementos fijos (salvo la barra, sus paneles y
+  los diálogos) en seis vistas, en tres posiciones de desplazamiento cada una, y con la Bibliografía abierta.
+  Debe ser 0 (fila 22).
+- `sinjs` (función): abre el atlas en un contexto sin JavaScript: un solo h1 visible, aviso con enlaces a
+  `../ligera/index.html` y `../dea/`, página visible (fila 24).
+- `cls` (función): CLS de carga (entradas almacenadas desde el inicio) y CLS al cambiar a las once vistas que
+  más saltaban en la línea base (fila 13); `hadRecentInput` excluido, como `recorrido.cjs`.
+- `diagnostico` y `enlaces.profundos` ya existían: desde la T5 responden (informe visible fuera de Centro
+  docente; `?view=` en las 31 vistas).
+- `--comparar`: los encabezados se comparan sin pictogramas decorativos y por sus 80 primeros caracteres (igual
+  en A, B y el inventario), porque la fila 34 retira el emoji de rótulos como «🌡 Línea de tiempo…».
+Como las de la T3 y la T4, no existen en la línea base y en `--comparar` salen como «otras». `items` con
+`Object.create(null)`. La línea base no se reescribe.
