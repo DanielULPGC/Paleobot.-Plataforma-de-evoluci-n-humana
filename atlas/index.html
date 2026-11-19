@@ -953,8 +953,10 @@
       <button type="button" class="filter-reset-btn" data-action="resetGlobalFilters" title="Restablecer búsqueda, clado y rango temporal">Limpiar filtros</button>
       <div class="controls">
         <select id="nivelEducativo" aria-label="Nivel de complejidad del atlas" data-level-select>
-          <option value="doctorado">Nivel Doctorado</option>
-          <option value="universitario" selected>Nivel Universitario</option>
+          <!-- PB-GH-11 (T5, fila 20): el atlas arranca con nivelActual = 'doctorado' (002, todas las vistas y todo el
+               contenido visibles); el selector mostraba «Universitario». Se marca la opción que de verdad está activa. -->
+          <option value="doctorado" selected>Nivel Doctorado</option>
+          <option value="universitario">Nivel Universitario</option>
           <option value="basico">Nivel Básico</option>
         </select>
       <p class="level-hint" style="font-size:0.72rem;color:var(--text-hint);font-family:var(--font-mono);margin-top:4px;line-height:1.4">Si es tu primera vez, empieza en <strong>Nivel Básico</strong>.</p>
