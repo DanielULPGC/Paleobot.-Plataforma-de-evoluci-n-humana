@@ -133,3 +133,36 @@ Como en la T3, no existen en la línea base: en `--comparar` salen como «otras�
   en A, B y el inventario), porque la fila 34 retira el emoji de rótulos como «🌡 Línea de tiempo…».
 Como las de la T3 y la T4, no existen en la línea base y en `--comparar` salen como «otras». `items` con
 `Object.create(null)`. La línea base no se reescribe.
+
+## Cuándo y cómo se ejecuta el humo (fuera del verificador)
+
+`scripts/verificar_repo.py` **no** ejecuta el humo: necesita Chromium y tarda unos 10 min por condición
+(escritorio o teléfono, con o sin terceros). El verificador cubre lo estático de la ronda (desde la T6): enlaces de
+`95-sistema` con `?v=pbgh11` tras los importados y `carga-fin.css` como último `<link>`, CSP de `atlas/index.html`
+idéntica a la vigente, `95-sistema` sin manejadores en línea, `eval`, `new Function`, escuchas en captura ni hosts
+nuevos, lista blanca de `?view=` igual a las 31 secciones, y los dos generadores con `--check`
+(`generar_imagenes_atlas.cjs`, `generar_costas_atlas.cjs`). Lo que solo se ve en el navegador (vistas que se activan,
+funciones que responden, foco de los diálogos, violaciones de CSP en ejecución, posición de la vista) es del humo.
+
+**Cuándo**: antes de dar por terminado cualquier cambio en `atlas/index.html`, `atlas/assets/` o `scripts/atlas/`, y
+siempre antes de proponer una fusión. Mínimo, la condición más exigente con la red real de muchas aulas:
+escritorio sin terceros; si el cambio afecta a menos de 48 rem (teléfono, tableta), también teléfono sin terceros.
+Para cerrar una ronda, las cuatro condiciones.
+
+**Cómo** (desde la raíz del repositorio; servidor propio en un puerto libre, parado al terminar con `kill <PID>`):
+
+```
+python3 -m http.server 8995 --bind 127.0.0.1 &        # anote el PID ($!)
+export PB_BASE=http://127.0.0.1:8995
+node scripts/atlas/humo.cjs --vp escritorio --sin-terceros --salida humo_escritorio_sinterceros.json
+node scripts/atlas/humo.cjs --comparar docs/diseno/atlas/linea-base/humo_escritorio_sinterceros.json humo_escritorio_sinterceros.json \
+     --inventario docs/diseno/atlas/linea-base/02_inventario.json --inestables docs/diseno/atlas/linea-base/inestables.json
+kill <PID>
+```
+
+Criterio de aceptación: `--comparar` termina con código 0 (**0 pérdidas**), `inventarioAusente` sin pérdidas y
+`resumen.violacionesCSP` solo con las de `img-src` de OpenTopoMap en `minimapa.capas` (capa «Topográfico», fuera de la
+CSP desde siempre; decisión pendiente de la titular). Las «mejoras» y «otras» se revisan, no bloquean. Guarde los
+JSON fuera del repositorio (p. ej. `local-results/`); la línea base de `docs/diseno/atlas/linea-base/` no se reescribe.
+Además, tras tocar imágenes: `node scripts/atlas/tormenta.cjs --sin-terceros --ms 10000` (0 peticiones por segundo en
+reposo y 0 reintentos de la misma imagen).

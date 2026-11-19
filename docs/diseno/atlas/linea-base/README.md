@@ -21,3 +21,15 @@ Lo que ya falla en la línea base (no son pérdidas futuras): vistas `dispersal`
 `?view=`) y, sin terceros, `minimapa.capas` (sin Leaflet).
 
 Comparar: `node scripts/atlas/humo.cjs --comparar docs/diseno/atlas/linea-base/humo_escritorio_terceros.json <nuevo>.json --inventario docs/diseno/atlas/linea-base/02_inventario.json --inestables docs/diseno/atlas/linea-base/inestables.json`
+
+## Estado al cierre de PB-GH-11 (T6)
+
+Los archivos de esta carpeta no se reescriben: siguen siendo la medida de `c971001`. Lo que cambió durante la ronda:
+
+- `inestables.json` ya no tiene claves: las 4 de diálogos se retiraron en la T3 (lista y motivo en `retiradas_T3`),
+  cuando el gestor de diálogos las volvió deterministas. Queda 1 patrón (encabezado animado del simulador, desde la T1).
+- Lo que fallaba en la línea base responde desde la ronda: `dispersal` y `recursos` (T1), `minimapa.capas` sin terceros
+  (T2, Leaflet alojado), `mapa.lentes · all` (T4), `diagnostico`, `exportar.svg.constructor` y `enlaces.profundos`
+  (T5). En `--comparar` aparecen como mejoras.
+- El humo creció (funciones de la T3, la T4 y la T5): en `--comparar` contra esta línea base salen como «otras». Las
+  cifras de cada tanda están en `docs/diseno/AUDITORIA_PB_GH_11.md`.
