@@ -19,6 +19,14 @@ const P = require('./pasos.cjs');
 
 const CAMPOS_DIALOGO = ['abre', 'focoEntra', 'cierraConEscape', 'focoVuelve'];
 
+// PB-GH-11 (T5): los encabezados se comparan sin pictogramas decorativos (la fila 34 los retira de los
+// rótulos: «🌡 Línea de tiempo…» y «Línea de tiempo…» son el mismo encabezado) y por sus 80 primeros
+// caracteres (la medida corta a 90 y, al retirar el pictograma, el corte cae en otro sitio). Los glifos
+// tipográficos admitidos (flechas, ✓, ✗, ✕) no se retiran. Se aplica igual a A y a B y al inventario.
+const PICTO = /(?:\p{Extended_Pictographic}|[\u{1F1E6}-\u{1F1FF}])(?:\uFE0F|\u20E3|\u200D\p{Extended_Pictographic}|[\u{1F3FB}-\u{1F3FF}])*/gu;
+const ADMITIDO = /^[\u2190-\u21FF\u2713-\u2718\u00B7\u2022\u25E6]$/u;
+function claveEnc(h) { return String(h).replace(PICTO, (m) => (ADMITIDO.test(m) ? m : '')).replace(/\s+/g, ' ').trim().slice(0, 80); }
+
 // ---------- Firma estable (lo único que se compara) ----------
 function firma(R) {
   const f = {};
@@ -26,7 +34,7 @@ function firma(R) {
     f[`vista ${k}: activa`] = !!v.activa;
     f[`vista ${k}: sin excepciones`] = !v.excepciones;
     f[`vista ${k}: pintada`] = !!(v.datos && v.datos.pintada);
-    for (const h of (v.datos && v.datos.encabezados) || []) f[`vista ${k}: encabezado «${h}»`] = true;
+    for (const h of (v.datos && v.datos.encabezados) || []) { const c = claveEnc(h); if (c) f[`vista ${k}: encabezado «${c}»`] = true; }
   }
   for (const [k, v] of Object.entries(R.funciones || {})) {
     f[`función ${k}: responde`] = !!v.ok;
@@ -88,7 +96,7 @@ function comparar(a, b, opts = {}) {
     const inv = JSON.parse(fs.readFileSync(opts.inventario, 'utf8'));
     for (const v of inv.vistas || []) {
       for (const e of v.encabezados || []) {
-        const t = e.replace(/^H\d:\s*/, '').replace(/\s+/g, ' ').trim().slice(0, 90); if (!t) continue;
+        const t = claveEnc(e.replace(/^H\d:\s*/, '')); if (!t) continue;
         const enB = !!fb[`vista ${v.id}: encabezado «${t}»`]; const enA = !!fa[`vista ${v.id}: encabezado «${t}»`];
         if (!enB) inventarioAusente.push(`${v.id}: «${t}»${enA ? ' (PÉRDIDA)' : ' (ya ausente en A)'}`);
       }
