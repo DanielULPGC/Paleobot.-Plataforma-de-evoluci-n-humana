@@ -942,7 +942,8 @@
       "git_blob_sha1": "17bc8d019c8af16e9aece4d9f9d75664656184ff",
       "sha256": "c0a0c99693c10668e31ed07297c68773ff0f89077986bb11e4ffc1258be6873b",
       "retained_paths": [
-        "atlas/assets/js/30-search/069-paleobot-v86-global-search-final.js"
+        "atlas/assets/js/30-search/069-paleobot-v86-global-search-final.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/30-search/069-paleobot-v86-global-search-final.js.snapshot"
       ]
     },
     {

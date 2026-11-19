@@ -10624,6 +10624,11 @@ function drawRadarChartN(canvas, species, seriesColors) {
     ctx.font = `bold 10px ${getComputedStyle(document.body).getPropertyValue('--font-mono') || 'monospace'}`;
     ctx.textAlign = lp.x < cx - 4 ? 'right' : lp.x > cx + 4 ? 'left' : 'center';
     ctx.textBaseline = lp.y < cy - 4 ? 'bottom' : lp.y > cy + 4 ? 'top' : 'middle';
+    // PB-GH-11 (T5): «Tecnología», «Simbolismo» y otros rótulos laterales salían del lienzo de 310 px y se
+    // cortaban; se desplaza el punto de anclaje lo justo para que el rótulo entero quepa (2 px de margen).
+    const lw = ctx.measureText(AXES_LABELS[i]).width;
+    if (ctx.textAlign === 'left' && lp.x + lw > SIZE - 2) lp.x = SIZE - 2 - lw;
+    if (ctx.textAlign === 'right' && lp.x - lw < 2) lp.x = 2 + lw;
     ctx.fillText(AXES_LABELS[i], lp.x, lp.y);
   }
   ctx.textBaseline = 'alphabetic';
