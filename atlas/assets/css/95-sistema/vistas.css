@@ -25,3 +25,8 @@
   .africa-route-step, .africa-evidence-chip, .coex-eco-tag, .cpv2-meta, .primate-pill, .gene-chip,
   .biogeo-record-site, .biogeo-record-specimen, .biogeo-record-element, .biogeo-tag-age, .biogeo-tag-loc, .biogeo-tag-link, .biogeo-tag-note
 ) { font-size: var(--t-dato) !important; }
+
+/* 5 · Familias en style= de plantillas (Paleoproteómica: h2, h3 y strong en Georgia, una familia fuera del
+   sistema y la única serif que quedaba en las vistas): Lexend de titulares, como el resto (T2 hizo lo mismo en
+   la portada). Único modo de ganar a un style= es !important. */
+:root:root body #main-content .view-section [style*="Georgia"] { font-family: var(--f-titulo) !important; }
