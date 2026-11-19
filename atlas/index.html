@@ -91,6 +91,8 @@
 
 <!-- PB-GH-11: sistema base «Papel y tierra» antes de las hojas del atlas (el puente está en 95-sistema/atlas-sistema.css, enlazada la última). -->
 <link id="pb-base" rel="stylesheet" href="../assets/paleobot-base.css?v=pbgh11">
+<!-- PB-GH-11 (T5) · <body> no se pinta hasta la última hoja (carga-fin.css): sin saltos de maquetación al cargar (fila 13). -->
+<link id="pb-carga-css" rel="stylesheet" href="assets/css/95-sistema/carga.css?v=pbgh11">
 <link rel="stylesheet" href="assets/css/00-core/001-style.css?v=fix7">
 </head>
 <body>
@@ -2930,5 +2932,7 @@
 <link id="pb-herramientas-css" rel="stylesheet" href="assets/css/95-sistema/herramientas.css?v=pbgh11">
 <!-- PB-GH-11 (T5) · rótulos de interfaz sin pictogramas; el texto se conserva (fila 34). -->
 <script id="pb-pictogramas" src="assets/js/95-sistema/pictogramas.js?v=pbgh11" defer></script>
+<!-- PB-GH-11 (T5) · ÚLTIMO enlace de la página: vuelve visible <body> cuando ya han llegado todas las hojas (ver carga.css). -->
+<link id="pb-carga-fin-css" rel="stylesheet" href="assets/css/95-sistema/carga-fin.css?v=pbgh11">
 </body>
 </html>
