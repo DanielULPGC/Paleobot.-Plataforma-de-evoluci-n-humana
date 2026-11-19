@@ -12,3 +12,16 @@
 .tapho-sources a { text-decoration: underline; text-underline-offset: 2px; }
 [data-pb-region] { max-width: 100%; overscroll-behavior-x: contain; }
 :root:root:root body [data-pb-region]:focus-visible { outline-offset: calc(-1 * var(--foco-ancho, 3px)) !important; }
+
+/* 4 · Escala: rótulos, píldoras y metadatos de las vistas por debajo de 12 px (literales de 9,28 a 11,84 px en
+   hojas importadas y en style= de las plantillas) pasan al paso de dato del sistema (--t-dato, 12 px), el mínimo
+   que fija la dirección para rótulos de dato. Se excluyen las celdas de matrices densas (paleoecología,
+   barras de continentes), donde un píxel más rompe la rejilla. Medida en el informe T5 (antes/después). */
+:root:root body #main-content .view-section :is(
+  small, time,
+  .pb-dap-block-title, .pb-dap-chip, .pb-dap-comp-chip, .pb-dap-prereq-icon, .pb-dap-next-label, .pb-dap-close, .pb-dap-prereq-go,
+  .bib-ref-tag, .resource-tag, .resource-kind, .map-site-item-meta, .teaching-risk, .teaching-chip, .teaching-ticket-chip,
+  .america-pill, .america-consensus, .debate-meta-pill, .debate-side-title, .site-badge, .audit-priority, .audit-family-chip,
+  .africa-route-step, .africa-evidence-chip, .coex-eco-tag, .cpv2-meta, .primate-pill, .gene-chip,
+  .biogeo-record-site, .biogeo-record-specimen, .biogeo-record-element, .biogeo-tag-age, .biogeo-tag-loc, .biogeo-tag-link, .biogeo-tag-note
+) { font-size: var(--t-dato) !important; }
