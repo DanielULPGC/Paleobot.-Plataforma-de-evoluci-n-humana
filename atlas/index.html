@@ -93,9 +93,23 @@
 <link id="pb-base" rel="stylesheet" href="../assets/paleobot-base.css?v=pbgh11">
 <!-- PB-GH-11 (T5) · <body> no se pinta hasta la última hoja (carga-fin.css): sin saltos de maquetación al cargar (fila 13). -->
 <link id="pb-carga-css" rel="stylesheet" href="assets/css/95-sistema/carga.css?v=pbgh11">
+<!-- PB-GH-11 (T5) · sin JavaScript: aviso con alternativas y un solo h1 visible (fila 24). -->
+<noscript><link id="pb-sin-js-css" rel="stylesheet" href="assets/css/95-sistema/sin-js.css?v=pbgh11"></noscript>
 <link rel="stylesheet" href="assets/css/00-core/001-style.css?v=fix7">
 </head>
 <body>
+
+<!-- PB-GH-11 (T5, fila 24) · aviso sin JavaScript (sin script en línea: la CSP lo prohíbe). -->
+<noscript>
+  <section class="pb-sin-js" aria-labelledby="pb-sin-js-titulo">
+    <p id="pb-sin-js-titulo" class="pb-sin-js-titulo">Este atlas necesita JavaScript</p>
+    <p>Las vistas interactivas (cronología, mapas, comparador, fichas) no funcionan sin JavaScript. Puede consultar el mismo contenido en:</p>
+    <ul>
+      <li><a href="../ligera/index.html">la consulta ligera</a>, que funciona sin JavaScript;</li>
+      <li><a href="../dea/">la entrada del Diploma de Estudios Africanos</a>.</li>
+    </ul>
+  </section>
+</noscript>
 
 <!-- Skip-link de accesibilidad (FIX C-3b — WCAG 2.1 §2.4.1 Bypass Blocks) -->
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
