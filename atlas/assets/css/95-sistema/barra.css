@@ -19,6 +19,11 @@
 :root:root body.pb-v50-unified:not(.modal-open):not(.pres-active) { overflow-x: clip !important; overflow-y: visible !important; }
 /* Todo desplazamiento hasta un elemento (anclas, scrollIntoView, foco con Tab) lo deja bajo la franja, no tapado. */
 :root:root { scroll-padding-top: calc(3.5rem + var(--e-2)); }
+/* PB-GH-11 (T7-01): la franja y su panel están siempre a la vista (sticky o fijos), pero el navegador los creía
+   tapados por ese mismo scroll-padding: enfocarlos (clic en «Vistas», Tab, el foco que devuelve un diálogo)
+   subía la página 388-426 px y cerrar el panel no la devolvía. Con un margen de desplazamiento igual y de signo
+   contrario, la barra queda dentro del área visible y enfocarla no mueve la página. */
+:root:root body #pbV50Blocks, :root:root body #pbV50Blocks * { scroll-margin-top: calc(-3.5rem - var(--e-2)); }
 
 /* 1 · La barra: franja fija */
 :root:root body #pbV50Blocks.pb-barra {
