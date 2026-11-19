@@ -5693,6 +5693,7 @@ function renderAfricaAssessmentRubric() {
 }
 
 function renderAfricaQuestionBank() {
+  // PB-GH-11 (T5): tarjeta de pregunta con role="region" (antes role="button" con botones dentro: nested-interactive, aria-allowed-role).
   const regionById = Object.fromEntries(AFRICA_REGIONS.map(region => [region.id, region]));
   const cards = AFRICA_QUESTION_BANK.map(item => {
     const regionButtons = item.regions.map(regionId => {
@@ -5700,7 +5701,7 @@ function renderAfricaQuestionBank() {
       if (!region) return '';
       return `<button type="button" class="africa-route-step" data-africa-region="${escapeHtmlAttr(region.id)}" title="${escapeHtmlAttr(region.label)}">${escapeHtmlText(region.tag)}</button>`;
     }).join('');
-    return `<article class="africa-question-card" style="--question-color:${escapeHtmlAttr(item.color)}" tabindex="0" role="button" data-africa-question-region="${escapeHtmlAttr(item.regions[0] || '')}" aria-label="Abrir region relacionada: ${escapeHtmlAttr(item.title)}">
+    return `<article class="africa-question-card" style="--question-color:${escapeHtmlAttr(item.color)}" tabindex="0" role="region" data-africa-question-region="${escapeHtmlAttr(item.regions[0] || '')}" aria-label="Abrir region relacionada: ${escapeHtmlAttr(item.title)}">
       <div class="africa-question-meta">
         <span>${escapeHtmlText(item.level)}</span>
         <span>${escapeHtmlText(item.type)}</span>
@@ -16834,6 +16835,7 @@ function shortTaxonName(name) {
 }
 
 function renderPhyloTree() {
+  // PB-GH-11 (T5): el SVG del cladograma pasa de role="img" a role="group" (contiene barras con role="button").
   const container = document.getElementById('phyloSvgContainer');
   if (!container) return;
 
@@ -16888,7 +16890,7 @@ function renderPhyloTree() {
   const root = layout(CLADOGRAM_TREE);
   const parts = [];
 
-  parts.push(`<svg class="phylo-cladogram-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Cladograma ramificado de homíninos">`);
+  parts.push(`<svg class="phylo-cladogram-svg" viewBox="0 0 ${W} ${H}" role="group" aria-label="Cladograma ramificado de homíninos">`);
   parts.push(`<defs><linearGradient id="cladoRangeGrad" x1="0" x2="1"><stop offset="0" stop-color="rgba(255,255,255,0.35)"/><stop offset="1" stop-color="rgba(255,255,255,0)"/></linearGradient></defs>`);
 
   const axisTicks = [23,20,15,10,7,5,3,2,1,0.3,0];
@@ -17843,6 +17845,7 @@ let _coexActiveBin = null;
  *   5. Filtros de interacción + tarjetas de par mejoradas
  */
 function renderCoexistenceView() {
+  // PB-GH-11 (T5): las columnas del mapa de coexistencias llevan <title> en lugar de aria-label (prohibido en <rect> sin rol).
   const el = document.getElementById('coexistenceContent');
   if (!el) return;
 
@@ -17947,8 +17950,7 @@ function renderCoexistenceView() {
     const x = labelW + bi * cellW;
     return `<rect x="${x}" y="${top}" width="${cellW}" height="${species.length * rowH}"
       fill="transparent" style="cursor:pointer"
-      data-coex-col="${bi}" data-bin-old="${bin.old}" data-bin-young="${bin.young}"
-      aria-label="Intervalo ${formatTimePoint(bin.young)}-${formatTimePoint(bin.old)}"/>`;
+      data-coex-col="${bi}" data-bin-old="${bin.old}" data-bin-young="${bin.young}"><title>Intervalo ${formatTimePoint(bin.young)}-${formatTimePoint(bin.old)}</title></rect>`;
   }).join('');
 
   // ── Leyenda MIS ───────────────────────────────────────────────────
@@ -18667,6 +18669,7 @@ function edgeKey(a, b) {
 }
 
 function renderBuilderReferencePanel() {
+  // PB-GH-11 (T5): SVG de referencia role="group" (contiene nodos con role="button"); <aside> anidado → <section> con nombre.
   const nodes = BUILDER_REFERENCE_TREE_NODES.filter(n => DB_INDEX[n.id]);
   const nodeById = Object.fromEntries(nodes.map(n => [n.id, n]));
   const referenceEdges = BUILDER_REFERENCE_TREE_EDGES.filter(edge => {
@@ -18713,24 +18716,25 @@ function renderBuilderReferencePanel() {
     </div>
     <div class="builder-reference-body">
       <div class="builder-reference-scroll">
-        <svg class="builder-reference-svg" viewBox="0 0 1430 294" role="img" aria-label="Cladograma de referencia para el constructor">
+        <svg class="builder-reference-svg" viewBox="0 0 1430 294" role="group" aria-label="Cladograma de referencia para el constructor">
           <title>Árbol de referencia didáctico (hipótesis orientativa, no consenso cerrado)</title>
           ${edgeSvg}
           ${nodeSvg}
         </svg>
       </div>
-      <aside class="builder-reference-side">
+      <section class="builder-reference-side" aria-label="Lectura comparativa">
         <h4>Lectura comparativa</h4>
         <p>Las líneas verdes ya están en tu lienzo. Las discontinuas indican relaciones de referencia aún no representadas.</p>
         <div class="builder-reference-progress"><span>Coincidencia con referencia</span><strong>${matchedEdges.length}/${referenceEdges.length}</strong><div class="builder-reference-progress-track"><div class="builder-reference-progress-fill" style="width:${pct}%"></div></div></div>
         <div class="builder-reference-list">${missingList || '<div class="builder-reference-missing"><b>ok</b><span>Tu árbol contiene todas las aristas de referencia disponibles.</span></div>'}</div>
         <div class="builder-reference-note"><strong>Cautela:</strong> una arista expresa afinidad o hipótesis de relación. En linajes arcaicos puede haber especiación reticulada, introgresión y parentescos hermanos.</div>
-      </aside>
+      </section>
     </div>
   </section>`;
 }
 
 function renderTreeBuilder() {
+  // PB-GH-11 (T5): paleta y comparación pasan de <aside> anidado a <section> con nombre (landmark-unique, landmark-complementary-is-top-level).
   const el = document.getElementById('treeBuilderContent');
   if (!el) return;
   const palette = DB.filter(sp => ['basal','australo','paran','homo'].includes(sp.clado)).slice(0, 36);
@@ -18781,25 +18785,25 @@ function renderTreeBuilder() {
     </div>
     <div id="builderStats"></div>
     <div class="builder-layout">
-      <aside class="builder-palette">
+      <section class="builder-palette" aria-label="Especies disponibles">
         <div class="builder-palette-tools">
           <h3>Especies</h3>
           <input class="builder-search" data-builder-search type="search" placeholder="Filtrar especies…" aria-label="Filtrar especies del constructor filogenético">
         </div>
         ${palette.map(sp => `<button type="button" class="builder-species-btn" style="border-left-color:${CLADE_COLORS[sp.clado] || '#888'}" data-builder-species="${sp.id}" data-builder-label="${escapeHtmlAttr((sp.nombre + ' ' + sp.anos + ' ' + (CLADE_NAMES[sp.clado] || sp.clado)).toLowerCase())}">${escapeHtmlText(shortTaxonName(sp.nombre))}<br><small>${escapeHtmlText(sp.anos)}</small></button>`).join('')}
-      </aside>
+      </section>
       <div class="builder-canvas" id="builderCanvas">
         <svg class="builder-lines" id="builderLines"></svg>
         <div id="builderNodes"></div>
         <div class="builder-empty-hint" id="builderEmptyHint">Carga una hipótesis guía o añade especies desde la izquierda. Después activa “Modo conectar”: primer clic/tap = origen; segundo clic/tap = destino.</div>
       </div>
-      <aside class="builder-report" id="builderReport">
+      <section class="builder-report" id="builderReport" aria-label="Comparación con la referencia">
         <h3>Comparación</h3>
         <div data-builder-live-summary></div>
         <div data-builder-report-body>
           <p style="font-size:0.8rem;color:var(--text-sec);line-height:1.5">Construye un árbol y pulsa comparar para ver coincidencias, conexiones controvertidas y diferencias. Usa el panel como lectura crítica, no como solución única.</p>
         </div>
-      </aside>
+      </section>
     </div>`;
   refreshTreeBuilder();
   renderBuilderDefaultReport();
@@ -20485,6 +20489,7 @@ function _buildStratComparePanel() {
  * Llamado por renderActiveView cuando viewId === 'estratigrafia'.
  */
 function renderStratigraphyLab() {
+  // PB-GH-11 (T5): contenedor del perfil role="group" (antes role="img" con capas interactivas dentro).
   const el = document.getElementById('stratContent');
   if (!el) return;
 
@@ -20537,7 +20542,7 @@ function renderStratigraphyLab() {
     <div class="strat-layout">
       <div class="strat-profile-wrap">
         <span class="strat-profile-label" id="strat-profile-label-${escapeHtmlAttr(_stratState.site)}">Perfil estratigráfico — más reciente arriba</span>
-        <div class="strat-svg-wrap" role="img" aria-labelledby="strat-profile-label-${escapeHtmlAttr(_stratState.site)}">
+        <div class="strat-svg-wrap" role="group" aria-labelledby="strat-profile-label-${escapeHtmlAttr(_stratState.site)}">
           ${svgHtml}
         </div>
         ${_stratState.inferenceMode ? `<p style="font-size:0.72rem;color:var(--accent);font-family:var(--font-mono);margin-top:6px">Modo inferencia: pulsa cada capa y razona su posición antes de revelar la edad pulsando sobre ella.</p>` : ''}
@@ -20822,6 +20827,7 @@ function _taphoColor(survival) {
  * Renderiza el simulador de tafonomía completo.
  */
 function renderTaphonomyView() {
+  // PB-GH-11 (T5): «Interpretación del registro» pasa de h4 a h3 tras el h2 de la vista (heading-order); estilo en 95-sistema/vistas.css.
   const el = document.getElementById('taphoContent');
   if (!el) return;
 
@@ -20921,7 +20927,7 @@ function renderTaphonomyView() {
         </div>
 
         <div class="tapho-interpretation">
-          <h4>Interpretación del registro</h4>
+          <h3 class="pb-t5-h4">Interpretación del registro</h3>
           <p>${escapeHtmlText(interp)}</p>
         </div>
 
@@ -21267,6 +21273,7 @@ let _introgState = { selectedEvent: null };
  * Renderiza la vista de introgresión arcaica.
  */
 function renderIntrogressionView() {
+  // PB-GH-11 (T5): cada elemento de la leyenda con role="listitem" dentro de role="list".
   const el = document.getElementById('introgContent');
   if (!el) return;
 
@@ -21276,7 +21283,7 @@ function renderIntrogressionView() {
     { label:'Arcaico africano', color:'#c07800' },
     { label:'H. sapiens', color:'#0a6b49' }
   ].map(n => `
-    <div class="introg-legend-item">
+    <div class="introg-legend-item" role="listitem">
       <div class="introg-legend-dot" style="background:${n.color}"></div>
       <span>${escapeHtmlText(n.label)}</span>
     </div>`).join('');

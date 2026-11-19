@@ -1,0 +1,14 @@
+/* =====================================================================================================
+   95-sistema/vistas.css · piso del resto de vistas (PB-GH-11, tanda T5)
+   -----------------------------------------------------------------------------------------------------
+   1. Tafonomía: «Interpretación del registro» pasa de h4 a h3 (002, heading-order); conserva el aspecto que
+      le daba 001 («.tapho-interpretation h4»), ya con los tokens del puente.
+   2. Tafonomía: enlaces de «Fuentes» distinguibles sin depender del color (link-in-text-block).
+   3. Regiones desplazables (95-sistema/regiones.js): el desplazamiento queda dentro del contenedor, nunca en
+      la página; el anillo de foco se dibuja por dentro para que no lo recorte el propio contenedor.
+   Revertir: quitar el <link> de index.html.
+   ===================================================================================================== */
+.tapho-interpretation h3.pb-t5-h4 { font-family: var(--f-titulo); font-size: var(--t-s); color: var(--tinta); margin: 0 0 var(--e-2); }
+.tapho-sources a { text-decoration: underline; text-underline-offset: 2px; }
+[data-pb-region] { max-width: 100%; overscroll-behavior-x: contain; }
+:root:root:root body [data-pb-region]:focus-visible { outline-offset: calc(-1 * var(--foco-ancho, 3px)) !important; }

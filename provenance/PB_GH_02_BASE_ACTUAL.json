@@ -767,7 +767,8 @@
       "git_blob_sha1": "b0e3e17fd8d38c14f8fc346dfdefd3209472579c",
       "sha256": "ce202e0295efcfe44ae03b0b0c7eb209ccbf502133c6b8a6c927f159e7d92c6d",
       "retained_paths": [
-        "atlas/assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js"
+        "atlas/assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/057-paleobot-v78-africa-question-actions.js.snapshot"
       ]
     },
     {

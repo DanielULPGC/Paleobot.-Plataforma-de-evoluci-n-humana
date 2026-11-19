@@ -62,6 +62,9 @@
     }
     const direct = event.target.closest?.('[data-africa-question-region], .africa-question-open');
     if (direct) {
+      // PB-GH-11 (T5): solo Intro y espacio activan; antes cualquier tecla (también Tab) abría la región y
+      // con preventDefault dejaba el foco en <body> (no se podía salir de la tarjeta con el teclado).
+      if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') return;
       event.preventDefault();
       event.stopImmediatePropagation();
       activateAfricaRegion(direct.dataset.africaQuestionRegion);
