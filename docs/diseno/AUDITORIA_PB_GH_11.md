@@ -290,7 +290,11 @@ documentación):
   puerta en **NO_GO** (esperado). `node scripts/reproducir_pb01.cjs`: `known_defect_reproduced: true`.
 - `node scripts/generar_imagenes_atlas.cjs --check` (47 con copia, 3 sin copia) y
   `node scripts/generar_costas_atlas.cjs --check` (SHA-256 `f701f887…a5c5`): correctos.
-- Humo escritorio sin terceros contra la línea base: resultado en el informe T6 (`notas/informes/T6.md`).
+- Humo escritorio sin terceros (servidor local, 592 s) contra la línea base, con `--inventario` e `--inestables`:
+  **0 pérdidas**, 60 mejoras, 156 «otras» (funciones nuevas de T3-T5), 1 inestable (patrón del simulador); 31/31
+  vistas; 57/57 funciones; 6 violaciones de CSP, todas `img-src` de `tile.opentopomap.org` (capa «Topográfico»);
+  reposo 6 mutaciones en 5 s; `inventarioAusente` solo «ESPECIES» de Constructor, ya ausente en la línea base. Las
+  mismas cifras que el cierre de la T5 en esa condición. No se repitieron las otras tres condiciones.
 
 Cierre de la T5 (cuatro condiciones, sobre `27ddc36`): 0 pérdidas; 60-65 mejoras; 31/31 vistas; 57/57 funciones;
 violaciones de CSP solo `img-src` de OpenTopoMap (4-6); 6 mutaciones en 5 s de reposo; tormenta sin terceros con la
