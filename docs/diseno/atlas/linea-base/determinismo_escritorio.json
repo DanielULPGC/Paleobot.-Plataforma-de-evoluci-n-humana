@@ -1,0 +1,20 @@
+{
+ "a": "/tmp/claude-0/-home-claude/3bef06a4-fb7b-5158-9bbc-6d4cc4aef21b/scratchpad/atlas11/t1/b_escritorio_terceros_1.json",
+ "b": "/tmp/claude-0/-home-claude/3bef06a4-fb7b-5158-9bbc-6d4cc4aef21b/scratchpad/atlas11/t1/b_escritorio_terceros_2.json",
+ "perdidas": [],
+ "mejoras": [],
+ "otras": [],
+ "inestables": [
+  "función bibliografia: focoEntra: false → true",
+  "función bibliografia: sin aria-hidden al abrir: false → true",
+  "función examen: focoEntra: true → false",
+  "función sintesis: sin aria-hidden al abrir: false → true"
+ ],
+ "inventarioAusente": [],
+ "resumen": {
+  "perdidas": 0,
+  "mejoras": 0,
+  "otras": 0,
+  "inestables": 4
+ }
+}

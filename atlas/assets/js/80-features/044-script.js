@@ -683,7 +683,10 @@
    o localhost. El archivo sw.js debe existir en la raíz del servidor.
    Estrategia: Cache-First para el HTML, Network-First para imágenes Wikimedia.
    ────────────────────────────────────────────────────────────────────────── */
-if ('serviceWorker' in navigator &&
+/* PB-GH-11 (04, fila 31): atlas/sw.js no existe en el repositorio y el registro daba un 404 en cada carga.
+   El registro queda condicionado a una decisión explícita (window.PB_SERVICE_WORKER === true) para cuando se
+   aloje un sw.js revisado; el código se conserva. */
+if (window.PB_SERVICE_WORKER === true && 'serviceWorker' in navigator &&
     (location.protocol === 'https:' || location.hostname === 'localhost')) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js', { scope: './' })

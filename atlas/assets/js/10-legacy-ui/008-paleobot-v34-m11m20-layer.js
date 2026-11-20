@@ -21,6 +21,9 @@
   };
   const M12_MIS = [
     {mis:'MIS 9', start:337, end:300, climate:'interglacial templado CENOGRID'},
+    // PB-GH-11 (T8): faltaba MIS 8 (decisión de la titular, 20-11-2026). Límites de la escala del propio atlas
+    // (006, MIS_STAGES: stage 8, warm:false, 300-243 ka; Lisiecki y Raymo, 2005, https://doi.org/10.1029/2004PA001071).
+    {mis:'MIS 8', start:300, end:243, climate:'glacial'},
     {mis:'MIS 7', start:243, end:191, climate:'interglacial variable'},
     {mis:'MIS 6', start:191, end:130, climate:'glacial frío'},
     {mis:'MIS 5', start:130, end:71, climate:'interglacial cálido'},
@@ -57,7 +60,10 @@
 
   function ssGet(key, fallback){ try { return typeof SafeStorage !== 'undefined' ? SafeStorage.get(key, fallback) : localStorage.getItem(key) || fallback; } catch(_) { return fallback; } }
   function ssSet(key, value){ try { if (typeof SafeStorage !== 'undefined') SafeStorage.set(key, value); else localStorage.setItem(key, value); } catch(_) { /* recuperable: suprimido intencionalmente */ } }
-  function currentMis(ka){ return M12_MIS.find(m => ka <= m.start && ka >= m.end) || M12_MIS[M12_MIS.length-1]; }
+  // PB-GH-11 (T8): fuera de la tabla (o sin edad válida) ya no devuelve el último estadio (MIS 1 · Holoceno), sino un
+  // rótulo neutro. Antes: «|| M12_MIS[M12_MIS.length-1]».
+  const M12_MIS_FUERA = {mis:'Sin estadio MIS', start:NaN, end:NaN, climate:'edad fuera de la tabla del simulador'};
+  function currentMis(ka){ return M12_MIS.find(m => ka <= m.start && ka >= m.end) || M12_MIS_FUERA; }
   function landPaths(){
     const paths = (typeof PRES_WORLD_LAND_PATHS !== 'undefined' && PRES_WORLD_LAND_PATHS.length) ? PRES_WORLD_LAND_PATHS : [
       'M95 92 C150 52 215 66 242 120 C268 175 232 220 170 224 C112 228 67 188 66 136 C66 116 76 101 95 92Z',
@@ -339,7 +345,7 @@
     if (contrast) { e.preventDefault(); e.stopImmediatePropagation(); const on = !document.body.classList.contains('v34-high-contrast'); document.body.classList.toggle('v34-high-contrast', on); contrast.setAttribute('aria-pressed', String(on)); ssSet('paleobot_v34_high_contrast', on ? '1' : '0'); return; }
     const ans = e.target.closest('[data-m13-answer]');
     if (ans) { e.preventDefault(); const q=m13Exam.items[m13Exam.index]; const ok=ans.dataset.m13Answer===q.a; if(ok)m13Exam.score++; m13Exam.answers.push({sp:q.sp,comp:q.comp,ok}); ans.closest('#examQ').querySelectorAll('[data-m13-answer]').forEach(btn=>{btn.disabled=true;btn.classList.toggle('exam-correct',btn.dataset.m13Answer===q.a);}); if(!ok) ans.classList.add('exam-wrong'); /* v64-fix BUG-A: registrar en QuizProgress para panel de progreso */ try { if (typeof QuizProgress !== 'undefined' && q.sp) QuizProgress.record(q.sp, ok, 'classic'); } catch(_){} setTimeout(()=>{m13Exam.index++;renderM13Question();},750); return; }
-    if (e.target.closest('[data-m13-export]')) { e.preventDefault(); const w=window.open('','_blank'); if(w){const last=ssGet('paleobot_m13_exam_last','{}'); w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Resultado examen PaleoBot</title><link rel="stylesheet" href="assets/css/00-core/006-style.css"></head><body><h1>Resultado examen offline</h1><pre>${escapeHtmlText(last)}</pre><script>print();<\\/script></body></html>`); w.document.close();} return; }
+    if (e.target.closest('[data-m13-export]')) { e.preventDefault(); const w=window.open('','_blank'); if(w){const last=ssGet('paleobot_m13_exam_last','{}'); w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Resultado examen PaleoBot</title><link rel="stylesheet" href="assets/css/00-core/006-style.css"></head><body><h1>Resultado examen offline</h1><pre>${escapeHtmlText(last)}</pre></body></html>`); w.document.close(); /* PB-GH-11: print() desde la ventana que abre (sin <script> en línea; CSP sin unsafe-inline) */ w.print();} return; }
     const detail = e.target.closest('[data-detail-action="exportSpeciesPrintSheet"]'); if (detail) { e.preventDefault(); e.stopImmediatePropagation(); exportSpeciesPrintSheet(); return; }
     const m19 = e.target.closest('[data-m19-cell]'); if (m19) { const [b,mis]=m19.dataset.m19Cell.split('|'); const d=document.getElementById('m19PaleoDetail') || document.getElementById('v34PaleoDetail'); if(d)d.innerHTML=`<h3>${escapeHtmlText(b)} · ${escapeHtmlText(mis)}</h3><p>Condiciones CENOGRID simplificadas: alternancia glacial/interglacial según paridad MIS; lectura útil para nicho ecológico, no reconstrucción paleoclimática fina.</p><p>Yacimientos asociados: Olduvai, Turkana, Atapuerca, Denisova, Blombos/Callao según bioma y período.</p>`; }
   }, true);

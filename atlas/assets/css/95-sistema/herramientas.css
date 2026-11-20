@@ -1,0 +1,192 @@
+/* =====================================================================================================
+   95-sistema/herramientas.css · «Herramientas» y «Arriba» en la franja; cajón con rótulos y un solo color
+   (PB-GH-11, tanda T5, filas 22 y 23). Acompaña a 95-sistema/herramientas.js.
+   -----------------------------------------------------------------------------------------------------
+   Las hojas importadas (046, 047, 052, 053) fijan posición, color y visibilidad de estos nodos con
+   !important; aquí se gana con el id del contenedor nuevo (#pbV50Blocks, #pbHerramientasPanel) y !important.
+   Colores: subtema «pizarra» en la franja (como el resto de la barra) y tokens de papel en el panel.
+   Revertir: quitar el <link> de index.html (y herramientas.js).
+   ===================================================================================================== */
+
+/* 1 · Grupo en la franja: conmutador «Herramientas» y «Arriba» (ya no flotan sobre el contenido) */
+:root:root body #pbV50Blocks .pb-barra-franja > .pb-barra-flotantes {
+  order: 10;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  flex: none;
+}
+:root:root body #pbV50Blocks .pb-barra-franja:has(> .pb-v50-quick-tools) > .pb-barra-flotantes { margin-left: 0; }
+:root:root body #pbV50Blocks .pb-barra-flotantes > :is(#pb-mobile-tools-toggle, .scroll-top-btn) {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  z-index: auto !important;
+  box-sizing: border-box;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-2);
+  width: auto !important;
+  min-width: var(--control) !important;
+  height: auto !important;
+  min-height: 2.5rem !important;
+  margin: 0 !important;
+  padding: 0 var(--e-3) !important;
+  border: var(--linea) solid var(--pizarra-borde-control) !important;
+  border-radius: var(--r-pildora) !important;
+  background: transparent !important;
+  color: var(--sobre-pizarra) !important;
+  box-shadow: none !important;
+  outline-color: var(--foco-pizarra, var(--foco));
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  white-space: nowrap;
+  transition: none !important;
+  opacity: 1 !important;
+}
+:root:root body #pbV50Blocks .pb-barra-flotantes > :is(#pb-mobile-tools-toggle, .scroll-top-btn):hover { border-color: var(--sobre-pizarra) !important; }
+:root:root body #pbV50Blocks .pb-barra-flotantes > #pb-mobile-tools-toggle[aria-expanded="true"] {
+  background: var(--pizarra-acento) !important;
+  border-color: var(--pizarra-acento) !important;
+  color: var(--pizarra) !important;
+}
+:root:root body #pbV50Blocks .pb-barra-flotantes svg { width: 1.1rem; height: 1.1rem; flex: none; }
+/* «Arriba» solo cuando 002 lo da por útil (más de 520 px desplazados: clase is-visible); fuera, ni ocupa sitio. */
+:root:root body #pbV50Blocks .pb-barra-flotantes > .scroll-top-btn:not(.is-visible) { display: none !important; }
+/* Por debajo de 64 rem (teléfono y tableta, donde la franja también lleva las herramientas rápidas): solo el
+   pictograma; el nombre accesible no cambia («Abrir herramientas», «Volver arriba»). «Vistas» conserva sitio. */
+:root:root body #pbV50Blocks .pb-barra-franja > .pb-barra-vistas { min-width: min(9rem, 30vw); }
+@media (max-width: 63.99rem) {
+  :root:root body #pbV50Blocks .pb-barra-flotantes :is(.pb-herramientas-rotulo, .pb-arriba-rotulo) {
+    position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+  :root:root body #pbV50Blocks .pb-barra-flotantes > :is(#pb-mobile-tools-toggle, .scroll-top-btn) { padding: 0 !important; width: var(--control) !important; }
+  :root:root body #pbV50Blocks .pb-barra-franja > .pb-barra-flotantes { gap: var(--e-1); }
+}
+
+/* 2 · Panel #pbHerramientasPanel: cajón y tira de accesibilidad juntos, bajo la franja */
+:root:root body #pbHerramientasPanel { display: none; }
+:root:root body.pb-workspace-entered.pb-mobile-tools-open #pbHerramientasPanel {
+  box-sizing: border-box;
+  display: block;
+  position: fixed;
+  top: calc(3.5rem + var(--e-2));
+  right: var(--e-2);
+  z-index: 1200;
+  width: min(30rem, calc(100vw - 2 * var(--e-2)));
+  max-height: calc(100dvh - 3.5rem - 2 * var(--e-2));
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--e-3);
+  border: var(--linea) solid var(--borde-control);
+  border-radius: var(--r-contenedor);
+  background: var(--superficie);
+  color: var(--tinta);
+  box-shadow: var(--sombra-flotante);
+}
+body.modal-open #pbHerramientasPanel { display: none !important; }
+:root:root body #pbHerramientasPanel .pb-herramientas-titulo {
+  margin: 0 0 var(--e-2);
+  font-family: var(--f-titulo);
+  font-size: var(--t-s);
+  font-weight: 600;
+  color: var(--tinta);
+}
+:root:root body #pbHerramientasPanel > :is(.fab-group, #pb-a11y-toolbar-root) {
+  position: static !important;
+  inset: auto !important;
+  transform: none !important;
+  z-index: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  transition: none !important;
+}
+/* Cajón: lista de botones con pictograma y rótulo, dos columnas desde 24 rem; un único color del sistema. */
+:root:root body #pbHerramientasPanel > .fab-group {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)) !important;
+  grid-auto-rows: auto !important;
+  gap: var(--e-1) var(--e-2) !important;
+  justify-content: stretch !important;
+  align-content: start !important;
+}
+:root:root body #pbHerramientasPanel .fab-group .fab-wrapper { position: relative; display: block !important; width: auto !important; height: auto !important; margin: 0 !important; }
+:root:root body #pbHerramientasPanel .fab-group button.fab {
+  position: relative !important;
+  box-sizing: border-box;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start !important;
+  gap: var(--e-2);
+  width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: var(--control) !important;
+  margin: 0 !important;
+  padding: var(--e-2) var(--e-3) !important;
+  border: var(--linea) solid var(--borde) !important;
+  border-radius: var(--r-control) !important;
+  background: var(--superficie) !important;
+  color: var(--tinta) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  text-align: left !important;
+}
+:root:root body #pbHerramientasPanel .fab-group button.fab:hover { background: var(--acento-suave) !important; border-color: var(--borde-control) !important; }
+:root:root body #pbHerramientasPanel .fab-group button.fab .ico { display: inline-flex; flex: none; color: var(--acento); }
+:root:root body #pbHerramientasPanel .fab-group button.fab .pb-fab-rotulo { flex: 1 1 auto; min-width: 0; white-space: normal; }
+/* Insignias numéricas que algunos botones llevan (p. ej. progreso): en el flujo, sin tapar el rótulo. */
+:root:root body #pbHerramientasPanel .fab-group button.fab :is(.badge, .fab-badge, [class*="badge"]) {
+  position: static !important; flex: none; order: 3; margin-left: auto !important; transform: none !important;
+}
+/* Tira de accesibilidad: separada por un filete, con el mismo trato de botón. */
+:root:root body #pbHerramientasPanel > #pb-a11y-toolbar-root { margin-top: var(--e-3) !important; padding-top: var(--e-3) !important; border-top: var(--linea) solid var(--borde) !important; }
+:root:root body #pbHerramientasPanel #pb-a11y-toolbar-root .pb-a11y-toolbar {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: var(--e-1) !important;
+  width: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+:root:root body #pbHerramientasPanel #pb-a11y-toolbar-root :is(button, .pb-a11y-btn) {
+  min-height: var(--control) !important;
+  min-width: var(--control) !important;
+  width: auto !important;
+  padding: 0 var(--e-3) !important;
+  border: var(--linea) solid var(--borde-control) !important;
+  border-radius: var(--r-control) !important;
+  background: var(--superficie) !important;
+  color: var(--tinta) !important;
+  box-shadow: none !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+}
+:root:root body #pbHerramientasPanel #pb-a11y-toolbar-root :is(button[aria-pressed="true"], .active) { background: var(--acento-suave) !important; border-color: var(--acento) !important; }
+:root:root body #pbHerramientasPanel #pb-a11y-toolbar-root :is(.pb-font-controls, [class*="font-controls"]) { display: flex !important; align-items: center; gap: var(--e-1) !important; color: var(--tinta) !important; }
+:root:root body #pbHerramientasPanel #pb-a11y-toolbar-root .pb-font-display { min-width: 3em; text-align: center; color: var(--tinta) !important; font-size: var(--t-xs) !important; }
+@media (max-width: 47.99rem) {
+  :root:root body.pb-workspace-entered.pb-mobile-tools-open #pbHerramientasPanel { left: var(--e-2); right: var(--e-2); width: auto; }
+  :root:root body #pbHerramientasPanel > .fab-group { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media print { #pbHerramientasPanel, #pbV50Blocks .pb-barra-flotantes { display: none !important; } }

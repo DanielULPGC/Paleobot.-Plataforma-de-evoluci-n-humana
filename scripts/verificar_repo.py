@@ -34,6 +34,103 @@ class Page(HTMLParser):
         if self.current and self.current['tag']==tag:
             (self.scripts if tag=='script' else self.styles).append(self.current);self.current=None
 
+# PB-GH-11: columna vertebral aditiva del atlas interactivo (atlas/assets/{css,js}/95-sistema/). Comprobaciones
+# estáticas, sin navegador; el humo de scripts/atlas/ (Chromium, ~10 min) no se ejecuta aquí (véase scripts/atlas/README.md).
+CSP_ATLAS=("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; "
+  "img-src 'self' data: blob: https://upload.wikimedia.org https://commons.wikimedia.org https://maps.wikimedia.org "
+  "https://*.tile.openstreetmap.org https://server.arcgisonline.com; connect-src 'self'; frame-src 'none'; object-src 'none'; "
+  "base-uri 'self'; form-action 'none'; worker-src 'self' blob:; media-src 'self' data: blob:; manifest-src 'self';")
+# Archivos de 95-sistema que, por diseño, NO van tras los importados (lista cerrada, con su motivo):
+# carga.css: en <head>, oculta <body> hasta carga-fin.css (fila 13, CLS de carga); sin-js.css: <noscript> en <head> (fila 24);
+# en-linea-*.js y respaldo-portada.js: sustituyen, en su misma posición y síncronos, a los <script> y onerror= en línea
+# retirados para quitar 'unsafe-inline' de script-src (fila 30).
+SISTEMA_EN_SU_SITIO={'assets/css/95-sistema/carga.css','assets/css/95-sistema/sin-js.css','assets/js/95-sistema/en-linea-salto-atlas.js',
+  'assets/js/95-sistema/en-linea-rutas-integradas.js','assets/js/95-sistema/en-linea-hub-bloques.js','assets/js/95-sistema/respaldo-portada.js'}
+# Hosts que pueden aparecer escritos en 95-sistema: los de img-src de la CSP (imágenes remotas ya existentes) y dos que no se
+# piden nunca (enlaces de licencia de los créditos y el espacio de nombres SVG). Cualquier otro es un host nuevo.
+HOSTS_SISTEMA={'upload.wikimedia.org','commons.wikimedia.org','maps.wikimedia.org','creativecommons.org','www.w3.org'}
+
+class Enlaces(HTMLParser):
+    """<link> y <script src> de una página, en orden de documento (también dentro de <noscript>)."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True);self.items=[];self.csps=[]
+    def handle_starttag(self,tag,attrs):
+        a=dict(attrs)
+        if tag=='link':self.items.append(('link',a.get('href') or '',(a.get('rel') or '').lower()))
+        if tag=='script' and a.get('src'):self.items.append(('script',a['src'],''))
+        if tag=='meta' and (a.get('http-equiv') or '').lower()=='content-security-policy':self.csps.append(a.get('content') or '')
+    handle_startendtag=handle_starttag
+
+def sin_comentarios(texto,js=True):
+    texto=re.sub(r'/\*.*?\*/','',texto,flags=re.S)
+    # Comentarios de línea de JS; no toca «://» de las URL ni «\/\/» de las expresiones regulares.
+    return re.sub(r'(?m)(?<![:\\])//.*$','',texto) if js else texto
+
+def comprobaciones_atlas_pbgh11(root,node):
+    atlas=root/'atlas';html=(atlas/'index.html').read_text(encoding='utf-8')
+    p=Enlaces();p.feed(html)
+    def ruta(u):return urlsplit(u).path
+    sistema=sorted(str(f.relative_to(atlas)).replace('\\','/') for d in ('assets/css/95-sistema','assets/js/95-sistema') for f in (atlas/d).glob('*') if f.is_file())
+    refs=[(i,t,u) for i,(t,u,_) in enumerate(p.items) if '/95-sistema/' in ruta(u)]
+    malos=[]
+    for f in sistema:
+        n=[u for _,_,u in refs if ruta(u)==f]
+        if len(n)!=1 or urlsplit(n[0]).query!='v=pbgh11':malos.append(f+' (enlaces: '+str(len(n))+')')
+    malos+=[u+' (no existe)' for _,_,u in refs if not (atlas/ruta(u)).is_file()]
+    importados=[i for i,(t,u,_) in enumerate(p.items) if re.match(r'assets/(?:css|js)/',ruta(u)) and '/95-sistema/' not in ruta(u)]
+    ultimo=max(importados) if importados else -1
+    malos+=[u+' (antes de los importados)' for i,_,u in refs if ruta(u) not in SISTEMA_EN_SU_SITIO and i<ultimo]
+    links=[u for t,u,_ in p.items if t=='link']
+    if not links or ruta(links[-1])!='assets/css/95-sistema/carga-fin.css':malos.append('último <link>: '+(links[-1] if links else 'ninguno'))
+    check('Atlas: hojas y scripts de 95-sistema enlazados tras los importados, con ?v=pbgh11, y carga-fin.css como último <link>',bool(sistema) and not malos,', '.join(malos[:4]))
+    check('Atlas: CSP de atlas/index.html idéntica a la vigente (no se relaja)',p.csps==[CSP_ATLAS],(p.csps[0][:120] if p.csps else 'sin CSP') if p.csps!=[CSP_ATLAS] else '')
+    # Archivos de 95-sistema: sin manejadores en línea, eval, new Function, escuchas en captura ni peticiones a hosts nuevos.
+    snap=root/'docs/historial/PB_GH_10/atlas/index.html.snapshot'
+    previo=snap.read_text(encoding='utf-8') if snap.is_file() else ''
+    faltas=[]
+    archivos=[f for d in ('assets/css/95-sistema','assets/js/95-sistema','assets/media/95-sistema') for f in sorted((atlas/d).rglob('*')) if f.is_file() and f.suffix in ('.js','.css','.svg')]
+    for f in archivos:
+        nombre=str(f.relative_to(atlas)).replace('\\','/');bruto=f.read_text(encoding='utf-8')
+        t=sin_comentarios(bruto,f.suffix=='.js')
+        # en-linea-*.js: scripts que estaban en línea en index.html (c971001), movidos sin cambios; conservan sus escuchas en
+        # captura originales solo si su cuerpo sigue siendo, literalmente, el del snapshot de index.html.
+        literal=f.name.startswith('en-linea-') and bool(previo) and re.sub(r'\A/\*.*?\*/\n?','',bruto,count=1,flags=re.S).strip() in previo
+        reglas=[('manejador en línea',r'<[^>]*\son[a-z]+\s*=|setAttribute\(\s*[\'"]on[a-z]+'),('eval',r'(?<![\w.])eval\s*\('),
+                ('new Function',r'new\s+Function\b'),('temporizador con cadena',r'set(?:Timeout|Interval)\(\s*[\'"`]'),
+                ('petición de red',r'\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts|(?<![\w.])import\s*\('),
+                ('@import',r'@import\b')]
+        if not literal:reglas+=[('escucha en captura',r'addEventListener\s*\((?:[^()]|\([^()]*\))*?,\s*true\s*\)|capture\s*:\s*true|useCapture')]
+        faltas+=[nombre+': '+n for n,rx in reglas if re.search(rx,t)]
+        faltas+=[nombre+': host '+h for h in sorted(set(re.findall(r'https?://([A-Za-z0-9.*-]+)',t))) if h.lower() not in HOSTS_SISTEMA]
+        faltas+=[nombre+': url() remota' for _ in re.findall(r'url\(\s*[\'"]?(?:https?:)?//',t)]
+    check('Atlas: 95-sistema sin manejadores en línea, eval, new Function, escuchas en captura ni peticiones a hosts nuevos',len(archivos)>=40 and not faltas,', '.join(faltas[:4]))
+    # ?view=: la lista blanca de 077 coincide con las 31 secciones .view-section (30 en el marcado y Paleoecología, que
+    # inserta 007); enlace-vista.js no tiene lista propia: solo acepta un id literal de una .view-section de #main-content.
+    marcado={m for tag in re.findall(r'<[a-z]+\b[^>]*>',html) if re.search(r'class="[^"]*\bview-section\b',tag) for m in re.findall(r'\bid="view-([a-z]+)"',tag)}
+    js_dir=atlas/'assets/js'
+    inyectadas={m for f in js_dir.rglob('*.js') for m in re.findall(r'id=\\?"view-([a-z]+)\\?" class=\\?"view-section',f.read_text(encoding='utf-8',errors='ignore'))}
+    puente=(js_dir/'20-navigation/077-paleobot-integrated-route-bridge.js').read_text(encoding='utf-8')
+    m=re.search(r'const allowed\s*=\s*new Set\(\[(.*?)\]\)',puente,re.S)
+    lista=re.findall(r"'([^']+)'",m.group(1)) if m else []
+    ev=(js_dir/'95-sistema/enlace-vista.js').read_text(encoding='utf-8') if (js_dir/'95-sistema/enlace-vista.js').is_file() else ''
+    guarda_ev=all(x in ev for x in ("/^[a-z]+$/.test(pedida)","classList.contains('view-section')","closest('#main-content')"))
+    secciones=marcado|inyectadas
+    detalle=f'077: {len(lista)} ({len(set(lista))} distintas); secciones: {len(secciones)}; sobran: {sorted(set(lista)-secciones)[:3]}; faltan: {sorted(secciones-set(lista))[:3]}'+('' if guarda_ev else '; enlace-vista.js sin su guarda')
+    check('?view=: lista blanca de 077 igual a las 31 secciones de vista y enlace-vista.js limitado a ids literales de .view-section',
+      len(secciones)==31 and len(lista)==31 and set(lista)==secciones and guarda_ev and all(re.fullmatch(r'[a-z]+',s) for s in secciones),detalle)
+    for script,nombre in (('generar_imagenes_atlas.cjs','Atlas: imágenes locales generadas (95-sistema/imagenes-locales-datos.js) sincronizadas con img/taxones/MANIFIESTO.json'),
+                          ('generar_costas_atlas.cjs','Atlas: fondo local de costas (95-sistema/costas-datos.js) idéntico a su huella de Natural Earth')):
+        r=subprocess.run([node,str(root/'scripts'/script),'--check'],capture_output=True,text=True,timeout=30) if node else None
+        check(nombre,bool(r) and r.returncode==0,(((r.stdout if r.returncode==0 else r.stderr or r.stdout) or '').strip()[:200]) if r else 'sin Node')
+    # Procedencia de la ronda: cada archivo de gobierno modificado tiene su estado anterior archivado con su huella.
+    pb11=json.loads((root/'provenance/PB_GH_11_CORRECCIONES.json').read_text(encoding='utf-8')) if (root/'provenance/PB_GH_11_CORRECCIONES.json').is_file() else {}
+    cambios={c.get('path'):c for c in pb11.get('governance_changes',[])}
+    sin_previo=[g for g in pb11.get('governance_paths',[]) if g not in cambios]
+    sin_previo+=[pth for pth,c in cambios.items() if not all(c.get(k) for k in ('change','reason','evidence','impact','return'))
+                 or not (root/c.get('previous_snapshot','-')).is_file() or digest(root/c['previous_snapshot'])!=c.get('previous_sha256')]
+    check('Procedencia PB-GH-11: estado anterior archivado, motivo, evidencia, impacto y retorno de cada archivo de gobierno modificado',
+      bool(cambios) and not sin_previo,', '.join(sin_previo[:4]))
+
 def verify(include_syntax=True):
     check('Python 3.10+',sys.version_info>=(3,10))
     node=shutil.which('node');check('Node disponible',node is not None)
@@ -86,7 +183,7 @@ def verify(include_syntax=True):
     # corrección está documentada y el original se conserva, con esa huella, en su snapshot.
     # PB-GH-04 encadena una segunda ronda: la última corrección de cada ruta debe partir
     # exactamente del estado anterior, conservado en su propio snapshot.
-    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json','provenance/PB_GH_09_CORRECCIONES.json','provenance/PB_GH_10_CORRECCIONES.json') if (ROOT/n).is_file()]
+    rondas=[load(n)['corrections'] for n in ('provenance/PB_GH_03_CORRECCIONES.json','provenance/PB_GH_04_CORRECCIONES.json','provenance/PB_GH_05_CORRECCIONES.json','provenance/PB_GH_06_CORRECCIONES.json','provenance/PB_GH_07_CORRECCIONES.json','provenance/PB_GH_09_CORRECCIONES.json','provenance/PB_GH_10_CORRECCIONES.json','provenance/PB_GH_11_CORRECCIONES.json') if (ROOT/n).is_file()]
     fixes={}
     cadena_ok=True
     for ronda in rondas:
@@ -333,6 +430,7 @@ def verify(include_syntax=True):
     }
     no_previstas=[o for o in ocultan if o not in OCULTACIONES_DEA]
     check('Hoja de la entrada DEA sin ocultaciones fuera de la lista cerrada de selectores legítimos',len(ocultan)>=20 and not no_previstas,', '.join(no_previstas[:3]))
+    comprobaciones_atlas_pbgh11(ROOT,node)
     frozen=['baselines/entrada-ligera-v9.html','experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt']
     check('Referencia v9 y licencia Leaflet intactas',all(digest(ROOT/name)==baseline[name] for name in frozen))
     check('Catálogo original preservado',digest(ROOT/'src/entrada_ligera/catalog.json')==baseline['src/entrada_ligera/catalog.json'])

@@ -37,6 +37,9 @@
     if (e.key !== 'Escape') return;
     const p = panel();
     if (!p || !p.classList.contains('active')) return;
+    /* PB-GH-11 (T3): Escape cierra solo el diálogo de arriba. Si hay otro abierto sobre la ficha (imagen
+       ampliada, «¿Qué no sabemos aún?», un modal…), lo cierra su propio módulo y la ficha sigue abierta. */
+    if (document.querySelector('.lightbox.active, .modal-overlay.active, .pres-overlay.active, .socratic-overlay.active, .pb-v50-modal.active, dialog.spl-dialog[open]')) return;
     e.preventDefault();
     p.classList.remove('active');
     p.setAttribute('aria-hidden','true');

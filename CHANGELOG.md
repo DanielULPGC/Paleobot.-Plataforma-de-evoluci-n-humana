@@ -1,5 +1,76 @@
 # Registro de cambios
 
+## PB-GH-11 · Atlas interactivo: auditoría y rediseño · 13-19/11/2026
+
+Ronda sobre `atlas/index.html` y `atlas/assets/` para el alumnado del Diploma de Estudios
+Africanos, en la rama local `feat/pb-gh-11-atlas` (sin publicar; puerta en NO_GO). No se
+elimina contenido, función ni vista: lo nuevo vive en `atlas/assets/{css,js}/95-sistema/`,
+enlazado al final, y reubica o pliega lo existente; lo que cambiaría el modelo de
+navegación queda como propuesta. Informe clasificado por impacto, con la tabla de corrección
+(34 filas de partida y 28 hallazgos posteriores), evidencia y decisiones pendientes:
+`docs/diseno/AUDITORIA_PB_GH_11.md`.
+
+- Bloqueantes: sin red de Wikimedia, abrir una ficha ya no dispara un bucle de 120-209
+  peticiones de imagen por segundo (respaldo local y un solo intento por imagen); el botón
+  «Comenzar clásico» de la autoevaluación se ve (1,08:1 → 7,7:1); los diálogos dejan de
+  abrirse con `aria-hidden="true"`.
+- Navegación y lectura: barra de trabajo fija de 56 px (antes 950 px en el teléfono) con un
+  panel «Vistas» que muestra las mismas 4 familias y 31 vistas; cabecera de vista con título
+  y pregunta guía, y el resto plegado en «Cómo usar esta vista»; franja «Consulta y filtros»
+  compacta; al elegir una vista, su título queda a 156-186 px del borde (antes 423-935 px).
+  Ficha como página de manual, Cronología, Mapa y África, Comparador, Bibliografía y Glosario
+  y vistas de gráficos reorganizados sin cambiar su contenido.
+- Foco y accesibilidad: cada diálogo recibe el foco, lo retiene y lo devuelve; un solo anillo
+  de foco azul (≥ 5,1:1); contraste de texto sin infracciones axe en las 31 vistas; regiones
+  desplazables con foco; sin anidamiento interactivo; rótulos sin emoji (el texto se conserva);
+  aviso y alternativas sin JavaScript; sin saltos de maquetación al cargar (CLS de carga 0,99-1,67 →
+  0-0,05), a costa de un primer pintado unos 0,5 s más tardío en servidor local.
+- Sin terceros de fuentes ni de scripts: Lexend local por `assets/paleobot-base.css` (el
+  atlas ya consume el sistema «Papel y tierra»), Leaflet 1.9.4 alojado en
+  `atlas/assets/vendor/leaflet/` con su procedencia, imagen principal de 47 taxones desde
+  `img/taxones/` y fondo local de costas (Natural Earth, dominio público) para el mapa. CSP con
+  `script-src 'self'`; `style-src` conserva `'unsafe-inline'` (propuesta).
+- Funciones que fallaban desde la importación y ahora responden: simulador de dispersión,
+  Banco de recursos, Diagnóstico, exportar SVG del constructor, lente «Todos los focos» y los
+  enlaces `?view=` (31 vistas, y llevan a la vista, no a la portada).
+- Red de seguridad: arnés del atlas en `scripts/atlas/` (humo comparable, tormenta de
+  peticiones, recorrido, estados) y línea base de `c971001` en `docs/diseno/atlas/linea-base/`;
+  cada tanda cerró con 0 pérdidas en escritorio y teléfono, con y sin terceros simulados.
+- Verificador: 7 comprobaciones nuevas (enlaces de `95-sistema` y `carga-fin.css` último;
+  CSP del atlas sin relajar; `95-sistema` sin manejadores en línea, `eval`, escuchas en
+  captura ni hosts nuevos; lista blanca de `?view=`; imágenes locales y costas generadas),
+  más la procedencia de los archivos de gobierno, con 21 pruebas. Procedencia en
+  `provenance/PB_GH_11_CORRECCIONES.json`; `docs/diseno/SISTEMA.md` ampliado al atlas.
+- Pendiente de la titular: capa «Topográfico» fuera de la CSP, QR de la ficha académica, MIS 8
+  ausente en el simulador, mapa de África esquemático, nivel por defecto, lente inicial del
+  mapa y la licencia de Leaflet, que la documentación describe como MIT y es BSD de 2 cláusulas
+  (corregida en la T7).
+- Tanda de arreglos tras la verificación independiente (T7, 20/11/2026): abrir y cerrar
+  «Vistas» ya no desplaza la página (subía 388-426 px por vez); el salto al contenido deja la
+  franja arriba y la vista debajo; Filogenia alcanzable en teléfono y tableta; regiones
+  desplazables con foco y nombre en la ficha y los diálogos, orden de encabezados, ARIA de
+  Síntesis, Guía, Matriz y Búsqueda global y dianas táctiles de 24 px en Clima
+  (`accesibilidad-contenido.js`); contraste de Síntesis y de la pestaña «Clima» de la ficha por
+  tokens. Tres pasos nuevos del humo (`panel.lectura`, `salto.destino`, `recortes.vistas`).
+  Leaflet descrito con su licencia real (BSD de 2 cláusulas) y política de privacidad del atlas
+  con una sección fechada de sus contactos de red actuales. Quedan 3 nodos ARIA del Comparador
+  (exigen cambiar el marcado de `002`) y, para la titular, el pie de *afarensis* y los 20
+  taxones con otra fotografía. Tras la reverificación: «Ver el gráfico entero» ya no baja los
+  rótulos de 12 px (antes 1,2-2,6 px en teléfono) y se recorre en dos ejes; la sección de red
+  de la política de privacidad dice en qué condiciones se midió; los rótulos del cladograma
+  (< 12 px) quedan como propuesta, porque exigen cambiar su renderizador (resuelto en la T8).
+- Decisiones de la titular (20/11/2026, tanda T8): el simulador de dispersión rotula MIS 8
+  entre 300 y 243 ka (antes, «MIS 1 · Holoceno»), con los límites de la escala del propio
+  atlas; la ficha académica imprimible ya no lleva la imagen QR rota ni pide nada a
+  `api.qrserver.com` (la dirección se sigue imprimiendo); los 21 taxones cuya imagen local es
+  otra fotografía tienen pie y texto alternativo que describen la que se ve; y los rótulos del
+  cladograma miden 12 px o más, sin solapes ni nombres sobre ramas (cambio en `002`; el dibujo
+  se ensancha y su caja se desplaza).
+- Límites: medido en Chromium sin red de Wikimedia, teselas ni ArcGIS; sin lector de pantalla,
+  Firefox, Safari ni dispositivos reales; solo modo claro; en 21 taxones la copia local es otra
+  fotografía que la que citaba la ficha (desde la T8, con su propio pie). PB-01 sigue
+  reproduciéndose.
+
 ## PB-GH-10 · Auditoría y rediseño de diseño de producto · 12-11-2026
 
 Ronda de diseño para el alumnado del Diploma de Estudios Africanos. No se elimina contenido

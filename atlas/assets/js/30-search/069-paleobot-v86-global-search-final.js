@@ -14,7 +14,7 @@
   function speciesRows() {
     const db = Array.isArray(window.DB) ? window.DB : [];
     return db.filter(Boolean).map(function(sp){
-      const title = sp.nombre || sp.nombreCorto || sp.id || 'Taxon';
+      const title = sp.nombre || sp.nombreCorto || sp.id || 'Taxón';
       const sub = [sp.anos, sp.ubicacion || sp.region, sp.clado].filter(Boolean).join(' · ');
       return {
         type: 'taxon',
@@ -26,15 +26,16 @@
     });
   }
 
+  // PB-GH-11 (T5): rótulos visibles con tilde (RAE); la búsqueda normaliza y no cambia.
   const VIEWS = [
-    ['timeline','Cronologia','Explorar taxones por tiempo'],
-    ['map','Mapa','Distribucion geografica y yacimientos'],
-    ['tree','Arbol evolutivo','Relacion filogenetica visual'],
+    ['timeline','Cronología','Explorar taxones por tiempo'],
+    ['map','Mapa','Distribución geográfica y yacimientos'],
+    ['tree','Árbol evolutivo','Relación filogenética visual'],
     ['aula','Aula','Generador de situaciones de aprendizaje'],
-    ['yacimientos','Yacimientos','Fichas y contexto arqueologico'],
-    ['paleoecologia','Paleoecologia','Ambiente, dieta y fauna asociada'],
-    ['primatologia','Primatologia','Comparacion primatologica'],
-    ['constructor','Constructor','Hipotesis y relaciones']
+    ['yacimientos','Yacimientos','Fichas y contexto arqueológico'],
+    ['paleoecologia','Paleoecología','Ambiente, dieta y fauna asociada'],
+    ['primatologia','Primatología','Comparación primatológica'],
+    ['constructor','Constructor','Hipótesis y relaciones']
   ];
 
   function viewRows() {
@@ -72,7 +73,7 @@
     }
     list.innerHTML = results.map(function(item, index){
       return '<button type="button" class="gs-result" role="option" aria-selected="' + String(index === 0) + '" data-v86-search-index="' + index + '" data-gs-index="' + index + '">' +
-        '<span class="gs-result-kind">' + esc(item.type === 'taxon' ? 'Taxon' : 'Vista') + '</span>' +
+        '<span class="gs-result-kind">' + esc(item.type === 'taxon' ? 'Taxón' : 'Vista') + '</span>' +
         '<span><span class="gs-result-title">' + esc(item.title) + '</span>' +
         (item.sub ? '<span class="gs-result-sub">' + esc(item.sub) + '</span>' : '') + '</span>' +
       '</button>';

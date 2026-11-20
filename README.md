@@ -32,15 +32,23 @@ Dirección: `…/Paleobot.-Plataforma-de-evoluci-n-humana/dea/`. Prototipo en re
 [![Atlas PaleoBot v1.0](docs/atlas-v1/img/portada.png)](atlas/index.html)
 
 Atlas interactivo de 52 entradas, 31 vistas de trabajo y 5 rutas didácticas, con
-recorrido guiado, glosario de 359 términos y bibliografía con DOI. Se conserva en
-[`atlas/`](atlas/index.html) tal como se recibió (169 archivos idénticos al ZIP;
-huellas en `provenance/ATLAS_V1_IMPORT.json`).
+recorrido guiado, glosario de 359 términos y bibliografía con DOI. Está en
+[`atlas/`](atlas/index.html); sus 169 archivos importados conservan la huella del ZIP
+(`provenance/ATLAS_V1_IMPORT.json`) o una corrección documentada con el original archivado
+(`provenance/PB_GH_0*_CORRECCIONES.json`, `PB_GH_1*_CORRECCIONES.json`).
 
 - **Abrir:** `atlas/index.html` (atlas) y `atlas/recorrido/index.html` (recorrido guiado).
 - **Entender y enseñar con él:** [`docs/atlas-v1/README.md`](docs/atlas-v1/README.md)
   (capturas, usos por perfil, rigor científico, límites).
-- **Estado:** NO_GO para promoción docente. Pendientes lector de pantalla
-  y navegadores distintos de Chromium; la CSP es más laxa que la del resto del repositorio.
+- **PB-GH-11 (rama local, sin publicar):** rediseño del atlas para el Diploma de Estudios
+  Africanos sin eliminar contenido: barra de 56 px con panel «Vistas», diálogos con foco,
+  ficha y vistas reorganizadas, sin Google Fonts ni scripts de terceros (Leaflet alojado),
+  imagen principal y costas del mapa en local. Informe:
+  [`docs/diseno/AUDITORIA_PB_GH_11.md`](docs/diseno/AUDITORIA_PB_GH_11.md).
+- **Estado:** NO_GO para promoción docente. Pendientes lector de pantalla, navegadores
+  distintos de Chromium, dispositivos reales y la red real de imágenes y teselas; el atlas
+  solo tiene modo claro. Su CSP ya no admite scripts en línea, pero sí estilos en línea y
+  más orígenes de imagen que el resto del repositorio.
 
 ## Abrir PaleoBot
 
@@ -121,6 +129,7 @@ acredita por sí solo funcionamiento docente ni permisos de reutilización.
 
 Véase [el estado de licencias](LICENSE_STATUS.md) y
 [los avisos de terceros](THIRD_PARTY_NOTICES.md). No se impone una licencia global
-a materiales cuya titularidad o permiso no constan. Se conserva la licencia MIT
-de Leaflet y el expediente individual de imágenes. Las imágenes remotas no se
+a materiales cuya titularidad o permiso no constan. Se conserva la licencia BSD
+de 2 cláusulas de Leaflet (texto en `atlas/assets/vendor/leaflet/LICENSE`) y el
+expediente individual de imágenes. Las imágenes remotas no se
 incluyen como archivos descargados en esta preparación.

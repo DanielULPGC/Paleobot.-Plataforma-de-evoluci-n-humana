@@ -5693,6 +5693,7 @@ function renderAfricaAssessmentRubric() {
 }
 
 function renderAfricaQuestionBank() {
+  // PB-GH-11 (T5): tarjeta de pregunta con role="region" (antes role="button" con botones dentro: nested-interactive, aria-allowed-role).
   const regionById = Object.fromEntries(AFRICA_REGIONS.map(region => [region.id, region]));
   const cards = AFRICA_QUESTION_BANK.map(item => {
     const regionButtons = item.regions.map(regionId => {
@@ -5700,7 +5701,7 @@ function renderAfricaQuestionBank() {
       if (!region) return '';
       return `<button type="button" class="africa-route-step" data-africa-region="${escapeHtmlAttr(region.id)}" title="${escapeHtmlAttr(region.label)}">${escapeHtmlText(region.tag)}</button>`;
     }).join('');
-    return `<article class="africa-question-card" style="--question-color:${escapeHtmlAttr(item.color)}" tabindex="0" role="button" data-africa-question-region="${escapeHtmlAttr(item.regions[0] || '')}" aria-label="Abrir region relacionada: ${escapeHtmlAttr(item.title)}">
+    return `<article class="africa-question-card" style="--question-color:${escapeHtmlAttr(item.color)}" tabindex="0" role="region" data-africa-question-region="${escapeHtmlAttr(item.regions[0] || '')}" aria-label="Abrir region relacionada: ${escapeHtmlAttr(item.title)}">
       <div class="africa-question-meta">
         <span>${escapeHtmlText(item.level)}</span>
         <span>${escapeHtmlText(item.type)}</span>
@@ -7048,8 +7049,10 @@ function renderResourceThumb(item) {
   if (!item.domain) {
     return `<span class="resource-link-thumb fallback" aria-hidden="true">${escapeHtmlText(rawLetter)}</span>`;
   }
-  const favicon = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(item.domain)}&sz=64`;
-  return `<span class="resource-link-thumb" aria-hidden="true"><img src="${escapeHtmlAttr(favicon)}" data-letter="${escapeHtmlAttr(rawLetter)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="var p=this.parentElement;p.classList.add('fallback');p.textContent=this.getAttribute('data-letter')||'';"></span>`;
+  // PB-GH-11 (04, fila 10): sin favicons de Google (la CSP los bloqueaba siempre, el onerror en línea lanzaba
+  // TypeError y la petición filtraba los dominios a un tercero): icono local por tipo de recurso.
+  const tipo = { '3D': '3d', 'Primatología': 'primatologia', 'Tecnología': 'tecnologia', 'Investigación': 'investigacion', 'Divulgación': 'divulgacion', 'Perspectiva crítica': 'perspectiva-critica' }[item.kind] || 'enlace';
+  return `<span class="resource-link-thumb" aria-hidden="true"><img src="assets/media/95-sistema/recursos/${tipo}.svg" data-letter="${escapeHtmlAttr(rawLetter)}" alt="" width="40" height="40"></span>`;
 }
 
 function renderResourceLinksSection() {
@@ -9352,7 +9355,7 @@ const BIO_LEYENDA = [
     ]
   },
   {
-    grupo: "Géneros anteriores", color: "#c07800", bg: "#fdf3e0",
+    grupo: "Géneros anteriores", color: "#8f5900", bg: "#fdf3e0", // PB-GH-11 (T4): #c07800 → #8f5900 (mismo tono; texto blanco 5,84:1)
     especies: [
       { nombre: "Ardipithecus ramidus",     id: "ramidus" },
       { nombre: "Ardipithecus kadabba",     id: "kadabba" },
@@ -9732,7 +9735,9 @@ function bindUIEnhancements() {
             }
             return;
         }
-        if (e.key !== 'Escape') return;
+        // PB-GH-11 (T3): si otro módulo ya atendió este Escape (cerró un modal y llamó a preventDefault), no se
+        // cierra además la capa de debajo (la ficha): Escape cierra solo el diálogo de arriba.
+        if (e.key !== 'Escape' || e.defaultPrevented) return;
         if (closeActiveUI()) e.preventDefault();
     });
 }
@@ -10619,6 +10624,11 @@ function drawRadarChartN(canvas, species, seriesColors) {
     ctx.font = `bold 10px ${getComputedStyle(document.body).getPropertyValue('--font-mono') || 'monospace'}`;
     ctx.textAlign = lp.x < cx - 4 ? 'right' : lp.x > cx + 4 ? 'left' : 'center';
     ctx.textBaseline = lp.y < cy - 4 ? 'bottom' : lp.y > cy + 4 ? 'top' : 'middle';
+    // PB-GH-11 (T5): «Tecnología», «Simbolismo» y otros rótulos laterales salían del lienzo de 310 px y se
+    // cortaban; se desplaza el punto de anclaje lo justo para que el rótulo entero quepa (2 px de margen).
+    const lw = ctx.measureText(AXES_LABELS[i]).width;
+    if (ctx.textAlign === 'left' && lp.x + lw > SIZE - 2) lp.x = SIZE - 2 - lw;
+    if (ctx.textAlign === 'right' && lp.x - lw < 2) lp.x = 2 + lw;
     ctx.fillText(AXES_LABELS[i], lp.x, lp.y);
   }
   ctx.textBaseline = 'alphabetic';
@@ -10869,11 +10879,11 @@ function buildAcademicPrintSheet(sp) {
       ? refs.map(renderReferencePrintItem).join('')
       : '<li>Sin referencias DOI cargadas para esta ficha.</li>';
     const resourceUrl = `${window.location.href.split('#')[0]}#${encodeURIComponent(sp.id)}`;
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(resourceUrl)}`;
+    // PB-GH-11 (T8): sin imagen QR (decisión de la titular, 20-11-2026: «sale como imagen rota: ELIMINAR»). Se pedía a
+    // api.qrserver.com, origen que la CSP (img-src) no admite; la dirección del recurso sigue impresa en «Recurso».
     const safePrintName = escapeHtmlText(sp.nombre);
     const safePrintDate = escapeHtmlText(new Date().toLocaleDateString('es-ES'));
     const safeResourceUrl = escapeHtmlText(resourceUrl);
-    const safeQrUrl = escapeHtmlAttr(qrUrl);
     const safePrintClade = escapeHtmlText(CLADE_NAMES[sp.clado] || sp.clado);
     const safePrintYears = escapeHtmlText(sp.anos);
     const safePrintLocation = escapeHtmlText(sp.ubicacion);
@@ -10890,7 +10900,6 @@ function buildAcademicPrintSheet(sp) {
           <h1>${safePrintName}</h1>
           <p>PaleoBot · ficha académica de una página · ${safePrintDate}</p>
         </div>
-        <img class="academic-qr" src="${safeQrUrl}" alt="QR del recurso">
       </div>
       <div class="academic-grid">
         <div>
@@ -13560,6 +13569,9 @@ function renderSelfAuditReport(report = buildSelfAuditReport()) {
 function runSelfAudit() {
   const report = buildSelfAuditReport();
   const host = document.getElementById('teachingAuditReport');
+  // PB-GH-11 (T5, fila 19): fuera de Centro docente el informe se pintaba en un contenedor oculto (o, sin él,
+  // en un alert). Si no está a la vista, 95-sistema/diagnostico.js abre Centro docente y lo muestra.
+  if (!(host && host.getClientRects().length) && window.PBDiagnostico && window.PBDiagnostico.mostrar(report, renderSelfAuditReport)) return;
   if (host) {
     host.innerHTML = renderSelfAuditReport(report);
     host.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -15190,7 +15202,7 @@ function setMapLensFocus(lensId) {
     const preferredPool = mapActiveLensId ? visibleSpecies.filter(sp => speciesMatchesLens(sp, mapActiveLensId)) : visibleSpecies;
     const preferred = preferredPool.find(sp => sp.id === mapSelectionId)?.id || preferredPool[0]?.id || null;
     if (preferred) {
-        selectMapSpecies(preferred);
+        selectMapSpecies(preferred, true);
     } else {
         mapSelectionId = null;
         refreshMapFocusVisuals(visibleSpecies);
@@ -15341,11 +15353,12 @@ function renderMapLensGrid(visibleSpecies) {
     }).join('');
 }
 
-function selectMapSpecies(id) {
+function selectMapSpecies(id, keepLens) {
     const sp = DB_INDEX[id];
     if (!sp || !SITES[id]) return;
     mapSelectionId = id;
-    mapActiveLensId = getLensIdForSpecies(sp);
+    // PB-GH-11 (T4): al elegir una lente (también «Todos los focos») se preselecciona un yacimiento sin cambiar la lente elegida.
+    if (!keepLens) mapActiveLensId = getLensIdForSpecies(sp);
     document.querySelectorAll('.map-node').forEach(node => {
         node.classList.toggle('is-selected', node.dataset.id === id);
     });
@@ -15613,7 +15626,7 @@ function updateMapDots() {
     const preferred = focusedSpecies.find(sp => sp.id === mapSelectionId)?.id ||
         (currentSpecies && focusedSpecies.some(sp => sp.id === currentSpecies.id) ? currentSpecies.id : (focusedSpecies[0]?.id || null));
     if (preferred) {
-        selectMapSpecies(preferred);
+        selectMapSpecies(preferred, true); // PB-GH-11 (T4): el repintado conserva la lente elegida
     } else {
         mapSelectionId = null;
         refreshMapFocusVisuals(visibleSpecies);
@@ -16826,6 +16839,7 @@ function shortTaxonName(name) {
 }
 
 function renderPhyloTree() {
+  // PB-GH-11 (T5): el SVG del cladograma pasa de role="img" a role="group" (contiene barras con role="button").
   const container = document.getElementById('phyloSvgContainer');
   if (!container) return;
 
@@ -16880,7 +16894,61 @@ function renderPhyloTree() {
   const root = layout(CLADOGRAM_TREE);
   const parts = [];
 
-  parts.push(`<svg class="phylo-cladogram-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Cladograma ramificado de homíninos">`);
+  // PB-GH-11 (T8): rótulos legibles (decisión de la titular, 20-11-2026). El SVG se pinta a 1180 px de ancho mínimo
+  // (053) para un viewBox de 1360 unidades (k ≈ 0,866): los nombres (13), el eje (11) y los códigos de nodo (8) medían
+  // 6,9-11,3 px. Ahora miden 14 unidades (≥ 12 px); cada píldora se mide con su texto; cada nombre se desplaza a la
+  // derecha hasta no pisar ramas ni nodos; dos nodos que se tocan se separan en vertical (su «y» es solo maquetación,
+  // la media de sus hijos; la «x», el tiempo, no cambia); y el lienzo se ensancha lo que pidan los rótulos, con el
+  // ancho mínimo en pantalla escalado en la misma proporción, para que la caja desplazable lo absorba.
+  const T8_FS = 14, T8_NODE_R = 11, T8_PAD = 7, T8_BASE_W = W, T8_BASE_MIN_PX = 1180;
+  const t8Ctx = (() => { try { return document.createElement('canvas').getContext('2d'); } catch (e) { return null; } })();
+  const t8Family = (getComputedStyle(container).getPropertyValue('--font-sans') || '').trim() || 'system-ui, sans-serif';
+  const t8TextWidth = (txt) => {
+    if (t8Ctx) { t8Ctx.font = `750 ${T8_FS}px ${t8Family}`; const w = t8Ctx.measureText(txt).width; if (w > 0) return w * 1.08 + 2; }
+    return txt.length * T8_FS * 0.64;
+  };
+  const t8Nodes = [];
+  (function collectNodes(item) { if (item.type !== 'node') return; t8Nodes.push(item); item.children.forEach(collectNodes); })(root);
+  const t8MinGap = 2 * T8_NODE_R + 4;
+  for (let i = 0; i < t8Nodes.length; i++) for (let j = i + 1; j < t8Nodes.length; j++) {
+    const a = t8Nodes[i], b = t8Nodes[j];
+    const dy = Math.abs(a.y - b.y);
+    if (Math.abs(a.x - b.x) < t8MinGap && dy < t8MinGap) {
+      const shift = (t8MinGap - dy) / 2;
+      if (a.y <= b.y) { a.y -= shift; b.y += shift; } else { a.y += shift; b.y -= shift; }
+    }
+  }
+  const t8Obst = [];
+  t8Nodes.forEach(node => {
+    t8Obst.push({ x1: node.x - T8_NODE_R, x2: node.x + T8_NODE_R, y1: node.y - T8_NODE_R, y2: node.y + T8_NODE_R });
+    node.children.forEach(child => {
+      const childX = child.type === 'node' ? child.x : Math.max(child.xStart, node.x + 18);
+      t8Obst.push({ x1: Math.min(node.x, childX) - 1.5, x2: Math.max(node.x, childX) + 1.5, y1: node.y - 1.5, y2: node.y + 1.5 });
+      t8Obst.push({ x1: childX - 1.5, x2: childX + 1.5, y1: Math.min(node.y, child.y) - 1.5, y2: Math.max(node.y, child.y) + 1.5 });
+    });
+  });
+  const t8Labels = {};
+  let t8Right = T8_BASE_W;
+  (function placeLabels(item) {
+    if (item.type !== 'leaf') { item.children.forEach(placeLabels); return; }
+    const sp = DB_INDEX[item.id];
+    if (!sp) return;
+    const name = shortTaxonName(sp.nombre);
+    const pillW = Math.ceil(t8TextWidth(name) + 2 * T8_PAD);
+    const top = item.y - 14, bottom = item.y + 13;
+    let x = Math.max(item.xStart, item.xEnd) + 10;
+    for (let guard = 0; guard < 80; guard++) {
+      const hit = t8Obst.find(o => o.y2 > top && o.y1 < bottom && o.x2 > x - T8_PAD - 2 && o.x1 < x - T8_PAD + pillW + 2);
+      if (!hit) break;
+      x = hit.x2 + T8_PAD + 3;
+    }
+    t8Labels[item.id] = { x, pillW };
+    t8Right = Math.max(t8Right, x - T8_PAD + pillW + 12);
+  })(root);
+  const W_T8 = Math.ceil(t8Right);
+  const t8MinPx = Math.round(T8_BASE_MIN_PX * W_T8 / T8_BASE_W);
+
+  parts.push(`<svg class="phylo-cladogram-svg" viewBox="0 0 ${W_T8} ${H}" style="min-width:${t8MinPx}px" role="group" aria-label="Cladograma ramificado de homíninos">`);
   parts.push(`<defs><linearGradient id="cladoRangeGrad" x1="0" x2="1"><stop offset="0" stop-color="rgba(255,255,255,0.35)"/><stop offset="1" stop-color="rgba(255,255,255,0)"/></linearGradient></defs>`);
 
   const axisTicks = [23,20,15,10,7,5,3,2,1,0.3,0];
@@ -16890,10 +16958,10 @@ function renderPhyloTree() {
     const compact = Math.abs(x - previousX) < 54 || t <= 1;
     const labelY = compact && index % 2 ? TOP - 30 : TOP - 50;
     parts.push(`<line x1="${x.toFixed(1)}" y1="${TOP-22}" x2="${x.toFixed(1)}" y2="${H-28}" stroke="rgba(90,80,70,0.10)" stroke-width="1"/>`);
-    parts.push(`<text class="clado-axis-label" x="${x.toFixed(1)}" y="${labelY}" text-anchor="middle">${formatTimePoint(t)}</text>`);
+    parts.push(`<text class="clado-axis-label" x="${x.toFixed(1)}" y="${labelY}" text-anchor="middle" style="font-size:${T8_FS}px">${formatTimePoint(t)}</text>`);
   });
-  parts.push(`<text class="clado-axis-label" x="${LEFT}" y="${H-12}">más antiguo</text>`);
-  parts.push(`<text class="clado-axis-label" x="${RIGHT}" y="${H-12}" text-anchor="end">presente</text>`);
+  parts.push(`<text class="clado-axis-label" x="${LEFT}" y="${H-12}" style="font-size:${T8_FS}px">más antiguo</text>`);
+  parts.push(`<text class="clado-axis-label" x="${RIGHT}" y="${H-12}" text-anchor="end" style="font-size:${T8_FS}px">presente</text>`);
 
   function drawBranches(node) {
     if (node.type !== 'node') return;
@@ -16919,9 +16987,12 @@ function renderPhyloTree() {
       parts.push(`<g class="clado-leaf${muted}" data-id="${item.id}" role="button" tabindex="0" aria-label="${escapeHtmlAttr(sp.nombre)}">`);
       parts.push(`<line x1="${x1.toFixed(1)}" y1="${y.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y.toFixed(1)}" stroke="${item.color}" stroke-width="6" stroke-linecap="round" opacity="${debated ? 0.52 : 0.82}"/>`);
       if (debated) parts.push(`<line x1="${x1.toFixed(1)}" y1="${(y-5).toFixed(1)}" x2="${x2.toFixed(1)}" y2="${(y+5).toFixed(1)}" stroke="rgba(255,255,255,0.55)" stroke-width="2" stroke-dasharray="3 3"/>`);
-      const labelX = Math.min(RIGHT - 118, Math.max(x2 + 10, x1 + w + 10));
-      parts.push(`<rect x="${(labelX-4).toFixed(1)}" y="${(y-13).toFixed(1)}" width="132" height="25" rx="8" fill="${item.color}" fill-opacity="${item.visible ? 0.14 : 0.08}"/>`);
-      parts.push(`<text x="${labelX.toFixed(1)}" y="${(y+4).toFixed(1)}">${escapeHtmlAttr(shortTaxonName(sp.nombre))}</text>`);
+      // PB-GH-11 (T8): posición y ancho de la píldora calculados antes (t8Labels); antes, labelX = min(RIGHT − 118,
+      // max(x2 + 10, x1 + w + 10)) y ancho fijo de 132.
+      const lab = t8Labels[item.id] || { x: Math.min(RIGHT - 118, Math.max(x2 + 10, x1 + w + 10)), pillW: 132 };
+      const labelX = lab.x;
+      parts.push(`<rect x="${(labelX-T8_PAD).toFixed(1)}" y="${(y-14).toFixed(1)}" width="${lab.pillW}" height="27" rx="8" fill="${item.color}" fill-opacity="${item.visible ? 0.14 : 0.08}"/>`);
+      parts.push(`<text x="${labelX.toFixed(1)}" y="${(y+5).toFixed(1)}" style="font-size:${T8_FS}px">${escapeHtmlAttr(shortTaxonName(sp.nombre))}</text>`);
       parts.push(`</g>`);
       return;
     }
@@ -16938,8 +17009,9 @@ function renderPhyloTree() {
       const code = cladogramNodeCode(item.id);
       parts.push(`<g class="clado-node" data-node="${item.id}" opacity="${opacity}" role="button" tabindex="0" aria-label="${code}: ${escapeHtmlAttr(info.label)}, ${formatTimePoint(info.time)}">`);
       parts.push(`<title>${code}: ${escapeHtmlAttr(info.label)}. ${formatTimePoint(info.time)}</title>`);
-      parts.push(`<circle cx="${item.x.toFixed(1)}" cy="${item.y.toFixed(1)}" r="10" fill="${color}"/>`);
-      parts.push(`<text class="clado-node-code" x="${item.x.toFixed(1)}" y="${(item.y+3.2).toFixed(1)}" text-anchor="middle">${code.replace('N','')}</text>`);
+      // PB-GH-11 (T8): círculo r 10 → 11 y código de 8 a 14 unidades (antes y = item.y + 3.2).
+      parts.push(`<circle cx="${item.x.toFixed(1)}" cy="${item.y.toFixed(1)}" r="${T8_NODE_R}" fill="${color}"/>`);
+      parts.push(`<text class="clado-node-code" x="${item.x.toFixed(1)}" y="${(item.y+5).toFixed(1)}" text-anchor="middle" style="font-size:${T8_FS}px">${code.replace('N','')}</text>`);
       parts.push(`</g>`);
       item.children.forEach(drawNodes);
     }
@@ -17835,6 +17907,7 @@ let _coexActiveBin = null;
  *   5. Filtros de interacción + tarjetas de par mejoradas
  */
 function renderCoexistenceView() {
+  // PB-GH-11 (T5): las columnas del mapa de coexistencias llevan <title> en lugar de aria-label (prohibido en <rect> sin rol).
   const el = document.getElementById('coexistenceContent');
   if (!el) return;
 
@@ -17939,8 +18012,7 @@ function renderCoexistenceView() {
     const x = labelW + bi * cellW;
     return `<rect x="${x}" y="${top}" width="${cellW}" height="${species.length * rowH}"
       fill="transparent" style="cursor:pointer"
-      data-coex-col="${bi}" data-bin-old="${bin.old}" data-bin-young="${bin.young}"
-      aria-label="Intervalo ${formatTimePoint(bin.young)}-${formatTimePoint(bin.old)}"/>`;
+      data-coex-col="${bi}" data-bin-old="${bin.old}" data-bin-young="${bin.young}"><title>Intervalo ${formatTimePoint(bin.young)}-${formatTimePoint(bin.old)}</title></rect>`;
   }).join('');
 
   // ── Leyenda MIS ───────────────────────────────────────────────────
@@ -18659,6 +18731,7 @@ function edgeKey(a, b) {
 }
 
 function renderBuilderReferencePanel() {
+  // PB-GH-11 (T5): SVG de referencia role="group" (contiene nodos con role="button"); <aside> anidado → <section> con nombre.
   const nodes = BUILDER_REFERENCE_TREE_NODES.filter(n => DB_INDEX[n.id]);
   const nodeById = Object.fromEntries(nodes.map(n => [n.id, n]));
   const referenceEdges = BUILDER_REFERENCE_TREE_EDGES.filter(edge => {
@@ -18705,24 +18778,25 @@ function renderBuilderReferencePanel() {
     </div>
     <div class="builder-reference-body">
       <div class="builder-reference-scroll">
-        <svg class="builder-reference-svg" viewBox="0 0 1430 294" role="img" aria-label="Cladograma de referencia para el constructor">
+        <svg class="builder-reference-svg" viewBox="0 0 1430 294" role="group" aria-label="Cladograma de referencia para el constructor">
           <title>Árbol de referencia didáctico (hipótesis orientativa, no consenso cerrado)</title>
           ${edgeSvg}
           ${nodeSvg}
         </svg>
       </div>
-      <aside class="builder-reference-side">
+      <section class="builder-reference-side" aria-label="Lectura comparativa">
         <h4>Lectura comparativa</h4>
         <p>Las líneas verdes ya están en tu lienzo. Las discontinuas indican relaciones de referencia aún no representadas.</p>
         <div class="builder-reference-progress"><span>Coincidencia con referencia</span><strong>${matchedEdges.length}/${referenceEdges.length}</strong><div class="builder-reference-progress-track"><div class="builder-reference-progress-fill" style="width:${pct}%"></div></div></div>
         <div class="builder-reference-list">${missingList || '<div class="builder-reference-missing"><b>ok</b><span>Tu árbol contiene todas las aristas de referencia disponibles.</span></div>'}</div>
         <div class="builder-reference-note"><strong>Cautela:</strong> una arista expresa afinidad o hipótesis de relación. En linajes arcaicos puede haber especiación reticulada, introgresión y parentescos hermanos.</div>
-      </aside>
+      </section>
     </div>
   </section>`;
 }
 
 function renderTreeBuilder() {
+  // PB-GH-11 (T5): paleta y comparación pasan de <aside> anidado a <section> con nombre (landmark-unique, landmark-complementary-is-top-level).
   const el = document.getElementById('treeBuilderContent');
   if (!el) return;
   const palette = DB.filter(sp => ['basal','australo','paran','homo'].includes(sp.clado)).slice(0, 36);
@@ -18773,25 +18847,25 @@ function renderTreeBuilder() {
     </div>
     <div id="builderStats"></div>
     <div class="builder-layout">
-      <aside class="builder-palette">
+      <section class="builder-palette" aria-label="Especies disponibles">
         <div class="builder-palette-tools">
           <h3>Especies</h3>
           <input class="builder-search" data-builder-search type="search" placeholder="Filtrar especies…" aria-label="Filtrar especies del constructor filogenético">
         </div>
         ${palette.map(sp => `<button type="button" class="builder-species-btn" style="border-left-color:${CLADE_COLORS[sp.clado] || '#888'}" data-builder-species="${sp.id}" data-builder-label="${escapeHtmlAttr((sp.nombre + ' ' + sp.anos + ' ' + (CLADE_NAMES[sp.clado] || sp.clado)).toLowerCase())}">${escapeHtmlText(shortTaxonName(sp.nombre))}<br><small>${escapeHtmlText(sp.anos)}</small></button>`).join('')}
-      </aside>
+      </section>
       <div class="builder-canvas" id="builderCanvas">
         <svg class="builder-lines" id="builderLines"></svg>
         <div id="builderNodes"></div>
         <div class="builder-empty-hint" id="builderEmptyHint">Carga una hipótesis guía o añade especies desde la izquierda. Después activa “Modo conectar”: primer clic/tap = origen; segundo clic/tap = destino.</div>
       </div>
-      <aside class="builder-report" id="builderReport">
+      <section class="builder-report" id="builderReport" aria-label="Comparación con la referencia">
         <h3>Comparación</h3>
         <div data-builder-live-summary></div>
         <div data-builder-report-body>
           <p style="font-size:0.8rem;color:var(--text-sec);line-height:1.5">Construye un árbol y pulsa comparar para ver coincidencias, conexiones controvertidas y diferencias. Usa el panel como lectura crítica, no como solución única.</p>
         </div>
-      </aside>
+      </section>
     </div>`;
   refreshTreeBuilder();
   renderBuilderDefaultReport();
@@ -20477,6 +20551,7 @@ function _buildStratComparePanel() {
  * Llamado por renderActiveView cuando viewId === 'estratigrafia'.
  */
 function renderStratigraphyLab() {
+  // PB-GH-11 (T5): contenedor del perfil role="group" (antes role="img" con capas interactivas dentro).
   const el = document.getElementById('stratContent');
   if (!el) return;
 
@@ -20529,7 +20604,7 @@ function renderStratigraphyLab() {
     <div class="strat-layout">
       <div class="strat-profile-wrap">
         <span class="strat-profile-label" id="strat-profile-label-${escapeHtmlAttr(_stratState.site)}">Perfil estratigráfico — más reciente arriba</span>
-        <div class="strat-svg-wrap" role="img" aria-labelledby="strat-profile-label-${escapeHtmlAttr(_stratState.site)}">
+        <div class="strat-svg-wrap" role="group" aria-labelledby="strat-profile-label-${escapeHtmlAttr(_stratState.site)}">
           ${svgHtml}
         </div>
         ${_stratState.inferenceMode ? `<p style="font-size:0.72rem;color:var(--accent);font-family:var(--font-mono);margin-top:6px">Modo inferencia: pulsa cada capa y razona su posición antes de revelar la edad pulsando sobre ella.</p>` : ''}
@@ -20814,6 +20889,7 @@ function _taphoColor(survival) {
  * Renderiza el simulador de tafonomía completo.
  */
 function renderTaphonomyView() {
+  // PB-GH-11 (T5): «Interpretación del registro» pasa de h4 a h3 tras el h2 de la vista (heading-order); estilo en 95-sistema/vistas.css.
   const el = document.getElementById('taphoContent');
   if (!el) return;
 
@@ -20913,7 +20989,7 @@ function renderTaphonomyView() {
         </div>
 
         <div class="tapho-interpretation">
-          <h4>Interpretación del registro</h4>
+          <h3 class="pb-t5-h4">Interpretación del registro</h3>
           <p>${escapeHtmlText(interp)}</p>
         </div>
 
@@ -21259,6 +21335,7 @@ let _introgState = { selectedEvent: null };
  * Renderiza la vista de introgresión arcaica.
  */
 function renderIntrogressionView() {
+  // PB-GH-11 (T5): cada elemento de la leyenda con role="listitem" dentro de role="list".
   const el = document.getElementById('introgContent');
   if (!el) return;
 
@@ -21268,7 +21345,7 @@ function renderIntrogressionView() {
     { label:'Arcaico africano', color:'#c07800' },
     { label:'H. sapiens', color:'#0a6b49' }
   ].map(n => `
-    <div class="introg-legend-item">
+    <div class="introg-legend-item" role="listitem">
       <div class="introg-legend-dot" style="background:${n.color}"></div>
       <span>${escapeHtmlText(n.label)}</span>
     </div>`).join('');

@@ -1,0 +1,15 @@
+/* =====================================================================================================
+   95-sistema/carga.css · sin saltos de maquetación durante la carga (PB-GH-11, tanda T5, fila 13)
+   -----------------------------------------------------------------------------------------------------
+   Causa medida (cls.cjs/cls2.cjs, escritorio): las hojas que dan forma a la portada y al área de trabajo
+   (051, 052, 053, 95-sistema…) se enlazan al FINAL de <body>; el navegador pinta antes la portada sin ellas
+   (imagen del héroe de 2 560 px, relleno de #pb-hub 46 → 70 → 0 px) y al llegar las hojas todo salta:
+   0,92 de CLS en un solo cambio a los 840 ms (total de carga 0,99-1,67 en escritorio).
+   Arreglo: <body> no se pinta hasta que llega la última hoja (carga-fin.css, último enlace de <body>, que lo
+   vuelve visible). Mover las hojas importadas al <head> cambiaría el orden de la cascada: no se hace.
+   Sin JavaScript (no lo necesita) y con red lenta: si carga-fin.css no llegara, la animación de respaldo
+   muestra la página a los 4 s. Es un estado de carga, no oculta contenido.
+   Revertir: quitar este <link> del <head> y el de carga-fin.css.
+   ===================================================================================================== */
+body { visibility: hidden; animation: pb-carga-respaldo 0s linear 4s forwards; }
+@keyframes pb-carga-respaldo { to { visibility: visible; } }

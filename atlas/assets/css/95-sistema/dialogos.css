@@ -1,0 +1,47 @@
+/* =====================================================================================================
+   95-sistema/dialogos.css · piso de los diálogos del atlas (PB-GH-11, tanda T3, L1; fila 11)
+   -----------------------------------------------------------------------------------------------------
+   Aditiva y por las clases EXISTENTES (no se renombra ni borra nada). La reestructura visual completa
+   («diálogo único»: lámina, cabecera fija, cuerpo con desplazamiento, pantalla completa en teléfono) está
+   aparte, en dialogo-unico.css (L2), para poder revertirla sin perder este piso.
+   ===================================================================================================== */
+
+/* 1 · Una sola salida visible por diálogo (fila 11).
+   ensureModalBackButtons (002-script.js) antepone «← Volver» (.modal-back-btn, data-modal-back, nombre
+   «Volver atras y cerrar ventana») a TODOS los .modal-content, que ya tienen «✕» (.close-modal, con nombre
+   propio: «Cerrar bibliografía», «Cerrar glosario»…). Las dos hacen lo mismo (cerrar) y compiten en la
+   cabecera. Se conserva visible «✕»; «← Volver» sigue en el DOM (078 lo usa como destino preferente de foco
+   y le pone nombre; ningún módulo depende de que se pinte) pero no se pinta. Lista explícita en el informe
+   T3 («ocultado: duplicado de función»). Vale también cuando dialogo-unico.js (L2) mueve el «✕» a la
+   cabecera común (por eso :has() busca en todo .modal-content). El relleno superior que reservaba su hueco (58-72 px) vuelve al
+   relleno normal. */
+:root:root body .modal-content.has-modal-back:has(.close-modal) > .modal-back-btn {
+  display: none !important;
+}
+:root:root body.pb-v50-unified .modal-content.has-modal-back:has(.close-modal) {
+  padding-top: var(--e-5) !important;
+}
+
+/* 2 · Guía del alumnado (#studentGuideModal): el rótulo «Guía del alumnado · PaleoBot» (.sg-version-badge,
+   position:absolute; top:22px; right:72px en 001) se montaba sobre el título h2 en teléfono y tableta. Pasa
+   al flujo, encima del título, sin cambiar su texto. El «✕» de la cabecera (posición en línea del marcado)
+   queda arriba a la derecha; el título reserva su hueco. */
+:root:root body #studentGuideModal .sg-header .sg-version-badge {
+  position: static !important;
+  display: inline-block;
+  margin: 0 0 var(--e-2);
+  max-width: calc(100% - var(--control) - var(--e-3));
+}
+:root:root body #studentGuideModal .sg-header h2 {
+  padding-right: calc(var(--control) + var(--e-2));
+}
+:root:root body #studentGuideModal .sg-header > .close-modal {
+  min-width: var(--control) !important;
+  min-height: var(--control) !important;
+}
+
+/* 3 · Título del diálogo enfocado por el gestor (tabindex="-1", foco programático al abrir): no es un
+   control, así que no lleva anillo (WCAG 2.4.7 se refiere a componentes operables); el lector de pantalla
+   anuncia el diálogo por su nombre. Los controles conservan su anillo (atlas-sistema.css, capa 5). */
+:root:root:root body [data-pb-dialogo] :is(h1, h2, h3)[tabindex="-1"]:focus-visible { outline: none !important; }
+/* !important en esta hoja: 6 */

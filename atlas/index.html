@@ -71,33 +71,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- CSP docente restrictiva: conserva scripts inline heredados, pero bloquea
        conexiones IA directas. Para IA externa usar proxy institucional same-origin. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://upload.wikimedia.org https://commons.wikimedia.org https://maps.wikimedia.org https://*.tile.openstreetmap.org https://server.arcgisonline.com; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; worker-src 'self' blob:; media-src 'self' data: blob:; manifest-src 'self';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob: https://upload.wikimedia.org https://commons.wikimedia.org https://maps.wikimedia.org https://*.tile.openstreetmap.org https://server.arcgisonline.com; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; worker-src 'self' blob:; media-src 'self' data: blob:; manifest-src 'self';">
 <title>PaleoBot — Atlas Paleoantropológico Interactivo (DEA · ULPGC)</title>
 <meta name="description" content="PaleoBot — Atlas Paleoantropológico Interactivo. Corpus integrado de 52 entradas taxonómicas y paleopoblacionales, con 50 fichas avanzadas y módulos de análisis. ULPGC 2026.">
-<!-- Fuentes tipográficas con preconnect optimizado y font-display:swap (incluido en URL) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- PB-GH-11: sin Google Fonts. Lexend local (../assets/fuentes/, vía ../assets/paleobot-base.css) y pila de sistema; las tres familias remotas pasan a los tokens (assets/css/95-sistema/atlas-sistema.css). -->
 <!-- FIX M-12: meta theme-color para dispositivos móviles y PWA -->
 <meta name="theme-color" content="#1c2b3a">
 <!-- FIX M-12: favicon genérico (SVG inline vía data URI, sin dependencias externas) -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231c2b3a'/><text y='24' x='4' font-size='20' font-family='serif'>🦴</text></svg>" type="image/svg+xml">
-<!-- Leaflet 1.9.4 — con Subresource Integrity (FIX A-4: protección contra supply-chain attacks) -->
+<!-- Leaflet 1.9.4 alojado (PB-GH-11): copia del paquete npm leaflet@1.9.4 contrastada con el repositorio oficial;
+     procedencia, huellas y auditoría en assets/vendor/leaflet/PROCEDENCIA.md. Con Subresource Integrity. -->
 <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
-  integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer" />
+  href="assets/vendor/leaflet/leaflet.css"
+  integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" />
 <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"
-  integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
+  src="assets/vendor/leaflet/leaflet.js"
+  integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"
   defer></script>
 
+<!-- PB-GH-11: sistema base «Papel y tierra» antes de las hojas del atlas (el puente está en 95-sistema/atlas-sistema.css, enlazada la última). -->
+<link id="pb-base" rel="stylesheet" href="../assets/paleobot-base.css?v=pbgh11">
+<!-- PB-GH-11 (T5) · <body> no se pinta hasta la última hoja (carga-fin.css): sin saltos de maquetación al cargar (fila 13). -->
+<link id="pb-carga-css" rel="stylesheet" href="assets/css/95-sistema/carga.css?v=pbgh11">
+<!-- PB-GH-11 (T5) · sin JavaScript: aviso con alternativas y un solo h1 visible (fila 24). -->
+<noscript><link id="pb-sin-js-css" rel="stylesheet" href="assets/css/95-sistema/sin-js.css?v=pbgh11"></noscript>
 <link rel="stylesheet" href="assets/css/00-core/001-style.css?v=fix7">
 </head>
 <body>
+
+<!-- PB-GH-11 (T5, fila 24) · aviso sin JavaScript (sin script en línea: la CSP lo prohíbe). -->
+<noscript>
+  <section class="pb-sin-js" aria-labelledby="pb-sin-js-titulo">
+    <p id="pb-sin-js-titulo" class="pb-sin-js-titulo">Este atlas necesita JavaScript</p>
+    <p>Las vistas interactivas (cronología, mapas, comparador, fichas) no funcionan sin JavaScript. Puede consultar el mismo contenido en:</p>
+    <ul>
+      <li><a href="../ligera/index.html">la consulta ligera</a>, que funciona sin JavaScript;</li>
+      <li><a href="../dea/">la entrada del Diploma de Estudios Africanos</a>.</li>
+    </ul>
+  </section>
+</noscript>
 
 <!-- Skip-link de accesibilidad (FIX C-3b — WCAG 2.1 §2.4.1 Bypass Blocks) -->
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -111,183 +123,7 @@
   <span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#d8a93a;color:#102332;font-size:1.15rem;flex:0 0 auto;" aria-hidden="true">↓</span>
   <span>Ir directamente al atlas interactivo</span>
 </a>
-<script>
-  /* Handler en captura (registrado durante el parseo, antes que los guards defer/lazy)
-     para que el salto al atlas no lo intercepte ningún guard de clic en captura. */
-  (function(){
-    function protectNutcrackerExternal(ev){
-      var link = ev.target && ev.target.closest && ev.target.closest('[data-pbnm-external]');
-      if(!link) return;
-      if(ev.button && ev.button !== 0) return;
-      if(ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.altKey) return;
-      var target = link.getAttribute('data-pbnm-external') || link.href || link.getAttribute('href') || '';
-      if(!/^https?:\/\//i.test(target)) return;
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      document.documentElement.dataset.pbnmExternalNav = target;
-      try {
-        if(window.top && window.top !== window){
-          window.top.location.assign(target);
-          return;
-        }
-      } catch(_){ }
-      window.location.assign(target);
-    }
-    window.addEventListener('pointerdown', protectNutcrackerExternal, true);
-    window.addEventListener('click', protectNutcrackerExternal, true);
-
-    window.addEventListener('click', function(ev){
-      var bar = ev.target && ev.target.closest && ev.target.closest('#pb-skip-intro-bar');
-      if(!bar) return;
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      var m = document.getElementById('main-content');
-      if(m){
-        document.body.classList.add('pb-workspace-entered');
-        window.scrollTo(0, m.getBoundingClientRect().top + window.pageYOffset - 8);
-        m.setAttribute('tabindex','-1');
-        try { m.focus({ preventScroll:true }); } catch(_){}
-      }
-    }, true);
-
-    /* FIX (Claude 2026-06): clic en tarjetas de introgresión. Resiliente a la
-       caché: una versión antigua de la capa v64 (035) puede quedar cacheada en el
-       navegador; secuestraba el clic e impedía que el panel de detalle se
-       rellenara. Este handler en window-capture se ejecuta ANTES que cualquier
-       handler en document-capture (incluido el v64 viejo), llama a la API del
-       núcleo window.selectIntrogEvent (que sí rellena el panel) y detiene la
-       cadena para que el v64 viejo no rebote ni fije pbV50Block='investigar'. */
-    window.addEventListener('click', function(ev){
-      var card = ev.target && ev.target.closest && ev.target.closest('.introg-photo-card[data-introg-event]');
-      if(!card) return;
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      if(typeof window.selectIntrogEvent === 'function'){
-        window.selectIntrogEvent(card.dataset.introgEvent || '');
-      }
-    }, true);
-
-    window.addEventListener('click', function(ev){
-      var toggle = ev.target && ev.target.closest && ev.target.closest('#pb-mobile-tools-toggle');
-      if(!toggle) return;
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      var open = !document.body.classList.contains('pb-mobile-tools-open');
-      document.body.classList.toggle('pb-mobile-tools-open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', open ? 'Cerrar herramientas' : 'Abrir herramientas');
-      [document.getElementById('pb-floating-tools'), document.getElementById('pb-a11y-toolbar-root')].forEach(function(panel){
-        if(!panel) return;
-        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
-        if(open) panel.removeAttribute('inert'); else panel.setAttribute('inert','');
-      });
-      document.documentElement.dataset.pbMobileTools = open ? 'open' : 'closed';
-    }, true);
-
-    var protectedBibPointerAt = 0;
-    function protectBibliographyFilter(ev){
-      var filter = ev.target && ev.target.closest && ev.target.closest('[data-bib-filter]');
-      if(!filter) return;
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      if(ev.type === 'click' && Date.now() - protectedBibPointerAt < 500) return;
-      if(ev.type === 'pointerdown') protectedBibPointerAt = Date.now();
-      var key = filter.getAttribute('data-bib-filter') || 'all';
-      if(window.PaleoBotV38Bibliography && typeof window.PaleoBotV38Bibliography.setBibliographyFilter === 'function') {
-        window.PaleoBotV38Bibliography.setBibliographyFilter(key, filter);
-      } else {
-        document.querySelectorAll('[data-bib-filter]').forEach(function(button){
-          var active = button === filter;
-          button.classList.toggle('active', active);
-          button.setAttribute('aria-pressed', active ? 'true' : 'false');
-        });
-      }
-      document.body.dataset.pbProtectedBibFilter = key;
-    }
-    window.addEventListener('pointerdown', protectBibliographyFilter, true);
-    window.addEventListener('click', protectBibliographyFilter, true);
-
-    var protectedModalPointerAt = 0;
-    function protectModalToggle(ev){
-      var trigger = ev.target && ev.target.closest && ev.target.closest('[data-modal-toggle]');
-      var modalId = trigger && trigger.getAttribute('data-modal-toggle');
-      var modal = modalId && document.getElementById(modalId);
-      if(!modal) return;
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      if(ev.type === 'click' && Date.now() - protectedModalPointerAt < 500) return;
-      if(ev.type === 'pointerdown') protectedModalPointerAt = Date.now();
-      if(window.PaleoBotV88FloatingMenuFinal && typeof window.PaleoBotV88FloatingMenuFinal.toggleModal === 'function') {
-        window.PaleoBotV88FloatingMenuFinal.toggleModal(modalId);
-      } else {
-        var open = !modal.classList.contains('active');
-        modal.classList.toggle('active', open);
-        modal.setAttribute('aria-hidden', open ? 'false' : 'true');
-      }
-      document.body.dataset.pbProtectedModal = modalId;
-    }
-    window.addEventListener('pointerdown', protectModalToggle, true);
-    window.addEventListener('click', protectModalToggle, true);
-
-    var protectedQuizPointerAt = 0;
-    function protectClassicQuizStart(ev){
-      var trigger = ev.target && ev.target.closest && ev.target.closest('[data-quiz-next="classic"]');
-      if(!trigger) return;
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      if(ev.type === 'click' && Date.now() - protectedQuizPointerAt < 500) return;
-      if(ev.type === 'pointerdown') protectedQuizPointerAt = Date.now();
-      if(typeof window.runExam === 'function') window.runExam();
-      document.body.dataset.pbProtectedQuiz = 'classic';
-    }
-    window.addEventListener('pointerdown', protectClassicQuizStart, true);
-    window.addEventListener('click', protectClassicQuizStart, true);
-
-    var protectedAnswerPointerAt = 0;
-    function protectM13Answer(ev){
-      var answer = ev.target && ev.target.closest && ev.target.closest('[data-m13-answer]');
-      if(!answer) return;
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      if(ev.type === 'click' && Date.now() - protectedAnswerPointerAt < 500) return;
-      if(ev.type === 'pointerdown') protectedAnswerPointerAt = Date.now();
-      if(window.PaleoBotM13Quiz && typeof window.PaleoBotM13Quiz.answer === 'function') {
-        window.PaleoBotM13Quiz.answer(answer);
-      }
-      document.body.dataset.pbProtectedQuizAnswer = answer.getAttribute('data-m13-answer') || 'answer';
-    }
-    window.addEventListener('pointerdown', protectM13Answer, true);
-    window.addEventListener('click', protectM13Answer, true);
-
-    var protectedModalActions = {
-      abrirBiblio:'biblioModal',
-      openGlossary:'glossaryModal',
-      startExam:'examModal',
-      openMatrix:'matrixModal',
-      abrirEstadisticas:'statsModal',
-      openStudentGuide:'studentGuideModal',
-      openSessionSynthesis:'sessionSynthesisModal',
-      openCompare:'compareModal'
-    };
-    window.addEventListener('click', function(ev){
-      var trigger = ev.target && ev.target.closest && ev.target.closest('[data-action]');
-      var action = trigger && trigger.getAttribute('data-action');
-      var modalId = protectedModalActions[action];
-      if(!modalId) return;
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      if(typeof window[action] === 'function') {
-        window[action](trigger, ev);
-      } else if(window.PaleoBotV68InteractionStabilizer && typeof window.PaleoBotV68InteractionStabilizer.runAction === 'function') {
-        window.PaleoBotV68InteractionStabilizer.runAction(action);
-      } else {
-        var modal = document.getElementById(modalId);
-        if(modal){ modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); }
-      }
-      document.body.dataset.pbProtectedAction = action;
-    }, true);
-  })();
-</script>
+<script src="assets/js/95-sistema/en-linea-salto-atlas.js?v=pbgh11"></script>
 
 <!-- ════════════════════════════════════════════════════════════════
      HUB DE ENTRADA POR BLOQUES (Claude 2026-06)
@@ -350,16 +186,7 @@
         </a>
       </div>
     </section>
-    <script>
-      window.addEventListener('click', function(event){
-        var route = event.target && event.target.closest &&
-          event.target.closest('[data-pb-integrated-route]');
-        if (!route) return;
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        window.location.assign(route.getAttribute('data-pb-integrated-route'));
-      }, true);
-    </script>
+    <script src="assets/js/95-sistema/en-linea-rutas-integradas.js?v=pbgh11"></script>
 
     <!-- Objetivos del recurso -->
     <section class="pb-learning-outcomes" aria-labelledby="pb-learning-outcomes-title" style="margin:38px auto 8px;max-width:1000px;">
@@ -547,199 +374,7 @@
     </div>
   </div>
 </section>
-<script>
-  /* Lógica del HUB de bloques (Claude 2026-06). Carga durante el parseo, antes
-     que los guards diferidos. Navega vía el router verificado y baja al atlas. */
-  (function(){
-    var L = {
-      timeline:'Cronología', tree:'Árbol de consenso', phylo:'Filogenia',
-      coexistencias:'Coexistencias', holotipos:'Holotipos', revisiones:'Revisiones', primatologia:'Primatología',
-      map:'Mapa', continentes:'Continentes', africa:'África', asia:'Asia', europe:'Europa', america:'América',
-      yacimientos:'Yacimientos', biogeo:'Biogeografía', dispersal:'Dispersión',
-      contexto:'Contexto', clima:'Clima', paleoecologia:'Paleoecología',
-      genomica:'Paleogenómica', paleoproteomica:'Paleoproteómica', datacion:'Datación',
-      estratigrafia:'Estratigrafía', tafonomia:'Tafonomía', introgresion:'Introgresión',
-      constructor:'Constructor', debates:'Debates', socratico:'Socrático',
-      aula:'Aula', recursos:'Recursos', itinerarios:'Itinerarios', paleolab:'PaleoLab 50'
-    };
-    var BLOCKS = {
-      cronologia:{ c:'#13a37f', title:'Cronología y especies', sub:'¿Quiénes vivieron y cuándo?', defaultView:'timeline',
-        views:['timeline','tree','phylo','coexistencias','holotipos','revisiones','primatologia'] },
-      territorio:{ c:'#4f86d6', title:'Territorio y dispersión', sub:'¿Dónde vivieron y por dónde se movieron?', defaultView:'map',
-        views:['map','continentes','africa','asia','europe','america','yacimientos','biogeo','dispersal'] },
-      clima:{ c:'#8aa83d', title:'Clima y ecología', sub:'¿En qué mundo vivieron?', defaultView:'clima',
-        views:['clima','contexto','paleoecologia'] },
-      metodos:{ c:'#c79030', title:'Métodos y evidencia', sub:'¿Cómo lo sabemos? Incluye la nueva Paleoproteómica.', defaultView:'genomica',
-        views:['genomica','paleoproteomica','datacion','estratigrafia','tafonomia','introgresion','constructor','debates','socratico'] },
-      aula:{ c:'#c4622f', title:'Aula y recursos', sub:'Enseñar y evaluar con el atlas.', defaultView:'aula',
-        views:['aula','recursos','itinerarios','paleolab'] }
-    };
-    var NEW = { paleoproteomica:true, paleolab:true };
-    var lastBlockTrigger = null;
-
-    function activateHubView(view){
-      var section = document.getElementById('view-' + view);
-      if (!section) return false;
-      try {
-        if (window.PaleoBotCanonicalNav) {
-          window.PaleoBotCanonicalNav.setCanonical?.(view);
-          window.PaleoBotCanonicalNav.domActivate?.(view);
-        }
-      } catch(_){}
-      try {
-        if (window.PaleoBotV91FinalButtonActions && window.PaleoBotV91FinalButtonActions.routeView)
-          window.PaleoBotV91FinalButtonActions.routeView(view);
-        else if (window.PaleoBotV55Router && window.PaleoBotV55Router.activateView)
-          window.PaleoBotV55Router.activateView(view, { scroll:false });
-        else if (window.PaleoBotV68InteractionStabilizer && window.PaleoBotV68InteractionStabilizer.routeView)
-          window.PaleoBotV68InteractionStabilizer.routeView(view);
-        else if (typeof window.renderActiveView === 'function')
-          window.renderActiveView(view);
-      } catch(_){}
-      return document.getElementById('view-' + view)?.classList.contains('active') || false;
-    }
-
-    function goView(view){
-      if (!activateHubView(view)) return;
-      document.body.classList.add('pb-workspace-entered');
-      var m = document.getElementById('main-content');
-      if (!m) return;
-      m.setAttribute('tabindex','-1');
-      if (window.location.hash !== '#main-content') window.location.hash = 'main-content';
-      try { m.scrollIntoView({ behavior:'auto', block:'start' }); } catch(e){}
-      var tries = 0;
-      function settle(){
-        var sec = document.getElementById('view-' + view);
-        if (sec && !sec.classList.contains('active')) {
-          try {
-            window.PaleoBotCanonicalNav?.setCanonical?.(view);
-            window.PaleoBotCanonicalNav?.domActivate?.(view);
-          } catch(_){}
-        }
-        try { m.scrollIntoView({ behavior:'auto', block:'start' }); } catch(e){}
-        tries++;
-        if (tries < 3 && sec && !sec.classList.contains('active')) setTimeout(settle, 90);
-      }
-      setTimeout(settle, 60);
-      try { m.focus(); } catch(e){}
-    }
-
-    function openBlock(key){
-      var b = BLOCKS[key]; if(!b) return;
-      lastBlockTrigger = document.querySelector('.pb-hub-card[data-hub-block="' + key + '"]');
-      document.querySelectorAll('.pb-hub-card[data-hub-block]').forEach(function(card){
-        card.setAttribute('aria-expanded', card === lastBlockTrigger ? 'true' : 'false');
-      });
-      document.getElementById('pb-hub-blocks').style.display = 'none';
-      var panel = document.getElementById('pb-hub-tools');
-      panel.style.display = 'block';
-      document.getElementById('pb-hub-tools-dot').style.background = b.c;
-      document.getElementById('pb-hub-tools-title').textContent = b.title;
-      document.getElementById('pb-hub-tools-sub').textContent = b.sub;
-      var grid = document.getElementById('pb-hub-tools-grid');
-      grid.innerHTML = '';
-      b.views.forEach(function(v){
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        if (v === 'paleolab') {
-          btn.setAttribute('data-paleolab-open', '');
-          btn.setAttribute('data-action', 'openPaleoLab');
-          btn.setAttribute('aria-haspopup', 'dialog');
-          btn.setAttribute('aria-controls', 'splDialog');
-        } else {
-          btn.setAttribute('data-hub-view', v);
-        }
-        btn.setAttribute('aria-label', 'Abrir ' + (L[v] || v));
-        btn.style.cssText = 'text-align:left;cursor:pointer;font:inherit;background:#1b3144;border:1px solid #2a4357;border-left:4px solid '+b.c+';border-radius:11px;padding:15px 16px;color:#f3efe7;font-size:1.05rem;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:56px;';
-        var label = (L[v]||v);
-        btn.innerHTML = '<span>'+label+(NEW[v]?' <span style="font-family:JetBrains Mono,monospace;font-size:.6rem;letter-spacing:.08em;color:#102332;background:#d8a93a;border-radius:5px;padding:2px 6px;vertical-align:middle;margin-left:4px;">NUEVO</span>':'')+'</span><span style="color:'+b.c+';font-size:1.1rem;">→</span>';
-        grid.appendChild(btn);
-      });
-      try { panel.scrollIntoView({block:'start'}); } catch(e){}
-      try { document.getElementById('pb-hub-back').focus({preventScroll:true}); } catch(e){}
-    }
-    function backToBlocks(){
-      document.getElementById('pb-hub-tools').style.display = 'none';
-      document.getElementById('pb-hub-blocks').style.display = 'grid';
-      document.querySelectorAll('.pb-hub-card[data-hub-block]').forEach(function(card){
-        card.setAttribute('aria-expanded','false');
-      });
-      try { lastBlockTrigger?.focus({preventScroll:true}); } catch(e){}
-    }
-
-    function renderIndex(){
-      var host = document.getElementById('pb-landing-index-grid');
-      if (!host || host.children.length) return;
-      Object.keys(BLOCKS).forEach(function(key){
-        var block = BLOCKS[key];
-        var group = document.createElement('section');
-        group.className = 'pb-landing-index-group';
-        group.style.setProperty('--c', block.c);
-        var heading = document.createElement('h3');
-        heading.textContent = block.title;
-        var count = document.createElement('span');
-        count.textContent = block.views.length + (block.views.length === 1 ? ' vista' : ' vistas');
-        var links = document.createElement('div');
-        links.className = 'pb-landing-index-links';
-        block.views.forEach(function(view){
-          var button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'pb-landing-index-link';
-          button.setAttribute('aria-label','Abrir ' + (L[view] || view));
-          if (view === 'paleolab') {
-            button.setAttribute('data-paleolab-open','');
-            button.setAttribute('data-action','openPaleoLab');
-            button.setAttribute('aria-haspopup','dialog');
-            button.setAttribute('aria-controls','splDialog');
-          } else {
-            button.setAttribute('data-hub-view',view);
-          }
-          var label = document.createElement('span');
-          label.textContent = L[view] || view;
-          button.appendChild(label);
-          if (NEW[view]) {
-            var badge = document.createElement('small');
-            badge.textContent = 'NUEVO';
-            button.appendChild(badge);
-          }
-          links.appendChild(button);
-        });
-        group.appendChild(heading);
-        group.appendChild(count);
-        group.appendChild(links);
-        host.appendChild(group);
-      });
-    }
-
-    window.PaleoBotLanding = Object.freeze({
-      openBlock: openBlock,
-      showBlocks: backToBlocks,
-      goView: goView,
-      renderIndex: renderIndex
-    });
-    renderIndex();
-
-    window.addEventListener('click', function(ev){
-      var tool = ev.target.closest && ev.target.closest('[data-hub-view]');
-      if (tool){ ev.preventDefault(); ev.stopImmediatePropagation(); goView(tool.getAttribute('data-hub-view')); return; }
-      var card = ev.target.closest && ev.target.closest('.pb-hub-card[data-hub-block]');
-      if (card){ ev.preventDefault(); ev.stopImmediatePropagation(); openBlock(card.getAttribute('data-hub-block')); return; }
-      var back = ev.target.closest && ev.target.closest('#pb-hub-back');
-      if (back){ ev.preventDefault(); ev.stopImmediatePropagation(); backToBlocks(); return; }
-      var skip = ev.target.closest && ev.target.closest('#pb-hub-skip');
-      if (skip){ ev.preventDefault(); ev.stopImmediatePropagation(); var m=document.getElementById('main-content'); if(m){ document.body.classList.add('pb-workspace-entered'); window.scrollTo(0, m.getBoundingClientRect().top+window.pageYOffset-8); } return; }
-    }, true);
-
-    document.addEventListener('mouseover', function(ev){
-      var c = ev.target.closest && ev.target.closest('.pb-hub-card');
-      if (c){ c.style.transform='translateY(-3px)'; c.style.boxShadow='0 14px 30px rgba(0,0,0,.32)'; c.style.borderColor=c.style.getPropertyValue('--c'); }
-    });
-    document.addEventListener('mouseout', function(ev){
-      var c = ev.target.closest && ev.target.closest('.pb-hub-card');
-      if (c){ c.style.transform='none'; c.style.boxShadow='none'; c.style.borderColor='#2a4357'; }
-    });
-  })();
-</script>
+<script src="assets/js/95-sistema/en-linea-hub-bloques.js?v=pbgh11"></script>
 
 <section class="main-cover paleobot-cover-v45" aria-label="Portada principal independiente de PaleoBot">
   <picture class="main-cover-media paleobot-cover-media-v45" aria-hidden="true">
@@ -749,7 +384,7 @@
       loading="eager"
       decoding="async"
       referrerpolicy="no-referrer"
-      onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG?width=2000';"
+      data-pb-respaldo="https://commons.wikimedia.org/wiki/Special:FilePath/Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG?width=2000"
     >
   </picture>
   <nav class="cover-nav-v45" aria-label="Navegación de portada">
@@ -839,7 +474,7 @@
         loading="eager"
         decoding="async"
         referrerpolicy="no-referrer"
-        onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG?width=1280';"
+        data-pb-respaldo="https://commons.wikimedia.org/wiki/Special:FilePath/Australopithecus_afarensis_skull_-_Naturmuseum_Senckenberg_-_DSC02102.JPG?width=1280"
       >
       <div class="home-visual-fact" aria-label="Lectura científica de la imagen de portada">
         <span>Portada real</span>
@@ -851,6 +486,7 @@
         <span>Fotografía real de un molde craneal de <em>Australopithecus afarensis</em>. Fuente: Wikimedia Commons, Daderot, CC0.</span>
       </figcaption>
     </figure>
+    <script src="assets/js/95-sistema/respaldo-portada.js?v=pbgh11"></script>
   <div class="header-stats">
       <div class="stat-item"><strong id="headerStatVisible">50</strong><span>Registros</span></div>
       <div class="stat-item"><strong id="headerStatMedia">50/50</strong><span>Imágenes</span></div>
@@ -1317,8 +953,10 @@
       <button type="button" class="filter-reset-btn" data-action="resetGlobalFilters" title="Restablecer búsqueda, clado y rango temporal">Limpiar filtros</button>
       <div class="controls">
         <select id="nivelEducativo" aria-label="Nivel de complejidad del atlas" data-level-select>
-          <option value="doctorado">Nivel Doctorado</option>
-          <option value="universitario" selected>Nivel Universitario</option>
+          <!-- PB-GH-11 (T5, fila 20): el atlas arranca con nivelActual = 'doctorado' (002, todas las vistas y todo el
+               contenido visibles); el selector mostraba «Universitario». Se marca la opción que de verdad está activa. -->
+          <option value="doctorado" selected>Nivel Doctorado</option>
+          <option value="universitario">Nivel Universitario</option>
           <option value="basico">Nivel Básico</option>
         </select>
       <p class="level-hint" style="font-size:0.72rem;color:var(--text-hint);font-family:var(--font-mono);margin-top:4px;line-height:1.4">Si es tu primera vez, empieza en <strong>Nivel Básico</strong>.</p>
@@ -1539,7 +1177,7 @@
       </div>
 
       <div class="context-scroll">
-        <svg id="contextSvg" class="context-svg" role="img" aria-label="Cronología comparada entre homininos y contexto geológico-climático"></svg>
+        <svg id="contextSvg" class="context-svg" role="group" aria-label="Cronología comparada entre homininos y contexto geológico-climático"></svg>
       </div>
 
       <div class="context-footer">
@@ -1641,7 +1279,7 @@
       <!-- ── Visualización SVG ─────────────────────────────────────── -->
       <div class="clima-scroll" id="climaScroll">
         <svg id="climaSvg" class="clima-svg"
-             role="img"
+             role="group"
              aria-label="Gráfico de cambios climáticos comparado con distribución temporal de homininos">
           <title>Línea de tiempo climática PAGES2k / LR04 con homininos</title>
         </svg>
@@ -2109,7 +1747,7 @@
             </ul>
           </div>
           <div style="background:#f6efe2;border:1px solid #e6d4ad;border-radius:14px;padding:20px 22px;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#a9772c;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Paleoproteómica (proteínas)</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:#8a5f1e;font-weight:700;text-transform:uppercase;margin-bottom:8px;">Paleoproteómica (proteínas)</div>
             <ul style="margin:0;padding-left:18px;font-size:1rem;line-height:1.6;color:#34423b;">
               <li>Lee la <strong>secuencia de aminoácidos</strong> de unas pocas proteínas: mucha menos información, pero suficiente para clasificar.</li>
               <li>Mucho más resistente. En el <strong>esmalte dental</strong> sobrevive cientos de miles —incluso millones— de años.</li>
@@ -2144,37 +1782,37 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
 
           <article style="background:#fff;border:1px solid #e4dfd2;border-left:5px solid #1a4fa0;border-radius:12px;padding:18px 20px;box-shadow:0 6px 16px rgba(35,48,43,.05);">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#a9772c;font-weight:700;margin-bottom:6px;">≈ 949 ka · ESMALTE</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#8a5f1e;font-weight:700;margin-bottom:6px;">≈ 949 ka · ESMALTE</div>
             <strong style="display:block;font-family:Georgia,serif;font-size:1.12rem;color:#102332;margin-bottom:6px;">Homo antecessor</strong>
-            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">Las proteínas del esmalte (Gran Dolina, Atapuerca) mostraron que <em>antecessor</em> <strong>no es nuestro antepasado directo</strong>, sino un linaje hermano cercano del último ancestro común de sapiens, neandertales y denisovanos. <span style="color:#7a857d;">Welker et al., Nature 2020.</span></p>
+            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">Las proteínas del esmalte (Gran Dolina, Atapuerca) mostraron que <em>antecessor</em> <strong>no es nuestro antepasado directo</strong>, sino un linaje hermano cercano del último ancestro común de sapiens, neandertales y denisovanos. <span style="color:#5f6662;">Welker et al., Nature 2020.</span></p>
             <button type="button" class="ppx-open" data-open-species="antecessor" style="font:inherit;font-size:.88rem;font-weight:600;color:#1a4fa0;background:rgba(26,79,160,.09);border:none;border-radius:8px;padding:8px 14px;cursor:pointer;">Abrir ficha →</button>
           </article>
 
           <article style="background:#fff;border:1px solid #e4dfd2;border-left:5px solid #aa1f1f;border-radius:12px;padding:18px 20px;box-shadow:0 6px 16px rgba(35,48,43,.05);">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#a9772c;font-weight:700;margin-bottom:6px;">≈ 146 ka · 2025</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#8a5f1e;font-weight:700;margin-bottom:6px;">≈ 146 ka · 2025</div>
             <strong style="display:block;font-family:Georgia,serif;font-size:1.12rem;color:#102332;margin-bottom:6px;">«Dragon Man» (Harbin)</strong>
-            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">El cráneo casi completo descrito como <em>Homo longi</em> resultó ser un <strong>denisovano</strong>: 95 proteínas con 3 variantes denisovanas, más ADN mitocondrial del sarro dental. Por fin un rostro para los denisovanos. <span style="color:#7a857d;">Fu et al., Science/Cell 2025.</span></p>
+            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">El cráneo casi completo descrito como <em>Homo longi</em> resultó ser un <strong>denisovano</strong>: 95 proteínas con 3 variantes denisovanas, más ADN mitocondrial del sarro dental. Por fin un rostro para los denisovanos. <span style="color:#5f6662;">Fu et al., Science/Cell 2025.</span></p>
             <button type="button" class="ppx-open" data-open-species="longi" style="font:inherit;font-size:.88rem;font-weight:600;color:#1a4fa0;background:rgba(26,79,160,.09);border:none;border-radius:8px;padding:8px 14px;cursor:pointer;">Abrir ficha →</button>
           </article>
 
           <article style="background:#fff;border:1px solid #e4dfd2;border-left:5px solid #aa1f1f;border-radius:12px;padding:18px 20px;box-shadow:0 6px 16px rgba(35,48,43,.05);">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#a9772c;font-weight:700;margin-bottom:6px;">PLEISTOCENO · 2025</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#8a5f1e;font-weight:700;margin-bottom:6px;">PLEISTOCENO · 2025</div>
             <strong style="display:block;font-family:Georgia,serif;font-size:1.12rem;color:#102332;margin-bottom:6px;">Mandíbula de Penghu (Taiwán)</strong>
-            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">Más de 4.000 aminoácidos de 51 proteínas la identificaron como <strong>denisovana</strong>; la proteína amelogenina&nbsp;Y confirmó además que era un <strong>varón</strong>. <span style="color:#7a857d;">Tsutaya et al., Science 2025.</span></p>
+            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">Más de 4.000 aminoácidos de 51 proteínas la identificaron como <strong>denisovana</strong>; la proteína amelogenina&nbsp;Y confirmó además que era un <strong>varón</strong>. <span style="color:#5f6662;">Tsutaya et al., Science 2025.</span></p>
             <button type="button" class="ppx-open" data-open-species="penghu" style="font:inherit;font-size:.88rem;font-weight:600;color:#1a4fa0;background:rgba(26,79,160,.09);border:none;border-radius:8px;padding:8px 14px;cursor:pointer;">Abrir ficha →</button>
           </article>
 
           <article style="background:#fff;border:1px solid #e4dfd2;border-left:5px solid #c07800;border-radius:12px;padding:18px 20px;box-shadow:0 6px 16px rgba(35,48,43,.05);">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#a9772c;font-weight:700;margin-bottom:6px;">≈ 1,9 Ma · ESMALTE</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#8a5f1e;font-weight:700;margin-bottom:6px;">≈ 1,9 Ma · ESMALTE</div>
             <strong style="display:block;font-family:Georgia,serif;font-size:1.12rem;color:#102332;margin-bottom:6px;">Gigantopithecus blacki</strong>
-            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">El simio gigante del sur de China, conocido casi solo por dientes. Sus proteínas del esmalte —las más antiguas leídas en un homínido— lo situaron como <strong>pariente de los orangutanes</strong>. <span style="color:#7a857d;">Welker et al., Nature 2019.</span></p>
-            <span style="display:inline-block;font-size:.82rem;color:#7a857d;font-style:italic;padding:8px 2px;">No incluido en el catálogo (no es de nuestro linaje).</span>
+            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">El simio gigante del sur de China, conocido casi solo por dientes. Sus proteínas del esmalte —las más antiguas leídas en un homínido— lo situaron como <strong>pariente de los orangutanes</strong>. <span style="color:#5f6662;">Welker et al., Nature 2019.</span></p>
+            <span style="display:inline-block;font-size:.82rem;color:#5f6662;font-style:italic;padding:8px 2px;">No incluido en el catálogo (no es de nuestro linaje).</span>
           </article>
 
           <article style="background:#fff;border:1px solid #e4dfd2;border-left:5px solid #1a4fa0;border-radius:12px;padding:18px 20px;box-shadow:0 6px 16px rgba(35,48,43,.05);">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#a9772c;font-weight:700;margin-bottom:6px;">≈ 160 ka · TÍBET</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:#8a5f1e;font-weight:700;margin-bottom:6px;">≈ 160 ka · TÍBET</div>
             <strong style="display:block;font-family:Georgia,serif;font-size:1.12rem;color:#102332;margin-bottom:6px;">Mandíbula de Xiahe</strong>
-            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">El primer denisovano fuera de Siberia, en la meseta tibetana a 3.280&nbsp;m, identificado por <strong>colágeno</strong> antes de cualquier ADN. Mostró que los denisovanos vivían en gran altitud. <span style="color:#7a857d;">Chen et al., Nature 2019.</span></p>
+            <p style="font-size:.92rem;line-height:1.5;color:#48564f;margin:0 0 12px;">El primer denisovano fuera de Siberia, en la meseta tibetana a 3.280&nbsp;m, identificado por <strong>colágeno</strong> antes de cualquier ADN. Mostró que los denisovanos vivían en gran altitud. <span style="color:#5f6662;">Chen et al., Nature 2019.</span></p>
             <button type="button" class="ppx-open" data-open-species="denisova" style="font:inherit;font-size:.88rem;font-weight:600;color:#1a4fa0;background:rgba(26,79,160,.09);border:none;border-radius:8px;padding:8px 14px;cursor:pointer;">Ficha denisovanos →</button>
           </article>
 
@@ -3255,5 +2893,72 @@
 <link id="paleobot-visual-system" rel="stylesheet" href="assets/css/00-core/053-paleobot-visual-system.css?v=visual1">
 <script id="paleobot-view-orientation-sync" src="assets/js/00-core/083-view-orientation-sync.js?v=visual1" defer></script>
 <script id="paleobot-doi-avisos" src="assets/js/90-guards/084-paleobot-doi-avisos.js?v=pbgh09" defer></script>
+<!-- PB-GH-11 · 95-sistema: columna vertebral aditiva, enlazada la última (DIRECCION_ATLAS § 1). -->
+<script id="pb-imagenes-tope" src="assets/js/95-sistema/imagenes-tope.js?v=pbgh11" defer></script>
+<script id="pb-imagenes-locales-datos" src="assets/js/95-sistema/imagenes-locales-datos.js?v=pbgh11" defer></script>
+<script id="pb-imagenes-locales" src="assets/js/95-sistema/imagenes-locales.js?v=pbgh11" defer></script>
+<link id="pb-atlas-sistema" rel="stylesheet" href="assets/css/95-sistema/atlas-sistema.css?v=pbgh11">
+<!-- PB-GH-11 (T3) · gestor común de diálogos: semántica, foco que entra y vuelve, Tab atrapado y fondo inerte (filas 3, 5 y 11). -->
+<script id="pb-dialogos" src="assets/js/95-sistema/dialogos.js?v=pbgh11" defer></script>
+<link id="pb-dialogos-css" rel="stylesheet" href="assets/css/95-sistema/dialogos.css?v=pbgh11">
+<!-- PB-GH-11 (T3) · foco tras elegir vista, vista activa anunciada y enlace de salto a la navegación (filas 6 y 17). -->
+<script id="pb-navegacion" src="assets/js/95-sistema/navegacion.js?v=pbgh11" defer></script>
+<!-- PB-GH-11 (T3, L2) · diálogo único: lámina, cabecera fija con título y «Cerrar», pantalla completa en teléfono. -->
+<script id="pb-dialogo-unico" src="assets/js/95-sistema/dialogo-unico.js?v=pbgh11" defer></script>
+<link id="pb-dialogo-unico-css" rel="stylesheet" href="assets/css/95-sistema/dialogo-unico.css?v=pbgh11">
+<!-- PB-GH-11 (T3, L2) · barra de trabajo: franja fija de 56 px y panel «Vistas» (mismas 4 familias y 31 vistas). -->
+<script id="pb-barra" src="assets/js/95-sistema/barra.js?v=pbgh11" defer></script>
+<link id="pb-barra-css" rel="stylesheet" href="assets/css/95-sistema/barra.css?v=pbgh11">
+<!-- PB-GH-11 (T3, L2) · cabecera de vista sobre papel: título + pregunta y desplegable «Cómo usar esta vista». -->
+<script id="pb-cabecera" src="assets/js/95-sistema/cabecera.js?v=pbgh11" defer></script>
+<link id="pb-cabecera-css" rel="stylesheet" href="assets/css/95-sistema/cabecera.css?v=pbgh11">
+<!-- PB-GH-11 (T4) · fondo local de costas (Natural Earth 1:110m, dominio público) bajo el relieve remoto del mapa y las teselas del minimapa (fila 8). -->
+<script id="pb-costas-datos" src="assets/js/95-sistema/costas-datos.js?v=pbgh11" defer></script>
+<script id="pb-costas" src="assets/js/95-sistema/costas.js?v=pbgh11" defer></script>
+<link id="pb-costas-css" rel="stylesheet" href="assets/css/95-sistema/costas.css?v=pbgh11">
+<!-- PB-GH-11 (T4) · Intro en el buscador de la franja y búsqueda global con título visible dentro del diálogo único (fila 18). -->
+<script id="pb-buscador" src="assets/js/95-sistema/buscador.js?v=pbgh11" defer></script>
+<link id="pb-buscador-css" rel="stylesheet" href="assets/css/95-sistema/buscador.css?v=pbgh11">
+<!-- PB-GH-11 (T4) · contraste de literales que no alcanza el puente de tokens. -->
+<link id="pb-contraste-css" rel="stylesheet" href="assets/css/95-sistema/contraste.css?v=pbgh11">
+<!-- PB-GH-11 (T4, L2) · franja «Consulta y filtros» compacta sobre papel: una fila en escritorio; buscador y «Más opciones» en teléfono. -->
+<script id="pb-consulta" src="assets/js/95-sistema/consulta.js?v=pbgh11" defer></script>
+<link id="pb-consulta-css" rel="stylesheet" href="assets/css/95-sistema/consulta.css?v=pbgh11">
+<!-- PB-GH-11 (T4, L2) · al elegir una vista: barra arriba, franja «Consulta y filtros» debajo y, a continuación, el título. -->
+<script id="pb-desplazamiento" src="assets/js/95-sistema/desplazamiento.js?v=pbgh11" defer></script>
+<!-- PB-GH-11 (T4, L2) · ficha de especie como página de manual: panel lateral en escritorio, imagen local primero, minimapa con alternativa textual. -->
+<script id="pb-ficha" src="assets/js/95-sistema/ficha.js?v=pbgh11" defer></script>
+<link id="pb-ficha-css" rel="stylesheet" href="assets/css/95-sistema/ficha.css?v=pbgh11">
+<!-- PB-GH-11 (T4, L2) · Cronología: tarjeta legible con un único código de incertidumbre y leyenda en «Qué significan las etiquetas». -->
+<script id="pb-cronologia" src="assets/js/95-sistema/cronologia.js?v=pbgh11" defer></script>
+<link id="pb-cronologia-css" rel="stylesheet" href="assets/css/95-sistema/cronologia.css?v=pbgh11">
+<!-- PB-GH-11 (T4, L2) · Mapa y África: el mapa primero, controles agrupados con nombre, alternativa textual, estado vacío. -->
+<script id="pb-mapa" src="assets/js/95-sistema/mapa.js?v=pbgh11" defer></script>
+<link id="pb-mapa-css" rel="stylesheet" href="assets/css/95-sistema/mapa.css?v=pbgh11">
+<!-- PB-GH-11 (T4, L2) · Comparador: resultados a su altura, tabla con desplazamiento propio y cabecera fija, guía plegada. -->
+<script id="pb-comparador" src="assets/js/95-sistema/comparador.js?v=pbgh11" defer></script>
+<link id="pb-comparador-css" rel="stylesheet" href="assets/css/95-sistema/comparador.css?v=pbgh11">
+<!-- PB-GH-11 (T5) · «Diagnóstico» visible desde cualquier vista: abre Centro docente y muestra el informe (fila 19). -->
+<script id="pb-diagnostico" src="assets/js/95-sistema/diagnostico.js?v=pbgh11" defer></script>
+<!-- PB-GH-11 (T5) · regiones desplazables con foco, rol y nombre; piso del resto de vistas (filas 15, 26, 28 y 33). -->
+<script id="pb-regiones" src="assets/js/95-sistema/regiones.js?v=pbgh11" defer></script>
+<link id="pb-vistas-css" rel="stylesheet" href="assets/css/95-sistema/vistas.css?v=pbgh11">
+<!-- PB-GH-11 (T5) · «Herramientas» y «Arriba» en la franja; cajón con rótulos visibles y un solo color (filas 22 y 23). -->
+<script id="pb-herramientas" src="assets/js/95-sistema/herramientas.js?v=pbgh11" defer></script>
+<link id="pb-herramientas-css" rel="stylesheet" href="assets/css/95-sistema/herramientas.css?v=pbgh11">
+<!-- PB-GH-11 (T5) · rótulos de interfaz sin pictogramas; el texto se conserva (fila 34). -->
+<script id="pb-pictogramas" src="assets/js/95-sistema/pictogramas.js?v=pbgh11" defer></script>
+<!-- PB-GH-11 (T5, L2) · Bibliografía y Glosario como páginas de consulta de manual: índice, entradas legibles. -->
+<script id="pb-consulta-manual" src="assets/js/95-sistema/consulta-manual.js?v=pbgh11" defer></script>
+<link id="pb-consulta-manual-css" rel="stylesheet" href="assets/css/95-sistema/consulta-manual.css?v=pbgh11">
+<!-- PB-GH-11 (T5, L2) · vistas de gráficos: cabecera, ayuda de lectura, «Ver el gráfico entero» y tabla alternativa. -->
+<script id="pb-graficos" src="assets/js/95-sistema/graficos.js?v=pbgh11" defer></script>
+<link id="pb-graficos-css" rel="stylesheet" href="assets/css/95-sistema/graficos.css?v=pbgh11">
+<!-- PB-GH-11 (T5, corrección) · ?view=<id> lleva a la vista: espacio de trabajo entrado, barra arriba y título a la vista. -->
+<script id="pb-enlace-vista" src="assets/js/95-sistema/enlace-vista.js?v=pbgh11" defer></script>
+<!-- PB-GH-11 (T7, L1) · diálogos, ficha y Clima: regiones desplazables con foco, orden de encabezados, ARIA y dianas táctiles. -->
+<script id="pb-accesibilidad-contenido" src="assets/js/95-sistema/accesibilidad-contenido.js?v=pbgh11" defer></script>
+<!-- PB-GH-11 (T5) · ÚLTIMO enlace de la página: vuelve visible <body> cuando ya han llegado todas las hojas (ver carga.css). -->
+<link id="pb-carga-fin-css" rel="stylesheet" href="assets/css/95-sistema/carga-fin.css?v=pbgh11">
 </body>
 </html>

@@ -166,7 +166,8 @@
    *   5. Añade leyenda, metadatos y nota metodológica
    */
   function exportBuilderSvg() {
-    const state = window.treeBuilderState;
+    // PB-GH-11 (T5): treeBuilderState se declara con «let» en 002 (enlace léxico global, no propiedad de window).
+    const state = window.treeBuilderState || (typeof treeBuilderState !== 'undefined' ? treeBuilderState : null);
     if (!state) { warn('treeBuilderState no disponible'); return; }
 
     if (!state.nodes || state.nodes.length === 0) {
@@ -278,11 +279,12 @@
 
     /* ── Resumen de comparación (si existe) ──────────────────────────── */
     const ok   = Object.values(statusMap).filter(s => s === 'ok').length;
-    const warn = Object.values(statusMap).filter(s => s === 'warn').length;
+    // PB-GH-11 (T5): «const warn» hacía sombra a la función warn() de la línea 7 (TDZ en la línea 170).
+    const nWarn = Object.values(statusMap).filter(s => s === 'warn').length;
     const bad  = Object.values(statusMap).filter(s => s === 'bad').length;
-    const hasStatus = ok + warn + bad > 0;
+    const hasStatus = ok + nWarn + bad > 0;
     const summaryText = hasStatus
-      ? `Comparación: ${ok} consenso · ${warn} debatidas · ${bad} no documentadas`
+      ? `Comparación: ${ok} consenso · ${nWarn} debatidas · ${bad} no documentadas`
       : 'Sin comparación — pulsa "Comparar hipótesis" en el lienzo para añadir valoración';
 
     /* ── Ensamblado final ────────────────────────────────────────────── */

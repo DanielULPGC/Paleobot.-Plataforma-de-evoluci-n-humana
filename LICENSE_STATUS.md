@@ -5,7 +5,9 @@ pendiente de decisión del titular. PB-GH-01 no añade una licencia MIT, CC o si
 al proyecto completo. La ausencia de licencia global no concede permisos de
 reutilización de todos sus componentes.
 
-La biblioteca Leaflet conserva su licencia MIT original en
+La biblioteca Leaflet conserva su licencia original, la licencia BSD de 2 cláusulas
+(el mismo texto que `atlas/assets/vendor/leaflet/LICENSE`, salvo los finales de
+línea), en
 `experimental/atlas-r98/fuentes/Auditoria_R98/assets/vendor/leaflet/1.9.4/LICENSE.txt`.
 Ese permiso se refiere a Leaflet, no al catálogo, las fotografías o el proyecto.
 

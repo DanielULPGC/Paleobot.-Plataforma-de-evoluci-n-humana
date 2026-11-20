@@ -1,0 +1,27 @@
+/* =====================================================================================================
+   95-sistema/sin-js.css · el atlas sin JavaScript (PB-GH-11, tanda T5, fila 24). Solo se carga dentro de
+   <noscript> (en <head>): con JavaScript no existe.
+   -----------------------------------------------------------------------------------------------------
+   1. Aviso .pb-sin-js arriba, con enlaces a la consulta ligera (funciona sin JavaScript) y a la entrada DEA.
+   2. Un solo h1 visible: la segunda portada (.main-cover, «PaleoBot Research Atlas») queda oculta, igual que
+      con JavaScript (017 la oculta con body.pb-v50-unified, clase que pone el JavaScript). Sin JavaScript sus
+      botones no hacían nada y su h1 duplicaba el de la portada (#pb-landing-title). Lista en el informe T5.
+   ===================================================================================================== */
+.pb-sin-js {
+  box-sizing: border-box;
+  max-width: 48rem;
+  margin: var(--e-4) max(var(--e-4), calc((100% - 48rem) / 2));
+  padding: var(--e-4) var(--e-5);
+  border: var(--linea) solid var(--borde-control);
+  border-radius: var(--r-contenedor);
+  background: var(--superficie);
+  color: var(--tinta);
+  font-family: var(--f-lectura);
+  font-size: var(--t-m);
+  line-height: var(--il-cuerpo);
+}
+.pb-sin-js .pb-sin-js-titulo { margin: 0 0 var(--e-2); font-family: var(--f-titulo); font-size: var(--t-l); font-weight: 600; }
+.pb-sin-js p { margin: 0 0 var(--e-2); }
+.pb-sin-js ul { margin: 0; padding-left: var(--e-5); }
+.pb-sin-js a { color: var(--acento); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+:root:root body .main-cover.paleobot-cover-v45 { display: none !important; }

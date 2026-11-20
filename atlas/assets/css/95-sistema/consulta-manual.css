@@ -1,0 +1,158 @@
+/* =====================================================================================================
+   95-sistema/consulta-manual.css · Bibliografía y Glosario como páginas de consulta de manual
+   (PB-GH-11, tanda T5, L2). Acompaña a 95-sistema/consulta-manual.js.
+   -----------------------------------------------------------------------------------------------------
+   Bibliografía: cifras en una línea, índice por bloques, referencias como lista de lectura (filete entre
+   entradas, sangría francesa, DOI en su propia línea), sin tarjetas dentro de tarjetas.
+   Glosario: índice alfabético, entradas de diccionario (término, definición, etiquetas, «Ejemplo y fuente»)
+   con filete, sin caja ni sombra; dos columnas solo cuando la lámina es ancha.
+   Ningún texto cambia. Solo tokens del sistema. Revertir: quitar el <link> (y consulta-manual.js).
+   ===================================================================================================== */
+
+/* ---------- Bibliografía ---------- */
+:root:root body #biblioModal .bib-stats {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: var(--e-1) var(--e-4) !important;
+  padding: var(--e-2) 0 !important;
+  margin: 0 0 var(--e-3) !important;
+  border: 0 !important;
+  border-bottom: var(--linea) solid var(--borde) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+:root:root body #biblioModal .bib-stat {
+  display: inline-flex !important;
+  align-items: baseline;
+  gap: var(--e-1);
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: left !important;
+}
+:root:root body #biblioModal .bib-stat strong { font-family: var(--f-titulo) !important; font-size: var(--t-m) !important; color: var(--tinta) !important; font-variant-numeric: tabular-nums; }
+:root:root body #biblioModal .bib-stat span { font-size: var(--t-xs) !important; color: var(--tinta-2) !important; text-transform: none !important; letter-spacing: 0 !important; }
+
+/* Índice por bloques */
+:root:root body #biblioModal .pb-bib-indice { margin: var(--e-3) 0 var(--e-4); border-top: var(--linea) solid var(--borde); border-bottom: var(--linea) solid var(--borde); }
+:root:root body #biblioModal .pb-bib-indice-titulo {
+  display: flex; align-items: center; gap: var(--e-2);
+  min-height: var(--control);
+  font-family: var(--f-titulo); font-size: var(--t-s); font-weight: 600; color: var(--tinta);
+  cursor: pointer;
+}
+:root:root body #biblioModal .pb-bib-indice-titulo { list-style: none; }
+:root:root body #biblioModal .pb-bib-indice-titulo::-webkit-details-marker { display: none; }
+:root:root body #biblioModal .pb-bib-indice-titulo::before {
+  content: ""; flex: none; width: .5em; height: .5em; margin-right: var(--e-1);
+  border-right: var(--linea-gruesa) solid currentColor; border-bottom: var(--linea-gruesa) solid currentColor;
+  transform: rotate(-45deg);
+}
+:root:root body #biblioModal .pb-bib-indice-plegable[open] > .pb-bib-indice-titulo::before { transform: rotate(45deg); }
+:root:root body #biblioModal .pb-bib-indice-bloque { margin: 0 0 var(--e-3); }
+:root:root body #biblioModal .pb-bib-indice-bloque-titulo { margin: 0 0 var(--e-1); font-family: var(--f-titulo); font-size: var(--t-xs); font-weight: 600; color: var(--tinta-2); }
+:root:root body #biblioModal .pb-bib-indice-lista { list-style: none; margin: 0; padding: 0; columns: 3 12rem; column-gap: var(--e-5); }
+:root:root body #biblioModal .pb-bib-indice-lista li { break-inside: avoid; }
+:root:root body #biblioModal .pb-bib-indice-lista li[hidden] { display: none; }
+:root:root body #biblioModal .pb-bib-indice-boton {
+  display: flex; align-items: baseline; justify-content: space-between; gap: var(--e-2);
+  width: 100%; min-height: 2rem; padding: var(--e-1) var(--e-2);
+  border: 0; border-radius: var(--r-control); background: transparent;
+  color: var(--acento); font: inherit; font-size: var(--t-s); text-align: left; cursor: pointer;
+}
+:root:root body #biblioModal .pb-bib-indice-boton:hover { background: var(--acento-suave); }
+:root:root body #biblioModal .pb-bib-indice-taxon { font-style: italic; }
+:root:root body #biblioModal .pb-bib-indice-n { flex: none; color: var(--tinta-3); font-size: var(--t-xs); font-variant-numeric: tabular-nums; }
+
+/* Grupos: cabecera como título de sección; referencias como lista de lectura */
+:root:root body #biblioModal .bib-species-group { margin: 0 0 var(--e-4) !important; border: 0 !important; background: transparent !important; box-shadow: none !important; scroll-margin-top: 5.5rem; /* bajo la cabecera fija del diálogo (≈ 69 px) */ }
+:root:root body #biblioModal .bib-species-header { min-height: var(--control); padding: var(--e-2) var(--e-3) !important; border-radius: var(--r-control) !important; }
+:root:root body #biblioModal .bib-species-header h3 { font-family: var(--f-titulo) !important; font-size: var(--t-m) !important; color: var(--tinta) !important; }
+:root:root body #biblioModal .bib-ref {
+  display: grid !important;
+  grid-template-columns: 3.5rem minmax(0, 1fr) !important;
+  gap: var(--e-3) !important;
+  align-items: start !important;
+  margin: 0 !important;
+  padding: var(--e-3) var(--e-2) !important;
+  border: 0 !important;
+  border-top: var(--linea) solid var(--borde) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+:root:root body #biblioModal .bib-ref-body {
+  padding-left: 1.5em !important;
+  text-indent: -1.5em !important;
+  max-width: var(--medida);
+  font-size: var(--t-s) !important;
+  line-height: var(--il-cuerpo) !important;
+  color: var(--tinta) !important;
+}
+/* La sangría negativa solo para el párrafo: los bloques en línea de dentro (enlaces DOI con icono, notas, etiquetas) empiezan en 0. */
+:root:root body #biblioModal .bib-ref-body * { text-indent: 0; }
+:root:root body #biblioModal .bib-doi-link { display: inline-block; margin-top: var(--e-1); color: var(--acento) !important; font-size: var(--t-xs) !important; word-break: break-all; }
+:root:root body #biblioModal .bib-year-badge { justify-self: start; font-variant-numeric: tabular-nums; }
+
+/* ---------- Glosario ---------- */
+:root:root body #glossaryModal .pb-glos-indice {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-1) var(--e-2);
+  margin: var(--e-3) 0;
+  padding: var(--e-2) 0;
+  border-top: var(--linea) solid var(--borde);
+  border-bottom: var(--linea) solid var(--borde);
+}
+:root:root body #glossaryModal .pb-glos-indice-titulo { font-family: var(--f-titulo); font-size: var(--t-xs); font-weight: 600; color: var(--tinta-2); margin-right: var(--e-1); }
+:root:root body #glossaryModal .pb-glos-indice-lista { display: flex; flex-wrap: wrap; gap: var(--e-1); list-style: none; margin: 0; padding: 0; }
+:root:root body #glossaryModal .pb-glos-letra {
+  min-width: var(--control); min-height: var(--control);
+  padding: 0 var(--e-2);
+  border: var(--linea) solid var(--borde-control); border-radius: var(--r-control);
+  background: var(--superficie); color: var(--tinta);
+  font-family: var(--f-titulo); font-size: var(--t-s); font-weight: 600; cursor: pointer;
+}
+:root:root body #glossaryModal .pb-glos-letra:hover { background: var(--acento-suave); border-color: var(--acento); }
+@media (min-width: 48rem) {
+  :root:root body #glossaryModal .pb-glos-letra { min-width: 2.25rem; min-height: 2.25rem; }
+}
+/* Entradas de diccionario */
+:root:root body #glossaryModal .glossary-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0 var(--e-6) !important;
+}
+@media (min-width: 64rem) {
+  :root:root body #glossaryModal .glossary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+:root:root body #glossaryModal .glossary-card {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: var(--e-4) 0 !important;
+  border: 0 !important;
+  border-top: var(--linea) solid var(--borde) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  scroll-margin-top: 5.5rem; /* bajo la cabecera fija del diálogo (≈ 69 px) */
+}
+:root:root body #glossaryModal .glossary-card h3 { margin: 0 0 var(--e-1) !important; font-family: var(--f-titulo) !important; font-size: var(--t-l) !important; font-weight: 600 !important; color: var(--tinta) !important; }
+:root:root body #glossaryModal .glossary-card > p { margin: 0 0 var(--e-2) !important; max-width: var(--medida); font-size: var(--t-m) !important; line-height: var(--il-cuerpo) !important; color: var(--tinta) !important; }
+:root:root body #glossaryModal .glossary-card-tags { margin: 0 0 var(--e-1) !important; }
+:root:root body #glossaryModal .glossary-evidence summary { min-height: var(--control-min); font-size: var(--t-s) !important; }
+
+/* Teléfono estrecho y texto al 200 %: nada sale de la lámina (DOI largos, etiquetas, cifras). */
+:root:root body #biblioModal .bib-ref-body { overflow-wrap: break-word; }
+:root:root body #biblioModal :is(.bib-doi-link, .doi-link) { max-width: 100%; white-space: normal !important; overflow-wrap: anywhere; word-break: normal; }
+:root:root body #biblioModal :is(.bib-ref-tag, .ref-note, .bib-species-count, .pb-bib-indice-n) { white-space: normal !important; max-width: 100%; }
+:root:root body #glossaryModal .glossary-total { white-space: normal !important; max-width: 100%; }
+@media (max-width: 30rem) {
+  :root:root body #biblioModal .bib-ref { grid-template-columns: minmax(0, 1fr) !important; gap: var(--e-1) !important; }
+}
+:root:root body #biblioModal .bib-species-header { flex-wrap: wrap !important; }
+:root:root body #biblioModal .bib-species-header h3 { flex: 1 1 10rem; min-width: 0; overflow-wrap: break-word; }
+:root:root body #biblioModal .pb-bib-indice-boton { flex-wrap: wrap; }
+:root:root body #biblioModal .pb-bib-indice-nombre { flex: 1 1 8rem; min-width: 0; }

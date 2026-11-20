@@ -1,0 +1,22 @@
+/* =====================================================================================================
+   95-sistema/costas.css · fondo local de costas (PB-GH-11, tanda T4; fila 8). Ver costas.js.
+   Tierra = --tierra, mar = --mar, línea de costa = --borde-control (tokens de la hoja base). El fondo remoto
+   (relieve de ArcGIS, teselas) queda ENCIMA cuando carga; estas reglas solo pintan lo que hay debajo.
+   Lo que se oculta: en el minimapa de la ficha, las teselas que no cargaron y que 025 sustituye por su lámina
+   de respaldo («Imagen no disponible sin conexión…», repetida en cada tesela de 256 px) dejan de pintarse
+   (visibility:hidden) para que se vea el fondo local. No es contenido: es el estado de error de cada tesela.
+   Revertir: quitar este archivo, costas.js y costas-datos.js de atlas/index.html.
+   ===================================================================================================== */
+.pb-costas .pb-costas-mar { fill: var(--mar); stroke: none; }
+.pb-costas path { fill: var(--tierra); stroke: var(--borde-control); stroke-width: .6; stroke-linejoin: round; }
+#mapContainer { background: var(--mar) !important; }
+
+/* Lentes regionales: solo el trazo mientras la imagen de relieve existe; relleno si 025 aplicó su respaldo. */
+.pb-costas-lente path { fill: none; stroke: var(--tinta-3); stroke-width: 1; }
+.map-lens-stage:has(> img[data-pb-respaldo-aplicado="1"]) > img { visibility: hidden; }
+.map-lens-stage:has(> img[data-pb-respaldo-aplicado="1"]) { background: var(--mar); }
+.map-lens-stage:has(> img[data-pb-respaldo-aplicado="1"]) .pb-costas-lente path { fill: var(--tierra); stroke: var(--borde-control); }
+
+/* Minimapa de la ficha */
+.leaflet-container.pb-costas-minimapa { background: var(--mar) !important; }
+.leaflet-container.pb-costas-minimapa .leaflet-tile[data-pb-respaldo-aplicado="1"] { visibility: hidden !important; }

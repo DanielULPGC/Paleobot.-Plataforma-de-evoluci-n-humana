@@ -1,0 +1,32 @@
+/* =====================================================================================================
+   95-sistema/vistas.css · piso del resto de vistas (PB-GH-11, tanda T5)
+   -----------------------------------------------------------------------------------------------------
+   1. Tafonomía: «Interpretación del registro» pasa de h4 a h3 (002, heading-order); conserva el aspecto que
+      le daba 001 («.tapho-interpretation h4»), ya con los tokens del puente.
+   2. Tafonomía: enlaces de «Fuentes» distinguibles sin depender del color (link-in-text-block).
+   3. Regiones desplazables (95-sistema/regiones.js): el desplazamiento queda dentro del contenedor, nunca en
+      la página; el anillo de foco se dibuja por dentro para que no lo recorte el propio contenedor.
+   Revertir: quitar el <link> de index.html.
+   ===================================================================================================== */
+.tapho-interpretation h3.pb-t5-h4 { font-family: var(--f-titulo); font-size: var(--t-s); color: var(--tinta); margin: 0 0 var(--e-2); }
+.tapho-sources a { text-decoration: underline; text-underline-offset: 2px; }
+[data-pb-region] { max-width: 100%; overscroll-behavior-x: contain; }
+:root:root:root body [data-pb-region]:focus-visible { outline-offset: calc(-1 * var(--foco-ancho, 3px)) !important; }
+
+/* 4 · Escala: rótulos, píldoras y metadatos de las vistas por debajo de 12 px (literales de 9,28 a 11,84 px en
+   hojas importadas y en style= de las plantillas) pasan al paso de dato del sistema (--t-dato, 12 px), el mínimo
+   que fija la dirección para rótulos de dato. Se excluyen las celdas de matrices densas (paleoecología,
+   barras de continentes), donde un píxel más rompe la rejilla. Medida en el informe T5 (antes/después). */
+:root:root body #main-content .view-section :is(
+  small, time,
+  .pb-dap-block-title, .pb-dap-chip, .pb-dap-comp-chip, .pb-dap-prereq-icon, .pb-dap-next-label, .pb-dap-close, .pb-dap-prereq-go,
+  .bib-ref-tag, .resource-tag, .resource-kind, .map-site-item-meta, .teaching-risk, .teaching-chip, .teaching-ticket-chip,
+  .america-pill, .america-consensus, .debate-meta-pill, .debate-side-title, .site-badge, .audit-priority, .audit-family-chip,
+  .africa-route-step, .africa-evidence-chip, .coex-eco-tag, .cpv2-meta, .primate-pill, .gene-chip,
+  .biogeo-record-site, .biogeo-record-specimen, .biogeo-record-element, .biogeo-tag-age, .biogeo-tag-loc, .biogeo-tag-link, .biogeo-tag-note
+) { font-size: var(--t-dato) !important; }
+
+/* 5 · Familias en style= de plantillas (Paleoproteómica: h2, h3 y strong en Georgia, una familia fuera del
+   sistema y la única serif que quedaba en las vistas): Lexend de titulares, como el resto (T2 hizo lo mismo en
+   la portada). Único modo de ganar a un style= es !important. */
+:root:root body #main-content .view-section [style*="Georgia"] { font-family: var(--f-titulo) !important; }

@@ -1,11 +1,16 @@
 // Opens a requested advanced view when returning from the essential route.
 (function(){
   'use strict';
-  const allowed = new Set(['timeline','phylo','map','clima','datacion','aula','recursos']);
+  // PB-GH-11 (T5): lista blanca de las 31 vistas existentes (antes solo 7). Solo se acepta un id literal de
+  // esta lista y con su sección #view-<id> en el documento: ningún otro valor de ?view= llega al router.
+  const allowed = new Set(['timeline','tree','phylo','contexto','clima','paleoecologia','continentes','africa','america',
+    'asia','europe','map','yacimientos','debates','socratico','estratigrafia','tafonomia','introgresion',
+    'genomica','paleoproteomica','holotipos','coexistencias','revisiones','dispersal','constructor','datacion',
+    'primatologia','aula','recursos','itinerarios','biogeo']);
   function requestedView(){
     try {
       const value = new URLSearchParams(window.location.search).get('view') || '';
-      return allowed.has(value) ? value : '';
+      return allowed.has(value) && document.getElementById('view-' + value) ? value : '';
     } catch(_){ return ''; }
   }
   function activate(view){

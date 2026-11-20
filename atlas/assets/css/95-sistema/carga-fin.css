@@ -1,0 +1,3 @@
+/* 95-sistema/carga-fin.css · PB-GH-11 (T5, fila 13): debe ser el ÚLTIMO <link> de atlas/index.html. Cuando
+   llega, todas las hojas anteriores ya se han aplicado: <body> se pinta ya con su forma final (ver carga.css). */
+body { visibility: visible; animation: none; }

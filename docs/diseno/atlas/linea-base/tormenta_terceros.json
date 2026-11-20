@@ -1,0 +1,49 @@
+{
+ "terceros": true,
+ "ficha": "afarensis",
+ "fichaAbierta": true,
+ "ms": 10000,
+ "peticionesTrasCarga": 18,
+ "peticionesConFicha": 2736,
+ "peticionesPorSegundo": [
+  135,
+  130,
+  147,
+  124,
+  112,
+  150,
+  137,
+  177,
+  181,
+  190
+ ],
+ "urlsDistintas": 59,
+ "urlsRepetidas": 37,
+ "peorRepeticion": [
+  [
+   "cus_africanus_%28Sts_5_cast%29_at_G%C3%B6teborgs_Naturhistoriska_Museum_8945.jpg?width=900",
+   1727
+  ],
+  [
+   "https://commons.wikimedia.org/wiki/Special:FilePath/Homo_habilis-KNM_ER_1813.jpg?width=900",
+   796
+  ],
+  [
+   "/commons.wikimedia.org/wiki/Special:FilePath/Olduvai_Gorge_or_Oldupai_Gorge.jpg?width=1400",
+   15
+  ],
+  [
+   "ns.wikimedia.org/wiki/Special:Redirect/file/Australopithecus_anamensis_skull.png?width=250",
+   8
+  ],
+  [
+   "olina_%28Hom%C3%ADnido_3%29._Museo_Arqueol%C3%B3gico_Nacional_de_Espa%C3%B1a.jpg?width=250",
+   8
+  ]
+ ],
+ "erroresConsola": 2709,
+ "excepciones": [],
+ "ejemplosConsola": [
+  "Failed to load resource: net::ERR_FAILED"
+ ]
+}

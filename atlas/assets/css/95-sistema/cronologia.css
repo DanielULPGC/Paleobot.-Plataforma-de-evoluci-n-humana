@@ -1,0 +1,140 @@
+/* =====================================================================================================
+   95-sistema/cronologia.css · Cronología: tarjeta legible y un único código de incertidumbre (PB-GH-11, T4, L2)
+   -----------------------------------------------------------------------------------------------------
+   Tarjeta de taxón (#timelineList .species-item): nombre, intervalo, estado y evidencia. Hasta ahora convivían
+   tres códigos de color (verde para «Aceptada» y «Evidencia Alta», gris para media y baja, ámbar para lo
+   debatido) más una barra punteada sin leyenda visible. Ahora, en la tarjeta:
+     · ÁMBAR (.pb-etiqueta: --debatida sobre --debatida-fondo) = incertidumbre, y solo eso: «Debatida»,
+       «Evidencia Debate», «Evidencia Revisión», «DEBATIDO»;
+     · lo demás («Aceptada», «Evidencia Alta/Media/Baja») como dato en texto, sin píldora de color;
+     · barra temporal: tramo continuo (evidencia directa) en tinta, tramo inferido discontinuo en ámbar;
+       se explica en «Qué significan las etiquetas» (cronologia.js), además de en su title.
+   Los textos del DOM no cambian. La leyenda metodológica y la «Tarea de aula» quedan en desplegables cerrados.
+   Revertir: quitar este archivo y cronologia.js de atlas/index.html.
+   ===================================================================================================== */
+/* Desplegable «Qué significan las etiquetas» */
+#view-timeline > details.pb-leyenda-etiquetas {
+  margin: 0 0 var(--e-4);
+  border: var(--linea) solid var(--borde);
+  border-radius: var(--r-contenedor);
+  background: var(--superficie);
+}
+#view-timeline > details.pb-leyenda-etiquetas > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  min-height: var(--control);
+  padding: 0 var(--e-4);
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--f-titulo);
+  font-size: var(--t-s);
+  font-weight: 600;
+  color: var(--acento);
+}
+#view-timeline > details.pb-leyenda-etiquetas > summary::-webkit-details-marker { display: none; }
+#view-timeline > details.pb-leyenda-etiquetas > summary::before {
+  content: "";
+  width: .5rem; height: .5rem;
+  border-right: var(--linea-gruesa) solid currentColor;
+  border-bottom: var(--linea-gruesa) solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform var(--m-rapido) var(--m-curva);
+}
+#view-timeline > details.pb-leyenda-etiquetas[open] > summary::before { transform: rotate(45deg); }
+@media (prefers-reduced-motion: reduce) { #view-timeline > details.pb-leyenda-etiquetas > summary::before { transition: none; } }
+:root:root body #view-timeline > details.pb-leyenda-etiquetas > .evidence-legend-panel {
+  margin: 0 !important;
+  border: 0 !important;
+  border-top: var(--linea) solid var(--borde) !important;
+  border-radius: 0 0 var(--r-contenedor) var(--r-contenedor) !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+#view-timeline .pb-leyenda-barra {
+  flex-basis: 100%;
+  margin: var(--e-2) 0 0;
+  color: var(--tinta-2);
+  font-size: var(--t-s);
+  line-height: var(--il-cuerpo);
+}
+#view-timeline .pb-leyenda-muestra { display: inline-block; width: 2rem; height: .25rem; vertical-align: middle; border-radius: var(--r-pildora); }
+#view-timeline .pb-leyenda-muestra.pb-directa { background: var(--tinta-2); }
+#view-timeline .pb-leyenda-muestra.pb-inferida { background: repeating-linear-gradient(90deg, var(--debatida) 0 .375rem, transparent .375rem .625rem); }
+
+/* Tarjeta de taxón */
+:root:root body #timelineList .species-item {
+  border: var(--linea) solid var(--borde) !important;
+  border-left-width: var(--linea-marca) !important;
+  border-radius: var(--r-contenedor) !important;
+  background: var(--superficie) !important;
+  box-shadow: none !important;
+}
+:root:root body #timelineList .species-item:hover { border-color: var(--borde-control) !important; }
+:root:root body #timelineList .species-item .sp-details h3 {
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-l) !important;
+  font-weight: 600 !important;
+  line-height: var(--il-titulo) !important;
+  color: var(--tinta) !important;
+}
+:root:root body #timelineList .species-item .sp-tags { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: var(--e-1) var(--e-3) !important; }
+:root:root body #timelineList .species-item .sp-tags .sp-tag {
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  color: var(--tinta) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-s) !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+/* Certeza o evidencia no debatida: dato en texto, sin color. */
+:root:root body #timelineList .species-item :is(.badge-aceptada, .evidence-high, .evidence-medium, .evidence-low) {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  color: var(--tinta-2) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 500 !important;
+}
+:root:root body #timelineList .species-item :is(.evidence-high, .evidence-medium, .evidence-low)::before { display: none !important; }
+/* Incertidumbre: la etiqueta ámbar del sistema. */
+:root:root body #timelineList .species-item :is(.badge-debatida, .badge-revision, .evidence-debated, .evidence-review, .v34-debated-badge) {
+  padding: 0 var(--e-2) !important;
+  border: 0 !important;
+  border-radius: var(--r-pildora) !important;
+  background: var(--debatida-fondo) !important;
+  color: var(--debatida) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 600 !important;
+}
+:root:root body #timelineList .species-item :is(.evidence-debated, .evidence-review)::before { background: currentColor !important; }
+/* Barra temporal: directo en tinta, inferido en ámbar discontinuo. */
+:root:root body #timelineList .species-item .v34-timebar {
+  height: .375rem !important;
+  border-radius: var(--r-pildora) !important;
+  background: repeating-linear-gradient(90deg, var(--debatida) 0 .375rem, transparent .375rem .625rem) !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
+:root:root body #timelineList .species-item .v34-timebar-direct { background: var(--tinta-2) !important; border-radius: var(--r-pildora) !important; height: 100% !important; }
+/* «Abrir» (chevron): sin caja vacía. */
+:root:root body #timelineList .species-item .sp-meta {
+  min-width: var(--control) !important;
+  min-height: var(--control) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  color: var(--tinta-2) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* En teléfono 045 añadía un «›» (::before) junto al chevron SVG que ya trae el marcado: dos flechas. Se pinta
+   solo el del marcado (decoración duplicada; anotado en el informe). */
+:root:root body #timelineList .species-item .sp-meta:has(> .ico)::before { content: none !important; display: none !important; }

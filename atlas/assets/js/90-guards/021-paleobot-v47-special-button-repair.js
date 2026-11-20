@@ -136,11 +136,13 @@
   }
   function exportFicha(sp, mode){
     sp = sp || currentSpecies();
-    const html = `<!doctype html><html><head><meta charset="utf-8"><title>${esc(sp?.nombre || 'Ficha PaleoBot')}</title><link rel="stylesheet" href="assets/css/00-core/015-style.css"></head><body>${buildFichaHtml(sp, mode)}<script>setTimeout(()=>print(),120)<\\/script></body></html>`;
+    const html = `<!doctype html><html><head><meta charset="utf-8"><title>${esc(sp?.nombre || 'Ficha PaleoBot')}</title><link rel="stylesheet" href="assets/css/00-core/015-style.css"></head><body>${buildFichaHtml(sp, mode)}</body></html>`;
     const w = window.open('', '_blank');
     if (w) {
       w.document.write(html);
       w.document.close();
+      /* PB-GH-11: print() desde la ventana que abre (sin <script> en línea; CSP sin unsafe-inline) */ 
+      setTimeout(() => { try { w.print(); } catch (e) {} }, 120);
       document.body.dataset.v47Export = 'window';
       return true;
     }

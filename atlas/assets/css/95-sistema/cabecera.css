@@ -1,0 +1,223 @@
+/* =====================================================================================================
+   95-sistema/cabecera.css · cabecera de vista sobre papel (PB-GH-11, tanda T3, L2; 06 § 3-C; DIRECCION § 2.2)
+   -----------------------------------------------------------------------------------------------------
+   El hero deja de ser un bloque petróleo: título + insignia + una línea «Pregunta guía» sobre papel y,
+   debajo, el desplegable «Cómo usar esta vista» (<details> nativo, accesible con teclado) con TODO el
+   contenido restante del hero y la tarjeta de Bloom. Nada se oculta con display:none: lo plegado se
+   alcanza al abrir el desplegable (el humo lo mide con los <details> abiertos). Tamaños de letra iguales o
+   mayores que los del hero oscuro; tokens de la hoja base (heredan «Contraste» y «Modo clase»).
+   Gana a 008 («body.v36-workbench-redesign .view-hero {background:#132b3b!important}») y a 001/053 con
+   (0,4,x) + !important. Revertir: quitar este archivo y cabecera.js de atlas/index.html.
+   ===================================================================================================== */
+
+/* 1 · Contenedor: papel, sin fondo oscuro, sin sombra ni degradado */
+:root:root:root body .view-section .view-hero.pb-cv {
+  margin: 0 0 var(--e-4) !important;
+  padding: 0 0 var(--e-3) !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  border-bottom: var(--linea) solid var(--borde) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  color: var(--tinta) !important;
+  overflow: visible !important;
+}
+:root:root:root body .view-hero.pb-cv::before,
+:root:root:root body .view-hero.pb-cv::after { content: none !important; }
+:root:root:root body .view-hero.pb-cv > .view-hero-grid {
+  display: block !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+  padding: 0 !important;
+}
+:root:root:root body .view-hero.pb-cv > .view-hero-grid > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--e-4);
+  row-gap: var(--e-1);
+}
+
+/* 2 · Título e insignia */
+:root:root:root body .view-hero.pb-cv .view-hero-title-row {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-2) var(--e-3) !important;
+  margin: 0 !important;
+  flex: 1 1 100%;
+}
+:root:root:root body .view-hero.pb-cv .view-hero-title-row h2 {
+  margin: 0 !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-2xl) !important;
+  font-weight: 600 !important;
+  line-height: var(--il-titulo) !important;
+  color: var(--tinta) !important;
+  text-shadow: none !important;
+}
+:root:root:root body .view-hero.pb-cv .view-hero-badge {
+  padding: 0 var(--e-2) !important;
+  border: var(--linea) solid var(--borde) !important;
+  border-radius: var(--r-pildora) !important;
+  background: var(--hundido) !important;
+  color: var(--tinta-2) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* 3 · Una línea de pregunta: la tarjeta «Pregunta guía» existente, en línea, sobre papel */
+:root:root:root body .view-hero.pb-cv .pb-cv-pregunta {
+  flex: 1 1 100%;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--tinta-2) !important;
+  max-width: var(--medida);
+}
+:root:root:root body .view-hero.pb-cv .pb-cv-pregunta strong {
+  display: inline !important;
+  margin: 0 var(--e-1) 0 0 !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-s) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--acento) !important;
+}
+:root:root:root body .view-hero.pb-cv .pb-cv-pregunta strong::after { content: ":"; }
+:root:root:root body .view-hero.pb-cv .pb-cv-pregunta p {
+  display: inline !important;
+  margin: 0 !important;
+  font-size: var(--t-m) !important;
+  line-height: var(--il-cuerpo) !important;
+  color: var(--tinta-2) !important;
+}
+
+/* 4 · Desplegable «Cómo usar esta vista» */
+:root:root:root body .view-hero.pb-cv .pb-cv-uso { margin: var(--e-2) 0 0; }
+:root:root:root body .view-hero.pb-cv .pb-cv-resumen {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  min-height: var(--control);
+  padding: 0 var(--e-1);
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--f-titulo);
+  font-size: var(--t-s);
+  font-weight: 600;
+  color: var(--acento);
+}
+:root:root:root body .view-hero.pb-cv .pb-cv-resumen::-webkit-details-marker { display: none; }
+:root:root:root body .view-hero.pb-cv .pb-cv-resumen::before {
+  content: "";
+  width: .5em; height: .5em;
+  border-right: var(--linea-gruesa) solid currentColor;
+  border-bottom: var(--linea-gruesa) solid currentColor;
+  transform: rotate(-45deg);
+}
+:root:root:root body .view-hero.pb-cv .pb-cv-uso[open] > .pb-cv-resumen::before { transform: rotate(45deg); }
+:root:root:root body .view-hero.pb-cv .pb-cv-resumen:hover { text-decoration: underline; text-underline-offset: 3px; }
+:root:root:root body .view-hero.pb-cv .pb-cv-cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--e-4);
+  margin-top: var(--e-2);
+  padding: var(--e-4);
+  border: var(--linea) solid var(--borde);
+  border-radius: var(--r-contenedor);
+  background: var(--superficie);
+}
+:root:root:root body .view-hero.pb-cv .pb-cv-cuerpo > :is(.view-hero-kicker, .view-hero-description, .view-hero-pills, .view-hero-actions, .pb-dap) { grid-column: 1 / -1; }
+
+/* 4.1 · Contenido plegado sobre papel (mismos textos, colores de tinta) */
+:root:root:root body .view-hero.pb-cv .view-hero-kicker {
+  margin: 0 !important;
+  color: var(--tinta-2) !important;
+  font-family: var(--f-titulo) !important;
+  font-size: var(--t-xs) !important;
+  font-weight: 600 !important;
+  letter-spacing: var(--rastreo-rotulo) !important;
+}
+:root:root:root body .view-hero.pb-cv .view-hero-description {
+  margin: 0 !important;
+  max-width: var(--medida) !important;
+  color: var(--tinta) !important;
+  font-size: var(--t-m) !important;
+  line-height: var(--il-cuerpo) !important;
+}
+:root:root:root body .view-hero.pb-cv .view-hero-pills { display: flex; flex-wrap: wrap; gap: var(--e-2) !important; margin: 0 !important; }
+:root:root:root body .view-hero.pb-cv .view-hero-pill {
+  border: var(--linea) solid var(--borde) !important;
+  border-radius: var(--r-pildora) !important;
+  background: var(--hundido) !important;
+  color: var(--tinta-2) !important;
+  font-size: var(--t-xs) !important;
+}
+:root:root:root body .view-hero.pb-cv .view-hero-side {
+  grid-column: 1 / -1;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)) !important;
+  gap: var(--e-3) !important;
+  margin: 0 !important;
+}
+:root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover {
+  margin: 0 !important;
+  min-height: 0 !important;
+  border: var(--linea) solid var(--borde) !important;
+  border-radius: var(--r-control) !important;
+  background: var(--hundido) !important;
+  overflow: hidden;
+}
+:root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover img { position: static !important; z-index: auto !important; display: block; width: 100% !important; height: 8rem !important; object-fit: cover; filter: none !important; }
+:root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover figcaption {
+  position: static !important;
+  padding: var(--e-2) var(--e-3) !important;
+  background: none !important;
+  color: var(--tinta-2) !important;
+}
+:root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover figcaption :is(b, strong, span) { color: var(--tinta) !important; text-shadow: none !important; }
+:root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover figcaption b { color: var(--acento) !important; }
+:root:root:root body .view-hero.pb-cv .view-hero-card {
+  margin: 0 !important;
+  padding: var(--e-3) !important;
+  border: var(--linea) solid var(--borde) !important;
+  border-radius: var(--r-control) !important;
+  background: var(--papel) !important;
+  box-shadow: none !important;
+  color: var(--tinta) !important;
+}
+:root:root:root body .view-hero.pb-cv .pb-cv-cuerpo .view-hero-card strong { color: var(--acento) !important; font-family: var(--f-titulo) !important; font-size: var(--t-xs) !important; letter-spacing: var(--rastreo-rotulo) !important; }
+:root:root:root body .view-hero.pb-cv .pb-cv-cuerpo .view-hero-card :is(p, span, b) { color: var(--tinta) !important; font-size: var(--t-s) !important; line-height: 1.5 !important; }
+:root:root:root body .view-hero.pb-cv .pb-dap { margin: 0 !important; box-shadow: none !important; background: var(--papel) !important; animation: none !important; }
+/* La tarjeta de Bloom dentro del hero heredaba las reglas de texto claro del hero oscuro (001: «.view-hero p»
+   en #d7e0d6 !important): se devuelve a tinta. El chip de Bloom conserva su color en línea (texto blanco
+   sobre el color del nivel). */
+:root:root:root body .view-hero.pb-cv .pb-dap :is(p, .pb-dap-question, .pb-dap-block-text, .pb-dap-prereq-label, .pb-dap-next-label) { color: var(--tinta) !important; }
+:root:root:root body .view-hero.pb-cv .pb-dap :is(.pb-dap-block-title, .pb-dap-chip:not(.pb-dap-chip--bloom), .pb-dap-comp-chip) { color: var(--tinta-2) !important; }
+:root:root:root body .view-hero.pb-cv .pb-dap .pb-dap-block-text--success { color: var(--bien) !important; }
+:root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover::before,
+:root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover::after { content: none !important; }
+:root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover { display: flex !important; flex-direction: column; box-shadow: none !important; }
+
+/* 5 · Teléfono: una columna; el título baja a --t-xl */
+@media (max-width: 47.99rem) {
+  :root:root:root body .view-hero.pb-cv .view-hero-title-row h2 { font-size: var(--t-xl) !important; }
+  :root:root:root body .view-hero.pb-cv .pb-cv-cuerpo { grid-template-columns: minmax(0, 1fr); padding: var(--e-3); }
+}
+
+/* 6 · Impresión: el desplegable se imprime tal como esté (cerrado, solo su rótulo; abierto, con su contenido). */
+@media (prefers-reduced-motion: reduce) {
+  :root:root:root body .view-hero.pb-cv * { transition: none !important; }
+}
