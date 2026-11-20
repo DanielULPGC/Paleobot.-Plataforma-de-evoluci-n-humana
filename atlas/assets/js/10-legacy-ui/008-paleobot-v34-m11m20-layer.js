@@ -21,6 +21,9 @@
   };
   const M12_MIS = [
     {mis:'MIS 9', start:337, end:300, climate:'interglacial templado CENOGRID'},
+    // PB-GH-11 (T8): faltaba MIS 8 (decisión de la titular, 20-11-2026). Límites de la escala del propio atlas
+    // (006, MIS_STAGES: stage 8, warm:false, 300-243 ka; Lisiecki y Raymo, 2005, https://doi.org/10.1029/2004PA001071).
+    {mis:'MIS 8', start:300, end:243, climate:'glacial'},
     {mis:'MIS 7', start:243, end:191, climate:'interglacial variable'},
     {mis:'MIS 6', start:191, end:130, climate:'glacial frío'},
     {mis:'MIS 5', start:130, end:71, climate:'interglacial cálido'},
@@ -57,7 +60,10 @@
 
   function ssGet(key, fallback){ try { return typeof SafeStorage !== 'undefined' ? SafeStorage.get(key, fallback) : localStorage.getItem(key) || fallback; } catch(_) { return fallback; } }
   function ssSet(key, value){ try { if (typeof SafeStorage !== 'undefined') SafeStorage.set(key, value); else localStorage.setItem(key, value); } catch(_) { /* recuperable: suprimido intencionalmente */ } }
-  function currentMis(ka){ return M12_MIS.find(m => ka <= m.start && ka >= m.end) || M12_MIS[M12_MIS.length-1]; }
+  // PB-GH-11 (T8): fuera de la tabla (o sin edad válida) ya no devuelve el último estadio (MIS 1 · Holoceno), sino un
+  // rótulo neutro. Antes: «|| M12_MIS[M12_MIS.length-1]».
+  const M12_MIS_FUERA = {mis:'Sin estadio MIS', start:NaN, end:NaN, climate:'edad fuera de la tabla del simulador'};
+  function currentMis(ka){ return M12_MIS.find(m => ka <= m.start && ka >= m.end) || M12_MIS_FUERA; }
   function landPaths(){
     const paths = (typeof PRES_WORLD_LAND_PATHS !== 'undefined' && PRES_WORLD_LAND_PATHS.length) ? PRES_WORLD_LAND_PATHS : [
       'M95 92 C150 52 215 66 242 120 C268 175 232 220 170 224 C112 228 67 188 66 136 C66 116 76 101 95 92Z',
