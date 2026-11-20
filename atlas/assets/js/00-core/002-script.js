@@ -16894,7 +16894,61 @@ function renderPhyloTree() {
   const root = layout(CLADOGRAM_TREE);
   const parts = [];
 
-  parts.push(`<svg class="phylo-cladogram-svg" viewBox="0 0 ${W} ${H}" role="group" aria-label="Cladograma ramificado de homíninos">`);
+  // PB-GH-11 (T8): rótulos legibles (decisión de la titular, 20-11-2026). El SVG se pinta a 1180 px de ancho mínimo
+  // (053) para un viewBox de 1360 unidades (k ≈ 0,866): los nombres (13), el eje (11) y los códigos de nodo (8) medían
+  // 6,9-11,3 px. Ahora miden 14 unidades (≥ 12 px); cada píldora se mide con su texto; cada nombre se desplaza a la
+  // derecha hasta no pisar ramas ni nodos; dos nodos que se tocan se separan en vertical (su «y» es solo maquetación,
+  // la media de sus hijos; la «x», el tiempo, no cambia); y el lienzo se ensancha lo que pidan los rótulos, con el
+  // ancho mínimo en pantalla escalado en la misma proporción, para que la caja desplazable lo absorba.
+  const T8_FS = 14, T8_NODE_R = 11, T8_PAD = 7, T8_BASE_W = W, T8_BASE_MIN_PX = 1180;
+  const t8Ctx = (() => { try { return document.createElement('canvas').getContext('2d'); } catch (e) { return null; } })();
+  const t8Family = (getComputedStyle(container).getPropertyValue('--font-sans') || '').trim() || 'system-ui, sans-serif';
+  const t8TextWidth = (txt) => {
+    if (t8Ctx) { t8Ctx.font = `750 ${T8_FS}px ${t8Family}`; const w = t8Ctx.measureText(txt).width; if (w > 0) return w * 1.08 + 2; }
+    return txt.length * T8_FS * 0.64;
+  };
+  const t8Nodes = [];
+  (function collectNodes(item) { if (item.type !== 'node') return; t8Nodes.push(item); item.children.forEach(collectNodes); })(root);
+  const t8MinGap = 2 * T8_NODE_R + 4;
+  for (let i = 0; i < t8Nodes.length; i++) for (let j = i + 1; j < t8Nodes.length; j++) {
+    const a = t8Nodes[i], b = t8Nodes[j];
+    const dy = Math.abs(a.y - b.y);
+    if (Math.abs(a.x - b.x) < t8MinGap && dy < t8MinGap) {
+      const shift = (t8MinGap - dy) / 2;
+      if (a.y <= b.y) { a.y -= shift; b.y += shift; } else { a.y += shift; b.y -= shift; }
+    }
+  }
+  const t8Obst = [];
+  t8Nodes.forEach(node => {
+    t8Obst.push({ x1: node.x - T8_NODE_R, x2: node.x + T8_NODE_R, y1: node.y - T8_NODE_R, y2: node.y + T8_NODE_R });
+    node.children.forEach(child => {
+      const childX = child.type === 'node' ? child.x : Math.max(child.xStart, node.x + 18);
+      t8Obst.push({ x1: Math.min(node.x, childX) - 1.5, x2: Math.max(node.x, childX) + 1.5, y1: node.y - 1.5, y2: node.y + 1.5 });
+      t8Obst.push({ x1: childX - 1.5, x2: childX + 1.5, y1: Math.min(node.y, child.y) - 1.5, y2: Math.max(node.y, child.y) + 1.5 });
+    });
+  });
+  const t8Labels = {};
+  let t8Right = T8_BASE_W;
+  (function placeLabels(item) {
+    if (item.type !== 'leaf') { item.children.forEach(placeLabels); return; }
+    const sp = DB_INDEX[item.id];
+    if (!sp) return;
+    const name = shortTaxonName(sp.nombre);
+    const pillW = Math.ceil(t8TextWidth(name) + 2 * T8_PAD);
+    const top = item.y - 14, bottom = item.y + 13;
+    let x = Math.max(item.xStart, item.xEnd) + 10;
+    for (let guard = 0; guard < 80; guard++) {
+      const hit = t8Obst.find(o => o.y2 > top && o.y1 < bottom && o.x2 > x - T8_PAD - 2 && o.x1 < x - T8_PAD + pillW + 2);
+      if (!hit) break;
+      x = hit.x2 + T8_PAD + 3;
+    }
+    t8Labels[item.id] = { x, pillW };
+    t8Right = Math.max(t8Right, x - T8_PAD + pillW + 12);
+  })(root);
+  const W_T8 = Math.ceil(t8Right);
+  const t8MinPx = Math.round(T8_BASE_MIN_PX * W_T8 / T8_BASE_W);
+
+  parts.push(`<svg class="phylo-cladogram-svg" viewBox="0 0 ${W_T8} ${H}" style="min-width:${t8MinPx}px" role="group" aria-label="Cladograma ramificado de homíninos">`);
   parts.push(`<defs><linearGradient id="cladoRangeGrad" x1="0" x2="1"><stop offset="0" stop-color="rgba(255,255,255,0.35)"/><stop offset="1" stop-color="rgba(255,255,255,0)"/></linearGradient></defs>`);
 
   const axisTicks = [23,20,15,10,7,5,3,2,1,0.3,0];
@@ -16904,10 +16958,10 @@ function renderPhyloTree() {
     const compact = Math.abs(x - previousX) < 54 || t <= 1;
     const labelY = compact && index % 2 ? TOP - 30 : TOP - 50;
     parts.push(`<line x1="${x.toFixed(1)}" y1="${TOP-22}" x2="${x.toFixed(1)}" y2="${H-28}" stroke="rgba(90,80,70,0.10)" stroke-width="1"/>`);
-    parts.push(`<text class="clado-axis-label" x="${x.toFixed(1)}" y="${labelY}" text-anchor="middle">${formatTimePoint(t)}</text>`);
+    parts.push(`<text class="clado-axis-label" x="${x.toFixed(1)}" y="${labelY}" text-anchor="middle" style="font-size:${T8_FS}px">${formatTimePoint(t)}</text>`);
   });
-  parts.push(`<text class="clado-axis-label" x="${LEFT}" y="${H-12}">más antiguo</text>`);
-  parts.push(`<text class="clado-axis-label" x="${RIGHT}" y="${H-12}" text-anchor="end">presente</text>`);
+  parts.push(`<text class="clado-axis-label" x="${LEFT}" y="${H-12}" style="font-size:${T8_FS}px">más antiguo</text>`);
+  parts.push(`<text class="clado-axis-label" x="${RIGHT}" y="${H-12}" text-anchor="end" style="font-size:${T8_FS}px">presente</text>`);
 
   function drawBranches(node) {
     if (node.type !== 'node') return;
@@ -16933,9 +16987,12 @@ function renderPhyloTree() {
       parts.push(`<g class="clado-leaf${muted}" data-id="${item.id}" role="button" tabindex="0" aria-label="${escapeHtmlAttr(sp.nombre)}">`);
       parts.push(`<line x1="${x1.toFixed(1)}" y1="${y.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y.toFixed(1)}" stroke="${item.color}" stroke-width="6" stroke-linecap="round" opacity="${debated ? 0.52 : 0.82}"/>`);
       if (debated) parts.push(`<line x1="${x1.toFixed(1)}" y1="${(y-5).toFixed(1)}" x2="${x2.toFixed(1)}" y2="${(y+5).toFixed(1)}" stroke="rgba(255,255,255,0.55)" stroke-width="2" stroke-dasharray="3 3"/>`);
-      const labelX = Math.min(RIGHT - 118, Math.max(x2 + 10, x1 + w + 10));
-      parts.push(`<rect x="${(labelX-4).toFixed(1)}" y="${(y-13).toFixed(1)}" width="132" height="25" rx="8" fill="${item.color}" fill-opacity="${item.visible ? 0.14 : 0.08}"/>`);
-      parts.push(`<text x="${labelX.toFixed(1)}" y="${(y+4).toFixed(1)}">${escapeHtmlAttr(shortTaxonName(sp.nombre))}</text>`);
+      // PB-GH-11 (T8): posición y ancho de la píldora calculados antes (t8Labels); antes, labelX = min(RIGHT − 118,
+      // max(x2 + 10, x1 + w + 10)) y ancho fijo de 132.
+      const lab = t8Labels[item.id] || { x: Math.min(RIGHT - 118, Math.max(x2 + 10, x1 + w + 10)), pillW: 132 };
+      const labelX = lab.x;
+      parts.push(`<rect x="${(labelX-T8_PAD).toFixed(1)}" y="${(y-14).toFixed(1)}" width="${lab.pillW}" height="27" rx="8" fill="${item.color}" fill-opacity="${item.visible ? 0.14 : 0.08}"/>`);
+      parts.push(`<text x="${labelX.toFixed(1)}" y="${(y+5).toFixed(1)}" style="font-size:${T8_FS}px">${escapeHtmlAttr(shortTaxonName(sp.nombre))}</text>`);
       parts.push(`</g>`);
       return;
     }
@@ -16952,8 +17009,9 @@ function renderPhyloTree() {
       const code = cladogramNodeCode(item.id);
       parts.push(`<g class="clado-node" data-node="${item.id}" opacity="${opacity}" role="button" tabindex="0" aria-label="${code}: ${escapeHtmlAttr(info.label)}, ${formatTimePoint(info.time)}">`);
       parts.push(`<title>${code}: ${escapeHtmlAttr(info.label)}. ${formatTimePoint(info.time)}</title>`);
-      parts.push(`<circle cx="${item.x.toFixed(1)}" cy="${item.y.toFixed(1)}" r="10" fill="${color}"/>`);
-      parts.push(`<text class="clado-node-code" x="${item.x.toFixed(1)}" y="${(item.y+3.2).toFixed(1)}" text-anchor="middle">${code.replace('N','')}</text>`);
+      // PB-GH-11 (T8): círculo r 10 → 11 y código de 8 a 14 unidades (antes y = item.y + 3.2).
+      parts.push(`<circle cx="${item.x.toFixed(1)}" cy="${item.y.toFixed(1)}" r="${T8_NODE_R}" fill="${color}"/>`);
+      parts.push(`<text class="clado-node-code" x="${item.x.toFixed(1)}" y="${(item.y+5).toFixed(1)}" text-anchor="middle" style="font-size:${T8_FS}px">${code.replace('N','')}</text>`);
       parts.push(`</g>`);
       item.children.forEach(drawNodes);
     }
