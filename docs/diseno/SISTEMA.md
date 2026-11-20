@@ -2,7 +2,7 @@
 
 Describe el sistema tal como ha quedado en el código al cerrar PB-GH-10 (12-11-2026, rama
 `feat/pb-gh-10-diseno`) y su ampliación al atlas interactivo en PB-GH-11 (19-11-2026, rama
-`feat/pb-gh-11-atlas`), no la propuesta de partida. La fuente de verdad de los tokens es
+`feat/pb-gh-11-atlas`; tanda de arreglos tras la verificación independiente, T7, 20-11-2026), no la propuesta de partida. La fuente de verdad de los tokens es
 `assets/paleobot-base.css` y, para el atlas, `atlas/assets/css/95-sistema/atlas-sistema.css`; si este documento y
 las hojas discrepan, mandan las hojas. Las vistas y medidas citadas como «desencadenante» proceden de la auditoría
 y de los informes de la ronda; el resumen y la evidencia están en `docs/diseno/AUDITORIA_PB_GH_11.md`.
@@ -232,6 +232,9 @@ foco #ffd166 (11,61:1 / 9,57:1). Todas las parejas medidas cumplen (tabla comple
 | Al elegir una vista (gesto reciente o panel «Vistas» abierto), la página se coloca con la barra arriba, la franja «Consulta y filtros» debajo y el título a continuación, sin mover el foco. No actúa si `switchView` se llama por código, si hay un diálogo abierto o si la persona se desplaza. | `desplazamiento.js` | Mapa elegido desde «Vistas»: título a 935 px en teléfono y 423 px en escritorio, barra a 385/116 px → título a 176/156 px y barra a 0 (T4; corrección tras la verificación: con 1,5 s o más de espera la vista no se colocaba). |
 | `?view=<id>` coloca la vista de golpe (sin animación) al terminar la carga, solo para ids literales de una `.view-section`, y deja de hacerlo en cuanto la persona toca o pulsa una tecla. | `enlace-vista.js` | Enlace `?view=timeline#main-content` desde el recorrido: la página se quedaba en la portada (título a 7 665 px en teléfono) (T5). |
 | `scroll-padding-top` con el alto de la franja: anclas y `scrollIntoView` no quedan bajo la barra fija. | `barra.css` | Barra sticky de 56 px (T3). |
+| La barra y su panel llevan un `scroll-margin-top` igual y de signo contrario a ese `scroll-padding-top`: enfocarlos (clic en «Vistas», Tab, el foco que devuelve un diálogo) **no desplaza la página**; abrir y cerrar el panel deja al alumnado donde leía (±4 px). | `barra.css` | T7-01: abrir «Vistas» en Cronología subía la página 426 px (teléfono) / 388 px (escritorio) por vez y el Glosario consultado desde el panel devolvía a otra especie (verificación T7). |
+| El salto «Saltar al contenido principal» enfoca «Vistas» con `preventScroll` y coloca la página como al elegir una vista (franja a 0 px, consulta debajo). Todo `focus()` de `95-sistema` sobre la barra o en diálogos lleva `preventScroll`. | `navegacion.js` | T7-02: tras el salto, la franja quedaba a 426/388 px con media pantalla de portada encima (verificación T7). |
+| Las regiones que se desplazan **dentro de diálogos y de la ficha** reciben también foco, rol `region` y nombre cuando no contienen nada enfocable a la vista; un marco de gráfico no impone un ancho mínimo mayor que su vista (el gráfico se recorre en su caja). | `accesibilidad-contenido.js`, `graficos.css` | T7-03: «Comparación científica recomendada» de la ficha (`.matrix-scroll`) y el cuerpo de la ficha en «Anatomía» y otras pestañas; T7-05: Filogenia recortada en teléfono por `.phylo-outer` de 860 px (verificación T7). |
 | Toda región que se desplaza (gráfico o tabla ancha) recibe foco, rol `region` y nombre, y se mueve con las flechas; el anillo se dibuja por dentro. | `regiones.js`, `vistas.css` | Fila 26: 4-9 regiones desplazables sin foco por anchura (Clima, Contexto, Coexistencias, matriz de primates) (T5). |
 
 ## 8. Movimiento
@@ -281,6 +284,7 @@ importados con `?v=pbgh11`; `carga-fin.css` es siempre el último `<link>`. El v
 | Comparador | `comparador.js`, `.css` | Guía plegada; cada tabla en una región con nombre, foco y cabecera y primera columna fijas; resultados a su altura | `#compareResult` encogido a 80 px (teléfono) / 166 px (escritorio) |
 | Consulta de manual (Bibliografía y Glosario) | `consulta-manual.js`, `.css` | Cifras en una línea; índice plegable de 62 grupos; referencias como lista de lectura (sangría francesa, DOI en su línea); glosario como diccionario con índice de 23 letras. Títulos de grupo y definiciones intactos | Bibliografía en teléfono: ocho cajas de cifras (~190 px); 801 elementos fuera de la lámina al 200 % |
 | Gráficos | `graficos.js`, `.css`, `regiones.js` | Cabecera con título; si el gráfico es más ancho que su caja, cómo recorrerlo y «Ver el gráfico entero» (`aria-pressed`); «Leer como tabla» en Contexto y Coexistencias | Clima (1 520 px en una caja de 296), Contexto, Coexistencias, Primatología, Filogenia (fila 26) |
+| Accesibilidad del contenido | `accesibilidad-contenido.js` | En diálogos abiertos y la ficha: regiones desplazables con foco y nombre; encabezados que saltan nivel reciben `aria-level` del nivel siguiente (texto y etiqueta intactos); `role="img"`/`"list"` donde faltaba; botón «→» redundante de la Matriz `inert`; `#gs-listbox` como `group` sin opciones. En Clima, diana transparente de 24 × 24 px como mínimo bajo cada barra de taxón | Ficha, Guía, Comparador, Síntesis, Matriz, Búsqueda global; marcadores de Clima de 12 × 18 px (T7-03, T7-04, T7-12, T7-13) |
 | Herramientas | `herramientas.js`, `.css` | «Herramientas» y «Arriba» en la franja; cajón y tira de accesibilidad en un panel bajo la franja; 11 botones con rótulo visible igual a su `aria-label` y un solo color | Flotantes que tapaban texto (19 solapamientos en 390 px) y cajón de 11 iconos de colores (filas 22, 23) |
 | Carga | `carga.css` (en `<head>`), `carga-fin.css` (último `<link>`) | `<body>` no se pinta hasta la última hoja (respaldo de 4 s, solo CSS) | CLS de carga 1,17 / 0,99 / 1,67 (teléfono, tableta, escritorio) por hojas al final de `<body>` (fila 13) |
 | Sin JavaScript | `sin-js.css` y `<noscript>` | Aviso con enlaces a la consulta ligera y a DEA; un solo h1 | Dos h1 visibles y 89 controles inertes (fila 24) |
@@ -325,6 +329,9 @@ importados con `?v=pbgh11`; `carga-fin.css` es siempre el último `<link>`. El v
 | Atlas: anillo ámbar de 047/053 | `--foco` común; `--foco-pizarra` en contenedores oscuros | Portada y tarjetas claras: 1,49-1,70:1 (fila 7) |
 | Atlas: `.modal-content button { color:#172436 !important }` (020) | Regla de mayor especificidad en `atlas-sistema.css` | Autoevaluación: «Comenzar clásico» a 1,08:1 (fila 2) |
 | Atlas: `--text-hint` #6b7a8d forzado por 025 | Puente a `--tinta-3` | 901-1 014 nodos de contraste por anchura en las 31 vistas (fila 16) |
+| Atlas (PB-GH-11, T7): `scroll-padding-top` de la franja aplicado también a la propia franja | `scroll-margin-top` negativo en `#pbV50Blocks` | Cronología, panel «Vistas» (T7-01; `despues/T7/T7-01_panel_390.jpg`) |
+| Atlas (PB-GH-11, T7): marco `.phylo-outer` con `min-width: 860px` (001) | `min-width: min(860px, 100%)` | Filogenia a 390 px (T7-05; `antes/T7/T7-05_filogenia_390.jpg`) |
+| Atlas (PB-GH-11, T7): ocre `#c07800` y azul `#6b93cf` en línea como texto pequeño (060, 001) | `--c-basal` (#8f5900) y `--tinta-2` | Síntesis de sesión (3,54:1) y pestaña «Clima» de la ficha (3,13:1) (T7-07) |
 
 Las capturas de PB-GH-11 citadas sin ruta del repositorio están en la carpeta de trabajo de la ronda (fuera del
 repositorio); una selección reducida está en `docs/diseno/atlas/evidencia/PB_GH_11/`.
