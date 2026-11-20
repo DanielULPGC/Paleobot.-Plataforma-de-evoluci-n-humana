@@ -134,6 +134,27 @@ Como en la T3, no existen en la línea base: en `--comparar` salen como «otras�
 Como las de la T3 y la T4, no existen en la línea base y en `--comparar` salen como «otras». `items` con
 `Object.create(null)`. La línea base no se reescribe.
 
+## Medidas añadidas en la T7 (arreglos tras la verificación independiente)
+
+El comparador mide texto alcanzable por vista con un umbral del 97 % y no ve la posición de lectura ni los
+recortes por `overflow` (hallazgo T7-10). Tres funciones nuevas cubren lo que la verificación encontró:
+
+- `panel.lectura` (T7-01): en Cronología, tras desplazarse 1 800 px con la rueda, abrir «Vistas» con un clic,
+  cerrarlo con Escape y con «Cerrar», devolver el foco al botón y abrir el Glosario (desde la franja o el panel) y
+  volver: cada paso deja la página donde estaba (±4 px).
+- `salto.destino` (T7-02): portada recién cargada, foco en «Saltar al contenido principal» e Intro: barra a 0 ±2 px,
+  consulta justo bajo la franja (±8 px), ningún resto de la portada a la vista y foco en la navegación del atlas.
+- `recortes.vistas` (T7-05): en las 31 vistas, ningún texto, control ni gráfico fuera de su vista o de un
+  antepasado que recorta (`overflow` hidden/clip) sin un contenedor desplazable que lo alcance. Excepción única y
+  justificada: las barras de Continentes (`.continent-bar`) que se salen menos del 1 % de su pista; su texto repite
+  el intervalo que ya da el botón de la fila.
+
+Sobre `866581e` las tres fallan (`panel.lectura` 0/5 y `salto.destino` 1/4 en teléfono y escritorio;
+`recortes.vistas` 30/31 en teléfono, por Filogenia; en escritorio pasa, porque el recorte solo ocurría por debajo de
+860 px) y pasan tras la T7. Orden: `node scripts/atlas/humo.cjs --vp telefono --sin-terceros --sin-vistas --solo
+panel.lectura,salto.destino,recortes.vistas --salida pasos_t7.json`. Como las anteriores, no existen en la línea base
+y en `--comparar` salen como «otras».
+
 ## Cuándo y cómo se ejecuta el humo (fuera del verificador)
 
 `scripts/verificar_repo.py` **no** ejecuta el humo: necesita Chromium y tarda unos 10 min por condición

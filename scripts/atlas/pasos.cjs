@@ -962,6 +962,93 @@ const FUNCIONES = {
     }
     out.ok = Object.values(out.items).every(Boolean); return out;
   },
+  // ---- PB-GH-11 (T7-10): pasos que habrían detectado T7-01, T7-02 y T7-05 de la verificación independiente ----
+  // T7-01: abrir y cerrar «Vistas» (clic, Escape, «Cerrar», el foco que se le devuelve y un diálogo abierto
+  // desde la barra o el panel) debe dejar la página donde se leía (±4 px). Antes subía 388-426 px por vez.
+  async 'panel.lectura'(page) {
+    const out = { paso: 'panel.lectura', items: Object.create(null), medidas: Object.create(null) };
+    const { listo } = require('./arnes.cjs');
+    const base = new URL(page.url()).origin;
+    await page.goto(base + '/atlas/index.html?view=timeline', { waitUntil: 'load' }); await listo(page, 8000); await page.waitForTimeout(4500);
+    await page.mouse.move(200, 400); for (let i = 0; i < 6; i++) { await page.mouse.wheel(0, 300); await page.waitForTimeout(150); } await page.waitForTimeout(800);
+    const y = () => page.evaluate(() => Math.round(scrollY));
+    const y0 = await y(); out.medidas.inicio = y0;
+    const anotar = async (n) => { const v = await y(); out.medidas[n] = v; out.items[n + ': posición de lectura conservada (±4 px)'] = Math.abs(v - y0) <= 4; };
+    await page.click('#pbBarraVistasBoton', { timeout: 3000 }).catch(() => {}); await page.waitForTimeout(800); await anotar('abrir con clic');
+    await page.keyboard.press('Escape'); await page.waitForTimeout(700); await anotar('cerrar con Escape');
+    await page.click('#pbBarraVistasBoton', { timeout: 3000 }).catch(() => {}); await page.waitForTimeout(800);
+    await page.evaluate(() => [...document.querySelectorAll('#pbBarraPanel button')].find((x) => /^Cerrar$/.test(x.innerText.trim()))?.click()); await page.waitForTimeout(700); await anotar('cerrar con «Cerrar»');
+    // Foco por programa o con Tab sobre el botón (lo que hace un diálogo al devolver el foco): no debe desplazar.
+    await page.evaluate(() => { document.activeElement?.blur(); document.getElementById('pbBarraVistasBoton')?.focus(); }); await page.waitForTimeout(400); await anotar('foco devuelto a «Vistas»');
+    // Glosario desde la franja (escritorio) o desde el panel (teléfono), y volver con Escape.
+    const g = '[data-pb-v50-action="openGlossary"]';
+    await asegurarVistas(page, g);
+    await page.click(g, { timeout: 3000 }).catch(() => page.evaluate((g) => document.querySelector(g)?.click(), g)); await page.waitForTimeout(1500);
+    await page.keyboard.press('Escape'); await page.waitForTimeout(900);
+    if (await page.evaluate(() => document.getElementById('pbBarraVistasBoton')?.getAttribute('aria-expanded') === 'true')) { await page.keyboard.press('Escape'); await page.waitForTimeout(600); }
+    await anotar('glosario y volver');
+    out.ok = Object.values(out.items).every(Boolean); return out;
+  },
+  // T7-02: «Saltar al contenido principal» (Tab + Intro desde la portada) deja la franja arriba (0 ±2 px), la
+  // consulta justo debajo (sin resto de portada encima) y el foco en la navegación del atlas.
+  async 'salto.destino'(page) {
+    const out = { paso: 'salto.destino', items: Object.create(null), medidas: Object.create(null) };
+    // Portada recién cargada y arriba; el foco se lleva al enlace de salto (lo que hace el primer Tab).
+    const { listo } = require('./arnes.cjs');
+    await page.goto(new URL(page.url()).origin + '/atlas/index.html', { waitUntil: 'load' }); await listo(page, 8000); await page.waitForTimeout(1500);
+    await page.evaluate(() => { window.scrollTo(0, 0); document.activeElement?.blur(); document.querySelector('a.skip-link')?.focus(); }); await page.waitForTimeout(300);
+    out.medidas.enlace = await page.evaluate(() => (document.activeElement?.innerText || '').trim().slice(0, 40));
+    await page.keyboard.press('Enter'); await page.waitForTimeout(3000);
+    const m = await page.evaluate(() => {
+      const b = document.getElementById('pbV50Blocks'); const fr = b && (b.querySelector('.pb-barra-franja') || b);
+      const c = document.querySelector('.v36-workspace-shell > .toolbar') || document.getElementById('main-content');
+      const hub = document.getElementById('pb-hub'); const a = document.activeElement;
+      const r = (e) => (e ? Math.round(e.getBoundingClientRect().top) : null);
+      return { barra: r(b), franjaAlto: fr ? Math.round(fr.getBoundingClientRect().height) : null, consulta: r(c),
+        portadaVisibleHasta: hub && hub.getClientRects().length ? Math.round(hub.getBoundingClientRect().bottom) : null,
+        foco: a ? (a.id || a.tagName.toLowerCase()) : null, focoEnBarra: !!(a && b && b.contains(a)) };
+    });
+    out.medidas = Object.assign(out.medidas, m);
+    out.items['barra arriba (0 ±2 px)'] = m.barra !== null && Math.abs(m.barra) <= 2;
+    out.items['consulta justo bajo la franja (±8 px)'] = m.consulta !== null && m.franjaAlto !== null && Math.abs(m.consulta - m.franjaAlto) <= 8;
+    out.items['sin resto de portada a la vista'] = m.portadaVisibleHasta === null || m.portadaVisibleHasta <= 0;
+    out.items['foco en la navegación del atlas'] = m.focoEnBarra;
+    out.ok = Object.values(out.items).every(Boolean); return out;
+  },
+  // T7-05: contenido de las 31 vistas que queda fuera de su vista o de un antepasado que recorta (overflow
+  // hidden/clip) sin un contenedor desplazable que lo alcance. Excepción justificada y única: las barras de
+  // Continentes (.continent-bar) cuyo intervalo se sale <1 % de su pista; su texto repite el intervalo que ya
+  // muestra el botón de la fila (verificación T7).
+  async 'recortes.vistas'(page) {
+    const out = { paso: 'recortes.vistas', items: Object.create(null), medidas: Object.create(null) };
+    await entrar(page);
+    for (const v of VISTAS) {
+      await irVistaUI(page, v, false); await page.waitForTimeout(900);
+      const L = await page.evaluate(() => {
+        const s = document.querySelector('.view-section.active'); if (!s) return ['sin vista'];
+        const R = [];
+        for (const e of s.querySelectorAll('*')) {
+          if (!e.checkVisibility() || e.closest('.continent-bar')) continue;
+          if (e.closest('.leaflet-container, svg') && e.tagName.toLowerCase() !== 'svg') continue;
+          const r = e.getBoundingClientRect(); if (!r.width || !r.height) continue;
+          const propio = [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
+          if (!propio && !/^(svg|canvas|img|button|input|select|a)$/i.test(e.tagName)) continue;
+          let recorta = null, desplaza = false;
+          for (let a = e.parentElement; a && a !== document.documentElement; a = a.parentElement) {
+            const st = getComputedStyle(a); const ra = a.getBoundingClientRect();
+            if (/(auto|scroll)/.test(st.overflowX) && a.scrollWidth > a.clientWidth + 2) { desplaza = true; break; }
+            if ((r.right > ra.right + 2 || r.left < ra.left - 2) && /(hidden|clip)/.test(st.overflowX)) { recorta = a; break; }
+          }
+          if (!recorta && !desplaza && (r.right > innerWidth + 2 || r.left < -2)) recorta = document.documentElement;
+          if (recorta && !desplaza) R.push(`${e.tagName.toLowerCase()}.${String(e.className.baseVal ?? e.className).split(' ')[0]} «${(e.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 30)}»`);
+        }
+        return R;
+      });
+      out.medidas[v] = { recortados: L.length, ej: L.slice(0, 3) };
+      out.items[v + ': nada recortado sin región desplazable'] = L.length === 0;
+    }
+    out.ok = Object.values(out.items).every(Boolean); return out;
+  },
 };
 
 // Enlace profundo ?view=<id>#main-content de las 31 vistas (lo usa el recorrido). Recibe una función que abre
