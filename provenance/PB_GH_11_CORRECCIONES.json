@@ -104,6 +104,7 @@
     "atlas/assets/css/95-sistema/graficos.css",
     "atlas/assets/js/95-sistema/enlace-vista.js",
     "tests/test_atlas_pbgh11.py",
+    "tests/test_atlas_pbgh11_t8.py",
     "docs/diseno/AUDITORIA_PB_GH_11.md",
     "docs/diseno/atlas/evidencia/PB_GH_11/01_cronologia_telefono.jpg",
     "docs/diseno/atlas/evidencia/PB_GH_11/02_elegir_vista_telefono.jpg",
