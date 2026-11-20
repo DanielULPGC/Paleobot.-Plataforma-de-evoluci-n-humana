@@ -10879,11 +10879,11 @@ function buildAcademicPrintSheet(sp) {
       ? refs.map(renderReferencePrintItem).join('')
       : '<li>Sin referencias DOI cargadas para esta ficha.</li>';
     const resourceUrl = `${window.location.href.split('#')[0]}#${encodeURIComponent(sp.id)}`;
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(resourceUrl)}`;
+    // PB-GH-11 (T8): sin imagen QR (decisión de la titular, 20-11-2026: «sale como imagen rota: ELIMINAR»). Se pedía a
+    // api.qrserver.com, origen que la CSP (img-src) no admite; la dirección del recurso sigue impresa en «Recurso».
     const safePrintName = escapeHtmlText(sp.nombre);
     const safePrintDate = escapeHtmlText(new Date().toLocaleDateString('es-ES'));
     const safeResourceUrl = escapeHtmlText(resourceUrl);
-    const safeQrUrl = escapeHtmlAttr(qrUrl);
     const safePrintClade = escapeHtmlText(CLADE_NAMES[sp.clado] || sp.clado);
     const safePrintYears = escapeHtmlText(sp.anos);
     const safePrintLocation = escapeHtmlText(sp.ubicacion);
@@ -10900,7 +10900,6 @@ function buildAcademicPrintSheet(sp) {
           <h1>${safePrintName}</h1>
           <p>PaleoBot · ficha académica de una página · ${safePrintDate}</p>
         </div>
-        <img class="academic-qr" src="${safeQrUrl}" alt="QR del recurso">
       </div>
       <div class="academic-grid">
         <div>

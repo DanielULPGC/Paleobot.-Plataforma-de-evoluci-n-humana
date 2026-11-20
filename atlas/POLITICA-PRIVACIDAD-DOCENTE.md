@@ -110,3 +110,9 @@ Dos servicios que el código todavía nombra quedan **bloqueados por la CSP** de
 
 El apartado 5 sigue vigente: para un aislamiento completo, sin imágenes de Wikimedia ni teselas, basta con usar el
 atlas sin conexión a Internet; el fondo local de costas y las imágenes con copia local siguen disponibles.
+
+**Actualización del 20 de noviembre de 2026.** Por decisión de la titular, la hoja académica de impresión de la ficha
+ya no incluye el código QR: el atlas ya no pide nada a `api.qrserver.com` (medido: 0 peticiones y 0
+infracciones de CSP al exportar la hoja). La dirección del recurso se sigue imprimiendo como texto en la sección
+«Recurso». La entrada de `api.qrserver.com` de la lista anterior queda solo como registro de lo que ocurría hasta esa
+fecha.
