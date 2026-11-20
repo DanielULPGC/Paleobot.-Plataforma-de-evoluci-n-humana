@@ -83,7 +83,8 @@
       "git_blob_sha1": "b0d341d9f8d57683c6e30d2922676afb634c8224",
       "sha256": "5493be7f8946eb44d3e58e727f4f168dfdcbaa17bef9d87c2674c1237e4f7ad8",
       "retained_paths": [
-        "LICENSE_STATUS.md"
+        "LICENSE_STATUS.md",
+        "docs/historial/PB_GH_10/LICENSE_STATUS.md.snapshot"
       ]
     },
     {

@@ -129,6 +129,7 @@ acredita por sí solo funcionamiento docente ni permisos de reutilización.
 
 Véase [el estado de licencias](LICENSE_STATUS.md) y
 [los avisos de terceros](THIRD_PARTY_NOTICES.md). No se impone una licencia global
-a materiales cuya titularidad o permiso no constan. Se conserva la licencia MIT
-de Leaflet y el expediente individual de imágenes. Las imágenes remotas no se
+a materiales cuya titularidad o permiso no constan. Se conserva la licencia BSD
+de 2 cláusulas de Leaflet (texto en `atlas/assets/vendor/leaflet/LICENSE`) y el
+expediente individual de imágenes. Las imágenes remotas no se
 incluyen como archivos descargados en esta preparación.

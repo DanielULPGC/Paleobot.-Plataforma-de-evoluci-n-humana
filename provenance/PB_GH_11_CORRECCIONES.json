@@ -123,7 +123,9 @@
     "README.md",
     "docs/diseno/SISTEMA.md",
     "THIRD_PARTY_NOTICES.md",
-    "docs/atlas-v1/README.md"
+    "docs/atlas-v1/README.md",
+    "LICENSE_STATUS.md",
+    "provenance/PB_GH_02_MIGRACION.json"
   ],
   "new_paths_note": "Archivos nuevos de la ronda (sin huella de importación). atlas/assets/css/95-sistema/atlas-sistema.css y scripts/atlas/* nacieron en la T1 y se amplían en la T2. T4: scripts/generar_costas_atlas.cjs genera atlas/assets/js/95-sistema/costas-datos.js (Natural Earth 1:110m, dominio público, vía world-atlas@2.0.2; procedencia e integridad en la cabecera del script). T5: archivos nuevos en atlas/assets/{js,css}/95-sistema/, enlazados los últimos con ?v=pbgh11. T6: pruebas de las comprobaciones nuevas del verificador (tests/test_atlas_pbgh11.py), informe de la ronda (docs/diseno/AUDITORIA_PB_GH_11.md) y su evidencia visual reducida (docs/diseno/atlas/evidencia/PB_GH_11/).",
   "governance_changes": [
@@ -143,11 +145,11 @@
       "previous_sha256": "bf3c9831a3fa1f841269e7fc5187cbeb37fc6097d212ae9d3b7ae9db3c904e83",
       "previous_snapshot": "docs/historial/PB_GH_10/provenance/PB_GH_02_BASE_ACTUAL.json.snapshot",
       "corrected_sha256_al_cierre_T6": "0cad0a78dea8474c0b9a525386a429d5373e9d4d1c9c925a229618803a17de56",
-      "change": "retained_paths de los archivos del atlas corregidos por primera vez en la ronda (025, 044, 021, 016, 018, 078, 063, 077, 057 y 069): se añade su snapshot original en docs/historial/BASE_4D320EE/.",
-      "reason": "Sin ese alta, «Archivos de la base de trabajo preservados» fallaba al corregir archivos que nunca se habían corregido (T1 § 8: 82/84).",
-      "evidence": "verificar_repo.py 84/84 desde la T2; snapshots con la huella importada (procedencia.py lo comprueba al generar). Commits: 711a3d4, 60b1c8e, e2bb595, 1a1b568, aef9ec4, 95197c8.",
-      "impact": "Solo gobierno: ninguna huella anterior cambia; se añaden rutas de conservación.",
-      "return": "Restaurar docs/historial/PB_GH_10/provenance/PB_GH_02_BASE_ACTUAL.json.snapshot (y entonces retirar las correcciones de esos archivos) o revertir los commits que lo tocan. (95197c8 aef9ec4 1a1b568 e2bb595 60b1c8e 711a3d4)"
+      "change": "retained_paths de los archivos del atlas corregidos por primera vez en la ronda (025, 044, 021, 016, 018, 078, 063, 077, 057 y 069): se añade su snapshot original en docs/historial/BASE_4D320EE/. T7: el registro de LICENSE_STATUS.md conserva además docs/historial/PB_GH_10/LICENSE_STATUS.md.snapshot (misma huella).",
+      "reason": "Sin ese alta, «Archivos de la base de trabajo preservados» fallaba al corregir archivos que nunca se habían corregido (T1 § 8: 82/84). Comprobación «Archivos de la base de trabajo preservados» tras T7-08.",
+      "evidence": "verificar_repo.py 84/84 desde la T2; snapshots con la huella importada (procedencia.py lo comprueba al generar). Commits: 711a3d4, 60b1c8e, e2bb595, 1a1b568, aef9ec4, 95197c8. verificar_repo.py 91/91.",
+      "impact": "Solo gobierno: ninguna huella anterior cambia; se añaden rutas de conservación. Procedencia.",
+      "return": "Restaurar docs/historial/PB_GH_10/provenance/PB_GH_02_BASE_ACTUAL.json.snapshot (y entonces retirar las correcciones de esos archivos) o revertir los commits que lo tocan. (95197c8 aef9ec4 1a1b568 e2bb595 60b1c8e 711a3d4) T7: quitar esa ruta de retained_paths."
     },
     {
       "path": "CHANGELOG.md",
@@ -165,11 +167,11 @@
       "previous_sha256": "07d51867bae3e4b0fd28c8fcc585d95f0e41a4413ca062703fcc4a51dc69b178",
       "previous_snapshot": "docs/historial/PB_GH_10/README.md.snapshot",
       "corrected_sha256_al_cierre_T6": "bcaa07016a60f762580304ab0c9221aba27c8fcb8053ccb3e766d04883e3f4c0",
-      "change": "Sección «Atlas v1.0»: mención mínima de PB-GH-11 (sin terceros de fuentes ni scripts, CSP de scripts estricta, lo no probado) y corrección de «tal como se recibió» por la referencia a la procedencia de las correcciones.",
-      "reason": "DIRECCION_ATLAS § 6, punto 6; el README decía que el atlas se conservaba «tal como se recibió» y que su CSP era más laxa en scripts.",
-      "evidence": "informes T2 (CSP, Leaflet, fuentes) y T5; docs/diseno/AUDITORIA_PB_GH_11.md. Commits: 233aea6.",
+      "change": "Sección «Atlas v1.0»: mención mínima de PB-GH-11 (sin terceros de fuentes ni scripts, CSP de scripts estricta, lo no probado) y corrección de «tal como se recibió» por la referencia a la procedencia de las correcciones. T7: «licencia MIT de Leaflet» pasa a «licencia BSD de 2 cláusulas de Leaflet».",
+      "reason": "DIRECCION_ATLAS § 6, punto 6; el README decía que el atlas se conservaba «tal como se recibió» y que su CSP era más laxa en scripts. T7-08 (corrección factual).",
+      "evidence": "informes T2 (CSP, Leaflet, fuentes) y T5; docs/diseno/AUDITORIA_PB_GH_11.md. Commits: 233aea6. T7: atlas/assets/vendor/leaflet/LICENSE comienza «BSD 2-Clause License» y coincide con el LICENSE.txt de R98 salvo los finales de línea (diff sin CR vacío); hallazgo T7-08 de la verificación independiente.",
       "impact": "Documentación.",
-      "return": "Restaurar docs/historial/PB_GH_10/README.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6)"
+      "return": "Restaurar docs/historial/PB_GH_10/README.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6) T7: devolver la frase anterior."
     },
     {
       "path": "docs/diseno/SISTEMA.md",
@@ -187,11 +189,11 @@
       "previous_sha256": "d5847d58129bb8ee4b7afce9ffd654352f2d5481a7b3a06fe323611bc31435d9",
       "previous_snapshot": "docs/historial/PB_GH_10/THIRD_PARTY_NOTICES.md.snapshot",
       "corrected_sha256_al_cierre_T6": "5fdcd1d51f514acc329f4bf748a8d59d9276638b86a27cfc4f12ec387f9b7e80",
-      "change": "Fila del atlas al día (Leaflet alojado en atlas/assets/vendor/leaflet/, sin Google Fonts ni cdnjs) y fila nueva de los datos de Natural Earth (world-atlas@2.0.2). Se anota, sin cambiar la fila anterior, que el LICENSE de Leaflet 1.9.4 es BSD de 2 cláusulas.",
-      "reason": "La ronda cambió lo que el atlas carga de terceros (T2, T4).",
-      "evidence": "atlas/assets/vendor/leaflet/LICENSE y PROCEDENCIA.md; cabecera de scripts/generar_costas_atlas.cjs. Commits: 233aea6.",
-      "impact": "Documentación de terceros; no se adopta licencia global.",
-      "return": "Restaurar docs/historial/PB_GH_10/THIRD_PARTY_NOTICES.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6)"
+      "change": "Fila del atlas al día (Leaflet alojado en atlas/assets/vendor/leaflet/, sin Google Fonts ni cdnjs) y fila nueva de los datos de Natural Earth (world-atlas@2.0.2). Se anota, sin cambiar la fila anterior, que el LICENSE de Leaflet 1.9.4 es BSD de 2 cláusulas. T7: fila de Leaflet con «Licencia BSD de 2 cláusulas» (antes «Licencia MIT») y fila del atlas sin «descrito arriba como MIT».",
+      "reason": "La ronda cambió lo que el atlas carga de terceros (T2, T4). T7-08 (corrección factual).",
+      "evidence": "atlas/assets/vendor/leaflet/LICENSE y PROCEDENCIA.md; cabecera de scripts/generar_costas_atlas.cjs. Commits: 233aea6. T7: atlas/assets/vendor/leaflet/LICENSE comienza «BSD 2-Clause License» y coincide con el LICENSE.txt de R98 salvo los finales de línea (diff sin CR vacío); hallazgo T7-08 de la verificación independiente.",
+      "impact": "Documentación de terceros; no se adopta licencia global. Documentación.",
+      "return": "Restaurar docs/historial/PB_GH_10/THIRD_PARTY_NOTICES.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6) T7: devolver las dos frases anteriores."
     },
     {
       "path": "docs/atlas-v1/README.md",
@@ -203,6 +205,26 @@
       "evidence": "informe T2 § 2. Commits: 233aea6.",
       "impact": "Documentación.",
       "return": "Restaurar docs/historial/PB_GH_10/docs/atlas-v1/README.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6)"
+    },
+    {
+      "path": "LICENSE_STATUS.md",
+      "previous_sha256": "5493be7f8946eb44d3e58e727f4f168dfdcbaa17bef9d87c2674c1237e4f7ad8",
+      "previous_snapshot": "docs/historial/PB_GH_10/LICENSE_STATUS.md.snapshot",
+      "change": "T7: Leaflet se describe con su licencia real, la BSD de 2 cláusulas (antes «MIT»); no cambia nada más sobre licencias.",
+      "reason": "Corrección factual de la licencia de un tercero (T7-08); no es adopción de licencia.",
+      "evidence": "T7: atlas/assets/vendor/leaflet/LICENSE comienza «BSD 2-Clause License» y coincide con el LICENSE.txt de R98 salvo los finales de línea (diff sin CR vacío); hallazgo T7-08 de la verificación independiente.",
+      "impact": "Documentación legal; ningún cambio de licencia del proyecto.",
+      "return": "Restaurar docs/historial/PB_GH_10/LICENSE_STATUS.md.snapshot."
+    },
+    {
+      "path": "provenance/PB_GH_02_MIGRACION.json",
+      "previous_sha256": "acc47e4ab4401c447d4108ab7905f1099ce67b3457320532312c691095b18580",
+      "previous_snapshot": "docs/historial/PB_GH_10/provenance/PB_GH_02_MIGRACION.json.snapshot",
+      "change": "T7: el registro de LICENSE_STATUS.md conserva además el snapshot docs/historial/PB_GH_10/LICENSE_STATUS.md.snapshot (misma huella 5493be7f…), porque el archivo vivo cambia.",
+      "reason": "Comprobación «330 archivos auditados preservados por contenido» tras la corrección T7-08.",
+      "evidence": "verificar_repo.py 91/91 tras el cambio.",
+      "impact": "Procedencia; ningún archivo de aplicación.",
+      "return": "Restaurar docs/historial/PB_GH_10/provenance/PB_GH_02_MIGRACION.json.snapshot."
     }
   ],
   "corrections": [
