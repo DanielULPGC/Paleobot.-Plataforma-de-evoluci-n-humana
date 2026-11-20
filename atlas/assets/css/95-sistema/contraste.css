@@ -7,3 +7,13 @@
    texto blanco 5,84:1). Revertir: quitar este archivo de atlas/index.html.
    ===================================================================================================== */
 .biogeo-record-thumb-missing { color: var(--tinta-2) !important; }
+/* PB-GH-11 (T7-07) · Síntesis de sesión (060-script.js): el nombre de la familia «Investigar» y, cuando el nivel
+   Bloom máximo es 4, el rótulo «Analizar» se pintan en línea con #c07800, el mismo ocre que --c-basal: 3,54:1
+   sobre blanco a 10,56 px (axe color-contrast en los tres anchos). Pasan al token --c-basal del atlas (#8f5900 en
+   atlas-sistema.css, 5,84:1 sobre superficie), del mismo tono; el resto de colores de familia ya cumplen. El borde
+   de color de la familia y la cifra grande (texto grande, 3:1) no cambian. */
+:root:root body #sessionSynthesisModal :is(.pb-ssm-family-name, .pb-ssm-kpi-label strong)[style*="#c07800"] { color: var(--c-basal) !important; }
+/* PB-GH-11 (T7) · Ficha, pestaña «Clima»: el rótulo de cada indicador (.detail-climate-kpi, 001-style.css) era
+   #6b93cf sobre blanco a 10,4 px, 3,13:1 (axe color-contrast, 3 nodos; hallado al medir todas las pestañas de la
+   ficha en esta tanda). Pasa a --tinta-2 (8,8:1 sobre blanco). La cifra, su color y el tamaño no cambian. */
+:root:root body #detailView .detail-climate-kpi span:first-child { color: var(--tinta-2) !important; }
