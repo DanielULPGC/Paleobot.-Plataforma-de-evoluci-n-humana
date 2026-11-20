@@ -409,6 +409,19 @@
       "evidence": "T5: la búsqueda compara con norm() (NFD sin diacríticos), así que los resultados no cambian; humo buscador.barra y busqueda.global sin pérdidas (ver informe T5).",
       "impact": "Solo el texto de los rótulos.",
       "return": "Restaurar docs/historial/PB_GH_10/atlas/assets/js/30-search/069-paleobot-v86-global-search-final.js.snapshot. Commits de la ronda que tocan este archivo, del más antiguo al más reciente: 95197c8. Para deshacerlos todos: git revert 95197c8 (o restaurar el snapshot citado)."
+    },
+    {
+      "path": "atlas/POLITICA-PRIVACIDAD-DOCENTE.md",
+      "import_sha256": "f96ed5587541a151aa51d3f55f73b1080ebd9af2518336901dfea4df3e812888",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/POLITICA-PRIVACIDAD-DOCENTE.md.snapshot",
+      "previous_sha256": "e8e60b6c42c9be537506883a544c70ba98216dadf652783cc1dff092f1891af8",
+      "previous_snapshot": "docs/historial/PB_GH_10/atlas/POLITICA-PRIVACIDAD-DOCENTE.md.snapshot",
+      "corrected_sha256": "26f909e1d394ef1a2b11e2fd9eadecfa583f719213ff13c298a4594872b111eb",
+      "change": "T7: se añade al final la sección fechada «Actualización (PB-GH-11, noviembre de 2026)» con los contactos de red medidos tras la ronda; el texto recibido no se modifica ni se borra.",
+      "reason": "Hallazgo T7-09 de la verificación independiente: el apartado 4 declaraba cdnjs y Google Fonts, que ya no se contactan, y no nombraba OpenTopoMap ni api.qrserver.com.",
+      "evidence": "Medición de la T7 sobre la rama (scratchpad atlas11/piso/T7/red_head.json, red_humo.json y red_qr.json): 6 peticiones externas en la carga y 31 en el recorrido, solo a Wikimedia, OpenStreetMap y ArcGIS; 0 a cdnjs y Google Fonts; OpenTopoMap con 6 infracciones de CSP img-src; api.qrserver.com con infracción de CSP y petición fallida por «csp».",
+      "impact": "Documento docente; no cambia el comportamiento del atlas.",
+      "return": "Restaurar docs/historial/PB_GH_10/atlas/POLITICA-PRIVACIDAD-DOCENTE.md.snapshot (o quitar la sección añadida)."
     }
   ]
 }
