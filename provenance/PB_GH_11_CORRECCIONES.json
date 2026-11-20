@@ -156,11 +156,11 @@
       "previous_sha256": "9eb725534706b75397c86632523149a1e0b5265c26c72fd3bfbdcbad6fc1371e",
       "previous_snapshot": "docs/historial/PB_GH_10/CHANGELOG.md.snapshot",
       "corrected_sha256_al_cierre_T6": "5771c0265cd749e279b20bdf801e6cfe9257a66675f9bfb00175ab9065c3b492",
-      "change": "Entrada «PB-GH-11 · Atlas interactivo» con lo hecho, lo medido, lo pendiente y los límites. T7: punto de la tanda de arreglos tras la verificación independiente en la entrada PB-GH-11; la licencia de Leaflet, marcada como corregida.",
-      "reason": "DIRECCION_ATLAS § 6, punto 6. Encargo de la T7 (DIRECCION_ATLAS § 6.7).",
-      "evidence": "Cifras tomadas de los informes T1-T5 y de las ejecuciones de cierre de la T6 (informe T6). Commits: 233aea6. Informe T7_arreglos.md.",
+      "change": "Entrada «PB-GH-11 · Atlas interactivo» con lo hecho, lo medido, lo pendiente y los límites. T7: punto de la tanda de arreglos tras la verificación independiente en la entrada PB-GH-11; la licencia de Leaflet, marcada como corregida. Reverificación: frase sobre R-01, R-03 y R-02.",
+      "reason": "DIRECCION_ATLAS § 6, punto 6. Encargo de la T7 (DIRECCION_ATLAS § 6.7). Reverificación de c0cac07.",
+      "evidence": "Cifras tomadas de los informes T1-T5 y de las ejecuciones de cierre de la T6 (informe T6). Commits: 233aea6. Informe T7_arreglos.md. T7_reverificacion.md; T7_arreglos.md § final.",
       "impact": "Documentación.",
-      "return": "Restaurar docs/historial/PB_GH_10/CHANGELOG.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6) T7: quitar ese punto."
+      "return": "Restaurar docs/historial/PB_GH_10/CHANGELOG.md.snapshot o revertir el commit de la T6 que lo toca. (233aea6) T7: quitar ese punto. Quitar esa frase."
     },
     {
       "path": "README.md",
@@ -178,11 +178,11 @@
       "previous_sha256": "4cbb6ef127fc0891c5217eeba8a2d43a085b8c6cb25ecc9528916c89891ac899",
       "previous_snapshot": "docs/historial/PB_GH_10/docs/diseno/SISTEMA.md.snapshot",
       "corrected_sha256_al_cierre_T6": "678d5fecbbae33262d377127fea8d956035183f6870b79e49eb8111941b919dd",
-      "change": "Ampliado para el atlas: subtema «pizarra», tokens de dato y escala (7 + 2, mínimo 12 px, paso denso en tablas), componentes de 95-sistema, reglas de foco y desplazamiento, sin terceros, «solo modo claro» como pendiente; cada regla cita la vista que la desencadenó. T7: tres reglas de foco y desplazamiento del atlas (margen de desplazamiento de la barra, salto sin desplazar, regiones en diálogos y marcos de gráfico), un componente (accesibilidad-contenido.js) y tres filas en § 11.",
-      "reason": "Instrucción de la titular (revisar los documentos del sistema citando la página concreta) y DIRECCION_ATLAS § 2 y § 6. Hallazgos T7-01 a T7-05, T7-07, T7-12 y T7-13 de la verificación independiente; cada regla cita la vista que la desencadenó.",
-      "evidence": "Informes T1-T5 (vistas y medidas citadas en cada fila de la § 11). Commits: 133eece. Informe T7_arreglos.md; commits bfc349c, 89f8354, f91e7bc, 44e27c2 y ebd503c.",
+      "change": "Ampliado para el atlas: subtema «pizarra», tokens de dato y escala (7 + 2, mínimo 12 px, paso denso en tablas), componentes de 95-sistema, reglas de foco y desplazamiento, sin terceros, «solo modo claro» como pendiente; cada regla cita la vista que la desencadenó. T7: tres reglas de foco y desplazamiento del atlas (margen de desplazamiento de la barra, salto sin desplazar, regiones en diálogos y marcos de gráfico), un componente (accesibilidad-contenido.js) y tres filas en § 11. Reverificación (R-01): regla de escala mínima legible en «Ver el gráfico entero».",
+      "reason": "Instrucción de la titular (revisar los documentos del sistema citando la página concreta) y DIRECCION_ATLAS § 2 y § 6. Hallazgos T7-01 a T7-05, T7-07, T7-12 y T7-13 de la verificación independiente; cada regla cita la vista que la desencadenó. R-01.",
+      "evidence": "Informes T1-T5 (vistas y medidas citadas en cada fila de la § 11). Commits: 133eece. Informe T7_arreglos.md; commits bfc349c, 89f8354, f91e7bc, 44e27c2 y ebd503c. Commit 0356347; sonda rotulos.cjs.",
       "impact": "Documentación.",
-      "return": "Restaurar docs/historial/PB_GH_10/docs/diseno/SISTEMA.md.snapshot o revertir el commit de la T6 que lo toca. (133eece) T7: quitar las filas añadidas."
+      "return": "Restaurar docs/historial/PB_GH_10/docs/diseno/SISTEMA.md.snapshot o revertir el commit de la T6 que lo toca. (133eece) T7: quitar las filas añadidas. Quitar esa frase de la fila de Gráficos."
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",

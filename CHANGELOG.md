@@ -55,7 +55,10 @@ navegación queda como propuesta. Informe clasificado por impacto, con la tabla 
   Leaflet descrito con su licencia real (BSD de 2 cláusulas) y política de privacidad del atlas
   con una sección fechada de sus contactos de red actuales. Quedan 3 nodos ARIA del Comparador
   (exigen cambiar el marcado de `002`) y, para la titular, el pie de *afarensis* y los 20
-  taxones con otra fotografía.
+  taxones con otra fotografía. Tras la reverificación: «Ver el gráfico entero» ya no baja los
+  rótulos de 12 px (antes 1,2-2,6 px en teléfono) y se recorre en dos ejes; la sección de red
+  de la política de privacidad dice en qué condiciones se midió; los rótulos del cladograma
+  (< 12 px) quedan como propuesta, porque exigen cambiar su renderizador.
 - Límites: medido en Chromium sin red de Wikimedia, teselas ni ArcGIS; sin lector de pantalla,
   Firefox, Safari ni dispositivos reales; solo modo claro; en 21 taxones la copia local es otra
   fotografía que la que citaba la ficha. PB-01 sigue reproduciéndose.

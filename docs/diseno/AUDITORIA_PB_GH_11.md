@@ -144,7 +144,8 @@ o los gráficos retira también esos arreglos.
 **Retirada de un L2 (procedimiento de la T7, que deja el verificador en verde).** Sustituye a `git revert`:
 
 1. En `atlas/index.html`, quitar las líneas que añadió el commit del L2 (`git show <commit> -- atlas/index.html`, líneas
-   `+`; siguen presentes e idénticas en el HEAD).
+   `+`; siguen presentes e idénticas en el HEAD): de cada una, solo su primera aparición exacta, sin cambiar los
+   finales de línea del archivo.
 2. Borrar los archivos de `95-sistema/` que creó ese commit (estado `A` en `git show --name-status <commit>`).
 3. Deshacer, archivo por archivo, lo que el commit cambió en otros archivos de `95-sistema/` (estado `M`):
    `git show <commit> -- <archivo> | git apply -R`. Si no se aplica (porque una tanda posterior tocó las mismas líneas),
@@ -156,7 +157,8 @@ o los gráficos retira también esos arreglos.
    `--comparar` contra la línea base. Los commits de seguimiento del L2 (los de la columna «+» de la tabla) se retiran
    con él, porque solo tocan sus archivos.
 
-La T7 automatizó los pasos 1-4 en un script de trabajo (`piso/T7/retirar_l2.py`, fuera del repositorio) y lo probó en
+La T7 automatizó los pasos 1-4 en un script de trabajo (`piso/T7/retirar_l2.py`, fuera del repositorio; desde la
+reverificación, R-04, quita solo la primera aparición exacta de cada línea y conserva los finales de línea) y lo probó en
 dos L2, cada uno en su propio árbol de trabajo temporal sobre el HEAD, retirado después:
 
 - **Cabecera de vista (`e949737`)**: 3 líneas quitadas, 2 archivos borrados; `verificar_repo.py` **91/91**. Humo de
@@ -265,7 +267,7 @@ son las del verificador y las «después», las de sus mismas sondas repetidas s
 | T7-02 | Portada → «Saltar al contenido principal» | 390, 1366 | La franja quedaba a 426 / 388 px con media pantalla de portada encima (`focus()` sin `preventScroll`) | media | **Corregida** · `89f8354` · franja a 0 px, consulta a 56 px, foco en «Vistas» |
 | T7-03 | Ficha: «Comparación científica recomendada» y cuerpo de la ficha en otras pestañas | 390, 1366 | Regiones que se desplazan sin foco ni contenido enfocable (axe `scrollable-region-focusable`) | media | **Corregida** · `ebd503c` (`accesibilidad-contenido.js`) · 1 → 0 en «General»; 0 también en las demás pestañas (al medirlas en esta tanda, el cuerpo de la ficha daba 1 más en «Anatomía» y otra pestaña, que el verificador no había medido) |
 | T7-04 | Ficha | 390, 820, 1366 | `heading-order` (h2 → h4) | baja (regresión) | **Corregida** · `ebd503c` · `aria-level` 3 en los encabezados que saltan nivel; texto y etiqueta intactos |
-| T7-05 | Filogenia | 390 (y 820) | Cladograma, leyenda y titular recortados por `.phylo-outer` (`min-width: 860px`) sin región desplazable | media (preexistente) | **Corregida** · `f91e7bc` · recortes sin región desplazable 17 → 0 (390) y 8 → 0 (820); el cladograma se recorre en su región con foco y «Ver el gráfico entero». Otra sonda en las 31 vistas solo halló, en Continentes, barras que se salen < 1 % de su pista con un texto que repite el del botón de su fila (anotado, sin cambio) |
+| T7-05 | Filogenia | 390 (y 820) | Cladograma, leyenda y titular recortados por `.phylo-outer` (`min-width: 860px`) sin región desplazable | media (preexistente) | **Corregida** · `f91e7bc` · recortes sin región desplazable 17 → 0 (390) y 8 → 0 (820); el cladograma se recorre en su región con foco y «Ver el gráfico entero». Efecto secundario sobre «Ver el gráfico entero»: R-01. Otra sonda en las 31 vistas solo halló, en Continentes, barras que se salen < 1 % de su pista con un texto que repite el del botón de su fila (anotado, sin cambio) |
 | T7-06 | `AUDITORIA_PB_GH_11.md` § 3 | — | Lista de conflictos de reversión incompleta y «en verde» no cierto con la vía propuesta | baja (documental) | **Corregida** · § 3: lista completa y procedimiento de retirada probado en dos L2 (91/91; humo de teléfono: 2 pérdidas por el autocierre de `059` al retirar la cabecera, 0 al retirar el diálogo único) |
 | T7-07 | Síntesis de sesión; resumen § 0 | 390, 820, 1366 | `color-contrast` 3,54:1 a 10,56 px; el resumen decía «0 infracciones» | baja | **Corregida** · `44e27c2` · token `--c-basal` (5,84:1); además, la pestaña «Clima» de la ficha (3 nodos, 3,13:1) pasa a `--tinta-2`; resumen § 0 corregido |
 | T7-08 | `THIRD_PARTY_NOTICES.md`, `LICENSE_STATUS.md`, `README.md` | — | Leaflet descrito como MIT | baja | **Corregida** · `ccb1cf0` · «licencia BSD de 2 cláusulas», con `atlas/assets/vendor/leaflet/LICENSE` como evidencia |
@@ -274,6 +276,16 @@ son las del verificador y las «después», las de sus mismas sondas repetidas s
 | T7-11 | Ficha de *afarensis* (y 20 taxones con otra fotografía) | todos | El pie habla de la imagen anterior | baja | **Pendiente de la titular** (§ 6): los pies son contenido y no se tocan |
 | T7-12 | Clima, marcadores SVG | 390, 820, 1366 | 29-53 barras «Ver ficha de …» de 12 × 18 px | baja | **Corregida** · `ebd503c` · diana transparente de ≥ 24 × 24 px bajo cada barra: 53/42/29 → 0. Quedan 3-6 enlaces de fuentes de 14 px de alto en el bloque de referencias de Clima (preexistentes, anotados como los DOI de África) |
 | T7-13 | Matriz, Síntesis, Guía, Comparador, Búsqueda | todos | 96 nodos con infracciones ARIA | baja | **Parcial** · `ebd503c` · infracciones ARIA 93 → 3 y `heading-order` 2 → 0: Síntesis (31, `role="img"`), Guía (6, `role="list"`; y su `heading-order`), Matriz (50, «→» redundante `inert`), Búsqueda (1, `group` sin opciones), Comparador (2 de 5 ARIA, `role="list"` en los chips; y su `heading-order`). Quedan en el Comparador `aria-allowed-role` (2: `<article role="listitem">`) y `aria-required-children` (1: `role="table"` sin filas); corregirlos exige cambiar el marcado que pinta `002` (otra etiqueta o filas reales): propuesta, no ejecutada |
+
+**Reverificación independiente de `c0cac07`** (informe `notas/informes/T7_reverificacion.md`, «apto con reservas»):
+cuatro hallazgos nuevos, tratados en la última tanda corta.
+
+| # | Página | Viewport | Problema | Severidad | Estado |
+|---|---|---|---|---|---|
+| R-01 | «Ver el gráfico entero» (Filogenia, Clima, Contexto, Coexistencias) | 390, 820, 1366 | El modo ajustaba el SVG al ancho de la caja sin límite: rótulos de 1,2-2,6 px en teléfono (Filogenia 1,6-2,6; Clima 1,6-2; Coexistencias 1,2-1,5) y 2,8-6,3 px a 820 | media | **Corregida** · `0356347` · escala mínima: ningún rótulo baja de 12 px en ese modo (rótulo mínimo medido 12,0 px en las 11 combinaciones de gráfico y anchura con botón; Filogenia a 1366 cabe y no lo muestra; antes 1,2-9,3 px); si no cabe, la caja (con foco y nombre) se recorre en los dos ejes con el alto limitado a la pantalla, y la ayuda lo dice. Como los rótulos de origen miden 8-13 unidades del SVG, en las anchuras medidas el modo muestra el gráfico mayor que en detalle (Filogenia 2 044 px; Clima 2 280; Contexto 1 572; Coexistencias 3 031), no una miniatura: si la titular prefiere una «vista de conjunto» sin rótulos legibles, es otra decisión |
+| R-02 | Filogenia, cladograma | todos | 83 rótulos < 12 px (6,9-11,3 px) y 4 solapes | baja (preexistente) | **No corregida** · probado por CSS: llevar nombres y eje a 14 unidades (≥ 12 px) deja 59 de 83 rótulos legibles sin solapes de texto nuevos, pero los nombres desbordan las píldoras de fondo que `002` dimensiona para el tamaño actual y quedan sobre las ramas; subir también los 24 códigos de nodo añade un solape (14 / 12). Exige que el renderizador de `002` dimensione píldoras y códigos (no aditivo): propuesta. En «Ver el gráfico entero» los rótulos ya llegan a 12 px (R-01) |
+| R-03 | `atlas/POLITICA-PRIVACIDAD-DOCENTE.md`, sección de la T7 | — | Cifras medidas sin acceso real a los servicios; «6 infracciones» de OpenTopoMap valía solo en escritorio | baja | **Corregida** · `5098787` · la sección dice las condiciones de medida y da 6 (escritorio) y 4 (teléfono); el texto recibido sigue intacto (prefijo byte a byte) |
+| R-04 | `piso/T7/retirar_l2.py` (fuera del repositorio) | — | Quitaba todas las apariciones de cada línea y normalizaba los finales de línea | baja | **Corregida** · quita solo la primera aparición exacta y conserva los finales de línea; sobre `e949737` da el mismo `index.html` que antes y `verificar_repo.py` 91/91; con un `index.html` en CRLF y una línea repetida, conserva CRLF y la repetición. § 3, paso 1, ajustado |
 
 ## 5. Propuestas L3 (solo propuestas) (d)
 
