@@ -43,7 +43,19 @@ navegación queda como propuesta. Informe clasificado por impacto, con la tabla 
   `provenance/PB_GH_11_CORRECCIONES.json`; `docs/diseno/SISTEMA.md` ampliado al atlas.
 - Pendiente de la titular: capa «Topográfico» fuera de la CSP, QR de la ficha académica, MIS 8
   ausente en el simulador, mapa de África esquemático, nivel por defecto, lente inicial del
-  mapa y la licencia de Leaflet, que la documentación describe como MIT y es BSD de 2 cláusulas.
+  mapa y la licencia de Leaflet, que la documentación describe como MIT y es BSD de 2 cláusulas
+  (corregida en la T7).
+- Tanda de arreglos tras la verificación independiente (T7, 20/11/2026): abrir y cerrar
+  «Vistas» ya no desplaza la página (subía 388-426 px por vez); el salto al contenido deja la
+  franja arriba y la vista debajo; Filogenia alcanzable en teléfono y tableta; regiones
+  desplazables con foco y nombre en la ficha y los diálogos, orden de encabezados, ARIA de
+  Síntesis, Guía, Matriz y Búsqueda global y dianas táctiles de 24 px en Clima
+  (`accesibilidad-contenido.js`); contraste de Síntesis y de la pestaña «Clima» de la ficha por
+  tokens. Tres pasos nuevos del humo (`panel.lectura`, `salto.destino`, `recortes.vistas`).
+  Leaflet descrito con su licencia real (BSD de 2 cláusulas) y política de privacidad del atlas
+  con una sección fechada de sus contactos de red actuales. Quedan 3 nodos ARIA del Comparador
+  (exigen cambiar el marcado de `002`) y, para la titular, el pie de *afarensis* y los 20
+  taxones con otra fotografía.
 - Límites: medido en Chromium sin red de Wikimedia, teselas ni ArcGIS; sin lector de pantalla,
   Firefox, Safari ni dispositivos reales; solo modo claro; en 21 taxones la copia local es otra
   fotografía que la que citaba la ficha. PB-01 sigue reproduciéndose.

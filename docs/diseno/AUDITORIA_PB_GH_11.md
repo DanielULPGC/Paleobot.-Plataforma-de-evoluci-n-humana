@@ -25,7 +25,7 @@ reducida en `docs/diseno/atlas/evidencia/PB_GH_11/` (8 pares antes/después, 0,6
 | Impacto | Qué cambia para el alumnado | Filas |
 |---|---|---|
 | **Bloqueante → resuelto** | Abrir una ficha sin acceso a Wikimedia ya no dispara un bucle de 120-209 peticiones por segundo; el botón «Comenzar clásico» de la autoevaluación se ve; los diálogos existen para un lector de pantalla | 1, 2, 3 |
-| **Alto → resuelto** | El dato entra en el primer pantallazo; la navegación cabe en una franja de 56 px; cada diálogo recibe y devuelve el foco; el atlas funciona sin terceros (imagen principal local, Leaflet alojado, costas locales, sin Google Fonts); simulador y Recursos sin errores; foco visible en todo el atlas; contraste de texto 0 infracciones | 4-16 |
+| **Alto → resuelto** | El dato entra en el primer pantallazo; la navegación cabe en una franja de 56 px; cada diálogo recibe y devuelve el foco; el atlas funciona sin terceros (imagen principal local, Leaflet alojado, costas locales, sin Google Fonts); simulador y Recursos sin errores; foco visible en todo el atlas; contraste de texto: 0 infracciones en las 31 vistas (en los diálogos quedaban 4 nodos, Síntesis y la pestaña «Clima» de la ficha, corregidos en la T7; § 4.3) | 4-16 |
 | **Medio → resuelto o parcial** | Intro en el buscador; Diagnóstico visible; «Contraste» y «Modo clase» efectivos; flotantes que no tapan; cajón con rótulos; aviso sin JavaScript; impresión limpia; terceros (parcial: imágenes secundarias y teselas siguen remotas); CSP de scripts sin `'unsafe-inline'` (`style-src`: L3) | 17-30 |
 | **Bajo → resuelto o anotado** | Sin `sw.js` inexistente; encabezados; sin emoji de interfaz; hojas huérfanas anotadas (no se retiran: L3) | 31-34 |
 | Funciones rotas desde la línea base | Las 57 funciones del humo responden por primera vez (antes fallaban `simulador`, `diagnostico`, `exportar.svg.constructor`, `mapa.lentes`, `enlaces.profundos` y, sin terceros, `minimapa.capas`) | hallazgos H1-H3 |
@@ -111,11 +111,66 @@ con `git revert --no-commit` (siempre en `atlas/index.html`, porque cada L2 aña
 anterior, y en `provenance/PB_GH_11_CORRECCIONES.json`, regenerada en cada tanda; además en `dialogo-unico.css` para
 `4b7fe93` y `0e6a361`, y en `desplazamiento.js` para `ff45575`). La vía que sí funciona, comprobada para los 11:
 quitar de `atlas/index.html` las 2-3 líneas que añadió el L2 (siempre presentes, intactas) y sus archivos de
-`95-sistema/`; tras ello las comprobaciones estáticas del atlas siguen en verde. Dependencias: `diagnostico.js` y
-`enlace-vista.js` usan `PBDesplazamiento` solo si existe; `buscador.js` usa `PBDialogoUnico` solo si existe;
+`95-sistema/`; tras ello las comprobaciones estáticas del atlas siguen en verde. *(Corrección de la T7, hallazgo
+T7-06: esta enumeración estaba incompleta y «en verde» solo valía para las 7 comprobaciones nuevas; con solo esos
+pasos, `verificar_repo.py` queda en 90/91 porque cambia la huella de `atlas/index.html`. Véase la lista y el
+procedimiento completos tras este párrafo.)* Dependencias: `diagnostico.js` y
+`enlace-vista.js` (y, desde la T7, `navegacion.js`) usan `PBDesplazamiento` solo si existe; `buscador.js` usa `PBDialogoUnico` solo si existe;
 `herramientas.js` no hace nada sin la franja de `barra.js` (el conmutador y «Arriba» quedarían donde los deja 071).
 Retirar `dialogo-unico.css` retira también reglas que añadieron después la T4 (comparador, 200 %) y la T5 (320 px).
-Ninguna reversión se ha ejecutado con el humo: es una comprobación estática y de dependencias.
+Ninguna reversión se ha ejecutado con el humo: es una comprobación estática y de dependencias. *(T7: ya no es cierto para dos L2; véase más abajo.)*
+
+**Conflictos de `git revert --no-commit` sobre el HEAD de la T7 (`aa58c8c`), lista completa.** Probado
+en un árbol de trabajo temporal (`piso/T7/revert_conflictos.txt`), commit por commit:
+
+| L2 | Commit | Archivos en conflicto |
+|---|---|---|
+| Diálogo único | `4b7fe93` | `atlas/index.html`, procedencia, `dialogo-unico.css`, `dialogo-unico.js` |
+| Barra y panel «Vistas» | `71f8198` (+ `52703e5`, sin conflicto) | `atlas/index.html`, procedencia, `barra.css` |
+| Cabecera de vista | `e949737` | `atlas/index.html`, procedencia |
+| Franja «Consulta y filtros» | `89ced69` (+ `d47f0c7`, `372fe3f`, sin conflicto) | `atlas/index.html`, procedencia, `consulta.css` |
+| Colocación al elegir vista | `ff45575` (+ `71437b6`) | `atlas/index.html`, procedencia, `desplazamiento.js`; `71437b6` también en `desplazamiento.js` |
+| Ficha | `01a615b` | `atlas/index.html`, procedencia |
+| Cronología | `eccaa85` | `atlas/index.html`, procedencia |
+| Mapa y África | `c7c503c` (+ `63cb4cf`, sin conflicto) | `atlas/index.html`, procedencia, `mapa.css` |
+| Comparador | `0e6a361` | `atlas/index.html`, procedencia, `dialogo-unico.css` |
+| Bibliografía y Glosario | `0a5a60a` | `atlas/index.html`, procedencia |
+| Vistas de gráficos | `1270f73` | `atlas/index.html`, procedencia, `graficos.css` |
+
+Además, cuatro L2 editaron archivos de `95-sistema` que no son suyos: `4b7fe93` cambia `dialogos.css`; `0e6a361` y
+`0a5a60a`, `dialogo-unico.css`. Y la T7 añadió reglas a `barra.css` (T7-01) y `graficos.css` (T7-05): retirar la barra
+o los gráficos retira también esos arreglos.
+
+**Retirada de un L2 (procedimiento de la T7, que deja el verificador en verde).** Sustituye a `git revert`:
+
+1. En `atlas/index.html`, quitar las líneas que añadió el commit del L2 (`git show <commit> -- atlas/index.html`, líneas
+   `+`; siguen presentes e idénticas en el HEAD).
+2. Borrar los archivos de `95-sistema/` que creó ese commit (estado `A` en `git show --name-status <commit>`).
+3. Deshacer, archivo por archivo, lo que el commit cambió en otros archivos de `95-sistema/` (estado `M`):
+   `git show <commit> -- <archivo> | git apply -R`. Si no se aplica (porque una tanda posterior tocó las mismas líneas),
+   hacerlo a mano.
+4. Procedencia (`provenance/PB_GH_11_CORRECCIONES.json`): en la corrección de `atlas/index.html`, `corrected_sha256`
+   pasa a la huella nueva del archivo (y se anota la retirada en `change` y `return`); de `new_paths` salen los
+   archivos borrados.
+5. Comprobar: `python3 scripts/verificar_repo.py` (91/91) y el humo en teléfono y escritorio sin terceros con
+   `--comparar` contra la línea base. Los commits de seguimiento del L2 (los de la columna «+» de la tabla) se retiran
+   con él, porque solo tocan sus archivos.
+
+La T7 automatizó los pasos 1-4 en un script de trabajo (`piso/T7/retirar_l2.py`, fuera del repositorio) y lo probó en
+dos L2, cada uno en su propio árbol de trabajo temporal sobre el HEAD, retirado después:
+
+- **Cabecera de vista (`e949737`)**: 3 líneas quitadas, 2 archivos borrados; `verificar_repo.py` **91/91**. Humo de
+  teléfono sin terceros contra la línea base: **2 pérdidas**, ambas en Cronología («texto alcanzable 4 727 → 4 427
+  car.», «controles visibles 53 → 52»). Causa probable: sin `cabecera.js` vuelve el comportamiento de `059`, que
+  retira la tarjeta de Bloom a los 14 s (§ 6, «Comportamiento de la T3»); la línea base la midió antes de que se
+  retirara. Es decir, retirar este L2 devuelve también ese autocierre: la titular debe decidirlo junto con la
+  retirada.
+- **Diálogo único (`4b7fe93`)**: 3 líneas quitadas, 2 archivos borrados y `dialogos.css` devuelto a su estado anterior
+  con `git apply -R` (se aplicó limpio); `verificar_repo.py` **91/91**. Humo de teléfono sin terceros contra la línea base: **0 pérdidas** (65 mejoras, 208
+  «otras», 1 inestable). Sin la lámina común, los diálogos vuelven a su presentación importada; foco, Escape y retorno
+  siguen a cargo de `dialogos.js`.
+
+Los otros nueve L2 no se han retirado de verdad: el procedimiento es el mismo, pero no hay medida.
 
 ## 4. Tabla de corrección (e)
 
@@ -192,10 +247,33 @@ Severidad de la auditoría: **bloqueante** (impide una tarea de las rutas princi
 | H22 | Vistas con `style=` de color | todos | 171 elementos con colores literales en plantillas | baja | **No corregida** · los que no daban contraste se corrigieron (fila 16, `eb922b3`); el resto, L3-7 |
 | H23 | Mapa con relieve de ArcGIS | escritorio | Posible desalineación relieve/marcadores (exportación −85°…85° estirada a ±90°) | baja | **No comprobado** (sin red de ArcGIS) |
 | H24 | Título de diálogo | 320 px, 200 % | «Paleoantropológico» partido sin guion | baja | **Parcial** · `--t-m` bajo 22,5 rem; al 200 % depende del diccionario de guionado del sistema (no comprobado en Android/iOS) |
-| H25 | `atlas/POLITICA-PRIVACIDAD-DOCENTE.md` | — | Sigue declarando que el atlas contacta con Google Fonts y cdnjs (ya no lo hace) | baja | **Pendiente de la titular** (§ 6; archivo importado, no se tocó) |
-| H26 | `THIRD_PARTY_NOTICES.md`, `LICENSE_STATUS.md`, `README.md` | — | Describen la licencia de Leaflet como MIT; el `LICENSE` de 1.9.4 (también la copia de R98) es BSD de 2 cláusulas | baja | **Anotada** en `THIRD_PARTY_NOTICES.md` (fila nueva); las líneas previas no se cambiaron (§ 6) |
+| H25 | `atlas/POLITICA-PRIVACIDAD-DOCENTE.md` | — | Sigue declarando que el atlas contacta con Google Fonts y cdnjs (ya no lo hace) | baja | **Pendiente de la titular** (§ 6; archivo importado, no se tocó) → **Corregida en la T7** (`aa58c8c`, T7-09): sección fechada al final con los contactos medidos; el texto recibido no cambia |
+| H26 | `THIRD_PARTY_NOTICES.md`, `LICENSE_STATUS.md`, `README.md` | — | Describen la licencia de Leaflet como MIT; el `LICENSE` de 1.9.4 (también la copia de R98) es BSD de 2 cláusulas | baja | **Anotada** en `THIRD_PARTY_NOTICES.md` (fila nueva); las líneas previas no se cambiaron (§ 6) → **Corregida en la T7** (`ccb1cf0`, T7-08): «licencia BSD de 2 cláusulas» en las tres líneas |
 | H27 | `atlas/imsmanifest.xml` | — | No enumera 53 rutas locales que referencia `index.html`: los 48 archivos de `95-sistema`, Leaflet alojado (2), `084` de PB-GH-09, la hoja base y el enlace a la consulta ligera | baja | **No se toca** (§ 6): el verificador solo exige que existan los listados y el paquete IMS es un artefacto de LMS fuera del proyecto |
-| H28 | L2 de la ronda | — | Ningún L2 se revierte limpio con `git revert` sobre el HEAD final | media (gobierno) | **Documentada** la vía comprobada (§ 3) |
+| H28 | L2 de la ronda | — | Ningún L2 se revierte limpio con `git revert` sobre el HEAD final | media (gobierno) | **Documentada** la vía comprobada (§ 3); la T7 completó la lista de conflictos y el procedimiento (T7-06) |
+
+### 4.3. Hallazgos de la verificación independiente (T7) y su estado tras la tanda de arreglos
+
+La verificación independiente (informe `notas/informes/T7.md` de la carpeta de la ronda, veredicto «apto con reservas»)
+encontró 13 hallazgos sobre `866581e`. La tanda de arreglos de la T7 los trató en commits propios; las cifras «antes»
+son las del verificador y las «después», las de sus mismas sondas repetidas sobre el HEAD de la tanda
+(`notas/informes/T7_arreglos.md`).
+
+| # | Página | Viewport | Problema | Severidad | Estado |
+|---|---|---|---|---|---|
+| T7-01 | Panel «Vistas» (todas las vistas) | 390, 820, 1366 | Abrir el panel subía la página 426 / 388 px por vez y cerrarlo no la devolvía; cada consulta del Glosario desde el panel en teléfono devolvía a otra especie. Causa: la franja quedaba dentro del `scroll-padding-top` que ella misma fija y el navegador, al enfocarla, la creía tapada | media (regresión) | **Corregida** · `bfc349c` · 0 px al abrir, con Escape, con «Cerrar», con el foco devuelto y tras el Glosario, en los tres anchos |
+| T7-02 | Portada → «Saltar al contenido principal» | 390, 1366 | La franja quedaba a 426 / 388 px con media pantalla de portada encima (`focus()` sin `preventScroll`) | media | **Corregida** · `89f8354` · franja a 0 px, consulta a 56 px, foco en «Vistas» |
+| T7-03 | Ficha: «Comparación científica recomendada» y cuerpo de la ficha en otras pestañas | 390, 1366 | Regiones que se desplazan sin foco ni contenido enfocable (axe `scrollable-region-focusable`) | media | **Corregida** · `ebd503c` (`accesibilidad-contenido.js`) · 1 → 0 en «General»; 0 también en las demás pestañas (al medirlas en esta tanda, el cuerpo de la ficha daba 1 más en «Anatomía» y otra pestaña, que el verificador no había medido) |
+| T7-04 | Ficha | 390, 820, 1366 | `heading-order` (h2 → h4) | baja (regresión) | **Corregida** · `ebd503c` · `aria-level` 3 en los encabezados que saltan nivel; texto y etiqueta intactos |
+| T7-05 | Filogenia | 390 (y 820) | Cladograma, leyenda y titular recortados por `.phylo-outer` (`min-width: 860px`) sin región desplazable | media (preexistente) | **Corregida** · `f91e7bc` · recortes sin región desplazable 17 → 0 (390) y 8 → 0 (820); el cladograma se recorre en su región con foco y «Ver el gráfico entero». Otra sonda en las 31 vistas solo halló, en Continentes, barras que se salen < 1 % de su pista con un texto que repite el del botón de su fila (anotado, sin cambio) |
+| T7-06 | `AUDITORIA_PB_GH_11.md` § 3 | — | Lista de conflictos de reversión incompleta y «en verde» no cierto con la vía propuesta | baja (documental) | **Corregida** · § 3: lista completa y procedimiento de retirada probado en dos L2 (91/91; humo de teléfono: 2 pérdidas por el autocierre de `059` al retirar la cabecera, 0 al retirar el diálogo único) |
+| T7-07 | Síntesis de sesión; resumen § 0 | 390, 820, 1366 | `color-contrast` 3,54:1 a 10,56 px; el resumen decía «0 infracciones» | baja | **Corregida** · `44e27c2` · token `--c-basal` (5,84:1); además, la pestaña «Clima» de la ficha (3 nodos, 3,13:1) pasa a `--tinta-2`; resumen § 0 corregido |
+| T7-08 | `THIRD_PARTY_NOTICES.md`, `LICENSE_STATUS.md`, `README.md` | — | Leaflet descrito como MIT | baja | **Corregida** · `ccb1cf0` · «licencia BSD de 2 cláusulas», con `atlas/assets/vendor/leaflet/LICENSE` como evidencia |
+| T7-09 | `atlas/POLITICA-PRIVACIDAD-DOCENTE.md` | — | Declaraba cdnjs y Google Fonts; no nombraba OpenTopoMap ni `api.qrserver.com` | baja | **Corregida** · `aa58c8c` · sección fechada al final con los contactos medidos (6 peticiones en la carga, 31 en el recorrido; OpenTopoMap y `api.qrserver.com` bloqueados por la CSP) |
+| T7-10 | Arnés (`--comparar`) | — | No medía posición de lectura, destino del salto ni recortes | baja | **Corregida** · `2599440` · `panel.lectura`, `salto.destino`, `recortes.vistas`: fallan sobre `866581e` (0/5, 1/4 y 30/31 en teléfono) y pasan tras la T7 (5/5, 4/4, 31/31) |
+| T7-11 | Ficha de *afarensis* (y 20 taxones con otra fotografía) | todos | El pie habla de la imagen anterior | baja | **Pendiente de la titular** (§ 6): los pies son contenido y no se tocan |
+| T7-12 | Clima, marcadores SVG | 390, 820, 1366 | 29-53 barras «Ver ficha de …» de 12 × 18 px | baja | **Corregida** · `ebd503c` · diana transparente de ≥ 24 × 24 px bajo cada barra: 53/42/29 → 0. Quedan 3-6 enlaces de fuentes de 14 px de alto en el bloque de referencias de Clima (preexistentes, anotados como los DOI de África) |
+| T7-13 | Matriz, Síntesis, Guía, Comparador, Búsqueda | todos | 96 nodos con infracciones ARIA | baja | **Parcial** · `ebd503c` · infracciones ARIA 93 → 3 y `heading-order` 2 → 0: Síntesis (31, `role="img"`), Guía (6, `role="list"`; y su `heading-order`), Matriz (50, «→» redundante `inert`), Búsqueda (1, `group` sin opciones), Comparador (2 de 5 ARIA, `role="list"` en los chips; y su `heading-order`). Quedan en el Comparador `aria-allowed-role` (2: `<article role="listitem">`) y `aria-required-children` (1: `role="table"` sin filas); corregirlos exige cambiar el marcado que pinta `002` (otra etiqueta o filas reales): propuesta, no ejecutada |
 
 ## 5. Propuestas L3 (solo propuestas) (d)
 
@@ -248,8 +326,9 @@ Surgidas en T1-T5:
 | Rótulos de Biogeografía | «Edad: », «Lugar: », «Nota: » sustituyen a ⏱, 📍 y ⚠ | Mantener o elegir otras palabras |
 | MIS 8 ausente en el simulador (`008`) | Entre 243 y 300 ka el simulador rotula «MIS 1 · Holoceno»; la escala del propio atlas (`006`, que cita a Lisiecki y Raymo, 2005, *Paleoceanography*, 20, PA1003, https://doi.org/10.1029/2004PA001071) sí tiene «MIS 8 · 300-243 ka», y los demás límites de `008` coinciden con ella. La tabla de límites LR04 de la fuente no se ha podido abrir en la ronda | Añadir `{mis:'MIS 8', start:300, end:243, climate:'glacial'}` y que `currentMis()` devuelva «sin estadio» en vez del último elemento (no ejecutado: es contenido) |
 | QR de la ficha académica | Imagen rota al imprimir | L3-11 (a) o (b) |
-| `atlas/POLITICA-PRIVACIDAD-DOCENTE.md` | Declara contactos con Google Fonts y cdnjs que ya no ocurren (sobredeclara; no omite ninguno nuevo) | Actualizarla (archivo importado: exige procedencia) |
-| Licencia de Leaflet en la documentación | `THIRD_PARTY_NOTICES.md`, `LICENSE_STATUS.md` y `README.md` dicen MIT; el texto conservado es BSD de 2 cláusulas | Corregir esas líneas (la T6 solo lo anota) |
+| `atlas/POLITICA-PRIVACIDAD-DOCENTE.md` | Declara contactos con Google Fonts y cdnjs que ya no ocurren (sobredeclara; no omite ninguno nuevo) | Actualizarla (archivo importado: exige procedencia) · **Hecho en la T7** por encargo del director: sección fechada añadida al final, sin reescribir ni borrar el texto recibido; procedencia en `PB_GH_11_CORRECCIONES.json` |
+| Licencia de Leaflet en la documentación | `THIRD_PARTY_NOTICES.md`, `LICENSE_STATUS.md` y `README.md` dicen MIT; el texto conservado es BSD de 2 cláusulas | Corregir esas líneas (la T6 solo lo anota) · **Hecho en la T7** por encargo del director: corrección factual de la licencia de un tercero, con `atlas/assets/vendor/leaflet/LICENSE` como evidencia; ninguna otra decisión sobre licencias |
+| Pie de *afarensis* y 20 taxones con otra fotografía (T7-11) | La copia local es otra imagen; el pie conserva el texto escrito para la anterior (en *afarensis*, «Sustituye una reconstrucción corporal…») | Reescribir los pies de esas fichas (contenido; no ejecutado) o mantenerlos |
 | `atlas/imsmanifest.xml` | Incompleto desde PB-GH-09 (no lista `084`) y más tras la ronda; el verificador solo comprueba que existan los archivos listados | Dejarlo como está (el sitio no se distribuye como paquete para un LMS) o completarlo si alguna vez se necesitara el paquete IMS |
 
 ## 7. Límites honestos (g)
@@ -273,8 +352,10 @@ Surgidas en T1-T5:
   ocurre); no se adaptó el script.
 - **axe**: completo (todas las reglas) en las 31 vistas solo en la T5 (261/260/256 → 0 infracciones a 390/820/1366 px);
   en los diálogos, solo las reglas de nombre, `aria-hidden` y contraste. Un `color-contrast` en Síntesis que ya estaba
-  antes de la T3 no se volvió a medir después.
-- **Reversión de los L2**: comprobada de forma estática (§ 3), no con el humo.
+  antes de la T3 no se volvió a medir después. **T7**: axe completo también en nueve diálogos y en todas las pestañas de
+  dos fichas a 390, 820 y 1366 px (§ 4.3 y § 8.1); quedan 3 nodos ARIA del Comparador (T7-13).
+- **Reversión de los L2**: comprobada de forma estática (§ 3), no con el humo. **T7**: procedimiento de retirada
+  probado en dos L2 con el verificador y el humo de teléfono (§ 3); los otros nueve, solo por analogía.
 - **Determinismo**: la auditoría y la T2 vieron no determinismo en la condición teléfono con terceros de la línea
   base (Itinerarios y Biogeografía); no se añadió a `inestables.json`.
 - **PB-01** sigue reproduciéndose (`node scripts/reproducir_pb01.cjs`): no era objeto de la ronda; `066` no se tocó.
@@ -299,6 +380,24 @@ documentación):
 Cierre de la T5 (cuatro condiciones, sobre `27ddc36`): 0 pérdidas; 60-65 mejoras; 31/31 vistas; 57/57 funciones;
 violaciones de CSP solo `img-src` de OpenTopoMap (4-6); 6 mutaciones en 5 s de reposo; tormenta sin terceros con la
 ficha abierta 10 s: 0 peticiones por segundo en reposo, 0 reintentos de la misma imagen, 0 excepciones.
+
+### 8.1. Mediciones de cierre de la tanda de arreglos (T7)
+
+Sobre el HEAD de la T7 (código del atlas de `2599440`; después solo cambian documentos y procedencia, y el archivo
+importado `atlas/POLITICA-PRIVACIDAD-DOCENTE.md`, que el atlas no carga):
+
+- Humo en las **cuatro condiciones** contra la línea base, con `--inventario` e `--inestables`: **0 pérdidas** en las
+  cuatro (mejoras 60 / 63 / 65 / 64 en escritorio sin y con terceros y teléfono sin y con terceros); 31/31 vistas;
+  60/60 funciones (las 57 anteriores y las 3 nuevas de la T7); violaciones de CSP solo `img-src` de
+  `tile.opentopomap.org` (6 en escritorio, 4 en teléfono); reposo 6 mutaciones en 5 s; `inventarioAusente` solo
+  «ESPECIES» de Constructor, ya ausente en la línea base.
+- axe-core 4.10.2, todas las reglas, a 390, 820 y 1366 px: **0 infracciones** en la portada, las 31 vistas y el panel
+  «Vistas»; en nueve diálogos y en todas las pestañas de dos fichas, solo las 3 del Comparador (T7-13).
+- Las sondas del verificador, repetidas: panel «Vistas» y Glosario 0 px de desplazamiento; salto con la franja a 0 px;
+  región de la comparación guiada con foco; Filogenia sin recortes; marcadores de Clima < 24 px 0; red 6 / 31
+  peticiones a los mismos hosts; `?view=` hostil sin cambios.
+- `verificar_repo.py`, `construir.py --check`, `verificar_publicacion.py` (NO_GO), `reproducir_pb01.cjs`, `unittest` y
+  los dos generadores con `--check`: véase el informe de la T7 para las cifras exactas sobre el HEAD final.
 
 ## 9. Comprobaciones nuevas del verificador
 
