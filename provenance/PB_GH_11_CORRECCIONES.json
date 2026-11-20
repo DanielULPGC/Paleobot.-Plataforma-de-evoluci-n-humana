@@ -416,10 +416,10 @@
       "snapshot": "docs/historial/BASE_4D320EE/atlas/POLITICA-PRIVACIDAD-DOCENTE.md.snapshot",
       "previous_sha256": "e8e60b6c42c9be537506883a544c70ba98216dadf652783cc1dff092f1891af8",
       "previous_snapshot": "docs/historial/PB_GH_10/atlas/POLITICA-PRIVACIDAD-DOCENTE.md.snapshot",
-      "corrected_sha256": "26f909e1d394ef1a2b11e2fd9eadecfa583f719213ff13c298a4594872b111eb",
-      "change": "T7: se añade al final la sección fechada «Actualización (PB-GH-11, noviembre de 2026)» con los contactos de red medidos tras la ronda; el texto recibido no se modifica ni se borra.",
+      "corrected_sha256": "ee5e68f968622d2b0852ab327d9e3222e4cc5d8d1a0b14ef10b1776be6be70e7",
+      "change": "T7: se añade al final la sección fechada «Actualización (PB-GH-11, noviembre de 2026)» con los contactos de red medidos tras la ronda; el texto recibido no se modifica ni se borra. Tras la reverificación (R-03): la sección dice que la medición se hizo sin acceso real a esos servicios y da las infracciones de OpenTopoMap por pantalla (6 en escritorio, 4 en teléfono).",
       "reason": "Hallazgo T7-09 de la verificación independiente: el apartado 4 declaraba cdnjs y Google Fonts, que ya no se contactan, y no nombraba OpenTopoMap ni api.qrserver.com.",
-      "evidence": "Medición de la T7 sobre la rama (scratchpad atlas11/piso/T7/red_head.json, red_humo.json y red_qr.json): 6 peticiones externas en la carga y 31 en el recorrido, solo a Wikimedia, OpenStreetMap y ArcGIS; 0 a cdnjs y Google Fonts; OpenTopoMap con 6 infracciones de CSP img-src; api.qrserver.com con infracción de CSP y petición fallida por «csp».",
+      "evidence": "Medición de la T7 sobre la rama (scratchpad atlas11/piso/T7/red_head.json, red_humo.json y red_qr.json): 6 peticiones externas en la carga y 31 en el recorrido, solo a Wikimedia, OpenStreetMap y ArcGIS; 0 a cdnjs y Google Fonts; OpenTopoMap con 6 infracciones de CSP img-src; api.qrserver.com con infracción de CSP y petición fallida por «csp». R-03: humo de cierre de la T7 en cuatro condiciones (cspMuestras: 6 teselas en escritorio, 4 en teléfono).",
       "impact": "Documento docente; no cambia el comportamiento del atlas.",
       "return": "Restaurar docs/historial/PB_GH_10/atlas/POLITICA-PRIVACIDAD-DOCENTE.md.snapshot (o quitar la sección añadida)."
     }
