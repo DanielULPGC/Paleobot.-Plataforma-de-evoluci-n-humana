@@ -24,6 +24,10 @@
 :root:root body .pb-graf-ajustado > svg,
 :root:root body svg.pb-graf-ajustado,
 :root:root body .pb-graf-ajustado .phylo-cladogram-svg { width: 100% !important; max-width: 100% !important; min-width: 0 !important; height: auto !important; }
+/* PB-GH-11 (T7, R-01): el ancho del SVG en «entero» lo fija graficos.js (estilo en línea con !important) con una
+   escala mínima legible: rótulos de 12 px o más. Si a esa escala no cabe (.pb-graf-legible), la caja se desplaza en
+   los dos ejes con el alto limitado a la pantalla, para recorrer el gráfico entero sin salir de él. */
+:root:root body .pb-graf-ajustado.pb-graf-legible { overflow: auto !important; max-height: max(16rem, calc(100vh - 9rem)); overscroll-behavior: contain; }
 
 /* PB-GH-11 (T7-05): en Filogenia el marco .phylo-outer tenía min-width: 860px (001) dentro de una vista que
    recorta (overflow: clip): en teléfono y tableta el titular, la leyenda y la mitad derecha quedaban fuera sin

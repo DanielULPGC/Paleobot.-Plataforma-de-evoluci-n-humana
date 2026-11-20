@@ -83,7 +83,7 @@
       cab = el('div', 'pb-graf-cabecera');
       cab.setAttribute('data-pb-graf', cfg.vista);
       var tit = cfg.titulo ? el('p', 'pb-graf-titulo', cfg.titulo) : null;
-      var ayuda = el('p', 'pb-graf-ayuda', 'El gráfico es más ancho que la pantalla: desplácelo en horizontal (con el teclado, enfóquelo y use las flechas) o véalo entero.');
+      var ayuda = el('p', 'pb-graf-ayuda', AYUDA);
       ayuda.hidden = true;
       if (tit) cab.appendChild(tit);
       cab.appendChild(ayuda);
@@ -91,9 +91,12 @@
         var b = el('button', 'pb-graf-entero', 'Ver el gráfico entero'); b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.hidden = true;
         b.addEventListener('click', function () {
           var on = b.getAttribute('aria-pressed') !== 'true';
+          var c = cab.nextElementSibling;
+          if (on && c) medirNatural(cfg, c);          // antes de ajustar: tamaño y rótulo más pequeño en detalle
           b.setAttribute('aria-pressed', on ? 'true' : 'false');
           b.textContent = on ? 'Volver al detalle' : 'Ver el gráfico entero';
-          var c = cab.nextElementSibling; if (c) c.classList.toggle('pb-graf-ajustado', on);
+          if (c) c.classList.toggle('pb-graf-ajustado', on);
+          escalar(cfg, c, on);
           revisarAncho(cfg);
         });
         cab.appendChild(b);
@@ -119,6 +122,50 @@
     }
     revisarAncho(cfg);
   }
+  // PB-GH-11 (T7, R-01): «Ver el gráfico entero» ajustaba el SVG al ancho de su caja sin límite: en teléfono los
+  // rótulos del cladograma quedaban en 1,6-2,6 px y los de Clima, Contexto y Coexistencias en 1,2-2,5 px. Ahora el
+  // ajuste tiene una escala mínima: ningún rótulo baja de 12 px de pantalla (MIN_ROTULO). Si a esa escala el gráfico
+  // no cabe, se muestra a la escala mínima legible dentro de su caja, que se desplaza en los dos ejes (alto limitado
+  // a la pantalla; regiones.js le da foco y nombre) y la ayuda lo dice. Con los rótulos actuales (8-13 unidades del
+  // SVG), en las anchuras medidas la escala mínima legible es mayor que la de detalle: el modo enseña el gráfico
+  // entero recorriéndolo, no en miniatura.
+  var MIN_ROTULO = 12;
+  var AYUDA = 'El gráfico es más ancho que la pantalla: desplácelo en horizontal (con el teclado, enfóquelo y use las flechas) o véalo entero.';
+  var AYUDA_LEGIBLE = 'Para que los rótulos se lean (12 px como mínimo), el gráfico no cabe entero en esta pantalla: desplácelo en horizontal y en vertical dentro de su caja (con el teclado, enfóquelo y use las flechas).';
+  function svgDe(cfg, caja) { return cfg.svg ? caja.querySelector(cfg.svg) || (caja.matches(cfg.svg) ? caja : null) : null; }
+  function medirNatural(cfg, caja) {
+    var svg = svgDe(cfg, caja); if (!svg || !svg.getScreenCTM) return;
+    var m = svg.getScreenCTM(); var k = m ? Math.abs(m.a) : 1;
+    var min = Infinity;
+    svg.querySelectorAll('text').forEach(function (t) {
+      if (!t.getClientRects().length || !t.textContent.trim()) return;
+      var f = parseFloat(getComputedStyle(t).fontSize) * k; if (f > 0 && f < min) min = f;
+    });
+    var w = svg.getBoundingClientRect().width;
+    if (isFinite(min) && w > 0) { caja.setAttribute('data-pb-graf-ancho', String(Math.round(w))); caja.setAttribute('data-pb-graf-rotulo', min.toFixed(2)); }
+  }
+  function escalar(cfg, caja, on) {
+    var svg = caja && svgDe(cfg, caja); if (!svg) return;
+    var ayuda = document.querySelector('.pb-graf-cabecera[data-pb-graf="' + cfg.vista + '"] .pb-graf-ayuda');
+    if (!on) {
+      ['width', 'max-width', 'min-width', 'height'].forEach(function (p) { svg.style.removeProperty(p); });
+      caja.classList.remove('pb-graf-legible');
+      if (ayuda && ayuda.textContent !== AYUDA) ayuda.textContent = AYUDA;
+      return;
+    }
+    var w0 = +caja.getAttribute('data-pb-graf-ancho'), r0 = +caja.getAttribute('data-pb-graf-rotulo');
+    var cabe = caja.clientWidth;
+    var ancho = cabe;
+    if (w0 > 0 && r0 > 0) ancho = Math.max(cabe, Math.ceil(w0 * MIN_ROTULO / r0));
+    var legible = ancho > cabe + 1;
+    svg.style.setProperty('width', ancho + 'px', 'important');
+    svg.style.setProperty('max-width', 'none', 'important');
+    svg.style.setProperty('min-width', '0', 'important');
+    svg.style.setProperty('height', 'auto', 'important');
+    caja.classList.toggle('pb-graf-legible', legible);
+    var txt = legible ? AYUDA_LEGIBLE : AYUDA;
+    if (ayuda && ayuda.textContent !== txt) ayuda.textContent = txt;
+  }
   function revisarAncho(cfg) {
     var vista = document.getElementById('view-' + cfg.vista);
     var cab = vista && vista.querySelector('.pb-graf-cabecera[data-pb-graf="' + cfg.vista + '"]');
@@ -126,6 +173,7 @@
     var caja = cab.nextElementSibling;
     var ajustado = caja && caja.classList.contains('pb-graf-ajustado');
     var ancho = !!caja && (ajustado || caja.scrollWidth > caja.clientWidth + 2);
+    if (ajustado) escalar(cfg, caja, true);
     var ayuda = cab.querySelector('.pb-graf-ayuda'), b = cab.querySelector('.pb-graf-entero');
     if (ayuda && ayuda.hidden !== !ancho) ayuda.hidden = !ancho;
     if (b && b.hidden !== !ancho) b.hidden = !ancho;
