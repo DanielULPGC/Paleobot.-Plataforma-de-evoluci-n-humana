@@ -228,10 +228,10 @@ Severidad de la auditoría: **bloqueante** (impide una tarea de las rutas princi
 | H1 | Constructor | todos | Exportar SVG rompía («Cannot access 'warn' before initialization») | alta | **Corregida** · `1a1b568` |
 | H2 | Enlace `?view=` | todos | Solo 7 de 31 vistas | media | **Corregida** · `1a1b568` · 31/31 |
 | H3 | Mapa | todos | La lente «Todos los focos» no quedaba pulsada | media | **Corregida** · `c45c7ef` · efecto: la lente inicial pasa a ser «Todos los focos» (§ 6) |
-| H4 | Simulador | todos | Entre 243 y 300 ka rotula «MIS 1 · Holoceno»: falta MIS 8 en `008` | media (contenido) | **Pendiente de la titular** (§ 6) |
+| H4 | Simulador | todos | Entre 243 y 300 ka rotula «MIS 1 · Holoceno»: falta MIS 8 en `008` | media (contenido) | **Corregida (decisión de la titular, 20-11-2026)** · `958170c` · MIS 8 con los límites de `006` (300-243 ka); fuera de tabla, «Sin estadio MIS». 244-299 ka: «MIS 1 · Holoceno» → «MIS 8 · glacial»; 279 ka → MIS 8; 0-315 ka sin huecos (§ 8.2) |
 | H5 | Ficha (anoiapithecus, gautengensis) | sin red | El pie decía «Imagen abierta trazable · CC0» de una imagen remota sin copia | media | **Corregida** · `81c0ee2` · «Imagen remota sin copia local»; licencia «no verificada en este repositorio» |
 | H6 | Minimapa de la ficha | todos | Capa «Topográfico» (OpenTopoMap) fuera de la CSP: 4-10 violaciones `img-src` por humo | media | **Pendiente de la titular** (§ 6) |
-| H7 | Ficha académica impresa | impresión | QR pedido a `api.qrserver.com` (fuera de `img-src`): imagen rota; enviaría la URL a un tercero | media | **Pendiente de la titular** (§ 6) |
+| H7 | Ficha académica impresa | impresión | QR pedido a `api.qrserver.com` (fuera de `img-src`): imagen rota; enviaría la URL a un tercero | media | **Corregida (decisión de la titular, 20-11-2026: eliminar)** · `e8129f3` · sin imagen QR ni petición a `api.qrserver.com` (1 → 0 peticiones y 1 → 0 infracciones de CSP al exportar); la dirección sigue impresa en «Recurso». Única eliminación autorizada de la T8 |
 | H8 | Exportaciones de `008` y `021` | — | La plantilla escribía `<\/script>` y la impresión nunca se lanzaba | baja | **Corregida** · `60b1c8e` · ahora imprimen (§ 6) |
 | H9 | Ficha con un diálogo encima; presentación | todos | Un Escape cerraba dos capas | alta | **Corregida** · `e2bb595` |
 | H10 | Reposo | todos | `078` repintaba clases en bucle: ~240 mutaciones/s | media | **Corregida** · `e2bb595` · 1 037-1 163 → 6 mutaciones en 5 s (eventos únicos) |
@@ -273,7 +273,7 @@ son las del verificador y las «después», las de sus mismas sondas repetidas s
 | T7-08 | `THIRD_PARTY_NOTICES.md`, `LICENSE_STATUS.md`, `README.md` | — | Leaflet descrito como MIT | baja | **Corregida** · `ccb1cf0` · «licencia BSD de 2 cláusulas», con `atlas/assets/vendor/leaflet/LICENSE` como evidencia |
 | T7-09 | `atlas/POLITICA-PRIVACIDAD-DOCENTE.md` | — | Declaraba cdnjs y Google Fonts; no nombraba OpenTopoMap ni `api.qrserver.com` | baja | **Corregida** · `aa58c8c` · sección fechada al final con los contactos medidos (6 peticiones en la carga, 31 en el recorrido; OpenTopoMap y `api.qrserver.com` bloqueados por la CSP) |
 | T7-10 | Arnés (`--comparar`) | — | No medía posición de lectura, destino del salto ni recortes | baja | **Corregida** · `2599440` · `panel.lectura`, `salto.destino`, `recortes.vistas`: fallan sobre `866581e` (0/5, 1/4 y 30/31 en teléfono) y pasan tras la T7 (5/5, 4/4, 31/31) |
-| T7-11 | Ficha de *afarensis* (y 20 taxones con otra fotografía) | todos | El pie habla de la imagen anterior | baja | **Pendiente de la titular** (§ 6): los pies son contenido y no se tocan |
+| T7-11 | Ficha de *afarensis* (y 20 taxones con otra fotografía) | todos | El pie habla de la imagen anterior | baja | **Corregida (decisión de la titular, 20-11-2026)** · `929b786` · en los 21 taxones el pie y el texto alternativo describen la imagen que se ve (manifiesto y examen visual de cada copia), con su crédito y licencia; de la imagen anterior queda solo su título, rotulado. Tabla taxón por taxón en el informe T8 |
 | T7-12 | Clima, marcadores SVG | 390, 820, 1366 | 29-53 barras «Ver ficha de …» de 12 × 18 px | baja | **Corregida** · `ebd503c` · diana transparente de ≥ 24 × 24 px bajo cada barra: 53/42/29 → 0. Quedan 3-6 enlaces de fuentes de 14 px de alto en el bloque de referencias de Clima (preexistentes, anotados como los DOI de África) |
 | T7-13 | Matriz, Síntesis, Guía, Comparador, Búsqueda | todos | 96 nodos con infracciones ARIA | baja | **Parcial** · `ebd503c` · infracciones ARIA 93 → 3 y `heading-order` 2 → 0: Síntesis (31, `role="img"`), Guía (6, `role="list"`; y su `heading-order`), Matriz (50, «→» redundante `inert`), Búsqueda (1, `group` sin opciones), Comparador (2 de 5 ARIA, `role="list"` en los chips; y su `heading-order`). Quedan en el Comparador `aria-allowed-role` (2: `<article role="listitem">`) y `aria-required-children` (1: `role="table"` sin filas); corregirlos exige cambiar el marcado que pinta `002` (otra etiqueta o filas reales): propuesta, no ejecutada |
 
@@ -283,7 +283,7 @@ cuatro hallazgos nuevos, tratados en la última tanda corta.
 | # | Página | Viewport | Problema | Severidad | Estado |
 |---|---|---|---|---|---|
 | R-01 | «Ver el gráfico entero» (Filogenia, Clima, Contexto, Coexistencias) | 390, 820, 1366 | El modo ajustaba el SVG al ancho de la caja sin límite: rótulos de 1,2-2,6 px en teléfono (Filogenia 1,6-2,6; Clima 1,6-2; Coexistencias 1,2-1,5) y 2,8-6,3 px a 820 | media | **Corregida** · `0356347` · escala mínima: ningún rótulo baja de 12 px en ese modo (rótulo mínimo medido 12,0 px en las 11 combinaciones de gráfico y anchura con botón; Filogenia a 1366 cabe y no lo muestra; antes 1,2-9,3 px); si no cabe, la caja (con foco y nombre) se recorre en los dos ejes con el alto limitado a la pantalla, y la ayuda lo dice. Como los rótulos de origen miden 8-13 unidades del SVG, en las anchuras medidas el modo muestra el gráfico mayor que en detalle (Filogenia 2 044 px; Clima 2 280; Contexto 1 572; Coexistencias 3 031), no una miniatura: si la titular prefiere una «vista de conjunto» sin rótulos legibles, es otra decisión |
-| R-02 | Filogenia, cladograma | todos | 83 rótulos < 12 px (6,9-11,3 px) y 4 solapes | baja (preexistente) | **No corregida** · probado por CSS: llevar nombres y eje a 14 unidades (≥ 12 px) deja 59 de 83 rótulos legibles sin solapes de texto nuevos, pero los nombres desbordan las píldoras de fondo que `002` dimensiona para el tamaño actual y quedan sobre las ramas; subir también los 24 códigos de nodo añade un solape (14 / 12). Exige que el renderizador de `002` dimensione píldoras y códigos (no aditivo): propuesta. En «Ver el gráfico entero» los rótulos ya llegan a 12 px (R-01) |
+| R-02 | Filogenia, cladograma | todos | 83 rótulos < 12 px (6,9-11,3 px) y 4 solapes | baja (preexistente) | **Corregida (decisión de la titular, 20-11-2026: tocar el programa original)** · `92f29a6` · el renderizador de `002` dibuja nombres, eje y códigos a 14 unidades, mide cada píldora con su texto, aparta los nombres de ramas y nodos, separa en vertical los nodos 12 y 14 y ensancha el lienzo, que absorbe la caja desplazable. En modo normal a 390, 820 y 1366 px: rótulos < 12 px 83 → 0 (mínimo 12,13 px); solapes de texto 4 → 0; nombres sobre ramas 26 → 0; texto fuera de su píldora 2 → 0. «Ver el gráfico entero»: mínimo 12,01 px, 0 solapes. Efecto: el dibujo pasa de 1 180 a 1 279 px y a 1366 px la caja se desplaza también en horizontal (y aparece «Ver el gráfico entero»). Antes, en la T7: probado por CSS: llevar nombres y eje a 14 unidades (≥ 12 px) deja 59 de 83 rótulos legibles sin solapes de texto nuevos, pero los nombres desbordan las píldoras de fondo que `002` dimensiona para el tamaño actual y quedan sobre las ramas; subir también los 24 códigos de nodo añade un solape (14 / 12). Exige que el renderizador de `002` dimensione píldoras y códigos (no aditivo): propuesta. En «Ver el gráfico entero» los rótulos ya llegan a 12 px (R-01) |
 | R-03 | `atlas/POLITICA-PRIVACIDAD-DOCENTE.md`, sección de la T7 | — | Cifras medidas sin acceso real a los servicios; «6 infracciones» de OpenTopoMap valía solo en escritorio | baja | **Corregida** · `5098787` · la sección dice las condiciones de medida y da 6 (escritorio) y 4 (teléfono); el texto recibido sigue intacto (prefijo byte a byte) |
 | R-04 | `piso/T7/retirar_l2.py` (fuera del repositorio) | — | Quitaba todas las apariciones de cada línea y normalizaba los finales de línea | baja | **Corregida** · quita solo la primera aparición exacta y conserva los finales de línea; sobre `e949737` da el mismo `index.html` que antes y `verificar_repo.py` 91/91; con un `index.html` en CRLF y una línea repetida, conserva CRLF y la repetición. § 3, paso 1, ajustado |
 
@@ -309,7 +309,7 @@ De DIRECCION § 5:
 Surgidas en T1-T5:
 
 10. **Cabecera de vista para Paleoproteómica** (la única sin `.view-hero`; T3, T5).
-11. **QR de la ficha académica**: (a) retirar el `<img>` y dejar la URL en texto (ya se imprime); (b) generar el QR en
+11. **QR de la ficha académica** (resuelta por la titular el 20-11-2026 con la opción (a); hecha en la T8): (a) retirar el `<img>` y dejar la URL en texto (ya se imprime); (b) generar el QR en
     local con un codificador propio, sin dependencias (~300 líneas). La opción de ampliar la CSP queda descartada
     por DIRECCION § 4.
 12. **Nivel de entrada**: filtrar los chips de «Vistas» por `COMPLEXITY_MODES[nivel]` (ocultar, no borrar) y decidir
@@ -324,6 +324,10 @@ Surgidas en T1-T5:
 
 ## 6. Decisiones pendientes de la titular (f)
 
+El 20-11-2026 la titular resolvió cuatro, que se ejecutaron en la tanda T8 (§ 8.2): MIS 8 del simulador, QR de la
+ficha académica y pies de las 21 imágenes con otra fotografía (filas de esta tabla) y los rótulos del cladograma
+(R-02, § 4.3), para el que autorizó tocar el programa original. Las demás siguen pendientes.
+
 | Decisión | Estado actual | Opciones |
 |---|---|---|
 | Capa «Topográfico» del minimapa (OpenTopoMap) | Fuera de la CSP desde siempre: no carga ni con red; 4-10 violaciones `img-src` por humo | Añadir el origen a `img-src` (amplía la CSP) o retirar la opción (elimina una función). Ninguna ejecutada |
@@ -336,11 +340,11 @@ Surgidas en T1-T5:
 | Nivel por defecto | «Nivel Doctorado» (lo que de verdad se muestra) | Arrancar en «Universitario» ocultaría `.expert-only` y varias vistas |
 | Retraso del primer pintado | 64-120 → 584-652 ms en servidor local; con red lenta, hasta que llega la última hoja (máximo 4 s) a cambio de CLS de carga 0-0,05 | Mantener o L3-6 (hojas al `<head>`) |
 | Rótulos de Biogeografía | «Edad: », «Lugar: », «Nota: » sustituyen a ⏱, 📍 y ⚠ | Mantener o elegir otras palabras |
-| MIS 8 ausente en el simulador (`008`) | Entre 243 y 300 ka el simulador rotula «MIS 1 · Holoceno»; la escala del propio atlas (`006`, que cita a Lisiecki y Raymo, 2005, *Paleoceanography*, 20, PA1003, https://doi.org/10.1029/2004PA001071) sí tiene «MIS 8 · 300-243 ka», y los demás límites de `008` coinciden con ella. La tabla de límites LR04 de la fuente no se ha podido abrir en la ronda | Añadir `{mis:'MIS 8', start:300, end:243, climate:'glacial'}` y que `currentMis()` devuelva «sin estadio» en vez del último elemento (no ejecutado: es contenido) |
-| QR de la ficha académica | Imagen rota al imprimir | L3-11 (a) o (b) |
+| MIS 8 ausente en el simulador (`008`) | Entre 243 y 300 ka el simulador rotula «MIS 1 · Holoceno»; la escala del propio atlas (`006`, que cita a Lisiecki y Raymo, 2005, *Paleoceanography*, 20, PA1003, https://doi.org/10.1029/2004PA001071) sí tiene «MIS 8 · 300-243 ka», y los demás límites de `008` coinciden con ella. La tabla de límites LR04 de la fuente no se ha podido abrir en la ronda | Añadir `{mis:'MIS 8', start:300, end:243, climate:'glacial'}` y que `currentMis()` devuelva «sin estadio» en vez del último elemento · **Resuelta por la titular el 20-11-2026 («Corregir») y hecha en la T8** (`958170c`, pruebas `f6e84db`): exactamente esa fila y un respaldo neutro; los límites de 1 a 9 coinciden con `006` (ninguna discrepancia que anotar) |
+| QR de la ficha académica | Imagen rota al imprimir | L3-11 (a) o (b) · **Resuelta por la titular el 20-11-2026 («ELIMINAR») y hecha en la T8** (`e8129f3`): se retira la imagen y el código que la pedía; la dirección se imprime como texto. Párrafo fechado en `atlas/POLITICA-PRIVACIDAD-DOCENTE.md` |
 | `atlas/POLITICA-PRIVACIDAD-DOCENTE.md` | Declara contactos con Google Fonts y cdnjs que ya no ocurren (sobredeclara; no omite ninguno nuevo) | Actualizarla (archivo importado: exige procedencia) · **Hecho en la T7** por encargo del director: sección fechada añadida al final, sin reescribir ni borrar el texto recibido; procedencia en `PB_GH_11_CORRECCIONES.json` |
 | Licencia de Leaflet en la documentación | `THIRD_PARTY_NOTICES.md`, `LICENSE_STATUS.md` y `README.md` dicen MIT; el texto conservado es BSD de 2 cláusulas | Corregir esas líneas (la T6 solo lo anota) · **Hecho en la T7** por encargo del director: corrección factual de la licencia de un tercero, con `atlas/assets/vendor/leaflet/LICENSE` como evidencia; ninguna otra decisión sobre licencias |
-| Pie de *afarensis* y 20 taxones con otra fotografía (T7-11) | La copia local es otra imagen; el pie conserva el texto escrito para la anterior (en *afarensis*, «Sustituye una reconstrucción corporal…») | Reescribir los pies de esas fichas (contenido; no ejecutado) o mantenerlos |
+| Pie de *afarensis* y 20 taxones con otra fotografía (T7-11) | La copia local es otra imagen; el pie conserva el texto escrito para la anterior (en *afarensis*, «Sustituye una reconstrucción corporal…») | Reescribir los pies de esas fichas o mantenerlos · **Resuelta por la titular el 20-11-2026 («Corregir») y hecha en la T8** (`929b786`): pie y alternativo nuevos en `95-sistema/imagenes-locales.js`; ni `002` ni el manifiesto cambian |
 | `atlas/imsmanifest.xml` | Incompleto desde PB-GH-09 (no lista `084`) y más tras la ronda; el verificador solo comprueba que existan los archivos listados | Dejarlo como está (el sitio no se distribuye como paquete para un LMS) o completarlo si alguna vez se necesitara el paquete IMS |
 
 ## 7. Límites honestos (g)
@@ -354,8 +358,9 @@ Surgidas en T1-T5:
 - **Imágenes**: 47 de 50 taxones tienen imagen principal local; en **21** (orrorin, ramidus, anamensis, afarensis,
   bahrelghazali, africanus, prometheus, sediba, boisei, habilis, georgicus, erectus, antecessor, cepranensis,
   heidelbergensis, rhodesiensis, naledi, idaltu, neander, luzon, sapiens) la copia local es **otra fotografía** que la
-  remota que citaba la ficha (georgicus: la misma pieza con otro fondo); el título pasa al objeto de la copia y la
-  nota conserva, rotulada, la referencia anterior. El resto de imágenes de la ficha (galería de evidencia, lentes)
+  remota que citaba la ficha (georgicus: la misma pieza con otro fondo); desde la T8, su pie y su texto alternativo
+  describen la imagen que se ve y de la anterior solo queda el título, rotulado. Las páginas de Commons no pudieron
+  abrirse en la T8: los pies se apoyan en el manifiesto y en el examen visual de cada copia. El resto de imágenes de la ficha (galería de evidencia, lentes)
   siguen remotas con respaldo local.
 - **CLS por vista con capturas**: `recorrido.cjs` con capturas da valores sueltos (0,2-0,56) en tres vistas que no se
   reproducen sin el paso de captura (humo `cls`: 0 en 11 vistas y cuatro condiciones; `recorrido.cjs --sin-capturas`:
@@ -410,6 +415,33 @@ importado `atlas/POLITICA-PRIVACIDAD-DOCENTE.md`, que el atlas no carga):
   peticiones a los mismos hosts; `?view=` hostil sin cambios.
 - `verificar_repo.py`, `construir.py --check`, `verificar_publicacion.py` (NO_GO), `reproducir_pb01.cjs`, `unittest` y
   los dos generadores con `--check`: véase el informe de la T7 para las cifras exactas sobre el HEAD final.
+
+### 8.2. Decisiones de la titular del 20-11-2026 (tanda T8)
+
+Commits `958170c` (MIS 8), `e8129f3` (QR), `929b786` (pies), `92f29a6` (cladograma) y `f6e84db` (pruebas); informe
+`notas/informes/T8.md` de la carpeta de la ronda, con la tabla taxón por taxón de los 21 pies. Medido sobre el código
+del atlas de `92f29a6`:
+
+- **Simulador** (sonda de 0 a 315 ka, de 1 en 1): 244-299 ka «MIS 1 · Holoceno» → «MIS 8 · glacial»; 279 ka → MIS 8;
+  nueve tramos contiguos y 0 edades sin estadio. Los límites de MIS 1-9 de `008` coinciden con `006`.
+- **Hoja académica** (exportación de la ficha de *afarensis* con terceros simulados): peticiones a `api.qrserver.com`
+  1 → 0, infracciones de CSP 1 → 0, `.academic-qr` 1 → 0; «Recurso» conserva la dirección. El humo no ejercita esta
+  exportación, de modo que la retirada no aparece en su comparación: es la única eliminación autorizada de la tanda.
+- **Pies**: cambian los 21 taxones con otra fotografía y ninguno más (de 47 con copia local); ningún pie nuevo contiene
+  la nota escrita para la imagen anterior. Las páginas de Commons no pudieron abrirse (no admitidas en la sesión).
+- **Cladograma**, modo normal a 390, 820 y 1366 px: rótulos < 12 px 83 → 0 (mínimo 6,93 → 12,13 px en nombres, eje
+  y códigos); solapes entre cajas de texto 4 → 0; nombres sobre ramas 26 → 0; texto fuera de su píldora 2 → 0;
+  solapes entre píldoras 0 → 0. «Ver el gráfico entero»: mínimo 12,01 px, 0 solapes (antes, 4 solapes y 28 nombres
+  sobre ramas; el modo mostraba 2 044 px y ahora 1 266).
+- **axe-core 4.10.2**, todas las reglas, a 390, 820 y 1366 px: Filogenia (detalle y «entero»), fichas de *afarensis*,
+  *erectus* y *orrorin* con todas sus pestañas y hoja académica: 0 infracciones, salvo `color-contrast` (3) en las
+  píldoras `.known.fossil-pill` de la ficha de *orrorin* a 390 px (`#c07800`, 3,54:1), idéntico en `996a64d`:
+  preexistente y ajeno a la T8; no se corrige (fuera de las cuatro decisiones).
+- **Humo** en las cuatro condiciones contra la línea base, con `--inventario` e `--inestables`: 0 pérdidas (mejoras 60 /
+  63 / 65 / 64); 31/31 vistas; 60/60 funciones; CSP solo OpenTopoMap (6 en escritorio, 4 en teléfono); 1 inestable (el
+  del simulador); `inventarioAusente` solo «ESPECIES» de Constructor.
+- `verificar_repo.py` 91/91; `unittest` 96 pruebas (89 + 7 nuevas); `construir.py --check`, `verificar_publicacion.py`
+  (NO_GO), `reproducir_pb01.cjs` (defecto reproducido) y los dos generadores con `--check`: correctos.
 
 ## 9. Comprobaciones nuevas del verificador
 

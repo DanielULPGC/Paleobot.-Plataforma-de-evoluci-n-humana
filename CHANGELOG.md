@@ -58,10 +58,18 @@ navegación queda como propuesta. Informe clasificado por impacto, con la tabla 
   taxones con otra fotografía. Tras la reverificación: «Ver el gráfico entero» ya no baja los
   rótulos de 12 px (antes 1,2-2,6 px en teléfono) y se recorre en dos ejes; la sección de red
   de la política de privacidad dice en qué condiciones se midió; los rótulos del cladograma
-  (< 12 px) quedan como propuesta, porque exigen cambiar su renderizador.
+  (< 12 px) quedan como propuesta, porque exigen cambiar su renderizador (resuelto en la T8).
+- Decisiones de la titular (20/11/2026, tanda T8): el simulador de dispersión rotula MIS 8
+  entre 300 y 243 ka (antes, «MIS 1 · Holoceno»), con los límites de la escala del propio
+  atlas; la ficha académica imprimible ya no lleva la imagen QR rota ni pide nada a
+  `api.qrserver.com` (la dirección se sigue imprimiendo); los 21 taxones cuya imagen local es
+  otra fotografía tienen pie y texto alternativo que describen la que se ve; y los rótulos del
+  cladograma miden 12 px o más, sin solapes ni nombres sobre ramas (cambio en `002`; el dibujo
+  se ensancha y su caja se desplaza).
 - Límites: medido en Chromium sin red de Wikimedia, teselas ni ArcGIS; sin lector de pantalla,
   Firefox, Safari ni dispositivos reales; solo modo claro; en 21 taxones la copia local es otra
-  fotografía que la que citaba la ficha. PB-01 sigue reproduciéndose.
+  fotografía que la que citaba la ficha (desde la T8, con su propio pie). PB-01 sigue
+  reproduciéndose.
 
 ## PB-GH-10 · Auditoría y rediseño de diseño de producto · 12-11-2026
 
