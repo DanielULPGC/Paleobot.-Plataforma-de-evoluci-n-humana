@@ -485,3 +485,7 @@ diseño por esta medida: reducir la pila es una decisión de diseño: queda como
 La carga en frío de `atlas/index.html` en escritorio fue de 197 peticiones y 7,66 MB (4,08 MB de JPEG, 2,52 MB de
 JavaScript, 0,74 MB de CSS), con 116 etiquetas `script` y `link` en el HTML.
 
+**Actualización (23-11-2026, misma jornada).** Dos defectos de aplicación corregidos sin eliminar nada: desplegable de
+Constructor abierto por colisión con `Object.prototype` y «Pregunta guía» con estilo de tarjeta por una regla posterior.
+Nueva medida: escritorio, mediana 512 px y 4 de 30 vistas bajo el pliegue (clima, asia, aula, recursos); teléfono, mediana 757 px
+y 12 de 30. El resto de la pila (barra + franja de filtros + cabecera) sigue siendo decisión de diseño pendiente.

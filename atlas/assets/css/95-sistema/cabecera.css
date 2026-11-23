@@ -189,7 +189,10 @@
 }
 :root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover figcaption :is(b, strong, span) { color: var(--tinta) !important; text-shadow: none !important; }
 :root:root:root body .view-hero.pb-cv .view-hero-side .v34-block-cover figcaption b { color: var(--acento) !important; }
-:root:root:root body .view-hero.pb-cv .view-hero-card {
+/* :not(.pb-cv-pregunta): la «Pregunta guía» también lleva .view-hero-card y esta regla, posterior y de igual
+   especificidad, la devolvía a tarjeta con borde y relleno, contra el § 3 de arriba (una línea sobre papel).
+   Corregido el 23-11-2026. */
+:root:root:root body .view-hero.pb-cv .view-hero-card:not(.pb-cv-pregunta) {
   margin: 0 !important;
   padding: var(--e-3) !important;
   border: var(--linea) solid var(--borde) !important;

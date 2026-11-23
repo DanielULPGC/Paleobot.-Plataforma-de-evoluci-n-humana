@@ -1,5 +1,15 @@
 # Registro de cambios
 
+## Cabecera de vista: dos defectos de aplicación · 23/11/2026
+
+Motivo: la medida del primer dato mostró cabeceras desmesuradas. Causas, ambas en `95-sistema/cabecera.{js,css}`:
+(1) la vista «constructor» coincidía con `Object.prototype.constructor` en un mapa `{}` y su desplegable «Cómo usar esta vista»
+se abría desde el principio (primer dato a 1 160 px); (2) la «Pregunta guía» recuperaba borde y relleno de tarjeta por una
+regla posterior de igual especificidad. Cambio: `Object.create(null)` y `:not(.pb-cv-pregunta)`. No se elimina nada.
+Evidencia (`primer-dato.cjs`): escritorio, mediana 543 → 512 px y vistas bajo el pliegue 7 → 4; teléfono, 796 → 757 px y 13 → 12;
+Constructor 1 160 → ~330 px. Humo de escritorio sin terceros: 0 pérdidas frente a la línea base; `verificar_repo` 91/91; 96 pruebas OK.
+Retorno: revertir este commit.
+
 ## Medida del primer dato de cada vista · 23/11/2026
 
 Motivo: la ronda PB-GH-11 daba por resuelto que «el dato entra en el primer pantallazo» y el humo no lo medía.
