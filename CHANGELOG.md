@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## Recorrido: identidad visual del sistema (pizarra) · 23/11/2026
+
+Decisión de la titular (opción A): el recorrido deja su petróleo y su oro propios y adopta la pizarra del sistema (#161a19, tinta #ecebe6,
+acento #f0a77c, foco #8ab4f8), los mismos valores que el oscuro de `assets/paleobot-base.css` y la barra de trabajo del atlas. Cambio en
+`atlas/recorrido/integracion.css`; además, el rótulo «antiguo» del eje de Parentesco ya no se solapa con el encabezado de la primera columna.
+Evidencia: axe (WCAG 2 A/AA) sin violaciones en las 11 páginas a 390 y 1366 px. Procedencia: `PB_GH_11_CORRECCIONES.json`, estados anteriores en
+`docs/historial/PB_GH_11b/`. Quedan dos superficies con fondo propio (póster de la introducción y portada Sylva). Retorno: revertir este commit.
+
 ## Teléfono: «Pregunta guía» más compacta · 23/11/2026
 
 Cambio: en pantallas de menos de 48 rem, la pregunta guía pasa de 17 a 15 px y de interlínea 1,6 a 1,5 (`cabecera.css`); no se quita texto.
