@@ -50,14 +50,16 @@ a{color:var(--acento)}
 .aviso .caja{background:var(--acento-suave);border:0;border-radius:var(--radio);padding:var(--e-4) var(--e-4);font-size:var(--t-s);color:var(--tinta-suave)}
 
 .lienzo{max-width:1150px;margin:var(--e-5) auto 0;padding:0 var(--margen)}
-.lienzo svg{width:100%;height:auto;background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio)}
+/* PB-GH-11 (23-11-2026): el lienzo no baja de 940 px (W = 1 000: escala ≥ 0,94); en teléfono se desplaza en horizontal y los rótulos conservan ≥12 px. */
+.lienzo{overflow-x:auto}
+.lienzo svg{width:100%;min-width:940px;height:auto;background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio)}
 .grat{stroke:rgba(243,239,231,.12);stroke-width:1}
-.grat-lbl{font-size:11px;fill:rgba(200,210,206,.55)}
+.grat-lbl{font-size:13px;fill:rgba(200,210,206,.7)}
 .cont-lbl{font-size:15px;fill:rgba(243,239,231,.35);font-style:italic;font-weight:600}
 .region{cursor:pointer}
 .region .punto{stroke:#0d2028;stroke-width:2;fill:var(--acento)}
 .region .aro{fill:none;stroke:var(--acento);stroke-width:2;opacity:0}
-.region .rlbl{font-size:12px;fill:var(--tinta);font-weight:600}
+.region .rlbl{font-size:13px;fill:var(--tinta);font-weight:600}
 .region:focus{outline:none}
 .region:focus-visible .punto{stroke:#fff;stroke-width:3}
 .region[aria-pressed="true"] .punto{stroke:#fff;stroke-width:3}

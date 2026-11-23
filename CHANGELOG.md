@@ -1,5 +1,21 @@
 # Registro de cambios
 
+## Teléfono: «Pregunta guía» más compacta · 23/11/2026
+
+Cambio: en pantallas de menos de 48 rem, la pregunta guía pasa de 17 a 15 px y de interlínea 1,6 a 1,5 (`cabecera.css`); no se quita texto.
+Evidencia (`primer-dato.cjs`, teléfono): mediana 757 → 738 px y vistas con el primer dato bajo el pliegue 12 → 11. Humo de teléfono sin terceros:
+0 pérdidas; axe (WCAG 2 A/AA) sin violaciones en Constructor, Estratigrafía, Clima, América y Aula a 390 y 1366 px.
+Documentación: `docs/atlas-v1/README.md` explica la diferencia 52/50 (partición subespecífica de *H. erectus*; sigue pendiente decidir si el catálogo la incorpora).
+Retorno: revertir este commit.
+
+## Recorrido: rótulos de Parentesco y Territorio a 12 px o más · 23/11/2026
+
+Motivo: 52 rótulos de Parentesco (11,7 px en escritorio, 3,8 px en teléfono) y la retícula de Territorio quedaban por debajo de 12 px.
+Cambio: tamaños en unidades del viewBox y anchura mínima del lienzo (1 100 y 940 px) con desplazamiento horizontal propio en pantallas
+estrechas. Evidencia: medida del tamaño renderizado; ningún rótulo bajo 12 px y sin desbordamiento de página. Procedencia:
+`PB_GH_11_CORRECCIONES.json` con los estados anteriores en `docs/historial/PB_GH_11/`. Retorno: revertir este commit.
+No tocado: el rótulo «antiguo» del eje de Parentesco se solapa con el encabezado de la primera columna (preexistente).
+
 ## Cabecera de vista: dos defectos de aplicación · 23/11/2026
 
 Motivo: la medida del primer dato mostró cabeceras desmesuradas. Causas, ambas en `95-sistema/cabecera.{js,css}`:

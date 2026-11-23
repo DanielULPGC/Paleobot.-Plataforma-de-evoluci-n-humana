@@ -64,6 +64,7 @@ Hallazgos de la auditoría de integración (24-10-2026), sin corregir porque la 
 | Ámbito | Hallazgo |
 |---|---|
 | Cifras | El atlas declara 52 entradas; el catálogo canónico del repositorio (`science/`, entrada v11) usa 50 identificadores. Hay que decidir si las dos entradas adicionales son un cambio deliberado antes de unificar. |
+| Cifras · aclaración (23-11-2026) | Comparados `atlas/recorrido/datos.js` (52 entradas) y `src/entrada_ligera/catalog.json` (50), las dos entradas de diferencia son subespecíficas: el catálogo tiene `soloensis` y el recorrido lo sustituye por tres entradas (`erectus_erectus`, `erectus_pekinensis`, `erectus_soloensis`), junto a `erectus` en ambos (50 − 1 + 3 = 52). Los demás identificadores solo difieren en el nombre (p. ej. `sahel` / `sahelanthropus`). Sigue pendiente decidir si el catálogo canónico incorpora esa partición; el atlas ya dice «52 entradas, con 50 fichas avanzadas». |
 | Accesibilidad (axe-core 4.10.2, escritorio y móvil) | 1 crítico: `aria-allowed-attr` en `body` (se añade en ejecución); 1 grave: contraste en 20 iconos decorativos `.pb-pathway-icon`; 6 `<h1>` en la portada. Sin desbordamiento horizontal a 390 px. |
 | Texto | En la portada faltan espacios en «comprender**quiénes**» y «de*Australopithecus*». |
 | Seguridad | La CSP del `index.html` permite `'unsafe-inline'` en `script-src` y `style-src`, más laxa que la del resto del repositorio. Sin `eval` ni `new Function`; 228 usos de `innerHTML` no revisados línea a línea. |
