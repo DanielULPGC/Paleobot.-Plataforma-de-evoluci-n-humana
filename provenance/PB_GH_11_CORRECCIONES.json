@@ -423,6 +423,32 @@
       "evidence": "Medición de la T7 sobre la rama (scratchpad atlas11/piso/T7/red_head.json, red_humo.json y red_qr.json): 6 peticiones externas en la carga y 31 en el recorrido, solo a Wikimedia, OpenStreetMap y ArcGIS; 0 a cdnjs y Google Fonts; OpenTopoMap con 6 infracciones de CSP img-src; api.qrserver.com con infracción de CSP y petición fallida por «csp». R-03: humo de cierre de la T7 en cuatro condiciones (cspMuestras: 6 teselas en escritorio, 4 en teléfono). T8: qr_despues.json (0 peticiones a api.qrserver.com, 0 infracciones de CSP al exportar la hoja); el archivo de HEAD anterior es prefijo del nuevo. Commit: e8129f3.",
       "impact": "Documento docente; no cambia el comportamiento del atlas. T8: documento docente; no cambia el comportamiento del atlas.",
       "return": "Restaurar docs/historial/PB_GH_10/atlas/POLITICA-PRIVACIDAD-DOCENTE.md.snapshot (o quitar la sección añadida). T8: quitar el párrafo fechado del 20-11-2026."
+    },
+    {
+      "path": "atlas/recorrido/parentesco.html",
+      "import_sha256": "d8558989c023b2a1338f0b0635d95613c63eee4a0a1cf4c65070c5969d896ebb",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/parentesco.html.snapshot",
+      "previous_sha256": "281a33fe42dbe3319fcb4a352268310cc6d94a473bc69c1a51f67f7a78a6029f",
+      "previous_snapshot": "docs/historial/PB_GH_11/atlas/recorrido/parentesco.html.snapshot",
+      "corrected_sha256": "d574f7f5b847bd852fbc1ccaa8675d3d84cb476655e863343263280b83f7d55b",
+      "change": "Rótulos del diagrama ≥ 12 px: nombres y eje 13 → 14 y rangos 11 → 14 (unidades del viewBox, W = 1 220), anchura mínima del lienzo de 1 100 px con desplazamiento horizontal propio.",
+      "reason": "Texto menor de 12 px en el recorrido (auditoría de 23-11-2026): Parentesco 52 rótulos, Territorio 12 de retícula.",
+      "evidence": "Medida con Playwright del tamaño renderizado de cada <text> en 1366 y 390 px: antes 11,7 / 3,8 px (Parentesco) y 3,9 px (retícula de Territorio en teléfono); después ningún rótulo bajo 12 px y sin desbordamiento de la página.",
+      "impact": "Solo presentación del recorrido; en teléfono el lienzo se desplaza en horizontal en vez de reducirse. No cambia datos ni funciones.",
+      "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/parentesco.html.snapshot o revertir los commits citados."
+    },
+    {
+      "path": "atlas/recorrido/territorio.html",
+      "import_sha256": "d5c58ce7aed598820483a60d4b34dd5003e425ecfc37697df50a3b98c227872b",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/territorio.html.snapshot",
+      "previous_sha256": "f1d071ef3b3a74d65a3526222b0741e619446e433b348d5589be18d307e77704",
+      "previous_snapshot": "docs/historial/PB_GH_11/atlas/recorrido/territorio.html.snapshot",
+      "corrected_sha256": "70e06f8db90a10e36d28e56ef9b7ef7660846f6914ac303b5ad029bb2cc2003d",
+      "change": "Rótulos del mapa ≥ 12 px: retícula 11 → 13 con más contraste y regiones 12 → 13 (viewBox W = 1 000), anchura mínima del lienzo de 940 px con desplazamiento horizontal propio.",
+      "reason": "Texto menor de 12 px en el recorrido (auditoría de 23-11-2026): Parentesco 52 rótulos, Territorio 12 de retícula.",
+      "evidence": "Medida con Playwright del tamaño renderizado de cada <text> en 1366 y 390 px: antes 11,7 / 3,8 px (Parentesco) y 3,9 px (retícula de Territorio en teléfono); después ningún rótulo bajo 12 px y sin desbordamiento de la página.",
+      "impact": "Solo presentación del recorrido; en teléfono el lienzo se desplaza en horizontal en vez de reducirse. No cambia datos ni funciones.",
+      "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/territorio.html.snapshot o revertir los commits citados."
     }
   ]
 }

@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## Recorrido: rótulos de Parentesco y Territorio a 12 px o más · 23/11/2026
+
+Motivo: 52 rótulos de Parentesco (11,7 px en escritorio, 3,8 px en teléfono) y la retícula de Territorio quedaban por debajo de 12 px.
+Cambio: tamaños en unidades del viewBox y anchura mínima del lienzo (1 100 y 940 px) con desplazamiento horizontal propio en pantallas
+estrechas. Evidencia: medida del tamaño renderizado; ningún rótulo bajo 12 px y sin desbordamiento de página. Procedencia:
+`PB_GH_11_CORRECCIONES.json` con los estados anteriores en `docs/historial/PB_GH_11/`. Retorno: revertir este commit.
+No tocado: el rótulo «antiguo» del eje de Parentesco se solapa con el encabezado de la primera columna (preexistente).
+
 ## Cabecera de vista: dos defectos de aplicación · 23/11/2026
 
 Motivo: la medida del primer dato mostró cabeceras desmesuradas. Causas, ambas en `95-sistema/cabecera.{js,css}`:

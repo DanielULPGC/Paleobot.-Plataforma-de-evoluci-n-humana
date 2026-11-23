@@ -55,13 +55,15 @@ a{color:var(--acento)}
 .leyenda .deb{width:16px;height:16px;border:2px dashed var(--acento);border-radius:50%}
 
 .lienzo{max-width:1150px;margin:var(--e-5) auto 0;padding:0 var(--margen)}
-.lienzo svg{width:100%;height:auto;background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio)}
-.eje-l{font-size:13px;fill:var(--tinta-suave)}
+/* PB-GH-11 (23-11-2026): el lienzo no baja de 1 100 px (W = 1 220: escala ≥ 0,9); en teléfono se desplaza en horizontal y los rótulos conservan ≥12 px. */
+.lienzo{overflow-x:auto}
+.lienzo svg{width:100%;min-width:1100px;height:auto;background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio)}
+.eje-l{font-size:14px;fill:var(--tinta-suave)}
 .trunk{stroke:rgba(243,239,231,.28);stroke-width:2;fill:none}
 .hip{stroke:rgba(243,239,231,.4);stroke-width:2;stroke-dasharray:7 6;fill:none}
 .nodo{cursor:pointer}
 .nodo .disco{stroke:#0d2028;stroke-width:2}
-.nodo .etq{font-size:13px;fill:var(--tinta);font-style:italic}
+.nodo .etq{font-size:14px;fill:var(--tinta);font-style:italic}
 .nodo:focus{outline:none}
 .nodo:focus-visible .disco{stroke:#fff;stroke-width:3}
 .nodo[aria-pressed="true"] .disco{stroke:#fff;stroke-width:3}
@@ -216,7 +218,7 @@ a{color:var(--acento)}
     g.appendChild(el('circle', { class: 'disco', cx: p.x, cy: p.y, r: 8, fill: D.clados[t.c].color }));
     const lx = p.x + 16;
     const tx = el('text', { class: 'etq', x: lx, y: p.y - 1, 'text-anchor': 'start' }); tx.textContent = t.n.split(' ')[1] || t.n; g.appendChild(tx);
-    const rg = el('text', { x: lx, y: p.y + 14, 'text-anchor': 'start', 'font-size': '11', fill: 'rgba(200,210,206,.7)' }); rg.textContent = rango(t); g.appendChild(rg);
+    const rg = el('text', { x: lx, y: p.y + 16, 'text-anchor': 'start', 'font-size': '14', fill: 'rgba(200,210,206,.78)' }); rg.textContent = rango(t); g.appendChild(rg);
     g.addEventListener('click', () => mostrar(t));
     g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mostrar(t); } });
     svg.appendChild(g);
