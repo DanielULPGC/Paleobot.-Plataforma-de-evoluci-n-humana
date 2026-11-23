@@ -21,7 +21,9 @@
   'use strict';
   if (window.PBCabecera) return;
 
-  var abiertos = {};           // vista → true si el alumnado abrió «Cómo usar esta vista»
+  // Sin prototipo: la vista «constructor» coincidía con Object.prototype.constructor (truthy) y abría el desplegable
+  // de Constructor desde el principio (PB-GH-11, 23-11-2026).
+  var abiertos = Object.create(null);   // vista → true si el alumnado abrió «Cómo usar esta vista»
   var vigilados = new WeakSet();
 
   function vistaDe(hero) {
