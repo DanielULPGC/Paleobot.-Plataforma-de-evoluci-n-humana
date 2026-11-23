@@ -40,6 +40,7 @@ cuentan. Todo lo demás externo se aborta.
 | `pasos.cjs` | Pasos reutilizables: 31 vistas, diálogos (abre, foco entra, trampa de Tab, Escape, foco vuelve, `aria-hidden`) y ~50 funciones | (módulo) |
 | `humo.cjs` | Humo comparable: 31 vistas en una página y cada función en un contexto nuevo; `--comparar` lista pérdidas | ver abajo |
 | `tormenta.cjs` | Peticiones externas, URL repetidas y errores de consola con una ficha abierta en reposo (fila 1 de la tabla de corrección) | `node scripts/atlas/tormenta.cjs --sin-terceros --ms 10000` |
+| `primer-dato.cjs` | Dónde empieza el dato de cada vista (mediana y vistas bajo el pliegue). Informa, no falla ni entra en el humo ni en el verificador | `PB_BASE=http://127.0.0.1:8991 node scripts/atlas/primer-dato.cjs --vp telefono --salida x.json` |
 | `recorrido.cjs` | Capturas por vista y viewport y medidas de piso (CLS, tamaños, objetivos, axe) | `node scripts/atlas/recorrido.cjs --salida cap --json piso.json --vps telefono` |
 | `estados.cjs` | Condiciones degradadas: sin JS, sin terceros, sin almacenamiento, 320 px, texto al 200 %, movimiento reducido, impresión, teclado | `node scripts/atlas/estados.cjs --json estados.json --capturas cap` |
 | `cascada.cjs` | Qué hoja gana de verdad en los componentes principales (CDP) | `node scripts/atlas/cascada.cjs --json cascada.json` |

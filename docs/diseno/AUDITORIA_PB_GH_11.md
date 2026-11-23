@@ -25,7 +25,7 @@ reducida en `docs/diseno/atlas/evidencia/PB_GH_11/` (8 pares antes/después, 0,6
 | Impacto | Qué cambia para el alumnado | Filas |
 |---|---|---|
 | **Bloqueante → resuelto** | Abrir una ficha sin acceso a Wikimedia ya no dispara un bucle de 120-209 peticiones por segundo; el botón «Comenzar clásico» de la autoevaluación se ve; los diálogos existen para un lector de pantalla | 1, 2, 3 |
-| **Alto → resuelto** | El dato entra en el primer pantallazo; la navegación cabe en una franja de 56 px; cada diálogo recibe y devuelve el foco; el atlas funciona sin terceros (imagen principal local, Leaflet alojado, costas locales, sin Google Fonts); simulador y Recursos sin errores; foco visible en todo el atlas; contraste de texto: 0 infracciones en las 31 vistas (en los diálogos quedaban 4 nodos, Síntesis y la pestaña «Clima» de la ficha, corregidos en la T7; § 4.3) | 4-16 |
+| **Alto → resuelto** | ~~El dato entra en el primer pantallazo~~ (no se cumple del todo: corrección medida del 23-11-2026 en § 10); la navegación cabe en una franja de 56 px; cada diálogo recibe y devuelve el foco; el atlas funciona sin terceros (imagen principal local, Leaflet alojado, costas locales, sin Google Fonts); simulador y Recursos sin errores; foco visible en todo el atlas; contraste de texto: 0 infracciones en las 31 vistas (en los diálogos quedaban 4 nodos, Síntesis y la pestaña «Clima» de la ficha, corregidos en la T7; § 4.3) | 4-16 |
 | **Medio → resuelto o parcial** | Intro en el buscador; Diagnóstico visible; «Contraste» y «Modo clase» efectivos; flotantes que no tapan; cajón con rótulos; aviso sin JavaScript; impresión limpia; terceros (parcial: imágenes secundarias y teselas siguen remotas); CSP de scripts sin `'unsafe-inline'` (`style-src`: L3) | 17-30 |
 | **Bajo → resuelto o anotado** | Sin `sw.js` inexistente; encabezados; sin emoji de interfaz; hojas huérfanas anotadas (no se retiran: L3) | 31-34 |
 | Funciones rotas desde la línea base | Las 57 funciones del humo responden por primera vez (antes fallaban `simulador`, `diagnostico`, `exportar.svg.constructor`, `mapa.lentes`, `enlaces.profundos` y, sin terceros, `minimapa.capas`) | hallazgos H1-H3 |
@@ -464,3 +464,24 @@ Estáticas, sin navegador (`comprobaciones_atlas_pbgh11` en `scripts/verificar_r
 
 El humo no entra en el verificador (Chromium, ~10 min por condición): cuándo y cómo se ejecuta, en
 `scripts/atlas/README.md`.
+
+## 10. Corrección posterior: el dato no siempre entra en el primer pantallazo (23-11-2026)
+
+Medida independiente, tras la fusión de la ronda (`main`, `58344bf`), con `scripts/atlas/primer-dato.cjs`
+(Chromium sin red de terceros; `?view=<id>#main-content` y 4,2 s de espera; «primer dato» = primer bloque con
+tarjeta, tabla, gráfico, lista o imagen tras la cabecera de la vista; medida aproximada):
+
+| Viewport | Vistas medidas | Mediana del primer dato | Primer dato bajo el pliegue |
+|---|---|---|---|
+| 1366×768 | 30 de 31 | 543 px (71 % del alto) | 7: Clima, América, Asia, Europa, Constructor, Centro docente, Recursos |
+| 390×844 | 30 de 31 | 796 px (94 % del alto) | 13: Clima, América, Asia, Europa, Estratigrafía, Tafonomía, Paleogenómica, Coexistencias, Constructor, Primatología, Centro docente, Recursos, Biogeografía |
+
+No se mide Paleoproteómica (no tiene cabecera de vista, § 5). La causa en escritorio es la pila fija: barra de 56 px,
+franja «Consulta y filtros» de 61 px y cabecera de vista de 187 px (el dato empieza a 359-501 px aun en las vistas
+buenas); en Constructor la cabecera ocupa 988 px y el dato empieza a 1 160 px. Por tanto, la fila «El dato entra en
+el primer pantallazo» de § 0 y la regla 1 de las vistas de datos de `SISTEMA.md` son un **objetivo parcialmente
+cumplido**, no un resultado: el humo (`vista.posicion`) solo comprobaba barra y título. No se ha cambiado ningún
+diseño por esta medida: reducir la pila es una decisión de diseño: queda como propuesta pendiente de la decisión de la titular.
+La carga en frío de `atlas/index.html` en escritorio fue de 197 peticiones y 7,66 MB (4,08 MB de JPEG, 2,52 MB de
+JavaScript, 0,74 MB de CSS), con 116 etiquetas `script` y `link` en el HTML.
+

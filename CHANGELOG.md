@@ -1,5 +1,12 @@
 # Registro de cambios
 
+## Medida del primer dato de cada vista · 23/11/2026
+
+Motivo: la ronda PB-GH-11 daba por resuelto que «el dato entra en el primer pantallazo» y el humo no lo medía.
+Evidencia: `scripts/atlas/primer-dato.cjs` (mediana 543 px de 768 en escritorio y 796 px de 844 en teléfono; 7 de 30
+y 13 de 30 vistas con el primer dato bajo el pliegue). Cambio: script informativo, nota en `AUDITORIA_PB_GH_11.md`
+§ 10 y en `SISTEMA.md`. Impacto: solo documentación y arnés; no cambia el atlas. Retorno: revertir este commit.
+
 ## PB-GH-11 · Atlas interactivo: auditoría y rediseño · 13-19/11/2026
 
 Ronda sobre `atlas/index.html` y `atlas/assets/` para el alumnado del Diploma de Estudios
