@@ -218,6 +218,9 @@
 @media (max-width: 47.99rem) {
   :root:root:root body .view-hero.pb-cv .view-hero-title-row h2 { font-size: var(--t-xl) !important; }
   :root:root:root body .view-hero.pb-cv .pb-cv-cuerpo { grid-template-columns: minmax(0, 1fr); padding: var(--e-3); }
+  /* Teléfono: la pregunta guía a la talla de lectura menor (15 px) y con menos interlínea: gana una o dos líneas
+     sin quitar texto (23-11-2026). */
+  :root:root:root body .view-hero.pb-cv .pb-cv-pregunta p { font-size: var(--t-s) !important; line-height: 1.5 !important; }
 }
 
 /* 6 · Impresión: el desplegable se imprime tal como esté (cerrado, solo su rótulo; abierto, con su contenido). */
