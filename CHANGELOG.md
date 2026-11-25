@@ -1,5 +1,11 @@
 # Registro de cambios
 
+## Franja «Consulta y filtros»: la búsqueda como única acción principal · 25/11/2026
+
+Decisión de la titular. «Limpiar filtros» y «Filtros avanzados» pasan a acciones de texto (sin borde ni relleno, subrayadas, tinta secundaria 7,3:1) con el mismo
+objetivo táctil de 44 px; «Filtros avanzados» abierto recupera su aspecto de acento. Cambio solo de CSS en `95-sistema/consulta.css`. Axe (WCAG 2 A/AA)
+sin violaciones en la barra de Estratigrafía, Clima, Constructor y Aula a 390 y 1366 px. Retorno: revertir este commit.
+
 ## Manifiesto IMS completo y bien formado · 25/11/2026
 
 `atlas/imsmanifest.xml` cerraba `</resource>` antes de las 10 entradas de la portada (fuera del recurso, no válido para IMS) y no listaba 66 ficheros de `atlas/`
