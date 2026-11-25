@@ -1,5 +1,10 @@
 # Registro de cambios
 
+## Introducción: rótulos de los diagramas a 12 px o más en teléfono · 25/11/2026
+
+En pantallas de menos de 40 rem los rótulos SVG (20 y 26 unidades de viewBox) pasan a 34 unidades por CSS, y el rótulo de escena tiene un suelo de .75 rem.
+Medida a 390 px: ningún texto bajo 12 px; sin solapes. Retorno: revertir este commit.
+
 ## Portada Sylva: texto a 12 px o más · 25/11/2026
 
 Rótulos del dock, lema, cifras y botón «Explorar el atlas» con suelo de 12 px (antes 8–11 px en teléfono). Medida a 390 y 1366 px: ninguno bajo 12 px.

@@ -134,7 +134,7 @@ body.sin-subtitulos .subtitulos{display:none}
 /* Marca temporal de escena (nombre en lenguaje llano, esquina) */
 .rotulo{
   position:absolute;top:7%;left:7%;z-index:8;
-  font-size:clamp(.7rem,1.3vw,1rem);
+  font-size:clamp(.75rem,1.3vw,1rem);
   letter-spacing:.16em;text-transform:uppercase;
   color:var(--acento);
   opacity:0;transition:opacity .6s ease;
@@ -400,6 +400,11 @@ html{height:auto}
   .cine.con-tarjeta{height:auto;min-height:100dvh}
 }
 .overlay h1{font-size:min(var(--t-display), 8.5vw);max-width:100%;overflow-wrap:anywhere;hyphens:auto}
+/* 25-11-2026 · Rótulos de los diagramas SVG: en pantallas estrechas el viewBox de 1 000 unidades se reduce a ~0,36 y los rótulos de 20 y 26
+   unidades quedaban en 7–10 px. Con 34 unidades alcanzan 12 px; el CSS prevalece sobre el atributo font-size. */
+@media (max-width: 40rem){
+  svg text[font-size="20"], svg text[font-size="26"]{ font-size: 34px; }
+}
 </style>
 <link rel="stylesheet" href="integracion.css">
 <script src="integracion.js" defer></script>
