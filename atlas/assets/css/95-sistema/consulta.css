@@ -100,6 +100,22 @@
   border-color: var(--acento) !important;
   color: var(--acento-fuerte) !important;
 }
+/* 25-11-2026 · Jerarquía de la franja: la búsqueda es la única acción principal. «Limpiar filtros» y «Filtros avanzados» pasan a
+   acciones de texto (sin borde ni relleno), con el mismo objetivo táctil de 44 px; abiertos o enfocados recuperan su aspecto. */
+:root:root body .toolbar.pb-consulta .toolbar-row-primary > :is(.filter-reset-btn, .pb-v50-filter-toggle):not([aria-expanded="true"]) {
+  border-color: transparent !important;
+  background: transparent !important;
+  color: var(--tinta-2) !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: .2em !important;
+}
+:root:root body .toolbar.pb-consulta .toolbar-row-primary > :is(.filter-reset-btn, .pb-v50-filter-toggle):not([aria-expanded="true"]):hover {
+  background: var(--hundido) !important;
+  border-color: transparent !important;
+  color: var(--tinta) !important;
+}
 :root:root body .toolbar.pb-consulta .pb-consulta-aviso { color: var(--acento); font-weight: 600; }
 :root:root body .toolbar.pb-consulta .toolbar-row-primary > .search-box {
   order: 0 !important;
