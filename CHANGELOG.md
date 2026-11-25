@@ -6,6 +6,14 @@ Decisión de la titular. «Limpiar filtros» y «Filtros avanzados» pasan a acc
 objetivo táctil de 44 px; «Filtros avanzados» abierto recupera su aspecto de acento. Cambio solo de CSS en `95-sistema/consulta.css`. Axe (WCAG 2 A/AA)
 sin violaciones en la barra de Estratigrafía, Clima, Constructor y Aula a 390 y 1366 px. Retorno: revertir este commit.
 
+## Partición de *H. erectus* incorporada a la consulta ligera · 25/11/2026
+
+Decisión de la titular. `soloensis` (catálogo) y `erectus_soloensis` (atlas) son la misma entrada; las dos de diferencia eran `erectus_erectus` y `erectus_pekinensis`.
+`ligera/` las lista ahora en la sección «Subespecies de *Homo erectus* sin ficha ampliada», con los datos del atlas (rango, región, cautela) y su fuente
+(Wood y Boyle, 2016, https://doi.org/10.1002/ajpa.22902), y el resumen pasa a «52 entradas: 50 fichas + 2». `catalog.json` queda intacto. Sin imágenes ni descripciones nuevas.
+Cambios: `src/entrada_ligera/build.py` (datos copiados del atlas), `ligera/index.html` regenerado, `tests/test_subespecies_ligera.py` (los datos siguen siendo los del atlas).
+Retorno: revertir este commit.
+
 ## Manifiesto IMS completo y bien formado · 25/11/2026
 
 `atlas/imsmanifest.xml` cerraba `</resource>` antes de las 10 entradas de la portada (fuera del recurso, no válido para IMS) y no listaba 66 ficheros de `atlas/`

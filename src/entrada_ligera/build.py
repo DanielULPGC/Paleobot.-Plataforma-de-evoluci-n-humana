@@ -18,6 +18,34 @@ OUT = ROOT / "index.html"
 OUT_SINGLE = ROOT / "PaleoBot_Moodle_Entrada_Directa_v11.html"
 
 
+# 25-11-2026 · Entradas del atlas sin ficha ampliada. Datos copiados de atlas/data/taxones.json (entradas erectus_erectus y
+# erectus_pekinensis); tests/test_subespecies_ligera.py comprueba que siguen coincidiendo. La tercera subespecie del atlas,
+# erectus_soloensis, es la ficha «soloensis» de este catálogo (provenance/PB_GH_08_CORRESPONDENCIAS.json). No se añaden
+# descripciones, medidas ni imágenes que el atlas no tenga.
+SUBESPECIES_ATLAS = [
+    {
+        "id": "erectus_erectus",
+        "nombre": "Homo erectus erectus",
+        "desde_ma": 1,
+        "hasta_ma": 0.5,
+        "region": "Java, Indonesia",
+        "nota": "Subespecie nominal de Java (Trinil, Sangiran), sobre la que Dubois fundó en 1894 el género Pithecanthropus, hoy incluido en Homo erectus."
+    },
+    {
+        "id": "erectus_pekinensis",
+        "nombre": "Homo erectus pekinensis",
+        "desde_ma": 0.78,
+        "hasta_ma": 0.4,
+        "region": "Harbin y China oriental",
+        "nota": "Subespecie del este de Asia (Zhoukoudian, China), descrita por Black en 1927 como Sinanthropus pekinensis, hoy incluida en Homo erectus."
+    }
+]
+FUENTE_SUBESPECIES = {
+    "cita": "Wood, B., y Boyle, E. K. (2016). Hominin taxic diversity: Fact or fantasy? American Journal of Physical Anthropology, 159(S61), S37-S78.",
+    "doi": "10.1002/ajpa.22902"
+}
+
+
 def e(value: object) -> str:
     return html.escape(str(value if value is not None else ""), quote=True)
 
@@ -274,6 +302,21 @@ def build() -> None:
             f'{specialist}<h3>Referencias del catálogo</h3>{bibliography(sp)}</div></details>'
         )
 
+    # 25-11-2026 · Entradas del atlas sin ficha ampliada (subespecies de H. erectus): se muestran aparte, sin tocar el catálogo original.
+    sup_records = SUBESPECIES_ATLAS
+    assert len(sup_records) == 2 and not {s["id"] for s in sup_records} & set(ids)
+    fuente = FUENTE_SUBESPECIES
+    subespecies = "".join(
+        f'<li id="sub-{e(s["id"])}"><strong>{e(s["nombre"])}</strong> · {s["desde_ma"]:g} a {s["hasta_ma"]:g} Ma (rango aproximado) · {e(s["region"])}. {e(s["nota"])}</li>'
+        for s in sup_records
+    )
+    subespecies_html = (
+        '<section id="subespecies"><div class="section-head"><h2>Subespecies de <i>Homo erectus</i> sin ficha ampliada</h2>'
+        '<p>El atlas cuenta 52 entradas: las 50 fichas de esta consulta (una de ellas, «H. erectus soloensis», corresponde a la subespecie de Ngandong) '
+        'y estas dos, que el catálogo original no desarrolla. Se dan solo los datos que recoge el atlas.</p></div>'
+        f'<ul class="subespecies">{subespecies}</ul>'
+        f'<p>Fuente: {e(fuente["cita"])} <a href="https://doi.org/{e(fuente["doi"])}" target="_blank" rel="noopener noreferrer">DOI {e(fuente["doi"])}</a>.</p></section>'
+    )
     ordered = sorted(records, key=lambda sp: chronology_key(chrono[sp["id"]]), reverse=True)
     timeline = "".join(
         f'<li><a href="#sp-{e(sp["id"])}">{e(sp["nombre"])}</a><span>{e(chrono[sp["id"]].get("display") or "Indeterminado")}</span>'
@@ -293,7 +336,7 @@ def build() -> None:
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="hero"><div class="wrap"><p class="kicker">PaleoBot · Consulta ligera</p>
 <h1>Explorar el registro de la evolución humana</h1>
-<p>Consulta de 50 fichas, evidencias cronológicas, localidades y referencias del catálogo existente.</p>
+<p>Consulta de 50 fichas, evidencias cronológicas, localidades y referencias del catálogo existente, más 2 subespecies de <i>Homo erectus</i> que el atlas recoge sin ficha ampliada (52 entradas en total).</p>
 <nav aria-label="Secciones"><a href="#fichas">Fichas</a><a href="#cronologia">Cronología</a><a href="#localidades">Localidades</a><a href="#metodo">Cómo interpretar</a></nav></div></header>
 <main id="contenido" class="wrap">
 <section class="notice" aria-label="Estado de la versión">Conserva los datos del catálogo original de PaleoBot. Hay {len(verified)} fichas con recursos visuales documentados (fotografías, figuras, ilustraciones o mapas) y {len(records) - len(verified)} fichas con imagen pendiente de revisión; estas últimas no cargan archivos visuales. Los datos cronológicos describen evidencias publicadas; no representan automáticamente la duración de un taxón.</section>
@@ -301,6 +344,7 @@ def build() -> None:
 <label class="search">Filtrar por nombre o localidad <input id="search" type="search" placeholder="Ej.: Dmanisi o Etiopía" autocomplete="off"></label>
 <p id="search-status" aria-live="polite">50 fichas disponibles.</p>
 <div id="cards">{''.join(cards)}</div></section>
+{subespecies_html}
 <section id="cronologia"><div class="section-head"><h2>Línea de evidencias cronológicas</h2>
 <p>Ordenada por la edad más antigua indicada en cada registro. Una datación de fósil, localidad o contexto no equivale a la existencia continua de una especie.</p></div>
 <ol class="timeline">{timeline}</ol></section>
