@@ -1,5 +1,11 @@
 # Registro de cambios
 
+## Manifiesto IMS completo y bien formado · 25/11/2026
+
+`atlas/imsmanifest.xml` cerraba `</resource>` antes de las 10 entradas de la portada (fuera del recurso, no válido para IMS) y no listaba 66 ficheros de `atlas/`
+(sistema `95-sistema`, Leaflet, guardas). Ahora hay un único recurso con 243 ficheros, todos existentes; se conservan el BOM y los saltos CRLF.
+Alcance: solo el empaquetado. La subida a Moodle sigue sin probarse ni documentarse (decisión de PB-GH-06). Retorno: revertir este commit.
+
 ## Introducción: rótulos de los diagramas a 12 px o más en teléfono · 25/11/2026
 
 En pantallas de menos de 40 rem los rótulos SVG (20 y 26 unidades de viewBox) pasan a 34 unidades por CSS, y el rótulo de escena tiene un suelo de .75 rem.
