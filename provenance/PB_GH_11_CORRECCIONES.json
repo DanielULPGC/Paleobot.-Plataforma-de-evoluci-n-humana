@@ -488,6 +488,19 @@
       "evidence": "Medida del tamaño renderizado en 390 y 1366 px: ningún texto bajo 12 px; captura a 390 px revisada.",
       "impact": "Solo presentación de la portada; no cambia datos ni funciones.",
       "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/portada-sylva.html.snapshot o revertir acc7f7e."
+    },
+    {
+      "path": "atlas/recorrido/introduccion.html",
+      "import_sha256": "a52667e4e48e81ec0fa9bb92ef5039a1281b9fcf4cad0f34309abb24a9089c1a",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/introduccion.html.snapshot",
+      "previous_sha256": "db0329efd47d73f533adf9ec5a6ad47b347d039feec49225e83f657cc174a8f6",
+      "previous_snapshot": "docs/historial/PB_GH_11d/atlas/recorrido/introduccion.html.snapshot",
+      "corrected_sha256": "db5ae470b3c7625b1e316192ebdbfd3e4da77d5839081459e0ab5321208a2596",
+      "change": "Rótulos de los diagramas SVG a 34 unidades en pantallas de menos de 40 rem (CSS sobre el atributo font-size de 20 y 26) y rótulo de escena con suelo de .75 rem.",
+      "reason": "Texto de 7,5–9,7 px en teléfono por el escalado del viewBox (auditoría de 23-11-2026).",
+      "evidence": "Medida del tamaño renderizado a 390 px: ningún texto bajo 12 px; los diagramas clonados a 390 px no muestran solapes.",
+      "impact": "Solo presentación en pantallas estrechas; no cambia datos ni funciones.",
+      "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/introduccion.html.snapshot o revertir los commits citados."
     }
   ]
 }
