@@ -1,5 +1,11 @@
 # Registro de cambios
 
+## Portada Sylva: texto a 12 px o más · 25/11/2026
+
+Rótulos del dock, lema, cifras y botón «Explorar el atlas» con suelo de 12 px (antes 8–11 px en teléfono). Medida a 390 y 1366 px: ninguno bajo 12 px.
+Sin cambios en `cronologia.html` (los `button.barra-taxon` tienen `font-size: 0` a propósito, el texto lo da la etiqueta contigua). Pendiente:
+los diagramas SVG de `introduccion.html` en teléfono (7,5–9,7 px por escalado del viewBox), por ser una narración a pantalla completa. Retorno: revertir este commit.
+
 ## Recorrido: identidad visual del sistema (pizarra) · 23/11/2026
 
 Decisión de la titular (opción A): el recorrido deja su petróleo y su oro propios y adopta la pizarra del sistema (#161a19, tinta #ecebe6,
