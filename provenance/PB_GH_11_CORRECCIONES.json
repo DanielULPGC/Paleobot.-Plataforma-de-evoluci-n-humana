@@ -501,6 +501,19 @@
       "evidence": "Medida del tamaño renderizado a 390 px: ningún texto bajo 12 px; los diagramas clonados a 390 px no muestran solapes.",
       "impact": "Solo presentación en pantallas estrechas; no cambia datos ni funciones.",
       "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/introduccion.html.snapshot o revertir los commits citados."
+    },
+    {
+      "path": "atlas/imsmanifest.xml",
+      "import_sha256": "f7b757706b78805c1700039fc88c189000896e4439f98f18cde6070a55c95369",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/imsmanifest.xml.snapshot",
+      "previous_sha256": "b0c5ee699ed05a9aa6e3ff0b6b3e880c70a4a060b9c931e9d3119f0f9c71c25b",
+      "previous_snapshot": "docs/historial/PB_GH_11e/atlas/imsmanifest.xml.snapshot",
+      "corrected_sha256": "1d7c73587366d49084e58503862269007effac39f6f2388201a573281d4f6cef",
+      "change": "Manifiesto IMS: el cierre de </resource> queda tras el último <file> (las 10 entradas de la portada estaban fuera del recurso, XML no válido para IMS) y se listan los 66 ficheros de atlas/ que faltaban (sistema 95-sistema, Leaflet y guardas).",
+      "reason": "Hallazgo de la auditoría de 23-11-2026: manifiesto incompleto y con entradas fuera del recurso.",
+      "evidence": "Análisis XML (1 recurso, 243 ficheros, todos existentes); recuento de ficheros de atlas/ no listados: 66 → 0.",
+      "impact": "Solo el empaquetado IMS; no cambia la interfaz ni los datos. La subida a Moodle sigue sin estar documentada ni probada.",
+      "return": "Restaurar el snapshot o revertir el commit."
     }
   ]
 }
