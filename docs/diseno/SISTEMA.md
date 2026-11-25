@@ -340,3 +340,10 @@ repositorio); una selección reducida está en `docs/diseno/atlas/evidencia/PB_G
 
 Las capturas citadas sin ruta del repositorio están en la carpeta de trabajo de la auditoría (fuera del
 repositorio); una selección reducida está en `docs/diseno/evidencia/`.
+
+### Recorrido: pizarra del sistema (23-11-2026)
+
+El recorrido (`atlas/recorrido/`) usa siempre el oscuro y, desde esta fecha, con los valores de la pizarra del sistema (`--papel` #161a19,
+`--tinta` #ecebe6, `--acento` #f0a77c, `--foco` #8ab4f8), idénticos al oscuro de `assets/paleobot-base.css`. Antes tenía petróleo (#0d2028) y oro (#d8a93a)
+propios. Los colores de los clados siguen siendo los del propio recorrido. Con `atlas/`, `ligera/` y `dea/` la identidad es, por tanto, una sola: «Papel y tierra»
+en claro y su pizarra en oscuro.

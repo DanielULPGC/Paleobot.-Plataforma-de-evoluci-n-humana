@@ -449,6 +449,32 @@
       "evidence": "Medida con Playwright del tamaño renderizado de cada <text> en 1366 y 390 px: antes 11,7 / 3,8 px (Parentesco) y 3,9 px (retícula de Territorio en teléfono); después ningún rótulo bajo 12 px y sin desbordamiento de la página.",
       "impact": "Solo presentación del recorrido; en teléfono el lienzo se desplaza en horizontal en vez de reducirse. No cambia datos ni funciones.",
       "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/territorio.html.snapshot o revertir los commits citados."
+    },
+    {
+      "path": "atlas/recorrido/integracion.css",
+      "import_sha256": "0247bf2746343074e29cb7e811c88b9ec377e5441c509dcd9599507d7f3fa36c",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/integracion.css.snapshot",
+      "previous_sha256": "a14d1fb560df6e69f4150c0a2ac9658522d005759dc8941af3f90d28f6d8b1c5",
+      "previous_snapshot": "docs/historial/PB_GH_11b/atlas/recorrido/integracion.css.snapshot",
+      "corrected_sha256": "2b335a3de6fd200923311d7d41574a37ae6a51094ac921bffac995231b90c198",
+      "change": "Paleta oscura del recorrido: del petróleo (#0d2028) y el oro (#d8a93a) propios a la pizarra del sistema (#161a19, tinta #ecebe6, acento #f0a77c, foco #8ab4f8), los mismos valores que el oscuro de assets/paleobot-base.css y la barra de trabajo del atlas.",
+      "reason": "Decisión de la titular (23-11-2026): unificar la identidad visual del recorrido con el sistema (opción A).",
+      "evidence": "axe (WCAG 2 A/AA) sin violaciones en las 11 páginas del recorrido a 390 y 1366 px; capturas comparadas.",
+      "impact": "Solo presentación; no cambia datos ni funciones.",
+      "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/integracion.css.snapshot o revertir los commits citados."
+    },
+    {
+      "path": "atlas/recorrido/parentesco.html",
+      "import_sha256": "d8558989c023b2a1338f0b0635d95613c63eee4a0a1cf4c65070c5969d896ebb",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/parentesco.html.snapshot",
+      "previous_sha256": "d574f7f5b847bd852fbc1ccaa8675d3d84cb476655e863343263280b83f7d55b",
+      "previous_snapshot": "docs/historial/PB_GH_11b/atlas/recorrido/parentesco.html.snapshot",
+      "corrected_sha256": "4d42ed2e2509832e55915d90ebc9eaa5cd5292c45475f6d46e8ec2179fa489fa",
+      "change": "Eje temporal: la etiqueta «antiguo» baja bajo el encabezado de la primera columna (dejaba de solaparse) y el eje empieza debajo de ella.",
+      "reason": "Solapamiento visible del rótulo «antiguo» con el encabezado «Hominoideos miocenos y formas basales».",
+      "evidence": "Captura a 1366 px antes y después.",
+      "impact": "Solo presentación; no cambia datos ni funciones.",
+      "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/parentesco.html.snapshot o revertir los commits citados."
     }
   ]
 }

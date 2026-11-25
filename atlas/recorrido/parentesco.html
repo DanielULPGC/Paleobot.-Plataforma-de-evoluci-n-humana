@@ -198,8 +198,8 @@ a{color:var(--acento)}
   const mk = el('marker', { id: 'flecha', markerWidth: '8', markerHeight: '8', refX: '4', refY: '4', orient: 'auto' });
   mk.appendChild(el('path', { d: 'M0,0 L8,4 L0,8 Z', fill: 'rgba(243,239,231,.4)' }));
   defs.appendChild(mk); svg.appendChild(defs);
-  svg.appendChild(el('line', { x1: 56, y1: TOP - 18, x2: 56, y2: H - 84, stroke: 'rgba(243,239,231,.28)', 'stroke-width': 2, 'marker-end': 'url(#flecha)' }));
-  const l1 = el('text', { x: 56, y: TOP - 30, 'text-anchor': 'middle', class: 'eje-l' }); l1.textContent = 'antiguo'; svg.appendChild(l1);
+  svg.appendChild(el('line', { x1: 56, y1: TOP - 2, x2: 56, y2: H - 84, stroke: 'rgba(243,239,231,.28)', 'stroke-width': 2, 'marker-end': 'url(#flecha)' }));
+  const l1 = el('text', { x: 56, y: TOP - 14, 'text-anchor': 'middle', class: 'eje-l' }); l1.textContent = 'antiguo'; svg.appendChild(l1);
   const l2 = el('text', { x: 56, y: H - 66, 'text-anchor': 'middle', class: 'eje-l' }); l2.textContent = 'reciente'; svg.appendChild(l2);
 
   Object.keys(porClado).forEach(ck => { const a = porClado[ck]; if (a.length > 1) { const p = pos[a[0].id], q = pos[a[a.length - 1].id]; svg.appendChild(el('path', { class: 'trunk', d: `M${p.x},${p.y} L${q.x},${q.y}` })); } });
