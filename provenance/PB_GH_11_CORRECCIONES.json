@@ -475,6 +475,19 @@
       "evidence": "Captura a 1366 px antes y después.",
       "impact": "Solo presentación; no cambia datos ni funciones.",
       "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/parentesco.html.snapshot o revertir los commits citados."
+    },
+    {
+      "path": "atlas/recorrido/portada-sylva.html",
+      "import_sha256": "42c5ae43684b847c0ab59fae8acc29348358f067b821c32db89068ee86031ead",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/portada-sylva.html.snapshot",
+      "previous_sha256": "6572292c4833c2ebfcaeea8ddf150b9ef9890afe80d7c53d16a2f4a8ceff41ef",
+      "previous_snapshot": "docs/historial/PB_GH_11c/atlas/recorrido/portada-sylva.html.snapshot",
+      "corrected_sha256": "20f69c478a0beeaa5184685b7d78d6a448745683b81e215405bc377f396eece9",
+      "change": "Texto mínimo de 12 px en la portada: rótulos, lema, cifras y botón «Explorar el atlas» pasan de max(…) a un suelo de 12 px (antes 8–11 px en teléfono) sin cambiar la geometría proporcional.",
+      "reason": "Texto menor de 12 px en la portada (auditoría de 23-11-2026).",
+      "evidence": "Medida del tamaño renderizado en 390 y 1366 px: ningún texto bajo 12 px; captura a 390 px revisada.",
+      "impact": "Solo presentación de la portada; no cambia datos ni funciones.",
+      "return": "Restaurar docs/historial/PB_GH_09/atlas/recorrido/portada-sylva.html.snapshot o revertir acc7f7e."
     }
   ]
 }
