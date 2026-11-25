@@ -514,6 +514,19 @@
       "evidence": "Análisis XML (1 recurso, 243 ficheros, todos existentes); recuento de ficheros de atlas/ no listados: 66 → 0.",
       "impact": "Solo el empaquetado IMS; no cambia la interfaz ni los datos. La subida a Moodle sigue sin estar documentada ni probada.",
       "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "ligera/index.html",
+      "import_sha256": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
+      "snapshot": "docs/historial/BASE_4D320EE/ligera/index.html.snapshot",
+      "previous_sha256": "571755e8968ff586f1b828c14314d14cc798191f38df44fd04678eed2ce9de45",
+      "previous_snapshot": "docs/historial/PB_GH_11f/ligera/index.html.snapshot",
+      "corrected_sha256": "78e5470ff56773a13ec3f38d6ea688ca7f4f8eb30e050d1c01a91ecbb90e3085",
+      "change": "Se añade la sección «Subespecies de Homo erectus sin ficha ampliada» (erectus_erectus y erectus_pekinensis, con los datos del atlas y su fuente) y se actualiza el resumen a 52 entradas (50 fichas + 2).",
+      "reason": "Decisión de la titular (25-11-2026): que atlas, recorrido y ligera cuenten lo mismo (52 entradas, 50 fichas ampliadas). catalog.json no se modifica.",
+      "evidence": "Salida regenerada con src/entrada_ligera/build.py; construir.py --check idéntico; las 50 fichas y los datos del atlas comprobados por tests/test_subespecies_ligera.py.",
+      "impact": "Solo la consulta ligera: dos entradas nuevas en una sección aparte. Sin imágenes ni descripciones nuevas.",
+      "return": "Restaurar docs/historial/PB_GH_09/ligera/index.html.snapshot o revertir los commits y reconstruir."
     }
   ]
 }
