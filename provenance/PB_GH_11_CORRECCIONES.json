@@ -117,7 +117,8 @@
     "atlas/assets/js/95-sistema/accesibilidad-contenido.js",
     "atlas/assets/css/95-sistema/paleta.css",
     "atlas/assets/css/95-sistema/sin-capa-no-universitaria.css",
-    "atlas/assets/js/95-sistema/sin-capa-no-universitaria.js"
+    "atlas/assets/js/95-sistema/sin-capa-no-universitaria.js",
+    "atlas/assets/media/landing/hero-800.jpg"
   ],
   "governance_paths_note": "Archivos de gobierno y documentación preexistentes modificados en la ronda, sin huella de importación propia. governance_changes guarda, para cada uno, su estado anterior (copia byte a byte de c971001 en docs/historial/PB_GH_10/), la huella al cierre de la T6 (informativa: rondas posteriores pueden cambiarlos) y motivo, evidencia, impacto y retorno; el verificador comprueba el estado anterior archivado y los cinco campos.",
   "governance_paths": [
@@ -735,6 +736,85 @@
       "evidence": "Lectura del artículo de eLife (métodos y resumen: 335-236 ka) y de la página de Wikipedia indicada por la titular; verificar_repo.py y comprobación de la ficha en el navegador.",
       "impact": "Solo el rótulo de método de la ficha de H. naledi en el atlas; el panel de método muestra ahora los perfiles ESR, U-Series, OSL, magnetoestratigrafía y métodos múltiples.",
       "return": "Restaurar docs/historial/PB_GH_11k/atlas/assets/js/00-core/002-script.js.snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/media/landing/hero.jpg",
+      "import_sha256": "8082a01b4526315df2c1f2c7772fe79dffe56727ba8f4345dcf42c26401a488d",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/media/landing/hero.jpg.snapshot",
+      "corrected_sha256": "9c2ba39c048308475b9e9f834b68b02e8cd258955f220f6673f80b47bc8b71e0",
+      "change": "Imagen de la portada del atlas recomprimida y, si hacía falta, reducida de tamaño (862 KB a 294 KB), mismo encuadre y mismo nombre.",
+      "reason": "Tanda 3 del plan de acción (26-11-2026): la carga inicial del atlas era de unos 7,6 MB, de los que cerca de 3,5 MB eran estos seis JPEG.",
+      "evidence": "Comparación visual lado a lado con el original (sin diferencias apreciables) y medición de la carga en Chromium.",
+      "impact": "Menor peso de transferencia; sin cambio de contenido, de encuadre ni de créditos.",
+      "return": "Restaurar el snapshot (es el JPEG original) o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/media/landing/climate.jpg",
+      "import_sha256": "cfa8b316bc80da7402e45fc221ce77e443a09388be5b38200b92d51b96e7ece4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/media/landing/climate.jpg.snapshot",
+      "corrected_sha256": "bc3f50d4fade9e4e622cdd17135a4a9a7f581c4f4fb1b9619a4dc305052873d6",
+      "change": "Imagen de la portada del atlas recomprimida y, si hacía falta, reducida de tamaño (1651 KB a 102 KB), mismo encuadre y mismo nombre.",
+      "reason": "Tanda 3 del plan de acción (26-11-2026): la carga inicial del atlas era de unos 7,6 MB, de los que cerca de 3,5 MB eran estos seis JPEG.",
+      "evidence": "Comparación visual lado a lado con el original (sin diferencias apreciables) y medición de la carga en Chromium.",
+      "impact": "Menor peso de transferencia; sin cambio de contenido, de encuadre ni de créditos.",
+      "return": "Restaurar el snapshot (es el JPEG original) o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/media/landing/classroom.jpg",
+      "import_sha256": "2d15407228369c4884802723033606be6561e298e2a22d2bc5340812323fb577",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/media/landing/classroom.jpg.snapshot",
+      "corrected_sha256": "a02c3a69c42308320a99c8b4a0c8db66292780b0db524d4e353acdcb5d6d76de",
+      "change": "Imagen de la portada del atlas recomprimida y, si hacía falta, reducida de tamaño (550 KB a 111 KB), mismo encuadre y mismo nombre.",
+      "reason": "Tanda 3 del plan de acción (26-11-2026): la carga inicial del atlas era de unos 7,6 MB, de los que cerca de 3,5 MB eran estos seis JPEG.",
+      "evidence": "Comparación visual lado a lado con el original (sin diferencias apreciables) y medición de la carga en Chromium.",
+      "impact": "Menor peso de transferencia; sin cambio de contenido, de encuadre ni de créditos.",
+      "return": "Restaurar el snapshot (es el JPEG original) o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/media/landing/methods.jpg",
+      "import_sha256": "385bdc76c96c23955f6c9216cae89f3b3bd61a7111895e6dc4e0dbcea5b85227",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/media/landing/methods.jpg.snapshot",
+      "corrected_sha256": "2405b5723e8910c24cfff791660e3ed49c852cde072fe0afb29b0d1f25b1a0e8",
+      "change": "Imagen de la portada del atlas recomprimida y, si hacía falta, reducida de tamaño (381 KB a 223 KB), mismo encuadre y mismo nombre.",
+      "reason": "Tanda 3 del plan de acción (26-11-2026): la carga inicial del atlas era de unos 7,6 MB, de los que cerca de 3,5 MB eran estos seis JPEG.",
+      "evidence": "Comparación visual lado a lado con el original (sin diferencias apreciables) y medición de la carga en Chromium.",
+      "impact": "Menor peso de transferencia; sin cambio de contenido, de encuadre ni de créditos.",
+      "return": "Restaurar el snapshot (es el JPEG original) o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/media/landing/chronology.jpg",
+      "import_sha256": "a7a2bcc6b69ef9302e081eca96e330c1f2a26be78b7138da9e386ded2318dd32",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/media/landing/chronology.jpg.snapshot",
+      "corrected_sha256": "e9674106a8ae6db3f6cf9393e8fb3de683cd1b1fbcef05f029f89fa9fae4ce07",
+      "change": "Imagen de la portada del atlas recomprimida y, si hacía falta, reducida de tamaño (331 KB a 183 KB), mismo encuadre y mismo nombre.",
+      "reason": "Tanda 3 del plan de acción (26-11-2026): la carga inicial del atlas era de unos 7,6 MB, de los que cerca de 3,5 MB eran estos seis JPEG.",
+      "evidence": "Comparación visual lado a lado con el original (sin diferencias apreciables) y medición de la carga en Chromium.",
+      "impact": "Menor peso de transferencia; sin cambio de contenido, de encuadre ni de créditos.",
+      "return": "Restaurar el snapshot (es el JPEG original) o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/media/landing/territory.jpg",
+      "import_sha256": "b10ad2e97d6cddd64622f7e76f7578ef1e678e3389a45ee9c00360788e5cf8ee",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/media/landing/territory.jpg.snapshot",
+      "corrected_sha256": "7a87351184bf48f402d5fe9fdf25c496aecdee7ee567b3e38d3087beb6678942",
+      "change": "Imagen de la portada del atlas recomprimida y, si hacía falta, reducida de tamaño (308 KB a 182 KB), mismo encuadre y mismo nombre.",
+      "reason": "Tanda 3 del plan de acción (26-11-2026): la carga inicial del atlas era de unos 7,6 MB, de los que cerca de 3,5 MB eran estos seis JPEG.",
+      "evidence": "Comparación visual lado a lado con el original (sin diferencias apreciables) y medición de la carga en Chromium.",
+      "impact": "Menor peso de transferencia; sin cambio de contenido, de encuadre ni de créditos.",
+      "return": "Restaurar el snapshot (es el JPEG original) o revertir el commit."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "5d16ca6f0886918641a1f5ebdda0795dc9eb11ccc328028cd2d7628c0de00889",
+      "previous_snapshot": "docs/historial/PB_GH_11l/atlas/index.html.snapshot",
+      "corrected_sha256": "a753060e7dd219285687a894b85c4400d2daf381f88775fd40e4e6e9abd1b723",
+      "change": "La imagen principal de la portada del atlas añade srcset con una variante de 800 px (hero-800.jpg) y sizes=\"100vw\".",
+      "reason": "Tanda 3 del plan de acción: el teléfono descargaba la imagen de 1600 px.",
+      "evidence": "Medición de la carga a 390 px en Chromium y verificar_repo.py.",
+      "impact": "Solo la elección de archivo según el ancho de pantalla; mismo encuadre.",
+      "return": "Restaurar el snapshot o revertir el commit."
     }
   ]
 }

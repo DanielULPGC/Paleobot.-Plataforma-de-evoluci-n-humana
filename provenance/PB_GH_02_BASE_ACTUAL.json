@@ -1329,7 +1329,8 @@
       "git_blob_sha1": "cf40bd2cdbcda77b185a956e83e8010b084772bf",
       "sha256": "a7a2bcc6b69ef9302e081eca96e330c1f2a26be78b7138da9e386ded2318dd32",
       "retained_paths": [
-        "atlas/assets/media/landing/chronology.jpg"
+        "atlas/assets/media/landing/chronology.jpg",
+        "docs/historial/BASE_4D320EE/atlas/assets/media/landing/chronology.jpg.snapshot"
       ]
     },
     {
@@ -1337,7 +1338,8 @@
       "git_blob_sha1": "dcb4a1e9466a5202da981964b27f7cbf593d29fe",
       "sha256": "2d15407228369c4884802723033606be6561e298e2a22d2bc5340812323fb577",
       "retained_paths": [
-        "atlas/assets/media/landing/classroom.jpg"
+        "atlas/assets/media/landing/classroom.jpg",
+        "docs/historial/BASE_4D320EE/atlas/assets/media/landing/classroom.jpg.snapshot"
       ]
     },
     {
@@ -1345,7 +1347,8 @@
       "git_blob_sha1": "e66ff43a9cec415476aa8e11334c9fbd16b0d575",
       "sha256": "cfa8b316bc80da7402e45fc221ce77e443a09388be5b38200b92d51b96e7ece4",
       "retained_paths": [
-        "atlas/assets/media/landing/climate.jpg"
+        "atlas/assets/media/landing/climate.jpg",
+        "docs/historial/BASE_4D320EE/atlas/assets/media/landing/climate.jpg.snapshot"
       ]
     },
     {
@@ -1353,7 +1356,8 @@
       "git_blob_sha1": "75c08d5ffc2cc69867b5294264920a151e614728",
       "sha256": "8082a01b4526315df2c1f2c7772fe79dffe56727ba8f4345dcf42c26401a488d",
       "retained_paths": [
-        "atlas/assets/media/landing/hero.jpg"
+        "atlas/assets/media/landing/hero.jpg",
+        "docs/historial/BASE_4D320EE/atlas/assets/media/landing/hero.jpg.snapshot"
       ]
     },
     {
@@ -1361,7 +1365,8 @@
       "git_blob_sha1": "f6d3ed5d5ced7bbbea0db2bf1f507ab5d2e30bd5",
       "sha256": "385bdc76c96c23955f6c9216cae89f3b3bd61a7111895e6dc4e0dbcea5b85227",
       "retained_paths": [
-        "atlas/assets/media/landing/methods.jpg"
+        "atlas/assets/media/landing/methods.jpg",
+        "docs/historial/BASE_4D320EE/atlas/assets/media/landing/methods.jpg.snapshot"
       ]
     },
     {
@@ -1369,7 +1374,8 @@
       "git_blob_sha1": "4df78587ea4bd8834fdd8d1fcefb8bf45b06050c",
       "sha256": "b10ad2e97d6cddd64622f7e76f7578ef1e678e3389a45ee9c00360788e5cf8ee",
       "retained_paths": [
-        "atlas/assets/media/landing/territory.jpg"
+        "atlas/assets/media/landing/territory.jpg",
+        "docs/historial/BASE_4D320EE/atlas/assets/media/landing/territory.jpg.snapshot"
       ]
     },
     {

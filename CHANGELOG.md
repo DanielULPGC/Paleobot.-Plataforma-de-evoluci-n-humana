@@ -1,5 +1,9 @@
 # Registro de cambios
 
+## Peso de las imágenes de la portada del atlas · 26/11/2026
+
+Tanda 3 del plan de acción (T-1). Los seis JPEG de `atlas/assets/media/landing/` se recomprimen sin cambiar dimensiones ni contenido: de ~4,1 MB a ~1,2 MB en total. La imagen principal admite `srcset` (`hero-800.jpg` 800 px y `hero.jpg` 1600 px, `sizes="100vw"`), de modo que el teléfono descarga ~72 KB en lugar de ~295 KB. Originales conservados en `docs/historial/BASE_4D320EE/`; procedencia registrada. Pendiente: carga diferida de terceros (D4) y compresión de JS/CSS, que depende del servidor (Pages ya sirve con gzip).
+
 ## Método de datación de *Homo naledi* · 26/11/2026
 
 Propuesta P-1 de la tanda 2, aprobada por la titular. En el atlas, el método de *H. naledi* pasa de «OSL» a «Múltiples (ESR, U-Series, OSL, paleomagnetismo)» (Dirks et al., 2017, https://doi.org/10.7554/eLife.24231: US-ESR en dientes, U-Th y paleomagnetismo en flowstones, OSL en sedimentos; 335-236 ka). El panel de método muestra ahora cinco perfiles. Estado previo en `docs/historial/PB_GH_11k/`.
