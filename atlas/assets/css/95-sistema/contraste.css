@@ -3,7 +3,7 @@
    Biogeografía: la ficha sin imagen (.biogeo-record-thumb-missing, «N/D») pintaba #6b746f sobre #eeeae2
    (4,02:1, 001-style.css); pasa a --tinta-2 (6,71:1). Los otros literales de esta tanda se corrigen donde
    nacen: index.html (Paleoproteómica: #a9772c → #8a5f1e, 5,62:1 sobre blanco y 4,91:1 sobre #f6efe2;
-   #7a857d → #5f6662, 5,89:1) y 002-script.js (grupo «Géneros anteriores» de Biogeografía: #c07800 → #8f5900,
+   #7a857d → #44566b, 5,89:1) y 002-script.js (grupo «Géneros anteriores» de Biogeografía: #c07800 → #8f5900,
    texto blanco 5,84:1). Revertir: quitar este archivo de atlas/index.html.
    ===================================================================================================== */
 .biogeo-record-thumb-missing { color: var(--tinta-2) !important; }

@@ -1,7 +1,7 @@
 html,body { max-width:100%; overflow-x:hidden; }
-/* PB-GH-10 · Recorrido sobre el sistema base «Papel y tierra» (../../assets/paleobot-base.css).
+/* PB-GH-10 · Recorrido sobre el sistema base «Azul profundo y arena» (../../assets/paleobot-base.css).
    La hoja base aporta Lexend local, escala tipográfica, espaciado, radios, foco y la etiqueta .pb-etiqueta.
-   Aquí solo se redefinen los COLORES del modo oscuro propio del recorrido (ahora la pizarra del sistema: fondo #161a19, tinta clara, terracota claro como acento)
+   Aquí solo se redefinen los COLORES del modo oscuro propio del recorrido (ahora la pizarra del sistema: fondo #0f1a28, tinta clara, terracota claro como acento)
    y unos alias de escala. Contrastes medidos (WCAG 2.x): texto ≥ 4,5:1; contornos de control y foco ≥ 3:1.
    :root.pb-recorrido pesa (0,2,0) y se carga después de la base: gana también a su modo oscuro por prefers-color-scheme.
    En impresión no se aplica (solo @media screen) y rigen los tokens de impresión de la base. */
@@ -9,23 +9,23 @@ html,body { max-width:100%; overflow-x:hidden; }
   :root.pb-recorrido {
     /* Subtema «pizarra» del sistema (docs/diseno/SISTEMA.md): mismos valores que el oscuro de ../../assets/paleobot-base.css
        y que la barra de trabajo del atlas. Sustituye al petróleo y al oro propios del recorrido (23-11-2026). */
-    --papel: #161a19;
-    --superficie: #1f2523;
-    --hundido: #262d2a;
-    --tinta: #ecebe6;          /* 14,7:1 sobre papel; 13,1:1 sobre superficie */
-    --tinta-2: #b9bfbb;        /* 9,4:1 / 8,3:1 */
-    --tinta-3: #a3aaa6;        /* pies, créditos */
-    --acento: #f0a77c;         /* terracota claro: 8,8:1 / 7,8:1 */
-    --acento-fuerte: #f7c6a6;  /* hover */
-    --sobre-acento: #161a19;   /* 8,8:1 sobre el acento */
-    --acento-suave: #3a2a20;   /* cajas de aviso */
+    --papel: #0f1a28;
+    --superficie: #16243a;
+    --hundido: #1c2c44;
+    --tinta: #eae6da;          /* 14,7:1 sobre papel; 13,1:1 sobre superficie */
+    --tinta-2: #b8c2cf;        /* 9,4:1 / 8,3:1 */
+    --tinta-3: #9fadbd;        /* pies, créditos */
+    --acento: #7cc4d8;         /* terracota claro: 8,8:1 / 7,8:1 */
+    --acento-fuerte: #b5e2ee;  /* hover */
+    --sobre-acento: #0f1a28;   /* 8,8:1 sobre el acento */
+    --acento-suave: #1a3a48;   /* cajas de aviso */
     --debatida: #f4d27a;       /* etiqueta de incertidumbre */
     --debatida-fondo: #3a3220;
     --bien: #8fd19e;
     --mal: #ff9d8f;
-    --borde: #3a423f;          /* solo separadores decorativos */
-    --borde-control: #7d8681;  /* contorno de controles */
-    --foco: #8ab4f8;           /* anillo de foco */
+    --borde: #2c3d56;          /* solo separadores decorativos */
+    --borde-control: #7a8aa0;  /* contorno de controles */
+    --foco: #f2b04a;           /* anillo de foco */
     --sombra-flotante: 0 4px 16px rgba(0, 0, 0, .5);
     color-scheme: dark;
   }

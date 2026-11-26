@@ -49,7 +49,7 @@ class DisenoPBGH10(unittest.TestCase):
         for nombre in NUEVAS:self.assertTrue(resultado[nombre],nombre)
 
     def test_rechaza_token_desincronizado(self):
-        self.editar('src/entrada_ligera/estilos.css','--acento: #8a3b12;','--acento: #8a3b13;')
+        self.editar('src/entrada_ligera/estilos.css','--acento: #0a5568;','--acento: #0a5569;')
         self.assertFalse(self.result(TOKENS))
 
     def test_rechaza_lexend_alterada(self):
@@ -73,7 +73,7 @@ class DisenoPBGH10(unittest.TestCase):
         self.assertFalse(self.result(DEA))
 
     def test_rechaza_color_en_bruto_en_dea_css(self):
-        self.editar('dea/dea.css','.mapas .guia { stroke: var(--tinta-2);','.mapas .guia { stroke: #4a524e;')
+        self.editar('dea/dea.css','.mapas .guia { stroke: var(--tinta-2);','.mapas .guia { stroke: #2a3c52;')
         self.assertFalse(self.result(DEA_CSS))
 
     def test_rechaza_tamano_de_letra_fuera_de_escala(self):
@@ -118,11 +118,11 @@ class DisenoPBGH10(unittest.TestCase):
 
     def test_rechaza_proyeccion_oscura_que_hereda_tinta_clara(self):
         # A1 de la verificación independiente: el bloque oscuro de .proyeccion no redefinía --tinta-2.
-        self.editar('assets/paleobot-base.css','--tinta-2: #cfd4d0; ','')
+        self.editar('assets/paleobot-base.css','--tinta-2: #cdd6e0; ','')
         self.assertFalse(self.result(CONTRASTE))
 
     def test_rechaza_foco_sin_contraste_en_oscuro(self):
-        self.editar('assets/paleobot-base.css','--foco: #8ab4f8;','--foco: #2a2f2d;')
+        self.editar('assets/paleobot-base.css','--foco: #f2b04a;','--foco: #2a2f2d;')
         self.assertFalse(self.result(CONTRASTE))
 
     # Falsos negativos de la verificación independiente (M7): cada forma de color o tamaño en bruto se rechaza.

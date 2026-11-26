@@ -3,7 +3,7 @@
    -----------------------------------------------------------------------------------------------------
    Columna vertebral ADITIVA (DIRECCION_ATLAS § 1): se enlaza la ÚLTIMA en atlas/index.html (?v=pbgh11) y
    corrige por las clases EXISTENTES, sin renombrar ni borrar ninguna clase, id, data-* ni regla de las hojas
-   importadas. ../../../../assets/paleobot-base.css («Papel y tierra») se enlaza ANTES de las hojas del atlas:
+   importadas. ../../../../assets/paleobot-base.css («Azul profundo y arena») se enlaza ANTES de las hojas del atlas:
    aquí se usan sus tokens. Hay autocomprobaciones que leen el TEXTO de las hojas (v34-flip,
    v34-high-contrast, v34-cranial-stage) y capas que cuelgan de clases de body/html: no se tocan.
    Regla de prioridad: variables y :where() siempre que basten; !important solo donde lo importado lo
@@ -29,7 +29,7 @@
    color:#172436!important en todo botón de .modal-content. Especificidad (0,4,1) > (0,3,2) de esa regla.
    Acento tierra con texto blanco: 7,7:1. Los botones .linked (secundarios) conservan su aspecto. */
 body.pb-v50-unified .modal-content .exam-btn:not(.linked) {
-  background: var(--acento, #8a3b12) !important;
+  background: var(--acento, #0a5568) !important;
   color: var(--sobre-acento, #ffffff) !important;
 }
 
@@ -41,12 +41,12 @@ body.pb-v50-unified .modal-content .exam-btn:not(.linked) {
 :root:root { color-scheme: light; }
 @media (prefers-color-scheme: dark) {
   :root:root:root {
-    --papel: #f7f4ee; --superficie: #ffffff; --hundido: #efe9de;
-    --tinta: #1f2422; --tinta-2: #4a524e; --tinta-3: #5f6662;
-    --acento: #8a3b12; --acento-fuerte: #6e2e0c; --sobre-acento: #ffffff; --acento-suave: #f3e3d6;
+    --papel: #f6f1e6; --superficie: #ffffff; --hundido: #ebe3d1;
+    --tinta: #0d1b2e; --tinta-2: #2a3c52; --tinta-3: #44566b;
+    --acento: #0a5568; --acento-fuerte: #06404f; --sobre-acento: #ffffff; --acento-suave: #d9e6ea;
     --debatida: #6b4e00; --debatida-fondo: #fbf0cf; --bien: #2f6b3a; --bien-fondo: #e3efe3;
-    --mal: #a1281b; --mal-fondo: #f8e3df; --borde: #d6d0c4; --borde-control: #8c857a; --foco: #0b57d0;
-    --tierra: #e9dfcd; --mar: #dce8ec; --sombra-flotante: 0 4px 16px rgba(31, 36, 34, .12);
+    --mal: #a1281b; --mal-fondo: #f8e3df; --borde: #d8d0bd; --borde-control: #6e7889; --foco: #9a4f00;
+    --tierra: #e6dcc4; --mar: #d3e3ea; --sombra-flotante: 0 4px 16px rgba(13, 27, 46, .12);
     color-scheme: light;
   }
 }
@@ -54,20 +54,19 @@ body.pb-v50-unified .modal-content .exam-btn:not(.linked) {
 /* -- 2 · Subtema «pizarra» ----------------------------------------------------------------------------
    La barra de bloques (#pbV50Blocks, capa v50 de 017) y las superficies oscuras importadas (portada v50,
    cajón, presentación) siguen oscuras (pasarlas a papel es L3). Sus tokens son los del oscuro de
-   «Papel y tierra» (contrastes ya medidos en SISTEMA.md § 6), con nombre propio para que no dependan de
+   «Azul profundo y arena» (contrastes ya medidos en SISTEMA.md § 6), con nombre propio para que no dependan de
    prefers-color-scheme:
-     --pizarra #161a19 · --pizarra-2 #1f2523 · --pizarra-3 #262d2a        (fondos)
-     --sobre-pizarra #ecebe6 (14,71:1 sobre --pizarra; 11,80:1 sobre --pizarra-3)
-     --sobre-pizarra-2 #b9bfbb (9,39:1 / 7,53:1) · --pizarra-acento #f0a77c (8,80:1 / 7,06:1; texto
-     --pizarra sobre él 8,80:1) · --pizarra-borde #3a423f (decorativo) · --pizarra-borde-control #7d8681
-     (4,68:1 / 3,75:1) · --foco-pizarra #8ab4f8 (8,33:1 sobre --pizarra; 6,68:1 sobre --pizarra-3; 7,43:1
-     sobre el petróleo #102630 de las cabeceras). El --foco claro #0b57d0 da 2,75:1 sobre pizarra: por eso
+     --pizarra #0f1a28 · --pizarra-2 #16243a · --pizarra-3 #1c2c44        (fondos)
+     --sobre-pizarra #eae6da (14,04:1 sobre --pizarra; 11,27:1 sobre --pizarra-3)
+     --sobre-pizarra-2 #b8c2cf (9,72:1 / 7,81:1) · --pizarra-acento #7cc4d8 (8,96:1 / 7,20:1; texto
+     --pizarra sobre él 8,96:1) · --pizarra-borde #2c3d56 (decorativo) · --pizarra-borde-control #7a8aa0
+     (4,98:1 / 4,00:1) · --foco-pizarra #f2b04a (9,25:1 sobre --pizarra; 7,42:1 sobre --pizarra-3). El --foco claro #9a4f00 da 2,9:1 sobre pizarra: por eso
      las superficies oscuras usan --foco-pizarra.
    Contrastes calculados con la fórmula WCAG 2.x (cr.py de la T2, ver informe). */
 :root:root {
-  --pizarra: #161a19; --pizarra-2: #1f2523; --pizarra-3: #262d2a;
-  --sobre-pizarra: #ecebe6; --sobre-pizarra-2: #b9bfbb; --pizarra-acento: #f0a77c;
-  --pizarra-borde: #3a423f; --pizarra-borde-control: #7d8681; --foco-pizarra: #8ab4f8;
+  --pizarra: #0f1a28; --pizarra-2: #16243a; --pizarra-3: #1c2c44;
+  --sobre-pizarra: #eae6da; --sobre-pizarra-2: #b8c2cf; --pizarra-acento: #7cc4d8;
+  --pizarra-borde: #2c3d56; --pizarra-borde-control: #7a8aa0; --foco-pizarra: #f2b04a;
   /* Escala de dato del atlas (DIRECCION § 2.6): rótulo de eje/leyenda y cifra destacada. */
   --t-dato: .75rem;   /* 12 px: mínimo de rótulos de dato, ejes, leyendas y celdas densas */
   --t-cifra: 2rem;    /* 32 px: cifra destacada */
@@ -221,7 +220,7 @@ html body.pb-v50-unified :is(.stat-item strong, .sp-years, .sp-age, .sp-tag, .ev
 
 /* -- 5 · Foco (fila 7) --------------------------------------------------------------------------------
    Antes: anillo ámbar #f2bf52/#f2bd45 (047, 053) = 1,70:1 sobre blanco y 1,48:1 sobre el fondo; tres
-   colores de foco distintos. Ahora el anillo de la hoja base (--foco #0b57d0: 6,39:1 sobre superficie,
+   colores de foco distintos. Ahora el anillo de la hoja base (--foco #9a4f00: 6,39:1 sobre superficie,
    5,82:1 sobre papel, 5,29:1 sobre hundido) en todo el atlas. 047, 053 y 025 ya pintan el anillo con
    variables con !important: el puente (capa 3) las lleva a --foco y anula la sombra ámbar. Esta regla
    cubre el resto: los «outline: none» sin sustituto de 001/005/007/013/023/029/050 y los colores
@@ -260,16 +259,16 @@ html body .biogeo-tag-age.muted { opacity: 1; color: var(--tinta-3); font-style:
 
 /* -- 7 · Modos (fila 21) ------------------------------------------------------------------------------
    «Contraste» del cajón (054 añade html.pb-v74-high-contrast) solo cambiaba cinco variables y el fondo
-   de body no cambiaba. Ahora aplica los tokens de proyección de la hoja base (.proyeccion: papel #fbf9f4,
-   tinta #111513 17,5:1, tinta-2 #33403a 10,3:1, borde #8c857a) y lleva también --tinta-3 a --tinta-2:
+   de body no cambiaba. Ahora aplica los tokens de proyección de la hoja base (.proyeccion: papel #fbf8f0,
+   tinta #07121f 17,5:1, tinta-2 #1d2e44 10,3:1, borde #6e7889) y lleva también --tinta-3 a --tinta-2:
    todo el texto secundario a ≥ 10:1. Como el puente apunta a los tokens, el efecto llega a las ocho
    familias de variables. «Modo clase» (002 añade body.class-mode-active) no tenía efecto visual: ahora usa
    los mismos tokens de proyección y agranda la letra un 20 % sobre la elección de A−/A+ (054 fija el
    tamaño raíz con html.pb-v74-font-NNN !important; se multiplica, no se sustituye). */
 :root:root.pb-v74-high-contrast,
 :root:root body.class-mode-active {
-  --papel: #fbf9f4; --tinta: #111513; --tinta-2: #33403a; --tinta-3: #33403a; --borde: #8c857a;
-  --borde-control: #5f5a52;
+  --papel: #fbf8f0; --tinta: #07121f; --tinta-2: #1d2e44; --tinta-3: #1d2e44; --borde: #6e7889;
+  --borde-control: #4e5a6b;
 }
 :root:root.pb-v74-high-contrast body:not(.v34-high-contrast) { --border: var(--borde-control) !important; }
 :root:root:has(> body.class-mode-active) { font-size: 120% !important; }

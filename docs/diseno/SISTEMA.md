@@ -1,4 +1,4 @@
-# Sistema de diseño «Papel y tierra» · estado vigente
+# Sistema de diseño «Azul profundo y arena» · estado vigente
 
 Describe el sistema tal como ha quedado en el código al cerrar PB-GH-10 (12-11-2026, rama
 `feat/pb-gh-10-diseno`) y su ampliación al atlas interactivo en PB-GH-11 (19-11-2026, rama
@@ -126,44 +126,50 @@ Contrastes calculados con la fórmula WCAG 2.x sobre los valores de la hoja (scr
 `contrastes_tokens.py` de la auditoría) y confirmados con axe-core en el navegador. Mínimos: texto 4,5:1;
 contornos de control, marcas y foco 3:1.
 
+### Paleta «Azul profundo y arena» (26-11-2026)
+
+Sustituye a la paleta de tierra y terracota. Criterio: fondo cálido y neutro (arena) para no cansar la vista, tinta de un
+azul muy oscuro para el máximo contraste en lectura prolongada, acento azul petróleo y un solo segundo acento, el ocre,
+reservado a los avisos de incertidumbre. El anillo de foco es ocre oscuro a propósito: así se distingue del acento
+azul de los botones. Valores y razones de contraste (WCAG 2.x, calculadas):
+
 ### Claro (por defecto)
 
 | Token | Valor | Contraste medido |
 |---|---|---|
-| `--papel` | #f7f4ee | fondo de página |
+| `--papel` | #f6f1e6 | fondo de página (arena) |
 | `--superficie` | #ffffff | fichas, tarjetas, campos |
-| `--hundido` | #efe9de | bloques secundarios, pies |
-| `--tinta` | #1f2422 | 14,34:1 sobre papel; 15,75:1 sobre superficie |
-| `--tinta-2` | #4a524e | 7,33:1 sobre papel; 6,66:1 sobre hundido |
-| `--tinta-3` | #5f6662 | 5,37:1 sobre papel; 4,88:1 sobre hundido (el más bajo de texto) |
-| `--acento` | #8a3b12 | 7,05:1 sobre papel; 7,73:1 sobre superficie; 6,18:1 sobre `--acento-suave` |
-| `--acento-fuerte` | #6e2e0c | 9,29:1 sobre papel (hover) |
-| `--sobre-acento` | #ffffff | 7,73:1 sobre acento |
-| `--acento-suave` | #f3e3d6 | fondos de resalte y pestaña activa |
-| `--debatida` / `--debatida-fondo` | #6b4e00 / #fbf0cf | 6,8:1 |
+| `--hundido` | #ebe3d1 | bloques secundarios, pies |
+| `--tinta` | #0d1b2e | 15,37:1 sobre papel; 17,31:1 sobre superficie |
+| `--tinta-2` | #2a3c52 | 9,99:1 sobre papel; 8,81:1 sobre hundido |
+| `--tinta-3` | #44566b | 6,68:1 sobre papel; 5,89:1 sobre hundido (el más bajo de texto) |
+| `--acento` | #0a5568 | 7,42:1 sobre papel; 8,36:1 sobre superficie; 6,55:1 sobre `--acento-suave` |
+| `--acento-fuerte` | #06404f | 10,06:1 sobre papel (hover) |
+| `--sobre-acento` | #ffffff | 8,36:1 sobre acento |
+| `--acento-suave` | #d9e6ea | fondos de resalte y pestaña activa |
+| `--debatida` / `--debatida-fondo` | #6b4e00 / #fbf0cf | 6,80:1 (ocre: solo avisos) |
 | `--bien` / `--bien-fondo` | #2f6b3a / #e3efe3 | 5,39:1 |
 | `--mal` / `--mal-fondo` | #a1281b / #f8e3df | 6,01:1 |
-| `--borde` | #d6d0c4 | solo separadores decorativos (1,4:1, no se usa en controles) |
-| `--borde-control` | #8c857a | 3,65:1 sobre superficie; 3,33:1 sobre papel; 3,02:1 sobre hundido |
-| `--foco` | #0b57d0 | 5,82:1 sobre papel; 4,84:1 sobre `--tierra`; 5,11:1 sobre `--mar` |
-| `--tierra` / `--mar` | #e9dfcd / #dce8ec | tierra y mar del mapa (marca de acento 5,86:1 y 6,19:1) |
+| `--borde` | #d8d0bd | solo separadores decorativos (1,4:1, no se usa en controles) |
+| `--borde-control` | #6e7889 | 4,46:1 sobre superficie; 3,96:1 sobre papel; 3,49:1 sobre hundido |
+| `--foco` | #9a4f00 | 5,34:1 sobre papel; 4,41:1 sobre `--tierra`; 4,57:1 sobre `--mar` |
+| `--tierra` / `--mar` | #e6dcc4 / #d3e3ea | tierra y mar del mapa (marca de acento 6,13:1 y 6,35:1) |
 
 ### Oscuro (`prefers-color-scheme: dark`; se puede forzar el claro con `data-tema="claro"`)
 
-Papel #161a19, superficie #1f2523, hundido #262d2a, tinta #ecebe6, tinta-2 #b9bfbb, tinta-3 #a3aaa6, acento
-#f0a77c, sobre-acento #161a19, debatida #f4d27a sobre #3a3220, bien #8fd19e, mal #ff9d8f, borde-control #7d8681,
-foco #8ab4f8, tierra #33392f, mar #18262b. Contraste más bajo medido: texto 5,94:1 (tinta-3 sobre hundido);
-contorno de control 3,75:1 (sobre hundido). Ninguna pareja por debajo del mínimo.
+Papel #0f1a28, superficie #16243a, hundido #1c2c44, tinta #eae6da (14,04:1), tinta-2 #b8c2cf (9,72:1), tinta-3 #9fadbd
+(7,66:1; 6,15:1 sobre hundido), acento #7cc4d8 (8,96:1), sobre-acento #0f1a28, debatida #f4d27a sobre #3a3220, bien
+#8fd19e, mal #ff9d8f, borde-control #7a8aa0 (4,98:1; 4,00:1 sobre hundido), foco #f2b04a (9,25:1), tierra #27374d,
+mar #12253a. Contraste más bajo medido en texto: 6,15:1; en contorno de control: 4,00:1. Ninguna pareja por debajo del
+mínimo.
 
 ### Proyección (clase `.proyeccion`)
 
-Claro: papel #fbf9f4, tinta #111513 (17,5:1), tinta-2 #33403a (10,31:1), borde #8c857a. Oscuro: papel #0f1211,
-tinta #f7f6f2, tinta-2 #cfd4d0 (12,54:1 sobre papel; 9,38:1 sobre hundido), tinta-3 #b6bcb8 (9,75:1; 7,29:1 sobre
-hundido), borde #7d8681. Regla: **todo token que `.proyeccion` redefine para el claro se redefine también en su
-bloque oscuro**; si no, el `<body>` en proyección hereda el del claro. Hasta 222dd42 el bloque oscuro no redefinía
-`--tinta-2` y el texto secundario quedaba a 1,74:1 (axe: 1-34 infracciones por vista); la verificación
-independiente lo detectó y ahora lo comprueba el verificador. Con esto, los mínimos en proyección son iguales o
-mejores que en claro y oscuro en las cuatro combinaciones.
+Claro: papel #fbf8f0, tinta #07121f (17,74:1), tinta-2 #1d2e44 (12,96:1), borde #6e7889. Oscuro: papel #09121e,
+tinta #f7f6f2, tinta-2 #cdd6e0 (12,80:1 sobre papel), tinta-3 #b4c0cd (10,17:1), borde #7a8aa0. Regla: **todo token que
+`.proyeccion` redefine para el claro se redefine también en su bloque oscuro**; si no, el `<body>` en proyección hereda
+el del claro (hasta 222dd42 el texto secundario quedaba a 1,74:1; ahora lo comprueba el verificador). Los mínimos en
+proyección son iguales o mejores que en claro y oscuro en las cuatro combinaciones.
 
 ### Atlas: subtema «pizarra» (barra de trabajo)
 
@@ -171,14 +177,14 @@ La barra de trabajo del atlas (`#pbV50Blocks`, su franja fija y el panel «Vista
 tokens propios, tomados del oscuro de la hoja base y declarados en `atlas-sistema.css`. Pasarla a papel claro es
 una propuesta L3 que la titular no ha decidido. Contrastes calculados (WCAG 2.x):
 
-| Token | Valor | Sobre `--pizarra` #161a19 | Sobre `--pizarra-2` #1f2523 | Sobre `--pizarra-3` #262d2a |
+| Token | Valor | Sobre `--pizarra` #0f1a28 | Sobre `--pizarra-2` #16243a | Sobre `--pizarra-3` #1c2c44 |
 |---|---|---|---|---|
-| `--sobre-pizarra` | #ecebe6 | 14,71:1 | 13,06:1 | 11,80:1 |
-| `--sobre-pizarra-2` | #b9bfbb | 9,39:1 | 8,34:1 | 7,53:1 |
-| `--pizarra-acento` | #f0a77c (pestaña y chip activos, con texto `--pizarra` encima: 8,80:1) | 8,80:1 | 7,81:1 | 7,06:1 |
-| `--pizarra-borde-control` | #7d8681 | 4,68:1 | 4,16:1 | 3,75:1 |
-| `--foco-pizarra` | #8ab4f8 | 8,33:1 | 7,40:1 | 6,68:1 |
-| `--pizarra-borde` | #3a423f | solo separador decorativo (1,70:1), no en controles | | |
+| `--sobre-pizarra` | #eae6da | 14,04:1 | 12,49:1 | 11,27:1 |
+| `--sobre-pizarra-2` | #b8c2cf | 9,72:1 | 8,65:1 | 7,81:1 |
+| `--pizarra-acento` | #7cc4d8 (pestaña y chip activos, con texto `--pizarra` encima: 8,96:1) | 8,96:1 | 7,97:1 | 7,20:1 |
+| `--pizarra-borde-control` | #7a8aa0 | 4,98:1 | 4,43:1 | 4,00:1 |
+| `--foco-pizarra` | #f2b04a | 9,25:1 | 8,23:1 | 7,42:1 |
+| `--pizarra-borde` | #2c3d56 | solo separador decorativo, no en controles | | |
 
 Desencadenante: la barra de bloques en teléfono (fila 12: 950 px, el 113 % del alto, a 390 px) y su pestaña activa
 en oro #d6a84f; las variables `--v36-rail-*` y `--v50-*` de las hojas importadas apuntan ahora a estos tokens (T2).
@@ -343,7 +349,7 @@ repositorio); una selección reducida está en `docs/diseno/evidencia/`.
 
 ### Recorrido: pizarra del sistema (23-11-2026)
 
-El recorrido (`atlas/recorrido/`) usa siempre el oscuro y, desde esta fecha, con los valores de la pizarra del sistema (`--papel` #161a19,
-`--tinta` #ecebe6, `--acento` #f0a77c, `--foco` #8ab4f8), idénticos al oscuro de `assets/paleobot-base.css`. Antes tenía petróleo (#0d2028) y oro (#d8a93a)
-propios. Los colores de los clados siguen siendo los del propio recorrido. Con `atlas/`, `ligera/` y `dea/` la identidad es, por tanto, una sola: «Papel y tierra»
+El recorrido (`atlas/recorrido/`) usa siempre el oscuro y, desde esta fecha, con los valores de la pizarra del sistema (`--papel` #0f1a28,
+`--tinta` #eae6da, `--acento` #7cc4d8, `--foco` #f2b04a), idénticos al oscuro de `assets/paleobot-base.css`. Antes tenía petróleo (#0d2028) y oro (#d8a93a)
+propios. Los colores de los clados siguen siendo los del propio recorrido. Con `atlas/`, `ligera/` y `dea/` la identidad es, por tanto, una sola: «Azul profundo y arena»
 en claro y su pizarra en oscuro.
