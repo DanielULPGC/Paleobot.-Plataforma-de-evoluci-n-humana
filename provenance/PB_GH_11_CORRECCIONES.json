@@ -722,6 +722,19 @@
       "evidence": "verificar_repo.py, node --check y comprobación en navegador de las 31 vistas (sin «LOMLOE» ni chips de competencias, sin errores de página).",
       "impact": "Una frase de la introducción.",
       "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/00-core/002-script.js",
+      "import_sha256": "b6052b999d1021ab4b28af6be25e89fe584db45cf135d7100e9d324bc484035f",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/002-script.js.snapshot",
+      "previous_sha256": "38b60df6375b83ebfc96f93c39f2e10d1a49f0108f514a5cdb6da89659a6c273",
+      "previous_snapshot": "docs/historial/PB_GH_11k/atlas/assets/js/00-core/002-script.js.snapshot",
+      "corrected_sha256": "d1d41b9eb60d8dd4fab4a735007152d31a3f5568c21d972f5e7419189201d890",
+      "change": "El método de datación de Homo naledi pasa de «OSL» a «Múltiples (ESR, U-Series, OSL, paleomagnetismo)».",
+      "reason": "La datación publicada combina técnicas: US-ESR en dientes, U-Th y paleomagnetismo en flowstones y OSL en sedimentos (Dirks et al., 2017, https://doi.org/10.7554/eLife.24231). Propuesta P-1 de la tanda 2, aprobada por la titular el 26-11-2026.",
+      "evidence": "Lectura del artículo de eLife (métodos y resumen: 335-236 ka) y de la página de Wikipedia indicada por la titular; verificar_repo.py y comprobación de la ficha en el navegador.",
+      "impact": "Solo el rótulo de método de la ficha de H. naledi en el atlas; el panel de método muestra ahora los perfiles ESR, U-Series, OSL, magnetoestratigrafía y métodos múltiples.",
+      "return": "Restaurar docs/historial/PB_GH_11k/atlas/assets/js/00-core/002-script.js.snapshot o revertir el commit."
     }
   ]
 }
