@@ -13,7 +13,6 @@
      · Objetivos cognitivos activados (del VIEW_DIDACTIC_SPEC)
      · Pregunta de síntesis generada a partir de las vistas visitadas
      · Siguiente vista sugerida para completar el recorrido
-     · Competencias LOMLOE activadas (unión de todas las vistas)
      · Exportación del resumen como .txt (Moodle-ready)
 
    Integración no destructiva:
@@ -89,16 +88,6 @@
       groups[fam].push({ id, meta, spec });
     });
     return groups;
-  }
-
-  /** Recopila todas las competencias LOMLOE activadas en la sesión */
-  function _sessionCompetencias(visitedIds) {
-    const set = new Set();
-    visitedIds.forEach(id => {
-      const spec = window.PB_DidacticSpec.getViewSpec(id);
-      if (spec) spec.competenciasLOMLOE.forEach(c => set.add(c));
-    });
-    return [...set];
   }
 
   /**
@@ -192,7 +181,6 @@
 
     const bloomSummary = window.PB_DidacticSpec.getSessionBloomSummary(visitedArr);
     const groups       = _groupByFamily(visitedArr);
-    const competencias = _sessionCompetencias(visitedArr);
     const synthesis    = _buildSynthesisQuestion(visited);
     const nivelActual  = (typeof window.nivelActual !== 'undefined' && window.nivelActual) || 'universitario';
     const nextId       = window.PB_DidacticSpec.suggestNextView(
@@ -217,10 +205,6 @@
             Nivel Bloom máximo<br>
             <strong style="color:${maxBloomColor}">${BLOOM_LABELS[bloomSummary.maxBloom] || ''}</strong>
           </span>
-        </div>
-        <div class="pb-ssm-kpi" role="listitem">
-          <span class="pb-ssm-kpi-value">${competencias.length}</span>
-          <span class="pb-ssm-kpi-label">Competencias LOMLOE<br>activadas</span>
         </div>
         <div class="pb-ssm-kpi" role="listitem">
           <span class="pb-ssm-kpi-value">${Object.keys(groups).length}</span>
@@ -268,31 +252,6 @@
         </div>
       </section>`;
 
-    /* ── Competencias LOMLOE activadas ────────────────────────────────── */
-    const COMP_META = {
-      CCL:   { emoji:'💬', full:'Comunicación Lingüística' },
-      STEM:  { emoji:'🔬', full:'Matemática, Ciencia y Tecnología' },
-      CD:    { emoji:'💻', full:'Competencia Digital' },
-      CPSAA: { emoji:'🧠', full:'Personal, Social y de Aprender a Aprender' },
-      CC:    { emoji:'🌍', full:'Ciudadana' },
-      CE:    { emoji:'⚡', full:'Emprendedora' },
-      CCEC:  { emoji:'🎨', full:'Conciencia y Expresión Culturales' }
-    };
-    const compHtml = `
-      <section class="pb-ssm-section" aria-labelledby="ssm-comp-title">
-        <h3 id="ssm-comp-title" class="pb-ssm-section-title">Competencias LOMLOE activadas</h3>
-        <div class="pb-ssm-comp-grid" role="list">
-          ${competencias.map(c => {
-            const cm = COMP_META[c] || { emoji:'📌', full: c };
-            return `<div class="pb-ssm-comp-item" role="listitem"
-                         title="${_esc(cm.full)}">
-              <span class="pb-ssm-comp-code">${_esc(c)}</span>
-              <span class="pb-ssm-comp-full">${_esc(cm.full)}</span>
-            </div>`;
-          }).join('')}
-        </div>
-      </section>`;
-
     /* ── Pregunta de síntesis ─────────────────────────────────────────── */
     const synthHtml = `
       <section class="pb-ssm-section pb-ssm-section--accent"
@@ -335,7 +294,7 @@
       </section>` : '';
 
     /* ── Ensamblar ────────────────────────────────────────────────────── */
-    body.innerHTML = kpiHtml + mapHtml + compHtml + synthHtml + nextHtml;
+    body.innerHTML = kpiHtml + mapHtml + synthHtml + nextHtml;
   }
 
   /* ── Utilidad: escape HTML seguro ─────────────────────────────────── */
@@ -412,7 +371,6 @@
       const visited    = [..._getVisited()];
       const bloomSum   = window.PB_DidacticSpec.getSessionBloomSummary(visited);
       const groups     = _groupByFamily(new Set(visited));
-      const competencias = _sessionCompetencias(new Set(visited));
       const synthesis  = _buildSynthesisQuestion(new Set(visited));
 
       const lines = [
@@ -424,7 +382,6 @@
         '  Vistas exploradas:        ' + visited.length,
         '  Nivel Bloom máximo:       ' + bloomSum.maxBloom + ' (' + (BLOOM_LABELS[bloomSum.maxBloom] || '') + ')',
         '  Familias visitadas:       ' + Object.keys(groups).join(', '),
-        '  Competencias activadas:   ' + competencias.join(', '),
         '',
         'RECORRIDO POR VISTAS',
       ];
@@ -732,35 +689,6 @@
   line-height: 1.35;
 }
 
-/* Competencias */
-.pb-ssm-comp-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 14px 16px;
-}
-.pb-ssm-comp-item {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(216,212,204,0.9);
-  background: white;
-}
-.pb-ssm-comp-emoji { font-size: 1.1rem; line-height: 1; }
-.pb-ssm-comp-code {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.76rem;
-  font-weight: 900;
-  color: var(--primary, #1c2b3a);
-  letter-spacing: 0.04em;
-}
-.pb-ssm-comp-full {
-  font-size: 0.76rem;
-  color: var(--text-sec, #4a5a6e);
-}
-
 /* Pregunta de síntesis */
 .pb-ssm-synthesis-q {
   margin: 0;
@@ -926,12 +854,11 @@
       try {
         const visited = [..._getVisited()];
         const bloom   = window.PB_DidacticSpec.getSessionBloomSummary(visited);
-        const comps   = _sessionCompetencias(new Set(visited));
         report.push({
           label: 'Síntesis de sesión (Fase 3 SDD)',
           status: document.getElementById(MODAL_ID) ? 'ok' : 'warn',
           value: visited.length
-            ? `Modal activo · ${visited.length} vistas · Bloom máx. ${bloom.maxBloom} · ${comps.length} competencias LOMLOE`
+            ? `Modal activo · ${visited.length} vistas · Bloom máx. ${bloom.maxBloom}`
             : 'Modal activo · sin vistas exploradas aún en esta sesión'
         });
       } catch (_) { /* silencioso */ }
