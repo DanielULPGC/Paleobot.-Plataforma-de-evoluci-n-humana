@@ -39,6 +39,7 @@ cuentan. Todo lo demás externo se aborta.
 | `arnes.cjs` | Común: contexto de navegador, simulación de terceros, espera de arranque, viewports | (módulo) |
 | `pasos.cjs` | Pasos reutilizables: 31 vistas, diálogos (abre, foco entra, trampa de Tab, Escape, foco vuelve, `aria-hidden`) y ~50 funciones | (módulo) |
 | `humo.cjs` | Humo comparable: 31 vistas en una página y cada función en un contexto nuevo; `--comparar` lista pérdidas | ver abajo |
+| `medidas-legibilidad.cjs` | Mide letra < 12 px, objetivos < 24 px, `<h1>` visibles y enlaces al atlas sin ancla en cuatro páginas públicas × 390 y 1366 px | `PB_BASE`, `--salida` |
 | `tormenta.cjs` | Peticiones externas, URL repetidas y errores de consola con una ficha abierta en reposo (fila 1 de la tabla de corrección) | `node scripts/atlas/tormenta.cjs --sin-terceros --ms 10000` |
 | `primer-dato.cjs` | Dónde empieza el dato de cada vista (mediana y vistas bajo el pliegue). Informa, no falla ni entra en el humo ni en el verificador | `PB_BASE=http://127.0.0.1:8991 node scripts/atlas/primer-dato.cjs --vp telefono --salida x.json` |
 | `recorrido.cjs` | Capturas por vista y viewport y medidas de piso (CLS, tamaños, objetivos, axe) | `node scripts/atlas/recorrido.cjs --salida cap --json piso.json --vps telefono` |
