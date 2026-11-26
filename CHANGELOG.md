@@ -1,5 +1,9 @@
 # Registro de cambios
 
+## Método de datación de *Homo naledi* · 26/11/2026
+
+Propuesta P-1 de la tanda 2, aprobada por la titular. En el atlas, el método de *H. naledi* pasa de «OSL» a «Múltiples (ESR, U-Series, OSL, paleomagnetismo)» (Dirks et al., 2017, https://doi.org/10.7554/eLife.24231: US-ESR en dientes, U-Th y paleomagnetismo en flowstones, OSL en sedimentos; 335-236 ka). El panel de método muestra ahora cinco perfiles. Estado previo en `docs/historial/PB_GH_11k/`.
+
 ## Prueba de las cifras cronológicas de la consulta ligera · 26/11/2026
 
 - Nueva `tests/test_cifras_cronologicas.py`: la consulta ligera toma sus cifras de `chronology.records`, no del campo heredado `anos` del catálogo original (cuya huella está protegida); falla si `build.py` o `interaccion.js` lo usan, si una ficha carece de cronología revisada o si dejan de mostrarse las cifras revisadas de Kabwe 1 (299 ± 25 ka), Omo I (233 ± 22 ka) y *H. floresiensis* (~100-60 ka).
