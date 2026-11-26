@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## Retirada del código de la capa docente no universitaria · 26/11/2026
+
+Continuación de la entrada siguiente: el código heredado deja de estar en el repositorio.
+- `002-script.js`: se elimina el generador de situaciones de aprendizaje (bloque «MEJORA 5») y su llamada en la vista Aula; con él desaparecen las citas erróneas a los «Decretos 82/2022 y 83/2022».
+- Se elimina `50-aula/064-paleobot-v66-sa-session.js` (sesión de SA) y se retira de `index.html` y del manifiesto IMS; se eliminan los estilos `.sa-gen-*` de `001-style.css`; los comentarios de `040` y `058` ya no citan decretos.
+- Procedencia: estado previo en `docs/historial/PB_GH_11i/` y `BASE_4D320EE/`; entradas en `PB_GH_11_CORRECCIONES.json`.
+- Quedan sin cambios `experimental/atlas-r98/` (evidencia histórica) y los scripts 044, 059 y 060 (sin citas normativas; las etiquetas «Competencias LOMLOE» de 059/060 siguen como pendiente).
+
 ## Sin «Modo clase» ni capa docente no universitaria · 26/11/2026
 
 Decisión de la titular: el atlas no ofrece «Modo clase» ni contenidos dirigidos a Primaria y a ESO/Bachillerato.

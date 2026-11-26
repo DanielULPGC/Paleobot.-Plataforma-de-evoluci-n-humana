@@ -57,7 +57,7 @@
    * }>}
    *
    * Fuente de niveles de Bloom: Anderson & Krathwohl (2001, DOI:10.2307/1477405)
-   * Fuente de competencias: LOMLOE BOE-A-2020-17264, Decreto 82-83/2022 Canarias
+   * Fuente de competencias: LOMLOE (BOE-A-2020-17264); etiquetas orientativas, no equivalencia curricular
    */
   const VIEW_DIDACTIC_SPEC = {
 
