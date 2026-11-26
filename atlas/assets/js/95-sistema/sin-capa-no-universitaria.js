@@ -14,13 +14,20 @@
 
   function quitar(n) { if (n && n.parentNode) n.parentNode.removeChild(n); }
 
+  // Devuelve true si la etiqueta es solo de etapa no universitaria. Si el elemento contiene otros nodos (p. ej. un
+  // botón «Abrir…»), solo se toca su primer texto y nunca se pide retirar la tarjeta.
   function limpiarEtiqueta(el) {
-    var t = (el.textContent || '').trim();
-    if (!ETAPAS.test(t)) return false;
+    var simple = el.children.length === 0;
+    var nodo = simple ? el : el.firstChild;
+    var t = ((nodo && nodo.textContent) || '').trim();
+    if (!t || !ETAPAS.test(t)) return false;
     var partes = t.split(/\s*[\/,]\s*|\s+y\s+/).map(function (x) { return x.trim(); }).filter(Boolean);
     var quedan = partes.filter(function (x) { return !ETAPAS.test(x); });
-    if (!quedan.length) return true;                       // etiqueta solo de etapa no universitaria
-    if (quedan.length !== partes.length && el.children.length === 0) el.textContent = quedan.join(' / ');
+    if (!quedan.length) { if (simple) return true; if (nodo.nodeType === 3) nodo.textContent = ''; return false; }
+    if (quedan.length !== partes.length) {
+      if (simple) el.textContent = quedan.join(' / ');
+      else if (nodo.nodeType === 3) nodo.textContent = quedan.join(' / ') + ' ';
+    }
     return false;
   }
 
