@@ -116,17 +116,6 @@
     );
     const nextMeta = nextId && typeof VIEW_META !== 'undefined' ? VIEW_META[nextId] : null;
 
-    /* ── Competencias LOMLOE (iconos) ─────────────────────────────────── */
-    const COMP_ICONS = {
-      CCL:   { emoji:'💬', full:'Competencia en Comunicación Lingüística' },
-      STEM:  { emoji:'🔬', full:'Competencia Matemática, Ciencia y Tecnología' },
-      CD:    { emoji:'💻', full:'Competencia Digital' },
-      CPSAA: { emoji:'🧠', full:'Competencia Personal, Social y de Aprender a Aprender' },
-      CC:    { emoji:'🌍', full:'Competencia Ciudadana' },
-      CE:    { emoji:'⚡', full:'Competencia Emprendedora' },
-      CCEC:  { emoji:'🎨', full:'Competencia en Conciencia y Expresión Culturales' }
-    };
-
     /* ── Construir el DOM del panel ───────────────────────────────────── */
     const panel = document.createElement('div');
     panel.className = 'pb-dap';
@@ -220,23 +209,8 @@
     productBlock.appendChild(criterioText);
     grid.appendChild(productBlock);
 
-    /* Columna C: competencias LOMLOE + siguiente vista */
+    /* Columna C: siguiente vista */
     const compBlock = _el('div', 'pb-dap-block');
-
-    const compTitle = _el('strong', 'pb-dap-block-title');
-    compTitle.textContent = 'Competencias LOMLOE';
-    compBlock.appendChild(compTitle);
-
-    const compRow = _el('div', 'pb-dap-comp-row');
-    spec.competenciasLOMLOE.forEach(code => {
-      const ci = COMP_ICONS[code] || { emoji:'📌', full: code };
-      const chip = _el('span', 'pb-dap-comp-chip');
-      chip.setAttribute('title', ci.full);
-      chip.setAttribute('aria-label', ci.full);
-      chip.textContent = code; // PB-GH-10: sin emoji en la interfaz; el nombre completo sigue en title y aria-label
-      compRow.appendChild(chip);
-    });
-    compBlock.appendChild(compRow);
 
     /* Siguiente vista sugerida */
     if (nextId && nextMeta) {
@@ -551,29 +525,6 @@
 }
 .pb-dap-prereq-go:hover { background: var(--accent-light, #e4f5ef); border-color: var(--accent, #0e7f65); color: var(--accent, #0e7f65); }
 .pb-dap-prereq-go:focus-visible { outline:2px solid var(--accent,#0e7f65); outline-offset:2px; }
-
-/* Competencias LOMLOE */
-.pb-dap-comp-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 2px;
-}
-.pb-dap-comp-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  font-family: var(--font-mono, monospace);
-  padding: 3px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(28,43,58,0.12);
-  background: white;
-  color: var(--text-sec, #4a5a6e);
-  cursor: help;
-  white-space: nowrap;
-}
 
 /* Siguiente vista sugerida */
 .pb-dap-next {

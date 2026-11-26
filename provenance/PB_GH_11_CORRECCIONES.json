@@ -683,6 +683,45 @@
       "evidence": "verificar_repo.py (manifiesto completo).",
       "impact": "Una línea del manifiesto.",
       "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/80-features/059-script.js",
+      "import_sha256": "7545cd73c4e6d5624b251761847964de784da43ef2de0bd822be20a78b601139",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/059-script.js.snapshot",
+      "previous_sha256": "e35fb71b2786580efeb47686d8540085d193eb5ec8e67079bc8b65fd124c9852",
+      "previous_snapshot": "docs/historial/PB_GH_11j/atlas/assets/js/80-features/059-script.js.snapshot",
+      "corrected_sha256": "7011fd52f0541532c30899dcc86c91214e370e017e0835e669f3697acdb49df4",
+      "change": "Se retiran del panel de activación de cada vista el bloque «Competencias LOMLOE» (chips, iconos y estilos); queda «Siguiente recomendado».",
+      "reason": "Decisión de la titular (26-11-2026): las etiquetas LOMLOE no son pertinentes para alumnado universitario y eran una heurística sin respaldo curricular (auditoría didáctica A-3).",
+      "evidence": "verificar_repo.py, node --check y comprobación en navegador de las 31 vistas (sin «LOMLOE» ni chips de competencias, sin errores de página).",
+      "impact": "Desaparecen los chips de competencias del panel; el resto no cambia.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/80-features/060-script.js",
+      "import_sha256": "4a1d670085c9ad7c45366c7b26e4dda06c6d41e7aad8b0e0f48a569465a36337",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/060-script.js.snapshot",
+      "previous_sha256": "e3e76ea0b7a985905c5c1c899129e2b598efb59e01630caf4310a5ea18f0427a",
+      "previous_snapshot": "docs/historial/PB_GH_11j/atlas/assets/js/80-features/060-script.js.snapshot",
+      "corrected_sha256": "767fb7614b2cb2a5ca5b49bc66cfc26f77152cdf2ddb11fcc2eed55a0d6505c9",
+      "change": "Se retiran de la síntesis de sesión el contador y la sección «Competencias LOMLOE activadas», la línea del .txt, la frase del informe de diagnóstico y la función que las calculaba.",
+      "reason": "Mismo motivo que 059.",
+      "evidence": "verificar_repo.py, node --check y comprobación en navegador de las 31 vistas (sin «LOMLOE» ni chips de competencias, sin errores de página).",
+      "impact": "Menos un indicador y una sección en el modal de síntesis; Bloom y familias se mantienen.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js",
+      "import_sha256": "fab0d660b913db50208c5e53587fa80534563928c10ce053eba16b973bacf75c",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot",
+      "previous_sha256": "c2c83b0f08cc2867ba9d07b595b7b0493054d99674280eb1b530206314f5371a",
+      "previous_snapshot": "docs/historial/PB_GH_11j/atlas/assets/js/10-legacy-ui/007-paleobot-v34-layer.js.snapshot",
+      "corrected_sha256": "bef808c1d2d638686e12e57528250a2a43f0d89dcc915ddb915e8e0a7a7d9576",
+      "change": "La introducción del examen deja de decir «Evaluación por competencias LOMLOE (STEM, CCL, CPSAA, CCEC)».",
+      "reason": "Mismo motivo que 059.",
+      "evidence": "verificar_repo.py, node --check y comprobación en navegador de las 31 vistas (sin «LOMLOE» ni chips de competencias, sin errores de página).",
+      "impact": "Una frase de la introducción.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
     }
   ]
 }

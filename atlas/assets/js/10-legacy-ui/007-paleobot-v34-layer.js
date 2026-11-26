@@ -325,7 +325,7 @@
         '<div style="text-align:right;margin-bottom:8px;">',
         '  <button type="button" data-action="exportQuizProgress" style="background:transparent;border:1px solid var(--border);color:var(--text-hint);border-radius:999px;padding:5px 12px;font-size:0.72rem;cursor:pointer;font-family:var(--font-mono);font-weight:700;">⬇ Exportar mi progreso (.txt)</button>',
         '</div>',
-        '<p class="exam-intro-copy">Banco de preguntas: ' + QUESTION_BANK.length + ' preguntas sobre ' + (typeof DB !== 'undefined' ? DB.length : 46) + ' taxones. Evaluación por competencias LOMLOE (STEM, CCL, CPSAA, CCEC).<br><strong>Las respuestas son solo para ti — no se guardan ni se envían.</strong></p>',
+        '<p class="exam-intro-copy">Banco de preguntas: ' + QUESTION_BANK.length + ' preguntas sobre ' + (typeof DB !== 'undefined' ? DB.length : 46) + ' taxones.<br><strong>Las respuestas son solo para ti — no se guardan ni se envían.</strong></p>',
         '<button type="button" class="exam-btn" data-quiz-next="classic">Comenzar clásico</button>',
         '<button type="button" class="exam-btn" data-action="runAdaptiveQuiz" style="background:#2c5f4a;">Quiz adaptativo 🧠 <small style="display:block;font-size:0.72rem;opacity:0.8">Se ajusta a tus errores anteriores</small></button>'
       ].join('');

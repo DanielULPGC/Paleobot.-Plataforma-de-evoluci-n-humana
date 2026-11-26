@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## Sin etiquetas «Competencias LOMLOE» · 26/11/2026
+
+Decisión de la titular: las etiquetas de competencias clave no son pertinentes para el alumnado universitario y eran una heurística sin respaldo curricular (auditoría didáctica A-3).
+- `059-script.js`: el panel de activación de cada vista ya no muestra el bloque de competencias (queda «Siguiente recomendado»).
+- `060-script.js`: la síntesis de sesión pierde el contador y la sección de competencias, la línea del .txt y la frase del diagnóstico.
+- `007-paleobot-v34-layer.js`: la introducción del examen ya no menciona competencias LOMLOE.
+- Sin cambios en Bloom, familias de vistas ni datos. El campo `competenciasLOMLOE` de `058-script.js` queda inactivo. Procedencia con estado previo en `docs/historial/PB_GH_11j/`.
+
 ## Retirada del código de la capa docente no universitaria · 26/11/2026
 
 Continuación de la entrada siguiente: el código heredado deja de estar en el repositorio.
