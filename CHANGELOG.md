@@ -1,5 +1,10 @@
 # Registro de cambios
 
+## Prueba de las cifras cronológicas de la consulta ligera · 26/11/2026
+
+- Nueva `tests/test_cifras_cronologicas.py`: la consulta ligera toma sus cifras de `chronology.records`, no del campo heredado `anos` del catálogo original (cuya huella está protegida); falla si `build.py` o `interaccion.js` lo usan, si una ficha carece de cronología revisada o si dejan de mostrarse las cifras revisadas de Kabwe 1 (299 ± 25 ka), Omo I (233 ± 22 ka) y *H. floresiensis* (~100-60 ka).
+- Sin cambios en datos ni en código de la aplicación.
+
 ## Sin etiquetas «Competencias LOMLOE» · 26/11/2026
 
 Decisión de la titular: las etiquetas de competencias clave no son pertinentes para el alumnado universitario y eran una heurística sin respaldo curricular (auditoría didáctica A-3).
