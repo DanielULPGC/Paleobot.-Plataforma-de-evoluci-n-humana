@@ -337,3 +337,11 @@
 @media print {
   :root:root body :is(#pbV50Blocks, .pb-barra-franja, .pb-barra-panel) { display: none !important; }
 }
+
+/* Tanda 4 (V-3): en teléfono (< 48 rem) el rótulo muestra solo la vista; el bloque se oculta en lugar de truncar todo el texto. */
+@media (max-width: 47.99rem) {
+  :root:root body #pbV50Blocks .pb-barra-bloque { display: none; }
+  /* El nombre de la vista pasa bajo «Vistas» y puede ocupar dos líneas, en vez de quedar en 59 px con puntos suspensivos. */
+  :root:root body #pbV50Blocks .pb-barra-vistas { flex-direction: column; align-items: flex-start; justify-content: center; gap: 0; padding-block: .3rem; border-radius: var(--r-contenedor); }
+  :root:root body #pbV50Blocks .pb-barra-donde { white-space: normal; overflow: visible; text-overflow: clip; font-size: .8125rem; line-height: 1.2; }
+}

@@ -815,6 +815,19 @@
       "evidence": "Medición de la carga a 390 px en Chromium y verificar_repo.py.",
       "impact": "Solo la elección de archivo según el ancho de pantalla; mismo encuadre.",
       "return": "Restaurar el snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "a753060e7dd219285687a894b85c4400d2daf381f88775fd40e4e6e9abd1b723",
+      "previous_snapshot": "docs/historial/PB_GH_11m/atlas/index.html.snapshot",
+      "corrected_sha256": "ae5be339d143551070e8310ff5533e8efcdea5a91055ee27b17c05bfd2ed1ef9",
+      "change": "Los rótulos «Compara 3 taxones» y «Producto esperado» de la tarjeta de tarea de clase pasan de 0,72 rem a 0,75 rem (12 px).",
+      "reason": "Tanda 4 del plan de acción (V-1): suelo de 12 px en datos y rótulos secundarios.",
+      "evidence": "scripts/atlas/medidas-legibilidad.cjs (letra < 12 px en la portada del atlas: 37 → 0) y verificar_repo.py.",
+      "impact": "Solo tamaño de letra de dos rótulos.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
     }
   ]
 }

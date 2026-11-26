@@ -1,5 +1,15 @@
 # Registro de cambios
 
+## Legibilidad y objetivos táctiles · 26/11/2026
+
+Tanda 4 del plan de acción (V-1, T-5, T-4, V-3). Nuevo `scripts/atlas/medidas-legibilidad.cjs` (letra menor de 12 px, objetivos menores de 24 px, `<h1>` visibles y enlaces al atlas sin ancla, a 390 y 1366 px).
+- **Letra:** 37 elementos de la portada del atlas por debajo de 12 px pasan a 12 px (hoja aditiva `95-sistema/atlas-sistema.css` y dos rótulos en línea de `atlas/index.html`). Tras el cambio: 0.
+- **Objetivos táctiles:** las seis casillas de sesión del DEA pasan de 20 a 24 px. Queda el enlace vertical «Cronología» de `portada-sylva.html` (15 px de ancho), página de diseño cerrado que no se modifica en esta tanda.
+- **`<h1>`:** el recuento inicial (5 en el atlas, 10 en el DEA) contaba los ocultos; en pantalla solo hay uno visible por página, así que no se cambia el marcado.
+- **Enlace:** «Atlas completo» de la entrada DEA lleva `#main-content`.
+- **Barra del atlas en teléfono:** el nombre de la vista (p. ej. «Árbol consenso») se muestra bajo «Vistas» en lugar del truncado «Interp…»; en pantallas anchas no cambia.
+- axe (WCAG 2.2 AA) 0 violaciones y sin desbordamiento horizontal en ocho páginas × 2 anchos. Estados previos en `docs/historial/PB_GH_11m/`.
+
 ## Peso de las imágenes de la portada del atlas · 26/11/2026
 
 Tanda 3 del plan de acción (T-1). Los seis JPEG de `atlas/assets/media/landing/` se recomprimen sin cambiar dimensiones ni contenido: de ~4,1 MB a ~1,2 MB en total. La imagen principal admite `srcset` (`hero-800.jpg` 800 px y `hero.jpg` 1600 px, `sizes="100vw"`), de modo que el teléfono descarga ~72 KB en lugar de ~295 KB. Originales conservados en `docs/historial/BASE_4D320EE/`; procedencia registrada. Pendiente: carga diferida de terceros (D4) y compresión de JS/CSS, que depende del servidor (Pages ya sirve con gzip).

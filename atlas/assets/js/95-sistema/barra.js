@@ -41,8 +41,19 @@
     var s = document.querySelector('.view-section.active');
     var v = s ? s.id.replace(/^view-/, '') : '';
     var chip = v ? bar.querySelector('#pbV50BlockPanel [data-pb-v50-view="' + v + '"]') : null;
-    var texto = (tab ? tab.textContent.trim() : '') + (chip ? ' › ' + chip.textContent.trim() : '');
-    if (donde.textContent !== texto) donde.textContent = texto;
+    var bloque = tab ? tab.textContent.trim() : '';
+    var vista = chip ? chip.textContent.trim() : '';
+    var texto = bloque + (vista ? ' › ' + vista : '');
+    if (donde.getAttribute('data-texto') === texto) return;
+    donde.setAttribute('data-texto', texto);
+    donde.textContent = '';
+    // Tanda 4 (V-3): en teléfono se oculta el bloque y queda el nombre de la vista (CSS en barra.css), no un «Interp…» truncado.
+    if (bloque && vista) {
+      var b = el('span', 'pb-barra-bloque');
+      b.textContent = bloque + ' › ';
+      donde.appendChild(b);
+      donde.appendChild(document.createTextNode(vista));
+    } else { donde.textContent = texto; }
   }
   function colocarHerramientas() {
     if (!herramientas) return;

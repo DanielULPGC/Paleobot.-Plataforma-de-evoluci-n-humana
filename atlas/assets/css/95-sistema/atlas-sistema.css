@@ -420,3 +420,9 @@ html body.pb-v50-unified :is(input:not([type="checkbox"]):not([type="radio"]):no
   html body * { box-shadow: none !important; text-shadow: none !important; }
 }
 /* !important en esta capa: 8 */
+
+/* Tanda 4 (V-1): suelo de 12 px en datos y rótulos secundarios de la portada del atlas (medición: scripts/atlas/medidas-legibilidad.cjs). */
+html body :is(.pb-landing-kicker, .pb-landing-facts dd, .pb-landing-credit, .pb-landing-credit em,
+  .pb-pathways-head span, .pb-hub-card-media figcaption, .pb-evidence-lab-head span, .pb-evidence-item figcaption,
+  .pb-evidence-step, .pb-landing-index-head span, .pb-landing-index-group > span, .pb-landing-index-link small,
+  .search-kbd, .pt-lbl, .classroom-task-card p) { font-size: .75rem; }
