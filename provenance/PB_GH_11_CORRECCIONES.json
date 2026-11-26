@@ -595,6 +595,94 @@
       "evidence": "verificar_repo.py y comprobación en navegador de las vistas Aula e itinerarios.",
       "impact": "Solo dos enlaces nuevos; sin cambios de contenido en el HTML.",
       "return": "Restaurar docs/historial/PB_GH_11h/atlas/index.html.snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/00-core/002-script.js",
+      "import_sha256": "b6052b999d1021ab4b28af6be25e89fe584db45cf135d7100e9d324bc484035f",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/00-core/002-script.js.snapshot",
+      "previous_sha256": "0da5513323ebeb601c102a764702ce70a774d2cc5f7ea5fc190e6d4b3b569c16",
+      "previous_snapshot": "docs/historial/PB_GH_11i/atlas/assets/js/00-core/002-script.js.snapshot",
+      "corrected_sha256": "38b60df6375b83ebfc96f93c39f2e10d1a49f0108f514a5cdb6da89659a6c273",
+      "change": "Se elimina el generador de situaciones de aprendizaje (bloque «MEJORA 5», con sus citas a decretos de ESO y Bachillerato) y su llamada en la vista Aula.",
+      "reason": "El generador ya no se ofrece (capa docente no universitaria retirada, 26-11-2026) y citaba normas incorrectas (Decretos 82/2022 y 83/2022).",
+      "evidence": "verificar_repo.py, node --check de los archivos y comprobación en navegador de las 31 vistas del atlas (sin LOMLOE, Decreto ni generador en el texto visible).",
+      "impact": "Bloque de código sin uso visible; el resto de 002 no cambia.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/80-features/040-script.js",
+      "import_sha256": "e4af0837a37d4143f1d7f877adb8e2492e29e54ebadb387d76f0bead41ac07c5",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/040-script.js.snapshot",
+      "corrected_sha256": "91c791168d61822f4ace06921e48a3a7635142a9f404ef32f3e17506515476db",
+      "change": "Se retiran de los comentarios las citas al Decreto 82/2022 y 83/2022.",
+      "reason": "Las citas eran erróneas y la capa docente no universitaria se ha retirado.",
+      "evidence": "verificar_repo.py, node --check de los archivos y comprobación en navegador de las 31 vistas del atlas (sin LOMLOE, Decreto ni generador en el texto visible).",
+      "impact": "Solo comentarios.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/80-features/058-script.js",
+      "import_sha256": "dfd49377212aada7281edc1394be98118461475ce1d790f5a27edec7aff42a35",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/058-script.js.snapshot",
+      "previous_sha256": "141b38bb888d7d00e2276d848365db04db61b530cd7ba85ccb7baac9d58d0198",
+      "previous_snapshot": "docs/historial/PB_GH_11i/atlas/assets/js/80-features/058-script.js.snapshot",
+      "corrected_sha256": "d3f82f4f7975b29c1e55f35a9e21c561e7a9b8cd980639aa651de9d097098113",
+      "change": "El comentario de fuente deja de citar «Decreto 82-83/2022 Canarias» y declara que las etiquetas son orientativas, no equivalencia curricular.",
+      "reason": "Citas erróneas; las etiquetas no son una correspondencia curricular (auditoría didáctica A-3).",
+      "evidence": "verificar_repo.py, node --check de los archivos y comprobación en navegador de las 31 vistas del atlas (sin LOMLOE, Decreto ni generador en el texto visible).",
+      "impact": "Solo comentario.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/css/00-core/001-style.css",
+      "import_sha256": "e561b5964bed456d71acd7556d05fb81b45f827124da19bb612f9cebcca482ed",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/css/00-core/001-style.css.snapshot",
+      "corrected_sha256": "0d5a5881b4bde9769063eac59ed6708acefee678f65e6cb6727009e2a4f7f211",
+      "change": "Se eliminan los estilos del generador de situaciones de aprendizaje (.sa-gen-*, .sa-doc-*, .sa-nota-lomloe).",
+      "reason": "Sin marcado que los use tras retirar el generador.",
+      "evidence": "verificar_repo.py, node --check de los archivos y comprobación en navegador de las 31 vistas del atlas (sin LOMLOE, Decreto ni generador en el texto visible).",
+      "impact": "Solo CSS sin uso.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "b8e6743cc9384203ca27ebdfa419e3eef2c717e29d6939203141bf4756fad903",
+      "previous_snapshot": "docs/historial/PB_GH_11i/atlas/index.html.snapshot",
+      "corrected_sha256": "5d16ca6f0886918641a1f5ebdda0795dc9eb11ccc328028cd2d7628c0de00889",
+      "change": "Se retira el enlace al script 064 (sesión de SA) y su comentario.",
+      "reason": "El script alimentaba el generador de SA, ya eliminado.",
+      "evidence": "verificar_repo.py, node --check de los archivos y comprobación en navegador de las 31 vistas del atlas (sin LOMLOE, Decreto ni generador en el texto visible).",
+      "impact": "Una línea de script y un comentario.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/assets/js/50-aula/064-paleobot-v66-sa-session.js",
+      "import_sha256": "389325147eba9d8e189020a87ce515f623dfae502af03642527741d43c90f72d",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/assets/js/50-aula/064-paleobot-v66-sa-session.js.snapshot",
+      "previous_sha256": "476f00d147ff9628dd41ba73df259e493f40312ab25ad592651499411ed60de3",
+      "previous_snapshot": "docs/historial/PB_GH_11i/atlas/assets/js/50-aula/064-paleobot-v66-sa-session.js.snapshot",
+      "corrected_sha256": null,
+      "removed": true,
+      "change": "Se retira el script que conectaba la sesión con el generador de SA.",
+      "reason": "El generador de situaciones de aprendizaje ya no existe (26-11-2026).",
+      "evidence": "verificar_repo.py, node --check de los archivos y comprobación en navegador de las 31 vistas del atlas (sin LOMLOE, Decreto ni generador en el texto visible).",
+      "impact": "Sin efecto visible; no quedan referencias.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/imsmanifest.xml",
+      "import_sha256": "f7b757706b78805c1700039fc88c189000896e4439f98f18cde6070a55c95369",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/imsmanifest.xml.snapshot",
+      "previous_sha256": "1d7c73587366d49084e58503862269007effac39f6f2388201a573281d4f6cef",
+      "previous_snapshot": "docs/historial/PB_GH_11i/atlas/imsmanifest.xml.snapshot",
+      "corrected_sha256": "88755a658cf6e9c5942e2a4aa16f0259598013f656f284a923f198776c71cf2e",
+      "change": "Se retira del manifiesto la referencia al script 064 (sesión de SA), eliminado.",
+      "reason": "Decisión de la titular (26-11-2026): retirar la capa docente no universitaria y su código.",
+      "evidence": "verificar_repo.py (manifiesto completo).",
+      "impact": "Una línea del manifiesto.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
     }
   ]
 }

@@ -15,7 +15,7 @@
 
   /* ─────────────────────────────────────────────────────────────────────────
      A. DATOS DIDÁCTICOS DEL ALUMNADO
-     Fuentes pedagógicas: LOMLOE (BOE-A-2020-17264), Decreto 82/2022 (Canarias),
+     Fuentes pedagógicas: LOMLOE (BOE-A-2020-17264),
      Smithsonian Human Origins (humanorigins.si.edu), PBDB (paleobiodb.org)
      ───────────────────────────────────────────────────────────────────────── */
 
@@ -136,7 +136,6 @@
   /**
    * Rúbrica competencial simplificada para el alumnado.
    * Adaptada de la rúbrica LOMLOE competencia STEM (CCSTEM) y CCL.
-   * Marco: Decreto 82/2022 (Bachillerato Canarias), Decreto 83/2022 (ESO Canarias).
    */
   const SG_RUBRIC = [
     {

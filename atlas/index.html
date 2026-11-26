@@ -2766,35 +2766,6 @@
      ══════════════════════════════════════════════════════════════════════════ -->
 <script id="paleobot-v66-svg-export"  src="assets/js/70-export/063-paleobot-v66-svg-export.js?v=fix7" defer></script>
 
-<!-- ══════════════════════════════════════════════════════════════════════════
-     PaleoBot v66 — M3: Generador de Situaciones de Aprendizaje desde sesión
-     ──────────────────────────────────────────────────────────────────────────
-     Conecta el generador de SA existente (vista 'aula') con:
-       1. Las vistas visitadas en la sesión (sessionStorage pb_dap_visited,
-          escrito por PaleoBotV65_Phase2).
-       2. El spec didáctico (PB_DidacticSpec) — nivel Bloom, competencias,
-          prerequisitos y producto sugerido.
-       3. SessionSynthesisPanel (Fase 3) — reutiliza _getVisited().
-
-     Qué añade M3:
-       A. Botón "Desde mi sesión" en el generador SA → autoconfigura nivel,
-          competencias y vistas a partir de lo explorado en la sesión actual.
-       B. Panel de vista previa "Perfil de sesión" encima del formulario:
-          muestra cuántas vistas se visitaron, el nivel Bloom máximo y las
-          competencias LOMLOE activadas; con un chip por cada vista.
-       C. Mejora del TXT Moodle: añade sección de secuencia de pasos para
-          el alumno (H5P-ready), lista de módulos visitados y rúbrica en
-          formato tabulado (compatible con importación a Moodle Assignment).
-       D. FIX menor: pie del SA corregido de "v34" a "v66" (ya aplicado
-          arriba vía str_replace).
-
-     Integración no destructiva:
-       · No modifica renderSAGenerator ni buildSADocument.
-       · Inyecta el panel de sesión y el botón "Desde mi sesión" mediante
-          MutationObserver en #teachingCenterContent.
-       · Enriquece _buildSATextExport vía wrap defensivo.
-     ══════════════════════════════════════════════════════════════════════════ -->
-<script id="paleobot-v66-sa-session"  src="assets/js/50-aula/064-paleobot-v66-sa-session.js?v=pbgh06" defer></script>
 
 <!-- ══════════════════════════════════════════════════════════════════════════
      PaleoBot v66 — M4: Fauna asociada por yacimiento (fichas completas)

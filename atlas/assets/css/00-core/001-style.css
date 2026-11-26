@@ -1205,55 +1205,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text-main);li
 #view-tafonomia,
 #view-introgresion { scroll-margin-top: 80px; }
 
-/* ════════════════════════════════════════════════════
-   MEJORA 5 — GENERADOR DE SITUACIONES DE APRENDIZAJE
-   LOMLOE / Decreto 82-83/2022 Canarias  (v31)
-   ════════════════════════════════════════════════════ */
-.sa-gen-wrap { background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 20px; }
-.sa-gen-header { margin-bottom: 18px; }
-.sa-gen-header h3 { font-family: var(--font-serif); font-size: 1.05rem; color: var(--primary); margin: 0 0 5px; }
-.sa-gen-header p { font-size: 0.79rem; color: var(--text-hint); margin: 0; font-family: var(--font-mono); line-height: 1.55; }
-.sa-gen-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
-@media(max-width:580px){ .sa-gen-form { grid-template-columns: 1fr; } }
-.sa-gen-field { display: flex; flex-direction: column; gap: 5px; }
-.sa-gen-field label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-hint); font-family: var(--font-mono); }
-.sa-gen-select, .sa-gen-input { width: 100%; padding: 9px 11px; border: 1px solid var(--border); border-radius: 8px; font-family: var(--font-sans); font-size: 0.84rem; background: #faf8f4; color: var(--text-main); }
-.sa-gen-select:focus, .sa-gen-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
-.sa-gen-field-full { grid-column: 1 / -1; }
-.sa-gen-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; align-items: center; }
-.sa-gen-btn { padding: 9px 20px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; font-family: var(--font-mono); cursor: pointer; border: 1px solid transparent; transition: background 0.14s; }
-.sa-gen-btn.primary { background: var(--primary); color: white; }
-.sa-gen-btn.primary:hover { background: var(--primary-mid); }
-.sa-gen-btn.export { background: var(--accent); color: white; }
-.sa-gen-btn.export:hover { background: #0a6b49; }
-.sa-gen-btn.secondary { background: white; color: var(--primary); border-color: var(--border); }
-.sa-gen-btn.secondary:hover { background: #f0ede8; }
-.sa-gen-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-.sa-gen-status { font-size: 0.73rem; font-family: var(--font-mono); color: var(--text-hint); }
-.sa-doc { background: #fdfcf9; border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; line-height: 1.7; }
-.sa-doc-title { font-family: var(--font-serif); font-size: 1.15rem; color: var(--primary); font-weight: 700; margin: 0 0 4px; }
-.sa-doc-subtitle { font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-hint); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 18px; }
-.sa-section { margin-bottom: 16px; }
-.sa-section-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-hint); font-family: var(--font-mono); margin-bottom: 5px; border-bottom: 1px solid #f0ede8; padding-bottom: 4px; display: block; }
-.sa-section p, .sa-section ul { margin: 0; font-size: 0.86rem; color: var(--text-sec); }
-.sa-section ul { padding-left: 18px; display: flex; flex-direction: column; gap: 3px; }
-.sa-section li { font-size: 0.84rem; color: var(--text-sec); }
-.sa-chip-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
-.sa-chip { display: inline-block; border-radius: 999px; padding: 3px 10px; font-size: 0.7rem; font-weight: 700; font-family: var(--font-mono); }
-.sa-chip.lomloe { background: #e8f0fb; color: #1a4fa0; border: 1px solid #bad0ed; }
-.sa-chip.ods { background: #e4f5ef; color: #0a6b49; border: 1px solid #b2d8c8; }
-.sa-chip.ce { background: #fff8e8; color: #8a6000; border: 1px solid #e8d080; }
-.sa-chip.taxa { background: var(--primary); color: white; font-style: italic; }
-.sa-sesion { background: #f8f5ef; border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 8px; }
-.sa-sesion-head { font-size: 0.73rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-family: var(--font-mono); margin-bottom: 4px; }
-.sa-sesion p { margin: 0; font-size: 0.83rem; color: var(--text-sec); line-height: 1.58; }
-.sa-rubric-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; margin-top: 6px; }
-.sa-rubric-cell { background: white; padding: 7px 10px; font-size: 0.77rem; color: var(--text-sec); }
-.sa-rubric-cell.head { background: var(--primary); color: white; font-weight: 700; font-size: 0.69rem; }
-.sa-rubric-cell.crit { font-weight: 600; color: var(--primary); font-size: 0.78rem; }
-.sa-nota-lomloe { font-size: 0.71rem; font-family: var(--font-mono); color: var(--text-hint); border: 1px solid #e0ddd7; border-radius: 8px; padding: 8px 11px; margin-top: 14px; line-height: 1.55; }
-.sa-nota-lomloe a { color: var(--accent); text-decoration: none; }
-.sa-nota-lomloe a:hover { text-decoration: underline; }
+/* (Estilos del generador de situaciones de aprendizaje retirados el 26-11-2026.) */
 
 /* BANCO DE RECURSOS */
 .resources-outer{display:flex;flex-direction:column;gap:18px;}
