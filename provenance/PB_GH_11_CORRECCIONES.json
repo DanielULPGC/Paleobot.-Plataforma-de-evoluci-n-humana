@@ -115,7 +115,9 @@
     "docs/diseno/atlas/evidencia/PB_GH_11/07_grafico_clima_telefono.jpg",
     "docs/diseno/atlas/evidencia/PB_GH_11/08_enlace_view_telefono.jpg",
     "atlas/assets/js/95-sistema/accesibilidad-contenido.js",
-    "atlas/assets/css/95-sistema/paleta.css"
+    "atlas/assets/css/95-sistema/paleta.css",
+    "atlas/assets/css/95-sistema/sin-capa-no-universitaria.css",
+    "atlas/assets/js/95-sistema/sin-capa-no-universitaria.js"
   ],
   "governance_paths_note": "Archivos de gobierno y documentación preexistentes modificados en la ronda, sin huella de importación propia. governance_changes guarda, para cada uno, su estado anterior (copia byte a byte de c971001 en docs/historial/PB_GH_10/), la huella al cierre de la T6 (informativa: rondas posteriores pueden cambiarlos) y motivo, evidencia, impacto y retorno; el verificador comprueba el estado anterior archivado y los cinco campos.",
   "governance_paths": [
@@ -567,6 +569,32 @@
       "evidence": "Contrastes calculados (texto ≥ 4,5:1, foco ≥ 3:1); axe y texto pequeño comprobados en las páginas del recorrido.",
       "impact": "Solo color del modo oscuro del recorrido.",
       "return": "Restaurar docs/historial/PB_GH_11g/atlas/recorrido/integracion.css.snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/recorrido/aula.html",
+      "import_sha256": "70ca3db61a2d3255410d0220ebbaa92d8acffd7f302ee39adcf7c2ee4840d545",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/aula.html.snapshot",
+      "previous_sha256": "bcb7ceaf8e5237ef7c196f0937f305fb04fa75e25b47ef7c95a9586772231ea3",
+      "previous_snapshot": "docs/historial/PB_GH_11h/atlas/recorrido/aula.html.snapshot",
+      "corrected_sha256": "c697ce4517039c693cf922fe699a21c447e9aac344d3f3a4ba90366981c29287",
+      "change": "Se retiran el marco normativo, la situación de aprendizaje de Educación Primaria y las referencias normativas de Primaria; se ajusta la presentación y el comentario de cabecera.",
+      "reason": "Decisión de la titular (26-11-2026): eliminar el modo clase y la capa docente para Primaria y secundaria.",
+      "evidence": "verificar_repo.py y comprobación en navegador de la página Aula.",
+      "impact": "La página Aula conserva solo las tres rutas universitarias y la autoevaluación.",
+      "return": "Restaurar docs/historial/PB_GH_11h/atlas/recorrido/aula.html.snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "8c45c80dea7c97f0e7362a1b5625a03e4ca6dd3c3121af67a8a9f9ac869bee40",
+      "previous_snapshot": "docs/historial/PB_GH_11h/atlas/index.html.snapshot",
+      "corrected_sha256": "b8e6743cc9384203ca27ebdfa419e3eef2c717e29d6939203141bf4756fad903",
+      "change": "Se enlazan sin-capa-no-universitaria.css y .js antes de paleta.css (retiran «Modo clase» y la capa docente de Primaria y ESO/Bachillerato).",
+      "reason": "Decisión de la titular (26-11-2026): eliminar el modo clase y la capa docente para Primaria y secundaria.",
+      "evidence": "verificar_repo.py y comprobación en navegador de las vistas Aula e itinerarios.",
+      "impact": "Solo dos enlaces nuevos; sin cambios de contenido en el HTML.",
+      "return": "Restaurar docs/historial/PB_GH_11h/atlas/index.html.snapshot o revertir el commit."
     }
   ]
 }

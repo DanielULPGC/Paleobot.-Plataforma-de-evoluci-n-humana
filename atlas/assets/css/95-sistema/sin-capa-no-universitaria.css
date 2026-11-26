@@ -1,0 +1,2 @@
+/* Sin capa docente no universitaria (26-11-2026): evita el parpadeo antes de que la capa JS retire estos nodos. */
+:root:root:root [data-action="activateClassMode"], :root:root:root .sa-gen-wrap { display: none !important; }

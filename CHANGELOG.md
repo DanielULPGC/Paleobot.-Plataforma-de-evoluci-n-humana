@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## Sin «Modo clase» ni capa docente no universitaria · 26/11/2026
+
+Decisión de la titular: el atlas no ofrece «Modo clase» ni contenidos dirigidos a Primaria y a ESO/Bachillerato.
+- Nueva capa aditiva `95-sistema/sin-capa-no-universitaria.{js,css}`: retira los cinco botones «Modo clase» (la tarjeta «Enseñar» pasa a «Aula»), el generador de situaciones de aprendizaje de 4.º ESO y Bachillerato, la tarjeta «Educación Primaria» de los itinerarios, las tarjetas del centro docente dirigidas solo a ESO/Bachillerato, los rótulos de etapa en las mixtas y las líneas del diagnóstico que dependían de ello.
+- `atlas/recorrido/aula.html`: se retiran el marco normativo, la situación de aprendizaje de Primaria y sus referencias; quedan las tres rutas universitarias y la autoevaluación.
+- El código heredado no se edita (sigue en 002-script.js y 040-064, sin efecto visible); procedencia registrada con estado previo en `docs/historial/PB_GH_11h/`.
+- Resuelve de paso los hallazgos A-1 a A-3 de la auditoría didáctica en lo que afecta al alumnado. Quedan prosa y datos con menciones sueltas a ESO/Bachillerato dentro de algunas tarjetas.
+
 ## Auditoría didáctica del conjunto · 26/11/2026
 
 Se añade `docs/diseno/AUDITORIA_DIDACTICA_2026-11-26.md`: encuadre, lo que funciona y once hallazgos. Los tres de mayor gravedad son normativos: el atlas cita «Decreto 82/2022 y 83/2022 de Canarias» para ESO y Bachillerato (el currículo vigente es el Decreto 30/2023, por confirmar en el BOC); la situación de aprendizaje de Primaria sitúa en el tercer ciclo contenidos de Prehistoria, que el Decreto 211/2022 asigna al segundo; y el nivel de ESO/Bachillerato del generador se deduce de Bloom, no del currículo. Sin cambios de código: las correcciones quedan a la espera de decisión.
