@@ -1,5 +1,9 @@
 # Registro de cambios
 
+## Auditoría del estado final de `main` · 26/11/2026
+
+Se añade `docs/diseno/AUDITORIA_MAIN_2026-11-26.md`: controles de gobernanza (91/91, 98 pruebas), humo con 0 pérdidas, axe sin violaciones en las 31 vistas del atlas, el recorrido, `ligera/`, `dea/` y la portada, y el hallazgo sobre el despliegue de Pages. Solo documentación. Retorno: revertir este commit.
+
 ## Franja «Consulta y filtros»: la búsqueda como única acción principal · 25/11/2026
 
 Decisión de la titular. «Limpiar filtros» y «Filtros avanzados» pasan a acciones de texto (sin borde ni relleno, subrayadas, tinta secundaria 7,3:1) con el mismo
