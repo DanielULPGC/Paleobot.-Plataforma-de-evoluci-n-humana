@@ -87,7 +87,7 @@
       var panel = mapa.getPane('pbCostas') || mapa.createPane('pbCostas');
       panel.style.zIndex = 150;
       panel.style.pointerEvents = 'none';
-      L.geoJSON(geojson(), { pane: 'pbCostas', interactive: false, style: { color: '#8c857a', weight: 1, fillColor: '#e9dfcd', fillOpacity: 1 } }).addTo(mapa);
+      L.geoJSON(geojson(), { pane: 'pbCostas', interactive: false, style: { color: '#6e7889', weight: 1, fillColor: '#e6dcc4', fillOpacity: 1 } }).addTo(mapa);
       mapa.__pbCostas = true;
       var c = mapa.getContainer();
       if (c) c.classList.add('pb-costas-minimapa');

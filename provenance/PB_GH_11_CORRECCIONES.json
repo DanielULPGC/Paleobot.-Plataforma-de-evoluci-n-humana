@@ -114,7 +114,8 @@
     "docs/diseno/atlas/evidencia/PB_GH_11/06_bibliografia_telefono.jpg",
     "docs/diseno/atlas/evidencia/PB_GH_11/07_grafico_clima_telefono.jpg",
     "docs/diseno/atlas/evidencia/PB_GH_11/08_enlace_view_telefono.jpg",
-    "atlas/assets/js/95-sistema/accesibilidad-contenido.js"
+    "atlas/assets/js/95-sistema/accesibilidad-contenido.js",
+    "atlas/assets/css/95-sistema/paleta.css"
   ],
   "governance_paths_note": "Archivos de gobierno y documentación preexistentes modificados en la ronda, sin huella de importación propia. governance_changes guarda, para cada uno, su estado anterior (copia byte a byte de c971001 en docs/historial/PB_GH_10/), la huella al cierre de la T6 (informativa: rondas posteriores pueden cambiarlos) y motivo, evidencia, impacto y retorno; el verificador comprueba el estado anterior archivado y los cinco campos.",
   "governance_paths": [
@@ -527,6 +528,45 @@
       "evidence": "Salida regenerada con src/entrada_ligera/build.py; construir.py --check idéntico; las 50 fichas y los datos del atlas comprobados por tests/test_subespecies_ligera.py.",
       "impact": "Solo la consulta ligera: dos entradas nuevas en una sección aparte. Sin imágenes ni descripciones nuevas.",
       "return": "Restaurar docs/historial/PB_GH_09/ligera/index.html.snapshot o revertir los commits y reconstruir."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "95535f03b4ecf785544d7cfa816fdab51e4a458abc41fe1ec2e93b2dda820790",
+      "previous_snapshot": "docs/historial/PB_GH_11g/atlas/index.html.snapshot",
+      "corrected_sha256": "8c45c80dea7c97f0e7362a1b5625a03e4ca6dd3c3121af67a8a9f9ac869bee40",
+      "change": "Paleta «Azul profundo y arena»: nueve colores en línea (gris verdoso y gris azulado del texto de la vista de paleoproteómica) pasan a la gama azul; se enlaza paleta.css (portada del atlas y barra «Ir directamente») antes de carga-fin.css.",
+      "reason": "Decisión de la titular (26-11-2026): cambiar la paleta de todo el conjunto a «Azul profundo y arena» (mayor contraste y lectura cómoda).",
+      "evidence": "verificar_repo.py, construir.py --check, humo (escritorio y teléfono) y axe sin pérdidas; contrastes calculados con la fórmula WCAG 2.x.",
+      "impact": "Solo color y un enlace a una hoja aditiva; sin cambios de contenido, estructura ni scripts.",
+      "return": "Restaurar docs/historial/PB_GH_11g/atlas/index.html.snapshot o revertir el commit."
+    },
+    {
+      "path": "ligera/index.html",
+      "import_sha256": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
+      "snapshot": "docs/historial/BASE_4D320EE/ligera/index.html.snapshot",
+      "previous_sha256": "78e5470ff56773a13ec3f38d6ea688ca7f4f8eb30e050d1c01a91ecbb90e3085",
+      "previous_snapshot": "docs/historial/PB_GH_11g/ligera/index.html.snapshot",
+      "corrected_sha256": "36ffd54f8c8602f173edfd4acf719e9c704044b1b0721a8f3eea3ddd258ea1e5",
+      "change": "Paleta «Azul profundo y arena»: regenerada con el bloque de tokens sincronizado de assets/paleobot-base.css (claro, oscuro, proyección e impresión).",
+      "reason": "Decisión de la titular (26-11-2026): cambiar la paleta de todo el conjunto a «Azul profundo y arena» (mayor contraste y lectura cómoda).",
+      "evidence": "verificar_repo.py, construir.py --check, humo (escritorio y teléfono) y axe sin pérdidas; contrastes calculados con la fórmula WCAG 2.x.",
+      "impact": "Solo color en la consulta ligera; texto, enlaces y datos idénticos.",
+      "return": "Restaurar docs/historial/PB_GH_11g/ligera/index.html.snapshot o revertir el commit."
+    },
+    {
+      "path": "atlas/recorrido/integracion.css",
+      "import_sha256": "0247bf2746343074e29cb7e811c88b9ec377e5441c509dcd9599507d7f3fa36c",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/recorrido/integracion.css.snapshot",
+      "previous_sha256": "2b335a3de6fd200923311d7d41574a37ae6a51094ac921bffac995231b90c198",
+      "previous_snapshot": "docs/historial/PB_GH_11g/atlas/recorrido/integracion.css.snapshot",
+      "corrected_sha256": "4227fd628a87b6125279905da51e0db40990891f07eef8f0c51d9ac4fe3addc0",
+      "change": "Paleta «Azul profundo y arena»: la pizarra del recorrido pasa de verde grisáceo con acento terracota a azul profundo con acento azul claro y foco ocre (mismos tokens que el oscuro de la base).",
+      "reason": "Decisión de la titular (26-11-2026): cambiar la paleta de todo el conjunto.",
+      "evidence": "Contrastes calculados (texto ≥ 4,5:1, foco ≥ 3:1); axe y texto pequeño comprobados en las páginas del recorrido.",
+      "impact": "Solo color del modo oscuro del recorrido.",
+      "return": "Restaurar docs/historial/PB_GH_11g/atlas/recorrido/integracion.css.snapshot o revertir el commit."
     }
   ]
 }

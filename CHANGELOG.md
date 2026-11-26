@@ -1,5 +1,18 @@
 # Registro de cambios
 
+## Auditoría didáctica del conjunto · 26/11/2026
+
+Se añade `docs/diseno/AUDITORIA_DIDACTICA_2026-11-26.md`: encuadre, lo que funciona y once hallazgos. Los tres de mayor gravedad son normativos: el atlas cita «Decreto 82/2022 y 83/2022 de Canarias» para ESO y Bachillerato (el currículo vigente es el Decreto 30/2023, por confirmar en el BOC); la situación de aprendizaje de Primaria sitúa en el tercer ciclo contenidos de Prehistoria, que el Decreto 211/2022 asigna al segundo; y el nivel de ESO/Bachillerato del generador se deduce de Bloom, no del currículo. Sin cambios de código: las correcciones quedan a la espera de decisión.
+
+## Paleta «Azul profundo y arena» en todo el conjunto · 26/11/2026
+
+Decisión de la titular: cambiar la paleta de atlas, recorrido, consulta ligera, entrada DEA y portada Sylva.
+- `assets/paleobot-base.css`: tokens nuevos (claro: arena #f6f1e6, tinta #0d1b2e a 15,37:1, acento azul petróleo #0a5568; oscuro azul profundo #0f1a28; proyección; foco ocre oscuro #9a4f00 para distinguirlo del acento). Ocre solo para avisos de incertidumbre.
+- Atlas: puente de tokens, pizarra y contrastes en `95-sistema`; nueva hoja aditiva `paleta.css` para la portada del atlas (botón, subtítulo, barra «Ir directamente») y colores en línea de `atlas/index.html`; costas del mapa.
+- Recorrido: la pizarra pasa a azul profundo. Consulta ligera regenerada con el bloque de tokens sincronizado.
+- `docs/diseno/SISTEMA.md` con los valores y contrastes calculados; pruebas de diseño actualizadas; correcciones de procedencia (`atlas/index.html`, `atlas/recorrido/integracion.css`, `ligera/index.html`, copias en `docs/historial/PB_GH_11g/`).
+- Sin cambios de contenido, estructura ni scripts. Colores de clados y series sin tocar (pendiente de revisión visual por vista).
+
 ## Auditoría del estado final de `main` · 26/11/2026
 
 Se añade `docs/diseno/AUDITORIA_MAIN_2026-11-26.md`: controles de gobernanza (91/91, 98 pruebas), humo con 0 pérdidas, axe sin violaciones en las 31 vistas del atlas, el recorrido, `ligera/`, `dea/` y la portada, y el hallazgo sobre el despliegue de Pages. Solo documentación. Retorno: revertir este commit.

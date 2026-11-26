@@ -1,0 +1,15 @@
+/* PB-GH-11 · Paleta «Azul profundo y arena» (26-11-2026), capa final y aditiva.
+   Los tokens de la paleta están en assets/paleobot-base.css; aquí solo se devuelve a ella la portada del atlas
+   (#pb-hub, 051), que pintaba en línea un verde azulado y un dorado propios.
+   Contrastes (WCAG 2.x): tinta #0d1b2e sobre papel #f6f1e6 = 15,4:1; acento #0a5568 sobre papel = 7,4:1;
+   texto blanco sobre acento = 8,4:1; ocre #6a4700 sobre #fbf0cf = 7,3:1. */
+:root:root:root body #pb-hub { color: var(--tinta) !important; background: var(--papel) !important; }
+:root:root:root body #pb-hub .pb-landing-cta.primary {
+  color: var(--pizarra) !important; background: var(--pizarra-acento) !important; border-color: var(--pizarra-acento) !important;
+}
+:root:root:root body #pb-hub .pb-landing-cta.primary:hover { background: #b5e2ee !important; border-color: #b5e2ee !important; }
+:root:root:root body #pb-hub .pb-landing-kicker { color: #9fd3e1; }
+:root:root:root body #pb-hub .pb-landing-subtitle { color: #cfeaf2; }
+/* Barra «Ir directamente al atlas interactivo»: pizarra y acento claro en lugar del dorado heredado. */
+:root:root:root body #pb-skip-intro-bar { background: var(--pizarra) !important; border-bottom-color: var(--pizarra-acento) !important; }
+:root:root:root body #pb-skip-intro-bar > span[aria-hidden="true"] { background: var(--pizarra-acento) !important; color: var(--pizarra) !important; }
