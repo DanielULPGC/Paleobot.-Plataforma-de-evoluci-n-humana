@@ -2,11 +2,10 @@
 
 Deriva de `AUDITORIA_CUATRO_EJES_2026-11-26.md` y de los pendientes de `auditorias/paleobot-estado-2026-11-26.md`. Principios: cambios aditivos y reversibles; una PR por tanda; verificador 91/91, pruebas, axe y comprobación en navegador antes de cada fusión; lo dudoso se marca, no se afirma; no se cita ningún DOI sin resolverlo.
 
-## Tanda 1 · Coherencia de datos (hallazgo C-1) · prioridad alta · ~½ jornada
-- **Hacer:** alinear las 8 cifras de cabecera de `src/entrada_ligera/catalog.json` con la base del atlas; añadir al verificador una comprobación que compare `anos` entre catálogo y atlas y falle si divergen; prueba unitaria con un caso divergente.
-- **Cuidado:** *Pierolapithecus* y *Sahelanthropus* no se han contrastado con su fuente primaria; confirmar antes de fijar el valor.
-- **Aceptación:** 0 divergencias; `construir.py --check` correcto; la consulta ligera regenerada no cambia lo visible.
-- **Riesgo:** bajo (el atlas ya muestra los valores revisados).
+## Tanda 1 · Coherencia de cifras (C-1) · prioridad baja tras la reformulación · hecha (PR n.º 26)
+- **Hallazgo corregido:** el campo `anos` de `catalog.json` es el original preservado (huella protegida) y no se muestra; la ligera usa `chronology.records`. No se edita `catalog.json`.
+- **Hecho:** prueba `tests/test_cifras_cronologicas.py` que impide mostrar `anos` y fija las revisiones de Kabwe 1, Omo I y *H. floresiensis*.
+- **Queda:** explicar al lector que la ligera da la edad del ejemplar de referencia y el atlas el rango del taxón.
 
 ## Tanda 2 · Rigor científico de las fichas (C-2, C-3, C-5) · alta · 1 jornada + revisión humana
 - **Hacer:** corregir la localidad de *Dryopithecus* si la fuente lo confirma; sustituir el campo único `datacion` por la lista de métodos publicados en *H. erectus*, neandertales y *H. naledi*; revisar con el texto de cada ficha qué taxones llevan la etiqueta «debatida» o «revisión» (empezar por *H. bodoensis*, *H. cepranensis*, *H. georgicus*, *Au. prometheus*, *H. rhodesiensis*).
