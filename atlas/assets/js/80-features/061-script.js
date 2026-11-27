@@ -10,7 +10,7 @@
      · Inyecta, AL FINAL del pane-gen activo, un bloque de respuesta
        libre (textarea) anclado al ticket de salida ya existente
      · Autoguarda en SafeStorage con clave 'pb_iff_{spId}'
-     · Marca la ficha como "respondida" con un badge visual
+     · Marque la ficha como "respondida" con un badge visual
      · Extiende la exportación de síntesis de Fase 3 con las respuestas
      · Extiende buildSelfAuditReport() con cobertura de respuestas
 
@@ -154,7 +154,7 @@
 
   const LEVEL_LABELS = {
     sec:  { label: 'Secundaria',  color: '#0e7f65', hint: 'Explica sin memorizar: fecha, evidencia observable y una duda.' },
-    bach: { label: 'Bachillerato', color: '#1a4fa0', hint: 'Dato directo + inferencia + límite: qué no puedes asegurar todavía.' },
+    bach: { label: 'Bachillerato', color: '#1a4fa0', hint: 'Dato directo + inferencia + límite: qué no puede asegurar todavía.' },
     uni:  { label: 'Universitario', color: '#6b3faa', hint: 'Comparación crítica con otro taxón: criterios equivalentes e incertidumbre.' }
   };
 
@@ -213,7 +213,7 @@
     const levelRow = document.createElement('div');
     levelRow.className = 'pb-iff-level-row';
     levelRow.setAttribute('role', 'group');
-    levelRow.setAttribute('aria-label', 'Selecciona el nivel del ticket de salida');
+    levelRow.setAttribute('aria-label', 'Seleccione el nivel del ticket de salida');
 
     Object.entries(LEVEL_LABELS).forEach(([key, meta]) => {
       const btn = document.createElement('button');
@@ -241,7 +241,7 @@
     textarea.className = 'pb-iff-textarea';
     textarea.setAttribute('aria-label', `Respuesta al ticket de salida para ${_esc(spNombre)}`);
     textarea.setAttribute('aria-describedby', `pb-iff-hint-${domId}`);
-    textarea.setAttribute('placeholder', 'Escribe aquí tu respuesta al nivel seleccionado…\n\nRecuerda: usa datos del atlas, no opiniones. Distingue dato, inferencia y límite.');
+    textarea.setAttribute('placeholder', 'Escriba aquí su respuesta al nivel seleccionado…\n\nRecuerda: usa datos del atlas, no opiniones. Distingue dato, inferencia y límite.');
     textarea.setAttribute('rows', '5');
     textarea.value = text;
 

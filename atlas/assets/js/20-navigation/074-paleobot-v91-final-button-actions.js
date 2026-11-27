@@ -103,7 +103,7 @@
     var feedback = host.querySelector('[data-pb-v91-feedback]');
     if (feedback) {
       feedback.hidden = false;
-      feedback.textContent = ok ? 'Correcto: la asociacion es coherente con la ficha.' : 'Revisa la ficha y distingue dato observado de inferencia.';
+      feedback.textContent = ok ? 'Correcto: la asociacion es coherente con la ficha.' : 'Revise la ficha y distingue dato observado de inferencia.';
     }
     return true;
   }

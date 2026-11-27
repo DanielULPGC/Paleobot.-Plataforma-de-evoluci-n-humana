@@ -122,7 +122,7 @@
       const missing = [...consensus].filter(edge => !treeBuilderState.edges.some(e => e.key === edge)).slice(0, 8);
       const report = document.getElementById('builderReport');
       if (!report) return;
-      report.innerHTML = `<h3>Comparación con Wood & Boyle 2016</h3><div data-builder-live-summary>${builderLiveSummaryHtml()}</div><div class="v34-confidence-legend"><span class="ok"><i></i>consensuada</span><span class="warn"><i></i>controvertida</span><span class="bad"><i></i>rechazada</span></div><div class="v34-ref-score"><strong>Score topológico: ${pct}%</strong><div class="v34-score-track"><span style="width:${pct}%"></span></div><small>DOI ${escapeHtmlText(PHYLO_REFERENCE_TREE.doi)} · soporte por nodo como guía didáctica, no como cálculo filogenético nuevo.</small></div><div class="builder-report-item"><strong>Pendientes</strong>${missing.length ? missing.map(edge=>escapeHtmlText(edgeLabel(edge))).join(' · ') : 'Ninguna.'}</div><div class="v34-edge-explain">${explain || '<div>Construye al menos una arista para recibir retroalimentación explicada.</div>'}</div>${builderEdgeListHtml()}`;
+      report.innerHTML = `<h3>Comparación con Wood & Boyle 2016</h3><div data-builder-live-summary>${builderLiveSummaryHtml()}</div><div class="v34-confidence-legend"><span class="ok"><i></i>consensuada</span><span class="warn"><i></i>controvertida</span><span class="bad"><i></i>rechazada</span></div><div class="v34-ref-score"><strong>Score topológico: ${pct}%</strong><div class="v34-score-track"><span style="width:${pct}%"></span></div><small>DOI ${escapeHtmlText(PHYLO_REFERENCE_TREE.doi)} · soporte por nodo como guía didáctica, no como cálculo filogenético nuevo.</small></div><div class="builder-report-item"><strong>Pendientes</strong>${missing.length ? missing.map(edge=>escapeHtmlText(edgeLabel(edge))).join(' · ') : 'Ninguna.'}</div><div class="v34-edge-explain">${explain || '<div>Construya al menos una arista para recibir retroalimentación explicada.</div>'}</div>${builderEdgeListHtml()}`;
     };
   }
 
@@ -294,7 +294,7 @@
         if (b==='Costal' && n<=5) return ['sapiens','flores','luzon'];
         return [];
       };
-      host.innerHTML = `<div class="v34-paleo-grid v34-mis-wide"><div class="v34-paleo-cell head">Bioma / MIS</div>${M19_MIS.map(c=>`<div class="v34-paleo-cell head">${c}</div>`).join('')}${M19_BIOMES.map(b=>`<div class="v34-paleo-cell head">${b}</div>${M19_MIS.map(c=>{const taxa=cellFor(b,c);return `<div class="v34-paleo-cell">${taxa.length?taxa.map(id=>`<button type="button" data-open-species="${id}">${escapeHtmlText(DB_INDEX[id]?.nombre||id)}</button>`).join('')+`<button type="button" data-m19-cell="${escapeHtmlAttr(b+'|'+c)}">clima</button>`:'<span style="color:var(--text-hint)">—</span>'}</div>`}).join('')}`).join('')}</div><div class="v34-paleo-detail" id="m19PaleoDetail">Matriz bioma × MIS 1-22. Pulsa una celda con registro para ver clima CENOGRID simplificado y yacimientos asociados.</div>`;
+      host.innerHTML = `<div class="v34-paleo-grid v34-mis-wide"><div class="v34-paleo-cell head">Bioma / MIS</div>${M19_MIS.map(c=>`<div class="v34-paleo-cell head">${c}</div>`).join('')}${M19_BIOMES.map(b=>`<div class="v34-paleo-cell head">${b}</div>${M19_MIS.map(c=>{const taxa=cellFor(b,c);return `<div class="v34-paleo-cell">${taxa.length?taxa.map(id=>`<button type="button" data-open-species="${id}">${escapeHtmlText(DB_INDEX[id]?.nombre||id)}</button>`).join('')+`<button type="button" data-m19-cell="${escapeHtmlAttr(b+'|'+c)}">clima</button>`:'<span style="color:var(--text-hint)">—</span>'}</div>`}).join('')}`).join('')}</div><div class="v34-paleo-detail" id="m19PaleoDetail">Matriz bioma × MIS 1-22. Pulse una celda con registro para ver clima CENOGRID simplificado y yacimientos asociados.</div>`;
   }
   if (typeof renderPaleoecologiaView === 'function') {
     renderPaleoecologiaView = renderM19PaleoecologiaView;
@@ -309,7 +309,7 @@
     };
   }
   function exportSpeciesPrintSheet(){
-    const sp = currentSpecies; if (!sp) { alert('Abre primero la ficha de una especie.'); return; }
+    const sp = currentSpecies; if (!sp) { alert('Abra primero la ficha de una especie.'); return; }
     const refs = getSpeciesReferenceSet(sp).slice(0,5);
     const url = location.href.split('#')[0] + '#' + encodeURIComponent(sp.id);
     const sheet = document.getElementById('academicPrintSheet'); if (!sheet) return;

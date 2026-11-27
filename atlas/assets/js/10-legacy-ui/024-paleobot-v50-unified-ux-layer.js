@@ -154,7 +154,7 @@
           <div class="pb-v50-hero-actions">
             <button type="button" class="pb-v50-action primary" data-pb-v50-jump="workspace">Entrar al laboratorio</button>
             <button type="button" class="pb-v50-action" data-pb-v50-open-block="explorar">Explorar evidencias</button>
-            <button type="button" class="pb-v50-action" data-pb-v50-open-block="aprender">Preparar clase</button>
+            <button type="button" class="pb-v50-action" data-pb-v50-open-block="aprender">Preparar sesión</button>
           </div>
         </div>
         <div class="pb-v50-hero-card" role="note">

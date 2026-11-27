@@ -56,7 +56,7 @@
         <div class="v34-pro-dashboard-head">
           <div>
             <span class="v34-pro-kicker">Mesa de trabajo</span>
-            <h2>Empieza por una pregunta, no por un menú.</h2>
+            <h2>Empiece por una pregunta, no por un menú.</h2>
             <p>La estructura se reduce a tres rutas: preparar una clase, leer evidencias o investigar con métodos. Cada ruta abre una herramienta funcional y deja claro qué producto puede elaborar el estudiante.</p>
           </div>
           <button type="button" class="v34-pro-toggle" data-v34-toggle-intro aria-pressed="false">Ver paneles avanzados</button>
@@ -155,7 +155,7 @@
       presControls.insertAdjacentHTML('afterbegin','<button type="button" class="v34-pres-export" data-pres-export>Exportar ficha</button>');
     }
     if (typeof VIEW_META !== 'undefined') VIEW_META.paleoecologia = { family:'interpretar', title:'Paleoecología', audience:'Útil para STEM, CCL y análisis ambiental', goal:'Pregunta principal: qué biomas ocuparon los taxones en cada período MIS', description:'Cruza biomas, periodos isotópicos marinos, yacimientos y taxones para leer paleoambiente como matriz de evidencias.' };
-    if (typeof VIEW_HERO_META !== 'undefined') VIEW_HERO_META.paleoecologia = { kicker:'Síntesis ecológica', badge:'v34', question:'Lee cada celda como una hipótesis paleoambiental: bioma, período, taxón y yacimiento deben sostenerse juntos.', steps:['Elige un bioma.', 'Compara periodos MIS.', 'Abre taxones y justifica el paleoambiente.'], pills:['Bioma × MIS','Paleoambiente','STEM + CCL'] };
+    if (typeof VIEW_HERO_META !== 'undefined') VIEW_HERO_META.paleoecologia = { kicker:'Síntesis ecológica', badge:'v34', question:'Lea cada celda como una hipótesis paleoambiental: bioma, período, taxón y yacimiento deben sostenerse juntos.', steps:['Elija un bioma.', 'Compare periodos MIS.', 'Abra taxones y justifica el paleoambiente.'], pills:['Bioma × MIS','Paleoambiente','STEM + CCL'] };
     if (typeof COMPLEXITY_MODES !== 'undefined') Object.values(COMPLEXITY_MODES).forEach(mode => { if (Array.isArray(mode.views) && !mode.views.includes('paleoecologia')) mode.views.splice(Math.max(0, mode.views.indexOf('clima') + 1), 0, 'paleoecologia'); });
   }
 
@@ -327,7 +327,7 @@
         '</div>',
         '<p class="exam-intro-copy">Banco de preguntas: ' + QUESTION_BANK.length + ' preguntas sobre ' + (typeof DB !== 'undefined' ? DB.length : 46) + ' taxones.<br><strong>Las respuestas son solo para ti — no se guardan ni se envían.</strong></p>',
         '<button type="button" class="exam-btn" data-quiz-next="classic">Comenzar clásico</button>',
-        '<button type="button" class="exam-btn" data-action="runAdaptiveQuiz" style="background:#2c5f4a;">Quiz adaptativo 🧠 <small style="display:block;font-size:0.72rem;opacity:0.8">Se ajusta a tus errores anteriores</small></button>'
+        '<button type="button" class="exam-btn" data-action="runAdaptiveQuiz" style="background:#2c5f4a;">Quiz adaptativo 🧠 <small style="display:block;font-size:0.72rem;opacity:0.8">Se ajusta a sus errores anteriores</small></button>'
       ].join('');
       try { if (typeof renderQuizProgress === 'function') renderQuizProgress(); } catch(e) { /* recuperable: suprimido intencionalmente */ }
     }
@@ -337,7 +337,7 @@
   };
   /* v59-refactor: runExam v34 eliminado — conflicto con m13.
      La versión m13 (window.runExam, registrada después) es la implementación
-     canónica. Usa el mismo QUESTION_BANK pero con flujo unificado y QuizProgress.
+     canónica. Use el mismo QUESTION_BANK pero con flujo unificado y QuizProgress.
      renderV34ExamQuestion y renderV34ExamResult se mantienen por retrocompatibilidad
      con el sistema de exportación PDF (data-v34-exam-export). */
   // runExam delegado a m13 via window.runExam (se registra más abajo en este archivo)
@@ -353,7 +353,7 @@
       const en = ({'bipedismo':'bipedalism','filogenia':'phylogeny','estratigrafia':'stratigraphy','paleoproteomica':'paleoproteomics','datacion absoluta':'absolute dating'}[normalizeForSearch(term)] || term);
       return `<article class="glossary-card v34-flip" data-gloss-tags="${escapeHtmlAttr(tags.join(','))}"><div class="v34-flip-inner"><div class="v34-flip-face"><div class="glossary-card-head"><h3>${escapeHtmlText(term)}</h3><button type="button" class="v34-flip-btn" data-v34-gloss-flip>ejemplo</button></div><p>${escapeHtmlText(def)}</p><div class="glossary-card-tags"><span class="glossary-card-tag">${escapeHtmlText(cat)}</span><span class="glossary-card-tag">EN: ${escapeHtmlText(en)}</span></div></div><div class="v34-flip-face v34-flip-back"><div class="glossary-card-head"><h3>${escapeHtmlText(term)}</h3><button type="button" class="v34-flip-btn" data-v34-gloss-flip>definición</button></div><p><strong>Ejemplo en el registro:</strong> ${escapeHtmlText(getGlossaryLearningEntry(term,tags).ejemplo)}</p><p><strong>Referencia DOI:</strong> ${tags.includes('genomica')?'10.1038/s41586-020-2153-8':tags.includes('datacion')?'10.1016/j.quageo.2015.02.007':''}</p></div></div></article>`;
     }).join('');
-    container.innerHTML = `<div class="glossary-top" id="v34-gloss-top"><p><strong>Glosario interactivo v34.</strong> Tarjetas de doble cara con definición, ejemplo, DOI y equivalente en inglés. Usa la búsqueda para filtrar al instante.</p><div class="glossary-total">${terms.length} términos</div><input class="glossary-search" type="search" data-gloss-search placeholder="Buscar concepto..." aria-label="Buscar en el glosario"></div><div class="glossary-grid">${cards}</div>`;
+    container.innerHTML = `<div class="glossary-top" id="v34-gloss-top"><p><strong>Glosario interactivo v34.</strong> Tarjetas de doble cara con definición, ejemplo, DOI y equivalente en inglés. Use la búsqueda para filtrar al instante.</p><div class="glossary-total">${terms.length} términos</div><input class="glossary-search" type="search" data-gloss-search placeholder="Buscar concepto..." aria-label="Buscar en el glosario"></div><div class="glossary-grid">${cards}</div>`;
     applyGlossaryFilters();
   };
 
@@ -409,7 +409,7 @@
     const host = document.getElementById('paleoecologyContent'); if (!host) return;
     const biomes = ['Sabana','Bosque','Montaña','Costa'];
     const cols = ['MIS 20-16','MIS 12-6','MIS 7-3','MIS 6-2','MIS 5-1'];
-    host.innerHTML = `<div class="v34-paleo-grid"><div class="v34-paleo-cell head">Bioma / MIS</div>${cols.map(c=>`<div class="v34-paleo-cell head">${c}</div>`).join('')}${biomes.map(b=>`<div class="v34-paleo-cell head">${b}</div>${cols.map(c=>{const cell=PALEOECOLOGY_MATRIX.find(x=>x.biome===b&&x.mis===c); return `<div class="v34-paleo-cell">${cell?cell.taxa.map(id=>`<button type="button" data-open-species="${escapeHtmlAttr(id)}">${escapeHtmlText(DB_INDEX[id]?.nombre||id)}</button>`).join('') + `<button type="button" data-v34-paleo-cell="${escapeHtmlAttr(cell.biome+'|'+cell.mis)}" style="margin-top:8px;font-weight:900">detalle ambiental</button>`:'<span style="color:var(--text-hint)">Sin registro cargado</span>'}</div>`}).join('')}`).join('')}</div><div class="v34-paleo-detail" id="v34PaleoDetail">Pulsa “detalle ambiental” para ver condiciones climáticas y yacimientos clave; pulsa un taxón para abrir su ficha.</div>`;
+    host.innerHTML = `<div class="v34-paleo-grid"><div class="v34-paleo-cell head">Bioma / MIS</div>${cols.map(c=>`<div class="v34-paleo-cell head">${c}</div>`).join('')}${biomes.map(b=>`<div class="v34-paleo-cell head">${b}</div>${cols.map(c=>{const cell=PALEOECOLOGY_MATRIX.find(x=>x.biome===b&&x.mis===c); return `<div class="v34-paleo-cell">${cell?cell.taxa.map(id=>`<button type="button" data-open-species="${escapeHtmlAttr(id)}">${escapeHtmlText(DB_INDEX[id]?.nombre||id)}</button>`).join('') + `<button type="button" data-v34-paleo-cell="${escapeHtmlAttr(cell.biome+'|'+cell.mis)}" style="margin-top:8px;font-weight:900">detalle ambiental</button>`:'<span style="color:var(--text-hint)">Sin registro cargado</span>'}</div>`}).join('')}`).join('')}</div><div class="v34-paleo-detail" id="v34PaleoDetail">Pulse “detalle ambiental” para ver condiciones climáticas y yacimientos clave; pulsa un taxón para abrir su ficha.</div>`;
   }
   function renderPaleoDetail(key){
     const [biome,mis] = String(key||'').split('|');

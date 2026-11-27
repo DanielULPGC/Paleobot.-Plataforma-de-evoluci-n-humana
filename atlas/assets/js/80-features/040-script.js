@@ -23,7 +23,7 @@
   const SG_STEPS = [
     {
       num: 1,
-      title: 'Elige una pregunta de partida',
+      title: 'Elija una pregunta de partida',
       desc: 'Antes de navegar, formula una pregunta concreta: "¿Cuándo apareció X?", "¿Dónde se documenta Y?". El atlas tiene respuestas, pero necesitan una pregunta.',
       action: null,
       view: null,
@@ -32,7 +32,7 @@
     },
     {
       num: 2,
-      title: 'Empieza por la Cronología',
+      title: 'Empiece por la Cronología',
       desc: 'La vista de Cronología es el punto de entrada recomendado. Sitúa primero el taxón en el tiempo antes de analizar su anatomía o su distribución geográfica.',
       action: null,
       view: 'timeline',
@@ -59,7 +59,7 @@
     },
     {
       num: 5,
-      title: 'Construye tu argumento',
+      title: 'Construya su argumento',
       desc: 'Cuando tengas evidencia suficiente, usa el Constructor de hipótesis o la vista de Debates para defender una posición con razonamiento AERC: Afirmación, Evidencia, Razonamiento, Cautela.',
       action: null,
       view: 'debates',
@@ -83,7 +83,7 @@
    * DOI de referencia pedagógica: Hmelo-Silver (2004) https://doi.org/10.1023/B:EDUC.0000042415.65252.f4
    */
   const SG_VIEWS = [
-    { id: 'timeline',  family: 'Explorar',    emoji: '⏱', title: 'Cronología',       desc: 'Punto de entrada. Ordena los taxones en el tiempo.' },
+    { id: 'timeline',  family: 'Explorar',    emoji: '⏱', title: 'Cronología',       desc: 'Punto de entrada. Ordene los taxones en el tiempo.' },
     { id: 'map',       family: 'Explorar',    emoji: '🗺', title: 'Mapa',             desc: 'Dónde se han encontrado los restos fósiles.' },
     { id: 'coexistencias', family: 'Interpretar', emoji: '🤝', title: 'Coexistencias', desc: '¿Cuántas especies vivieron a la vez?' },
     { id: 'tree',      family: 'Interpretar', emoji: '🌿', title: 'Cladograma',       desc: 'Relaciones evolutivas básicas entre taxones.' },
@@ -91,7 +91,7 @@
     { id: 'debates',   family: 'Investigar',  emoji: '⚖️', title: 'Debates activos',  desc: 'Controversias científicas todavía abiertas.' },
     { id: 'datacion',  family: 'Investigar',  emoji: '🔢', title: 'Datación',         desc: 'Métodos para saber cuándo vivió un taxón.' },
     { id: 'tafonomia', family: 'Investigar',  emoji: '🦴', title: 'Tafonomía',        desc: 'Por qué el registro fósil tiene la forma que tiene.' },
-    { id: 'constructor', family: 'Aprender',  emoji: '🔧', title: 'Constructor',      desc: 'Construye tu propia hipótesis filogenética.' },
+    { id: 'constructor', family: 'Aprender',  emoji: '🔧', title: 'Constructor',      desc: 'Construya su propia hipótesis filogenética.' },
     { id: 'itinerarios', family: 'Aprender',  emoji: '🛤️', title: 'Itinerarios',      desc: 'Secuencias guiadas de aprendizaje.' },
     { id: 'socratico',  family: 'Aprender',   emoji: '🗣️', title: 'Debate socrático', desc: 'Defiende una hipótesis con argumentos y evidencia.' },
     { id: 'aula',       family: 'Aprender',   emoji: '🎓', title: 'Centro docente',   desc: 'Materiales y tareas evaluables.' }
@@ -110,7 +110,7 @@
     { icon: '🌡️', q: '¿Qué cambios climáticos acompañaron la expansión de Homo?', hint: 'Vista recomendada: Clima PAGES2k → cruza con taxones visibles', view: 'clima' },
     { icon: '🦴', q: '¿Por qué no encontramos fósiles de todas las especies?', hint: 'Vista recomendada: Tafonomía → ajusta las variables del simulador', view: 'tafonomia' },
     { icon: '🗺️', q: '¿Cuándo llegó Homo sapiens a América?', hint: 'Vista recomendada: América → compara pre-Clovis y Clovis', view: 'america' },
-    { icon: '⚖️', q: '¿Sigue abierto el debate sobre el bipedismo de Orrorin?', hint: 'Vista recomendada: Debates activos → busca "bipedismo"', view: 'debates' }
+    { icon: '⚖️', q: '¿Siga abierto el debate sobre el bipedismo de Orrorin?', hint: 'Vista recomendada: Debates activos → busca "bipedismo"', view: 'debates' }
   ];
 
   /**
@@ -235,7 +235,7 @@
     container.innerHTML = SG_QUESTIONS.map(q => `
       <li>
         <button type="button" class="sg-question-item" data-sg-open-view="${escSG(q.view)}"
-          aria-label="${escSG(q.q)} — Abre vista ${escSG(q.view)}">
+          aria-label="${escSG(q.q)} — Abra vista ${escSG(q.view)}">
           <span class="sg-question-icon" aria-hidden="true">${q.icon}</span>
           <div>
             <p class="sg-question-text">${escSG(q.q)}</p>

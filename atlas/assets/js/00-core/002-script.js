@@ -2639,7 +2639,7 @@ function renderGlossary() {
       '<input class="glossary-search" type="search" data-gloss-search placeholder="Buscar concepto: bipedismo, ADN, datación..." aria-label="Buscar en el glosario">' +
     '</div>' +
     '<section class="glossary-theme-panel" aria-label="Filtros temáticos del glosario">' +
-      '<div class="glossary-theme-intro"><strong>Explora por disciplina</strong><p>Filtra el vocabulario según el tipo de problema: anatomía, datación, filogenia, paleogenómica, paleoambiente o cultura material. Útil para preparar clases, debates y trabajos de investigación.</p><p id="glossThemeCount" class="glossary-count">' + terms.length + ' términos visibles</p></div>' +
+      '<div class="glossary-theme-intro"><strong>Explore por disciplina</strong><p>Filtre el vocabulario según el tipo de problema: anatomía, datación, filogenia, paleogenómica, paleoambiente o cultura material. Útil para preparar sesiones, debates y trabajos de investigación.</p><p id="glossThemeCount" class="glossary-count">' + terms.length + ' términos visibles</p></div>' +
       '<div class="glossary-theme-grid" role="group" aria-label="Categorías temáticas del glosario">' + themeBtns + '</div>' +
     '</section>' +
     /* FIX A-9: role=navigation + aria-label para WCAG 2.4.1 (Bypass Blocks) */
@@ -3520,7 +3520,7 @@ function getVisualEvidencePrompt(item, sp) {
     return 'Distingue dato e interpretación: ¿qué parte procede del fósil y qué parte es reconstrucción visual?';
   }
   if (/cráneo|craneo|skull|mandíbula|mandibula|jaw|maxilla|diente|tooth|molar/i.test(item.title + ' ' + item.url)) {
-    return 'Observa un rasgo concreto: dentición, mandíbula o bóveda craneal. ¿Qué inferencia permite y cuál no?';
+    return 'Observe un rasgo concreto: dentición, mandíbula o bóveda craneal. ¿Qué inferencia permite y cuál no?';
   }
   return 'Describe primero lo visible y después formula una inferencia prudente basada en la evidencia.';
 }
@@ -3585,7 +3585,7 @@ function renderVisualEvidenceGallery(sp) {
     <div class="visual-evidence-head">
       <div>
         <h4>Lectura visual de la evidencia</h4>
-        <p>Usa las imágenes como documentos: observa, distingue fósil/reconstrucción/mapa y justifica una inferencia limitada.</p>
+        <p>Use las imágenes como documentos: observa, distingue fósil/reconstrucción/mapa y justifica una inferencia limitada.</p>
       </div>
       <span class="visual-evidence-badge">${items.length} recursos</span>
     </div>
@@ -3626,7 +3626,7 @@ const COMPLEXITY_MODES = {
   universitario: {
     label: 'Universitario',
     title: 'Modo universitario',
-    copy: 'Añade herramientas analíticas y didácticas: continentes, yacimientos, clima, coexistencias, paleogenómica, holotipos, simulador y constructor, manteniendo ocultos los paneles más especializados.',
+    copy: 'Añada herramientas analíticas y didácticas: continentes, yacimientos, clima, coexistencias, paleogenómica, holotipos, simulador y constructor, manteniendo ocultos los paneles más especializados.',
     defaultView: 'timeline',
     views: ['timeline','map','continentes','africa','asia','europe','america','yacimientos','tree','phylo','contexto','clima','coexistencias','genomica','primatologia','holotipos','aula','recursos','itinerarios','dispersal','constructor','estratigrafia','tafonomia','introgresion','socratico']
   },
@@ -4958,7 +4958,7 @@ function renderContinentsView() {
       </div>
       <div class="continent-list">${rows}</div>
       <div class="continent-footer">
-        <span>Haz clic en una fila para abrir la ficha completa.</span>
+        <span>Haga clic en una fila para abrir la ficha completa.</span>
         <span>La barra expresa rango temporal estimado, no una fecha puntual.</span>
       </div>
     </section>`;
@@ -5149,7 +5149,7 @@ const AFRICA_LEARNING_ROUTES = [
   },
   {
     title: 'Diversidad australopitecina',
-    focus: 'Compara África oriental y austral para mostrar que la evolución no avanza como una cadena única de especies.',
+    focus: 'Compare África oriental y austral para mostrar que la evolución no avanza como una cadena única de especies.',
     regions: ['afar_awash', 'turkana_rift', 'tanzania_olduvai', 'south_cradle'],
     question: '¿Por qué Australopithecus, Kenyanthropus y Paranthropus obligan a pensar en radiación adaptativa?',
     evidence: ['dientes y mandíbula', 'postcráneo', 'datación de tobas y cuevas'],
@@ -5609,7 +5609,7 @@ function renderAfricaLearningRoutes(visibleAfricaTaxa) {
     <div class="africa-learning-head">
       <div>
         <h3>Rutas didácticas de lectura del registro africano</h3>
-        <p>Selecciona una secuencia para convertir el mapa en una actividad: cada ruta enlaza regiones, evidencias y una pregunta investigable. Los botones de cada paso activan la región correspondiente en el panel.</p>
+        <p>Seleccione una secuencia para convertir el mapa en una actividad: cada ruta enlaza regiones, evidencias y una pregunta investigable. Los botones de cada paso activan la región correspondiente en el panel.</p>
       </div>
       <span class="africa-learning-badge">aprendizaje guiado</span>
     </div>
@@ -5739,7 +5739,7 @@ function renderAfricaDidacticPrompt(region, regionTaxa) {
 
   return `<div class="africa-detail-box full africa-didactic-box">
     <h4>Actividad didáctica de investigación</h4>
-    <p>Formula una explicación causal que conecte fósiles, ambiente y método de datación. La clave es distinguir dato observado, inferencia razonable y debate abierto.</p>
+    <p>Formule una explicación causal que conecte fósiles, ambiente y método de datación. La clave es distinguir dato observado, inferencia razonable y debate abierto.</p>
     <div class="africa-evidence-row">${evidenceChips}</div>
     <div class="africa-didactic-grid">
       <div class="africa-didactic-item">
@@ -5756,7 +5756,7 @@ function renderAfricaDidacticPrompt(region, regionTaxa) {
       </div>
       <div class="africa-didactic-item">
         <strong>Extensión para seminario</strong>
-        <p>Contrasta esta región con otra ruta africana y explica si cambia la interpretación del proceso evolutivo.</p>
+        <p>Contraste esta región con otra ruta africana y explica si cambia la interpretación del proceso evolutivo.</p>
       </div>
     </div>
   </div>`;
@@ -5967,7 +5967,7 @@ function renderAmericaActivities() {
   const activities = [
     {
       title: 'Secundaria',
-      prompt: 'Ordena White Sands, Cooper’s Ferry, Monte Verde y Clovis. Después marca cuál es huella, cuál es campamento y cuál es cultura lítica.'
+      prompt: 'Ordene White Sands, Cooper’s Ferry, Monte Verde y Clovis. Después marca cuál es huella, cuál es campamento y cuál es cultura lítica.'
     },
     {
       title: 'Bachillerato',
@@ -5975,7 +5975,7 @@ function renderAmericaActivities() {
     },
     {
       title: 'Universidad',
-      prompt: 'Construye una matriz con tipo de evidencia, método de datación, grado de consenso y debilidad principal de cada caso.'
+      prompt: 'Construya una matriz con tipo de evidencia, método de datación, grado de consenso y debilidad principal de cada caso.'
     }
   ];
   return `<section class="america-panel">
@@ -6160,7 +6160,7 @@ function renderAsiaRoutes() {
   return `<section class="america-panel">
     <div class="america-panel-head">
       <h3>Problemas de dispersión asiática</h3>
-      <p>Lee Asia como conjunto de corredores, refugios y barreras, no como una flecha continua hacia el este.</p>
+      <p>Lea Asia como conjunto de corredores, refugios y barreras, no como una flecha continua hacia el este.</p>
     </div>
     <div class="america-route-list">
       ${ASIA_DISPERSAL_PROBLEMS.map(route => `<article class="america-route-card">
@@ -6226,7 +6226,7 @@ function renderAsiaActivities() {
   const activities = [
     {
       title: 'Secundaria',
-      prompt: 'Ordena Dmanisi, Homo erectus asiático, Denisova/Harbin y Flores/Luzón. Después marca qué caso es fósil, cuál es ADN/proteína y cuál depende de inferencia.'
+      prompt: 'Ordene Dmanisi, Homo erectus asiático, Denisova/Harbin y Flores/Luzón. Después marca qué caso es fósil, cuál es ADN/proteína y cuál depende de inferencia.'
     },
     {
       title: 'Bachillerato',
@@ -6234,7 +6234,7 @@ function renderAsiaActivities() {
     },
     {
       title: 'Universidad',
-      prompt: 'Construye una matriz con región, cronología, evidencia principal, grado de consenso y pregunta abierta para cada caso asiático.'
+      prompt: 'Construya una matriz con región, cronología, evidencia principal, grado de consenso y pregunta abierta para cada caso asiático.'
     }
   ];
   return `<section class="america-panel">
@@ -6495,15 +6495,15 @@ function renderEuropeActivities() {
   const activities = [
     {
       title: 'Secundaria',
-      prompt: 'Haz una tabla con tres columnas: fósil o yacimiento, qué dato aporta y qué conclusión no se puede sacar todavía.'
+      prompt: 'Haga una tabla con tres columnas: fósil o yacimiento, qué dato aporta y qué conclusión no se puede sacar todavía.'
     },
     {
       title: 'Bachillerato',
-      prompt: 'Compara Atapuerca y Ranis/Zlatý kůň: una evidencia es fósil/proteómica y otra genética poblacional. Explica la diferencia.'
+      prompt: 'Compare Atapuerca y Ranis/Zlatý kůň: una evidencia es fósil/proteómica y otra genética poblacional. Explica la diferencia.'
     },
     {
       title: 'Universidad',
-      prompt: 'Redacta un argumento sobre Europa sin usar la palabra “eslabón”: usa población, muestra, cronología, método y grado de consenso.'
+      prompt: 'Redacte un argumento sobre Europa sin usar la palabra “eslabón”: usa población, muestra, cronología, método y grado de consenso.'
     }
   ];
   return `<section class="america-panel">
@@ -6763,7 +6763,7 @@ function renderContextTimeline() {
     svg.innerHTML = `
       <rect x="0" y="0" width="${W}" height="220" fill="#fbfaf8"></rect>
       <text x="${W/2}" y="96" text-anchor="middle" font-family="Playfair Display, serif" font-size="26" fill="#1c2b3a">Sin resultados para esta combinación de filtros</text>
-      <text x="${W/2}" y="128" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#8a96a6">Prueba otra búsqueda o cambia el filtro de clado para reconstruir la secuencia ambiental.</text>
+      <text x="${W/2}" y="128" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#8a96a6">Pruebe otra búsqueda o cambie el filtro de clado para reconstruir la secuencia ambiental.</text>
     `;
     return;
   }
@@ -7007,7 +7007,7 @@ const RESOURCE_BANK = [
   { category:'Materiales internos', kind:'Vista', title:'Centro docente', summary:'Secuencias, rúbricas, preguntas de investigación y materiales por nivel para convertir el atlas en una actividad completa.', use:'Úsalo como punto de partida de una clase o como guía de preparación para una sesión evaluable.', view:'aula', tags:['docencia','rúbrica','secuencia'] },
   { category:'Materiales internos', kind:'Vista', title:'Itinerarios guiados', summary:'Rutas narrativas por especies y problemas evolutivos, útiles para exposición oral o trabajo autónomo guiado.', use:'Ideal para alumnado que necesita una ruta clara antes de explorar libremente el atlas.', view:'itinerarios', tags:['ruta','narración','aprendizaje guiado'] },
   { category:'Materiales internos', kind:'Herramienta', title:'Bibliografía verificada 2023-2026', summary:'Referencias recientes separadas de la bibliografía clásica, con DOI y notas de cautela cuando el consenso no está cerrado.', use:'Sirve para preparar comentarios críticos, actualizar apuntes o justificar una hipótesis con fuentes recientes.', action:'abrirBiblio', tags:['bibliografía','DOI','actualización'] },
-  { category:'Materiales internos', kind:'Herramienta', title:'Exportación de datos visibles', summary:'Extrae el subconjunto filtrado de taxones para analizarlo fuera del atlas o construir tablas de clase.', use:'Filtra por clado, cronología o búsqueda y exporta solo lo que quieras trabajar.', action:'exportToCSV', tags:['datos','tabla','análisis'] },
+  { category:'Materiales internos', kind:'Herramienta', title:'Exportación de datos visibles', summary:'Extrae el subconjunto filtrado de taxones para analizarlo fuera del atlas o construir tablas de clase.', use:'Filtre por clado, cronología o búsqueda y exporta solo lo que quiera trabajar.', action:'exportToCSV', tags:['datos','tabla','análisis'] },
   { category:'Materiales internos', kind:'Herramienta', title:'Verificación global del atlas', summary:'Panel transversal que revisa ciencia, didáctica y diseño antes de usar el atlas en clase, exposición o investigación inicial.', use:'Úsalo al preparar una sesión: abre el centro docente y recorre los tres ejes de calidad con sus vistas de apoyo.', view:'aula', tags:['auditoría','diseño','verificación'] },
   { category:'Actividades didácticas', kind:'Actividad', title:'Debate con tesis enfrentadas', summary:'La vista Debate reúne controversias activas con tesis A/B y bibliografía reciente.', use:'Divide la clase en dos grupos: cada uno debe defender una tesis usando evidencias, no opiniones.', view:'debates', tags:['debate','argumentación','cautela'] },
   { category:'Actividades didácticas', kind:'Actividad', title:'Ficha de yacimiento', summary:'El banco de yacimientos organiza estratigrafía, métodos de datación y taxones asociados.', use:'Pide al alumnado que explique por qué un sitio es metodológicamente importante antes de nombrar especies.', view:'yacimientos', tags:['yacimientos','estratigrafía','método'] },
@@ -7109,7 +7109,7 @@ function renderResourceBank() {
   host.innerHTML = `
     <div class="resources-header">
       <h2>Banco de recursos</h2>
-      <p>Selección práctica para preparar clases, trabajos y debates: combina herramientas internas del atlas, actividades didácticas y fuentes recientes verificadas. El buscador global también filtra este banco.</p>
+      <p>Selección práctica para preparar sesiones, trabajos y debates: combina herramientas internas del atlas, actividades didácticas y fuentes recientes verificadas. El buscador global también filtra este banco.</p>
     </div>
     <div class="resources-kpis" aria-label="Resumen del banco de recursos">
       <div class="resources-kpi"><strong>${escapeHtmlText(RESOURCE_BANK.length)}</strong><span>recursos</span></div>
@@ -7727,7 +7727,7 @@ function renderMisconceptionGuard(sp, expert = getSpeciesExpert(sp)) {
   const items = [
     {
       wrong: '“Más antiguo” no significa “más primitivo”.',
-      fix: `Usa cronología precisa: ${sp.anos || 'edad no indicada'} describe cuándo aparece en el registro, no una escala de valor evolutivo.`
+      fix: `Use cronología precisa: ${sp.anos || 'edad no indicada'} describe cuándo aparece en el registro, no una escala de valor evolutivo.`
     },
     {
       wrong: 'Cercanía geográfica no prueba parentesco.',
@@ -7779,7 +7779,7 @@ function renderMisconceptionGuard(sp, expert = getSpeciesExpert(sp)) {
   return `<section class="misconception-card" aria-label="Errores frecuentes de interpretación">
     <div class="misconception-head">
       <div>
-        <h4>Errores que debes evitar</h4>
+        <h4>Errores que debe evitar</h4>
         <p>Pequeño control de calidad antes de usar esta ficha en una respuesta, debate o exposición.</p>
       </div>
       <span class="misconception-badge">Antídotos</span>
@@ -7824,7 +7824,7 @@ function renderLeveledInquiryCard(sp, expert = getSpeciesExpert(sp)) {
       id: 'universidad',
       code: 'U',
       label: 'Universidad',
-      task: `Contrasta la ficha con otro taxón cercano y decide qué afirmación tiene más apoyo: cronología, anatomía, conducta o taxonomía.`,
+      task: `Contraste la ficha con otro taxón cercano y decida qué afirmación tiene más apoyo: cronología, anatomía, conducta o taxonomía.`,
       product: `Producto: matriz de 3 evidencias y una cautela metodológica.`,
       caution: status === 'aceptada' ? 'Aunque el nombre sea estable, revisa muestra, preservación y datación.' : 'El estado taxonómico no es estable: argumenta sin convertir la hipótesis en consenso.'
     },
@@ -7832,7 +7832,7 @@ function renderLeveledInquiryCard(sp, expert = getSpeciesExpert(sp)) {
       id: 'investigacion',
       code: 'I',
       label: 'Investigación',
-      task: `Formula una prueba que pudiera mejorar o debilitar esta hipótesis: ${debateSeed}.`,
+      task: `Formule una prueba que pudiera mejorar o debilitar esta hipótesis: ${debateSeed}.`,
       product: 'Producto: pregunta investigable + evidencia necesaria + resultado que cambiaría la interpretación.',
       caution: 'Incluye sesgo tafonómico, tamaño muestral y alternativa explicativa.'
     }
@@ -7980,8 +7980,8 @@ function renderTaxonomicHypothesisPanel(sp, expert = getSpeciesExpert(sp)) {
   const alternative = status !== 'aceptada'
     ? `Estado ${ESTADO_LABEL[status] || status}: la asignación debe presentarse como hipótesis abierta.`
     : expert.debate
-      ? firstReadableSentence(expert.debate, `Compara con ${comparisonName} antes de tratar el nombre como diagnóstico cerrado.`)
-      : `Contrasta con ${comparisonName}: una especie no se define por un solo rasgo aislado.`;
+      ? firstReadableSentence(expert.debate, `Compare con ${comparisonName} antes de tratar el nombre como diagnóstico cerrado.`)
+      : `Contraste con ${comparisonName}: una especie no se define por un solo rasgo aislado.`;
   const test = expert.debate
     ? 'Buscar más material comparable, revisar datación y contrastar caracteres diagnósticos independientes.'
     : 'Comprobar si los rasgos se repiten en más individuos y si diferencian al taxón de especies próximas.';
@@ -8002,7 +8002,7 @@ function renderTaxonomicHypothesisPanel(sp, expert = getSpeciesExpert(sp)) {
       label: 'Alternativa',
       title: 'Qué podría discutirse',
       body: alternative,
-      check: 'Busca si puede ser variación, dimorfismo, deformación tafonómica, cronología o una especie distinta.'
+      check: 'Busque si puede ser variación, dimorfismo, deformación tafonómica, cronología o una especie distinta.'
     },
     {
       label: 'Prueba crítica',
@@ -8205,7 +8205,7 @@ function renderPaleoecologyEvidencePanel(sp, expert = getSpeciesExpert(sp)) {
       label: 'Paisaje',
       title: 'Ambiente reconstruido',
       body: ecology,
-      check: 'Busca si el ambiente procede de polen, fauna, sedimentos, isótopos, geología o comparación regional.'
+      check: 'Busque si el ambiente procede de polen, fauna, sedimentos, isótopos, geología o comparación regional.'
     },
     diet,
     culture,
@@ -8227,7 +8227,7 @@ function renderPaleoecologyEvidencePanel(sp, expert = getSpeciesExpert(sp)) {
   </article>`).join('');
   return `<section class="data-section species-paleoecology-evidence" aria-label="Paleoecología, dieta y conducta">
     <h4>Paleoecología, dieta y conducta</h4>
-    <p>Lee la relación entre ambiente, alimentación y cultura como una hipótesis apoyada por indicios, no como una escena cerrada. Este panel ayuda a separar evidencia directa, inferencia y cautela.</p>
+    <p>Lea la relación entre ambiente, alimentación y cultura como una hipótesis apoyada por indicios, no como una escena cerrada. Este panel ayuda a separar evidencia directa, inferencia y cautela.</p>
     <div class="teaching-ticket-grid">${html}</div>
   </section>`;
 }
@@ -8257,7 +8257,7 @@ function renderResearchAgendaPanel(sp) {
       label: 'Campo',
       title: 'Qué hallazgo sería decisivo',
       items: gaps.fieldwork,
-      check: 'Formula la próxima excavación como una predicción: qué dato resolvería el debate.'
+      check: 'Formule la próxima excavación como una predicción: qué dato resolvería el debate.'
     }
   ];
   const html = cardData.map(card => {
@@ -8360,7 +8360,7 @@ function renderGuidedScientificComparison(sp, expert = getSpeciesExpert(sp)) {
   const cladeB = CLADE_NAMES[other.clado] || other.clado || 'clado no indicado';
   return `<section class="data-section species-guided-comparison" aria-label="Comparación científica guiada">
     <h4>Comparación científica recomendada</h4>
-    <p>Usa esta pareja para aprender por contraste: no memorices dos fichas; compara criterios equivalentes y decide qué inferencia está mejor sostenida.</p>
+    <p>Use esta pareja para aprender por contraste: no memorice dos fichas; compare criterios equivalentes y decida qué inferencia está mejor sostenida.</p>
     <div class="cmp-headers">
       <article class="cmp-card ${escapeHtmlAttr(sp.clado || '')}">
         <div class="cmp-card-kicker">${escapeHtmlText(cladeA)}</div>
@@ -8403,8 +8403,8 @@ function renderSpeciesExitTicket(sp, expert = getSpeciesExpert(sp)) {
       title: 'Explica sin memorizar',
       purpose: `Completa: “${sp.nombre} es importante porque…”.`,
       prompts: [
-        `Usa una fecha o lugar: ${evidenceAnchor}.`,
-        'Añade una evidencia observable de la imagen, mapa o ficha.',
+        `Use una fecha o lugar: ${evidenceAnchor}.`,
+        'Añada una evidencia observable de la imagen, mapa o ficha.',
         'Termina con una duda científica, no con una opinión.'
       ],
       criterion: 'Bien si separa dato visible, idea principal y pregunta abierta.'
@@ -8425,11 +8425,11 @@ function renderSpeciesExitTicket(sp, expert = getSpeciesExpert(sp)) {
       level: 'Universidad',
       time: '8 min',
       title: 'Comparación crítica',
-      purpose: `Compara ${sp.nombre} con ${comparisonName}.`,
+      purpose: `Compare ${sp.nombre} con ${comparisonName}.`,
       prompts: [
-        'Elige dos evidencias comparables: cronología, anatomía, cultura o moléculas.',
+        'Elija dos evidencias comparables: cronología, anatomía, cultura o moléculas.',
         `Incluye una cautela: ${debateAnchor}.`,
-        'Formula qué dato nuevo cambiaría tu interpretación.'
+        'Formule qué dato nuevo cambiaría su interpretación.'
       ],
       criterion: 'Bien si compara criterios equivalentes y reconoce incertidumbre.'
     }
@@ -8460,13 +8460,13 @@ function buildPrereadingConcepts(sp, expert = getSpeciesExpert(sp)) {
   const rules = [
     { term: 'holotipo', label: 'holotipo', tag: 'taxonomia', reason: 'Ancla el nombre científico a un material concreto.', check: 'Localiza qué resto sostiene el nombre de la especie.', when: () => !!sp.holo },
     { term: 'estratigrafia', label: 'estratigrafía', tag: 'datacion', reason: 'Ayuda a ordenar capas, yacimientos y edades.', check: 'Distingue fecha absoluta, capa y asociación faunística.', when: () => /dataci[oó]n|estratigraf|sediment|nivel|capa|ar-ar|k-ar|esr|osl|uranio|biocronolog/i.test(context) },
-    { term: 'bipedismo', label: 'bipedismo', tag: 'anatomia', reason: 'Es clave para interpretar locomoción sin simplificar la evolución.', check: 'Busca qué parte del esqueleto permite discutir postura o marcha.', when: () => /b[ií]ped|locomoc|foramen|f[eé]mur|pelvis|pie|hallux|postcrane/i.test(context) },
-    { term: 'capacidad craneal', label: 'capacidad craneal', tag: 'anatomia', reason: 'No equivale por sí sola a inteligencia: exige comparación cautelosa.', check: 'Compara volumen, cronología y contexto antes de sacar conclusiones.', when: () => !!sp.cc && String(sp.cc) !== '?' },
+    { term: 'bipedismo', label: 'bipedismo', tag: 'anatomia', reason: 'Es clave para interpretar locomoción sin simplificar la evolución.', check: 'Busque qué parte del esqueleto permite discutir postura o marcha.', when: () => /b[ií]ped|locomoc|foramen|f[eé]mur|pelvis|pie|hallux|postcrane/i.test(context) },
+    { term: 'capacidad craneal', label: 'capacidad craneal', tag: 'anatomia', reason: 'No equivale por sí sola a inteligencia: exige comparación cautelosa.', check: 'Compare volumen, cronología y contexto antes de sacar conclusiones.', when: () => !!sp.cc && String(sp.cc) !== '?' },
     { term: 'industria litica', label: 'industria lítica', tag: 'tecnologia', reason: 'Conecta restos materiales con conducta, aprendizaje y transmisión cultural.', check: 'Separa herramienta asociada, tradición técnica e inferencia conductual.', when: () => /herramient|l[ií]tic|Olduvayense|Achelense|Musteriense|Levallois|bifaz|lascas?|modo\s*[1-5]/i.test(context) },
     { term: 'paleogenómica', label: 'paleogenómica', tag: 'paleogenomica', reason: 'Permite estudiar parentesco y mezcla, pero depende de preservación.', check: 'Pregunta si la evidencia es ADN directo o comparación indirecta.', when: () => /adn|gen[oó]m|paleogen|denisov|neandertal|mitocondrial|nuclear|introgresi/i.test(context) },
-    { term: 'paleoproteomica', label: 'paleoproteómica', tag: 'paleogenomica', reason: 'Aporta evidencia molecular cuando el ADN antiguo no se conserva.', check: 'Identifica si se habla de proteínas, colágeno o esmalte dental.', when: () => /prote[oó]m|col[aá]geno|prote[ií]na|esmalte/i.test(context) },
-    { term: 'clado', label: 'clado', tag: 'filogenia', reason: 'Evita leer la evolución como una escalera lineal.', check: 'Formula parentesco como hipótesis de ramas, no como ranking de progreso.', when: () => true },
-    { term: 'mosaico', label: 'mosaico evolutivo', tag: 'filogenia', reason: 'Muchas especies combinan rasgos antiguos y derivados.', check: 'Busca un rasgo primitivo y otro derivado en la misma ficha.', when: () => /mosaico|primitiv|derivad|ancestral|moderno|arcaic/i.test(context) }
+    { term: 'paleoproteomica', label: 'paleoproteómica', tag: 'paleogenomica', reason: 'Aporta evidencia molecular cuando el ADN antiguo no se conserva.', check: 'Identifique si se habla de proteínas, colágeno o esmalte dental.', when: () => /prote[oó]m|col[aá]geno|prote[ií]na|esmalte/i.test(context) },
+    { term: 'clado', label: 'clado', tag: 'filogenia', reason: 'Evita leer la evolución como una escalera lineal.', check: 'Formule parentesco como hipótesis de ramas, no como ranking de progreso.', when: () => true },
+    { term: 'mosaico', label: 'mosaico evolutivo', tag: 'filogenia', reason: 'Muchas especies combinan rasgos antiguos y derivados.', check: 'Busque un rasgo primitivo y otro derivado en la misma ficha.', when: () => /mosaico|primitiv|derivad|ancestral|moderno|arcaic/i.test(context) }
   ];
   const selected = [];
   const seen = new Set();
@@ -8506,7 +8506,7 @@ function renderPrereadingConceptCard(sp, expert = getSpeciesExpert(sp)) {
   }).join('');
   return `<section class="data-section species-prereading-card" aria-label="Conceptos previos para leer la ficha">
     <h4>Antes de leer: conceptos llave</h4>
-    <p>Activa vocabulario básico antes de interpretar la ficha. Pulsa cada concepto si necesitas abrir su entrada del glosario.</p>
+    <p>Active vocabulario básico antes de interpretar la ficha. Pulse cada concepto si necesita abrir su entrada del glosario.</p>
     <div class="teaching-ticket-grid">${cards}</div>
   </section>`;
 }
@@ -8584,9 +8584,9 @@ function renderTimeBoxedLearningPath(sp, expert = getSpeciesExpert(sp)) {
       title: 'Orientarse',
       goal: 'Entender la ficha sin perderse.',
       steps: [
-        'Lee “Lectura clara”: cuándo, dónde y cuidado principal.',
-        'Mira una imagen y di qué tipo de documento es: fósil, reconstrucción o mapa.',
-        `Escribe una frase: “${sp.nombre} se sitúa en…”`
+        'Lea “Lectura clara”: cuándo, dónde y cuidado principal.',
+        'Mire una imagen y di qué tipo de documento es: fósil, reconstrucción o mapa.',
+        `Escriba una frase: “${sp.nombre} se sitúa en…”`
       ],
       product: 'Producto: una frase correcta + una duda.'
     },
@@ -8595,8 +8595,8 @@ function renderTimeBoxedLearningPath(sp, expert = getSpeciesExpert(sp)) {
       title: 'Explicar con evidencia',
       goal: 'Pasar de descripción a argumento.',
       steps: [
-        'Elige un dato directo: holotipo, datación, yacimiento, rasgo o tecnología.',
-        'Formula una inferencia y marca su límite.',
+        'Elija un dato directo: holotipo, datación, yacimiento, rasgo o tecnología.',
+        'Formule una inferencia y marque su límite.',
         'Completa el ticket de salida del nivel que corresponda.'
       ],
       product: 'Producto: miniargumento dato → inferencia → cautela.'
@@ -8608,9 +8608,9 @@ function renderTimeBoxedLearningPath(sp, expert = getSpeciesExpert(sp)) {
         ? 'Distinguir consenso, debate y tipo de evidencia.'
         : 'Comparar dos taxones con criterios equivalentes.',
       steps: [
-        'Usa la comparación científica recomendada.',
-        hasMolecular ? 'Separa evidencia fósil, molecular y contextual.' : 'Compara cronología, región, material y cultura.',
-        hasDebate ? 'Escribe qué dato resolvería mejor el debate.' : 'Propón qué dato nuevo cambiaría la interpretación.'
+        'Use la comparación científica recomendada.',
+        hasMolecular ? 'Separa evidencia fósil, molecular y contextual.' : 'Compare cronología, región, material y cultura.',
+        hasDebate ? 'Escriba qué dato resolvería mejor el debate.' : 'Propón qué dato nuevo cambiaría la interpretación.'
       ],
       product: 'Producto: comparación razonada + pregunta investigable.'
     }
@@ -8627,7 +8627,7 @@ function renderTimeBoxedLearningPath(sp, expert = getSpeciesExpert(sp)) {
   </article>`).join('');
   return `<section class="data-section species-learning-path" aria-label="Rutas de trabajo por tiempo">
     <h4>Ruta de trabajo</h4>
-    <p>Elige una ruta según el tiempo disponible. Sirve para clase rápida, actividad guiada o investigación breve.</p>
+    <p>Elija una ruta según el tiempo disponible. Sirve para clase rápida, actividad guiada o investigación breve.</p>
     <div class="teaching-ticket-grid">${cards}</div>
   </section>`;
 }
@@ -8640,7 +8640,7 @@ function renderUnderstandingTrafficLight(sp, expert = getSpeciesExpert(sp)) {
       level: 'Verde',
       title: 'Puedo avanzar',
       test: `Explico cuándo y dónde aparece ${sp.nombre}, y cito un dato directo.`,
-      next: 'Abre la comparación recomendada o completa el ticket de salida.'
+      next: 'Abra la comparación recomendada o completa el ticket de salida.'
     },
     {
       level: 'Ámbar',
@@ -8655,7 +8655,7 @@ function renderUnderstandingTrafficLight(sp, expert = getSpeciesExpert(sp)) {
         ? 'Estoy presentando una hipótesis debatida como si fuera consenso.'
         : 'Estoy usando palabras como “más evolucionado” o comparando sin criterio común.',
       next: hasDebate
-        ? 'Lee “Errores que debes evitar” y localiza qué evidencia resolvería el debate.'
+        ? 'Lea “Errores que debe evitar” y localiza qué evidencia resolvería el debate.'
         : 'Reformula con cronología, región, material fósil o tecnología.'
     }
   ];
@@ -8670,7 +8670,7 @@ function renderUnderstandingTrafficLight(sp, expert = getSpeciesExpert(sp)) {
   </article>`).join('');
   return `<section class="data-section species-understanding-light" aria-label="Semáforo de comprensión">
     <h4>Semáforo de comprensión</h4>
-    <p>Antes de cambiar de especie, comprueba en qué punto estás. No es una nota: es una decisión sobre el siguiente paso.</p>
+    <p>Antes de cambiar de especie, comprueba en qué punto está. No es una nota: es una decisión sobre el siguiente paso.</p>
     <div class="teaching-ticket-grid">${cards}</div>
   </section>`;
 }
@@ -9015,7 +9015,7 @@ const NAV_FAMILY_META = {
 };
 
 const VIEW_META = {
-  timeline:      { family: 'explorar',   title: 'Cronología',     audience: 'Adecuada para público general y docencia',            goal: 'Pregunta principal: qué aparece primero y qué convive',         description: 'Ordena los taxones en el tiempo para reconocer apariciones, solapamientos y desapariciones antes de entrar en debates más especializados.' },
+  timeline:      { family: 'explorar',   title: 'Cronología',     audience: 'Adecuada para público general y docencia',            goal: 'Pregunta principal: qué aparece primero y qué convive',         description: 'Ordene los taxones en el tiempo para reconocer apariciones, solapamientos y desapariciones antes de entrar en debates más especializados.' },
   map:           { family: 'explorar',   title: 'Mapa',           audience: 'Adecuada para públicos mixtos y aprendizaje visual',  goal: 'Pregunta principal: dónde se documenta cada taxón',             description: 'Sitúa geográficamente especies y yacimientos para transformar el registro fósil en una lectura espacial clara y comparativa.' },
   continentes:   { family: 'explorar',   title: 'Continentes',    audience: 'Útil para docencia comparada y trabajo regional',     goal: 'Pregunta principal: cómo cambia la hominización por áreas',     description: 'Separa el proceso de hominización por grandes regiones para evitar una lectura lineal y mostrar ritmos continentales distintos.' },
   africa:        { family: 'explorar',   title: 'África',         audience: 'Especialmente útil en secundaria, universidad y seminarios', goal: 'Pregunta principal: qué concentra el registro africano y por qué', description: 'Profundiza en el continente clave para la paleoantropología con rutas didácticas, bibliografía, consenso científico y escalas regionales.' },
@@ -9031,12 +9031,12 @@ const VIEW_META = {
   coexistencias: { family: 'interpretar', title: 'Coexistencias', audience: 'Especialmente útil para resolver dudas frecuentes',   goal: 'Pregunta principal: cuántas especies convivieron a la vez',     description: 'Cruza intervalos temporales y taxones para visualizar simultaneidad, solapamiento y convivencia potencial entre especies humanas.' },
   revisiones:    { family: 'investigar',  title: 'Revisiones',    audience: 'Pensada para investigación y discusión académica',    goal: 'Pregunta principal: cómo cambia la taxonomía con el tiempo',    description: 'Recoge cambios de clasificación, propuestas y revisiones para mostrar que la taxonomía es una historia crítica y no una lista cerrada.' },
   genomica:      { family: 'investigar',  title: 'Paleogenómica', audience: 'Útil desde introducción guiada hasta seminario avanzado', goal: 'Pregunta principal: qué aporta el ADN antiguo a la filogenia', description: 'Integra ADN antiguo, introgresión, distancias genéticas y genes funcionales para conectar fósiles, linajes y evolución molecular sin confundir inferencia con evidencia directa.' },
-  primatologia:  { family: 'investigar',  title: 'Primatología', audience: 'Útil para conectar biología, antropología y conducta comparada', goal: 'Pregunta principal: qué enseñan los grandes simios vivos sin convertirlos en ancestros directos', description: 'Compara chimpancés, bonobos, gorilas y orangutanes como modelos parciales para estudiar comportamiento, locomoción, aprendizaje social, herramientas y límites de la analogía evolutiva.' },
+  primatologia:  { family: 'investigar',  title: 'Primatología', audience: 'Útil para conectar biología, antropología y conducta comparada', goal: 'Pregunta principal: qué enseñan los grandes simios vivos sin convertirlos en ancestros directos', description: 'Compare chimpancés, bonobos, gorilas y orangutanes como modelos parciales para estudiar comportamiento, locomoción, aprendizaje social, herramientas y límites de la analogía evolutiva.' },
   datacion:      { family: 'investigar',  title: 'Datación',      audience: 'Muy útil para metodología y seminarios',              goal: 'Pregunta principal: qué método sirve para cada problema cronológico', description: 'Convierte la datación en un laboratorio conceptual donde se comparan métodos, alcances y límites reales.' },
   debates:       { family: 'investigar',  title: 'Debate activo', audience: 'Pensada para argumentación científica',               goal: 'Pregunta principal: qué controversias siguen abiertas',         description: 'Agrupa debates abiertos con argumentos y cautelas para distinguir entre consenso, hipótesis provisional y controversia científica.' },
   holotipos:     { family: 'investigar',  title: 'Holotipos',     audience: 'Útil para cultura material y documentación de museo', goal: 'Pregunta principal: qué ejemplares sostienen cada nombre',      description: 'Pone el foco en los especímenes de referencia, su institución depositaria y su valor como base material de la nomenclatura.' },
   aula:          { family: 'aprender',    title: 'Centro docente', audience: 'Pensada para aula, investigación inicial y transferencia', goal: 'Pregunta principal: qué materiales, datos y productos se pueden construir', description: 'Reúne banco de datos exportable, materiales por nivel, itinerarios de investigación y rutas de trabajo para convertir el atlas en laboratorio docente.' },
-  recursos:      { family: 'aprender',    title: 'Banco de recursos', audience: 'Pensado para docentes, estudiantes y preparación de actividades', goal: 'Pregunta principal: qué recurso usar para cada producto de aula', description: 'Organiza enlaces internos, fuentes verificadas, plantillas y propuestas de uso para preparar clases, trabajos, debates y ejercicios con evidencia.' },
+  recursos:      { family: 'aprender',    title: 'Banco de recursos', audience: 'Pensado para docentes, estudiantes y preparación de actividades', goal: 'Pregunta principal: qué recurso usar para cada producto de aula', description: 'Organiza enlaces internos, fuentes verificadas, plantillas y propuestas de uso para preparar sesiones, trabajos, debates y ejercicios con evidencia.' },
   itinerarios:   { family: 'aprender',    title: 'Itinerarios',   audience: 'Diseñada para aula, exposición y estudio guiado',     goal: 'Pregunta principal: por dónde conviene empezar a enseñar',      description: 'Organiza rutas de aprendizaje con objetivos, preguntas y productos académicos para convertir el atlas en secuencia docente.' },
   dispersal:     { family: 'aprender',    title: 'Simulador',     audience: 'Muy útil para aprendizaje visual y explicación oral', goal: 'Pregunta principal: cómo se expanden los linajes en el espacio', description: 'Anima la dispersión de distintos linajes y permite pausar la lectura para discutir coexistencias, rutas y contexto ambiental.' },
   constructor:   { family: 'aprender',    title: 'Constructor',   audience: 'Idónea para aprendizaje activo y evaluación formativa', goal: 'Pregunta principal: cómo se construye una hipótesis filogenética', description: 'Invita a construir árboles propios y comparar hipótesis, haciendo visible el razonamiento cladístico paso a paso.' },
@@ -9048,35 +9048,35 @@ const VIEW_META = {
 };
 
 const VIEW_HERO_META = {
-  timeline: { kicker: 'Lectura guiada', badge: 'Inicio recomendado', question: 'Usa esta vista para situar primero el orden temporal antes de comparar anatomía, clima o dispersión.', steps: ['Identifica apariciones y desapariciones.', 'Busca solapamientos cronológicos.', 'Abre fichas solo después de ubicar el taxón en el tiempo.'], pills: ['Panorama general', 'Secuencia temporal', 'Uso escolar y universitario'] },
-  map: { kicker: 'Lectura espacial', badge: 'Visión global', question: 'Empieza por la distribución geográfica para evitar leer la evolución como una sola línea africana o euroasiática.', steps: ['Observa nodos y regiones antes de hacer zoom.', 'Relaciona ubicación y cronología.', 'Comprueba si varias especies comparten región.'], pills: ['Mapa interactivo', 'Regiones y yacimientos', 'Comparación territorial'] },
-  continentes: { kicker: 'Comparación regional', badge: 'Escala macro', question: 'Sirve para explicar que la hominización no avanza igual en todos los continentes.', steps: ['Compara ritmos por continente.', 'Detecta vacíos del registro.', 'Relaciona presencia taxonómica y dispersión.'], pills: ['Lectura regional', 'Ritmos distintos', 'Didáctica comparada'] },
-  africa: { kicker: 'Núcleo del atlas', badge: 'Registro central', question: 'Conviene leer África como laboratorio principal del registro, no como una sección más del sitio.', steps: ['Comienza por las rutas didácticas.', 'Usa el semáforo de consenso.', 'Relaciona regiones, métodos y bibliografía.'], pills: ['Alta densidad científica', 'Rutas docentes', 'Fuentes revisadas'] },
-  asia: { kicker: 'Dispersión y mezcla', badge: 'Contexto clave', question: 'Asia permite explicar que la expansión de Homo no fue una flecha única: hubo persistencias regionales, mezcla arcaica, islas y linajes mal conocidos.', steps: ['Ordena salida temprana, Asia oriental e islas.', 'Distingue fósil, ADN, proteína e inferencia.', 'Formula cada caso con su grado de consenso.'], pills: ['Denisovanos', 'Homo erectus asiático', 'Flores y Luzón', 'Mosaicos chinos'] },
-  europe: { kicker: 'Poblamientos europeos', badge: 'Atapuerca y neandertales', question: 'Europa sirve para enseñar poblamientos, continuidad regional, mezcla y cautela taxonómica, no una historia de origen simplificada.', steps: ['Separa Mioceno, Pleistoceno inferior y Pleistoceno medio.', 'Lee Atapuerca por yacimiento y método.', 'Distingue fósil, proteoma, ADN y modelo poblacional.'], pills: ['Atapuerca', 'Sima de los Huesos', 'Neandertales', 'Ranis/Zlatý kůň'] },
-  america: { kicker: 'Poblamiento reciente', badge: 'Dispersión sapiens', question: 'La utilidad de América es enseñar cómo se prueba una llegada humana temprana sin inventar nuevos linajes locales.', steps: ['Distingue taxón y dispersión.', 'Compara pre-Clovis y Clovis.', 'Evalúa cada caso con el semáforo de consenso.'], pills: ['Homo sapiens', 'Pre-Clovis', 'Rutas y evidencias'] },
-  yacimientos: { kicker: 'Método arqueológico', badge: 'Trabajo con evidencia', question: 'Esta vista enseña a pensar desde el sitio, la estratigrafía y la datación, no solo desde el nombre de la especie.', steps: ['Lee primero el valor metodológico.', 'Comprueba estratigrafía y técnicas.', 'Relaciona taxones y contexto.'], pills: ['Sitios y capas', 'Datación', 'Investigación guiada'] },
-  tree: { kicker: 'Filogenia básica', badge: 'Interpretación inicial', question: 'Funciona mejor como puerta de entrada a las relaciones evolutivas antes de pasar a debates cladísticos más finos.', steps: ['Sigue ramas principales.', 'Reconoce grupos mayores.', 'Abre fichas para matizar excepciones.'], pills: ['Clados principales', 'Lectura rápida', 'Buena para aula'] },
-  phylo: { kicker: 'Hipótesis relacionales', badge: 'Nivel medio-avanzado', question: 'Aquí importa menos memorizar especies y más comprender afinidades, discontinuidades y nodos inciertos.', steps: ['Lee de izquierda a derecha.', 'Fíjate en ramas y agrupaciones.', 'Interpreta la incertidumbre como parte del análisis.'], pills: ['Razonamiento filogenético', 'Lectura comparada', 'Más analítica'] },
-  biogeo: { kicker: 'Espacio y tiempo', badge: 'Relación de escalas', question: 'La utilidad didáctica está en relacionar distribución, cronología y persistencia regional.', steps: ['Cruza región y edad.', 'Busca continuidades y vacíos.', 'Relaciona expansión y aislamiento.'], pills: ['Biogeografía', 'Secuencias regionales', 'Lectura histórica'] },
+  timeline: { kicker: 'Lectura guiada', badge: 'Inicio recomendado', question: 'Use esta vista para situar primero el orden temporal antes de comparar anatomía, clima o dispersión.', steps: ['Identifique apariciones y desapariciones.', 'Busque solapamientos cronológicos.', 'Abra fichas solo después de ubicar el taxón en el tiempo.'], pills: ['Panorama general', 'Secuencia temporal', 'Uso escolar y universitario'] },
+  map: { kicker: 'Lectura espacial', badge: 'Visión global', question: 'Empiece por la distribución geográfica para evitar leer la evolución como una sola línea africana o euroasiática.', steps: ['Observe nodos y regiones antes de hacer zoom.', 'Relaciona ubicación y cronología.', 'Comprueba si varias especies comparten región.'], pills: ['Mapa interactivo', 'Regiones y yacimientos', 'Comparación territorial'] },
+  continentes: { kicker: 'Comparación regional', badge: 'Escala macro', question: 'Sirve para explicar que la hominización no avanza igual en todos los continentes.', steps: ['Compare ritmos por continente.', 'Detecta vacíos del registro.', 'Relaciona presencia taxonómica y dispersión.'], pills: ['Lectura regional', 'Ritmos distintos', 'Didáctica comparada'] },
+  africa: { kicker: 'Núcleo del atlas', badge: 'Registro central', question: 'Conviene leer África como laboratorio principal del registro, no como una sección más del sitio.', steps: ['Comience por las rutas didácticas.', 'Use el semáforo de consenso.', 'Relaciona regiones, métodos y bibliografía.'], pills: ['Alta densidad científica', 'Rutas docentes', 'Fuentes revisadas'] },
+  asia: { kicker: 'Dispersión y mezcla', badge: 'Contexto clave', question: 'Asia permite explicar que la expansión de Homo no fue una flecha única: hubo persistencias regionales, mezcla arcaica, islas y linajes mal conocidos.', steps: ['Ordene salida temprana, Asia oriental e islas.', 'Distingue fósil, ADN, proteína e inferencia.', 'Formule cada caso con su grado de consenso.'], pills: ['Denisovanos', 'Homo erectus asiático', 'Flores y Luzón', 'Mosaicos chinos'] },
+  europe: { kicker: 'Poblamientos europeos', badge: 'Atapuerca y neandertales', question: 'Europa sirve para enseñar poblamientos, continuidad regional, mezcla y cautela taxonómica, no una historia de origen simplificada.', steps: ['Separa Mioceno, Pleistoceno inferior y Pleistoceno medio.', 'Lea Atapuerca por yacimiento y método.', 'Distingue fósil, proteoma, ADN y modelo poblacional.'], pills: ['Atapuerca', 'Sima de los Huesos', 'Neandertales', 'Ranis/Zlatý kůň'] },
+  america: { kicker: 'Poblamiento reciente', badge: 'Dispersión sapiens', question: 'La utilidad de América es enseñar cómo se prueba una llegada humana temprana sin inventar nuevos linajes locales.', steps: ['Distingue taxón y dispersión.', 'Compare pre-Clovis y Clovis.', 'Evalúa cada caso con el semáforo de consenso.'], pills: ['Homo sapiens', 'Pre-Clovis', 'Rutas y evidencias'] },
+  yacimientos: { kicker: 'Método arqueológico', badge: 'Trabajo con evidencia', question: 'Esta vista enseña a pensar desde el sitio, la estratigrafía y la datación, no solo desde el nombre de la especie.', steps: ['Lea primero el valor metodológico.', 'Comprueba estratigrafía y técnicas.', 'Relaciona taxones y contexto.'], pills: ['Sitios y capas', 'Datación', 'Investigación guiada'] },
+  tree: { kicker: 'Filogenia básica', badge: 'Interpretación inicial', question: 'Funciona mejor como puerta de entrada a las relaciones evolutivas antes de pasar a debates cladísticos más finos.', steps: ['Siga ramas principales.', 'Reconoce grupos mayores.', 'Abra fichas para matizar excepciones.'], pills: ['Clados principales', 'Lectura rápida', 'Buena para aula'] },
+  phylo: { kicker: 'Hipótesis relacionales', badge: 'Nivel medio-avanzado', question: 'Aquí importa menos memorizar especies y más comprender afinidades, discontinuidades y nodos inciertos.', steps: ['Lea de izquierda a derecha.', 'Fíjate en ramas y agrupaciones.', 'Interpreta la incertidumbre como parte del análisis.'], pills: ['Razonamiento filogenético', 'Lectura comparada', 'Más analítica'] },
+  biogeo: { kicker: 'Espacio y tiempo', badge: 'Relación de escalas', question: 'La utilidad didáctica está en relacionar distribución, cronología y persistencia regional.', steps: ['Cruza región y edad.', 'Busque continuidades y vacíos.', 'Relaciona expansión y aislamiento.'], pills: ['Biogeografía', 'Secuencias regionales', 'Lectura histórica'] },
   contexto: { kicker: 'Pensamiento sistémico', badge: 'Relación ambiente-evolución', question: 'Esta vista es clave para explicar que los taxones no son islas: responden a clima, tectónica y paisaje.', steps: ['Sitúa el evento ambiental.', 'Cruza con taxones visibles.', 'Explica la respuesta evolutiva con cautela.'], pills: ['Clima y geología', 'Presiones ambientales', 'Lectura integrada'] },
-  clima: { kicker: 'Paleoambiente', badge: 'Lectura de proxies', question: 'No la leas como gráfico aislado: úsala para enmarcar taxones, coexistencias y cambios de fondo.', steps: ['Elige escala temporal.', 'Observa eventos clave.', 'Cruza con especies filtradas.'], pills: ['Series climáticas', 'Eventos', 'Filtro temporal'] },
-  coexistencias: { kicker: 'Pregunta frecuente', badge: 'Muy útil en aula', question: 'Responde de forma visual a una de las dudas más habituales: cuántas especies pudieron convivir.', steps: ['Busca intervalos solapados.', 'No confundas coexistencia con contacto.', 'Relaciona tiempo y región.'], pills: ['Simultaneidad', 'Solapamiento', 'Uso didáctico alto'] },
-  revisiones: { kicker: 'Historia de la ciencia', badge: 'Perspectiva crítica', question: 'Ayuda a mostrar que la taxonomía cambia porque cambia la evidencia y también el marco teórico.', steps: ['Sigue cambios de nombre.', 'Detecta propuestas en debate.', 'Relaciona revisión y evidencia nueva.'], pills: ['Revisión taxonómica', 'Debate histórico', 'Investigación'] },
-  genomica: { kicker: 'ADN antiguo', badge: 'Apartado específico', question: 'Interesa leer esta vista como complemento del registro fósil, no como sustituto de la anatomía.', steps: ['Identifica linajes con ADN.', 'Observa introgresión.', 'Relaciona genoma y morfología con prudencia.'], pills: ['Paleogenómica', 'Introgresión', 'Comparación molecular'] },
-  primatologia: { kicker: 'Modelos comparativos', badge: 'Etología evolutiva', question: 'La clave es comparar sin confundir: los grandes simios vivos no son fósiles vivientes ni ancestros directos.', steps: ['Observa el rasgo comparado.', 'Distingue homología, analogía y convergencia.', 'Conecta conducta viva con evidencia fósil solo cuando el puente metodológico sea explícito.'], pills: ['Grandes simios', 'Conducta', 'Cautela comparativa'] },
-  datacion: { kicker: 'Método científico', badge: 'Laboratorio conceptual', question: 'Es una vista para aprender por qué no todo método sirve para todo problema cronológico.', steps: ['Define antigüedad estimada.', 'Elige técnica adecuada.', 'Interpreta márgenes de error.'], pills: ['Métodos', 'Error cronológico', 'Aprendizaje activo'] },
-  debates: { kicker: 'Controversias abiertas', badge: 'Argumentación científica', question: 'Su mayor valor didáctico es enseñar a distinguir entre consenso, hipótesis fuerte y especulación.', steps: ['Lee ambas tesis.', 'Busca el tipo de evidencia.', 'Evalúa el grado de consenso.'], pills: ['Debate', 'Cautela epistémica', 'Seminarios'] },
-  holotipos: { kicker: 'Cultura material', badge: 'Base nomenclatural', question: 'Recuerda que cada nombre científico se ancla en un ejemplar concreto y en una historia institucional.', steps: ['Identifica el ejemplar.', 'Observa institución y catálogo.', 'Relaciona tipo y taxón.'], pills: ['Ejemplares tipo', 'Museos', 'Documentación'] },
-  aula: { kicker: 'Centro docente', badge: 'Materiales y datos', question: 'Esta vista convierte el atlas en un espacio de trabajo: banco de datos, tareas evaluables y rutas para investigar.', steps: ['Elige nivel educativo o seminario.', 'Exporta el banco de datos visible.', 'Cierra con un producto verificable y una reflexión metodológica.'], pills: ['Banco de datos', 'Guía docente', 'Investigación'] },
-  recursos: { kicker: 'Banco de aula', badge: 'Recursos listos para usar', question: 'Elige primero el producto que quieres conseguir: debate, ficha, mapa, comparación, lectura crítica o actividad de evaluación.', steps: ['Selecciona una categoría.', 'Abre el recurso interno o la fuente primaria.', 'Asocia cada recurso a una tarea concreta.'], pills: ['Plantillas', 'Fuentes', 'Actividades', 'Evaluación'] },
-  itinerarios: { kicker: 'Secuencia docente', badge: 'Aula y exposición', question: 'La clave aquí es usar el atlas como recorrido guiado, no solo como base de consulta libre.', steps: ['Elige una ruta.', 'Sigue regiones o taxones propuestos.', 'Cierra con un producto evaluable.'], pills: ['Guías de clase', 'Objetivos', 'Evaluación'] },
-  dispersal: { kicker: 'Simulación', badge: 'Aprendizaje visual', question: 'Sirve para transformar la dispersión en proceso observable y no en una lista de flechas aprendida de memoria.', steps: ['Activa un linaje.', 'Pausa en momentos clave.', 'Compara rutas y coexistencias.'], pills: ['Animación', 'Migraciones', 'Explicación oral'] },
-  constructor:   { kicker: 'Aprender construyendo',  badge: 'Práctica guiada',        question: 'Esta vista funciona mejor si el usuario entiende antes que un árbol es una hipótesis justificable, no un dibujo libre.',                                                                              steps: ['Selecciona pocos taxones al inicio.', 'Conecta ramas con criterio.', 'Compara tu resultado con hipótesis publicadas.'],                                                            pills: ['Trabajo activo', 'Hipótesis', 'Cladística aplicada'] },
+  clima: { kicker: 'Paleoambiente', badge: 'Lectura de proxies', question: 'No la leas como gráfico aislado: úsala para enmarcar taxones, coexistencias y cambios de fondo.', steps: ['Elija escala temporal.', 'Observe eventos clave.', 'Cruza con especies filtradas.'], pills: ['Series climáticas', 'Eventos', 'Filtro temporal'] },
+  coexistencias: { kicker: 'Pregunta frecuente', badge: 'Muy útil en aula', question: 'Responda de forma visual a una de las dudas más habituales: cuántas especies pudieron convivir.', steps: ['Busque intervalos solapados.', 'No confundas coexistencia con contacto.', 'Relaciona tiempo y región.'], pills: ['Simultaneidad', 'Solapamiento', 'Uso didáctico alto'] },
+  revisiones: { kicker: 'Historia de la ciencia', badge: 'Perspectiva crítica', question: 'Ayuda a mostrar que la taxonomía cambia porque cambia la evidencia y también el marco teórico.', steps: ['Siga cambios de nombre.', 'Detecta propuestas en debate.', 'Relaciona revisión y evidencia nueva.'], pills: ['Revisión taxonómica', 'Debate histórico', 'Investigación'] },
+  genomica: { kicker: 'ADN antiguo', badge: 'Apartado específico', question: 'Interesa leer esta vista como complemento del registro fósil, no como sustituto de la anatomía.', steps: ['Identifique linajes con ADN.', 'Observe introgresión.', 'Relaciona genoma y morfología con prudencia.'], pills: ['Paleogenómica', 'Introgresión', 'Comparación molecular'] },
+  primatologia: { kicker: 'Modelos comparativos', badge: 'Etología evolutiva', question: 'La clave es comparar sin confundir: los grandes simios vivos no son fósiles vivientes ni ancestros directos.', steps: ['Observe el rasgo comparado.', 'Distingue homología, analogía y convergencia.', 'Conecta conducta viva con evidencia fósil solo cuando el puente metodológico sea explícito.'], pills: ['Grandes simios', 'Conducta', 'Cautela comparativa'] },
+  datacion: { kicker: 'Método científico', badge: 'Laboratorio conceptual', question: 'Es una vista para aprender por qué no todo método sirve para todo problema cronológico.', steps: ['Define antigüedad estimada.', 'Elija técnica adecuada.', 'Interpreta márgenes de error.'], pills: ['Métodos', 'Error cronológico', 'Aprendizaje activo'] },
+  debates: { kicker: 'Controversias abiertas', badge: 'Argumentación científica', question: 'Su mayor valor didáctico es enseñar a distinguir entre consenso, hipótesis fuerte y especulación.', steps: ['Lea ambas tesis.', 'Busque el tipo de evidencia.', 'Evalúa el grado de consenso.'], pills: ['Debate', 'Cautela epistémica', 'Seminarios'] },
+  holotipos: { kicker: 'Cultura material', badge: 'Base nomenclatural', question: 'Recuerde que cada nombre científico se ancla en un ejemplar concreto y en una historia institucional.', steps: ['Identifique el ejemplar.', 'Observe institución y catálogo.', 'Relaciona tipo y taxón.'], pills: ['Ejemplares tipo', 'Museos', 'Documentación'] },
+  aula: { kicker: 'Centro docente', badge: 'Materiales y datos', question: 'Esta vista convierte el atlas en un espacio de trabajo: banco de datos, tareas evaluables y rutas para investigar.', steps: ['Elija nivel educativo o seminario.', 'Exporta el banco de datos visible.', 'Cierra con un producto verificable y una reflexión metodológica.'], pills: ['Banco de datos', 'Guía docente', 'Investigación'] },
+  recursos: { kicker: 'Banco de aula', badge: 'Recursos listos para usar', question: 'Elija primero el producto que quiere conseguir: debate, ficha, mapa, comparación, lectura crítica o actividad de evaluación.', steps: ['Seleccione una categoría.', 'Abra el recurso interno o la fuente primaria.', 'Asocia cada recurso a una tarea concreta.'], pills: ['Plantillas', 'Fuentes', 'Actividades', 'Evaluación'] },
+  itinerarios: { kicker: 'Secuencia docente', badge: 'Aula y exposición', question: 'La clave aquí es usar el atlas como recorrido guiado, no solo como base de consulta libre.', steps: ['Elija una ruta.', 'Siga regiones o taxones propuestos.', 'Cierra con un producto evaluable.'], pills: ['Guías de clase', 'Objetivos', 'Evaluación'] },
+  dispersal: { kicker: 'Simulación', badge: 'Aprendizaje visual', question: 'Sirve para transformar la dispersión en proceso observable y no en una lista de flechas aprendida de memoria.', steps: ['Active un linaje.', 'Pausa en momentos clave.', 'Compare rutas y coexistencias.'], pills: ['Animación', 'Migraciones', 'Explicación oral'] },
+  constructor:   { kicker: 'Aprender construyendo',  badge: 'Práctica guiada',        question: 'Esta vista funciona mejor si el usuario entiende antes que un árbol es una hipótesis justificable, no un dibujo libre.',                                                                              steps: ['Seleccione pocos taxones al inicio.', 'Conecta ramas con criterio.', 'Compare su resultado con hipótesis publicadas.'],                                                            pills: ['Trabajo activo', 'Hipótesis', 'Cladística aplicada'] },
   /* ── Vistas de la familia investigar — añadidas v33 ───────── */
-  estratigrafia: { kicker: 'Registro fósil en capas', badge: 'Método estratigráfico',   question: 'Un perfil estratigráfico no es un dibujo de capas: es un argumento temporal. Léelo como si cada estrato fuera una oración en una historia que puede tener páginas arrancadas.',                   steps: ['Elige un yacimiento y observa el perfil completo.', 'Activa el Modo inferencia y razona el orden antes de revelar edades.', 'Relaciona la litología y la fauna con el método de datación aplicado.'], pills: ['Yacimientos clave', 'Modo inferencia', 'Datación integrada', 'Pensamiento temporal'] },
-  tafonomia:     { kicker: 'Epistemología del fósil', badge: 'Sesgo y preservación',    question: 'El registro fósil no es una fotografía del pasado: es lo que sobrevivió a un filtro tafonómico. Manipula las variables y pregunta qué inferencias serían válidas con ese registro.',                steps: ['Ajusta las condiciones de preservación.', 'Observa qué elementos esqueléticos sobreviven.', 'Formula qué conclusiones serían válidas y cuáles no con ese registro.'],                  pills: ['Sesgo de muestreo', 'Supervivencia esquelética', 'Metacognición científica'] },
-  introgresion:  { kicker: 'Genómica de la mezcla',  badge: 'Flujo génico documentado', question: 'La introgresión arcaica no es una anomalía: es parte de la historia evolutiva de Homo sapiens. Cada flecha del diagrama representa un hallazgo con DOI publicado, no una especulación.',         steps: ['Pulsa cada evento para leer su evidencia.', 'Distingue certeza (porcentaje documentado) de incertidumbre (PROVISIONAL).', 'Relaciona el rasgo adaptativo con el contexto ecológico del receptor.'], pills: ['ADN antiguo', 'Rasgos adaptativos', 'Evidencia documentada', 'Flujo génico'] }
+  estratigrafia: { kicker: 'Registro fósil en capas', badge: 'Método estratigráfico',   question: 'Un perfil estratigráfico no es un dibujo de capas: es un argumento temporal. Léelo como si cada estrato fuera una oración en una historia que puede tener páginas arrancadas.',                   steps: ['Elija un yacimiento y observe el perfil completo.', 'Active el Modo inferencia y razona el orden antes de revelar edades.', 'Relaciona la litología y la fauna con el método de datación aplicado.'], pills: ['Yacimientos clave', 'Modo inferencia', 'Datación integrada', 'Pensamiento temporal'] },
+  tafonomia:     { kicker: 'Epistemología del fósil', badge: 'Sesgo y preservación',    question: 'El registro fósil no es una fotografía del pasado: es lo que sobrevivió a un filtro tafonómico. Manipula las variables y pregunta qué inferencias serían válidas con ese registro.',                steps: ['Ajuste las condiciones de preservación.', 'Observe qué elementos esqueléticos sobreviven.', 'Formule qué conclusiones serían válidas y cuáles no con ese registro.'],                  pills: ['Sesgo de muestreo', 'Supervivencia esquelética', 'Metacognición científica'] },
+  introgresion:  { kicker: 'Genómica de la mezcla',  badge: 'Flujo génico documentado', question: 'La introgresión arcaica no es una anomalía: es parte de la historia evolutiva de Homo sapiens. Cada flecha del diagrama representa un hallazgo con DOI publicado, no una especulación.',         steps: ['Pulse cada evento para leer su evidencia.', 'Distingue certeza (porcentaje documentado) de incertidumbre (PROVISIONAL).', 'Relaciona el rasgo adaptativo con el contexto ecológico del receptor.'], pills: ['ADN antiguo', 'Rasgos adaptativos', 'Evidencia documentada', 'Flujo génico'] }
 };
 
 const VIEW_CONTEXT_NEXT = {
@@ -9112,8 +9112,8 @@ const VIEW_CONTEXT_NEXT = {
 };
 
 const VIEW_EXIT_PRODUCTS = {
-  timeline: 'Una frase cronológica con dos taxones: qué aparece antes, qué se solapa y qué cautela temporal debes añadir.',
-  map: 'Una hipótesis espacial: qué región concentra evidencia, qué yacimiento la sostiene y qué no puedes concluir solo por proximidad.',
+  timeline: 'Una frase cronológica con dos taxones: qué aparece antes, qué se solapa y qué cautela temporal debe añadir.',
+  map: 'Una hipótesis espacial: qué región concentra evidencia, qué yacimiento la sostiene y qué no puede concluir solo por proximidad.',
   continentes: 'Una comparación de dos continentes con una diferencia de ritmo, registro o tipo de evidencia.',
   africa: 'Un mapa mental de región-yacimiento-método-cautela para explicar por qué África no es un bloque uniforme.',
   asia: 'Una explicación de dispersión asiática con una ruta, un caso de evidencia biomolecular o fósil y una cautela sobre mezcla o taxonomía.',
@@ -10132,7 +10132,7 @@ function _cmpRenderChips() {
   if (countLbl) countLbl.textContent = `${n} / ${CMP_MAX} seleccionada${n !== 1 ? 's' : ''}`;
 
   if (!n) {
-    row.innerHTML = '<span class="cmp-chip-ph">Añade al menos dos taxones para comparar…</span>';
+    row.innerHTML = '<span class="cmp-chip-ph">Añada al menos dos taxones para comparar…</span>';
     return;
   }
 
@@ -10182,8 +10182,8 @@ function renderMultiComparison() {
     res.innerHTML = `<div class="cmp-status-msg">
       <strong>⚖ Comparador multi-especie</strong>
       ${n === 0
-        ? 'Selecciona entre 2 y 6 taxones, o elige un preset curricular.'
-        : 'Añade al menos un taxón más para iniciar la comparación.'}
+        ? 'Seleccione entre 2 y 6 taxones, o elija un preset curricular.'
+        : 'Añada al menos un taxón más para iniciar la comparación.'}
     </div>`;
     return;
   }
@@ -10218,7 +10218,7 @@ function renderMultiComparison() {
         <canvas class="cmp-radar-canvas" id="cmpRadarCanvas" width="310" height="310"
                 role="img"
                 aria-label="Radar de 6 ejes morfofuncionales: encefalización, bipedismo, tecnología lítica, robustez masticatoria, arborealismo y conducta simbólica. ${species.map(sp => sp.nombre).join(', ')}.">
-          <p>Tu navegador no soporta Canvas HTML5. Los datos del radar están disponibles en la tabla de rasgos debajo.</p>
+          <p>Su navegador no soporta Canvas HTML5. Los datos del radar están disponibles en la tabla de rasgos debajo.</p>
         </canvas>
         <div class="cmp-radar-legend" role="list" aria-label="Leyenda del radar">
           ${species.map(sp => `
@@ -10363,7 +10363,7 @@ function _cmp3DSkullSvg(sp, color) {
 }
 
 function _cmpRender3DComparativeViewer(species, seriesColors) {
-  if (!species.length) return '<div class="cmp-3d-empty">Selecciona taxones para activar el comparador 3D.</div>';
+  if (!species.length) return '<div class="cmp-3d-empty">Seleccione taxones para activar el comparador 3D.</div>';
   const metrics = [
     ['Boveda', 'vault'],
     ['Prognat.', 'prognathism'],
@@ -10815,12 +10815,12 @@ function exportToJSON() {
  * Copia la bibliografía de la especie actualmente abierta en APA 7.
  */
 function copySpeciesBibliography() {
-    if (!currentSpecies) { alert('Abre primero la ficha de una especie.'); return; }
+    if (!currentSpecies) { alert('Abra primero la ficha de una especie.'); return; }
     PaleoBot.ExportManager.copyBibliography(currentSpecies, 'apa');
 }
 
 function buildFacialPrompt(sp) {
-    return `Redacta una descripción científica de la morfología facial de ${sp.nombre} para nivel ${nivelActual}. Usa solo estos datos de la ficha: ${sp.experto?.anatomia_craneal || ''} ${sp.experto?.descripcion_tecnica || ''}. Indica incertidumbres y evita reconstrucciones no documentadas.`;
+    return `Redacte una descripción científica de la morfología facial de ${sp.nombre} para nivel ${nivelActual}. Use solo estos datos de la ficha: ${sp.experto?.anatomia_craneal || ''} ${sp.experto?.descripcion_tecnica || ''}. Indica incertidumbres y evita reconstrucciones no documentadas.`;
 }
 
 function localFacialDescription(sp) {
@@ -10933,7 +10933,7 @@ function buildAcademicPrintSheet(sp) {
 }
 
 function exportAcademicPDF() {
-    if (!currentSpecies) { alert('Abre primero la ficha de una especie.'); return; }
+    if (!currentSpecies) { alert('Abra primero la ficha de una especie.'); return; }
     const sheet = document.getElementById('academicPrintSheet');
     if (!sheet) return;
     sheet.innerHTML = buildAcademicPrintSheet(currentSpecies);
@@ -11002,7 +11002,7 @@ function renderSpeciesGuideQuestions(sp) {
 
   // Pregunta sobre evidencia
   if (sp.holo && sp.holo !== 'N/A') {
-    questions.push(`¿Qué puedes afirmar con certeza a partir del holotipo <strong>${escapeHtmlText(sp.holo)}</strong>? ¿Qué inferencias son razonables pero no directamente observables?`);
+    questions.push(`¿Qué puede afirmar con certeza a partir del holotipo <strong>${escapeHtmlText(sp.holo)}</strong>? ¿Qué inferencias son razonables pero no directamente observables?`);
   }
 
   // Pregunta sobre contexto africano (DEA)
@@ -11919,7 +11919,7 @@ function answerPrimateScenario(scenarioId, choice) {
   });
   const ok = choice === scenario.answer;
   feedback.className = 'primate-feedback visible ' + (ok ? 'ok' : 'warn');
-  feedback.textContent = (ok ? 'Respuesta adecuada. ' : 'Revisa la inferencia. ') + scenario.feedback;
+  feedback.textContent = (ok ? 'Respuesta adecuada. ' : 'Revise la inferencia. ') + scenario.feedback;
 }
 
 function renderPrimatologyView() {
@@ -12041,7 +12041,7 @@ const TEACHING_CLASS_SEQUENCE = [
     session: 'Sesión 1',
     focus: 'Pregunta motriz',
     teacher: 'Plantea un problema: ¿qué especies coexistían en África hace 2 Ma y qué evidencias lo sostienen?',
-    student: 'Explora cronología, mapa y fichas; selecciona 3 taxones con yacimiento documentado.',
+    student: 'Explore cronología, mapa y fichas; selecciona 3 taxones con yacimiento documentado.',
     evidence: 'Tabla inicial taxon-tiempo-region-evidencia.'
   },
   {
@@ -12071,7 +12071,7 @@ const TEACHING_ARGUMENT_ROUTINE = [
   {
     step: 'A',
     title: 'Afirmación',
-    prompt: 'Escribe una frase defendible, no una descripción vaga.',
+    prompt: 'Escriba una frase defendible, no una descripción vaga.',
     example: 'Homo antecessor es clave para discutir el poblamiento europeo temprano.',
     check: 'Debe poder ser discutida o refutada con datos.'
   },
@@ -12092,7 +12092,7 @@ const TEACHING_ARGUMENT_ROUTINE = [
   {
     step: 'C',
     title: 'Cautela',
-    prompt: 'Añade qué no sabemos, qué alternativa existe o qué dato haría falta.',
+    prompt: 'Añada qué no sabemos, qué alternativa existe o qué dato haría falta.',
     example: 'La posición filogenética sigue debatida y no debe presentarse como una línea directa hacia sapiens.',
     check: 'Debe mostrar límite científico, sesgo de registro o incertidumbre metodológica.'
   }
@@ -12144,7 +12144,7 @@ const TEACHING_EXIT_TICKETS = [
     purpose: 'Cerrar una sesión comprobando comprensión sin examen formal.',
     prompts: [
       '3 datos que has usado hoy: taxón, yacimiento o fecha.',
-      '2 inferencias que puedes defender con esos datos.',
+      '2 inferencias que puede defender con esos datos.',
       '1 duda o cautela que no debe desaparecer de la explicación.'
     ]
   },
@@ -12186,19 +12186,19 @@ const TEACHING_PEER_REVIEW = [
   {
     title: 'Cautela científica',
     question: '¿El trabajo reconoce una incertidumbre, sesgo de registro, alternativa o dato faltante?',
-    feedback: 'Añade una cautela si la respuesta suena demasiado cerrada.',
+    feedback: 'Añada una cautela si la respuesta suena demasiado cerrada.',
     levels: ['ausente', 'genérica', 'precisa']
   },
   {
     title: 'Claridad comunicativa',
     question: '¿Se entiende qué se sabe, cómo se sabe y qué queda abierto?',
-    feedback: 'Marca una frase confusa y propone una versión más verificable.',
+    feedback: 'Marque una frase confusa y propone una versión más verificable.',
     levels: ['confuso', 'comprensible', 'preciso']
   },
   {
     title: 'Revisión final',
     question: '¿Qué cambio concreto debe hacer la persona autora antes de entregar?',
-    feedback: 'Escribe una mejora accionable: añadir dato, matizar inferencia, citar fuente o corregir vocabulario.',
+    feedback: 'Escriba una mejora accionable: añadir dato, matizar inferencia, citar fuente o corregir vocabulario.',
     levels: ['pendiente', 'revisar', 'listo']
   }
 ];
@@ -12364,7 +12364,7 @@ const TEACHING_ACTIVITY_BANK = [
   {
     level: 'ESO / Bachillerato',
     title: 'Instantanea hace 2 Ma',
-    prompt: 'Usa cronologia, mapa y banco de datos para identificar que homininos pudieron coexistir hace aproximadamente 2 Ma.',
+    prompt: 'Use cronologia, mapa y banco de datos para identificar que homininos pudieron coexistir hace aproximadamente 2 Ma.',
     product: 'Mapa comentado con 3 taxones, region, yacimiento y cautela cronologica.',
     evidence: 'Cronologia, ubicacion, yacimiento y al menos una ficha.',
     view: 'timeline'
@@ -12372,7 +12372,7 @@ const TEACHING_ACTIVITY_BANK = [
   {
     level: 'ESO / Bachillerato / Grado',
     title: 'Mapa con hipótesis y cautela',
-    prompt: 'Elige una lente regional del mapa, selecciona el taxón más antiguo y el más reciente visibles, y decide si el patrón sugiere continuidad, dispersión, sesgo de preservación o falta de datos.',
+    prompt: 'Elija una lente regional del mapa, seleccione el taxón más antiguo y el más reciente visibles, y decida si el patrón sugiere continuidad, dispersión, sesgo de preservación o falta de datos.',
     product: 'Mapa argumentado con una inferencia, una cautela científica y una pregunta de investigación.',
     evidence: 'Laboratorio didáctico del mapa, fichas, cronología y yacimiento seleccionado.',
     view: 'map'
@@ -12380,7 +12380,7 @@ const TEACHING_ACTIVITY_BANK = [
   {
     level: 'Bachillerato / Grado',
     title: 'Africa no es un unico escenario',
-    prompt: 'Compara dos regiones africanas y explica como el ambiente condiciona la interpretacion del registro fosil.',
+    prompt: 'Compare dos regiones africanas y explica como el ambiente condiciona la interpretacion del registro fosil.',
     product: 'Tabla comparativa region-taxones-ambiente-evidencia.',
     evidence: 'Módulo África, contexto paleoambiental y mapa.',
     view: 'africa'
@@ -12388,7 +12388,7 @@ const TEACHING_ACTIVITY_BANK = [
   {
     level: 'Grado / MUFP',
     title: 'Debate con evidencia incompleta',
-    prompt: 'Selecciona una controversia y formula dos argumentos opuestos, indicando qué dato resolvería mejor el desacuerdo.',
+    prompt: 'Seleccione una controversia y formule dos argumentos opuestos, indicando qué dato resolvería mejor el desacuerdo.',
     product: 'Minidebate escrito con tesis, evidencia, contraargumento y límite.',
     evidence: 'Debates, bibliografía y ficha taxonómica.',
     view: 'debates'
@@ -12981,13 +12981,13 @@ const SCIENTIFIC_VERIFICATION_PROTOCOL = [
     step: 'Muestra',
     question: '¿Cuántos restos, individuos o yacimientos sostienen la inferencia?',
     evidence: 'Una mandíbula, un nivel o una muestra pequeña no permiten el mismo grado de generalización que una serie amplia.',
-    classroom: 'Añade una frase obligatoria sobre tamaño de muestra y sesgo de preservación.'
+    classroom: 'Añada una frase obligatoria sobre tamaño de muestra y sesgo de preservación.'
   },
   {
     step: 'Consenso',
     question: '¿Es consenso, hipótesis fuerte, propuesta reciente o debate abierto?',
-    evidence: 'Busca críticas, réplicas, revisiones y si la ficha marca estado debatido, revisión o cautela.',
-    classroom: 'Usa tres etiquetas: establecido, probable, discutido. Prohíbe respuestas sin etiqueta.'
+    evidence: 'Busque críticas, réplicas, revisiones y si la ficha marca estado debatido, revisión o cautela.',
+    classroom: 'Use tres etiquetas: establecido, probable, discutido. Prohíbe respuestas sin etiqueta.'
   },
   {
     step: 'Transferencia',
@@ -13631,7 +13631,7 @@ function renderTeachingCenter() {
       <div class="teaching-head-copy">
         <span class="teaching-kicker">Centro docente e investigador</span>
         <h2>Materiales, banco de datos y rutas de investigación</h2>
-        <p>Este espacio traduce el atlas a trabajo académico: permite preparar clases, diseñar situaciones de aprendizaje, iniciar TFG/TFM y exportar un banco de datos trazable con taxón, cronología, yacimiento, evidencia, paleogenómica, paleoproteómica y DOI disponibles.</p>
+        <p>Este espacio traduce el atlas a trabajo académico: permite preparar sesiones de trabajo, iniciar TFG/TFM y exportar un banco de datos trazable con taxón, cronología, yacimiento, evidencia, paleogenómica, paleoproteómica y DOI disponibles.</p>
       </div>
       <div class="teaching-actions">
         <button type="button" class="teaching-action-btn primary" data-teaching-export="dataset">Exportar banco de datos CSV</button>
@@ -13847,10 +13847,10 @@ function renderItinStop() {
       <p style="font-size:0.86rem;color:var(--text-sec);margin:0 0 16px;line-height:1.6">Has recorrido ${total} especies con narración evolutiva.</p>
       <div style="background:rgba(255,255,255,0.8);border-radius:10px;padding:14px;margin-bottom:16px;text-align:left;border:1px solid rgba(14,127,101,0.14);">
         <p style="font-size:0.76rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-hint);font-family:var(--font-mono);margin:0 0 8px">📝 Pregunta de síntesis</p>
-        <p style="font-size:0.92rem;color:var(--primary);margin:0 0 10px;font-style:italic;line-height:1.55">¿Qué dato de este itinerario te ha resultado más sorprendente y por qué? ¿Qué pregunta te ha surgido que el atlas no responde todavía?</p>
+        <p style="font-size:0.92rem;color:var(--primary);margin:0 0 10px;font-style:italic;line-height:1.55">¿Qué dato de este itinerario le ha resultado más sorprendente y por qué? ¿Qué pregunta le ha surgido que el atlas no responde todavía?</p>
         <textarea id="itinReflection_${itin.id}" rows="3"
           style="width:100%;border:1px solid var(--border);border-radius:8px;padding:9px;font-family:var(--font-sans);font-size:0.85rem;color:var(--text-main);background:#faf9f7;resize:vertical;box-sizing:border-box;"
-          placeholder="Escribe aquí tu reflexión (opcional — solo para ti)..."
+          placeholder="Escriba aquí su reflexión (opcional — solo para ti)..."
           aria-label="Reflexión personal sobre el itinerario"></textarea>
       </div>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
@@ -14329,7 +14329,7 @@ function renderQuizProgress() {
   panel.innerHTML = `
     <div class="quiz-progress-card">
       <div class="quiz-progress-head">
-        <span class="quiz-progress-title">Tu progreso</span>
+        <span class="quiz-progress-title">Su progreso</span>
         <button type="button" class="quiz-progress-reset" data-quiz-reset>
           Reiniciar (desde ${resetDate})
         </button>
@@ -15138,7 +15138,7 @@ function renderMapLearningLab(visibleSpecies) {
       <section class="map-learning-panel" aria-label="Laboratorio didáctico de mapas">
         <span class="map-learning-kicker">Lectura cartográfica guiada</span>
         <h3>Convierte el mapa en una hipótesis, no en una lista de puntos.</h3>
-        <p>Usa el mapa para relacionar territorio, tiempo y calidad de evidencia. La pregunta no es solo dónde aparece un fósil, sino qué permite inferir ese lugar cuando se combina con cronología, yacimiento y método.</p>
+        <p>Use el mapa para relacionar territorio, tiempo y calidad de evidencia. La pregunta no es solo dónde aparece un fósil, sino qué permite inferir ese lugar cuando se combina con cronología, yacimiento y método.</p>
         <div class="map-learning-metrics">
           <div class="map-learning-metric"><strong>${escapeHtmlText(String(focusSpecies.length))}</strong><span>taxones en ${escapeHtmlText(lensLabel)}</span></div>
           <div class="map-learning-metric"><strong>${focusRange}</strong><span>rango cronológico visible</span></div>
@@ -15151,8 +15151,8 @@ function renderMapLearningLab(visibleSpecies) {
         <h3>Protocolo de análisis en tres pasos</h3>
         <div class="map-learning-steps">
           <div class="map-learning-step"><b>1</b><div><strong>Localiza</strong><span>${escapeHtmlText(selectedText)}.</span></div></div>
-          <div class="map-learning-step"><b>2</b><div><strong>Temporaliza</strong><span>Compara edad, método de datación y posible solapamiento con otros taxones de la región.</span></div></div>
-          <div class="map-learning-step"><b>3</b><div><strong>Argumenta</strong><span>Redacta una inferencia y una cautela: qué dato apoya la hipótesis y qué dato falta.</span></div></div>
+          <div class="map-learning-step"><b>2</b><div><strong>Temporaliza</strong><span>Compare edad, método de datación y posible solapamiento con otros taxones de la región.</span></div></div>
+          <div class="map-learning-step"><b>3</b><div><strong>Argumenta</strong><span>Redacte una inferencia y una cautela: qué dato apoya la hipótesis y qué dato falta.</span></div></div>
         </div>
         <div class="map-learning-cautions">
           <ul>
@@ -15215,8 +15215,8 @@ function renderMapSelectionCard(sp) {
     if (!card || !focus) return;
     if (!sp || !SITES[sp.id]) {
         const lens = getLensById(mapActiveLensId);
-        focus.textContent = lens ? `Foco regional activo: ${lens.label}` : 'Selecciona un yacimiento para fijar la ubicación';
-        card.innerHTML = `<div class="map-selection-empty">${lens ? `La lectura está centrada en <strong>${lens.label}</strong>. Elige un marcador dentro de esa región o pulsa “Todos los focos” para recuperar la vista completa.` : 'Selecciona un marcador para ver la ubicación exacta, las coordenadas y un acceso rápido a la ficha completa.'}</div>`;
+        focus.textContent = lens ? `Foco regional activo: ${lens.label}` : 'Seleccione un yacimiento para fijar la ubicación';
+        card.innerHTML = `<div class="map-selection-empty">${lens ? `La lectura está centrada en <strong>${lens.label}</strong>. Elija un marcador dentro de esa región o pulse “Todos los focos” para recuperar la vista completa.` : 'Seleccione un marcador para ver la ubicación exacta, las coordenadas y un acceso rápido a la ficha completa.'}</div>`;
         return;
     }
     const [lat, lng] = SITES[sp.id];
@@ -15663,7 +15663,7 @@ const PRES_DIDACTIC_BY_CLADE = {
     question: '¿Qué rasgos permiten separar una semejanza primitiva de una auténtica señal de parentesco hominino?'
   },
   australo: {
-    key: 'Lee la especie como mosaico: bipedismo habitual, cerebro reducido y adaptaciones ecológicas variables conviven en combinaciones no lineales.',
+    key: 'Lea la especie como mosaico: bipedismo habitual, cerebro reducido y adaptaciones ecológicas variables conviven en combinaciones no lineales.',
     question: '¿Qué evidencia demuestra bipedismo y qué rasgos impiden imaginar una transición directa hacia Homo?'
   },
   paran: {
@@ -16275,7 +16275,7 @@ function renderPresMap(sp, col) {
     '</defs>' +
     '<rect width="1000" height="500" fill="url(#presOceanGlow)"/>' +
     '<text class="pres-map-question" x="30" y="36">Pregunta guía: ¿qué aporta la localización al valor del hallazgo?</text>' +
-    '<text class="pres-map-instruction" x="30" y="60">Lee de izquierda a derecha: primero sitúa el corredor, después comprueba yacimiento, relieve y cautelas.</text>' +
+    '<text class="pres-map-instruction" x="30" y="60">Lea de izquierda a derecha: primero sitúa el corredor, después comprueba yacimiento, relieve y cautelas.</text>' +
     '<rect class="pres-map-panel-bg" x="' + globalBox.x + '" y="' + globalBox.y + '" width="' + globalBox.w + '" height="' + globalBox.h + '" rx="18"/>' +
     '<rect class="pres-map-panel-bg" x="' + lensBox.x + '" y="' + lensBox.y + '" width="' + lensBox.w + '" height="' + lensBox.h + '" rx="18"/>' +
     '<text class="pres-map-panel-title" x="' + globalBox.x + '" y="' + (globalBox.y - 12) + '">1 · escala global: continente y corredor</text>' +
@@ -16592,7 +16592,7 @@ const CLADOGRAM_INFO = {
     label: 'Robustos tardíos',
     time: 2.3,
     syn: 'Especialización masticatoria extrema con variación regional este/sur africana.',
-    note: 'Ordena boisei y robustus como comparación funcional, no como certeza filogenética cerrada.'
+    note: 'Ordene boisei y robustus como comparación funcional, no como certeza filogenética cerrada.'
   },
   homo_node: {
     label: 'Género Homo',
@@ -17917,7 +17917,7 @@ function renderCoexistenceView() {
 
   const species = DB.filter(matchesActiveFilters);
   if (!species.length) {
-    el.innerHTML = '<div class="cmp-status-msg"><strong>Sin taxones visibles</strong>Ajusta los filtros de clado o intervalo temporal para mostrar especies.</div>';
+    el.innerHTML = '<div class="cmp-status-msg"><strong>Sin taxones visibles</strong>Ajuste los filtros de clado o intervalo temporal para mostrar especies.</div>';
     return;
   }
 
@@ -18609,7 +18609,7 @@ function updateDispersalFrame() {
   info.innerHTML = `<h3>Estado de la simulación</h3>
     <div class="sim-time">${formatTimePoint(ma)}</div>
     <p style="font-size:0.82rem;color:var(--text-sec);line-height:1.55;margin:0 0 8px"><strong>${stage.title}:</strong> ${stage.note}</p>
-    <p style="font-size:0.78rem;color:var(--text-hint);line-height:1.45;margin:0">Activa o desactiva rutas para construir escenarios simultáneos. Los puntos avanzan solo si la oleada ya ha comenzado.</p>
+    <p style="font-size:0.78rem;color:var(--text-hint);line-height:1.45;margin:0">Active o desactiva rutas para construir escenarios simultáneos. Los puntos avanzan solo si la oleada ya ha comenzado.</p>
     <div class="sim-region-list">${cards}</div>`;
   const range = document.getElementById('simTimeRange');
   if (range) range.value = ma;
@@ -18784,9 +18784,9 @@ function renderBuilderReferencePanel() {
       </div>
       <section class="builder-reference-side" aria-label="Lectura comparativa">
         <h4>Lectura comparativa</h4>
-        <p>Las líneas verdes ya están en tu lienzo. Las discontinuas indican relaciones de referencia aún no representadas.</p>
+        <p>Las líneas verdes ya están en su lienzo. Las discontinuas indican relaciones de referencia aún no representadas.</p>
         <div class="builder-reference-progress"><span>Coincidencia con referencia</span><strong>${matchedEdges.length}/${referenceEdges.length}</strong><div class="builder-reference-progress-track"><div class="builder-reference-progress-fill" style="width:${pct}%"></div></div></div>
-        <div class="builder-reference-list">${missingList || '<div class="builder-reference-missing"><b>ok</b><span>Tu árbol contiene todas las aristas de referencia disponibles.</span></div>'}</div>
+        <div class="builder-reference-list">${missingList || '<div class="builder-reference-missing"><b>ok</b><span>Su árbol contiene todas las aristas de referencia disponibles.</span></div>'}</div>
         <div class="builder-reference-note"><strong>Cautela:</strong> una arista expresa afinidad o hipótesis de relación. En linajes arcaicos puede haber especiación reticulada, introgresión y parentescos hermanos.</div>
       </section>
     </div>
@@ -18809,9 +18809,9 @@ function renderTreeBuilder() {
         <div class="builder-concept-note"><strong>Precaución científica:</strong> una arista no significa siempre descendencia directa. En paleoantropología muchas relaciones son de parentesco aproximado, linajes hermanos o introgresión.</div>
       </div>
       <div class="builder-help-steps">
-        <div class="builder-help-step"><strong>Añade especies</strong>Elige taxones desde la lista izquierda o carga una hipótesis guía.</div>
-        <div class="builder-help-step"><strong>Activa el modo</strong>Pulsa <em>Modo conectar</em>; el lienzo cambiará de color.</div>
-        <div class="builder-help-step"><strong>Marca origen</strong>Haz clic o toca el primer nodo. Quedará señalado como <em>origen</em>.</div>
+        <div class="builder-help-step"><strong>Añada especies</strong>Elija taxones desde la lista izquierda o carga una hipótesis guía.</div>
+        <div class="builder-help-step"><strong>Active el modo</strong>Pulse <em>Modo conectar</em>; el lienzo cambiará de color.</div>
+        <div class="builder-help-step"><strong>Marque origen</strong>Haga clic o toque el primer nodo. Quedará señalado como <em>origen</em>.</div>
         <div class="builder-help-step"><strong>Marca destino</strong>Haz clic o toca el segundo nodo para crear la arista. Después compara la hipótesis.</div>
       </div>
     </section>
@@ -19153,7 +19153,7 @@ function builderCompareTree() {
     <div data-builder-report-body>
     <div class="builder-report-item"><strong>Resultado global</strong>${ok} coincidencias fuertes · ${warn} conexiones controvertidas · ${bad} conexiones no respaldadas por los modelos cargados.</div>
     ${modelCards}
-    <div class="builder-report-item"><strong>Lectura automática</strong>Tu árbol se aproxima más a los modelos donde acumula más coincidencias. Las líneas naranjas no son necesariamente incorrectas: indican relaciones discutidas o introgresión, no ascendencia simple.</div>
+    <div class="builder-report-item"><strong>Lectura automática</strong>Su árbol se aproxima más a los modelos donde acumula más coincidencias. Las líneas naranjas no son necesariamente incorrectas: indican relaciones discutidas o introgresión, no ascendencia simple.</div>
     ${builderEdgeListHtml()}
     </div>`;
 }
@@ -19196,7 +19196,7 @@ function renderBuilderDefaultReport(extra = '') {
   const summary = document.querySelector('[data-builder-live-summary]');
   if (summary) summary.innerHTML = builderLiveSummaryHtml();
   if (body) {
-    body.innerHTML = extra || `<div class="builder-report-item"><strong>Qué se evalúa</strong>El sistema compara tus aristas con tres modelos simplificados de referencia. Una coincidencia fuerte no prueba descendencia directa; indica compatibilidad con una hipótesis publicada. Una conexión controvertida requiere argumentación adicional.</div>${builderEdgeListHtml()}`;
+    body.innerHTML = extra || `<div class="builder-report-item"><strong>Qué se evalúa</strong>El sistema compara sus aristas con tres modelos simplificados de referencia. Una coincidencia fuerte no prueba descendencia directa; indica compatibilidad con una hipótesis publicada. Una conexión controvertida requiere argumentación adicional.</div>${builderEdgeListHtml()}`;
   }
 }
 
@@ -19339,8 +19339,8 @@ const SOCRATIC_REFUTATIONS = {
 /** Mensajes de guía para cada acto socrático */
 const SOCRATIC_PROMPTS = {
   0: '¿Qué tipo de evidencia emplearías para defender esta tesis? Identifica al menos una evidencia directa y una limitación conocida.',
-  1: 'Redacta tu argumento principal en 3–5 frases. Incluye: qué afirmas, qué evidencia lo respalda y qué cautela añadirías.',
-  2: '¿Resiste tu argumento la refutación presentada? Evalúa la solidez de tu tesis (1 = se derrumba, 4 = se mantiene con matices).'
+  1: 'Redacta su argumento principal en 3–5 frases. Incluye: qué afirmas, qué evidencia lo respalda y qué cautela añadirías.',
+  2: '¿Resiste su argumento la refutación presentada? Evalúa la solidez de su tesis (1 = se derrumba, 4 = se mantiene con matices).'
 };
 
 /**
@@ -19419,7 +19419,7 @@ function renderSocraticDebateModal(debateId) {
     <div class="socratic-section ${st.step === 0 ? 'active' : ''}" id="soc-act0-${escapeHtmlAttr(debateId)}">
       <div class="socratic-tesis-grid">
         <div class="socratic-tesis-box pro">
-          <span class="socratic-tesis-label">Tu tesis (${st.thesis === 'A' ? 'Tesis A' : 'Tesis B'})</span>
+          <span class="socratic-tesis-label">Su tesis (${st.thesis === 'A' ? 'Tesis A' : 'Tesis B'})</span>
           <p>${safeGlossary(thesisText)}</p>
         </div>
         <div class="socratic-tesis-box con">
@@ -19450,7 +19450,7 @@ function renderSocraticDebateModal(debateId) {
                 data-soc-starttimer="${escapeHtmlAttr(debateId)}" aria-label="Iniciar contador de 3 minutos">Iniciar</button>
       </div>
       <textarea class="socratic-textarea" id="soc-arg-${escapeHtmlAttr(debateId)}"
-        placeholder="Redacta tu argumento: afirmación + evidencia + cautela…"
+        placeholder="Redacta su argumento: afirmación + evidencia + cautela…"
         aria-label="Campo de argumentación">${escapeHtmlText(st.argument || '')}</textarea>
       <div class="socratic-nav">
         <button type="button" class="socratic-btn secondary" data-soc-back="1" data-soc-id="${escapeHtmlAttr(debateId)}">← Volver</button>
@@ -19498,7 +19498,7 @@ Generado con PaleoBot · ${new Date().toLocaleDateString('es-ES')}
         <span class="socratic-refutation-label">⚠ Contraargumento más sólido</span>
         <p>${safeGlossary(refutText)}</p>
       </div>
-      <p style="font-size:0.82rem;color:var(--text-sec);margin:12px 0 6px">Evalúa la resistencia de tu argumento:</p>
+      <p style="font-size:0.82rem;color:var(--text-sec);margin:12px 0 6px">Evalúa la resistencia de su argumento:</p>
       <div class="socratic-score-row" role="group" aria-label="Escala de autoevaluación 1 a 4">${scoreHtml}</div>
       ${ticketHtml}
       <div class="socratic-nav" style="margin-top:10px">
@@ -19638,7 +19638,7 @@ function renderSocraticView() {
         </div>
 
         <div class="socratic-toggle-row" style="margin-top:12px">
-          <span style="font-size:0.75rem;color:var(--text-hint);font-family:var(--font-mono)">Elige tu tesis y entra en modo socrático:</span>
+          <span style="font-size:0.75rem;color:var(--text-hint);font-family:var(--font-mono)">Elige su tesis y entra en modo socrático:</span>
           <div style="display:flex;gap:8px">
             <button type="button" class="socratic-toggle-btn"
                     data-soc-open="${escapeHtmlAttr(item.id)}" data-soc-thesis="A"

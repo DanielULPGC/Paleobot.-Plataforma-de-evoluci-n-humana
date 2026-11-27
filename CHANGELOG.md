@@ -1,5 +1,15 @@
 # Registro de cambios
 
+## Didáctica del DEA: Repaso, rúbrica, duración y trato de usted · 27/11/2026
+
+Tanda 5 del plan de acción (D-1, D-2, M-1 a M-4).
+- **Repaso (DEA):** cuatro preguntas de interpretación («¿qué afirmación se sostiene con esta evidencia?») a partes iguales con las de recuerdo: coincidir en el tiempo no prueba convivencia; aparecer antes no equivale a ser antepasada; el último fósil no fija la extinción; «debatida» no significa «falsa». Se generan solo con los datos del recurso. Comprobadas 40 generaciones: ningún par sin solapamiento real.
+- **Rúbrica orientativa (DEA, apartado 7 de «Su trabajo»):** cuatro aspectos y cuatro niveles (Insuficiente, Suficiente/Bien, Notable, Sobresaliente, vocabulario habitual de la Consejería), con descriptores propios; no sustituye los criterios del profesorado. En teléfono se apila en tarjetas.
+- **Duración e itinerario rápido (DEA, inicio):** 30-45 minutos por sesión (estimación declarada como no contrastada) e itinerario de las sesiones 1, 2 y 3 más el Repaso.
+- **Aula:** «Preparar clase» pasa a «Preparar sesión»; se retiran «situación de aprendizaje» y «generador» de la interfaz y del buscador.
+- **Trato de usted en el atlas:** imperativos y pronombres de segunda persona del singular de la interfaz (22 archivos). Los descriptores de rúbrica en tercera persona no cambian. El DEA ya usaba «usted».
+- Estados previos en `docs/historial/PB_GH_11n/`.
+
 ## Legibilidad y objetivos táctiles · 26/11/2026
 
 Tanda 4 del plan de acción (V-1, T-5, T-4, V-3). Nuevo `scripts/atlas/medidas-legibilidad.cjs` (letra menor de 12 px, objetivos menores de 24 px, `<h1>` visibles y enlaces al atlas sin ancla, a 390 y 1366 px).

@@ -185,7 +185,7 @@
     const species = filteredSpecies();
     if (count) count.textContent = species.length + " visibles";
     if (!species.length) {
-      host.innerHTML = '<div class="spl-empty"><strong>Sin resultados</strong><span>Prueba otro nombre, región o clado.</span></div>';
+      host.innerHTML = '<div class="spl-empty"><strong>Sin resultados</strong><span>Pruebe otro nombre, región o clado.</span></div>';
       return;
     }
     host.innerHTML = species.map(function (sp) {
@@ -232,7 +232,7 @@
 
   function plateHtml(sp) {
     const media = speciesMedia(sp);
-    return '<div class="spl-plate" id="splInteractivePlate" tabindex="0" aria-label="Lámina interactiva de ' + escapeHtml(sp.nombre) + '. Usa las flechas para inclinar y más o menos para ampliar.">' +
+    return '<div class="spl-plate" id="splInteractivePlate" tabindex="0" aria-label="Lámina interactiva de ' + escapeHtml(sp.nombre) + '. Use las flechas para inclinar y más o menos para ampliar.">' +
       '<div class="spl-plate-orbit" id="splPlateOrbit"><img src="' + escapeHtml(media.url) + '" alt="' + escapeHtml(media.titulo || ("Imagen de referencia de " + sp.nombre)) + '" decoding="async" referrerpolicy="no-referrer"></div>' +
       '<div class="spl-stage-watermark">' + escapeHtml(sp.nombre) + '</div>' +
       '<p class="spl-media-note">' + escapeHtml(media.nota || "Imagen de referencia, consultar fuente y licencia en la ficha completa.") + '</p>' +
@@ -243,7 +243,7 @@
     const api = coreApi();
     let svg = "";
     if (typeof api.skullSvg === "function") svg = api.skullSvg(sp, cladeColor(sp.clado));
-    if (!svg) svg = '<div class="spl-empty"><strong>Esquema no disponible</strong><span>Consulta la ficha anatómica completa.</span></div>';
+    if (!svg) svg = '<div class="spl-empty"><strong>Esquema no disponible</strong><span>Consulte la ficha anatómica completa.</span></div>';
     let metrics = null;
     if (typeof api.metricProfile === "function") metrics = api.metricProfile(sp);
     const bars = metrics ? [
@@ -328,7 +328,7 @@
     if (!host) return;
     const species = state.compare.map(speciesById).filter(Boolean);
     if (!species.length) {
-      host.innerHTML = '<div class="spl-compare-empty"><strong>Comparador</strong><span>Añade hasta tres especies para contrastar cronología, región, cerebro y tecnología.</span></div>';
+      host.innerHTML = '<div class="spl-compare-empty"><strong>Comparador</strong><span>Añada hasta tres especies para contrastar cronología, región, cerebro y tecnología.</span></div>';
       return;
     }
     host.innerHTML = '<div class="spl-compare-head"><div><strong>Comparación activa</strong><span>' + species.length + " de " + MAX_COMPARE + ' especies</span></div><button type="button" data-spl-clear-compare>Limpiar</button></div><div class="spl-compare-grid">' + species.map(function (sp) {
@@ -540,7 +540,7 @@
       '<div class="spl-toolbar"><div class="spl-filters" id="splCladeFilters" aria-label="Filtros por clado"></div><label class="spl-search"><span>Buscar especie, región o fósil</span><input id="splSearch" type="search" autocomplete="off" placeholder="Ej.: Olduvai, neandertal, Java"></label></div>' +
       '<div class="spl-workspace">' +
         '<aside class="spl-catalog" aria-label="Catálogo de especies"><div class="spl-catalog-head"><strong>Colección</strong><span id="splListCount" aria-live="polite">50 visibles</span></div><div class="spl-species-list" id="splSpeciesList"></div></aside>' +
-        '<main class="spl-center"><div class="spl-stage-head"><div><p id="splStageSubtitle"></p><h2 id="splStageTitle"></h2></div><div class="spl-stage-tools"><div class="spl-sequence" aria-label="Secuencia de especies"><button type="button" data-spl-step="-1" aria-label="Especie anterior" title="Especie anterior">&lsaquo;</button><span id="splSequencePosition" aria-live="polite">1 / 50</span><button type="button" data-spl-step="1" aria-label="Especie siguiente" title="Especie siguiente">&rsaquo;</button></div><div class="spl-modes" id="splModes" aria-label="Modo de visualización"></div></div></div><div class="spl-stage" id="splStage"></div><div class="spl-stage-controls"><label>Escala<input id="splZoom" type="range" min="75" max="145" step="5" value="100" aria-label="Escala de la lámina"></label><button type="button" data-spl-reset>Restablecer vista</button><span>Arrastra la lámina o usa flechas, +, - y 0.</span></div></main>' +
+        '<main class="spl-center"><div class="spl-stage-head"><div><p id="splStageSubtitle"></p><h2 id="splStageTitle"></h2></div><div class="spl-stage-tools"><div class="spl-sequence" aria-label="Secuencia de especies"><button type="button" data-spl-step="-1" aria-label="Especie anterior" title="Especie anterior">&lsaquo;</button><span id="splSequencePosition" aria-live="polite">1 / 50</span><button type="button" data-spl-step="1" aria-label="Especie siguiente" title="Especie siguiente">&rsaquo;</button></div><div class="spl-modes" id="splModes" aria-label="Modo de visualización"></div></div></div><div class="spl-stage" id="splStage"></div><div class="spl-stage-controls"><label>Escala<input id="splZoom" type="range" min="75" max="145" step="5" value="100" aria-label="Escala de la lámina"></label><button type="button" data-spl-reset>Restablecer vista</button><span>Arrastre la lámina o use flechas, +, - y 0.</span></div></main>' +
         '<aside class="spl-inspector" id="splInspector" aria-label="Ficha científica"></aside>' +
       '</div>' +
       '<section class="spl-compare" id="splCompareTray" aria-label="Comparador de especies"></section>' +

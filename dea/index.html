@@ -62,6 +62,8 @@
     <h2 id="t-sesiones">Sesiones</h2>
     <p id="progreso-sesiones" class="resumen" aria-live="polite"></p>
     <p class="solo-impresion resumen">Se imprimen solo las sesiones que estaban abiertas al pulsar «Imprimir».</p>
+    <p class="resumen">Cada sesión requiere unos 30-45 minutos de trabajo. Es una estimación del equipo, aún sin contrastar con el alumnado.</p>
+    <p class="itinerario-rapido"><strong>Itinerario rápido</strong> (si dispone de poco tiempo): sesiones <a href="#sesion-1">1</a>, <a href="#sesion-2">2</a> y <a href="#sesion-3">3</a> y el <a href="#repaso">Repaso</a>. Recorren las preguntas centrales (cuándo y dónde, cómo se sabe y quiénes convivieron) en unas dos horas, aproximadamente.</p>
     <div id="lista-sesiones" class="sesiones"></div>
     <div class="acciones-notas">
       <button type="button" data-accion="descargar-notas">Descargar mis notas</button>
@@ -153,7 +155,7 @@
 
   <section id="repaso" class="seccion" data-seccion="repaso" aria-labelledby="t-repaso" hidden>
     <h1 id="t-repaso">Repaso</h1>
-    <p class="entradilla"><span data-recuento="repaso">Ocho</span> preguntas para comprobar lo aprendido, generadas con los datos del recurso; cambian cada vez. Su resultado no se guarda ni se envía.</p>
+    <p class="entradilla"><span data-recuento="repaso">Ocho</span> preguntas para comprobar lo aprendido, generadas con los datos del recurso; cambian cada vez. La mitad piden recordar un dato; la otra mitad, <strong>interpretarlo</strong>: distinguir qué puede afirmarse con esa evidencia y qué no. Su resultado no se guarda ni se envía.</p>
     <p id="repaso-marcador" class="resumen" aria-live="polite"></p>
     <div id="lista-repaso" class="repaso"></div>
     <div id="repaso-resultado" class="resultado-repaso" tabindex="-1" hidden></div>
@@ -204,6 +206,19 @@
       <li>¿Las fechas aparecen como aproximadas cuando lo son?</li>
       <li>¿Están citadas todas las fuentes?</li>
     </ul>
+    <h2>7. Rúbrica orientativa</h2>
+    <p>Esta rúbrica sirve para revisar su propio trabajo antes de entregarlo. No sustituye los criterios de evaluación que fije el profesorado, que son los que cuentan. Los cuatro niveles toman el vocabulario habitual de las rúbricas de la Consejería de Educación del Gobierno de Canarias, pero los descriptores son propios de este recurso.</p>
+    <div class="tabla-rubrica" role="region" aria-label="Rúbrica orientativa del trabajo" tabindex="0">
+      <table>
+        <thead><tr><th scope="col">Aspecto</th><th scope="col">Insuficiente</th><th scope="col">Suficiente/Bien</th><th scope="col">Notable</th><th scope="col">Sobresaliente</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Pregunta y estructura</th><td data-nivel="Insuficiente">No hay una pregunta clara o el texto no la responde.</td><td data-nivel="Suficiente/Bien">Plantea una pregunta y la responde, con una estructura básica.</td><td data-nivel="Notable">La pregunta está bien acotada y cada parte contribuye a la respuesta.</td><td data-nivel="Sobresaliente">La pregunta es original, está bien delimitada y la conclusión se desprende con claridad del desarrollo.</td></tr>
+          <tr><th scope="row">Datos e interpretación</th><td data-nivel="Insuficiente">Mezcla datos e interpretaciones o presenta datos sin lugar ni fecha.</td><td data-nivel="Suficiente/Bien">Presenta datos correctos del recurso, aunque no siempre los distingue de lo que se interpreta.</td><td data-nivel="Notable">Distingue datos de interpretaciones y señala qué afirma la evidencia y qué no.</td><td data-nivel="Sobresaliente">Además, contrasta interpretaciones alternativas y explica por qué la evidencia no permite decidir entre ellas.</td></tr>
+          <tr><th scope="row">Cautela y fechas</th><td data-nivel="Insuficiente">Presenta las fechas como exactas o ignora lo que está debatido.</td><td data-nivel="Suficiente/Bien">Indica que las fechas son aproximadas, pero sin precisar su margen o su método.</td><td data-nivel="Notable">Indica el margen o el método y señala las especies o fechas debatidas.</td><td data-nivel="Sobresaliente">Explica por qué se discute cada caso y qué evidencia nueva lo resolvería.</td></tr>
+          <tr><th scope="row">Fuentes y citación</th><td data-nivel="Insuficiente">No cita fuentes o remite a páginas sin autor ni fecha.</td><td data-nivel="Suficiente/Bien">Cita fuentes, con errores de formato.</td><td data-nivel="Notable">Cita fuentes fiables con las normas APA (7.ª edición).</td><td data-nivel="Sobresaliente">Cita fuentes fiables y variadas, con DOI cuando existe, y valora su fiabilidad.</td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <nav id="paso-seccion" class="paso-seccion" aria-label="Sección anterior y siguiente"></nav>

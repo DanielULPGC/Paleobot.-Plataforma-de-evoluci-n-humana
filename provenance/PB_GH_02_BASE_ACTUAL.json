@@ -895,7 +895,8 @@
       "git_blob_sha1": "241369647a6885c524e369c196cb4431dfec827f",
       "sha256": "e17e1031e97c79cd95b4c2b109e70db6990c4ed602ad3bc9770bf14193557638",
       "retained_paths": [
-        "atlas/assets/js/20-navigation/074-paleobot-v91-final-button-actions.js"
+        "atlas/assets/js/20-navigation/074-paleobot-v91-final-button-actions.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/20-navigation/074-paleobot-v91-final-button-actions.js.snapshot"
       ]
     },
     {
@@ -928,7 +929,8 @@
       "git_blob_sha1": "3421a80a9f822027681d285cc5ece1938d79a52e",
       "sha256": "4c581c551a38785cc0d6e5ef8c77d045ddbe20ecd7b9f2bbabe1c7dee0a2153a",
       "retained_paths": [
-        "atlas/assets/js/30-search/056-paleobot-v77-search-guard.js"
+        "atlas/assets/js/30-search/056-paleobot-v77-search-guard.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/30-search/056-paleobot-v77-search-guard.js.snapshot"
       ]
     },
     {
@@ -978,7 +980,8 @@
       "git_blob_sha1": "ccbfe329999bbad20f2105ae41c9f531e14d14b2",
       "sha256": "cb1dcdfd825972df56706e79ac240355cb35d457085970509b449e245bf2efd5",
       "retained_paths": [
-        "atlas/assets/js/40-media/035-paleobot-v64-real-image-visuals-runtime.js"
+        "atlas/assets/js/40-media/035-paleobot-v64-real-image-visuals-runtime.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/40-media/035-paleobot-v64-real-image-visuals-runtime.js.snapshot"
       ]
     },
     {
@@ -1086,7 +1089,8 @@
       "git_blob_sha1": "b7d8b1df00f1ec3d08ab0058ed375f6e70dd9ba2",
       "sha256": "37b330a3a0c6df384f2861ec7fa062f44e2e706ef9244832889e39771183101b",
       "retained_paths": [
-        "atlas/assets/js/80-features/045-script.js"
+        "atlas/assets/js/80-features/045-script.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/045-script.js.snapshot"
       ]
     },
     {
@@ -1145,7 +1149,8 @@
       "git_blob_sha1": "a1ddf18007a8444cac3e60126ecfbd7973edab92",
       "sha256": "8e4f9ded54381ec3b9560f26e1afbb04d30227b355c724a84ce0ac0e91869615",
       "retained_paths": [
-        "atlas/assets/js/80-features/061-script.js"
+        "atlas/assets/js/80-features/061-script.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/061-script.js.snapshot"
       ]
     },
     {
@@ -1161,7 +1166,8 @@
       "git_blob_sha1": "fa1254a1db4ddfdd02c0b9ac83e40cceb0f9731b",
       "sha256": "e85560b526caeac19d170d6992cead206118a82c78391a6698869a144f47a32e",
       "retained_paths": [
-        "atlas/assets/js/80-features/081-paleobot-paleolab50.js"
+        "atlas/assets/js/80-features/081-paleobot-paleolab50.js",
+        "docs/historial/BASE_4D320EE/atlas/assets/js/80-features/081-paleobot-paleolab50.js.snapshot"
       ]
     },
     {
