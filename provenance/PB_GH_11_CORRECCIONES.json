@@ -1114,6 +1114,19 @@
       "evidence": "Revisión por diff de palabras de cada sustitución; node --check; verificar_repo.py; pruebas.",
       "impact": "Solo texto visible.",
       "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "ligera/index.html",
+      "import_sha256": "9eeb09389f74b7fa1a6ad545c4051d3757c0ebb64c188e389667bd3d6255e0b5",
+      "snapshot": "docs/historial/BASE_4D320EE/ligera/index.html.snapshot",
+      "previous_sha256": "36ffd54f8c8602f173edfd4acf719e9c704044b1b0721a8f3eea3ddd258ea1e5",
+      "previous_snapshot": "docs/historial/PB_GH_11o/ligera/index.html.snapshot",
+      "corrected_sha256": "ac3bba598de3313dfa2127caddef22dc4def76711c4c5717e1d273e967d59163",
+      "change": "Regenerada desde src/entrada_ligera con la nueva escala tipográfica (letra mínima de 14 px en la consulta ligera); contenido y datos idénticos.",
+      "reason": "Mejora de la letra (27-11-2026): lectura cómoda para público adulto en ordenador, tableta y teléfono.",
+      "evidence": "scripts/atlas/medidas-legibilidad.cjs, construir.py --check y verificar_repo.py.",
+      "impact": "Solo tamaño de letra.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
     }
   ]
 }

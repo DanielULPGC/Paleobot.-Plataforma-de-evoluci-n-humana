@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## Letra y legibilidad en todo el recurso · 27/11/2026
+
+Mejora de UX/UI centrada en la letra (público adulto, ordenador, tableta y teléfono).
+- **Escala base:** `--t-xs` pasa de 12 a 14 px, `--t-s` de 14 a 16 px y `--t-m` de 16 a 18 px en `assets/paleobot-base.css` (DEA, portada) y en el bloque sincronizado de la consulta ligera, que se regenera.
+- **Atlas:** el texto de lectura y de datos no baja de 14 px; los rótulos densos (píldoras, ejes, leyendas) pasan de 12 a 13 px mediante `--t-dato`; metadatos del mapa y de África, a 14 px; fichas del árbol a 15 y 13 px.
+- **Comprobado:** sin desbordes horizontales a 390 y 1366 px, axe sin incidencias en diez vistas a 390 px, verificador con 0 fallos.
+- Estados previos en `docs/historial/PB_GH_11o/`. Los rótulos que aún quedan en 12,5-13 px son densos por diseño (píldoras, tarjetas).
+
 ## Didáctica del DEA: Repaso, rúbrica, duración y trato de usted · 27/11/2026
 
 Tanda 5 del plan de acción (D-1, D-2, M-1 a M-4).

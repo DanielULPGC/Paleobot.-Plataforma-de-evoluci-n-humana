@@ -42,9 +42,9 @@
   /* Tipografía */
   --f-titulo: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-lectura: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --t-xs: .8125rem;   /* 13 px: rótulos, etiquetas, eje, créditos */
-  --t-s: .9375rem;    /* 15 px: resúmenes, pies, fuentes */
-  --t-m: 1.0625rem;   /* 17 px: cuerpo */
+  --t-xs: .875rem;    /* 14 px: rótulos, etiquetas, eje, créditos */
+  --t-s: 1rem;        /* 16 px: resúmenes, pies, fuentes */
+  --t-m: 1.125rem;    /* 18 px: cuerpo */
   --t-l: 1.25rem;     /* 20 px: h3, veredictos */
   --t-xl: 1.5rem;     /* 24 px: h2 */
   --t-2xl: 1.875rem;  /* 30 px: h1 en teléfono */

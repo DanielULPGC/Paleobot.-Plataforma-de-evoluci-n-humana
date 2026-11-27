@@ -30,3 +30,7 @@
    sistema y la única serif que quedaba en las vistas): Lexend de titulares, como el resto (T2 hizo lo mismo en
    la portada). Único modo de ganar a un style= es !important. */
 :root:root body #main-content .view-section [style*="Georgia"] { font-family: var(--f-titulo) !important; }
+
+/* Mejora de la letra (27-11-2026): los metadatos de lectura que el apartado 4 dejaba en 12 px suben a 14 px; las píldoras y
+   rótulos densos del apartado 4 pasan a 13 px por --t-dato. */
+:root:root body #main-content .view-section :is(.map-site-item-meta, .africa-route-step, small.africa-region-card, .africa-evidence-card small, .pb-dap-block-title) { font-size: .875rem !important; }

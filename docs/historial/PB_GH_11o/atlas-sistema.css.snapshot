@@ -1,0 +1,428 @@
+/* =====================================================================================================
+   atlas-sistema.css · hoja final del sistema del atlas interactivo (PB-GH-11)
+   -----------------------------------------------------------------------------------------------------
+   Columna vertebral ADITIVA (DIRECCION_ATLAS § 1): se enlaza la ÚLTIMA en atlas/index.html (?v=pbgh11) y
+   corrige por las clases EXISTENTES, sin renombrar ni borrar ninguna clase, id, data-* ni regla de las hojas
+   importadas. ../../../../assets/paleobot-base.css («Azul profundo y arena») se enlaza ANTES de las hojas del atlas:
+   aquí se usan sus tokens. Hay autocomprobaciones que leen el TEXTO de las hojas (v34-flip,
+   v34-high-contrast, v34-cranial-stage) y capas que cuelgan de clases de body/html: no se tocan.
+   Regla de prioridad: variables y :where() siempre que basten; !important solo donde lo importado lo
+   obliga (se cuentan al final de cada capa; total en el informe T2).
+   Capas (en este orden):
+     0 · Arreglos de piso puntuales (T1)
+     1 · Solo modo claro: tokens fijados en claro (también bajo prefers-color-scheme: dark)
+     2 · Subtema «pizarra» (barra de navegación y superficies oscuras importadas)
+     3 · Puente de las 90 variables del atlas (8 familias) a los tokens
+     4 · Tipografía: Lexend en titulares y rótulos, sistema en lectura y controles, escala por tokens
+     5 · Foco
+     6 · Contraste de texto (fila 16)
+     7 · Modos: «Contraste» y «Modo clase» (fila 21)
+     8 · Objetivos táctiles (fila 14) y 320 px (fila 25)
+     9 · Componentes base: botón, chip/filtro, tarjeta, etiqueta de incertidumbre, tabla densa, campos
+    10 · Impresión (fila 27)
+   ===================================================================================================== */
+
+/* -- 0 · Arreglos de piso ---------------------------------------------------------------------------- */
+
+/* 04, fila 2 · Autoevaluación (#examModal): el botón principal «Comenzar clásico» quedaba invisible
+   (texto #172436 sobre #1c2b3a = 1,08:1) porque 10-legacy-ui/020-…readable-ui.css fuerza
+   color:#172436!important en todo botón de .modal-content. Especificidad (0,4,1) > (0,3,2) de esa regla.
+   Acento tierra con texto blanco: 7,7:1. Los botones .linked (secundarios) conservan su aspecto. */
+body.pb-v50-unified .modal-content .exam-btn:not(.linked) {
+  background: var(--acento, #0a5568) !important;
+  color: var(--sobre-acento, #ffffff) !important;
+}
+
+/* -- 1 · Solo modo claro (DIRECCION § 2.4) -----------------------------------------------------------
+   paleobot-base.css cambia los tokens con prefers-color-scheme: dark, pero el atlas genera ~1 460 style=
+   con colores claros fijos: un oscuro a medias rompería el contraste. Dentro del atlas los tokens se
+   fijan en sus valores CLAROS también bajo la media oscura (:root:root:root, (0,3,0), gana a
+   :root:not([data-tema="claro"]), (0,2,0)), y color-scheme: light. Modo oscuro: pendiente (L3). */
+:root:root { color-scheme: light; }
+@media (prefers-color-scheme: dark) {
+  :root:root:root {
+    --papel: #f6f1e6; --superficie: #ffffff; --hundido: #ebe3d1;
+    --tinta: #0d1b2e; --tinta-2: #2a3c52; --tinta-3: #44566b;
+    --acento: #0a5568; --acento-fuerte: #06404f; --sobre-acento: #ffffff; --acento-suave: #d9e6ea;
+    --debatida: #6b4e00; --debatida-fondo: #fbf0cf; --bien: #2f6b3a; --bien-fondo: #e3efe3;
+    --mal: #a1281b; --mal-fondo: #f8e3df; --borde: #d8d0bd; --borde-control: #6e7889; --foco: #9a4f00;
+    --tierra: #e6dcc4; --mar: #d3e3ea; --sombra-flotante: 0 4px 16px rgba(13, 27, 46, .12);
+    color-scheme: light;
+  }
+}
+
+/* -- 2 · Subtema «pizarra» ----------------------------------------------------------------------------
+   La barra de bloques (#pbV50Blocks, capa v50 de 017) y las superficies oscuras importadas (portada v50,
+   cajón, presentación) siguen oscuras (pasarlas a papel es L3). Sus tokens son los del oscuro de
+   «Azul profundo y arena» (contrastes ya medidos en SISTEMA.md § 6), con nombre propio para que no dependan de
+   prefers-color-scheme:
+     --pizarra #0f1a28 · --pizarra-2 #16243a · --pizarra-3 #1c2c44        (fondos)
+     --sobre-pizarra #eae6da (14,04:1 sobre --pizarra; 11,27:1 sobre --pizarra-3)
+     --sobre-pizarra-2 #b8c2cf (9,72:1 / 7,81:1) · --pizarra-acento #7cc4d8 (8,96:1 / 7,20:1; texto
+     --pizarra sobre él 8,96:1) · --pizarra-borde #2c3d56 (decorativo) · --pizarra-borde-control #7a8aa0
+     (4,98:1 / 4,00:1) · --foco-pizarra #f2b04a (9,25:1 sobre --pizarra; 7,42:1 sobre --pizarra-3). El --foco claro #9a4f00 da 2,9:1 sobre pizarra: por eso
+     las superficies oscuras usan --foco-pizarra.
+   Contrastes calculados con la fórmula WCAG 2.x (cr.py de la T2, ver informe). */
+:root:root {
+  --pizarra: #0f1a28; --pizarra-2: #16243a; --pizarra-3: #1c2c44;
+  --sobre-pizarra: #eae6da; --sobre-pizarra-2: #b8c2cf; --pizarra-acento: #7cc4d8;
+  --pizarra-borde: #2c3d56; --pizarra-borde-control: #7a8aa0; --foco-pizarra: #f2b04a;
+  /* Escala de dato del atlas (DIRECCION § 2.6): rótulo de eje/leyenda y cifra destacada. */
+  --t-dato: .75rem;   /* 12 px: mínimo de rótulos de dato, ejes, leyendas y celdas densas */
+  --t-cifra: 2rem;    /* 32 px: cifra destacada */
+  --e-denso: 2px;     /* paso denso: solo tablas y matrices */
+}
+
+/* -- 3 · Puente de variables -------------------------------------------------------------------------
+   Las 90 propiedades personalizadas del atlas (8 familias: base 001, v34 002, v35 007, v36 008, v50 017/018,
+   v55/v74 025/031, v92 044/043/047, visual-system 053) apuntan a los tokens. Se declaran en :root:root y en
+   body (varias familias se declaran en body: .v34-professional-redesign, .v35-separated-blocks,
+   .v36-workbench-redesign, .pb-v50-unified), con !important porque 025 y 031 declaran --accent,
+   --text-hint, --primary… con !important. Se excluye body.v34-high-contrast (modo heredado de 002, que
+   redefine en body sus propias variables y lo comprueba el diagnóstico interno).
+   Se conservan a propósito (no son color de texto ni de superficie): --fab-group-clearance, --pb-air,
+   --v34-gap, --v34-rail, --v36-gap, --v36-rail, --pb-v74-bottom-tools-height, --pb-v74-side-rail-width,
+   --route-color (3 colores de ruta), --surface y --surface-2 (solo en .v34-high-contrast), --c-australo,
+   --c-paran, --c-homo (colores de clado: dato) y --pb-blue, --v34-blue (azules de enlace ≥ 6,9:1).
+   --c-basal (#c07800, 3,54:1 como texto sobre blanco) pasa a un ocre más oscuro (#8f5900, 5,84:1) del mismo tono. */
+:root:root,
+:root:root body:not(.v34-high-contrast) {
+  /* base (001) */
+  --primary: var(--tinta) !important;
+  --primary-mid: var(--tinta-2) !important;
+  --accent: var(--acento) !important;
+  --accent-light: var(--acento-suave) !important;
+  --bg: var(--papel) !important;
+  --card-bg: var(--superficie) !important;
+  --border: var(--borde) !important;
+  --text-main: var(--tinta) !important;
+  --text-sec: var(--tinta-2) !important;
+  --text-hint: var(--tinta-3) !important;
+  --ink-soft: var(--tinta-2) !important;
+  --surface-sand: var(--hundido) !important;
+  --surface-warm: var(--superficie) !important;
+  --work-line: var(--borde) !important;
+  --radius: var(--r-control) !important;
+  --radius-lg: var(--r-contenedor) !important;
+  --shadow: none !important;
+  --shadow-lg: var(--sombra-flotante) !important;
+  --focus-ring: 0 0 0 var(--foco-ancho) var(--foco) !important;
+  --compass-glow: transparent !important;
+  --font-serif: var(--f-titulo) !important;
+  --font-sans: var(--f-lectura) !important;
+  --font-mono: var(--f-lectura) !important;
+  --c-basal: #8f5900 !important; /* 5,84:1 sobre superficie, 5,32:1 sobre papel; mismo tono ocre */
+  /* v34 (002) */
+  --v34-paper: var(--papel) !important;
+  --v34-ink: var(--tinta) !important;
+  --v34-gold: var(--debatida) !important;
+  --v34-line: var(--borde) !important;
+  /* v35 (007) */
+  --v35-ink: var(--tinta) !important;
+  --v35-muted: var(--tinta-2) !important;
+  --v35-panel: var(--superficie) !important;
+  --v35-soft: var(--papel) !important;
+  --v35-line: var(--borde) !important;
+  /* v36 (008): carril oscuro → pizarra */
+  --v36-rail-bg: var(--pizarra) !important;
+  --v36-rail-soft: var(--pizarra-2) !important;
+  --v36-rail-text: var(--sobre-pizarra) !important;
+  --v36-rail-muted: var(--sobre-pizarra-2) !important;
+  --v36-rail-line: var(--pizarra-borde) !important;
+  /* v50 (017, 018): barra y superficies oscuras → pizarra */
+  --v50-bg: var(--pizarra) !important;
+  --v50-panel: var(--pizarra-2) !important;
+  --v50-panel-2: var(--pizarra-3) !important;
+  --v50-ink: var(--sobre-pizarra) !important;
+  --v50-muted: var(--sobre-pizarra-2) !important;
+  --v50-line: var(--pizarra-borde) !important;
+  --v50-gold: var(--pizarra-acento) !important;
+  --v50-green: #8fd19e !important;  /* --bien del oscuro de la base: 9,85:1 sobre --pizarra */
+  --v50-blue: var(--foco-pizarra) !important;
+  --v50-red: #ff9d8f !important;    /* --mal del oscuro de la base: 8,76:1 sobre --pizarra */
+  --v50-shadow: none !important;
+  --pb-v50-media-bg: var(--pizarra) !important;
+  /* v55 / v74 (025, 031) */
+  --v55-focus: var(--foco) !important;
+  --v55-focus-ring: 0 0 0 var(--foco-ancho) var(--foco) !important;
+  /* v92 (044) / 043 / 047 */
+  --pb92-ink: var(--tinta) !important;
+  --pb92-panel: var(--superficie) !important;
+  --pb92-amber: var(--debatida) !important;
+  --pb92-line: var(--borde) !important;
+  --pb92-shadow: none !important;
+  --pb-a11y-focus-ring: var(--foco) !important;
+  --pb-a11y-focus-shadow: transparent !important;
+  /* visual-system (053) */
+  --pb-canvas: var(--papel) !important;
+  --pb-paper: var(--superficie) !important;
+  --pb-surface: var(--superficie) !important;
+  --pb-ink: var(--tinta) !important;
+  --pb-muted: var(--tinta-2) !important;
+  --pb-line: var(--borde) !important;
+  --pb-night: var(--pizarra) !important;
+  --pb-teal: var(--acento) !important;
+  --pb-teal-soft: var(--acento-suave) !important;
+  --pb-gold: var(--debatida) !important;
+  --pb-gold-soft: var(--debatida-fondo) !important;
+  --pb-red: var(--mal) !important;
+  --pb-focus: var(--foco) !important;
+  --pb-radius: var(--r-control) !important;
+  --pb-shadow: none !important;
+}
+/* 044 fija body con colores literales (!important): se reconduce a los tokens. */
+html body.pb-v50-unified { background: var(--papel) !important; color: var(--tinta) !important; }
+/* !important en esta capa: 74 (declaraciones del puente) + 2 = 76 */
+
+/* -- 4 · Tipografía ----------------------------------------------------------------------------------
+   Sin Google Fonts. Lexend (local, de la hoja base) en titulares y rótulos; pila de sistema en lectura y
+   en TODOS los controles (antes los botones salían en Arial: ninguna capa ponía font-family en button).
+   Las tres familias remotas que algunas hojas y los SVG generados escriben por su nombre se resuelven en
+   local, sin descarga: «Playfair Display» → Lexend (mismo archivo de assets/fuentes/); «Source Sans 3» y
+   «JetBrains Mono» → fuentes del sistema por local(); si ninguna existe, la regla se descarta y se usa la
+   pila de respaldo de cada declaración. */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../../../../assets/fuentes/lexend-latin.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../../../../assets/fuentes/lexend-latin.woff2") format("woff2");
+  font-weight: 100 900; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  src: local("Segoe UI"), local("SegoeUI"), local(".SF NS"), local("SF Pro Text"), local("Roboto"), local("Helvetica Neue"), local("Ubuntu"), local("Cantarell"), local("Noto Sans"), local("DejaVu Sans"), local("Liberation Sans"), local("Arial");
+  font-weight: 100 900; font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: local("Segoe UI"), local("SegoeUI"), local(".SF NS"), local("SF Pro Text"), local("Roboto"), local("Helvetica Neue"), local("Ubuntu"), local("Cantarell"), local("Noto Sans"), local("DejaVu Sans"), local("Liberation Sans"), local("Arial");
+  font-weight: 100 900; font-display: swap;
+}
+/* Controles: la pila de lectura (los botones no heredan la familia). Tamaño del agente de usuario
+   (13,33 px) → --t-xs; campos → --t-m (≥ 16 px evita el zoom automático en iOS). Especificidad 0: toda
+   regla del atlas que ya fije tamaño o familia sigue mandando. */
+:where(button, input, select, textarea, optgroup) { font-family: var(--f-lectura); }
+:where(button) { font-size: var(--t-xs); }
+:where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea) { font-size: var(--t-m); }
+/* Las hojas importadas ponen familia a botones concretos (Arial por omisión): se normaliza a la pila. */
+html body.pb-v50-unified :is(button, input, select, textarea) { font-family: var(--f-lectura); }
+/* Titulares y rótulos en Lexend (la familia de titular), sin tocar tamaños ya fijados. */
+html body.pb-v50-unified :is(h1, h2, h3, h4, .panel-header-text h2, .view-hero-title-row h2, .sp-details h3, .modal-header h2, .modal-header h3) { font-family: var(--f-titulo); }
+/* Portada (bloque «Elige la profundidad…» y panel de bloques): los titulares llevan
+   style="font-family:Georgia,serif" en el marcado de index.html; solo !important gana a un style= en línea. */
+html body :is(#pb-hub, .pb-hub-section) :is(h1, h2, h3, h4, [style*="Georgia"]) { font-family: var(--f-titulo) !important; }
+/* Números en columnas: cifras tabulares donde antes había monoespaciada. */
+html body.pb-v50-unified :is(.stat-item strong, .sp-years, .sp-age, .sp-tag, .evidence-badge, .badge-estado) { font-variant-numeric: tabular-nums; }
+/* !important en esta capa: 1 */
+
+/* -- 5 · Foco (fila 7) --------------------------------------------------------------------------------
+   Antes: anillo ámbar #f2bf52/#f2bd45 (047, 053) = 1,70:1 sobre blanco y 1,48:1 sobre el fondo; tres
+   colores de foco distintos. Ahora el anillo de la hoja base (--foco #9a4f00: 6,39:1 sobre superficie,
+   5,82:1 sobre papel, 5,29:1 sobre hundido) en todo el atlas. 047, 053 y 025 ya pintan el anillo con
+   variables con !important: el puente (capa 3) las lleva a --foco y anula la sombra ámbar. Esta regla
+   cubre el resto: los «outline: none» sin sustituto de 001/005/007/013/023/029/050 y los colores
+   literales (#005a42 de prefers-contrast, #d68b27 de PaleoLab). (0,4,1) iguala a 047 y gana por orden.
+   Sobre superficies oscuras (pizarra y petróleo) el anillo usa --foco-pizarra (capa 2). */
+:root:root:root body :focus-visible {
+  outline: var(--foco-ancho) solid var(--foco) !important;
+  outline-offset: var(--foco-desfase) !important;
+}
+/* Contenedores oscuros importados: el anillo se dibuja FUERA del control, sobre el fondo del contenedor,
+   y el claro no llega a 3:1 sobre pizarra (2,75:1). Los controles oscuros que flotan sobre papel
+   (botones flotantes, «Ir directamente al atlas») conservan el anillo claro, que se ve sobre el papel.
+   Lista medida en el navegador (foco.cjs de la T2): fondo efectivo con luminancia < 0,2. */
+:root:root body :is(#pbV50Blocks, .view-hero, .pb-landing-hero, .pres-overlay, #presOverlay, .lightbox) {
+  --foco: var(--foco-pizarra);
+}
+/* Las sombras de foco translúcidas (box-shadow con --focus-ring) se sustituyen por el anillo. */
+:root:root body :is(input, select, textarea):focus-visible { box-shadow: none; }
+/* !important en esta capa: 2 */
+
+/* -- 6 · Contraste de texto (fila 16) -----------------------------------------------------------------
+   El 85 % de los nodos de axe color-contrast de la línea base eran texto --text-hint #6b7a8d (025 lo
+   fuerza con !important) sobre blanco o papel (3,88-4,38:1): el puente (capa 3) lo lleva a --tinta-3
+   (5,37:1 sobre papel, 4,88:1 sobre hundido). Aquí, solo los colores LITERALES de las hojas importadas
+   que quedan por debajo de 4,5:1, por su clase existente. Lo que pinta el JavaScript con style= y no se
+   alcanza por clase se anota en el informe T2 para la T4/T5 (no se fuerza con selectores frágiles). */
+/* Clima: el botón «Eventos» activo, blanco sobre #d97706 = 3,18:1 → mismo ámbar oscurecido #b45309 (5,02:1). */
+html body .clima-toggle[data-layer="events"].on { background: #b45309; border-color: #b45309; }
+/* Continentes: etiqueta de duplicado con el acento literal del continente sobre su fondo suave (4,22:1). */
+html body .continent-dup { color: var(--tinta-2); }
+/* Biogeografía: contador blanco sobre el color de la región, con velo blanco (4,37:1 en la región morada):
+   el velo pasa a oscuro (7,20:1 en esa región; el texto sigue blanco). */
+html body .biogeo-region-count { background: rgba(0, 0, 0, .28); }
+/* Biogeografía: la edad «atenuada» usaba opacity .55 (2,46:1). Se distingue con cursiva y --tinta-3 (5,28:1). */
+html body .biogeo-tag-age.muted { opacity: 1; color: var(--tinta-3); font-style: italic; }
+
+/* -- 7 · Modos (fila 21) ------------------------------------------------------------------------------
+   «Contraste» del cajón (054 añade html.pb-v74-high-contrast) solo cambiaba cinco variables y el fondo
+   de body no cambiaba. Ahora aplica los tokens de proyección de la hoja base (.proyeccion: papel #fbf8f0,
+   tinta #07121f 17,5:1, tinta-2 #1d2e44 10,3:1, borde #6e7889) y lleva también --tinta-3 a --tinta-2:
+   todo el texto secundario a ≥ 10:1. Como el puente apunta a los tokens, el efecto llega a las ocho
+   familias de variables. «Modo clase» (002 añade body.class-mode-active) no tenía efecto visual: ahora usa
+   los mismos tokens de proyección y agranda la letra un 20 % sobre la elección de A−/A+ (054 fija el
+   tamaño raíz con html.pb-v74-font-NNN !important; se multiplica, no se sustituye). */
+:root:root.pb-v74-high-contrast,
+:root:root body.class-mode-active {
+  --papel: #fbf8f0; --tinta: #07121f; --tinta-2: #1d2e44; --tinta-3: #1d2e44; --borde: #6e7889;
+  --borde-control: #4e5a6b;
+}
+:root:root.pb-v74-high-contrast body:not(.v34-high-contrast) { --border: var(--borde-control) !important; }
+:root:root:has(> body.class-mode-active) { font-size: 120% !important; }
+:root:root.pb-v74-font-80:has(> body.class-mode-active) { font-size: 96% !important; }
+:root:root.pb-v74-font-90:has(> body.class-mode-active) { font-size: 108% !important; }
+:root:root.pb-v74-font-100:has(> body.class-mode-active) { font-size: 120% !important; }
+:root:root.pb-v74-font-110:has(> body.class-mode-active) { font-size: 132% !important; }
+:root:root.pb-v74-font-120:has(> body.class-mode-active) { font-size: 144% !important; }
+:root:root.pb-v74-font-130:has(> body.class-mode-active) { font-size: 156% !important; }
+:root:root.pb-v74-font-140:has(> body.class-mode-active) { font-size: 168% !important; }
+:root:root.pb-v74-font-150:has(> body.class-mode-active) { font-size: 180% !important; }
+/* !important en esta capa: 10 */
+
+/* -- 8 · Objetivos táctiles (fila 14) y 320 px (fila 25) ---------------------------------------------- */
+/* Paleoecología: las 73 celdas con especie (botones dentro de .v34-paleo-cell) medían < 24 px; Biogeografía
+   (34) y Recursos (8). Mínimo WCAG 2.5.8 = --control-min (24 px), sin cambiar el texto. */
+html body :is(.v34-paleo-cell [data-open-species], .v34-paleo-cell button, .biogeo-record button,
+  .biogeo-record [data-open-species], .biogeo-legend-sp.clickable, a.resource-link-row, .resource-link-copy, .resource-filter-btn) {
+  min-height: var(--control-min);
+  min-width: var(--control-min);
+}
+/* Leyenda de Biogeografía (.biogeo-legend-sp con role=button) y botón «Copiar enlace» de Recursos: además del
+   mínimo, contenido centrado en vertical para que el alto añadido no descoloque el texto. */
+html body :is(.biogeo-legend-sp.clickable, a.resource-link-row, .resource-link-copy) { box-sizing: border-box; }
+/* Recursos: «Copiar enlace» (button.resource-link-copy, 50 × 20 px) dentro de cada fila. */
+html body .resource-link-copy { display: inline-flex; align-items: center; justify-content: center; }
+html body .biogeo-legend-sp.clickable { display: flex; align-items: center; flex-wrap: wrap; }
+html body :is(.v34-paleo-cell [data-open-species], .v34-paleo-cell button) {
+  display: inline-flex; align-items: center;
+}
+/* 320 px: el escenario del mapa medía 500 px fijos y las tarjetas de fuentes de África 325-339 px. */
+html body .map-stage { width: 100%; max-width: 100%; box-sizing: border-box; min-width: 0; }
+html body .africa-source-card { min-width: 0; max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; }
+/* Su rejilla (001: repeat(auto-fit, minmax(280px, 1fr))) imponía 280 px a una columna de 230 px a 320: mínimo acotado al ancho. */
+html body .africa-sources { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+
+/* Filogenia en teléfono: el pie del cladograma (.phylo-footer, 826 px dentro de una franja con desplazamiento
+   horizontal) ponía «Descargar SVG» en su propia línea, a la izquierda y a la vista. Con la pila de sistema los
+   textos son más estrechos y el botón subía a la primera línea, en x = 663 px: fuera de la pantalla de 390 px
+   (el humo lo detectó: «exportar.svg.filogenia» dejaba de responder). Se le devuelve su línea. */
+@media (max-width: 47.99rem) {
+  html body .phylo-footer > [data-action="exportPhyloSvg"] { flex-basis: 100%; }
+}
+
+/* -- 9 · Componentes base (por las clases existentes) -------------------------------------------------
+   Sin gradientes decorativos, vidrio ni sombras de adorno. Barra, diálogos, cabeceras de vista y rutas
+   NO se rediseñan aquí (T3-T5): este es el piso común que heredarán. */
+
+/* 9.1 · Etiqueta de incertidumbre: el ASPECTO de .pb-etiqueta en las seis variantes actuales
+   (.evidence-badge con sus niveles, .badge-estado con los suyos, .v34-debated-badge). Los textos no se
+   tocan; solo deja de forzarse la mayúscula (el texto del DOM es el mismo). Un solo código: lo debatido,
+   en revisión o pendiente lleva los colores de --debatida (6,8:1); lo aceptado o de evidencia alta,
+   --bien (5,39:1); evidencia media o baja, neutro (--tinta-2 sobre --hundido, 6,66:1). */
+html body :is(.evidence-badge, .badge-estado, .v34-debated-badge) {
+  font-family: var(--f-titulo);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .01em;
+  text-transform: none;
+  padding: 0 var(--e-2);
+  border-radius: var(--r-pildora);
+  border: var(--linea) solid transparent;
+  background: var(--debatida-fondo);
+  color: var(--debatida);
+}
+html body :is(.evidence-high, .badge-aceptada) { background: var(--bien-fondo); color: var(--bien); }
+html body :is(.evidence-medium, .evidence-low) { background: var(--hundido); color: var(--tinta-2); }
+html body :is(.evidence-debated, .evidence-review, .badge-debatida, .badge-revision, .v34-debated-badge) {
+  background: var(--debatida-fondo); color: var(--debatida);
+}
+
+/* 9.2 · Botón: familia y tamaño ya en la capa 4. Estado deshabilitado común y cursor. */
+html body :is(button, [role="button"]):disabled,
+html body :is(button, [role="button"])[aria-disabled="true"] { cursor: not-allowed; opacity: .6; }
+
+/* 9.3 · Chip / filtro: un solo patrón pulsado. Reposo: superficie, contorno de control (3,65:1), tinta.
+   Pulsado (aria-pressed="true", .active u .on según el módulo): fondo --acento-suave, borde y texto de
+   acento (6,18:1). Clases existentes: .filter-chip, .time-chip-btn, .bib-filter-btn, .map-layer-btn,
+   .clima-scale-btn, .cmp-preset-btn, .chart-ctrl-btn. */
+html body.pb-v50-unified :is(.filter-chip, .time-chip-btn, .bib-filter-btn, .map-layer-btn, .clima-scale-btn, .cmp-preset-btn, .chart-ctrl-btn) {
+  font-family: var(--f-titulo);
+  font-weight: 500;
+  border: var(--linea) solid var(--borde-control);
+  border-radius: var(--r-pildora);
+  background: var(--superficie);
+  color: var(--tinta);
+  box-shadow: none;
+  background-image: none;
+}
+html body.pb-v50-unified :is(.filter-chip, .time-chip-btn, .bib-filter-btn, .map-layer-btn, .clima-scale-btn, .cmp-preset-btn, .chart-ctrl-btn):is([aria-pressed="true"], .active, .on) {
+  background: var(--acento-suave);
+  border-color: var(--acento);
+  color: var(--acento-fuerte);
+}
+
+/* 9.4 · Tarjeta: un borde, sin sombra ni gradiente de adorno (fondo de superficie). Clases existentes de
+   tarjeta de dato: .holotype-card, .revision-card, .site-card, .africa-source-card, .debate-card,
+   .genome-card, .teaching-ticket-card. (Las tarjetas de especie de Cronología, con imagen y degradado
+   de lectura sobre la foto, son de la T4.) */
+html body.pb-v50-unified :is(.holotype-card, .revision-card, .site-card, .africa-source-card, .debate-card, .genome-card, .teaching-ticket-card) {
+  background-color: var(--superficie);
+  background-image: none;
+  border: var(--linea) solid var(--borde);
+  border-radius: var(--r-contenedor);
+  box-shadow: none;
+}
+
+/* 9.5 · Tabla densa (DIRECCION § 2.6: paso denso de 2 px solo en tablas y matrices; mínimo 12 px). */
+html body.pb-v50-unified :is(.matrix-table, .tapho-region-table, .teaching-table, .data-table, .sa-table) :is(th, td) {
+  font-size: max(var(--t-dato), 1em);
+  padding: var(--e-denso) var(--e-2);
+}
+html body.pb-v50-unified :is(.matrix-table, .tapho-region-table, .teaching-table, .data-table, .sa-table) th {
+  font-family: var(--f-titulo); font-weight: 600; color: var(--tinta-2);
+}
+
+/* 9.6 · Campos: contorno de control (3,65:1 sobre superficie), radio de control, superficie. */
+html body.pb-v50-unified :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]), select, textarea):not(#searchInput) {
+  border-color: var(--borde-control);
+  border-radius: var(--r-control);
+  background-color: var(--superficie);
+  color: var(--tinta);
+}
+/* !important en esta capa: 0 */
+
+/* -- 10 · Impresión (fila 27) -------------------------------------------------------------------------
+   Se imprimían la barra negra de bloques y 12-13 bloques de fondo oscuro; 2,6-3,5 MB por vista. Tokens de
+   impresión de la hoja base (tinta negra sobre blanco) fijados aquí con más especificidad que la capa 1;
+   se ocultan solo el cromado de navegación y los flotantes (no contenido): la barra #pbV50Blocks, la
+   fila de herramientas del área de trabajo, el cajón de accesibilidad, los botones flotantes y la barra
+   «Ir directamente al atlas». Las cabeceras oscuras se imprimen en claro (sin fondo). */
+@media print {
+  :root:root:root:root, :root:root:root:root body {
+    --papel: #ffffff; --superficie: #ffffff; --hundido: #ffffff; --tinta: #000000; --tinta-2: #222222;
+    --tinta-3: #333333; --acento: #000000; --acento-suave: #ffffff; --borde: #999999; --borde-control: #999999;
+    --debatida: #000000; --debatida-fondo: #ffffff; --bien: #000000; --mal: #000000;
+    --pizarra: #ffffff; --pizarra-2: #ffffff; --pizarra-3: #ffffff; --sobre-pizarra: #000000; --sobre-pizarra-2: #222222;
+  }
+  html body :is(#pbV50Blocks, .v36-workspace-shell .toolbar-row, #pb-a11y-toolbar-root, .fab-group, .fab,
+    .scroll-top-btn, #pb-skip-intro-bar, #pb-floating-tools, .pb-v74-bottom-tools) { display: none !important; }
+  /* (0,4,1): gana a «body.v36-workbench-redesign .view-hero {background:#132b3b!important}» (008). */
+  :root:root:root body :is(.view-hero, .pb-landing-hero, .view-hero-card, .view-hero-pill, .view-hero-badge, .v34-block-cover) {
+    background: #ffffff !important; color: #000000 !important; box-shadow: none !important;
+    border-color: #999999 !important;
+  }
+  :root:root:root body .view-hero * { color: #000000 !important; }
+  html body :is(.evidence-badge, .badge-estado, .v34-debated-badge) { border-color: currentColor; }
+  html body * { box-shadow: none !important; text-shadow: none !important; }
+}
+/* !important en esta capa: 8 */
+
+/* Tanda 4 (V-1): suelo de 12 px en datos y rótulos secundarios de la portada del atlas (medición: scripts/atlas/medidas-legibilidad.cjs). */
+html body :is(.pb-landing-kicker, .pb-landing-facts dd, .pb-landing-credit, .pb-landing-credit em,
+  .pb-pathways-head span, .pb-hub-card-media figcaption, .pb-evidence-lab-head span, .pb-evidence-item figcaption,
+  .pb-evidence-step, .pb-landing-index-head span, .pb-landing-index-group > span, .pb-landing-index-link small,
+  .search-kbd, .pt-lbl, .classroom-task-card p) { font-size: .75rem; }

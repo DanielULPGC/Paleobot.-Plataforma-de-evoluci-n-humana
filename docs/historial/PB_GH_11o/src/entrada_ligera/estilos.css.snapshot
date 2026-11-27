@@ -1,0 +1,318 @@
+/* PaleoBot · Consulta ligera (fuente: src/entrada_ligera/estilos.css; se incrusta en ligera/index.html).
+   Sistema «Azul profundo y arena». El bloque siguiente es una COPIA de assets/paleobot-base.css (desde @font-face hasta el
+   final), con una sola diferencia: la ruta de Lexend es relativa al sitio (../assets/fuentes/). La ligera es un archivo
+   único: si se abre suelta, sin esa ruta, los titulares caen en la pila del sistema y todo lo demás funciona igual. */
+
+/* === sincronizado con assets/paleobot-base.css · inicio === */
+@font-face {
+  font-family: "Lexend";
+  src: url("../assets/fuentes/lexend-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212;
+}
+
+:root {
+  /* Color · claro */
+  --papel: #f6f1e6;          /* fondo de página */
+  --superficie: #ffffff;     /* fichas, tarjetas, campos */
+  --hundido: #ebe3d1;        /* «Para su trabajo», pistas, pies */
+  --tinta: #0d1b2e;          /* 15,4:1 sobre papel; 17,0:1 sobre superficie */
+  --tinta-2: #2a3c52;        /* 10,0:1 sobre papel */
+  --tinta-3: #44566b;        /* 6,7:1 sobre papel; 5,9:1 sobre hundido */
+  --acento: #0a5568;         /* azul petróleo: 7,4:1 sobre papel; 6,5:1 sobre hundido */
+  --acento-fuerte: #06404f;  /* hover de acento */
+  --sobre-acento: #ffffff;   /* 8,4:1 sobre acento */
+  --acento-suave: #d9e6ea;   /* fondos de resalte */
+  --debatida: #6b4e00;       /* incertidumbre: 6,8:1 sobre su fondo */
+  --debatida-fondo: #fbf0cf;
+  --bien: #2f6b3a;           /* Repaso: correcto (siempre con texto) */
+  --bien-fondo: #e3efe3;
+  --mal: #a1281b;            /* Repaso: incorrecto, errores */
+  --mal-fondo: #f8e3df;
+  --borde: #d8d0bd;          /* solo separadores decorativos (1,4:1) */
+  --borde-control: #6e7889;  /* contorno de campos y botones: 4,0:1 sobre papel; 3,5:1 sobre hundido */
+  --foco: #9a4f00;           /* anillo de foco ocre oscuro (distinto del acento azul): 5,3:1 sobre papel; 4,7:1 sobre hundido */
+  /* Cartografía (mapa y pistas) */
+  --tierra: #e6dcc4;
+  --mar: #d3e3ea;
+  --sombra-flotante: 0 4px 16px rgba(13, 27, 46, .12); /* solo paneles flotantes */
+
+  /* Tipografía */
+  --f-titulo: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-lectura: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --t-xs: .8125rem;   /* 13 px: rótulos, etiquetas, eje, créditos */
+  --t-s: .9375rem;    /* 15 px: resúmenes, pies, fuentes */
+  --t-m: 1.0625rem;   /* 17 px: cuerpo */
+  --t-l: 1.25rem;     /* 20 px: h3, veredictos */
+  --t-xl: 1.5rem;     /* 24 px: h2 */
+  --t-2xl: 1.875rem;  /* 30 px: h1 en teléfono */
+  --t-3xl: 2.375rem;  /* 38 px: h1 ≥ 48 rem y proyección */
+  --il-cuerpo: 1.6;
+  --il-titulo: 1.25;
+  --medida: 40rem;    /* medida de lectura */
+  --rastreo-rotulo: .04em;
+
+  /* Espaciado (8 pasos) */
+  --e-1: .25rem;  /* 4 */
+  --e-2: .5rem;   /* 8 */
+  --e-3: .75rem;  /* 12 */
+  --e-4: 1rem;    /* 16 */
+  --e-5: 1.5rem;  /* 24 */
+  --e-6: 2rem;    /* 32 */
+  --e-7: 3rem;    /* 48 */
+  --e-8: 4rem;    /* 64 */
+
+  /* Tamaños de control y trazos */
+  --control: 44px;         /* objetivo táctil principal */
+  --control-min: 24px;     /* objetivo táctil mínimo (WCAG 2.5.8) */
+  --linea: 1px;
+  --linea-gruesa: 2px;     /* chevrons, subrayado de pestaña */
+  --linea-marca: 4px;     /* barra lateral de respuestas y contenidos */
+  --foco-ancho: 3px;
+  --foco-desfase: 2px;
+
+  /* Radios */
+  --r-control: 8px;
+  --r-contenedor: 12px;
+  --r-pildora: 999px;
+
+  /* Movimiento (solo dentro de prefers-reduced-motion: no-preference) */
+  --m-rapido: 120ms;
+  --m-medio: 180ms;
+  --m-curva: cubic-bezier(.2, 0, 0, 1);
+
+  color-scheme: light dark;
+}
+
+/* Color · oscuro (se puede forzar el claro con data-tema="claro" en <html>) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --papel: #0f1a28;
+    --superficie: #16243a;
+    --hundido: #1c2c44;
+    --tinta: #eae6da;
+    --tinta-2: #b8c2cf;
+    --tinta-3: #9fadbd;
+    --acento: #7cc4d8;
+    --acento-fuerte: #b5e2ee;
+    --sobre-acento: #0f1a28;
+    --acento-suave: #1a3a48;
+    --debatida: #f4d27a;
+    --debatida-fondo: #3a3220;
+    --bien: #8fd19e;
+    --bien-fondo: #1f3324;
+    --mal: #ff9d8f;
+    --mal-fondo: #3d2320;
+    --borde: #2c3d56;
+    --borde-control: #7a8aa0;
+    --foco: #f2b04a;
+    --tierra: #27374d;
+    --mar: #12253a;
+    --sombra-flotante: 0 4px 16px rgba(0, 0, 0, .5);
+  }
+}
+
+/* Proyección en el aula: contraste reforzado (lo activa cada superficie con la clase .proyeccion). */
+.proyeccion {
+  --papel: #fbf8f0;
+  --tinta: #07121f;   /* 17,7:1 */
+  --tinta-2: #1d2e44;
+  --borde: #6e7889;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]).proyeccion,
+  :root:not([data-tema="claro"]) .proyeccion {
+    /* Toda tinta que .proyeccion (claro) redefine se redefine aquí: si no, el oscuro heredaría la del claro. */
+    --papel: #09121e; --tinta: #f7f6f2; --tinta-2: #cdd6e0; --tinta-3: #b4c0cd; --borde: #7a8aa0;
+  }
+}
+
+/* Impresión: tinta negra sobre blanco, sea cual sea el tema de la pantalla. */
+@media print {
+  :root, :root:not([data-tema="claro"]), .proyeccion, :root:not([data-tema="claro"]) .proyeccion, :root:not([data-tema="claro"]).proyeccion {
+    --papel: #ffffff; --superficie: #ffffff; --hundido: #ffffff; --tinta: #000000; --tinta-2: #222222; --tinta-3: #333333;
+    --acento: #000000; --acento-suave: #ffffff; --borde: #999999; --borde-control: #999999;
+    --debatida: #000000; --debatida-fondo: #ffffff; --bien: #000000; --mal: #000000;
+  }
+}
+
+/* Foco: el mismo anillo en todas las superficies. Nunca outline:none sin sustituto. */
+:focus-visible { outline: var(--foco-ancho) solid var(--foco); outline-offset: var(--foco-desfase); }
+
+/* Etiqueta de incertidumbre: «Debatida», «Aproximado», «Pendiente de verificación», «No localizada».
+   Siempre con texto, nunca solo color. */
+.pb-etiqueta {
+  display: inline-block;
+  font-family: var(--f-titulo);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .01em;
+  padding: 0 var(--e-2);
+  border-radius: var(--r-pildora);
+  background: var(--debatida-fondo);
+  color: var(--debatida);
+  white-space: nowrap;
+}
+@media print { .pb-etiqueta { border: var(--linea) solid currentColor; } }
+/* === sincronizado con assets/paleobot-base.css · fin === */
+
+/* ---------- Página ---------- */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--papel); color: var(--tinta);
+  font-family: var(--f-lectura); font-size: var(--t-m); line-height: var(--il-cuerpo);
+}
+a { color: var(--acento); text-underline-offset: .15em; text-decoration-thickness: from-font; }
+a:hover { color: var(--acento-fuerte); text-decoration-thickness: var(--linea-gruesa); }
+h1, h2, h3 { font-family: var(--f-titulo); font-weight: 600; line-height: var(--il-titulo); letter-spacing: -.01em; }
+h1 { font-size: var(--t-2xl); margin: var(--e-2) 0 var(--e-3); }
+h2 { font-size: var(--t-xl); margin: var(--e-6) 0 var(--e-3); }
+h3 { font-size: var(--t-l); margin: var(--e-4) 0 var(--e-2); }
+@media (min-width: 48rem) { h1 { font-size: var(--t-3xl); } }
+.wrap { width: min(64rem, calc(100% - 2 * var(--e-4))); margin-inline: auto; }
+@media (min-width: 48rem) { .wrap { width: min(64rem, calc(100% - 2 * var(--e-5))); } }
+.skip { position: absolute; left: -200vw; top: 0; z-index: 20; background: var(--superficie); color: var(--acento); padding: var(--e-3) var(--e-4); border-radius: 0 0 var(--r-control) 0; }
+.skip:focus { left: 0; }
+
+/* ---------- Cabecera (como la de DEA: superficie y un único borde) ---------- */
+.hero { padding: var(--e-5) 0 var(--e-4); background: var(--superficie); border-bottom: var(--linea) solid var(--borde); }
+.hero h1 { max-width: var(--medida); }
+.hero p { max-width: var(--medida); margin: 0; color: var(--tinta-2); }
+.kicker { margin: 0; font-family: var(--f-titulo); font-size: var(--t-xs); font-weight: 600; letter-spacing: var(--rastreo-rotulo); text-transform: uppercase; color: var(--acento); }
+.hero .kicker { color: var(--acento); }
+.hero nav { display: flex; flex-wrap: wrap; gap: var(--e-2); margin-top: var(--e-4); }
+.hero nav a {
+  display: inline-flex; align-items: center; min-height: var(--control); padding: 0 var(--e-4);
+  border: var(--linea) solid var(--borde-control); border-radius: var(--r-control); background: var(--superficie);
+  color: var(--tinta); font-family: var(--f-titulo); font-weight: 500; font-size: var(--t-s); text-decoration: none;
+}
+.hero nav a:hover { border-color: var(--acento); color: var(--acento); }
+
+/* ---------- Contenido ---------- */
+main { padding: var(--e-5) 0 var(--e-7); }
+main > section { margin: var(--e-5) 0; scroll-margin-top: var(--e-4); }
+.notice { background: var(--debatida-fondo); color: var(--tinta); padding: var(--e-3) var(--e-4); border-radius: var(--r-control); max-width: var(--medida); }
+.notice strong { display: block; }
+.method { background: var(--hundido); padding: var(--e-4); border-radius: var(--r-contenedor); }
+@media (min-width: 48rem) { .method { padding: var(--e-4) var(--e-5); } }
+.method h2 { margin-top: 0; }
+.section-head { margin: var(--e-7) 0 var(--e-4); }
+.section-head h2 { margin: 0 0 var(--e-2); }
+.section-head p { margin: 0; color: var(--tinta-2); max-width: var(--medida); }
+
+/* ---------- Búsqueda ---------- */
+.search { display: grid; gap: var(--e-1); max-width: 36rem; font-family: var(--f-titulo); font-weight: 500; font-size: var(--t-s); }
+.search input {
+  min-height: var(--control); padding: var(--e-2) var(--e-3); font: inherit; font-family: var(--f-lectura); font-size: var(--t-m);
+  color: var(--tinta); background: var(--superficie); border: var(--linea) solid var(--borde-control); border-radius: var(--r-control);
+}
+.search input:focus-visible { border-color: var(--acento); }
+/* Con la letra al 200 % en el teléfono el campo no debe imponer su ancho intrínseco (desbordaba hasta 613 px en 390). */
+.search { min-width: 0; }
+.search input { width: 100%; min-width: 0; box-sizing: border-box; }
+/* En esta hoja, las etiquetas de incertidumbre pueden partirse en dos líneas: con la letra grande «Cronología no
+   determinada» no cabía en una (la regla común del bloque sincronizado las deja en una sola). */
+.pb-etiqueta { white-space: normal; }
+/* Palabras largas (nombres científicos, DOI) a letra grande: se parten antes que desbordar la pantalla. */
+main { overflow-wrap: break-word; }
+.timeline li > * { min-width: 0; overflow-wrap: anywhere; }
+summary > * { min-width: 0; overflow-wrap: anywhere; }
+#search-status { color: var(--tinta-2); font-size: var(--t-s); }
+
+/* ---------- Fichas (details), con la misma forma que las fichas de DEA ---------- */
+#cards { display: grid; gap: var(--e-3); grid-template-columns: minmax(0, 1fr); }
+.species, .place { margin: 0; background: var(--superficie); border: var(--linea) solid var(--borde); border-radius: var(--r-contenedor); padding: 0 var(--e-4); }
+@media (min-width: 48rem) { .species, .place { padding: 0 var(--e-5); } }
+.place { margin: var(--e-3) 0; }
+details > summary { cursor: pointer; list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+.species summary, .place summary {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-1) var(--e-3); min-height: var(--control); padding: var(--e-3) 0;
+}
+.species summary::after, .place summary::after {
+  content: ""; flex: 0 0 auto; margin-left: auto; width: var(--e-2); height: var(--e-2);
+  border-right: var(--linea-gruesa) solid var(--acento); border-bottom: var(--linea-gruesa) solid var(--acento); transform: rotate(-45deg);
+}
+.species[open] > summary::after, .place[open] > summary::after { transform: rotate(45deg); }
+.species:hover, .place:hover { border-color: var(--borde-control); }
+.species[open] > summary, .place[open] > summary { border-bottom: var(--linea) solid var(--borde); }
+.species summary strong { font-family: var(--f-titulo); font-weight: 600; font-size: var(--t-m); }
+.species summary span, .place summary span { color: var(--tinta-2); font-size: var(--t-s); }
+.species summary span.pb-etiqueta { color: var(--debatida); font-size: var(--t-xs); }
+.species-body { padding: var(--e-3) 0 var(--e-4); }
+.species-body p { max-width: var(--medida); }
+.species-body h3 { font-size: var(--t-m); }
+.species-body .media { float: right; width: min(16rem, 45%); margin: 0 0 var(--e-4) var(--e-4); }
+.species-body .media img { display: block; width: 100%; height: auto; border-radius: var(--r-control); background: var(--hundido); }
+.species-body .media img[hidden] { display: none; }
+/* Imagen que no carga y sin JavaScript (p. ej. la consulta abierta como archivo suelto, sin la carpeta img/ junto a
+   ella): en lugar del icono de imagen rota, un recuadro discreto con su texto alternativo. El crédito, la licencia y
+   el enlace «Ficha de la imagen» siguen debajo, en el pie. Los navegadores solo pintan ::after en imágenes que no
+   han cargado; con la imagen cargada no se ve. Con JavaScript, interaccion.js la oculta y avisa en el pie. */
+.species-body .media img { position: relative; }
+.species-body .media img::after {
+  content: "Imagen no disponible en esta copia: " attr(alt) ".";
+  position: absolute; inset: 0; display: flex; align-items: center; padding: var(--e-3);
+  background: var(--hundido); color: var(--tinta-2); border-radius: var(--r-control);
+  font-family: var(--f-lectura); font-size: var(--t-xs); line-height: 1.4;
+}
+.media figcaption { margin-top: var(--e-2); font-size: var(--t-xs); color: var(--tinta-3); }
+.media-pending { margin: 0 0 var(--e-4); padding: var(--e-3) var(--e-4); background: var(--hundido); border-radius: var(--r-control); max-width: var(--medida); }
+.media-pending .pb-etiqueta { margin-right: var(--e-2); }
+.references { padding-left: var(--e-5); overflow-wrap: anywhere; font-size: var(--t-s); }
+.references li + li { margin-top: var(--e-2); }
+.place ul { margin: 0; padding: var(--e-3) 0 var(--e-4) var(--e-5); }
+
+/* ---------- Línea de evidencias ---------- */
+.timeline { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--e-2); }
+.timeline li {
+  display: grid; grid-template-columns: minmax(10rem, .75fr) minmax(12rem, 1.5fr) minmax(7rem, .65fr); gap: var(--e-2) var(--e-4); align-items: baseline;
+  padding: var(--e-3) var(--e-4); background: var(--superficie); border: var(--linea) solid var(--borde); border-radius: var(--r-control);
+}
+.timeline a { font-family: var(--f-titulo); font-weight: 600; }
+.timeline span { font-variant-numeric: tabular-nums; }
+.timeline small { font-size: var(--t-xs); color: var(--tinta-2); }
+.method ul { padding-left: var(--e-5); }
+.method li + li { margin-top: var(--e-2); }
+.method code { overflow-wrap: anywhere; font-size: var(--t-s); }
+
+/* ---------- Diagnóstico técnico de imágenes (plegado, al final) ---------- */
+.diagnostico { margin-top: var(--e-7); }
+.diagnostico > summary {
+  display: inline-flex; align-items: center; gap: var(--e-2); min-height: var(--control);
+  font-family: var(--f-titulo); font-weight: 500; font-size: var(--t-s); color: var(--tinta-2);
+}
+.diagnostico > summary::before {
+  content: ""; width: var(--e-2); height: var(--e-2);
+  border-right: var(--linea-gruesa) solid var(--acento); border-bottom: var(--linea-gruesa) solid var(--acento); transform: rotate(-45deg);
+}
+.diagnostico[open] > summary::before { transform: rotate(45deg); }
+.diagnostico h2 { font-size: var(--t-l); margin-top: var(--e-3); }
+#diagnostico button {
+  min-height: var(--control); padding: 0 var(--e-4); font: inherit; font-family: var(--f-titulo); font-weight: 500; font-size: var(--t-s);
+  color: var(--tinta); background: var(--superficie); border: var(--linea) solid var(--borde-control); border-radius: var(--r-control); cursor: pointer;
+}
+#diagnostico button:hover { border-color: var(--acento); color: var(--acento); }
+#image-status { font-weight: 600; }
+#image-security, .image-error { color: var(--mal); }
+
+/* ---------- Pie ---------- */
+footer { padding: var(--e-4) 0; background: var(--hundido); color: var(--tinta-2); font-size: var(--t-s); }
+
+@media (max-width: 43.75rem) {
+  .timeline li { grid-template-columns: minmax(0, 1fr); gap: var(--e-1); }
+  .species-body .media { float: none; width: 100%; max-width: 22rem; margin: 0 0 var(--e-4); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .species summary::after, .place summary::after, .diagnostico > summary::before { transition: transform var(--m-medio) var(--m-curva); }
+}
+@media print {
+  .hero nav, .skip, .diagnostico > summary, #diagnostico button { display: none; }
+  .species, .place, .timeline li { break-inside: avoid; }
+  .species summary::after, .place summary::after { display: none; }
+}
