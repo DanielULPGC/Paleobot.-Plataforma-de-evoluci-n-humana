@@ -115,7 +115,7 @@
       return '¿Qué inferencias de las que hiciste hoy podrían estar sesgadas por el registro fósil? Nombra dos y explica qué tipo de evidencia adicional las haría más robustas.';
     }
     if (visited.includes('phylo') || visited.includes('tree')) {
-      return '¿Qué diferencia hay entre el árbol filogenético que ves en el atlas y lo que "realmente ocurrió" en la evolución hominina? ¿Qué parte de esa diferencia se debe a los datos y cuál al método?';
+      return '¿Qué diferencia hay entre el árbol filogenético que ve en el atlas y lo que "realmente ocurrió" en la evolución hominina? ¿Qué parte de esa diferencia se debe a los datos y cuál al método?';
     }
     if (visited.includes('africa') || visited.includes('yacimientos')) {
       return '¿Qué sesgo geográfico o de muestreo podrías haber incorporado al explorar solo algunos yacimientos o regiones? ¿Cómo afecta ese sesgo a las conclusiones que extraíste?';

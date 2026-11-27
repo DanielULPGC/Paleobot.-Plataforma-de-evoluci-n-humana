@@ -31,7 +31,7 @@
     ['timeline','Cronología','Explorar taxones por tiempo'],
     ['map','Mapa','Distribución geográfica y yacimientos'],
     ['tree','Árbol evolutivo','Relación filogenética visual'],
-    ['aula','Aula','Generador de situaciones de aprendizaje'],
+    ['aula','Aula','Centro docente e investigador: banco de datos, guía y rutas'],
     ['yacimientos','Yacimientos','Fichas y contexto arqueológico'],
     ['paleoecologia','Paleoecología','Ambiente, dieta y fauna asociada'],
     ['primatologia','Primatología','Comparación primatológica'],
@@ -64,7 +64,7 @@
     window.__PB_V86_SEARCH_RESULTS = results;
     if (input) input.setAttribute('aria-expanded', String(results.length > 0));
     if (!String(query || '').trim()) {
-      list.innerHTML = '<div class="gs-empty"><span class="gs-empty-icon">Buscar</span><p>Empieza a escribir para buscar en el atlas</p></div>';
+      list.innerHTML = '<div class="gs-empty"><span class="gs-empty-icon">Buscar</span><p>Empiece a escribir para buscar en el atlas</p></div>';
       return results;
     }
     if (!results.length) {

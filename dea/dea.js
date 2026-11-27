@@ -963,6 +963,42 @@
       var t = africanos[azar(africanos.length)];
       return { texto: ['En este recurso, ¿figura ', cursiva(t.n), ' como especie debatida?'], opciones: [{ nodo: 'Sí', bien: !!t.debatido }, { nodo: 'No', bien: !t.debatido }],
         explica: [t.debatido ? 'Sí: su validez o su posición se discuten. ' : 'No figura como debatida. ', t.nota || ''], ficha: t.id };
+    },
+    /* Preguntas de interpretación: no piden recordar un dato, sino distinguir qué se puede afirmar con él y qué no. */
+    function () { // coincidencia en el tiempo: qué se sostiene
+      var par = parDistinto(function (a, b) { return Math.min(a.desde, b.desde) - Math.max(a.hasta, b.hasta) >= 0.3; });
+      if (!par) return null;
+      var malas = barajar(['Que convivieron en el mismo lugar', 'Que se encontraron o interactuaron', 'Que una descendía de la otra']).slice(0, 2);
+      return { texto: ['Interpretación. Según este recurso, ', cursiva(par[0].n), ' y ', cursiva(par[1].n), ' coincidieron en el tiempo. ¿Qué afirmación se sostiene con esa evidencia?'],
+        opciones: barajar([{ nodo: 'Que los intervalos en que se documentan se solapan', bien: true }].concat(malas.map(function (m) { return { nodo: m, bien: false }; }))),
+        explica: [cursiva(par[0].n), ': ' + intervalo(par[0]).toLowerCase() + '. ', cursiva(par[1].n), ': ' + intervalo(par[1]).toLowerCase() + '. Un solapamiento de intervalos no prueba convivencia, encuentro ni parentesco: para afirmarlo harían falta fósiles del mismo lugar y momento, o evidencia genética.'], ficha: par[0].id };
+    },
+    function () { // aparecer antes no es ser antepasada
+      var par = parDistinto(function (a, b) { return Math.abs(a.desde - b.desde) >= 0.5; });
+      if (!par) return null;
+      var vieja = par[0].desde > par[1].desde ? par[0] : par[1], otra = vieja === par[0] ? par[1] : par[0];
+      var malas = barajar(['Que la primera es antepasada de la segunda', 'Que la segunda es una forma más «evolucionada»', 'Que ambas forman una misma línea sucesiva']).slice(0, 2);
+      return { texto: ['Interpretación. ', cursiva(vieja.n), ' aparece antes que ', cursiva(otra.n), ' en el registro fósil. ¿Qué afirmación se sostiene con esa evidencia?'],
+        opciones: barajar([{ nodo: 'Que los fósiles conocidos de la primera son más antiguos que los de la segunda', bien: true }].concat(malas.map(function (m) { return { nodo: m, bien: false }; }))),
+        explica: ['El orden de aparición en el registro no establece ascendencia: dos especies pueden ser ramas contemporáneas o parientes lejanas. Y ser más reciente no equivale a ser más «avanzada»: la evolución no tiene dirección ni meta.'], ficha: vieja.id };
+    },
+    function () { // último registro no es fecha de extinción
+      var cand = africanos.filter(function (t) { return t.hasta > 0.05 && t.desde !== t.hasta; });
+      if (!cand.length) return null;
+      var t = cand[azar(cand.length)];
+      var malas = barajar(['Que se extinguió exactamente en esa fecha', 'Que se extinguió por competencia con otra especie', 'Que su linaje terminó sin dejar descendencia']).slice(0, 2);
+      return { texto: ['Interpretación. El recurso sitúa el último registro de ', cursiva(t.n), ' ' + hace(t.hasta) + '. ¿Qué puede concluirse?'],
+        opciones: barajar([{ nodo: 'Que no se han documentado fósiles posteriores; pudo persistir más tiempo', bien: true }].concat(malas.map(function (m) { return { nodo: m, bien: false }; }))),
+        explica: ['El último fósil conocido es un límite, no una fecha de extinción: la ausencia de registro no es registro de ausencia. Las causas de una extinción exigen evidencia adicional.'], ficha: t.id };
+    },
+    function () { // qué significa «debatida»
+      var cand = africanos.filter(function (t) { return t.debatido; });
+      if (!cand.length) return null;
+      var t = cand[azar(cand.length)];
+      var malas = barajar(['Que se ha demostrado que no existió', 'Que sus fósiles son falsos', 'Que carece de interés científico']).slice(0, 2);
+      return { texto: ['Interpretación. ', cursiva(t.n), ' figura en este recurso como especie debatida. ¿Qué significa?'],
+        opciones: barajar([{ nodo: 'Que su validez o su posición en el árbol se discuten entre especialistas', bien: true }].concat(malas.map(function (m) { return { nodo: m, bien: false }; }))),
+        explica: [t.nota ? t.nota + ' ' : '', '«Debatida» no equivale a «falsa»: indica que la evidencia admite más de una interpretación.'], ficha: t.id };
     }
   ];
   var repaso = { total: 0, respondidas: 0, aciertos: 0, falladas: [] };
@@ -995,7 +1031,7 @@
     caja.hidden = true; caja.textContent = '';
     boton.classList.remove('boton-primario'); document.getElementById('repaso-acciones').appendChild(boton);
     var preguntas = [];
-    barajar([0, 1, 2, 3, 0, 1, 2, 3]).forEach(function (g) { var q = GENERADORES[g](); if (q) preguntas.push(q); });
+    barajar([0, 1, 2, 3, 4, 5, 6, 7]).forEach(function (g) { var q = GENERADORES[g](); if (q) preguntas.push(q); });
     ponerRecuento('repaso', palabra(preguntas.length, true));
     repaso = { total: preguntas.length, respondidas: 0, aciertos: 0, falladas: [] };
     preguntas.forEach(function (q, i) {

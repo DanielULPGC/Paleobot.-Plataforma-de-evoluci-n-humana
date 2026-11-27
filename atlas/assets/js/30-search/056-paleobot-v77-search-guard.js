@@ -121,11 +121,11 @@
     focusIndex = results.length ? 0 : -1;
     input.setAttribute('aria-expanded', String(results.length > 0));
     if (norm(query).length < 2) {
-      list.innerHTML = '<div class="gs-empty"><span class="gs-empty-icon">Buscar</span><p>Escribe al menos dos letras.</p></div>';
+      list.innerHTML = '<div class="gs-empty"><span class="gs-empty-icon">Buscar</span><p>Escriba al menos dos letras.</p></div>';
       return;
     }
     if (!results.length) {
-      list.innerHTML = '<div class="gs-empty"><span class="gs-empty-icon">Sin resultados</span><p>No hay coincidencias para <strong>' + esc(query) + '</strong>.</p><p class="gs-hint">Prueba con Homo, mapa, glosario, cronología o yacimiento.</p></div>';
+      list.innerHTML = '<div class="gs-empty"><span class="gs-empty-icon">Sin resultados</span><p>No hay coincidencias para <strong>' + esc(query) + '</strong>.</p><p class="gs-hint">Pruebe con Homo, mapa, glosario, cronología o yacimiento.</p></div>';
       return;
     }
     list.innerHTML = results.map((item, i) => {

@@ -531,6 +531,24 @@ main .unidad-comparar { margin: var(--e-1) 0 0; max-width: none; text-align: cen
 .resultado-repaso:focus-visible { outline-offset: var(--foco-desfase); }
 
 /* ---------- Su trabajo ---------- */
+/* Itinerario rápido y rúbrica orientativa (Tanda 5) */
+.itinerario-rapido { margin: var(--e-3) 0; padding: var(--e-3) var(--e-4); border: var(--linea) solid var(--borde); border-left: var(--e-1) solid var(--acento); background: var(--superficie); }
+.tabla-rubrica { overflow-x: auto; margin: var(--e-3) 0; border: var(--linea) solid var(--borde); }
+.tabla-rubrica table { border-collapse: collapse; width: 100%; min-width: 44rem; font-size: var(--t-s); }
+.tabla-rubrica th, .tabla-rubrica td { text-align: left; vertical-align: top; padding: var(--e-2) var(--e-3); border: var(--linea) solid var(--borde); }
+.tabla-rubrica thead th { background: var(--superficie); font-family: var(--f-titulo); }
+.tabla-rubrica tbody th { font-weight: 600; }
+@media (max-width: 47.99rem) { /* en teléfono, cada aspecto se apila como tarjeta con sus cuatro niveles */
+  .tabla-rubrica { overflow: visible; border: 0; }
+  .tabla-rubrica table { min-width: 0; }
+  .tabla-rubrica thead { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); }
+  .tabla-rubrica :is(table, tbody, tr, th, td) { display: block; }
+  .tabla-rubrica tr { margin-bottom: var(--e-3); border: var(--linea) solid var(--borde); }
+  .tabla-rubrica th, .tabla-rubrica td { border: 0; border-bottom: var(--linea) solid var(--borde); }
+  .tabla-rubrica tbody th { background: var(--superficie); }
+  .tabla-rubrica td::before { content: attr(data-nivel); display: block; font-family: var(--f-titulo); font-weight: 600; color: var(--tinta-2); }
+}
+.tabla-rubrica:focus-visible { outline: .1875rem solid var(--acento); outline-offset: .125rem; }
 .cita { padding-left: var(--e-5); text-indent: calc(-1 * var(--e-5)); overflow-wrap: anywhere; }
 .lista-comprobacion { list-style: "☐  "; }
 

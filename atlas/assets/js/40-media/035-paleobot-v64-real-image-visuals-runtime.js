@@ -87,7 +87,7 @@
   function updateEmptyPanelText(){
     const empty = document.querySelector('#introgDetailPanel .introg-panel-empty');
     if (!empty) return;
-    empty.textContent = empty.textContent.replace('Pulsa una flecha del diagrama', 'Selecciona una imagen del bloque');
+    empty.textContent = empty.textContent.replace('Pulse una flecha del diagrama', 'Seleccione una imagen del bloque');
   }
   function keepIntrogressionView(){
     const active = document.querySelector('.view-section.active, [data-view].active');

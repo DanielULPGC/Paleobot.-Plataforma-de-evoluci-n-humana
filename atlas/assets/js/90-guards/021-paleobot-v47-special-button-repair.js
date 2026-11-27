@@ -108,7 +108,7 @@
     return true;
   }
   function buildFichaHtml(sp, mode){
-    if (!sp) return '<h1>Ficha no disponible</h1><p>Abre una especie antes de exportar.</p>';
+    if (!sp) return '<h1>Ficha no disponible</h1><p>Abra una especie antes de exportar.</p>';
     const refs = (() => {
       try {
         const fn = ev('getSpeciesReferenceSet');
@@ -194,7 +194,7 @@
     const detail = document.getElementById('m19PaleoDetail') || document.getElementById('v34PaleoDetail');
     if (!detail) return false;
     const parts = String(value).split('|');
-    detail.innerHTML = `<h3>${esc(parts[0] || 'Bioma')} · ${esc(parts[1] || 'MIS')}</h3><p>Condiciones paleoclimáticas simplificadas para discusión didáctica. Úsalo como contexto de nicho ecológico, no como reconstrucción fina.</p><p>Contrasta siempre con yacimientos, cronología, tafonomía y bibliografía.</p>`;
+    detail.innerHTML = `<h3>${esc(parts[0] || 'Bioma')} · ${esc(parts[1] || 'MIS')}</h3><p>Condiciones paleoclimáticas simplificadas para discusión didáctica. Úsalo como contexto de nicho ecológico, no como reconstrucción fina.</p><p>Contraste siempre con yacimientos, cronología, tafonomía y bibliografía.</p>`;
     document.body.dataset.v47LastPaleoCell = datasetName;
     return true;
   }

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: línea del tiempo interactiva del bloque de cronología del
+  Atlas de paleoantropología. Sitúa los principales táxones homininos en su
+  rango temporal aproximado para evidenciar coexistencias y solapamientos, en
+  coherencia con el patrón arbustivo (Wood y Boyle, 2016,
+  https://doi.org/10.1002/ajpa.22902). Diales: VARIANZA_VISUAL 5 /
+  INTENSIDAD_ANIMACION 3 / DENSIDAD_CONTENIDO 6.
+
+  RIGOR DE DATOS. Los rangos temporales son APROXIMADOS, están redondeados y son
+  revisables; proceden de la compilación de Wood y Boyle (2016) salvo las anclas
+  con datación primaria citada. No se presentan como valores definitivos.
+  Anclas primarias verificadas: Sahelanthropus (Brunet et al., 2002,
+  https://doi.org/10.1038/nature00879); Ardipithecus ramidus (White et al.,
+  2009, https://doi.org/10.1126/science.1175802; datación 40Ar/39Ar en
+  WoldeGabriel et al., 2009, https://doi.org/10.1126/science.1175817);
+  paleogenómica neandertal (Green et al., 2010,
+  https://doi.org/10.1126/science.1188021).
+
+  Accesibilidad: cada barra es un botón navegable por teclado; el color de clado
+  es redundante (grupos y etiquetas de texto); se ofrece una tabla de datos como
+  alternativa textual completa; respeta prefers-reduced-motion; contraste alto.
+  Autonomía: fichero único. Licencia CC BY-NC 4.0 · ULPGC.
+-->
+<html lang="es" class="pb-recorrido">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cronología del corpus · Atlas de paleoantropología</title>
+<link rel="stylesheet" href="../../assets/paleobot-base.css">
+<style>
+:root{--fondo:var(--papel);--fondo-alt:var(--superficie);--tinta-suave:var(--tinta-2);--radio:var(--r-contenedor);
+  --c-basales:#c98a4b;--c-austra:#d8a93a;--c-paran:#7fae9a;--c-homo:#cbb488;
+  --ft:var(--f-titulo);--fc:var(--f-lectura)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6}
+a{color:var(--acento)}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:var(--sobre-acento);padding:var(--e-3) var(--e-4);z-index:50;font-weight:600}
+.salto:focus{left:0}
+
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:var(--e-4);padding:var(--e-4) var(--margen);background:var(--papel);border-bottom:1px solid var(--borde)}
+.volver{display:inline-flex;align-items:center;gap:var(--e-2);color:var(--tinta);text-decoration:none;font-weight:600;padding:var(--e-2) var(--e-4);border-radius:var(--r-control);border:1px solid var(--borde-control)}
+.volver:hover{border-color:var(--acento);color:var(--acento)}
+.volver:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
+.volver svg{width:18px;height:18px}
+.barra .marca{font-weight:600;color:var(--tinta-suave);font-size:var(--t-s)}
+.barra .intro-link{color:var(--acento);text-decoration:none;font-weight:600;font-size:var(--t-s)}
+
+.cabecera{max-width:1150px;margin:0 auto;padding:var(--e-7) var(--margen) var(--e-2)}
+.cabecera .k{font-size:var(--t-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:var(--e-3)}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:var(--t-h1);margin-bottom:var(--e-2)}
+.cabecera p{color:var(--tinta-suave);max-width:70ch}
+.aviso{max-width:1150px;margin:var(--e-5) auto 0;padding:0 var(--margen)}
+.aviso .caja{background:var(--acento-suave);border:0;border-radius:var(--radio);padding:var(--e-4) var(--e-4);font-size:var(--t-s);color:var(--tinta-suave)}
+
+.leyenda{max-width:1150px;margin:var(--e-6) auto 0;padding:0 var(--margen);display:flex;gap:var(--e-4);flex-wrap:wrap}
+.leyenda span{display:inline-flex;align-items:center;gap:var(--e-2);font-size:var(--t-s);color:var(--tinta-suave)}
+.leyenda i{width:16px;height:16px;border-radius:4px;display:inline-block}
+
+.grafico{max-width:1150px;margin:var(--e-5) auto 0;padding:0 var(--margen)}
+.eje{position:relative;height:26px;margin-left:180px;border-bottom:1px solid rgba(243,239,231,.25)}
+.eje .tick{position:absolute;top:0;transform:translateX(-50%);font-size:var(--t-xs);color:var(--tinta-suave)}
+.eje .tick::after{content:'';position:absolute;left:50%;top:20px;width:1px;height:6px;background:rgba(243,239,231,.25)}
+.eje-titulo{margin-left:180px;font-size:var(--t-xs);color:var(--tinta-suave);margin-top:var(--e-1);letter-spacing:.04em}
+
+.grupo{margin-top:var(--e-5)}
+.grupo h2{font-family:var(--ft);font-weight:700;font-size:var(--t-m);color:var(--tinta);margin-bottom:var(--e-2);padding-left:2px}
+.fila{position:relative;height:34px;margin-bottom:6px;display:flex;align-items:center}
+.fila .etq{width:180px;flex:0 0 180px;font-size:var(--t-xs);font-style:italic;color:var(--tinta-suave);padding-right:10px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pista{position:relative;flex:1;height:100%}
+.barra-taxon{position:absolute;top:6px;height:22px;border-radius:var(--r-control);border:none;cursor:pointer;color:var(--sobre-acento);font-family:var(--fc);font-weight:600;font-size:var(--t-xs);display:flex;align-items:center;padding:0 8px;overflow:hidden;white-space:nowrap;transition:filter .15s,transform .15s}
+.barra-taxon:hover{filter:brightness(1.12)}
+.barra-taxon:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
+.barra-taxon[aria-pressed="true"]{outline:3px solid var(--tinta);outline-offset:2px}
+
+.detalle{max-width:1150px;margin:var(--e-6) auto 0;padding:0 var(--margen)}
+.detalle .panel{background:var(--superficie);border:1px solid var(--borde);border-left:4px solid var(--acento);border-radius:var(--radio);padding:var(--e-5) var(--e-6);min-height:120px}
+.detalle .panel h3{font-family:var(--ft);font-weight:700;font-size:var(--t-xl);margin-bottom:var(--e-1)}
+.detalle .panel .meta{color:var(--acento);font-weight:600;font-size:var(--t-s);margin-bottom:var(--e-3)}
+.detalle .panel p{color:var(--tinta-suave);margin-bottom:var(--e-2)}
+.detalle .panel .fuente{font-size:var(--t-xs);color:var(--tinta-3)}
+.detalle .panel .fuente a{word-break:break-all}
+
+.tabla-sec{max-width:1150px;margin:var(--e-7) auto 0;padding:0 var(--margen)}
+.tabla-sec h2{font-family:var(--ft);font-weight:700;font-size:var(--t-l);margin-bottom:var(--e-1)}
+.tabla-sec p{color:var(--tinta-suave);font-size:var(--t-s);margin-bottom:var(--e-4)}
+table{width:100%;border-collapse:collapse;font-size:var(--t-s)}
+caption{text-align:left;color:var(--tinta-suave);font-size:var(--t-xs);margin-bottom:var(--e-2)}
+th,td{text-align:left;padding:var(--e-2) var(--e-3);border-bottom:1px solid var(--borde)}
+th{color:var(--acento);font-weight:600}
+td.rango{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.pie{border-top:1px solid var(--borde);margin-top:var(--e-8);padding:var(--e-6) var(--margen);color:var(--tinta-3);font-size:var(--t-xs);line-height:1.7}
+.pie a{color:var(--acento);word-break:break-all}
+.pie h3{color:var(--tinta-suave);font-size:var(--t-s);margin-bottom:var(--e-2)}
+.pie ul{list-style:none;margin-bottom:var(--e-4)}
+.pie li{margin-bottom:var(--e-1)}
+
+@media (prefers-reduced-motion: reduce){.barra-taxon{transition:none}}
+@media (max-width:720px){
+  .eje,.eje-titulo{margin-left:0}
+  .fila{flex-direction:column;align-items:stretch;height:auto;margin-bottom:14px}
+  .fila .etq{width:auto;flex:none;text-align:left;margin-bottom:3px}
+  .pista{height:26px}
+}
+/* PB-GH-10 · piso de corrección
+   - Barras de 24 px de alto; en pantallas estrechas, sin el epíteto truncado dentro de la barra (el nombre
+     completo ya está encima y en su aria-label) y con pista de 32 px: ni la barra ni su anillo de foco
+     invaden la fila siguiente.
+   - Reserva de altura para lo que pinta el script (CLS de carga): la leyenda y la rejilla de barras. */
+.barra-taxon{top:5px;height:24px}
+.leyenda{min-height:1.6rem}
+#grupos{min-height:100vh}
+@media (max-width:720px){
+  .leyenda{min-height:3.4rem}
+  .pista{flex:none;height:32px} /* con flex:1 la pista medía 0 px en columna y la barra invadía la fila siguiente */
+  .barra-taxon{top:4px;font-size:0;padding:0}
+}
+.barra-taxon.destacado{animation:destello 1.6s ease 2}
+@keyframes destello{50%{filter:brightness(1.35)}}
+@media (prefers-reduced-motion: reduce){.barra-taxon.destacado{animation:none}}
+</style>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+<a class="salto" href="#grafico">Saltar a la línea del tiempo</a>
+
+<div class="barra" role="navigation" aria-label="Navegación del recorrido">
+  <a class="volver" href="atlas.html" id="volver">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver al atlas
+  </a>
+  <span class="marca">Cronología del corpus</span>
+  <nav aria-label="Otras vistas" style="display:flex;gap:1.1rem">
+    <a class="intro-link" href="parentesco.html" id="ir-parentesco">Árbol de parentesco</a>
+    <a class="intro-link" href="ficha.html" id="ir-fichas">Fichas</a>
+    <a class="intro-link" href="introduccion.html">Ver la introducción</a>
+  </nav>
+</div>
+
+<header class="cabecera">
+  <p class="k">Bloque 01 · Cronología</p>
+  <h1>Cuándo vivió cada taxón y población</h1>
+  <p>Cada barra representa el rango temporal aproximado de una entrada del corpus: especies, subespecies, hominoideos de contexto, linajes o conjuntos fósiles. Al alinearlos se hace visible lo esencial: muchas formas coexistieron y la evolución humana no fue una secuencia lineal.</p>
+</header>
+
+<div class="aviso" role="region" aria-label="Nota sobre los datos">
+  <div class="caja">
+    <strong>Nota sobre los datos.</strong> Los rangos son aproximados, están redondeados en millones de años (Ma) y son revisables: dependen del yacimiento, del método de datación y de hallazgos futuros. Proceden de la compilación de Wood y Boyle (2016); las dataciones de las especies más antiguas y del genoma neandertal se anclan además a sus estudios primarios, citados al pie. No deben tomarse como valores definitivos.
+  </div>
+</div>
+
+<div class="leyenda" id="leyenda" aria-hidden="true"></div>
+
+<main id="grafico" class="grafico" aria-label="Línea del tiempo del corpus paleoantropológico">
+  <p class="pb-alternativa">Los mismos datos, en texto: <a href="#tabla">tabla de rangos y fuentes</a>.</p>
+  <div class="eje" id="eje"></div>
+  <div class="eje-titulo">Millones de años antes del presente (Ma)</div>
+  <div id="grupos"></div>
+</main>
+
+<section class="detalle" aria-live="polite">
+  <div class="panel" id="panel">
+    <h3>Selecciona una entrada</h3>
+    <p class="meta">Explora la línea del tiempo</p>
+    <p>Pulsa cualquier barra (o navega con el tabulador y pulsa Intro) para ver el rango temporal, el clado y la fuente de cada táxon.</p>
+  </div>
+</section>
+
+<section class="tabla-sec" id="tabla" aria-labelledby="tit-tabla">
+  <h2 id="tit-tabla">Tabla de datos</h2>
+  <p>Alternativa textual completa de la línea del tiempo, con los rangos y las fuentes de cada táxon.</p>
+  <p class="pb-desliza">La tabla continúa hacia la derecha: deslícela en horizontal.</p>
+  <div class="pb-tabla-desplazable" tabindex="0" role="region" aria-label="Tabla de datos (desplazable)">
+  <table>
+    <caption>Entradas taxonómicas y paleopoblacionales con su rango temporal aproximado (Ma). Fuentes: síntesis y estudios primarios citados.</caption>
+    <thead><tr><th scope="col">Táxon</th><th scope="col">Clado</th><th scope="col">Rango aproximado (Ma)</th><th scope="col">Fuente</th></tr></thead>
+    <tbody id="cuerpo-tabla"></tbody>
+  </table>
+  </div>
+</section>
+
+<footer class="pie">
+  <h3>Fuentes con DOI verificado</h3>
+  <ul>
+    <li>Wood, B., y Boyle, E. K. (2016). American Journal of Physical Anthropology, 159(S61), S37-S78. <a href="https://doi.org/10.1002/ajpa.22902" target="_blank" rel="noopener">https://doi.org/10.1002/ajpa.22902</a></li>
+    <li>Brunet, M., et al. (2002). Nature, 418(6894), 145-151. <a href="https://doi.org/10.1038/nature00879" target="_blank" rel="noopener">https://doi.org/10.1038/nature00879</a></li>
+    <li>White, T. D., et al. (2009). Science, 326(5949), 75-86. <a href="https://doi.org/10.1126/science.1175802" target="_blank" rel="noopener">https://doi.org/10.1126/science.1175802</a></li>
+    <li>Green, R. E., et al. (2010). Science, 328(5979), 710-722. <a href="https://doi.org/10.1126/science.1188021" target="_blank" rel="noopener">https://doi.org/10.1126/science.1188021</a></li>
+  </ul>
+  Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria ·
+  Contenido bajo licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
+</footer>
+
+<script src="datos.js"></script>
+<script>
+(() => {
+  'use strict';
+
+  // Escala del eje: 23 Ma (izquierda) a 0 (derecha, presente).
+  const DATOS = window.AtlasPaleo;
+  if (!DATOS) {
+    document.getElementById('panel').innerHTML = '<h3>Error de datos</h3><p>No se pudo cargar datos.js. Verifica que el fichero acompaña a esta pagina.</p>';
+    return;
+  }
+  const MAX = DATOS.meta.ejeMaxMa;               // escala del eje (Ma)
+  const maX = (ma) => (1 - ma / MAX) * 100;      // % desde la izquierda
+  const CLADOS = DATOS.clados;
+  const FUENTES = DATOS.fuentes;
+  const TAXONES = DATOS.taxones;
+
+  // Resuelve la lista de identificadores de fuente de un taxon a texto o HTML.
+  const citarFuentes = (t, conEnlace) => t.fuentes.map((id) => {
+    const f = FUENTES[id];
+    if (!f) return '';
+    if (!f.doi) return f.cita;
+    return conEnlace
+      ? `${f.cita} DOI: <a href="https://doi.org/${f.doi}" target="_blank" rel="noopener">${f.doi}</a>`
+      : `${f.cita} (DOI: ${f.doi})`;
+  }).filter(Boolean);
+
+  const fmt = (ma) => ma >= 1 ? ma.toFixed(1).replace('.', ',') : (ma*1000).toFixed(0) + ' ka';
+  const rango = (t) => `${fmt(t.desde)} a ${t.hasta===0 ? 'presente' : fmt(t.hasta)}`;
+
+  // Marcas legibles para cualquier amplitud temporal del corpus.
+  const eje = document.getElementById('eje');
+  const paso = MAX > 15 ? 5 : 1;
+  const marcas = [MAX];
+  for (let ma = Math.floor(MAX / paso) * paso; ma >= 0; ma -= paso) {
+    if (ma !== MAX) marcas.push(ma);
+  }
+  marcas.forEach((ma) => {
+    const d = document.createElement('div');
+    d.className = 'tick'; d.style.left = maX(ma) + '%'; d.textContent = ma;
+    eje.appendChild(d);
+  });
+
+  // Leyenda de clados
+  const ley = document.getElementById('leyenda');
+  Object.values(CLADOS).forEach(cl => {
+    const s = document.createElement('span');
+    s.innerHTML = `<i style="background:${cl.color}"></i>${cl.nombre}`;
+    ley.appendChild(s);
+  });
+
+  // Panel de detalle
+  const panel = document.getElementById('panel');
+  function mostrar(t) {
+    const doiHtml = `<p class="fuente">Fuente: ${citarFuentes(t, true).join('<br>')}</p>`;
+    panel.innerHTML = `<h3><em>${t.n}</em></h3>
+      <p class="meta">${CLADOS[t.c].nombre} · ${rango(t)}</p>
+      <p>${t.nota}</p>${doiHtml}
+      <p><a href="ficha.html?id=${t.id}">Ver ficha completa</a></p>`;
+    document.querySelectorAll('.barra-taxon').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === t.id)));
+  }
+
+  // Barras agrupadas por clado
+  const cont = document.getElementById('grupos');
+  Object.keys(CLADOS).forEach(ck => {
+    const grupo = document.createElement('div');
+    grupo.className = 'grupo';
+    const h = document.createElement('h2'); h.textContent = CLADOS[ck].nombre; grupo.appendChild(h);
+    TAXONES.filter(t => t.c === ck).forEach(t => {
+      const fila = document.createElement('div'); fila.className = 'fila';
+      const etq = document.createElement('div'); etq.className = 'etq'; etq.innerHTML = `<em>${t.n}</em>`;
+      const pista = document.createElement('div'); pista.className = 'pista';
+      const b = document.createElement('button');
+      b.className = 'barra-taxon'; b.type = 'button'; b.dataset.id = t.id;
+      const izq = maX(t.desde), der = maX(t.hasta);
+      let ancho = der - izq; if (ancho < 1.5) ancho = 1.5; // ancho mínimo usable
+      b.style.left = izq + '%'; b.style.width = ancho + '%';
+      b.style.background = CLADOS[ck].color;
+      b.setAttribute('aria-pressed', 'false');
+      b.setAttribute('aria-label', `${t.n}. ${CLADOS[t.c].nombre}. Rango aproximado ${rango(t)}.`);
+      b.textContent = t.n.split(' ')[1] || t.n; // epíteto, para no saturar
+      b.addEventListener('click', () => mostrar(t));
+      pista.appendChild(b);
+      fila.appendChild(etq); fila.appendChild(pista); grupo.appendChild(fila);
+    });
+    cont.appendChild(grupo);
+  });
+
+  // Tabla de datos (alternativa textual)
+  const cuerpo = document.getElementById('cuerpo-tabla');
+  TAXONES.forEach(t => {
+    const tr = document.createElement('tr');
+    const fuente = citarFuentes(t, false).join(' ');
+    tr.innerHTML = `<td><em><a href="ficha.html?id=${t.id}">${t.n}</a></em></td><td>${CLADOS[t.c].nombre}</td><td class="rango">${rango(t)}</td><td>${fuente}</td>`;
+    cuerpo.appendChild(tr);
+  });
+  // Resaltado por identidad: cronologia.html?taxon=<id>
+  (function () {
+    const rd = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pid = new URLSearchParams(location.search).get('taxon');
+    if (!pid) return;
+    const t = TAXONES.find(x => x.id === pid);
+    if (!t) return;
+    mostrar(t);
+    const b = document.querySelector('.barra-taxon[data-id="' + pid + '"]');
+    if (b) { b.scrollIntoView({ block: 'center', behavior: rd ? 'auto' : 'smooth' }); b.classList.add('destacado'); try { b.focus({ preventScroll: true }); } catch (e) { b.focus(); } }
+  })();
+
+})();
+</script>
+</body>
+</html>

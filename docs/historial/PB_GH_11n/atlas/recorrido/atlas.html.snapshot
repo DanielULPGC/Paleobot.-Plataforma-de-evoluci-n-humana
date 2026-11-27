@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+  Lectura didáctica: concentrador del Atlas de paleoantropología. Organiza el
+  acceso a los bloques temáticos y actúa como destino de la portada. Punto de
+  extensión: cada bloque enlaza a su vista interactiva cuando se integre el
+  atlas completo. Diales: VARIANZA_VISUAL 5 / INTENSIDAD_ANIMACION 3 /
+  DENSIDAD_CONTENIDO 5. Accesibilidad: navegación semántica, foco visible,
+  enlace de salto, retorno explícito. Licencia CC BY-NC 4.0 · ULPGC.
+-->
+<html lang="es" class="pb-recorrido">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas de paleoantropología · Bloques</title>
+<link rel="stylesheet" href="../../assets/paleobot-base.css">
+<style>
+:root{--fondo:var(--papel);--fondo-alt:var(--superficie);--tinta-suave:var(--tinta-2);--radio:var(--r-contenedor);--ft:var(--f-titulo);--fc:var(--f-lectura)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--fc);line-height:1.6}
+a{color:var(--acento)}
+.salto{position:absolute;left:-999px;top:0;background:var(--acento);color:var(--sobre-acento);padding:var(--e-3) var(--e-4);z-index:50;font-weight:600}
+.salto:focus{left:0}
+
+.barra{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:var(--e-4);padding:var(--e-4) var(--margen);background:var(--papel);border-bottom:1px solid var(--borde)}
+.volver{display:inline-flex;align-items:center;gap:var(--e-2);color:var(--tinta);text-decoration:none;font-weight:600;padding:var(--e-2) var(--e-4);border-radius:var(--r-control);border:1px solid var(--borde-control)}
+.volver:hover{border-color:var(--acento);color:var(--acento)}
+.volver:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
+.volver svg{width:18px;height:18px;fill:currentColor}
+.barra .marca{font-weight:600;letter-spacing:.02em;color:var(--tinta-suave);font-size:var(--t-s)}
+.barra .intro-link{color:var(--acento);text-decoration:none;font-weight:600;font-size:var(--t-s)}
+.barra .intro-link:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:2px}
+
+.cabecera{padding:var(--e-8) var(--margen) var(--e-4);max-width:1100px;margin:0 auto;text-align:center}
+.cabecera .k{font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;color:var(--acento);font-weight:600;margin-bottom:var(--e-4)}
+.cabecera h1{font-family:var(--ft);font-weight:700;font-size:var(--t-h1);line-height:1.05;margin-bottom:var(--e-3)}
+.cabecera p{color:var(--tinta-suave);max-width:62ch;margin:0 auto}
+
+.bloques{max-width:1100px;margin:0 auto;padding:var(--e-6) var(--margen) var(--e-8);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--e-5)}
+.bloque{scroll-margin-top:80px;background:var(--superficie);border:1px solid var(--borde);border-top:4px solid var(--acento);border-radius:var(--radio);padding:var(--e-6) var(--e-6);display:flex;flex-direction:column}
+.bloque .n{font-weight:700;color:var(--acento);font-size:var(--t-xs);letter-spacing:.12em;margin-bottom:var(--e-3)}
+.bloque h2{font-family:var(--ft);font-weight:700;font-size:var(--t-xl);margin-bottom:var(--e-2)}
+.bloque p{color:var(--tinta-suave);font-size:var(--t-m);margin-bottom:var(--e-5);flex:1}
+.bloque .acc{display:inline-flex;align-items:center;gap:var(--e-2);align-self:flex-start;font-weight:600;color:var(--acento);background:transparent;border:1px solid var(--acento);min-height:var(--control);padding:var(--e-2) var(--e-4);border-radius:var(--r-control);text-decoration:none;transition:background .2s}
+.bloque .acc:hover{background:var(--acento);color:var(--sobre-acento)} /* PB-GH-10: secundario (un solo punto focal por pantalla) */
+.bloque .acc:focus-visible{outline:var(--foco-ancho) solid var(--foco);outline-offset:3px}
+.bloque[data-destacado] {border-top-color:var(--acento);background:rgba(216,169,58,.06)}
+
+.nota{max-width:1100px;margin:0 auto var(--e-8);padding:0 var(--margen)}
+.nota .caja{background:var(--superficie);border:1px dashed rgba(216,169,58,.4);border-radius:var(--radio);padding:var(--e-5) var(--e-5);color:var(--tinta-suave);font-size:var(--t-s)}
+
+.pie{border-top:1px solid var(--borde);padding:var(--e-6) var(--margen);text-align:center;color:var(--tinta-3);font-size:var(--t-xs);line-height:1.7}
+.pie a{color:var(--acento)}
+
+@media (prefers-reduced-motion: no-preference){
+  /* PB-GH-10: solo se ocultan para la aparición si hay JavaScript (clase .js en <html>) */
+  .js .bloque{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+  .js .bloque.visible{opacity:1;transform:translateY(0)}
+}
+@media print{.bloque{opacity:1!important;transform:none!important}}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="integracion.css">
+<script src="integracion.js" defer></script>
+</head>
+<body>
+<a class="salto" href="#bloques">Saltar a los bloques</a>
+
+<div class="barra" role="navigation" aria-label="Navegación del recorrido">
+  <a class="volver" href="index.html" id="volver">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver a la portada
+  </a>
+  <span class="marca">Atlas de paleoantropología</span>
+  <a class="intro-link" href="introduccion.html">Ver la introducción</a>
+</div>
+
+<header class="cabecera">
+  <p class="k">Recorrido por bloques</p>
+  <h1>Elige por dónde empezar</h1>
+  <p>Cada bloque reúne las herramientas para una pregunta distinta. Avanza a tu ritmo y vuelve cuando quieras.</p>
+</header>
+
+<main id="bloques" class="bloques">
+  <section class="bloque" id="cronologia">
+    <div class="n">01 · Cronología</div>
+    <h2>Cronología del corpus</h2>
+    <p>Ordena las cincuenta y dos entradas en el tiempo para reconocer apariciones, solapamientos y desapariciones. Línea del tiempo interactiva, con rangos anclados a sus fuentes.</p>
+    <a class="acc" href="cronologia.html">Abrir la línea del tiempo</a>
+  </section>
+
+  <section class="bloque" id="territorio">
+    <div class="n">02 · Territorio</div>
+    <h2>Territorio y dispersión</h2>
+    <p>Dónde vivieron y por dónde se movieron. Esquema geográfico de regiones, con África como escenario primario de la evolución humana y las salidas hacia Eurasia como fenómeno posterior.</p>
+    <a class="acc" href="territorio.html">Abrir el mapa de regiones</a>
+  </section>
+
+  <section class="bloque" id="clima">
+    <div class="n">03 · Clima</div>
+    <h2>Clima y ecología</h2>
+    <p>En qué mundo vivieron. La variabilidad ambiental como marco de la evolución humana, con sus registros y sus cautelas, anclada en estudios revisados por pares.</p>
+    <a class="acc" href="clima.html">Abrir el bloque de clima</a>
+  </section>
+
+  <section class="bloque" id="metodos" data-destacado>
+    <div class="n">04 · Métodos</div>
+    <h2>Métodos y evidencia</h2>
+    <p>Cómo lo sabemos: datación radiométrica, tafonomía y ADN antiguo, con sus aportaciones y sus límites. El segundo minuto de la introducción desarrolla precisamente este bloque.</p>
+    <a class="acc" href="metodos.html">Abrir los métodos</a>
+  </section>
+
+  <section class="bloque" id="aula">
+    <div class="n">05 · Aula</div>
+    <h2>Aula y recursos</h2>
+    <p>Enseñar y evaluar: itinerarios de uso para la docencia universitaria y la formación permanente, y una situación de aprendizaje modelo con su marco normativo verificado.</p>
+    <a class="acc" href="aula.html">Abrir el bloque de aula</a>
+  </section>
+</main>
+
+<div class="nota" role="region" aria-label="Punto de extensión">
+  <div class="caja">
+    <strong>Punto de extensión.</strong> Este concentrador organiza el acceso a los bloques del atlas. Las vistas interactivas de cada bloque (línea del tiempo, mapa, cladograma) pueden enlazarse aquí cuando se integre el atlas completo, sustituyendo los accesos provisionales que hoy remiten a la introducción.
+  </div>
+</div>
+
+<footer class="pie">
+  Atlas de paleoantropología · Facultad de Ciencias de la Educación · Universidad de Las Palmas de Gran Canaria<br>
+  Contenido bajo licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" rel="license noopener" target="_blank">CC BY-NC 4.0</a>
+</footer>
+
+<script>
+(() => {
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const bloques = document.querySelectorAll('.bloque');
+  if (reduce || !('IntersectionObserver' in window)) {
+    bloques.forEach(b => b.classList.add('visible'));
+  } else {
+    const obs = new IntersectionObserver((es) => {
+      es.forEach((e,i) => { if (e.isIntersecting){ const el=e.target; setTimeout(()=>el.classList.add('visible'), i*70); obs.unobserve(el);} });
+    }, { threshold:.15 });
+    bloques.forEach(b => obs.observe(b));
+  }
+  // Retorno robusto: si hay historial de navegación previo, retrocede; si no, va a la portada.
+  const volver = document.getElementById('volver');
+  volver.addEventListener('click', (ev) => {
+    if (document.referrer && new URL(document.referrer, location.href).pathname.endsWith('index.html')) {
+      ev.preventDefault(); history.back();
+    }
+  });
+})();
+</script>
+</body>
+</html>

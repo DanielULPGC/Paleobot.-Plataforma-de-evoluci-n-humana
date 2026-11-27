@@ -330,7 +330,7 @@
       return `<div class="gs-empty">
         <span class="gs-empty-icon">🔍</span>
         <p>Sin resultados para <strong>${escSafe(query)}</strong></p>
-        <p class="gs-hint">Prueba con el nombre del taxón, una vista o un término del glosario.</p>
+        <p class="gs-hint">Pruebe con el nombre del taxón, una vista o un término del glosario.</p>
       </div>`;
     }
     return results.map((r, i) => {
@@ -430,7 +430,7 @@
   }
 
   /**
-   * Inyecta el toolbar en el DOM. Busca el contenedor de configuración
+   * Inyecta el toolbar en el DOM. Busque el contenedor de configuración
    * (ya existente en el atlas) y lo añade al final.
    */
   function injectA11yToolbar() {
@@ -475,7 +475,7 @@
              style="max-height:340px;overflow-y:auto;padding:8px;margin-top:6px;">
           <div class="gs-empty" style="text-align:center;padding:32px 16px;color:var(--text-sec);">
             <span style="font-size:2rem;display:block;margin-bottom:8px;">🔍</span>
-            <p style="font-size:0.84rem;margin:0;">Empieza a escribir para buscar en el atlas</p>
+            <p style="font-size:0.84rem;margin:0;">Empiece a escribir para buscar en el atlas</p>
           </div>
         </div>
         <div style="border-top:1px solid var(--border);padding:8px 14px;
@@ -520,7 +520,7 @@
         if (q.length < 2) {
           listbox.innerHTML = `<div class="gs-empty" style="text-align:center;padding:32px 16px;">
             <span style="font-size:2rem;display:block;margin-bottom:8px;">🔍</span>
-            <p style="font-size:0.84rem;color:var(--text-sec);margin:0;">Sigue escribiendo…</p>
+            <p style="font-size:0.84rem;color:var(--text-sec);margin:0;">Siga escribiendo…</p>
           </div>`;
         }
       }, 150);
