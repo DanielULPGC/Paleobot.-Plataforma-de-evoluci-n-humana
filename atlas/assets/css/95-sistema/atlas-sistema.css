@@ -68,7 +68,7 @@ body.pb-v50-unified .modal-content .exam-btn:not(.linked) {
   --sobre-pizarra: #eae6da; --sobre-pizarra-2: #b8c2cf; --pizarra-acento: #7cc4d8;
   --pizarra-borde: #2c3d56; --pizarra-borde-control: #7a8aa0; --foco-pizarra: #f2b04a;
   /* Escala de dato del atlas (DIRECCION § 2.6): rótulo de eje/leyenda y cifra destacada. */
-  --t-dato: .75rem;   /* 12 px: mínimo de rótulos de dato, ejes, leyendas y celdas densas */
+  --t-dato: .8125rem;  /* 13 px (antes 12): mínimo de rótulos de dato, ejes, leyendas y celdas densas */
   --t-cifra: 2rem;    /* 32 px: cifra destacada */
   --e-denso: 2px;     /* paso denso: solo tablas y matrices */
 }
@@ -426,3 +426,20 @@ html body :is(.pb-landing-kicker, .pb-landing-facts dd, .pb-landing-credit, .pb-
   .pb-pathways-head span, .pb-hub-card-media figcaption, .pb-evidence-lab-head span, .pb-evidence-item figcaption,
   .pb-evidence-step, .pb-landing-index-head span, .pb-landing-index-group > span, .pb-landing-index-link small,
   .search-kbd, .pt-lbl, .classroom-task-card p) { font-size: .75rem; }
+
+/* Mejora de la letra (27-11-2026): el texto de lectura y de datos de las vistas no baja de 14 px. Los selectores salen de la medición
+   de scripts/atlas/medidas-legibilidad.cjs (--suelo 14); no se tocan títulos ni controles con tamaño propio de diseño. */
+:root:root body :is(
+  .pb-landing-sources li, .pb-landing-sources a, .pb-landing-sources summary, .pb-landing-index-link span, .pb-landing-index-link small,
+  .pb-hub-card figcaption, .pb-hub-card span, .pb-landing-credit, .pb-landing-credit em, .pb-landing-kicker,
+  .pb-evidence-item figcaption, .pb-evidence-item button, .pb-evidence-step, .pb-dap-block-text, .pb-dap-block-title,
+  .africa-session-list p, .africa-session-card p, .africa-source-card a, .africa-source-note, .africa-question-card p,
+  .africa-evidence-card p, .africa-evidence-card small, .africa-route-card p, .africa-route-step, .africa-reading-step p,
+  .africa-classroom-grid p, .africa-rubric-cell, .africa-region-card small, .africa-map-head p,
+  .map-learning-cautions li, .map-learning-question, .map-learning-panel p, .map-evidence-key span,
+  .evidence-legend-note, .tree-item div, .v34-block-cover-caption span, .v34-fauna-card p, .classroom-task-card p,
+  .evidence-badge, .badge-estado
+) { font-size: .875rem; }
+:root:root body :is(.pb-landing-index-group > span, .pb-landing-index-head span, .pb-hub-card span) { font-size: .8125rem; }
+:root:root body .tree-item > div > div:first-child { font-size: .9375rem !important; }
+:root:root body .tree-item > div > div:nth-child(2) { font-size: .8125rem !important; }
