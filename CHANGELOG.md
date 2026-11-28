@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## Detalles de UX del atlas · 28/11/2026
+
+- Buscador: marcador acortado («Especie, holotipo, yacimiento… (pulse /)») para que no se corte a 390 px y trato de usted.
+- Selector de nivel: se explica qué regula y se pasa a «empiece» en Nivel Básico; letra de la ayuda a 13 px.
+- «Tarea de aula (opcional)» pasa a «Actividad previa (opcional)».
+- Lema de la portada: sin espacio duro y con reparto equilibrado de líneas (`text-wrap: pretty`).
+- Estado previo en `docs/historial/PB_GH_11p/`.
+
 ## Letra y legibilidad en todo el recurso · 27/11/2026
 
 Mejora de UX/UI centrada en la letra (público adulto, ordenador, tableta y teléfono).

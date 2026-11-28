@@ -443,3 +443,6 @@ html body :is(.pb-landing-kicker, .pb-landing-facts dd, .pb-landing-credit, .pb-
 :root:root body :is(.pb-landing-index-group > span, .pb-landing-index-head span, .pb-hub-card span) { font-size: .8125rem; }
 :root:root body .tree-item > div > div:first-child { font-size: .9375rem !important; }
 :root:root body .tree-item > div > div:nth-child(2) { font-size: .8125rem !important; }
+
+/* Corrección de detalles de UX (28-11-2026): reparto equilibrado de líneas en el lema de la portada. */
+html body .pb-landing-lead { text-wrap: pretty; }
