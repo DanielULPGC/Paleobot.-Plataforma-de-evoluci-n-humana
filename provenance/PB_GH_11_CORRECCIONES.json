@@ -1127,6 +1127,19 @@
       "evidence": "scripts/atlas/medidas-legibilidad.cjs, construir.py --check y verificar_repo.py.",
       "impact": "Solo tamaño de letra.",
       "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "ed91885afdf5eacffec33eedded0e671c3cced0d906de63b70f1d8267f0905e6",
+      "previous_snapshot": "docs/historial/PB_GH_11p/atlas/index.html.snapshot",
+      "corrected_sha256": "7748c93239f5dbfc59e8617c36100001bd1ea76bf8a482d08fc8d3ad9c71c653",
+      "change": "Marcador del buscador acortado y en trato de usted («pulse /»); aclaración de qué regula el selector de nivel; «Tarea de aula (opcional)» pasa a «Actividad previa (opcional)»; se retira un espacio duro que partía mal el lema de la portada.",
+      "reason": "Corrección de detalles de UX (28-11-2026): marcador truncado a 390 px, selector de nivel sin explicar y vocabulario de aula en un recurso para el DEA.",
+      "evidence": "verificar_repo.py y comprobación visual a 390 px.",
+      "impact": "Solo texto visible.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
     }
   ]
 }
