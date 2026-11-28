@@ -1140,6 +1140,19 @@
       "evidence": "verificar_repo.py y comprobación visual a 390 px.",
       "impact": "Solo texto visible.",
       "return": "Restaurar el snapshot anterior o revertir el commit."
+    },
+    {
+      "path": "atlas/index.html",
+      "import_sha256": "14c712de9ecad78ec478009a15d74efe40a750902ddad9685eb3404de25805b4",
+      "snapshot": "docs/historial/BASE_4D320EE/atlas/index.html.snapshot",
+      "previous_sha256": "7748c93239f5dbfc59e8617c36100001bd1ea76bf8a482d08fc8d3ad9c71c653",
+      "previous_snapshot": "docs/historial/PB_GH_11q/atlas/index.html.snapshot",
+      "corrected_sha256": "f1f13a3561fd68f392cac60798a509b6459a343e6a3dcaad2cfc50738ac858e6",
+      "change": "Marcador del buscador reducido a «Buscar especie…» para que quepa a 390 px.",
+      "reason": "Captura a 390 px: el marcador seguía cortado.",
+      "evidence": "Captura y verificar_repo.py.",
+      "impact": "Solo texto visible.",
+      "return": "Restaurar el snapshot anterior o revertir el commit."
     }
   ]
 }

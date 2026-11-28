@@ -446,3 +446,12 @@ html body :is(.pb-landing-kicker, .pb-landing-facts dd, .pb-landing-credit, .pb-
 
 /* Corrección de detalles de UX (28-11-2026): reparto equilibrado de líneas en el lema de la portada. */
 html body .pb-landing-lead { text-wrap: pretty; }
+
+/* Corrección de detalles de UX (28-11-2026, segunda): en teléfono la flecha de cada ficha de la lista pasa a la esquina de la tarjeta
+   (antes caía sola en una fila propia) y la tecla «/» del buscador se oculta porque no hay teclado físico. */
+@media (max-width: 47.99rem) {
+  html body .species-item { position: relative; }
+  html body .species-item > .sp-meta { position: absolute; top: .75rem; right: .75rem; margin: 0; }
+  html body .species-item > .sp-details { padding-right: 1.5rem; }
+  html body .search-box .search-kbd { display: none; }
+}

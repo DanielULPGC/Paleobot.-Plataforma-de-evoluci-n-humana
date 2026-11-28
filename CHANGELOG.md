@@ -1,5 +1,12 @@
 # Registro de cambios
 
+## Flecha de la cronología y buscador en teléfono · 28/11/2026
+
+- La flecha de cada ficha de la lista pasa a la esquina de la tarjeta en pantallas estrechas (antes caía sola en una fila propia).
+- Buscador: marcador «Buscar especie…» y tecla «/» oculta en teléfono, donde se cortaba.
+- Pestañas del DEA: revisadas en captura; la sombra de desbordamiento y el botón «Secciones» ya señalan que hay más, sin cambios.
+- Estado previo en `docs/historial/PB_GH_11q/`.
+
 ## Detalles de UX del atlas · 28/11/2026
 
 - Buscador: marcador acortado («Especie, holotipo, yacimiento… (pulse /)») para que no se corte a 390 px y trato de usted.
